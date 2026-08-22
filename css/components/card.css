@@ -1,0 +1,110 @@
+/* ==========================================
+   JOURNAL CARDS & BOOKMARK TABS
+   ========================================== */
+
+.vocab-card {
+  background: var(--color-parchment-light);
+  border: var(--border-ink);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vocab-card:hover {
+  background: var(--color-parchment);
+  border-color: var(--color-gold-leaf);
+}
+
+.vocab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(62, 43, 30, 0.15);
+  padding-bottom: 8px;
+}
+
+.vocab-word {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark-moss);
+}
+
+.vocab-type-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--color-parchment-dim);
+  color: var(--color-ink-brown);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(62, 43, 30, 0.2);
+}
+
+.vocab-meaning {
+  font-size: 14px;
+  color: var(--color-ink-brown);
+  font-weight: 600;
+}
+
+.vocab-sentence {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-golden-brown);
+  line-height: 1.4;
+}
+
+.audio-btn {
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: var(--border-ink);
+  color: var(--color-ink-brown);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-fast);
+}
+
+.audio-btn:hover {
+  background: var(--color-dark-moss);
+  color: var(--color-parchment-light);
+}
+
+/* Bookmark Divider Tabs */
+.tab-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--color-parchment-dim);
+  color: var(--color-ink-brown);
+  border: var(--border-ink);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+  background: var(--color-parchment);
+}
+
+.tab-btn.active {
+  background: var(--color-dark-moss);
+  color: var(--color-parchment-light);
+  border-color: var(--color-dark-moss);
+  font-weight: 700;
+}

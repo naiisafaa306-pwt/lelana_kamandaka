@@ -1,0 +1,111 @@
+/* ==========================================
+   SCREEN 01 — HOME / OPENING
+   ========================================== */
+
+#screen-opening {
+  background: url('../assets/images/bg_forest_hero.png') center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end; /* content anchors to lower portion */
+}
+
+/* Subtle top vignette — keeps the lantern/bg readable */
+#screen-opening::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 14, 2, 0.18) 0%,
+    rgba(30, 14, 2, 0.05) 45%,
+    rgba(212, 188, 100, 0.22) 80%,
+    rgba(60, 30, 5, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dark bistre ground bar at very bottom */
+.hero-ground-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10vh;
+  background: var(--color-bistre, #351903);
+  z-index: 2;
+}
+
+/* Left-aligned hero content block */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 72px 14vh 72px; /* bottom padding lifts it above the ground bar */
+  animation: heroFadeIn 1s ease-out both;
+}
+
+/* Large decorative title — two lines, left-aligned */
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 700;
+  color: var(--color-bistre, #351903);
+  text-shadow:
+    2px 2px 0 rgba(255,220,100,0.35),
+    0 4px 18px rgba(0,0,0,0.5);
+  line-height: 1.05;
+  margin-bottom: 32px;
+  letter-spacing: 0.01em;
+  /* Slight text stroke for the carved/woodcut look */
+  -webkit-text-stroke: 1.5px rgba(60, 30, 5, 0.6);
+}
+
+/* Single pill "Mulai" button */
+.hero-mulai-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bistre, #351903);
+  color: var(--color-parchment-light, #f5f0e8);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 14px 48px;
+  border: 2.5px solid rgba(255, 220, 120, 0.55);
+  border-radius: 50px; /* full pill */
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
+
+.hero-mulai-btn:hover {
+  background: #4a2508;
+  transform: translateY(-2px);
+}
+
+.hero-mulai-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 32px 16vh 32px;
+  }
+  .hero-title {
+    font-size: clamp(40px, 10vw, 60px);
+  }
+}

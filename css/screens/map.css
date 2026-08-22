@@ -1,0 +1,176 @@
+/* ==========================================
+   SCREEN 03 — PETA LELANA (10-LOCATION MAP)
+   ========================================== */
+
+#screen-map {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #1b0c02;
+  /* Fixed navbar is 72px; screen fills full viewport height */
+  height: 100vh;
+  padding-top: var(--navbar-height);
+}
+
+/* ── Viewport: fills all remaining space below the navbar ── */
+.map-viewport {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Map canvas: the illustrated parchment map ── */
+.map-wrapper {
+  position: relative;
+  /* Maintain the map artwork's native 1440×940 aspect ratio.
+     Scale down to fit inside the viewport; never overflow. */
+  width: min(100vw, calc((100vh - var(--navbar-height)) * 1440 / 940));
+  aspect-ratio: 1440 / 940;
+  background: url('../../assets/images/peta_lelana.png') center / cover no-repeat;
+  flex-shrink: 0;
+}
+
+/* ── Route path SVG overlay ── */
+.map-path-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: visible;
+}
+
+/* All route segments: white dashed line, matching the reference design */
+.map-path-segment {
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-dasharray: 12 8;
+  stroke-linecap: round;
+  stroke-opacity: 0.9;
+}
+
+/* ── Pin wrappers: absolutely positioned over the map ── */
+.map-pin-wrapper {
+  position: absolute;
+  /* Center the pin on its coordinate point */
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+  transition: transform var(--transition-fast);
+}
+
+.map-pin-wrapper:hover {
+  transform: translate(-50%, -50%) scale(1.12);
+  z-index: 15;
+}
+
+.map-pin-wrapper.selected {
+  transform: translate(-50%, -50%) scale(1.15);
+  z-index: 16;
+}
+
+/* The circular icon image — location.png or gembok.png */
+.pin-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
+  /* Subtle drop shadow to lift pins off the map art */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.55));
+}
+
+/* Active/unlocked pin: gentle pulse */
+.map-pin-wrapper.active .pin-icon {
+  animation: pinPulse 2s ease-in-out infinite;
+}
+
+@keyframes pinPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.1); }
+}
+
+/* Locked pin: slightly dimmed */
+.map-pin-wrapper.locked {
+  cursor: default;
+}
+
+.map-pin-wrapper.locked .pin-icon {
+  opacity: 0.85;
+}
+
+/* Pin label: plain white text, matches reference */
+.pin-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 6px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+}
+
+/* ── Location preview card (bottom-right) ── */
+.location-preview-card {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  width: 320px;
+  z-index: 20;
+  background: var(--color-parchment-light);
+  border: var(--border-ink-soft);
+  border-radius: var(--radius-md);
+  padding: 20px 22px 18px;
+  box-shadow: var(--shadow-paper);
+
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.location-preview-card.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.location-preview-num {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--color-golden-brown);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+
+.location-preview-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--color-dark-moss);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.location-preview-desc {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-ink-brown);
+  margin-bottom: 18px;
+}

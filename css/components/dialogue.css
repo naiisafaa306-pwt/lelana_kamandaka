@@ -1,0 +1,63 @@
+/* ==========================================
+   DIALOGUE SHARED COMPONENTS
+   ========================================== */
+
+/* Basa Banyumasan inline word highlight — used in dialogue text and story */
+.basa-word-highlight {
+  color: var(--color-moss-deep, #4a6b2a);
+  background: rgba(141, 164, 50, 0.18);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 700;
+  border-bottom: 1.5px solid var(--color-apple-green, #5a8a3c);
+}
+
+/* Story screen dialogue box (screen-story reuses this) */
+.dialogue-wrapper {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 1040px);
+  z-index: 20;
+}
+
+.dialogue-box {
+  background: var(--color-parchment-light);
+  border: var(--border-ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-paper);
+  padding: 24px 32px;
+  position: relative;
+}
+
+.speaker-ribbon {
+  position: absolute;
+  top: -16px;
+  left: 28px;
+  background: var(--color-dark-moss);
+  color: var(--color-parchment-light);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 18px;
+  border-radius: var(--radius-sm);
+  border: var(--border-ink);
+  letter-spacing: 0.05em;
+}
+
+.dialogue-text {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--color-ink-brown);
+  min-height: 60px;
+  margin-top: 10px;
+}
+
+.dialogue-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 16px;
+}
