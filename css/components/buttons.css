@@ -1,0 +1,66 @@
+/* ==========================================
+   STORYBOOK BUTTON COMPONENTS
+   ========================================== */
+
+.btn-primary {
+  background: var(--color-dark-moss);
+  color: var(--color-parchment-light);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 13px 32px;
+  border-radius: var(--radius-sm);
+  border: var(--border-ink);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background: #1f2b21;
+  border-color: var(--color-gold-leaf);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ink-brown);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  border: var(--border-ink);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-secondary:hover {
+  background: var(--color-parchment-dim);
+  color: var(--color-ink-brown);
+}
+
+.btn-back {
+  background: rgba(53, 25, 3, 0.85);
+  color: var(--color-parchment-light);
+  border: 1px solid var(--color-golden-brown);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-back:hover {
+  background: var(--color-golden-brown);
+  color: #ffffff;
+}

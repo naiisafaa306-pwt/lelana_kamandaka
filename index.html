@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lelana Kamandaka — Interactive Digital Folklore & Basa Banyumasan</title>
+  <meta name="description" content="Petualangan interaktif mengulas legenda Raden Kamandaka dan pelestarian Basa Banyumasan secara alami, indah, dan edukatif.">
+
+  <!-- Google Fonts: Libre Caslon Text & Hanken Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- CSS Design System & Components -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/dialogue.css">
+  <link rel="stylesheet" href="css/components/card.css">
+  <link rel="stylesheet" href="css/components/modal.css">
+  <link rel="stylesheet" href="css/screens/opening.css">
+  <link rel="stylesheet" href="css/screens/story.css">
+  <link rel="stylesheet" href="css/screens/map.css">
+  <link rel="stylesheet" href="css/screens/gameplay.css">
+  <link rel="stylesheet" href="css/screens/journal.css">
+  <link rel="stylesheet" href="css/screens/achievement.css">
+</head>
+<body>
+
+  <!-- Floating Organic Leaf Particle Canvas -->
+  <canvas id="leaf-canvas"></canvas>
+
+  <!-- Global Header Navigation Bar -->
+  <nav id="global-navbar" class="global-navbar" style="display: none;">
+    <div id="nav-brand" class="nav-brand">
+      <div>
+        <div class="nav-brand-title">LELANA KAMANDAKA</div>
+        <div class="nav-brand-subtitle">Petualangan Basa Banyumasan</div>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li>
+        <button id="nav-btn-map" class="nav-item-btn active">
+          Peta Lelana
+        </button>
+      </li>
+      <li>
+        <button id="nav-btn-journal" class="nav-item-btn">
+          Catatan Lelana
+        </button>
+      </li>
+      <li>
+        <button id="nav-btn-basa" class="nav-item-btn">
+          Basa Banyumasan
+        </button>
+      </li>
+      <li>
+        <button id="nav-btn-achievement" class="nav-item-btn">
+          Progress & Achievement
+        </button>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="nav-xp-badge">
+        <span id="nav-xp-counter">0 XP</span>
+      </div>
+      <button id="btn-audio-toggle" class="audio-toggle-btn" title="Pengaturan Suara">
+        Audio On
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main View Router Container -->
+  <main id="app">
+
+    <!-- ==========================================
+         SCREEN 01 — HOME / OPENING / LIVING WORLD
+         ========================================== -->
+    <section id="screen-opening" class="screen-view active">
+      <!-- Bottom ground bar -->
+      <div class="hero-ground-bar"></div>
+
+      <!-- Left-aligned title + CTA -->
+      <div class="hero-content">
+        <h1 class="hero-title">Lelana<br>Kamandaka</h1>
+        <button id="btn-start-journey" class="hero-mulai-btn">
+          Mulai
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 02 — STORY INTRO
+         ========================================== -->
+    <section id="screen-story" class="screen-view">
+
+      <!-- Left: parchment text panel -->
+      <div class="story-text-panel">
+
+        <!-- Leaf ornament header -->
+        <div class="story-ornament">
+          <img src="assets/icons/leaf_01.svg" class="story-leaf-icon" alt="" aria-hidden="true">
+          <div class="story-ornament-rule"></div>
+          <img src="assets/icons/leaf_02.svg" class="story-leaf-icon" alt="" aria-hidden="true">
+        </div>
+
+        <!-- Quote mark open -->
+        <span class="story-quote-open" aria-hidden="true">"</span>
+
+        <!-- Slide body text -->
+        <p id="story-text-body" class="story-body-text">
+          Memuat kisah pengembaraan...
+        </p>
+
+        <!-- Quote mark close -->
+        <span class="story-quote-close" aria-hidden="true">"</span>
+
+        <!-- LANJUT button -->
+        <div class="story-panel-footer">
+          <button id="btn-story-next" class="story-lanjut-btn">
+            LANJUT &nbsp;→
+          </button>
+        </div>
+
+        <!-- Skip link -->
+        <button id="btn-story-skip" class="story-skip-btn">Lewati intro</button>
+
+      </div>
+
+      <!-- Right: illustration panel -->
+      <div class="story-illustration-panel">
+        <img id="story-illustration-img" src="assets/images/bg_kamandaka_intro.png"
+             class="story-illustration-img" alt="">
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         SCREEN 03 — PETA LELANA (10-LOCATION MAP)
+         ========================================== -->
+    <section id="screen-map" class="screen-view">
+
+      <div class="map-viewport">
+        <div id="map-canvas-wrapper" class="map-wrapper">
+          <!-- 10 Map Pins rendered dynamically by MapEngine.js -->
+        </div>
+      </div>
+
+      <!-- Location Selection Parchment Card -->
+      <div id="location-preview-card" class="location-preview-card">
+        <div id="preview-number" class="location-preview-num">LOKASI 01 OF 10</div>
+        <h3 id="preview-title" class="location-preview-title">Kerajaan Pajajaran</h3>
+        <p id="preview-desc" class="location-preview-desc">
+          Istana megah tempat dimulainya pengembaraan Raden Kamandaka.
+        </p>
+        <button id="btn-start-location" class="btn-primary" style="width: 100%;">
+          Mulai Petualangan →
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 04 — GAMEPLAY 01 (PAJAJARAN)
+         ========================================== -->
+    <section id="screen-gameplay" class="screen-view">
+
+      <!-- HUD: top-left chapter badge -->
+      <div class="gameplay-hud-left">
+        <div id="gameplay-bab-badge" class="gameplay-bab-badge">BAB 1/10</div>
+      </div>
+
+      <!-- HUD: top-right stat badges -->
+      <div class="gameplay-hud-right">
+        <div class="gameplay-stat-badge">BASA : <span id="gameplay-basa-count">0</span></div>
+        <div class="gameplay-stat-badge">XP : <span id="gameplay-xp-count">0</span></div>
+      </div>
+
+      <!-- Cinematic Intro Card (shown before dialogue starts) -->
+      <div id="gameplay-intro-card" class="gameplay-intro-card">
+        <p id="gameplay-intro-text" class="gameplay-intro-text"></p>
+        <button id="btn-gameplay-start" class="gameplay-start-btn">
+          MULAI PERJALANAN &nbsp;→
+        </button>
+      </div>
+
+      <!-- Dialogue Panel (bottom sheet) -->
+      <div class="dialogue-panel">
+
+        <!-- Speaker entries: two blocks stacked -->
+        <div id="dialogue-entries" class="dialogue-entries">
+          <!-- Rendered dynamically by DialogueEngine -->
+        </div>
+
+        <!-- Quiz options (shown during quiz steps) -->
+        <div id="quiz-options-container" class="quiz-container"></div>
+
+        <!-- Action bar: audio left, next right -->
+        <div class="dialogue-action-bar">
+          <button id="btn-dialogue-audio" class="dialogue-audio-btn" title="Dengarkan">
+            <span class="audio-icon">&#128266;</span>
+            <span>DENGARKAN</span>
+          </button>
+          <div id="dialogue-footer-box" class="dialogue-footer-actions"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 06 — CATATAN LELANA (JOURNAL)
+         ========================================== -->
+    <section id="screen-journal" class="screen-view">
+      <div class="journal-container">
+        <div class="journal-header">
+          <h2 class="journal-title">Catatan Lelana</h2>
+          <p class="journal-subtitle">Kumpulan kosakata Basa Banyumasan, tokoh, dan tempat yang telah kamu temukan dalam pengembaraan.</p>
+        </div>
+
+        <div id="journal-tab-group" class="tab-group">
+          <button class="tab-btn active" data-category="all">Semua Temuan</button>
+          <button class="tab-btn" data-category="basa">Basa Banyumasan</button>
+          <button class="tab-btn" data-category="tokoh">Tokoh</button>
+          <button class="tab-btn" data-category="tempat">Tempat Bersejarah</button>
+        </div>
+
+        <div id="journal-vocab-grid" class="vocab-grid">
+          <!-- Cards rendered by journalScreen.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SCREEN 07 — ACHIEVEMENT & PROGRESS OVERVIEW
+         ========================================== -->
+    <section id="screen-achievement" class="screen-view">
+      <div class="achievement-container">
+        <div class="achievement-hero-card">
+          <div>
+            <span class="signpost-label">STATUS PENGEMBARA</span>
+            <h2 style="font-size: 28px; color: var(--color-dark-moss); margin-top: 4px;">Kemajuan Perjalanan</h2>
+            <div class="progress-track-bg">
+              <div id="achievement-progress-fill" class="progress-fill"></div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 24px; text-align: center;">
+            <div>
+              <div id="achievement-location-count" style="font-family: var(--font-serif); font-size: 24px; color: var(--color-dark-moss);">1 / 10</div>
+              <div style="font-size: 12px; color: var(--color-ink-brown);">Lokasi Terbuka</div>
+            </div>
+            <div>
+              <div id="achievement-xp-count" style="font-family: var(--font-serif); font-size: 24px; color: var(--color-dark-moss);">0 XP</div>
+              <div style="font-size: 12px; color: var(--color-ink-brown);">Pengalaman</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-size: 22px; color: var(--color-parchment-light); margin-bottom: 16px;">Lencana & Pencapaian</h3>
+        <div id="achievement-badge-grid" class="badges-grid">
+          <!-- Badges rendered by achievementScreen.js -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Location Completion Modal Overlay -->
+  <div id="completion-modal" class="modal-backdrop">
+    <div class="modal-content">
+      <h2 id="completion-modal-title" class="modal-title">Petualangan Selesai!</h2>
+      <p id="completion-modal-desc" class="modal-desc">
+        Kamu telah menyelesaikan petualangan di lokasi ini.
+      </p>
+      <div id="completion-modal-reward" class="modal-reward-box">
+        +150 XP & Lokasi Baru Terbuka!
+      </div>
+      <button id="btn-completion-return" class="btn-primary" style="width: 100%;">
+        Kembali ke Peta Lelana →
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CHALLENGE CARD MODAL
+       ========================================== -->
+  <div id="challenge-card-modal" class="challenge-card-backdrop" hidden aria-modal="true" role="dialog" aria-labelledby="challenge-basa-word">
+    <div class="challenge-card">
+
+      <!-- Scroll top decoration -->
+      <div class="challenge-card-scroll-top" aria-hidden="true"></div>
+
+      <!-- Pill label -->
+      <div class="challenge-card-header">
+        <span class="challenge-card-label">TANTANGAN BAHASA</span>
+      </div>
+
+      <!-- Large Banyumasan word -->
+      <div class="challenge-word-block">
+        <h2 id="challenge-basa-word" class="challenge-basa-word"></h2>
+        <p   id="challenge-phonetic"  class="challenge-phonetic"></p>
+        <p   id="challenge-meaning"   class="challenge-meaning"></p>
+      </div>
+
+      <!-- Context sentence -->
+      <p id="challenge-context" class="challenge-context"></p>
+
+      <!-- Answer options -->
+      <div id="challenge-options" class="challenge-options-grid"></div>
+
+      <!-- Feedback row (shown after selection) -->
+      <div id="challenge-feedback" class="challenge-feedback" hidden></div>
+
+      <!-- Scroll bottom decoration -->
+      <div class="challenge-card-scroll-bottom" aria-hidden="true"></div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript Entry Module -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+/* ==========================================
+   SCREEN 02 — STORY INTRO (TWO-PANEL LAYOUT)
+   ========================================== */
+
+#screen-story {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #f5f2c0; /* fallback */
+}
+
+/* ── Left: Text Panel ── */
+.story-text-panel {
+  position: relative;
+  flex: 0 0 35%;
+  min-width: 320px;
+  background: #f5f2c0;
+  display: flex;
+  flex-direction: column;
+  padding: 48px 40px 36px 48px;
+  overflow: hidden;
+}
+
+/* Leaf ornament row at top-center of panel */
+.story-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  align-self: center;
+  width: 100%;
+}
+
+.story-leaf-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* Full-width ornament rule — CSS-only horizontal line with centre diamond */
+.story-ornament-rule {
+  flex: 1;
+  height: 18px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.story-ornament-rule::before {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-golden-brown, #925E06);
+  opacity: 0.45;
+}
+
+.story-ornament-rule::after {
+  content: '◆';
+  font-size: 7px;
+  color: var(--color-golden-brown, #925E06);
+  opacity: 0.55;
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+/* Opening quote mark */
+.story-quote-open {
+  font-family: Georgia, var(--font-serif), serif;
+  font-size: 64px;
+  line-height: 0.6;
+  color: var(--color-bistre, #351903);
+  opacity: 0.45;
+  margin-bottom: 8px;
+  display: block;
+  user-select: none;
+}
+
+/* Body text — large serif, dark brown */
+.story-body-text {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.55;
+  color: #2a1a08;
+  flex: 1;
+  /* No max-width — panel width controls it */
+}
+
+/* Closing quote mark — bottom right of text area */
+.story-quote-close {
+  font-family: Georgia, var(--font-serif), serif;
+  font-size: 56px;
+  line-height: 0.5;
+  color: var(--color-bistre, #351903);
+  opacity: 0.35;
+  align-self: flex-end;
+  margin-top: 8px;
+  user-select: none;
+}
+
+/* Ornament rule below footer — CSS-only horizontal line */
+.story-text-panel::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--color-golden-brown, #925E06);
+  opacity: 0.30;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* Footer: LANJUT button centered */
+.story-panel-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.story-lanjut-btn {
+  background: var(--color-bistre, #351903);
+  color: var(--color-parchment-light, #f5f0e8);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 13px 40px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+.story-lanjut-btn:hover {
+  background: #4a2508;
+  transform: translateY(-1px);
+}
+
+/* Skip link — small, bottom of panel */
+.story-skip-btn {
+  background: none;
+  border: none;
+  color: var(--color-golden-brown, #a0742a);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  margin-top: 14px;
+  align-self: center;
+  opacity: 0.7;
+  text-decoration: underline;
+  padding: 4px;
+}
+
+.story-skip-btn:hover {
+  opacity: 1;
+}
+
+/* ── Right: Illustration Panel ── */
+.story-illustration-panel {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-illustration-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: opacity 0.4s ease;
+}
+
+/* Slide transition: fade the image when JS swaps src */
+.story-illustration-img.fade-out {
+  opacity: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  #screen-story {
+    flex-direction: column;
+  }
+
+  .story-text-panel {
+    flex: 0 0 auto;
+    min-width: unset;
+    padding: 36px 28px 28px;
+  }
+
+  .story-illustration-panel {
+    min-height: 40vh;
+  }
+
+  .story-body-text {
+    font-size: 18px;
+  }
+}

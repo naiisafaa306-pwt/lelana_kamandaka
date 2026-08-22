@@ -1,0 +1,66 @@
+/* ==========================================
+   MODAL OVERLAY (MANUSCRIPT STYLING)
+   ========================================== */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-overlay-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--color-parchment-light);
+  border: var(--border-ink);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+  padding: 36px;
+  width: min(90%, 500px);
+  transform: scale(0.95);
+  transition: transform var(--transition-normal);
+  position: relative;
+  text-align: center;
+}
+
+.modal-backdrop.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  color: var(--color-dark-moss);
+  margin-bottom: 8px;
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: var(--color-ink-brown);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.modal-reward-box {
+  background: var(--color-parchment);
+  border: 1px dashed var(--color-golden-brown);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-bottom: 24px;
+  font-weight: 700;
+  color: var(--color-moss-deep);
+  font-size: 14px;
+}

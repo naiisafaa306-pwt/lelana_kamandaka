@@ -1,0 +1,124 @@
+/* ==========================================
+   HEADER NAVIGATION (MANUSCRIPT / STORYBOOK)
+   ========================================== */
+
+.global-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  background: var(--color-parchment-light);
+  border-bottom: 1px solid var(--color-parchment-dim);
+  box-shadow: 0 2px 8px rgba(53, 25, 3, 0.10);
+  z-index: var(--z-navbar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.nav-brand-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-bistre);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+}
+
+.nav-brand-subtitle {
+  font-size: 11px;
+  color: var(--color-golden-brown);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  list-style: none;
+}
+
+.nav-item-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-brown);
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.nav-item-btn:hover {
+  color: var(--color-bistre);
+  border-color: rgba(146, 94, 6, 0.35);
+}
+
+.nav-item-btn.active {
+  color: var(--color-bistre);
+  background: var(--color-parchment-dim);
+  border-color: var(--color-golden-brown);
+  font-weight: 700;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-xp-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--color-golden-brown);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  color: var(--color-golden-brown);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.audio-toggle-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid var(--color-golden-brown);
+  color: var(--color-ink-brown);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-fast);
+}
+
+.audio-toggle-btn:hover {
+  background: var(--color-parchment-dim);
+  color: var(--color-bistre);
+}
+
+@media (max-width: 900px) {
+  .global-navbar {
+    padding: 0 16px;
+  }
+  .nav-brand-subtitle {
+    display: none;
+  }
+  .nav-item-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}

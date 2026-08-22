@@ -1,0 +1,59 @@
+/* ==========================================
+   LELANA KAMANDAKA — DESIGN SYSTEM VARIABLES
+   ========================================== */
+
+:root {
+  /* Primary Natural Color Palette */
+  --color-dark-moss: #2D3E2F;
+  --color-moss-deep: #365004;
+  --color-apple-green: #8DA432;
+  --color-flax: #EDE383;
+  --color-gold-leaf: #C5A059;
+  --color-golden-brown: #925E06;
+  --color-ink-brown: #3E2B1E;
+  --color-bistre: #351903;
+
+  /* Manuscript Parchment Tones */
+  --color-parchment: #F9F4E8;
+  --color-parchment-light: #FEF9ED;
+  --color-parchment-dim: #E7E2D6;
+  --color-parchment-dark: #DEDACE;
+
+  /* Organic Overlay Shades */
+  --color-overlay-dark: rgba(53, 25, 3, 0.75);
+  --color-overlay-soft: rgba(45, 62, 47, 0.12);
+
+  /* Typography System */
+  --font-serif: 'Libre Caslon Text', Georgia, serif;
+  --font-sans: 'Hanken Grotesk', 'Inter', -apple-system, sans-serif;
+
+  /* Subtle Layering & Natural Outlines */
+  --border-ink: 1px solid var(--color-ink-brown);
+  --border-ink-soft: 1px solid rgba(62, 43, 30, 0.25);
+  --border-gold: 1px solid var(--color-gold-leaf);
+
+  --shadow-paper: 0 4px 16px rgba(53, 25, 3, 0.15);
+  --shadow-subtle: 0 2px 8px rgba(53, 25, 3, 0.10);
+
+  /* Corner Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  /* Layout Boundaries */
+  --max-width-desktop: 1440px;
+  --max-width-container: 1280px;
+  --navbar-height: 72px;
+
+  /* Timings */
+  --transition-fast: 0.2s ease-out;
+  --transition-normal: 0.35s ease-out;
+  --transition-slow: 0.6s ease-out;
+
+  /* Z-Index Hierarchy */
+  --z-canvas: 5;
+  --z-content: 10;
+  --z-navbar: 100;
+  --z-modal: 200;
+}

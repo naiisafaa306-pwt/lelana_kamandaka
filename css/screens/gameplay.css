@@ -1,0 +1,521 @@
+/* ==========================================
+   SCREEN 04 — GAMEPLAY 01 (PAJAJARAN)
+   ========================================== */
+
+#screen-gameplay {
+  background: url('../assets/images/bg_pajajaran.png') center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Subtle vignette so dialogue panel stands out */
+#screen-gameplay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 10, 2, 0.15) 0%,
+    rgba(20, 10, 2, 0.10) 55%,
+    rgba(20, 10, 2, 0.35) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── HUD Badges ── */
+.gameplay-hud-left,
+.gameplay-hud-right {
+  position: absolute;
+  top: 24px;
+  z-index: 20;
+}
+
+.gameplay-hud-left {
+  left: 24px;
+}
+
+.gameplay-hud-right {
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.gameplay-bab-badge {
+  background: var(--color-flax, #ede383);
+  border: none;
+  border-radius: var(--radius-pill, 9999px);
+  padding: 6px 18px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--color-bistre, #351903);
+  letter-spacing: 0.08em;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+}
+
+.gameplay-stat-badge {
+  background: var(--color-flax, #ede383);
+  border: none;
+  border-radius: var(--radius-pill, 9999px);
+  padding: 6px 18px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--color-bistre, #351903);
+  letter-spacing: 0.08em;
+  min-width: 110px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+}
+
+/* ── Cinematic Intro Card ── */
+.gameplay-intro-card {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 0 60px;
+  pointer-events: auto;
+  animation: introCardFadeIn 0.7s ease both;
+}
+
+.gameplay-intro-card.hidden {
+  display: none;
+}
+
+@keyframes introCardFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.gameplay-intro-text {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 18px;
+  padding: 52px 72px;
+  max-width: 780px;
+  width: 100%;
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.8vw, 34px);
+  line-height: 1.55;
+  color: var(--color-bistre, #351903);
+  text-align: center;
+  font-style: italic;
+}
+
+.gameplay-start-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-dark-moss, #2d3e2f);
+  color: var(--color-parchment-light, #f5f0e8);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 16px 56px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  transition: background 0.15s, transform 0.1s;
+}
+
+.gameplay-start-btn:hover {
+  background: #1f2b21;
+  transform: translateY(-2px);
+}
+
+.gameplay-start-btn:active {
+  transform: translateY(0);
+}
+
+/* Ornament rule at top of dialogue panel — CSS-only */
+.dialogue-panel::before {
+  content: '';
+  display: block;
+  width: 60%;
+  max-width: 320px;
+  height: 1px;
+  background: var(--color-golden-brown, #925E06);
+  opacity: 0.30;
+  margin: 0 auto 10px;
+  flex-shrink: 0;
+}
+
+/* ── Dialogue Panel (bottom sheet) ── */
+.dialogue-panel {
+  position: relative;
+  z-index: 10;
+  background: #ffffff;
+  border-radius: 16px 16px 0 0;
+  padding: 16px 36px 0;
+  max-height: 46vh;
+  overflow: hidden;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Speaker Entry Blocks ── */
+.dialogue-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.dialogue-entry {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  row-gap: 4px;
+}
+
+.dialogue-entry-avatar {
+  grid-row: 1 / 3;
+  width: 36px;
+  height: 36px;
+  background: var(--color-parchment-dim, #e8e0d0);
+  border-radius: 4px;
+  flex-shrink: 0;
+  align-self: start;
+  margin-top: 2px;
+}
+
+.dialogue-entry-name {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark-moss, #2d3e2f);
+  line-height: 1.2;
+}
+
+.dialogue-entry-text {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-ink-brown, #3e2b1e);
+  font-style: italic;
+}
+
+/* Dim the non-speaking (previous) entry */
+.dialogue-entry.dim {
+  opacity: 0.45;
+}
+
+/* ── Action Bar (audio + next button) ── */
+.dialogue-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f5f2c8;
+  margin: 0 -36px;
+  padding: 14px 36px;
+}
+
+.dialogue-audio-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-dark-moss, #2d3e2f);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  cursor: pointer;
+  color: var(--color-parchment-light, #f5f0e8);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: opacity 0.15s;
+}
+
+.dialogue-audio-btn:hover {
+  opacity: 0.85;
+}
+
+.audio-icon {
+  font-size: 18px;
+}
+
+.dialogue-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── Quiz Options inside the panel ── */
+.quiz-container {
+  margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.quiz-option-btn {
+  background: var(--color-parchment, #f0ead8);
+  border: 1.5px solid var(--color-golden-brown, #a0742a);
+  border-radius: var(--radius-sm, 6px);
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink-brown, #3a2510);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.quiz-option-btn:hover:not(:disabled) {
+  background: var(--color-parchment-dim, #e8e0d0);
+  border-color: var(--color-dark-moss, #2d3e2f);
+}
+
+.quiz-option-btn.selected-correct {
+  background: rgba(90, 138, 60, 0.15);
+  border-color: var(--color-apple-green, #5a8a3c);
+  color: var(--color-dark-moss, #2d3e2f);
+  font-weight: 700;
+}
+
+.quiz-option-btn.selected-wrong {
+  background: rgba(186, 26, 26, 0.1);
+  border-color: #ba1a1a;
+  color: #700;
+}
+
+@media (max-width: 768px) {
+  .dialogue-panel {
+    padding: 20px 20px 0;
+    max-height: 52vh;
+  }
+  .dialogue-action-bar {
+    margin: 0 -20px;
+    padding: 12px 20px;
+  }
+  .quiz-container {
+    grid-template-columns: 1fr;
+  }
+  .dialogue-entry-name {
+    font-size: 15px;
+  }
+  .dialogue-entry-text {
+    font-size: 13px;
+  }
+}
+
+/* ============================================
+   CHALLENGE CARD MODAL
+   ============================================ */
+
+/* Backdrop */
+.challenge-card-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 10, 2, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+  animation: backdropFadeIn 0.22s ease both;
+}
+
+.challenge-card-backdrop[hidden] {
+  display: none;
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Card container */
+.challenge-card {
+  background: var(--color-parchment, #f0ead8);
+  border: 2px solid var(--color-golden-brown, #a0742a);
+  border-radius: 14px;
+  width: min(94%, 560px);
+  padding: 0 36px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.38);
+  animation: cardSlideUp 0.28s ease both;
+  overflow: hidden;
+}
+
+@keyframes cardSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Ornament rules on challenge card — CSS-only horizontal lines */
+.challenge-card-scroll-top,
+.challenge-card-scroll-bottom {
+  width: calc(100% + 72px);
+  height: 1px;
+  margin: 0 -36px;
+  background: var(--color-golden-brown, #925E06);
+  opacity: 0.30;
+}
+
+.challenge-card-scroll-top {
+  margin-bottom: 14px;
+}
+
+.challenge-card-scroll-bottom {
+  margin-top: 14px;
+}
+
+/* Header row: pill label + close */
+.challenge-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.challenge-card-label {
+  background: var(--color-apple-green, #5a8a3c);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 5px 14px;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+/* Banyumasan word block */
+.challenge-word-block {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.challenge-basa-word {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 7vw, 60px);
+  font-weight: 700;
+  color: var(--color-bistre, #351903);
+  line-height: 1.1;
+  margin-bottom: 6px;
+  -webkit-text-stroke: 0.8px rgba(60, 30, 5, 0.4);
+}
+
+.challenge-phonetic {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-style: italic;
+  color: #7a5c2e;
+  margin-bottom: 6px;
+}
+
+.challenge-meaning {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark-moss, #2d3e2f);
+}
+
+/* Context sentence */
+.challenge-context {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-ink-brown, #3a2510);
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 0 8px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Options 2×2 grid */
+.challenge-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.challenge-option-btn {
+  background: var(--color-parchment-light, #f5f0e8);
+  border: 1.5px solid var(--color-golden-brown, #a0742a);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-ink-brown, #3a2510);
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  line-height: 1.35;
+}
+
+.challenge-option-btn:hover:not(:disabled) {
+  background: #e8dfc8;
+  border-color: var(--color-dark-moss, #2d3e2f);
+  transform: translateY(-1px);
+}
+
+.challenge-option-btn.correct {
+  background: rgba(90, 138, 60, 0.18);
+  border-color: var(--color-apple-green, #5a8a3c);
+  color: var(--color-dark-moss, #2d3e2f);
+  font-weight: 700;
+}
+
+.challenge-option-btn.wrong {
+  background: rgba(186, 26, 26, 0.10);
+  border-color: #ba1a1a;
+  color: #700;
+}
+
+/* Feedback row */
+.challenge-feedback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+  padding: 10px 0;
+}
+
+.challenge-feedback[hidden] {
+  display: none;
+}
+
+.challenge-feedback-text {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.challenge-feedback-text.correct {
+  color: var(--color-dark-moss, #2d3e2f);
+}
+
+.challenge-feedback-text.wrong {
+  color: #ba1a1a;
+}
+
+.challenge-next-btn,
+.challenge-retry-btn {
+  white-space: nowrap;
+}
