@@ -5,12 +5,14 @@
 import { state } from '../state.js';
 import { audioController } from '../components/audioController.js';
 
+let currentCategory = 'all';
+let isInitialized = false;
+let renderCards = () => {};
+
 export function initJournalScreen() {
   const container = document.getElementById('journal-vocab-grid');
   const tabs = document.querySelectorAll('#journal-tab-group .tab-btn');
-  let currentCategory = 'all';
-
-  function renderVocabCards() {
+  renderCards = function renderVocabCards() {
     if (!container) return;
     container.innerHTML = '';
 
@@ -45,9 +47,9 @@ export function initJournalScreen() {
 
       container.appendChild(card);
     });
-  }
+  };
 
-  tabs.forEach(tab => {
+  if (!isInitialized) tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       audioController.playSfx('click');
       tabs.forEach(t => t.classList.remove('active'));
@@ -57,7 +59,16 @@ export function initJournalScreen() {
     });
   });
 
-  renderVocabCards();
+  isInitialized = true;
+  renderCards();
+}
+
+export function setJournalCategory(category) {
+  currentCategory = category;
+  document.querySelectorAll('#journal-tab-group .tab-btn').forEach((tab) => {
+    tab.classList.toggle('active', tab.dataset.category === category);
+  });
+  renderCards();
 }
 
 export function initAchievementScreen() {
