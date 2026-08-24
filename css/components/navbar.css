@@ -1,104 +1,146 @@
-/* ================================
+/* =========================================
    NAVBAR
-================================ */
+   ========================================= */
 
-.navbar {
+.site-navbar {
     position: sticky;
     top: 0;
     z-index: 1000;
 
     width: 100%;
+    height: 82px;
 
-    background: rgba(255, 249, 234, 0.96);
-    border-bottom: 1px solid rgba(125, 85, 62, 0.15);
+    background: rgba(255, 249, 234, 0.94);
 
-    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(68, 72, 64, 0.15);
 
-    animation: navbarReveal 0.8s ease-out both;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transition:
+        height 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
+
+/* =========================================
+   SAAT SCROLL
+   ========================================= */
+
+.site-navbar.scrolled {
+    height: 68px;
+
+    background: rgba(255, 249, 234, 0.98);
+
+    box-shadow:
+        0 8px 30px rgba(65, 45, 25, 0.10);
+}
+
+
+/* =========================================
+   CONTAINER
+   ========================================= */
+
 .navbar-inner {
-    max-width: 1400px;
-    min-height: 76px;
+    position: relative;
+
+    width: min(1400px, calc(100% - 80px));
+    height: 100%;
+
     margin: 0 auto;
-    padding: 0 48px;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+
     gap: 40px;
 }
 
 
-/* ================================
+/* =========================================
    LOGO
-================================ */
+   ========================================= */
 
-.logo {
-    position: relative;
+.navbar-logo {
+    flex-shrink: 0;
 
     color: #122009;
+
     text-decoration: none;
 
-    font-family: Georgia, serif;
-    font-size: 22px;
-    font-weight: bold;
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
 
     white-space: nowrap;
 
-    opacity: 0;
-    animation: logoReveal 0.7s ease-out 0.25s forwards;
-}
-
-.logo::after {
-    content: "";
-
-    position: absolute;
-    left: 0;
-    bottom: -7px;
-
-    width: 0;
-    height: 1px;
-
-    background: #b79a55;
-
-    transition: width 0.4s ease;
-}
-
-.logo:hover::after {
-    width: 100%;
+    transition:
+        transform 0.3s ease,
+        letter-spacing 0.3s ease,
+        color 0.3s ease;
 }
 
 
-/* ================================
-   MENU
-================================ */
+.navbar-logo:hover {
+    transform: translateY(-2px);
 
-.nav-menu {
+    letter-spacing: 0;
+
+    color: #7d553e;
+}
+
+
+/* =========================================
+   MENU UTAMA
+   BERANDA
+   CATATAN
+   PENCAPAIAN
+   ========================================= */
+
+.navbar-menu {
+    margin-left: auto;
+
     display: flex;
     align-items: center;
-    justify-content: center;
 
-    gap: 32px;
+    gap: 38px;
+
+    height: 100%;
 }
 
-.nav-menu a {
+
+.navbar-menu a {
     position: relative;
 
+    display: inline-flex;
+    align-items: center;
+
+    height: 100%;
+
     color: #444840;
+
     text-decoration: none;
 
-    font-size: 13px;
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.08em;
 
-    padding: 28px 0;
+    letter-spacing: 1px;
 
-    opacity: 0;
+    text-transform: uppercase;
 
-    transform: translateY(-8px);
-
-    animation: menuReveal 0.5s ease-out forwards;
+    white-space: nowrap;
 
     transition:
         color 0.3s ease,
@@ -106,121 +148,688 @@
 }
 
 
-/* menu muncul satu-satu */
+/* =========================================
+   GARIS ANIMASI MENU
+   ========================================= */
 
-.nav-menu a:nth-child(1) {
-    animation-delay: 0.35s;
-}
-
-.nav-menu a:nth-child(2) {
-    animation-delay: 0.45s;
-}
-
-.nav-menu a:nth-child(3) {
-    animation-delay: 0.55s;
-}
-
-.nav-menu a:nth-child(4) {
-    animation-delay: 0.65s;
-}
-
-.nav-menu a:nth-child(5) {
-    animation-delay: 0.75s;
-}
-
-
-/* ================================
-   HOVER MENU
-================================ */
-
-.nav-menu a:hover {
-    color: #122009;
-    transform: translateY(-3px);
-}
-
-
-/* ================================
-   GARIS ANIMASI
-================================ */
-
-.nav-menu a::after {
+.navbar-menu a::after {
     content: "";
 
     position: absolute;
 
-    left: 50%;
+    left: 0;
     bottom: 19px;
 
-    width: 0;
+    width: 100%;
     height: 2px;
 
     background: #7d553e;
 
-    transform: translateX(-50%);
+    transform: scaleX(0);
+
+    transform-origin: center;
 
     transition:
-        width 0.35s ease,
-        opacity 0.35s ease;
-
-    opacity: 0;
-}
-
-.nav-menu a:hover::after {
-    width: 100%;
-    opacity: 1;
+        transform 0.35s ease;
 }
 
 
-/* ================================
+.navbar-menu a:hover {
+    color: #122009;
+
+    transform: translateY(-2px);
+}
+
+
+.navbar-menu a:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* =========================================
    MENU AKTIF
-================================ */
+   ========================================= */
 
-.nav-menu a.active {
+.navbar-menu a.active {
     color: #122009;
 }
 
-.nav-menu a.active::after {
-    width: 100%;
+
+.navbar-menu a.active::after {
+    transform: scaleX(1);
+}
+
+
+/* =========================================
+   HAMBURGER BUTTON
+   ========================================= */
+
+.navbar-toggle {
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 46px;
+    height: 46px;
+
+    margin-left: 4px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(68, 72, 64, 0.25);
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #122009;
+
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.35s ease;
+}
+
+
+.navbar-toggle:hover {
+    background: rgba(125, 85, 62, 0.10);
+
+    border-color: rgba(125, 85, 62, 0.45);
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   GARIS HAMBURGER
+   SATU SPAN = 3 GARIS
+   ========================================= */
+
+.navbar-toggle span {
+    position: relative;
+
+    display: block;
+
+    width: 18px;
+    height: 2px;
+
+    background: #122009;
+
+    border-radius: 2px;
+
+    transition:
+        background 0.25s ease,
+        transform 0.35s ease;
+}
+
+
+/* GARIS ATAS */
+
+.navbar-toggle span::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: -6px;
+
+    width: 18px;
+    height: 2px;
+
+    background: #122009;
+
+    border-radius: 2px;
+
+    transition:
+        top 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+/* GARIS BAWAH */
+
+.navbar-toggle span::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 6px;
+
+    width: 18px;
+    height: 2px;
+
+    background: #122009;
+
+    border-radius: 2px;
+
+    transition:
+        top 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+/* =========================================
+   HAMBURGER AKTIF → X
+   ========================================= */
+
+.navbar-toggle.active {
+    background: rgba(125, 85, 62, 0.10);
+
+    border-color: rgba(125, 85, 62, 0.35);
+}
+
+
+/* GARIS TENGAH HILANG */
+
+.navbar-toggle.active span {
+    background: transparent;
+}
+
+
+/* GARIS ATAS → DIAGONAL */
+
+.navbar-toggle.active span::before {
+    top: 0;
+
+    transform: rotate(45deg);
+}
+
+
+/* GARIS BAWAH → DIAGONAL */
+
+.navbar-toggle.active span::after {
+    top: 0;
+
+    transform: rotate(-45deg);
+}
+
+
+/* =========================================
+   DROPDOWN PETA + BASA
+   ========================================= */
+
+.navbar-extra {
+    position: absolute;
+
+    top: calc(100% + 12px);
+    right: 0;
+
+    z-index: 1100;
+
+    width: 190px;
+
+    padding: 8px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    background: rgba(255, 249, 234, 0.98);
+
+    border: 1px solid rgba(68, 72, 64, 0.18);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 40px rgba(65, 45, 25, 0.14);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* KONDISI AWAL: TERSEMBUNYI */
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(-12px)
+        scale(0.96);
+
+    transform-origin: top right;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.35s cubic-bezier(.2, .8, .2, 1);
+}
+
+
+/* =========================================
+   DROPDOWN TERBUKA
+   ========================================= */
+
+.navbar-extra.open {
     opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0)
+        scale(1);
 }
 
 
-/* ================================
-   ANIMASI NAVBAR
-================================ */
+/* =========================================
+   LINK PETA + BASA
+   ========================================= */
 
-@keyframes navbarReveal {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
+.navbar-extra a {
+    position: relative;
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 44px;
+
+    padding: 0 15px;
+
+    box-sizing: border-box;
+
+    color: #444840;
+
+    text-decoration: none;
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    border-radius: 9px;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
 }
 
-@keyframes logoReveal {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+/* HILANGKAN GARIS NAVBAR UTAMA */
+
+.navbar-extra a::after {
+    content: none !important;
+    display: none !important;
 }
 
-@keyframes menuReveal {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
+
+/* HOVER PETA / BASA */
+
+.navbar-extra a:hover {
+    color: #122009;
+
+    background: rgba(125, 85, 62, 0.09);
+
+    padding-left: 20px;
+}
+
+
+/* =========================================
+   MOBILE / TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .site-navbar {
+        height: 70px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .site-navbar.scrolled {
+        height: 62px;
     }
+
+
+    .navbar-inner {
+        width: calc(100% - 32px);
+
+        gap: 14px;
+    }
+
+
+    .navbar-logo {
+        font-size: 18px;
+    }
+
+
+    /* Menu utama tetap berada di navbar */
+
+    .navbar-menu {
+        margin-left: auto;
+
+        gap: 16px;
+    }
+
+
+    .navbar-menu a {
+        font-size: 11px;
+
+        letter-spacing: 0.6px;
+    }
+
+
+    .navbar-menu a::after {
+        bottom: 14px;
+    }
+
+
+    /* Hamburger */
+
+    .navbar-toggle {
+        width: 42px;
+        height: 42px;
+
+        margin-left: 0;
+    }
+
+
+    /* Dropdown */
+
+    .navbar-extra {
+        top: calc(100% + 8px);
+
+        right: 0;
+
+        width: 180px;
+    }
+
+}
+
+
+/* =========================================
+   HP KECIL
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    .navbar-inner {
+        width: calc(100% - 24px);
+
+        gap: 10px;
+    }
+
+
+    .navbar-logo {
+        font-size: 16px;
+    }
+
+
+    .navbar-menu {
+        gap: 9px;
+    }
+
+
+    .navbar-menu a {
+        font-size: 9px;
+
+        letter-spacing: 0.3px;
+    }
+
+
+    .navbar-toggle {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .navbar-toggle span,
+    .navbar-toggle span::before,
+    .navbar-toggle span::after {
+        width: 16px;
+    }
+
+
+    .navbar-extra {
+        top: calc(100% + 8px);
+
+        right: 0;
+
+        width: 170px;
+
+        padding: 7px;
+    }
+
+
+    .navbar-extra a {
+        min-height: 42px;
+
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================
+   HP SANGAT KECIL
+   ========================================= */
+
+@media (max-width: 360px) {
+
+    .navbar-logo {
+        font-size: 14px;
+    }
+
+
+    .navbar-menu {
+        gap: 6px;
+    }
+
+
+    .navbar-menu a {
+        font-size: 8px;
+    }
+
+
+    .navbar-toggle {
+        width: 38px;
+        height: 38px;
+    }
+
+    /* =========================================
+   FIX DROPDOWN NAVBAR
+   ========================================= */
+
+.navbar-inner {
+    position: relative !important;
+}
+
+.navbar-toggle {
+    position: relative !important;
+    z-index: 1200 !important;
+    cursor: pointer !important;
+}
+
+.navbar-extra {
+    position: absolute !important;
+
+    top: calc(100% + 12px) !important;
+    right: 0 !important;
+
+    z-index: 2000 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    width: 190px !important;
+    padding: 8px !important;
+
+    box-sizing: border-box !important;
+
+    background: rgba(255, 249, 234, 0.99) !important;
+
+    border: 1px solid rgba(68, 72, 64, 0.18) !important;
+    border-radius: 14px !important;
+
+    box-shadow:
+        0 15px 40px rgba(65, 45, 25, 0.18) !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    transform:
+        translateY(-12px)
+        scale(0.96) !important;
+
+    transform-origin: top right;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.3s ease !important;
+}
+
+
+/* DROPDOWN TERBUKA */
+
+.navbar-extra.open {
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    transform:
+        translateY(0)
+        scale(1) !important;
+}
+
+
+/* LINK */
+
+.navbar-extra a {
+    display: flex !important;
+    align-items: center !important;
+
+    width: 100% !important;
+    min-height: 44px !important;
+
+    padding: 0 15px !important;
+
+    box-sizing: border-box !important;
+
+    color: #444840 !important;
+
+    background: transparent !important;
+
+    text-decoration: none !important;
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif !important;
+
+    font-size: 13px !important;
+    font-weight: 600 !important;
+
+    letter-spacing: 1px !important;
+
+    text-transform: uppercase !important;
+
+    border-radius: 9px !important;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        padding-left 0.2s ease !important;
+}
+
+
+/* HILANGKAN GARIS */
+
+.navbar-extra a::after {
+    display: none !important;
+    content: none !important;
+}
+
+
+/* HOVER */
+
+.navbar-extra a:hover {
+    color: #122009 !important;
+
+    background:
+        rgba(125, 85, 62, 0.09) !important;
+
+    padding-left: 20px !important;
+}
+
+
+/* =========================================
+   HAMBURGER → X
+   ========================================= */
+
+.navbar-toggle.active {
+    background:
+        rgba(125, 85, 62, 0.10) !important;
+
+    border-color:
+        rgba(125, 85, 62, 0.35) !important;
+
+    transform: none !important;
+}
+
+.navbar-toggle.active span {
+    background: transparent !important;
+}
+
+.navbar-toggle.active span::before {
+    top: 0 !important;
+    transform: rotate(45deg) !important;
+}
+
+.navbar-toggle.active span::after {
+    top: 0 !important;
+    transform: rotate(-45deg) !important;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .navbar-extra {
+        top: calc(100% + 8px) !important;
+        right: 0 !important;
+
+        width: 180px !important;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .navbar-extra {
+        width: 170px !important;
+    }
+
+}
 }

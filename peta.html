@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Lelana Kamandaka — Peta Lelana</title>
+
+    <!-- GOOGLE FONT -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/variables.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/base.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/components/navbar.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/screens/map.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ==========================================
+     GLOBAL NAVBAR
+     ========================================== -->
+
+<header class="site-navbar" id="siteNavbar">
+
+    <div class="navbar-inner">
+
+        <!-- LOGO -->
+        <a
+            href="index.html"
+            class="navbar-logo"
+        >
+            LELANA KAMANDAKA
+        </a>
+
+
+        <!-- MENU UTAMA -->
+        <nav
+            class="navbar-menu"
+            id="navbarMenu"
+        >
+
+            <a href="index.html">
+                BERANDA
+            </a>
+
+            <a href="catatan.html">
+                CATATAN
+            </a>
+
+            <a href="pencapaian.html">
+                PENCAPAIAN
+            </a>
+
+        </nav>
+
+
+        <!-- TOMBOL HAMBURGER -->
+<button
+    type="button"
+    class="navbar-toggle"
+    id="navbarToggle"
+    aria-label="Buka menu"
+    aria-expanded="false"
+    onclick="
+        this.classList.toggle('active');
+        document.getElementById('navbarExtra').classList.toggle('open');
+        this.setAttribute(
+            'aria-expanded',
+            this.classList.contains('active')
+        );
+    "
+>
+    <span></span>
+</button>
+
+        <!-- MENU HAMBURGER -->
+        <div
+            class="navbar-extra"
+            id="navbarExtra"
+        >
+
+            <a href="peta.html">
+                PETA
+            </a>
+
+            <a href="basa.html">
+                BASA
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+    <!-- ==================================================
+         MAIN
+         ================================================== -->
+
+    <main class="map-page">
+
+
+        <!-- ==================================================
+             MAP HEADER
+             ================================================== -->
+
+        <div class="map-heading">
+
+            <span class="map-heading-small">
+                LELANA KAMANDAKA
+            </span>
+
+            <h1>
+                Peta Perjalanan
+            </h1>
+
+            <p>
+                Telusuri jejak perjalanan Raden Kamandaka
+                dari satu tempat ke tempat berikutnya.
+            </p>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             MAP VIEWPORT
+             ================================================== -->
+
+        <section class="map-viewport">
+
+            <div
+                class="map-canvas"
+                id="mapCanvas"
+            >
+
+
+                <!-- ==================================================
+                     PETA DASAR
+                     ================================================== -->
+
+                <img
+                    src="assets/images/PETA.png"
+                    class="map-background"
+                    alt="Peta perjalanan Lelana Kamandaka"
+                >
+
+
+
+                <!-- ==================================================
+                     JALUR 01 → 02
+                     ================================================== -->
+
+                <img
+                    src="assets/images/route-1-2.svg"
+                    class="map-route"
+                    id="route-1-2"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+
+                <!-- ==================================================
+                     JALUR 02 → 03
+                     ================================================== -->
+
+                <img
+                    src="assets/images/route-2-3.svg"
+                    class="map-route"
+                    id="route-2-3"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+
+                <!-- ==================================================
+                     JALUR 03 → 04
+                     ================================================== -->
+
+                <img
+                    src="assets/images/route-3-4.svg"
+                    class="map-route"
+                    id="route-3-4"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+
+                <!-- ==================================================
+                     JALUR 04 → 05
+                     ================================================== -->
+
+                <img
+                    src="assets/images/route-4-5.svg"
+                    class="map-route"
+                    id="route-4-5"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+
+                <!-- ==================================================
+                     JALUR 05 → 06
+                     ================================================== -->
+
+                <img
+                    src="assets/images/route-5-6.svg"
+                    class="map-route"
+                    id="route-5-6"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+
+                <!-- ==================================================
+                     JALUR 06 → 07
+                     ================================================== -->
+
+                <img
+                    src="assets/images/route-6-7.svg"
+                    class="map-route"
+                    id="route-6-7"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+
+                <!-- ==================================================
+                     JALUR 07 → 08
+                     ================================================== -->
+
+                <img
+                    src="assets/images/route-7-8.svg"
+                    class="map-route"
+                    id="route-7-8"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+
+                <!-- ==================================================
+                     JALUR 08 → 09
+                     ================================================== -->
+
+                <img
+                    src="assets/images/route-8-9.svg"
+                    class="map-route"
+                    id="route-8-9"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+
+                <!-- ==================================================
+                     JALUR 09 → 10
+                     ================================================== -->
+
+                <img
+                    src="assets/images/route-9-10.svg"
+                    class="map-route"
+                    id="route-9-10"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+
+
+                <!-- ==================================================
+                     LOKASI 01 — TERBUKA
+                     ================================================== -->
+
+                <button
+                    class="map-location location-01 unlocked"
+                    data-location="1"
+                    type="button"
+                    aria-label="Pajajaran — Lokasi terbuka"
+                >
+
+                    <img
+                        src="assets/icons/lokasi.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Padjajaran
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==================================================
+                     LOKASI 02
+                     ================================================== -->
+
+                <button
+                    class="map-location location-02 locked"
+                    data-location="2"
+                    type="button"
+                    aria-label="Ki Ajar Winarong — Terkunci"
+                >
+
+                    <img
+                        src="assets/icons/gembok.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Ki Ajar Winarong
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==================================================
+                     LOKASI 03
+                     ================================================== -->
+
+                <button
+                    class="map-location location-03 locked"
+                    data-location="3"
+                    type="button"
+                    aria-label="Pasir Luhur — Terkunci"
+                >
+
+                    <img
+                        src="assets/icons/gembok.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Pasir Luhur
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==================================================
+                     LOKASI 04
+                     ================================================== -->
+
+                <button
+                    class="map-location location-04 locked"
+                    data-location="4"
+                    type="button"
+                    aria-label="Kali Logawa — Terkunci"
+                >
+
+                    <img
+                        src="assets/icons/gembok.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Kali Logawa
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==================================================
+                     LOKASI 05
+                     ================================================== -->
+
+                <button
+                    class="map-location location-05 locked"
+                    data-location="5"
+                    type="button"
+                    aria-label="Desa Panagih — Terkunci"
+                >
+
+                    <img
+                        src="assets/icons/gembok.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Desa Panagih
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==================================================
+                     LOKASI 06
+                     ================================================== -->
+
+                <button
+                    class="map-location location-06 locked"
+                    data-location="6"
+                    type="button"
+                    aria-label="Goa Jatijajar — Terkunci"
+                >
+
+                    <img
+                        src="assets/icons/gembok.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Goa Jatijajar
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==================================================
+                     LOKASI 07
+                     ================================================== -->
+
+                <button
+                    class="map-location location-07 locked"
+                    data-location="7"
+                    type="button"
+                    aria-label="Batur Agung — Terkunci"
+                >
+
+                    <img
+                        src="assets/icons/gembok.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Batur Agung
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==================================================
+                     LOKASI 08
+                     ================================================== -->
+
+                <button
+                    class="map-location location-08 locked"
+                    data-location="8"
+                    type="button"
+                    aria-label="Sawangan — Terkunci"
+                >
+
+                    <img
+                        src="assets/icons/gembok.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Sawangan
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==================================================
+                     LOKASI 09
+                     ================================================== -->
+
+                <button
+                    class="map-location location-09 locked"
+                    data-location="9"
+                    type="button"
+                    aria-label="Kali Serayu — Terkunci"
+                >
+
+                    <img
+                        src="assets/icons/gembok.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Kali Serayu
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==================================================
+                     LOKASI 10
+                     ================================================== -->
+
+                <button
+                    class="map-location location-10 locked"
+                    data-location="10"
+                    type="button"
+                    aria-label="Desa Rosari — Terkunci"
+                >
+
+                    <img
+                        src="assets/icons/gembok.png"
+                        alt=""
+                    >
+
+                    <span class="location-label">
+                        Desa Rosari
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             MAP INFO
+             ================================================== -->
+
+        <div class="map-info">
+
+    <div class="map-info-item">
+        <img
+            src="assets/icons/lokasi.png"
+            alt=""
+            class="map-info-icon"
+        >
+
+        <span>
+            Lokasi terbuka
+        </span>
+    </div>
+
+
+    <div class="map-info-item">
+        <img
+            src="assets/icons/gembok.png"
+            alt=""
+            class="map-info-icon"
+        >
+
+        <span>
+            Lokasi terkunci
+        </span>
+    </div>
+
+
+    <div class="map-info-item">
+        <span class="map-info-line"></span>
+
+        <span>
+            Jalur perjalanan
+        </span>
+    </div>
+
+</div>
+
+
+    </main>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ================================================== -->
+
+    <script src="js/components/mapEngine.js"></script>
+
+    <script src="js/navbar.js"></script>
+
+
+</body>
+
+</html>

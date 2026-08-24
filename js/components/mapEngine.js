@@ -1,163 +1,460 @@
-/* ==========================================
-   INTERACTIVE MAP & 10-LOCATION PIN ENGINE
-   ========================================== */
+// =========================================================
+// MAP ENGINE
+// LELANA KAMANDAKA
+// =========================================================
 
-import { LOCATIONS } from '../data/locationsData.js';
-import { state } from '../state.js';
-import { audioController } from './audioController.js';
 
-export class MapEngine {
-  constructor(mapWrapperId, previewCardId) {
-    this.mapWrapper = document.getElementById(mapWrapperId);
-    this.previewCard = document.getElementById(previewCardId);
-    this.selectedLocation = null;
+// =========================================================
+// DATA LOKASI
+// =========================================================
 
-    state.subscribe(() => {
-      this.renderPath();
-      this.renderPins();
-    });
-  }
+const mapLocations = [
 
-  init() {
-    this.renderPath();
-    this.renderPins();
-  }
+    {
+        id: 1,
+        name: "Padjajaran",
+        unlocked: true,
+        gameplay: "gameplay/gameplay01/index.html"
+    },
 
-  // Convert a percentage string like '18%' to a pixel number within containerSize
-  _pctToPx(pctStr, containerSize) {
-    return (parseFloat(pctStr) / 100) * containerSize;
-  }
+    {
+        id: 2,
+        name: "Ki Ajar Winarong",
+        unlocked: false,
+        gameplay: "gameplay/gameplay02/index.html"
+    },
 
-  renderPath() {
-    if (!this.mapWrapper) return;
+    {
+        id: 3,
+        name: "Pasir Luhur",
+        unlocked: false,
+        gameplay: "gameplay/gameplay03/index.html"
+    },
 
-    // Remove existing path SVG
-    const existing = this.mapWrapper.querySelector('.map-path-svg');
-    if (existing) existing.remove();
+    {
+        id: 4,
+        name: "Kali Logawa",
+        unlocked: false,
+        gameplay: "gameplay/gameplay04/index.html"
+    },
 
-    const currentUnlocked = state.unlockedLocationIndex;
+    {
+        id: 5,
+        name: "Desa Panagih",
+        unlocked: false,
+        gameplay: "gameplay/gameplay05/index.html"
+    },
 
-    // No route lines when everything is locked (initial state with index 0
-    // means only Pajajaran is active — no completed segments yet to draw)
-    if (currentUnlocked < 1) return;
+    {
+        id: 6,
+        name: "Goa Jatijajar",
+        unlocked: false,
+        gameplay: "gameplay/gameplay06/index.html"
+    },
 
-    const W = this.mapWrapper.offsetWidth  || 1440;
-    const H = this.mapWrapper.offsetHeight || 940;
+    {
+        id: 7,
+        name: "Batur Agung",
+        unlocked: false,
+        gameplay: "gameplay/gameplay07/index.html"
+    },
 
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.classList.add('map-path-svg');
-    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    {
+        id: 8,
+        name: "Sawangan",
+        unlocked: false,
+        gameplay: "gameplay/gameplay08/index.html"
+    },
 
-    // Draw a white dashed segment only for each completed pair of consecutive
-    // locations (i.e. both endpoints have been reached / unlocked).
-    // The route follows the LOCATIONS array order (index 0 → 1 → 2 → … → 9).
-    for (let i = 0; i < LOCATIONS.length - 1; i++) {
-      // Only draw the segment if the *destination* pin is unlocked
-      if (LOCATIONS[i + 1].index > currentUnlocked) break;
+    {
+        id: 9,
+        name: "Kali Serayu",
+        unlocked: false,
+        gameplay: "gameplay/gameplay09/index.html"
+    },
 
-      const from = LOCATIONS[i];
-      const to   = LOCATIONS[i + 1];
-
-      const x1 = this._pctToPx(from.coords.x, W);
-      const y1 = this._pctToPx(from.coords.y, H);
-      const x2 = this._pctToPx(to.coords.x,   W);
-      const y2 = this._pctToPx(to.coords.y,    H);
-
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', x1);
-      line.setAttribute('y1', y1);
-      line.setAttribute('x2', x2);
-      line.setAttribute('y2', y2);
-      line.classList.add('map-path-segment');
-
-      svg.appendChild(line);
+    {
+        id: 10,
+        name: "Desa Rosari",
+        unlocked: false,
+        gameplay: "gameplay/gameplay10/index.html"
     }
 
-    // Insert behind pins (prepend)
-    this.mapWrapper.prepend(svg);
-  }
+];
 
-  renderPins() {
-    if (!this.mapWrapper) return;
 
-    // Clear existing pins
-    this.mapWrapper.querySelectorAll('.map-pin-wrapper').forEach(p => p.remove());
 
-    const currentUnlocked = state.unlockedLocationIndex;
+// =========================================================
+// ROUTE DATA
+// =========================================================
 
-    LOCATIONS.forEach((loc) => {
-      const isCompleted = loc.index < currentUnlocked;
-      const isActive    = loc.index === currentUnlocked;
-      const isLocked    = loc.index > currentUnlocked;
+const mapRoutes = [
 
-      const stateClass = isCompleted ? 'completed' : isActive ? 'active' : 'locked';
+    {
+        from: 1,
+        to: 2,
+        element: "route-1-2"
+    },
 
-      const wrapper = document.createElement('div');
-      wrapper.className = `map-pin-wrapper ${stateClass}`;
-      wrapper.style.left = loc.coords.x;
-      wrapper.style.top  = loc.coords.y;
+    {
+        from: 2,
+        to: 3,
+        element: "route-2-3"
+    },
 
-      // Icon: gembok.png for locked, location.png for active/completed
-      const iconSrc = isLocked
-        ? 'assets/icons/gembok.png'
-        : 'assets/icons/location.png';
+    {
+        from: 3,
+        to: 4,
+        element: "route-3-4"
+    },
 
-      wrapper.innerHTML = `
-        <img src="${iconSrc}" class="pin-icon" alt="${loc.name}" draggable="false">
-        <span class="pin-label">${loc.name}</span>
-      `;
+    {
+        from: 4,
+        to: 5,
+        element: "route-4-5"
+    },
 
-      wrapper.addEventListener('click', () => {
-        if (audioController && typeof audioController.playSfx === 'function') {
-          audioController.playSfx('click');
-        }
-        this.selectLocation(loc, !isLocked);
-      });
+    {
+        from: 5,
+        to: 6,
+        element: "route-5-6"
+    },
 
-      this.mapWrapper.appendChild(wrapper);
-    });
-  }
+    {
+        from: 6,
+        to: 7,
+        element: "route-6-7"
+    },
 
-  selectLocation(loc, isAccessible) {
-    this.selectedLocation = loc;
+    {
+        from: 7,
+        to: 8,
+        element: "route-7-8"
+    },
 
-    // Highlight selected pin
-    this.mapWrapper.querySelectorAll('.map-pin-wrapper').forEach(p => p.classList.remove('selected'));
-    const allPins = this.mapWrapper.querySelectorAll('.map-pin-wrapper');
-    allPins.forEach(p => {
-      if (p.style.left === loc.coords.x && p.style.top === loc.coords.y) {
-        p.classList.add('selected');
-      }
-    });
+    {
+        from: 8,
+        to: 9,
+        element: "route-8-9"
+    },
 
-    if (this.previewCard) {
-      this.previewCard.classList.add('show');
-      const titleEl  = document.getElementById('preview-title');
-      const numEl    = document.getElementById('preview-number');
-      const descEl   = document.getElementById('preview-desc');
-      const actionBtn = document.getElementById('btn-start-location');
-
-      if (titleEl)  titleEl.textContent  = loc.title;
-      if (numEl)    numEl.textContent    = `LOKASI ${loc.number} / 10`;
-      if (descEl)   descEl.textContent   = loc.desc;
-
-      if (actionBtn) {
-        if (isAccessible) {
-          actionBtn.disabled   = false;
-          actionBtn.textContent = 'Mulai Petualangan →';
-          actionBtn.className  = 'btn-primary';
-          actionBtn.onclick    = () => {
-            state.activeLocationId = loc.id;
-            state.setScreen('gameplay');
-          };
-        } else {
-          actionBtn.disabled   = true;
-          actionBtn.textContent = 'Masih Terkunci';
-          actionBtn.className  = 'btn-secondary';
-          actionBtn.onclick    = null;
-        }
-      }
+    {
+        from: 9,
+        to: 10,
+        element: "route-9-10"
     }
-  }
+
+];
+
+
+
+// =========================================================
+// INITIAL MAP STATE
+// =========================================================
+
+function initializeMap() {
+
+    console.log("Map Engine berjalan.");
+
+    console.log(
+        "Jumlah lokasi:",
+        mapLocations.length
+    );
+
+    console.log(
+        "Jumlah jalur:",
+        mapRoutes.length
+    );
+
+    updateLocations();
+
+    updateRoutes();
+
 }
+
+
+
+// =========================================================
+// UPDATE LOKASI
+// =========================================================
+
+function updateLocations() {
+
+    mapLocations.forEach(location => {
+
+        const element =
+            document.querySelector(
+                `.map-location[data-location="${location.id}"]`
+            );
+
+
+        if (!element) {
+            return;
+        }
+
+
+        const image =
+            element.querySelector("img");
+
+
+        if (!image) {
+            return;
+        }
+
+
+        // =============================================
+        // LOKASI TERBUKA
+        // =============================================
+
+        if (location.unlocked) {
+
+            element.classList.add("unlocked");
+
+            element.classList.remove("locked");
+
+
+            image.src =
+                "assets/icons/lokasi.png";
+
+
+            element.disabled = false;
+
+
+            element.setAttribute(
+                "aria-label",
+                `${location.name} — Lokasi terbuka`
+            );
+
+        }
+
+
+        // =============================================
+        // LOKASI TERKUNCI
+        // =============================================
+
+        else {
+
+            element.classList.add("locked");
+
+            element.classList.remove("unlocked");
+
+
+            image.src =
+                "assets/icons/gembok.png";
+
+
+            element.disabled = true;
+
+
+            element.setAttribute(
+                "aria-label",
+                `${location.name} — Terkunci`
+            );
+
+        }
+
+    });
+
+}
+
+
+
+// =========================================================
+// UPDATE JALUR
+// =========================================================
+
+function updateRoutes() {
+
+    mapRoutes.forEach(route => {
+
+        const element =
+            document.getElementById(
+                route.element
+            );
+
+
+        if (!element) {
+            return;
+        }
+
+
+        /*
+            Jalur akan aktif kalau
+            lokasi tujuan sudah terbuka.
+        */
+
+        const destination =
+            mapLocations.find(
+                location =>
+                    location.id === route.to
+            );
+
+
+        if (
+            destination &&
+            destination.unlocked
+        ) {
+
+            element.classList.add(
+                "completed"
+            );
+
+        } else {
+
+            element.classList.remove(
+                "completed"
+            );
+
+        }
+
+    });
+
+}
+
+
+
+// =========================================================
+// KLIK LOKASI
+// =========================================================
+
+function setupLocationEvents() {
+
+    document
+        .querySelectorAll(".map-location")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const locationId =
+                        Number(
+                            this.dataset.location
+                        );
+
+
+                    const location =
+                        mapLocations.find(
+                            item =>
+                                item.id === locationId
+                        );
+
+
+                    if (!location) {
+                        return;
+                    }
+
+
+                    // =================================
+                    // CEK TERKUNCI
+                    // =================================
+
+                    if (!location.unlocked) {
+
+                        console.log(
+                            `Lokasi ${locationId} masih terkunci.`
+                        );
+
+                        return;
+
+                    }
+
+
+                    // =================================
+                    // LOKASI TERBUKA
+                    // =================================
+
+                    console.log(
+                        `Membuka ${location.name}`
+                    );
+
+
+                    console.log(
+                        `Menuju: ${location.gameplay}`
+                    );
+
+
+                    // =================================
+                    // MASUK KE GAMEPLAY
+                    // =================================
+
+                    window.location.href =
+                        location.gameplay;
+
+                }
+
+            );
+
+        });
+
+}
+
+
+
+// =========================================================
+// NAVBAR SCROLL
+// =========================================================
+
+function setupNavbar() {
+
+    const navbar =
+        document.getElementById(
+            "siteNavbar"
+        );
+
+
+    if (!navbar) {
+        return;
+    }
+
+
+    function handleScroll() {
+
+        if (window.scrollY > 30) {
+
+            navbar.classList.add(
+                "scrolled"
+            );
+
+        } else {
+
+            navbar.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+    }
+
+
+    handleScroll();
+
+
+    window.addEventListener(
+        "scroll",
+        handleScroll,
+        {
+            passive: true
+        }
+    );
+
+}
+
+
+
+// =========================================================
+// INIT
+// =========================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        initializeMap();
+
+        setupLocationEvents();
+
+        setupNavbar();
+
+    }
+);
