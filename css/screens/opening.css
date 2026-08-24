@@ -1,111 +1,816 @@
-/* ==========================================
-   SCREEN 01 — HOME / OPENING
-   ========================================== */
+/* =========================================================
+   LELANA KAMANDAKA
+   SCREEN 01 — BERANDA
+   ========================================================= */
 
 #screen-opening {
-  background: url('../assets/images/bg_forest_hero.png') center/cover no-repeat;
   position: relative;
-  overflow: hidden;
   min-height: 100vh;
-  display: flex;
-  align-items: flex-end; /* content anchors to lower portion */
+  width: 100%;
+  overflow: hidden;
+
+  background: #fff9ea !important;
+  color: #122009;
+
+  display: block;
 }
 
-/* Subtle top vignette — keeps the lantern/bg readable */
-#screen-opening::before {
-  content: '';
+
+/* =========================================================
+   BATIK BACKGROUND
+   assets/images/motif.png
+   ========================================================= */
+
+.home-batik-pattern {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(30, 14, 2, 0.18) 0%,
-    rgba(30, 14, 2, 0.05) 45%,
-    rgba(212, 188, 100, 0.22) 80%,
-    rgba(60, 30, 5, 0.55) 100%
-  );
+
+  background-image: url("../../assets/images/motif.png");
+  background-repeat: repeat;
+  background-size: 420px auto;
+
+  opacity: 0.07;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* =========================================================
+   DECORATIVE SHAPES
+   ========================================================= */
+
+.home-decoration {
+  position: absolute;
   pointer-events: none;
   z-index: 1;
+
+  border: 1px solid rgba(185, 154, 85, 0.18);
 }
 
-/* Dark bistre ground bar at very bottom */
-.hero-ground-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 10vh;
-  background: var(--color-bistre, #351903);
-  z-index: 2;
+.home-decoration-left {
+  width: 170px;
+  height: 170px;
+
+  left: -90px;
+  top: 180px;
+
+  border-radius: 50%;
 }
 
-/* Left-aligned hero content block */
-.hero-content {
+.home-decoration-right {
+  width: 220px;
+  height: 220px;
+
+  right: -110px;
+  top: 120px;
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.home-container {
   position: relative;
-  z-index: 10;
-  padding: 0 72px 14vh 72px; /* bottom padding lifts it above the ground bar */
-  animation: heroFadeIn 1s ease-out both;
+  z-index: 2;
+
+  width: min(1180px, calc(100% - 80px));
+  margin: 0 auto;
 }
 
-/* Large decorative title — two lines, left-aligned */
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(52px, 7vw, 96px);
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.home-hero {
+  min-height: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+
+  gap: 60px;
+
+  padding: 90px 50px 60px;
+}
+
+
+/* =========================================================
+   HERO TEXT
+   ========================================================= */
+
+.home-hero-content {
+  max-width: 560px;
+}
+
+.home-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 22px;
+
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+
+  color: #b79a55;
+}
+
+.home-eyebrow-line {
+  width: 28px;
+  height: 1px;
+
+  background: #b79a55;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.home-title {
+  margin: 0 0 24px;
+
+  line-height: 0.95;
+}
+
+.home-title-main {
+  display: block;
+
+  font-family: "Libre Caslon Text", serif;
+  font-size: clamp(58px, 7vw, 100px);
   font-weight: 700;
-  color: var(--color-bistre, #351903);
-  text-shadow:
-    2px 2px 0 rgba(255,220,100,0.35),
-    0 4px 18px rgba(0,0,0,0.5);
-  line-height: 1.05;
-  margin-bottom: 32px;
-  letter-spacing: 0.01em;
-  /* Slight text stroke for the carved/woodcut look */
-  -webkit-text-stroke: 1.5px rgba(60, 30, 5, 0.6);
+  letter-spacing: -0.04em;
+
+  color: #122009;
 }
 
-/* Single pill "Mulai" button */
-.hero-mulai-btn {
+.home-title-script {
+  display: block;
+
+  margin-top: 8px;
+
+  font-family: "Libre Caslon Text", serif;
+  font-size: clamp(48px, 6vw, 82px);
+  font-style: italic;
+  font-weight: 400;
+
+  color: #7d553e;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.home-description {
+  max-width: 470px;
+
+  margin: 0 0 32px;
+
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+
+  color: #444840;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.home-actions {
+  display: flex;
+  align-items: center;
+}
+
+.home-start-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-bistre, #351903);
-  color: var(--color-parchment-light, #f5f0e8);
-  font-family: var(--font-sans);
-  font-size: 17px;
+  gap: 18px;
+
+  min-height: 50px;
+  padding: 0 25px;
+
+  border: 0;
+  border-radius: 3px;
+
+  background: #122009;
+  color: #fff9ea;
+
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  padding: 14px 48px;
-  border: 2.5px solid rgba(255, 220, 120, 0.55);
-  border-radius: 50px; /* full pill */
+
   cursor: pointer;
-  transition: background 0.18s, transform 0.12s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.hero-mulai-btn:hover {
-  background: #4a2508;
-  transform: translateY(-2px);
+.home-start-button:hover {
+  transform: translateY(-3px);
+
+  background: #2a381f;
+
+  box-shadow:
+    0 12px 25px rgba(18, 32, 9, 0.15);
 }
 
-.hero-mulai-btn:active {
-  transform: translateY(0);
+.home-button-arrow {
+  font-size: 18px;
 }
 
-@keyframes heroFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
+
+.home-hero-visual {
+  position: relative;
+
+  min-height: 470px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Frame belakang */
+
+.home-visual-frame {
+  position: absolute;
+
+  width: 80%;
+  height: 82%;
+
+  border: 1px solid rgba(185, 154, 85, 0.35);
+
+  transform: rotate(3deg);
+}
+
+
+/* Kotak karakter */
+
+.home-character-wrapper {
+  position: relative;
+  z-index: 2;
+
+  width: min(400px, 100%);
+  aspect-ratio: 4 / 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: rgba(255, 249, 234, 0.5);
+
+  border: 1px solid rgba(185, 154, 85, 0.35);
+
+  box-shadow:
+    0 25px 50px rgba(74, 55, 35, 0.12);
+}
+
+
+/* Gambar */
+
+.home-character {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+
+/* Label */
+
+.home-visual-label {
+  position: absolute;
+
+  right: 0;
+  bottom: 35px;
+
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px 14px;
+
+  background: #fff9ea;
+
+  border-left: 2px solid #b79a55;
+
+  font-family: "Hanken Grotesk", sans-serif;
+
+  font-size: 9px;
+  letter-spacing: 0.16em;
+
+  color: #7d553e;
+}
+
+.home-visual-label strong {
+  margin-top: 3px;
+
+  font-family: "Libre Caslon Text", serif;
+  font-size: 14px;
+
+  color: #122009;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.home-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 20px 50px 55px;
+}
+
+.home-divider-line {
+  flex: 1;
+
+  height: 1px;
+
+  background: rgba(185, 154, 85, 0.3);
+}
+
+.home-divider-diamond {
+  width: 10px;
+  height: 10px;
+
+  background: #b79a55;
+
+  transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   LOCATION SECTION
+   ========================================================= */
+
+.home-locations {
+  padding: 0 50px 80px;
+}
+
+
+/* Heading */
+
+.home-location-heading {
+  text-align: center;
+
+  margin-bottom: 55px;
+}
+
+.home-section-label {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+
+  color: #b79a55;
+}
+
+.home-location-heading h2 {
+  margin: 0 0 12px;
+
+  font-family: "Libre Caslon Text", serif;
+  font-size: clamp(28px, 4vw, 42px);
+
+  color: #122009;
+}
+
+.home-location-heading p {
+  margin: 0;
+
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 14px;
+
+  color: #77766d;
+}
+
+
+/* =========================================================
+   LOCATION GRID
+   ========================================================= */
+
+.home-location-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  column-gap: 80px;
+  row-gap: 0;
+
+  max-width: 900px;
+
+  margin: 0 auto;
+}
+
+
+/* Location item */
+
+.home-location {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 88px;
+
+  padding: 18px 0;
+
+  border: 0;
+  border-bottom: 1px solid rgba(185, 154, 85, 0.18);
+
+  background: transparent;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    padding-left 0.25s ease,
+    background 0.25s ease;
+}
+
+.home-location:hover {
+  padding-left: 12px;
+}
+
+
+/* Number */
+
+.location-number {
+  flex: 0 0 45px;
+
+  font-family: "Libre Caslon Text", serif;
+  font-size: 13px;
+
+  color: #b79a55;
+}
+
+
+/* Content */
+
+.location-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.location-name {
+  font-family: "Libre Caslon Text", serif;
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #122009;
+}
+
+.location-arrow {
+  opacity: 0;
+
+  font-size: 18px;
+
+  color: #7d553e;
+
+  transform: translateX(-8px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.home-location:hover .location-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.home-footer {
+  position: relative;
+  z-index: 3;
+
+  border-top: 1px solid rgba(185, 154, 85, 0.2);
+
+  background: rgba(250, 242, 221, 0.95);
+}
+
+.home-footer-inner {
+  width: min(1180px, calc(100% - 80px));
+
+  min-height: 90px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1.5fr 1fr;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.home-footer-brand {
+  font-family: "Libre Caslon Text", serif;
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #122009;
+}
+
+.home-footer-copy {
+  text-align: center;
+
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 10px;
+
+  color: #77766d;
+}
+
+.home-footer-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.home-footer-links a {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 10px;
+
+  color: #6b4630;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .home-container {
+    width: min(100% - 40px, 720px);
   }
-  to {
+
+  .home-hero {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    padding: 70px 25px 40px;
+
+    text-align: center;
+  }
+
+  .home-hero-content {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .home-eyebrow {
+    justify-content: center;
+  }
+
+  .home-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-actions {
+    justify-content: center;
+  }
+
+  .home-hero-visual {
+    min-height: 430px;
+  }
+
+  .home-character-wrapper {
+    width: min(360px, 80vw);
+  }
+
+  .home-locations {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .home-footer-inner {
+    width: min(100% - 40px, 720px);
+
+    grid-template-columns: 1fr;
+    text-align: center;
+
+    padding: 25px 0;
+  }
+
+  .home-footer-copy {
+    order: 2;
+  }
+
+  .home-footer-links {
+    order: 3;
+
+    justify-content: center;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  #screen-opening {
+    min-height: 100svh;
+  }
+
+  .home-batik-pattern {
+    background-size: 260px auto;
+    opacity: 0.13;
+  }
+
+  .home-container {
+    width: 100%;
+  }
+
+  .home-hero {
+    min-height: auto;
+
+    padding: 45px 20px 30px;
+
+    gap: 25px;
+  }
+
+  .home-eyebrow {
+    font-size: 8px;
+
+    letter-spacing: 0.12em;
+  }
+
+  .home-title-main {
+    font-size: clamp(45px, 14vw, 68px);
+  }
+
+  .home-title-script {
+    font-size: clamp(40px, 12vw, 58px);
+  }
+
+  .home-description {
+    font-size: 13px;
+    line-height: 1.65;
+
+    max-width: 340px;
+
+    margin-bottom: 25px;
+  }
+
+  .home-start-button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .home-hero-visual {
+    min-height: 330px;
+  }
+
+  .home-character-wrapper {
+    width: min(280px, 78vw);
+  }
+
+  .home-visual-frame {
+    width: 78%;
+    height: 78%;
+  }
+
+  .home-visual-label {
+    right: 3%;
+    bottom: 15px;
+  }
+
+  .home-divider {
+    padding: 15px 20px 40px;
+  }
+
+  .home-locations {
+    padding: 0 20px 50px;
+  }
+
+  .home-location-heading {
+    margin-bottom: 30px;
+  }
+
+  .home-location-heading h2 {
+    font-size: 28px;
+  }
+
+  .home-location-heading p {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .home-location-grid {
+    grid-template-columns: 1fr;
+
+    max-width: 100%;
+  }
+
+  .home-location {
+    min-height: 70px;
+  }
+
+  .location-name {
+    font-size: 16px;
+  }
+
+  .location-number {
+    flex-basis: 40px;
+  }
+
+  .location-arrow {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
+
+  .home-footer-inner {
+    width: calc(100% - 40px);
+  }
+
+  .home-footer-brand {
+    font-size: 16px;
+  }
+
+  .home-footer-links {
+    flex-wrap: wrap;
+    gap: 10px 15px;
+  }
+
 }
 
-@media (max-width: 768px) {
-  .hero-content {
-    padding: 0 32px 16vh 32px;
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .home-hero {
+    padding-left: 16px;
+    padding-right: 16px;
   }
-  .hero-title {
-    font-size: clamp(40px, 10vw, 60px);
+
+  .home-title-main {
+    font-size: 43px;
   }
+
+  .home-title-script {
+    font-size: 38px;
+  }
+
+  .home-hero-visual {
+    min-height: 290px;
+  }
+
+  .home-character-wrapper {
+    width: 250px;
+  }
+
+  .home-locations {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
 }
