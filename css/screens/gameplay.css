@@ -1,521 +1,1728 @@
-/* ==========================================
-   SCREEN 04 — GAMEPLAY 01 (PAJAJARAN)
-   ========================================== */
+/* =========================================================
+   LELANA KAMANDAKA
+   SCREEN 04 — GAMEPLAY 01 : PAJAJARAN
+
+   Visual mengikuti SCREEN 01 — BERANDA
+   ========================================================= */
+
+
+/* =========================================================
+   SCREEN UTAMA
+   ========================================================= */
 
 #screen-gameplay {
-  background: url('../assets/images/bg_pajajaran.png') center/cover no-repeat;
   position: relative;
-  overflow: hidden;
   min-height: 100vh;
+  width: 100%;
+
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  /* Adegan Pajajaran tetap digunakan sebagai background utama */
+  background:
+    url("../../assets/images/bg_pajajaran.png")
+    center / cover
+    no-repeat;
+
+  color: #122009;
 }
 
-/* Subtle vignette so dialogue panel stands out */
+
+/* =========================================================
+   BATIK OVERLAY
+   Mengikuti motif pada Beranda
+   ========================================================= */
+
 #screen-gameplay::before {
-  content: '';
+  content: "";
+
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(20, 10, 2, 0.15) 0%,
-    rgba(20, 10, 2, 0.10) 55%,
-    rgba(20, 10, 2, 0.35) 100%
-  );
+
+  background-image:
+    url("../../assets/images/motif.png");
+
+  background-repeat: repeat;
+  background-size: 420px auto;
+
+  opacity: 0.055;
+
   pointer-events: none;
+
   z-index: 1;
 }
 
-/* ── HUD Badges ── */
-.gameplay-hud-left,
-.gameplay-hud-right {
-  position: absolute;
-  top: 24px;
-  z-index: 20;
-}
 
-.gameplay-hud-left {
-  left: 24px;
-}
+/* =========================================================
+   VIGNETTE
+   ========================================================= */
 
-.gameplay-hud-right {
-  right: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
-}
+#screen-gameplay::after {
+  content: "";
 
-.gameplay-bab-badge {
-  background: var(--color-flax, #ede383);
-  border: none;
-  border-radius: var(--radius-pill, 9999px);
-  padding: 6px 18px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--color-bistre, #351903);
-  letter-spacing: 0.08em;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.22);
-}
-
-.gameplay-stat-badge {
-  background: var(--color-flax, #ede383);
-  border: none;
-  border-radius: var(--radius-pill, 9999px);
-  padding: 6px 18px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--color-bistre, #351903);
-  letter-spacing: 0.08em;
-  min-width: 110px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.22);
-}
-
-/* ── Cinematic Intro Card ── */
-.gameplay-intro-card {
   position: absolute;
   inset: 0;
-  z-index: 15;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18, 32, 9, 0.04) 0%,
+      rgba(18, 32, 9, 0.02) 45%,
+      rgba(18, 32, 9, 0.25) 100%
+    );
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   HUD
+   ========================================================= */
+
+.gameplay-hud-left,
+.gameplay-hud-right {
+
+  position: absolute;
+
+  top: 28px;
+
+  z-index: 30;
+}
+
+
+.gameplay-hud-left {
+  left: 32px;
+}
+
+
+.gameplay-hud-right {
+
+  right: 32px;
+
   display: flex;
   flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 8px;
+}
+
+
+/* =========================================================
+   BAB BADGE
+   ========================================================= */
+
+.gameplay-bab-badge {
+
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 34px;
+
+  padding: 0 16px;
+
+  background: #fff9ea;
+
+  border-left: 2px solid #b79a55;
+
+  border-radius: 2px;
+
+  color: #122009;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  box-shadow:
+    0 8px 20px
+    rgba(18, 32, 9, 0.12);
+}
+
+
+/* =========================================================
+   STAT BADGES
+   ========================================================= */
+
+.gameplay-stat-badge {
+
+  min-width: 105px;
+
+  padding: 8px 14px;
+
+  background: #fff9ea;
+
+  border-left: 2px solid #b79a55;
+
+  border-radius: 2px;
+
+  color: #122009;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  text-align: center;
+
+  box-shadow:
+    0 8px 20px
+    rgba(18, 32, 9, 0.12);
+}
+
+
+/* =========================================================
+   INTRO CARD
+   ========================================================= */
+
+.gameplay-intro-card {
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 25;
+
+  display: flex;
+
+  flex-direction: column;
+
   align-items: center;
   justify-content: center;
-  gap: 48px;
-  padding: 0 60px;
+
+  gap: 32px;
+
+  padding: 40px;
+
   pointer-events: auto;
-  animation: introCardFadeIn 0.7s ease both;
+
+  animation:
+    introCardFadeIn
+    0.7s
+    ease
+    both;
 }
+
 
 .gameplay-intro-card.hidden {
   display: none;
 }
 
+
+/* =========================================================
+   INTRO ANIMATION
+   ========================================================= */
+
 @keyframes introCardFadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 }
+
+
+/* =========================================================
+   INTRO TEXT
+   ========================================================= */
 
 .gameplay-intro-text {
-  background: rgba(255, 255, 255, 0.62);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 18px;
-  padding: 52px 72px;
-  max-width: 780px;
-  width: 100%;
-  font-family: var(--font-serif);
-  font-size: clamp(22px, 2.8vw, 34px);
-  line-height: 1.55;
-  color: var(--color-bistre, #351903);
-  text-align: center;
+
+  width: min(760px, 90%);
+
+  margin: 0;
+
+  padding: 38px 48px;
+
+  background:
+    rgba(255, 249, 234, 0.94);
+
+  border:
+
+    1px solid
+    rgba(185, 154, 85, 0.45);
+
+  border-radius: 2px;
+
+  box-shadow:
+    0 20px 50px
+    rgba(18, 32, 9, 0.15);
+
+  color: #122009;
+
+  font-family:
+    "Libre Caslon Text",
+    serif;
+
+  font-size:
+    clamp(
+      22px,
+      3vw,
+      34px
+    );
+
+  line-height: 1.5;
+
   font-style: italic;
+
+  text-align: center;
 }
+
+
+/* =========================================================
+   INTRO BUTTON
+   Mengikuti tombol Beranda
+   ========================================================= */
 
 .gameplay-start-btn {
+
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
-  background: var(--color-dark-moss, #2d3e2f);
-  color: var(--color-parchment-light, #f5f0e8);
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  padding: 16px 56px;
-  border: none;
-  border-radius: 50px;
+
+  min-height: 50px;
+
+  padding: 0 26px;
+
+  border: 0;
+
+  border-radius: 3px;
+
+  background: #122009;
+
+  color: #fff9ea;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.06em;
+
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-  transition: background 0.15s, transform 0.1s;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
 
 .gameplay-start-btn:hover {
-  background: #1f2b21;
-  transform: translateY(-2px);
+
+  transform:
+    translateY(-3px);
+
+  background: #2a381f;
+
+  box-shadow:
+    0 12px 25px
+    rgba(18, 32, 9, 0.20);
 }
+
 
 .gameplay-start-btn:active {
-  transform: translateY(0);
+
+  transform:
+    translateY(0);
 }
 
-/* Ornament rule at top of dialogue panel — CSS-only */
+
+/* =========================================================
+   DIALOGUE PANEL
+   ========================================================= */
+
+.dialogue-panel {
+
+  position: relative;
+
+  z-index: 20;
+
+  width: 100%;
+
+  max-height: 46vh;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding:
+    24px
+    42px
+    0;
+
+  background: #fff9ea;
+
+  border-top:
+    1px solid
+    rgba(185, 154, 85, 0.45);
+
+  border-radius:
+    0;
+
+  box-shadow:
+    0 -15px 40px
+    rgba(18, 32, 9, 0.16);
+}
+
+
+/* =========================================================
+   ORNAMEN ATAS
+   ========================================================= */
+
 .dialogue-panel::before {
-  content: '';
+
+  content: "";
+
   display: block;
-  width: 60%;
-  max-width: 320px;
+
+  width: 70px;
   height: 1px;
-  background: var(--color-golden-brown, #925E06);
-  opacity: 0.30;
-  margin: 0 auto 10px;
+
+  margin:
+    0 auto 20px;
+
+  background: #b79a55;
+
+  opacity: 0.65;
+
   flex-shrink: 0;
 }
 
-/* ── Dialogue Panel (bottom sheet) ── */
-.dialogue-panel {
-  position: relative;
-  z-index: 10;
-  background: #ffffff;
-  border-radius: 16px 16px 0 0;
-  padding: 16px 36px 0;
-  max-height: 46vh;
-  overflow: hidden;
-  box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
-  display: flex;
-  flex-direction: column;
+
+/* =========================================================
+   DIAMOND ORNAMENT
+   ========================================================= */
+
+.dialogue-panel::after {
+
+  content: "";
+
+  position: absolute;
+
+  top: 17px;
+  left: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  background: #b79a55;
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
 }
 
-/* ── Speaker Entry Blocks ── */
+
+/* =========================================================
+   SPEAKER ENTRIES
+   ========================================================= */
+
 .dialogue-entries {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 18px;
-  margin-bottom: 16px;
+
+  margin-bottom: 18px;
+
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    rgba(185, 154, 85, 0.5)
+    transparent;
 }
+
+
+/* =========================================================
+   SPEAKER ENTRY
+   ========================================================= */
 
 .dialogue-entry {
+
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto;
+
+  grid-template-columns:
+    auto 1fr;
+
+  grid-template-rows:
+    auto auto;
+
   column-gap: 14px;
+
   row-gap: 4px;
+
+  padding-bottom: 14px;
+
+  border-bottom:
+    1px solid
+    rgba(185, 154, 85, 0.16);
 }
 
+
+.dialogue-entry:last-child {
+
+  border-bottom: 0;
+
+  padding-bottom: 0;
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
 .dialogue-entry-avatar {
-  grid-row: 1 / 3;
-  width: 36px;
-  height: 36px;
-  background: var(--color-parchment-dim, #e8e0d0);
-  border-radius: 4px;
+
+  grid-row:
+    1 / 3;
+
+  width: 40px;
+  height: 40px;
+
+  background:
+    rgba(185, 154, 85, 0.12);
+
+  border:
+    1px solid
+    rgba(185, 154, 85, 0.25);
+
+  border-radius: 2px;
+
   flex-shrink: 0;
+
   align-self: start;
+
   margin-top: 2px;
 }
 
+
+/* =========================================================
+   SPEAKER NAME
+   ========================================================= */
+
 .dialogue-entry-name {
-  font-family: var(--font-serif);
-  font-size: 18px;
+
+  font-family:
+    "Libre Caslon Text",
+    serif;
+
+  font-size: 17px;
+
   font-weight: 700;
-  color: var(--color-dark-moss, #2d3e2f);
+
+  color: #122009;
+
   line-height: 1.2;
 }
 
+
+/* =========================================================
+   DIALOGUE TEXT
+   ========================================================= */
+
 .dialogue-entry-text {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--color-ink-brown, #3e2b1e);
-  font-style: italic;
+
+  font-family:
+    "Libre Caslon Text",
+    serif;
+
+  font-size: 16px;
+
+  line-height: 1.65;
+
+  color: #444840;
+
+  font-style: normal;
 }
 
-/* Dim the non-speaking (previous) entry */
+
+/* =========================================================
+   DIM PREVIOUS SPEAKER
+   ========================================================= */
+
 .dialogue-entry.dim {
-  opacity: 0.45;
+
+  opacity: 0.48;
 }
 
-/* ── Action Bar (audio + next button) ── */
+
+/* =========================================================
+   ACTION BAR
+   ========================================================= */
+
 .dialogue-action-bar {
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
-  background: #f5f2c8;
-  margin: 0 -36px;
-  padding: 14px 36px;
+
+  gap: 20px;
+
+  margin:
+    0 -42px;
+
+  padding:
+    13px 42px;
+
+  background:
+    #faf2dd;
+
+  border-top:
+    1px solid
+    rgba(185, 154, 85, 0.22);
 }
+
+
+/* =========================================================
+   AUDIO BUTTON
+   ========================================================= */
 
 .dialogue-audio-btn {
-  display: flex;
+
+  display: inline-flex;
+
   align-items: center;
+
+  justify-content: center;
+
   gap: 10px;
-  background: var(--color-dark-moss, #2d3e2f);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 18px;
-  cursor: pointer;
-  color: var(--color-parchment-light, #f5f0e8);
-  font-size: 13px;
+
+  min-height: 40px;
+
+  padding:
+    0 18px;
+
+  background: transparent;
+
+  border:
+    1px solid
+    #b79a55;
+
+  border-radius: 3px;
+
+  color: #122009;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 10px;
+
   font-weight: 700;
-  letter-spacing: 0.08em;
-  transition: opacity 0.15s;
+
+  letter-spacing: 0.10em;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 }
+
 
 .dialogue-audio-btn:hover {
-  opacity: 0.85;
+
+  background: #122009;
+
+  color: #fff9ea;
+
+  transform:
+    translateY(-2px);
 }
+
 
 .audio-icon {
-  font-size: 18px;
+
+  font-size: 16px;
 }
 
+
+/* =========================================================
+   FOOTER ACTIONS
+   ========================================================= */
+
 .dialogue-footer-actions {
+
   display: flex;
+
   align-items: center;
+
   gap: 12px;
 }
 
-/* ── Quiz Options inside the panel ── */
-.quiz-container {
-  margin-bottom: 16px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+
+/* =========================================================
+   BUTTON YANG DIBUAT JS DI FOOTER
+   Supaya tombol LANJUT mengikuti Beranda
+   ========================================================= */
+
+.dialogue-footer-actions button {
+
+  min-height: 40px;
+
+  padding:
+    0 22px;
+
+  border: 0;
+
+  border-radius: 3px;
+
+  background: #122009;
+
+  color: #fff9ea;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+
+.dialogue-footer-actions button:hover {
+
+  background: #2a381f;
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 8px 18px
+    rgba(18, 32, 9, 0.16);
+}
+
+
+/* =========================================================
+   QUIZ CONTAINER
+   ========================================================= */
+
+.quiz-container {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   QUIZ OPTION
+   ========================================================= */
 
 .quiz-option-btn {
-  background: var(--color-parchment, #f0ead8);
-  border: 1.5px solid var(--color-golden-brown, #a0742a);
-  border-radius: var(--radius-sm, 6px);
-  padding: 12px 16px;
-  text-align: left;
-  font-size: 14px;
+
+  padding:
+    13px 16px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  border:
+    1px solid
+    rgba(185, 154, 85, 0.40);
+
+  border-radius: 3px;
+
+  color: #122009;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 13px;
+
   font-weight: 600;
-  color: var(--color-ink-brown, #3a2510);
+
+  line-height: 1.4;
+
+  text-align: left;
+
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+
+  transition:
+    background 0.25s ease,
+    border 0.25s ease,
+    transform 0.25s ease;
 }
+
 
 .quiz-option-btn:hover:not(:disabled) {
-  background: var(--color-parchment-dim, #e8e0d0);
-  border-color: var(--color-dark-moss, #2d3e2f);
+
+  background: #fff;
+
+  border-color: #b79a55;
+
+  transform:
+    translateY(-2px);
 }
 
+
+/* =========================================================
+   QUIZ BENAR
+   ========================================================= */
+
 .quiz-option-btn.selected-correct {
-  background: rgba(90, 138, 60, 0.15);
-  border-color: var(--color-apple-green, #5a8a3c);
-  color: var(--color-dark-moss, #2d3e2f);
+
+  background:
+    rgba(18, 32, 9, 0.08);
+
+  border-color:
+    #526b38;
+
+  color: #122009;
+
   font-weight: 700;
 }
 
+
+/* =========================================================
+   QUIZ SALAH
+   ========================================================= */
+
 .quiz-option-btn.selected-wrong {
-  background: rgba(186, 26, 26, 0.1);
-  border-color: #ba1a1a;
-  color: #700;
+
+  background:
+    rgba(125, 85, 62, 0.08);
+
+  border-color:
+    #7d553e;
+
+  color:
+    #7d553e;
 }
 
-@media (max-width: 768px) {
-  .dialogue-panel {
-    padding: 20px 20px 0;
-    max-height: 52vh;
-  }
-  .dialogue-action-bar {
-    margin: 0 -20px;
-    padding: 12px 20px;
-  }
-  .quiz-container {
-    grid-template-columns: 1fr;
-  }
-  .dialogue-entry-name {
-    font-size: 15px;
-  }
-  .dialogue-entry-text {
-    font-size: 13px;
-  }
-}
 
-/* ============================================
-   CHALLENGE CARD MODAL
-   ============================================ */
+/* =========================================================
+   CHALLENGE MODAL
+   ========================================================= */
 
-/* Backdrop */
 .challenge-card-backdrop {
+
   position: fixed;
+
   inset: 0;
-  background: rgba(20, 10, 2, 0.65);
+
   display: flex;
+
   align-items: center;
   justify-content: center;
+
+  padding: 24px;
+
+  background:
+    rgba(18, 32, 9, 0.58);
+
   z-index: 9000;
-  animation: backdropFadeIn 0.22s ease both;
+
+  animation:
+    backdropFadeIn
+    0.25s
+    ease
+    both;
 }
+
 
 .challenge-card-backdrop[hidden] {
   display: none;
 }
 
+
+/* =========================================================
+   BACKDROP ANIMATION
+   ========================================================= */
+
 @keyframes backdropFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
 }
 
-/* Card container */
+
+/* =========================================================
+   CHALLENGE CARD
+   ========================================================= */
+
 .challenge-card {
-  background: var(--color-parchment, #f0ead8);
-  border: 2px solid var(--color-golden-brown, #a0742a);
-  border-radius: 14px;
-  width: min(94%, 560px);
-  padding: 0 36px;
+
   position: relative;
+
+  width:
+    min(94%, 560px);
+
+  padding:
+    28px 36px;
+
+  background: #fff9ea;
+
+  border:
+    1px solid
+    rgba(185, 154, 85, 0.55);
+
+  border-radius: 3px;
+
   display: flex;
+
   flex-direction: column;
+
   gap: 0;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.38);
-  animation: cardSlideUp 0.28s ease both;
+
+  box-shadow:
+    0 25px 60px
+    rgba(18, 32, 9, 0.25);
+
+  animation:
+    cardSlideUp
+    0.28s
+    ease
+    both;
+
   overflow: hidden;
 }
 
+
+/* =========================================================
+   CARD ANIMATION
+   ========================================================= */
+
 @keyframes cardSlideUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(28px)
+      scale(0.98);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
 }
 
-/* Ornament rules on challenge card — CSS-only horizontal lines */
+
+/* =========================================================
+   CARD ORNAMENT
+   ========================================================= */
+
 .challenge-card-scroll-top,
 .challenge-card-scroll-bottom {
-  width: calc(100% + 72px);
+
+  width: 70px;
+
   height: 1px;
-  margin: 0 -36px;
-  background: var(--color-golden-brown, #925E06);
-  opacity: 0.30;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  background: #b79a55;
+
+  opacity: 0.55;
 }
+
 
 .challenge-card-scroll-top {
-  margin-bottom: 14px;
+
+  margin-bottom: 22px;
 }
+
 
 .challenge-card-scroll-bottom {
-  margin-top: 14px;
+
+  margin-top: 22px;
 }
 
-/* Header row: pill label + close */
+
+/* =========================================================
+   CHALLENGE HEADER
+   ========================================================= */
+
 .challenge-card-header {
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
-  margin-bottom: 18px;
-}
 
-.challenge-card-label {
-  background: var(--color-apple-green, #5a8a3c);
-  color: #fff;
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  padding: 5px 14px;
-  border-radius: 50px;
-  text-transform: uppercase;
-}
-
-/* Banyumasan word block */
-.challenge-word-block {
-  text-align: center;
   margin-bottom: 20px;
 }
 
-.challenge-basa-word {
-  font-family: var(--font-serif);
-  font-size: clamp(40px, 7vw, 60px);
+
+/* =========================================================
+   CHALLENGE LABEL
+   ========================================================= */
+
+.challenge-card-label {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  padding:
+    6px 12px;
+
+  background: #122009;
+
+  color: #fff9ea;
+
+  border-radius: 2px;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 9px;
+
   font-weight: 700;
-  color: var(--color-bistre, #351903);
-  line-height: 1.1;
-  margin-bottom: 6px;
-  -webkit-text-stroke: 0.8px rgba(60, 30, 5, 0.4);
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
 }
+
+
+/* =========================================================
+   WORD BLOCK
+   ========================================================= */
+
+.challenge-word-block {
+
+  text-align: center;
+
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   BASA WORD
+   ========================================================= */
+
+.challenge-basa-word {
+
+  margin-bottom: 8px;
+
+  font-family:
+    "Libre Caslon Text",
+    serif;
+
+  font-size:
+    clamp(
+      40px,
+      7vw,
+      60px
+    );
+
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  color: #122009;
+}
+
+
+/* =========================================================
+   PHONETIC
+   ========================================================= */
 
 .challenge-phonetic {
-  font-family: var(--font-sans);
-  font-size: 15px;
+
+  margin-bottom: 8px;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 13px;
+
   font-style: italic;
-  color: #7a5c2e;
-  margin-bottom: 6px;
+
+  color: #7d553e;
 }
+
+
+/* =========================================================
+   MEANING
+   ========================================================= */
 
 .challenge-meaning {
-  font-family: var(--font-sans);
-  font-size: 14px;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 13px;
+
   font-weight: 600;
-  color: var(--color-dark-moss, #2d3e2f);
+
+  color: #444840;
 }
 
-/* Context sentence */
+
+/* =========================================================
+   CONTEXT
+   ========================================================= */
+
 .challenge-context {
-  font-family: var(--font-serif);
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-ink-brown, #3a2510);
-  text-align: center;
+
   margin-bottom: 24px;
-  padding: 0 8px;
+
+  padding:
+    0 10px;
+
+  font-family:
+    "Libre Caslon Text",
+    serif;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  color: #444840;
+
+  text-align: center;
+
   font-style: italic;
-  opacity: 0.8;
 }
 
-/* Options 2×2 grid */
+
+/* =========================================================
+   CHALLENGE OPTIONS
+   ========================================================= */
+
 .challenge-options-grid {
+
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-bottom: 16px;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 10px;
+
+  margin-bottom: 18px;
 }
+
+
+/* =========================================================
+   CHALLENGE OPTION BUTTON
+   ========================================================= */
 
 .challenge-option-btn {
-  background: var(--color-parchment-light, #f5f0e8);
-  border: 1.5px solid var(--color-golden-brown, #a0742a);
-  border-radius: 8px;
-  padding: 14px 16px;
-  font-family: var(--font-sans);
-  font-size: 14px;
+
+  min-height: 54px;
+
+  padding:
+    12px 16px;
+
+  background: #fff;
+
+  border:
+    1px solid
+    rgba(185, 154, 85, 0.40);
+
+  border-radius: 3px;
+
+  color: #122009;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 13px;
+
   font-weight: 600;
-  color: var(--color-ink-brown, #3a2510);
-  cursor: pointer;
+
+  line-height: 1.4;
+
   text-align: center;
-  transition: background 0.15s, border-color 0.15s, transform 0.1s;
-  line-height: 1.35;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border 0.25s ease,
+    transform 0.25s ease;
 }
+
 
 .challenge-option-btn:hover:not(:disabled) {
-  background: #e8dfc8;
-  border-color: var(--color-dark-moss, #2d3e2f);
-  transform: translateY(-1px);
+
+  background: #fff9ea;
+
+  border-color: #b79a55;
+
+  transform:
+    translateY(-2px);
 }
 
+
+/* =========================================================
+   CHALLENGE CORRECT
+   ========================================================= */
+
 .challenge-option-btn.correct {
-  background: rgba(90, 138, 60, 0.18);
-  border-color: var(--color-apple-green, #5a8a3c);
-  color: var(--color-dark-moss, #2d3e2f);
+
+  background:
+    rgba(18, 32, 9, 0.08);
+
+  border-color:
+    #526b38;
+
+  color: #122009;
+
   font-weight: 700;
 }
 
+
+/* =========================================================
+   CHALLENGE WRONG
+   ========================================================= */
+
 .challenge-option-btn.wrong {
-  background: rgba(186, 26, 26, 0.10);
-  border-color: #ba1a1a;
-  color: #700;
+
+  background:
+    rgba(125, 85, 62, 0.08);
+
+  border-color:
+    #7d553e;
+
+  color:
+    #7d553e;
 }
 
-/* Feedback row */
+
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
+
 .challenge-feedback {
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
-  gap: 12px;
+
+  gap: 14px;
+
   margin-bottom: 4px;
-  padding: 10px 0;
+
+  padding:
+    10px 0;
 }
+
 
 .challenge-feedback[hidden] {
   display: none;
 }
 
+
 .challenge-feedback-text {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 700;
+
   flex: 1;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
 }
+
 
 .challenge-feedback-text.correct {
-  color: var(--color-dark-moss, #2d3e2f);
+  color: #526b38;
 }
 
+
 .challenge-feedback-text.wrong {
-  color: #ba1a1a;
+  color: #7d553e;
 }
+
+
+/* =========================================================
+   CHALLENGE BUTTONS
+   ========================================================= */
 
 .challenge-next-btn,
 .challenge-retry-btn {
+
+  min-height: 38px;
+
+  padding:
+    0 18px;
+
+  border: 0;
+
+  border-radius: 3px;
+
+  background: #122009;
+
+  color: #fff9ea;
+
+  font-family:
+    "Hanken Grotesk",
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  cursor: pointer;
+
   white-space: nowrap;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.challenge-next-btn:hover,
+.challenge-retry-btn:hover {
+
+  background: #2a381f;
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .gameplay-hud-left {
+    left: 22px;
+  }
+
+  .gameplay-hud-right {
+    right: 22px;
+  }
+
+  .gameplay-intro-card {
+    padding: 30px;
+  }
+
+  .gameplay-intro-text {
+    width: min(700px, 94%);
+
+    padding:
+      32px 35px;
+  }
+
+  .dialogue-panel {
+    padding:
+      20px 28px
+      0;
+
+    max-height: 50vh;
+  }
+
+  .dialogue-action-bar {
+    margin:
+      0 -28px;
+
+    padding:
+      12px 28px;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  #screen-gameplay {
+
+    min-height:
+      100svh;
+
+    background-position:
+      center center;
+  }
+
+
+  /* BATIK */
+
+  #screen-gameplay::before {
+
+    background-size:
+      260px auto;
+
+    opacity:
+      0.09;
+  }
+
+
+  /* HUD */
+
+  .gameplay-hud-left,
+  .gameplay-hud-right {
+
+    top: 16px;
+  }
+
+
+  .gameplay-hud-left {
+    left: 16px;
+  }
+
+
+  .gameplay-hud-right {
+    right: 16px;
+
+    gap: 5px;
+  }
+
+
+  .gameplay-bab-badge {
+
+    min-height: 29px;
+
+    padding:
+      0 11px;
+
+    font-size: 8px;
+  }
+
+
+  .gameplay-stat-badge {
+
+    min-width: 78px;
+
+    padding:
+      6px 8px;
+
+    font-size: 8px;
+  }
+
+
+  /* INTRO */
+
+  .gameplay-intro-card {
+
+    padding:
+      20px;
+
+    gap: 22px;
+  }
+
+
+  .gameplay-intro-text {
+
+    width: 100%;
+
+    padding:
+      28px 20px;
+
+    font-size:
+      clamp(
+        18px,
+        5vw,
+        25px
+      );
+
+    line-height:
+      1.45;
+  }
+
+
+  .gameplay-start-btn {
+
+    width: 100%;
+
+    max-width: 280px;
+
+    min-height: 48px;
+
+    padding:
+      0 20px;
+
+    font-size: 10px;
+  }
+
+
+  /* DIALOGUE */
+
+  .dialogue-panel {
+
+    padding:
+      18px 20px
+      0;
+
+    max-height: 58vh;
+  }
+
+
+  .dialogue-panel::before {
+
+    margin-bottom:
+      15px;
+  }
+
+
+  .dialogue-entry {
+
+    column-gap:
+      10px;
+  }
+
+
+  .dialogue-entry-avatar {
+
+    width: 32px;
+    height: 32px;
+  }
+
+
+  .dialogue-entry-name {
+
+    font-size: 14px;
+  }
+
+
+  .dialogue-entry-text {
+
+    font-size: 13px;
+
+    line-height:
+      1.55;
+  }
+
+
+  /* ACTION BAR */
+
+  .dialogue-action-bar {
+
+    margin:
+      0 -20px;
+
+    padding:
+      10px 20px;
+
+    gap: 10px;
+  }
+
+
+  .dialogue-audio-btn {
+
+    min-height: 36px;
+
+    padding:
+      0 12px;
+
+    font-size: 8px;
+  }
+
+
+  .dialogue-footer-actions {
+
+    gap: 7px;
+  }
+
+
+  .dialogue-footer-actions button {
+
+    min-height: 36px;
+
+    padding:
+      0 14px;
+
+    font-size: 8px;
+  }
+
+
+  /* QUIZ */
+
+  .quiz-container {
+
+    grid-template-columns:
+      1fr;
+
+    gap: 8px;
+  }
+
+
+  .quiz-option-btn {
+
+    padding:
+      11px 13px;
+
+    font-size: 12px;
+  }
+
+
+  /* CHALLENGE */
+
+  .challenge-card-backdrop {
+
+    padding:
+      16px;
+  }
+
+
+  .challenge-card {
+
+    width: 100%;
+
+    padding:
+      22px 20px;
+  }
+
+
+  .challenge-options-grid {
+
+    grid-template-columns:
+      1fr;
+
+    gap: 8px;
+  }
+
+
+  .challenge-basa-word {
+
+    font-size:
+      clamp(
+        36px,
+        12vw,
+        52px
+      );
+  }
+
+
+  .challenge-context {
+
+    font-size: 13px;
+  }
+
+
+  .challenge-option-btn {
+
+    min-height: 48px;
+
+    font-size: 12px;
+  }
+
+
+  .challenge-feedback {
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .challenge-next-btn,
+  .challenge-retry-btn {
+
+    width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .gameplay-intro-text {
+
+    padding:
+      24px 16px;
+
+    font-size:
+      18px;
+  }
+
+
+  .dialogue-panel {
+
+    max-height: 62vh;
+  }
+
+
+  .dialogue-entry-text {
+
+    font-size:
+      12px;
+  }
+
+
+  .dialogue-audio-btn span:last-child {
+
+    display: none;
+  }
+
 }

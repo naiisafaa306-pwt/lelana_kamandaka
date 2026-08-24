@@ -425,4 +425,10 @@ function resetGame() {
 // Initialize on load
 document.addEventListener("DOMContentLoaded", () => {
   goToScreen(1);
+
+  // Initialize on load
+document.addEventListener("DOMContentLoaded", () => {
+  goToScreen(1);
+});
+
 });
