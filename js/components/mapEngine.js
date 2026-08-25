@@ -180,10 +180,17 @@ function loadMapProgress() {
     let savedProgress = null;
 
 
+    // =====================================================
+    // AMBIL PROGRESS DARI SESSION STORAGE
+    //
+    // Progress hanya bertahan selama tab masih terbuka.
+    // Jika tab ditutup, sessionStorage akan hilang.
+    // =====================================================
+
     try {
 
         const saved =
-            localStorage.getItem(
+            sessionStorage.getItem(
                 MAP_PROGRESS_KEY
             );
 
@@ -200,7 +207,7 @@ function loadMapProgress() {
     catch (error) {
 
         console.warn(
-            "Progress tidak dapat dibaca dari localStorage.",
+            "Progress tidak dapat dibaca dari sessionStorage.",
             error
         );
 
@@ -246,16 +253,40 @@ function loadMapProgress() {
     }
 
 
+    if (
+        !Array.isArray(
+            progress.unlockedLocations
+        )
+    ) {
+
+        progress.unlockedLocations = [1];
+
+    }
+
+
+    // =====================================================
+    // PAJAJARAN SELALU TERBUKA
+    // =====================================================
+
+    if (
+        !progress.unlockedLocations.includes(1)
+    ) {
+
+        progress.unlockedLocations.unshift(1);
+
+    }
+
+
     // =====================================================
     // SINKRONISASI COMPLETED LOCATIONS
     //
-    // Kalau data lama memiliki:
+    // Jika ada data:
     //
-    // completedLocations: [1, 2]
+    // completedLocations: [1]
     //
-    // maka dianggap juga:
+    // maka dianggap:
     //
-    // completedChapters: [1, 2]
+    // completedChapters: [1]
     // =====================================================
 
     progress.completedLocations.forEach(
@@ -282,12 +313,11 @@ function loadMapProgress() {
     // =====================================================
     // BENTUK ULANG UNLOCKED LOCATIONS
     //
-    // JANGAN MENGGUNAKAN DATA unlockedLocations LAMA
-    // SEBAGAI SUMBER UTAMA.
+    // Jangan mempercayai unlockedLocations lama.
     //
     // Lokasi 01 selalu terbuka.
     //
-    // Lokasi berikutnya hanya terbuka apabila
+    // Lokasi berikutnya hanya terbuka jika
     // chapter sebelumnya sudah selesai.
     // =====================================================
 
@@ -569,7 +599,17 @@ function saveMapProgress(
 
     try {
 
-        localStorage.setItem(
+        // =================================================
+        // SESSION STORAGE
+        //
+        // Berbeda dengan localStorage:
+        //
+        // - Tetap ada saat pindah halaman
+        // - Tetap ada saat refresh
+        // - Hilang ketika tab ditutup
+        // =================================================
+
+        sessionStorage.setItem(
             MAP_PROGRESS_KEY,
             JSON.stringify(progress)
         );

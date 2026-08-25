@@ -9,6 +9,10 @@
    GAME PROGRESS
    ========================================================= */
 
+const MAP_PROGRESS_KEY =
+    "lelanaKamandakaProgress";
+
+
 const gameProgress = {
 
     currentChapter: 1,
@@ -24,6 +28,8 @@ const gameProgress = {
     sayembaraCompleted: false,
 
     completedChapters: [],
+
+    completedLocations: [],
 
     unlockedLocations: [1]
 
@@ -263,6 +269,13 @@ function saveGameProgress() {
                 ? gameProgress.completedChapters
                 : [],
 
+        completedLocations:
+            Array.isArray(
+                gameProgress.completedLocations
+            )
+                ? gameProgress.completedLocations
+                : [],
+
         unlockedLocations:
             Array.isArray(
                 gameProgress.unlockedLocations
@@ -273,16 +286,29 @@ function saveGameProgress() {
     };
 
 
-    localStorage.setItem(
-        "lelanaKamandakaProgress",
-        JSON.stringify(savedProgress)
-    );
+    try {
+
+        sessionStorage.setItem(
+            MAP_PROGRESS_KEY,
+            JSON.stringify(savedProgress)
+        );
 
 
-    console.log(
-        "Progress berhasil disimpan:",
-        savedProgress
-    );
+        console.log(
+            "Progress berhasil disimpan ke sessionStorage:",
+            savedProgress
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Gagal menyimpan progress:",
+            error
+        );
+
+    }
 
 }
 
@@ -293,13 +319,60 @@ function saveGameProgress() {
 
 function loadGameProgress() {
 
-    const saved =
-        localStorage.getItem(
-            "lelanaKamandakaProgress"
+    let saved = null;
+
+
+    try {
+
+        saved =
+            sessionStorage.getItem(
+                MAP_PROGRESS_KEY
+            );
+
+    }
+
+    catch (error) {
+
+        console.warn(
+            "sessionStorage tidak dapat dibaca:",
+            error
         );
 
+        return;
+
+    }
+
+
+    /*
+     * Kalau tidak ada progress di session ini,
+     * tetap gunakan progress awal.
+     */
 
     if (!saved) {
+
+        gameProgress.currentChapter =
+            1;
+
+        gameProgress.xp =
+            0;
+
+        gameProgress.basa =
+            0;
+
+        gameProgress.quizCompleted =
+            false;
+
+        gameProgress.sayembaraCompleted =
+            false;
+
+        gameProgress.completedChapters =
+            [];
+
+        gameProgress.completedLocations =
+            [];
+
+        gameProgress.unlockedLocations =
+            [1];
 
         return;
 
@@ -381,6 +454,18 @@ function loadGameProgress() {
 
         if (
             Array.isArray(
+                parsed.completedLocations
+            )
+        ) {
+
+            gameProgress.completedLocations =
+                parsed.completedLocations;
+
+        }
+
+
+        if (
+            Array.isArray(
                 parsed.unlockedLocations
             )
         ) {
@@ -396,16 +481,20 @@ function loadGameProgress() {
          */
 
         if (
-            !gameProgress.unlockedLocations.includes(1)
+            !gameProgress.unlockedLocations.includes(
+                1
+            )
         ) {
 
-            gameProgress.unlockedLocations.unshift(1);
+            gameProgress.unlockedLocations.unshift(
+                1
+            );
 
         }
 
 
         console.log(
-            "Progress berhasil dimuat:",
+            "Progress berhasil dimuat dari sessionStorage:",
             gameProgress
         );
 
@@ -2575,9 +2664,36 @@ if (btnContinueChapter) {
 
 
             /* =========================================
-               UNLOCK LOKASI
-               01 = PAJAJARAN
-               02 = KI AJAR WINARONG
+               LOKASI 01 SELESAI
+               ========================================= */
+
+            if (
+                !Array.isArray(
+                    gameProgress.completedLocations
+                )
+            ) {
+
+                gameProgress.completedLocations =
+                    [];
+
+            }
+
+
+            if (
+                !gameProgress.completedLocations.includes(
+                    1
+                )
+            ) {
+
+                gameProgress.completedLocations.push(
+                    1
+                );
+
+            }
+
+
+            /* =========================================
+               UNLOCK LOKASI 01
                ========================================= */
 
             if (
@@ -2604,6 +2720,11 @@ if (btnContinueChapter) {
 
             }
 
+
+            /* =========================================
+               UNLOCK LOKASI 02
+               KI AJAR WINARONG
+               ========================================= */
 
             if (
                 !gameProgress.unlockedLocations.includes(
@@ -2665,7 +2786,12 @@ if (btnContinueChapter) {
             );
 
             console.log(
-                "Progress berhasil disimpan."
+                "Completed Locations:",
+                gameProgress.completedLocations
+            );
+
+            console.log(
+                "Progress disimpan di sessionStorage."
             );
 
             console.log(
@@ -2697,7 +2823,13 @@ if (btnContinueChapter) {
 function initializeGame() {
 
     /*
-     * Load progress terlebih dahulu.
+     * Load progress dari sessionStorage.
+     *
+     * Kalau tab baru:
+     * tidak ada data → mulai dari Bab 01.
+     *
+     * Kalau masih dalam tab yang sama:
+     * progress tetap dipakai.
      */
 
     loadGameProgress();
