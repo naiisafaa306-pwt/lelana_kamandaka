@@ -10,15 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        Lelana Kamandaka — Interactive Digital Folklore & Basa Banyumasan
-    </title>
-
-    <meta
-        name="description"
-        content="Petualangan interaktif mengulas legenda Raden Kamandaka dan pelestarian Basa Banyumasan secara alami, indah, dan edukatif."
-    >
-
+    <title>Lelana Kamandaka — Intro Cerita</title>
 
     <!-- ==========================================
          GOOGLE FONTS
@@ -40,79 +32,37 @@
         rel="stylesheet"
     >
 
-
     <!-- ==========================================
          GLOBAL CSS
          ========================================== -->
 
     <link
         rel="stylesheet"
-        href="css/variables.css"
+        href="../css/variables.css"
     >
 
     <link
         rel="stylesheet"
-        href="css/base.css"
+        href="../css/base.css"
     >
 
     <link
         rel="stylesheet"
-        href="css/components/navbar.css"
+        href="../css/components/navbar.css"
     >
 
     <link
         rel="stylesheet"
-        href="css/components/buttons.css"
+        href="../css/components/buttons.css"
     >
-
-    <link
-        rel="stylesheet"
-        href="css/components/dialogue.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/components/card.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/components/modal.css"
-    >
-
 
     <!-- ==========================================
-         SCREEN CSS
+         STORY CSS
          ========================================== -->
 
     <link
         rel="stylesheet"
-        href="css/screens/opening.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/screens/story.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/screens/map.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/screens/gameplay.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/screens/journal.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/screens/achievement.css"
+        href="../css/screens/story.css"
     >
 
 </head>
@@ -120,673 +70,106 @@
 
 <body>
 
-
     <!-- ==========================================
-         DECORATIVE CANVAS
+         GLOBAL NAVBAR
          ========================================== -->
 
-    <canvas id="leaf-canvas"></canvas>
+    <header
+        class="site-navbar"
+        id="siteNavbar"
+    >
 
+        <div class="navbar-inner">
 
-    <!-- ==========================================
-     GLOBAL NAVBAR
-     ========================================== -->
-
-<header class="site-navbar" id="siteNavbar">
-
-    <div class="navbar-inner">
-
-        <!-- ==================================
-             LOGO
-             ================================== -->
-
-        <a
-            href="index.html"
-            class="navbar-logo"
-        >
-            LELANA KAMANDAKA
-        </a>
-
-
-        <!-- ==================================
-             MENU UTAMA
-             ================================== -->
-
-        <nav
-            class="navbar-menu"
-            id="navbarMenu"
-        >
+            <!-- LOGO -->
 
             <a
-                href="index.html"
-                class="active"
+                href="../index.html"
+                class="navbar-logo"
             >
-                BERANDA
+                LELANA KAMANDAKA
             </a>
 
-            <a href="catatan.html">
-                CATATAN
-            </a>
 
-            <a href="pencapaian.html">
-                PENCAPAIAN
-            </a>
+            <!-- MENU UTAMA -->
 
-        </nav>
+            <nav
+                class="navbar-menu"
+                id="navbarMenu"
+            >
 
-
-        <!-- ==================================
-             HAMBURGER
-             ================================== -->
-
-             <!-- ==================================
-     TOMBOL HAMBURGER
-     ================================== -->
-
-<button
-    type="button"
-    class="navbar-toggle"
-    id="navbarToggle"
-    aria-label="Buka menu"
-    aria-expanded="false"
-    onclick="
-        this.classList.toggle('active');
-        document.getElementById('navbarExtra').classList.toggle('open');
-        this.setAttribute(
-            'aria-expanded',
-            this.classList.contains('active')
-        );
-    "
->
-    <span></span>
-</button>
-
-
-<!-- ==================================
-     MENU TAMBAHAN
-     ================================== -->
-
-<div
-    class="navbar-extra"
-    id="navbarExtra"
->
-
-    <a href="peta.html">
-        PETA
-    </a>
-
-    <a href="basa.html">
-        BASA
-    </a>
-
-</div>
-
-</header>
-
-    <!-- ==========================================
-         MAIN APPLICATION
-         ========================================== -->
-
-    <main id="app">
-
-
-        <!-- ==========================================
-             SCREEN 01 — BERANDA / HOME
-             ========================================== -->
-
-        <section
-            id="screen-opening"
-            class="screen-view active"
-        >
-
-
-            <!-- ======================================
-                 MOTIF BATIK
-                 ====================================== -->
-
-            <div
-                class="home-batik-pattern"
-                aria-hidden="true"
-            ></div>
-
-
-            <!-- ======================================
-                 DEKORASI
-                 ====================================== -->
-
-            <div
-                class="home-decoration home-decoration-left"
-                aria-hidden="true"
-            ></div>
-
-            <div
-                class="home-decoration home-decoration-right"
-                aria-hidden="true"
-            ></div>
-
-
-            <!-- ======================================
-                 HOME CONTAINER
-                 ====================================== -->
-
-            <div class="home-container">
-
-
-                <!-- ==================================
-                     HERO
-                     ================================== -->
-
-                <section class="home-hero">
-
-
-                    <!-- ==============================
-                         BAGIAN KIRI
-                         ============================== -->
-
-                    <div class="home-hero-content">
-
-
-                        <!-- LABEL -->
-
-                        <div class="home-eyebrow">
-
-                            <span class="home-eyebrow-line"></span>
-
-                            <span>
-                                LEGENDA • BUDAYA • BANYUMAS
-                            </span>
-
-                            <span class="home-eyebrow-line"></span>
-
-                        </div>
-
-
-                        <!-- JUDUL -->
-
-                        <h1 class="home-title">
-
-                            <span class="home-title-main">
-                                LELANA
-                            </span>
-
-                            <span class="home-title-script">
-                                Kamandaka
-                            </span>
-
-                        </h1>
-
-
-                        <!-- DESKRIPSI -->
-
-                        <p class="home-description">
-                            Telusuri jejak perjalanan Raden Kamandaka
-                            melalui kisah, budaya, dan Basa Banyumasan.
-                        </p>
-
-
-                        <!-- TOMBOL MULAI -->
-
-                        <div class="home-actions">
-
-                            <a
-    href="peta.html"
-    id="btn-start-journey"
-    class="home-start-button"
->
-    <span>
-        MULAI PETUALANGAN
-    </span>
-
-    <span class="home-button-arrow">
-        →
-    </span>
-</a>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <!-- ==============================
-                         BAGIAN KANAN
-                         ============================== -->
-
-                    <div class="home-hero-visual">
-
-
-                        <!-- FRAME -->
-
-                        <div
-                            class="home-visual-frame"
-                            aria-hidden="true"
-                        ></div>
-
-
-                        <!-- GAMBAR RADEN KAMANDAKA -->
-
-                        <div class="home-character-wrapper">
-
-                            <img
-                                src="assets/images/characters/raden_kamandaka.png"
-                                alt="Raden Kamandaka"
-                                class="home-character"
-                            >
-
-                        </div>
-
-
-                        <!-- LABEL GAMBAR -->
-
-                        <div class="home-visual-label">
-
-                            <span>
-                                RADEN
-                            </span>
-
-                            <strong>
-                                KAMANDAKA
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-                </section>
-
-
-                <!-- ==================================
-                     PEMISAH
-                     ================================== -->
-
-                <div
-                    class="home-divider"
-                    aria-hidden="true"
+                <a
+                    href="../index.html"
+                    class="active"
                 >
+                    BERANDA
+                </a>
 
-                    <span class="home-divider-line"></span>
+                <a href="../catatan.html">
+                    CATATAN
+                </a>
 
-                    <span class="home-divider-diamond"></span>
+                <a href="../pencapaian.html">
+                    PENCAPAIAN
+                </a>
 
-                    <span class="home-divider-line"></span>
+            </nav>
 
-                </div>
 
+            <!-- HAMBURGER -->
 
-                <!-- ==================================
-                     JEJAK PERJALANAN
-                     ================================== -->
+            <button
+                class="navbar-toggle"
+                id="navbarToggle"
+                type="button"
+                aria-label="Buka menu"
+                aria-expanded="false"
+            >
+                <span></span>
+            </button>
 
-                <section class="home-locations">
 
+            <!-- MENU TAMBAHAN -->
 
-                    <!-- JUDUL SECTION -->
+            <div
+                class="navbar-extra"
+                id="navbarExtra"
+            >
 
-                    <div class="home-location-heading">
+                <a href="../peta.html">
+                    PETA
+                </a>
 
-                        <span class="home-section-label">
-                            JEJAK PERJALANAN
-                        </span>
-
-                        <h2>
-                            Menelusuri perjalanan Kamandaka
-                        </h2>
-
-                        <p>
-                            Sepuluh titik perjalanan yang menjadi bagian
-                            dari kisah Lelana Kamandaka.
-                        </p>
-
-                    </div>
-
-
-                    <!-- ==================================
-                         LOCATION GRID
-                         ================================== -->
-
-                    <div class="home-location-grid">
-
-
-                        <!-- 01 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="1"
-                        >
-
-                            <span class="location-number">
-                                01
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Pajajaran
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                        <!-- 02 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="2"
-                        >
-
-                            <span class="location-number">
-                                02
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Ki Ajar Winarong
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                        <!-- 03 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="3"
-                        >
-
-                            <span class="location-number">
-                                03
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Pasir Luhur
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                        <!-- 04 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="4"
-                        >
-
-                            <span class="location-number">
-                                04
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Kali Logawa
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                        <!-- 05 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="5"
-                        >
-
-                            <span class="location-number">
-                                05
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Desa Panagih
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                        <!-- 06 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="6"
-                        >
-
-                            <span class="location-number">
-                                06
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Goa Jatijajar
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                        <!-- 07 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="7"
-                        >
-
-                            <span class="location-number">
-                                07
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Batur Agung
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                        <!-- 08 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="8"
-                        >
-
-                            <span class="location-number">
-                                08
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Sawangan
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                        <!-- 09 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="9"
-                        >
-
-                            <span class="location-number">
-                                09
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Kali Serayu
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                        <!-- 10 -->
-
-                        <button
-                            type="button"
-                            class="home-location"
-                            data-location="10"
-                        >
-
-                            <span class="location-number">
-                                10
-                            </span>
-
-                            <span class="location-content">
-
-                                <span class="location-name">
-                                    Desa Rosari
-                                </span>
-
-                                <span class="location-arrow">
-                                    →
-                                </span>
-
-                            </span>
-
-                        </button>
-
-
-                    </div>
-
-
-                </section>
-
+                <a href="../basa.html">
+                    BASA
+                </a>
 
             </div>
 
+        </div>
 
-            <!-- ==================================
-                 FOOTER
-                 ================================== -->
-
-            <footer class="home-footer">
-
-                <div class="home-footer-inner">
+    </header>
 
 
-                    <div class="home-footer-brand">
-                        LELANA KAMANDAKA
-                    </div>
+    <!-- ==========================================
+         INTRO CERITA
+         ========================================== -->
 
-
-                    <div class="home-footer-copy">
-                        © 2024 LELANA KAMANDAKA.
-                        Warisan Budaya Nusantara.
-                    </div>
-
-
-                    <div class="home-footer-links">
-
-                        <a href="#">
-                            Kebijakan Privasi
-                        </a>
-
-                        <a href="#">
-                            Syarat &amp; Ketentuan
-                        </a>
-
-                        <a href="#">
-                            Kontak
-                        </a>
-
-                    </div>
-
-
-                </div>
-
-            </footer>
-
-
-        </section>
-
-        <!-- ==================================================
-             SCREEN 02 — INTRO CERITA
-             ================================================== -->
+    <main>
 
         <section
             id="screen-story"
-            class="screen-view"
+            class="screen-view active"
         >
+
+            <!-- PANEL TEKS -->
 
             <div class="story-text-panel">
 
                 <div class="story-ornament">
 
                     <img
-                        src="assets/icons/leaf_01.svg"
+                        src="../assets/icons/leaf_01.svg"
                         class="story-leaf-icon"
                         alt=""
                         aria-hidden="true"
@@ -795,7 +178,7 @@
                     <div class="story-ornament-rule"></div>
 
                     <img
-                        src="assets/icons/leaf_02.svg"
+                        src="../assets/icons/leaf_02.svg"
                         class="story-leaf-icon"
                         alt=""
                         aria-hidden="true"
@@ -854,11 +237,13 @@
             </div>
 
 
+            <!-- PANEL GAMBAR -->
+
             <div class="story-illustration-panel">
 
                 <img
                     id="story-illustration-img"
-                    src="assets/images/intro/intro-01.png"
+                    src="../assets/images/screen 2.png"
                     class="story-illustration-img"
                     alt="Kerajaan Pajajaran"
                 >
@@ -869,18 +254,13 @@
 
     </main>
 
+
     <!-- ==========================================
-     JAVASCRIPT
-     ========================================== -->
+         JAVASCRIPT
+         ========================================== -->
 
-<script
-    type="module"
-    src="js/app.js"
-></script>
-
-<script
-    src="js/navbar.js"
-></script>
+    <script src="../js/navbar.js"></script>
 
 </body>
+
 </html>
