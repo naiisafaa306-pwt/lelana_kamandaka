@@ -10,7 +10,8 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Lelana Kamandaka — Intro Cerita</title>
+    <title>Lelana Kamandaka — Intro 2</title>
+
 
     <!-- ==========================================
          GOOGLE FONTS
@@ -32,8 +33,9 @@
         rel="stylesheet"
     >
 
+
     <!-- ==========================================
-         GLOBAL CSS
+         CSS GLOBAL
          ========================================== -->
 
     <link
@@ -51,18 +53,14 @@
         href="../css/components/navbar.css"
     >
 
-    <link
-        rel="stylesheet"
-        href="../css/components/buttons.css"
-    >
 
     <!-- ==========================================
-         STORY CSS
+         CSS KHUSUS INTRO
          ========================================== -->
 
     <link
         rel="stylesheet"
-        href="../css/screens/story.css"
+        href="../intro/Intro.css"
     >
 
 </head>
@@ -70,8 +68,9 @@
 
 <body>
 
+
     <!-- ==========================================
-         GLOBAL NAVBAR
+         NAVBAR
          ========================================== -->
 
     <header
@@ -80,6 +79,7 @@
     >
 
         <div class="navbar-inner">
+
 
             <!-- LOGO -->
 
@@ -91,17 +91,14 @@
             </a>
 
 
-            <!-- MENU UTAMA -->
+            <!-- MENU -->
 
             <nav
                 class="navbar-menu"
                 id="navbarMenu"
             >
 
-                <a
-                    href="../index.html"
-                    class="active"
-                >
+                <a href="../index.html">
                     BERANDA
                 </a>
 
@@ -125,7 +122,9 @@
                 aria-label="Buka menu"
                 aria-expanded="false"
             >
+
                 <span></span>
+
             </button>
 
 
@@ -152,7 +151,7 @@
 
 
     <!-- ==========================================
-         INTRO CERITA
+         INTRO CERITA 2
          ========================================== -->
 
     <main>
@@ -162,9 +161,15 @@
             class="screen-view active"
         >
 
-            <!-- PANEL TEKS -->
+
+            <!-- ==================================
+                 PANEL TEKS
+                 ================================== -->
 
             <div class="story-text-panel">
+
+
+                <!-- ORNAMEN -->
 
                 <div class="story-ornament">
 
@@ -187,6 +192,8 @@
                 </div>
 
 
+                <!-- QUOTE -->
+
                 <span
                     class="story-quote-open"
                     aria-hidden="true"
@@ -195,12 +202,16 @@
                 </span>
 
 
+                <!-- TEKS INTRO 2 -->
+
                 <p
-                    id="story-text-body"
                     class="story-body-text"
                 >
-                    Di jantung Kerajaan Pajajaran yang megah,
-                    sebuah kisah kepahlawanan bermula...
+                    Di antara kehidupan istana,
+                    hiduplah Raden Kamandaka,
+                    seorang pemuda yang memilih
+                    membawa takdirnya menuju
+                    sebuah perjalanan panjang...
                 </p>
 
 
@@ -217,7 +228,7 @@
                 <div class="story-panel-footer">
 
                     <a
-                        href="intro2.html"
+                        href="intro3.html"
                         class="story-lanjut-btn"
                     >
                         LANJUT
@@ -230,15 +241,17 @@
             </div>
 
 
-            <!-- PANEL GAMBAR -->
+            <!-- ==================================
+                 PANEL GAMBAR
+                 ================================== -->
 
             <div class="story-illustration-panel">
 
                 <img
                     id="story-illustration-img"
-                    src="../assets/images/screen 2.png"
+                    src="../assets/images/screen 3.png"
                     class="story-illustration-img"
-                    alt="Kerajaan Pajajaran"
+                    alt="Raden Kamandaka"
                 >
 
             </div>
@@ -249,7 +262,7 @@
 
 
     <!-- ==========================================
-         JAVASCRIPT
+         JAVASCRIPT NAVBAR
          ========================================== -->
 
     <script src="../js/navbar.js"></script>
