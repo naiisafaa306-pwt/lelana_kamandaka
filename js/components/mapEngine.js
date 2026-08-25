@@ -207,6 +207,10 @@ function loadMapProgress() {
     }
 
 
+    // =====================================================
+    // GABUNGKAN DENGAN DEFAULT
+    // =====================================================
+
     const progress = {
 
         ...defaultMapProgress,
@@ -242,40 +246,16 @@ function loadMapProgress() {
     }
 
 
-    if (
-        !Array.isArray(
-            progress.unlockedLocations
-        )
-    ) {
-
-        progress.unlockedLocations = [1];
-
-    }
-
-
-    // =====================================================
-    // PAJAJARAN SELALU TERBUKA
-    // =====================================================
-
-    if (
-        !progress.unlockedLocations.includes(1)
-    ) {
-
-        progress.unlockedLocations.unshift(1);
-
-    }
-
-
     // =====================================================
     // SINKRONISASI COMPLETED LOCATIONS
     //
-    // Kalau app.js lama menyimpan:
+    // Kalau data lama memiliki:
     //
-    // completedLocations: [1]
+    // completedLocations: [1, 2]
     //
-    // maka otomatis dianggap:
+    // maka dianggap juga:
     //
-    // completedChapters: [1]
+    // completedChapters: [1, 2]
     // =====================================================
 
     progress.completedLocations.forEach(
@@ -300,18 +280,19 @@ function loadMapProgress() {
 
 
     // =====================================================
-    // SINKRONISASI UNLOCK BERDASARKAN CHAPTER
+    // BENTUK ULANG UNLOCKED LOCATIONS
     //
-    // BAB 01 selesai
-    //     ↓
-    // LOKASI 02 TERBUKA
+    // JANGAN MENGGUNAKAN DATA unlockedLocations LAMA
+    // SEBAGAI SUMBER UTAMA.
     //
-    // BAB 02 selesai
-    //     ↓
-    // LOKASI 03 TERBUKA
+    // Lokasi 01 selalu terbuka.
     //
-    // dst.
+    // Lokasi berikutnya hanya terbuka apabila
+    // chapter sebelumnya sudah selesai.
     // =====================================================
+
+    progress.unlockedLocations = [1];
+
 
     progress.completedChapters.forEach(
         function(chapter) {
@@ -336,61 +317,31 @@ function loadMapProgress() {
 
 
     // =====================================================
-    // SINKRONISASI BERDASARKAN CURRENT CHAPTER
-    //
-    // Tidak langsung membuka semua chapter.
-    // Hanya chapter yang benar-benar selesai
-    // yang membuka lokasi berikutnya.
-    // =====================================================
-
-    if (
-        progress.currentChapter > 1
-    ) {
-
-        for (
-            let chapter = 1;
-            chapter < progress.currentChapter;
-            chapter++
-        ) {
-
-            if (
-                progress.completedChapters.includes(
-                    chapter
-                )
-            ) {
-
-                unlockLocation(
-                    progress,
-                    chapter + 1
-                );
-
-            }
-
-        }
-
-    }
-
-
-    // =====================================================
     // HAPUS DUPLIKAT
     // =====================================================
 
     progress.completedChapters =
-        [...new Set(
-            progress.completedChapters
-        )];
+        [
+            ...new Set(
+                progress.completedChapters
+            )
+        ];
 
 
     progress.completedLocations =
-        [...new Set(
-            progress.completedLocations
-        )];
+        [
+            ...new Set(
+                progress.completedLocations
+            )
+        ];
 
 
     progress.unlockedLocations =
-        [...new Set(
-            progress.unlockedLocations
-        )];
+        [
+            ...new Set(
+                progress.unlockedLocations
+            )
+        ];
 
 
     // =====================================================
@@ -623,12 +574,6 @@ function saveMapProgress(
             JSON.stringify(progress)
         );
 
-
-        console.log(
-            "Progress berhasil disimpan:",
-            progress
-        );
-
     }
 
     catch (error) {
@@ -818,8 +763,6 @@ function updateRoutes(
             // JALUR AKTIF
             //
             // Lokasi awal DAN tujuan sudah terbuka.
-            //
-            // Jalur menjadi 100% opacity.
             // =================================================
 
             if (
@@ -872,9 +815,7 @@ function updateRoutes(
 // KLIK LOKASI
 // =========================================================
 
-function setupLocationEvents(
-    progress
-) {
+function setupLocationEvents() {
 
     document
         .querySelectorAll(
@@ -935,11 +876,6 @@ function setupLocationEvents(
 
                         if (!isUnlocked) {
 
-                            console.log(
-                                `Lokasi ${locationId} masih terkunci.`
-                            );
-
-
                             this.classList.remove(
                                 "locked-shake"
                             );
@@ -961,16 +897,6 @@ function setupLocationEvents(
                         // =====================================
                         // TERBUKA
                         // =====================================
-
-                        console.log(
-                            `Membuka ${location.name}`
-                        );
-
-
-                        console.log(
-                            `Menuju: ${location.gameplay}`
-                        );
-
 
                         window.location.href =
                             location.gameplay;
@@ -1071,39 +997,8 @@ function refreshMap() {
 
 function initializeMap() {
 
-    console.log(
-        "================================="
-    );
-
-    console.log(
-        "LELANA KAMANDAKA — MAP ENGINE"
-    );
-
-    console.log(
-        "================================="
-    );
-
-
-    console.log(
-        "Jumlah lokasi:",
-        mapLocations.length
-    );
-
-
-    console.log(
-        "Jumlah jalur:",
-        mapRoutes.length
-    );
-
-
     const progress =
         loadMapProgress();
-
-
-    console.log(
-        "Progress map:",
-        progress
-    );
 
 
     updateLocations(
@@ -1116,9 +1011,7 @@ function initializeMap() {
     );
 
 
-    setupLocationEvents(
-        progress
-    );
+    setupLocationEvents();
 
 }
 
