@@ -13,9 +13,9 @@
     <title>Lelana Kamandaka — Intro 2</title>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          GOOGLE FONTS
-         ========================================== -->
+         ===================================================== -->
 
     <link
         rel="preconnect"
@@ -29,14 +29,14 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet"
     >
 
 
-    <!-- ==========================================
-         CSS GLOBAL
-         ========================================== -->
+    <!-- =====================================================
+         GLOBAL CSS
+         ===================================================== -->
 
     <link
         rel="stylesheet"
@@ -53,14 +53,29 @@
         href="../css/components/navbar.css"
     >
 
+    <link
+        rel="stylesheet"
+        href="../css/components/buttons.css"
+    >
 
-    <!-- ==========================================
-         CSS KHUSUS INTRO
-         ========================================== -->
+
+    <!-- =====================================================
+         INTRO CSS
+         ===================================================== -->
 
     <link
         rel="stylesheet"
-        href="../intro/Intro.css"
+        href="../intro/intro.css"
+    >
+
+
+    <!-- =====================================================
+         STORY CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/screens/story.css"
     >
 
 </head>
@@ -69,9 +84,9 @@
 <body>
 
 
-    <!-- ==========================================
-         NAVBAR
-         ========================================== -->
+    <!-- =====================================================
+         GLOBAL NAVBAR
+         ===================================================== -->
 
     <header
         class="site-navbar"
@@ -81,7 +96,9 @@
         <div class="navbar-inner">
 
 
-            <!-- LOGO -->
+            <!-- =================================================
+                 LOGO
+                 ================================================= -->
 
             <a
                 href="../index.html"
@@ -91,36 +108,57 @@
             </a>
 
 
-            <!-- MENU -->
+            <!-- =================================================
+                 MENU UTAMA
+                 ================================================= -->
 
             <nav
                 class="navbar-menu"
                 id="navbarMenu"
             >
 
-                <a href="../index.html">
+                <a
+                    href="../index.html"
+                >
                     BERANDA
                 </a>
 
-                <a href="../catatan.html">
+                <a
+                    href="../catatan.html"
+                >
                     CATATAN
                 </a>
 
-                <a href="../pencapaian.html">
+                <a
+                    href="../pencapaian.html"
+                >
                     PENCAPAIAN
                 </a>
 
             </nav>
 
 
-            <!-- HAMBURGER -->
+            <!-- =================================================
+                 HAMBURGER
+                 ================================================= -->
 
             <button
+                type="button"
                 class="navbar-toggle"
                 id="navbarToggle"
-                type="button"
                 aria-label="Buka menu"
                 aria-expanded="false"
+                onclick="
+                    this.classList.toggle('active');
+                    document
+                        .getElementById('navbarExtra')
+                        .classList.toggle('open');
+
+                    this.setAttribute(
+                        'aria-expanded',
+                        this.classList.contains('active')
+                    );
+                "
             >
 
                 <span></span>
@@ -128,33 +166,41 @@
             </button>
 
 
-            <!-- MENU TAMBAHAN -->
+            <!-- =================================================
+                 MENU TAMBAHAN
+                 ================================================= -->
 
             <div
                 class="navbar-extra"
                 id="navbarExtra"
             >
 
-                <a href="../peta.html">
+                <a
+                    href="../peta.html"
+                >
                     PETA
                 </a>
 
-                <a href="../basa.html">
+                <a
+                    href="../basa.html"
+                >
                     BASA
                 </a>
 
             </div>
+
 
         </div>
 
     </header>
 
 
-    <!-- ==========================================
-         INTRO CERITA 2
-         ========================================== -->
 
-    <main>
+    <!-- =====================================================
+         INTRO CERITA 02
+         ===================================================== -->
+
+    <main class="intro-main">
 
         <section
             id="screen-story"
@@ -162,14 +208,16 @@
         >
 
 
-            <!-- ==================================
+            <!-- =================================================
                  PANEL TEKS
-                 ================================== -->
+                 ================================================= -->
 
             <div class="story-text-panel">
 
 
-                <!-- ORNAMEN -->
+                <!-- =================================================
+                     ORNAMEN
+                     ================================================= -->
 
                 <div class="story-ornament">
 
@@ -180,7 +228,17 @@
                         aria-hidden="true"
                     >
 
-                    <div class="story-ornament-rule"></div>
+                    <span
+                        class="story-ornament-line"
+                    ></span>
+
+                    <span
+                        class="story-ornament-dot"
+                    ></span>
+
+                    <span
+                        class="story-ornament-line"
+                    ></span>
 
                     <img
                         src="../assets/icons/leaf_02.svg"
@@ -192,19 +250,35 @@
                 </div>
 
 
-                <!-- QUOTE -->
+                <!-- =================================================
+                     LABEL
+                     ================================================= -->
 
                 <span
-                    class="story-quote-open"
-                    aria-hidden="true"
+                    class="story-eyebrow"
                 >
-                    "
+                    LELANA KAMANDAKA
                 </span>
 
 
-                <!-- TEKS INTRO 2 -->
+                <!-- =================================================
+                     JUDUL
+                     ================================================= -->
+
+                <h1
+                    class="story-title"
+                >
+                    Sebuah perjalanan
+                    <em>dimulai.</em>
+                </h1>
+
+
+                <!-- =================================================
+                     CERITA
+                     ================================================= -->
 
                 <p
+                    id="story-text-body"
                     class="story-body-text"
                 >
                     Di antara kehidupan istana,
@@ -215,24 +289,54 @@
                 </p>
 
 
-                <span
-                    class="story-quote-close"
-                    aria-hidden="true"
+                <!-- =================================================
+                     NOMOR HALAMAN
+                     ================================================= -->
+
+                <div
+                    class="story-page-indicator"
                 >
-                    "
-                </span>
+
+                    <span
+                        class="story-page-number"
+                    >
+                        02
+                    </span>
+
+                    <span
+                        class="story-page-line"
+                    ></span>
+
+                    <span
+                        class="story-page-total"
+                    >
+                        04
+                    </span>
+
+                </div>
 
 
-                <!-- FOOTER -->
+                <!-- =================================================
+                     BUTTON
+                     ================================================= -->
 
-                <div class="story-panel-footer">
+                <div
+                    class="story-panel-footer"
+                >
 
                     <a
                         href="intro3.html"
                         class="story-lanjut-btn"
                     >
-                        LANJUT
-                        <span>→</span>
+
+                        <span>
+                            LANJUT
+                        </span>
+
+                        <strong>
+                            →
+                        </strong>
+
                     </a>
 
                 </div>
@@ -241,11 +345,19 @@
             </div>
 
 
-            <!-- ==================================
-                 PANEL GAMBAR
-                 ================================== -->
 
-            <div class="story-illustration-panel">
+            <!-- =================================================
+                 PANEL GAMBAR
+                 ================================================= -->
+
+            <div
+                class="story-illustration-panel"
+            >
+
+
+                <!-- =================================================
+                     GAMBAR
+                     ================================================= -->
 
                 <img
                     id="story-illustration-img"
@@ -254,18 +366,51 @@
                     alt="Raden Kamandaka"
                 >
 
+
+                <!-- =================================================
+                     OVERLAY
+                     ================================================= -->
+
+                <div
+                    class="story-image-overlay"
+                    aria-hidden="true"
+                ></div>
+
+
+                <!-- =================================================
+                     LABEL GAMBAR
+                     ================================================= -->
+
+                <div
+                    class="story-image-caption"
+                >
+
+                    <span>
+                        BAB I
+                    </span>
+
+                    <strong>
+                        RADEN KAMANDAKA
+                    </strong>
+
+                </div>
+
+
             </div>
+
 
         </section>
 
     </main>
 
 
-    <!-- ==========================================
-         JAVASCRIPT NAVBAR
-         ========================================== -->
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
 
     <script src="../js/navbar.js"></script>
+
 
 </body>
 
