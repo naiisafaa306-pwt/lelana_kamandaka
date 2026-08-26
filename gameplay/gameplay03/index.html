@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Lelana Kamandaka — Pasir Luhur</title>
+
+
+  <!-- =====================================================
+       FONT
+       ===================================================== -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =====================================================
+       CSS GLOBAL
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="../../css/variables.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/base.css"
+  >
+
+
+  <!-- =====================================================
+       CSS COMPONENT
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/navbar.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/buttons.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/dialogue.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/card.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/modal.css"
+  >
+
+
+  <!-- =====================================================
+       CSS KHUSUS SCREEN GAMEPLAY
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="../../css/screens/gameplay.css"
+  >
+
+
+  <!-- =====================================================
+       CSS GAMEPLAY
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="../../css/gameplay.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
+
+  <header
+    class="site-navbar"
+    id="siteNavbar"
+  >
+
+    <div class="navbar-inner">
+
+
+      <a
+        href="../../index.html"
+        class="navbar-logo"
+      >
+        LELANA KAMANDAKA
+      </a>
+
+
+      <nav
+        class="navbar-menu"
+        id="navbarMenu"
+      >
+
+        <a href="../../index.html">
+          BERANDA
+        </a>
+
+        <a href="../../catatan.html">
+          CATATAN
+        </a>
+
+        <a href="../../pencapaian.html">
+          PENCAPAIAN
+        </a>
+
+      </nav>
+
+
+      <button
+        type="button"
+        class="navbar-toggle"
+        id="navbarToggle"
+        aria-label="Buka menu"
+        aria-expanded="false"
+      >
+
+        <span></span>
+
+      </button>
+
+
+      <div
+        class="navbar-extra"
+        id="navbarExtra"
+      >
+
+        <a href="../../peta.html">
+          PETA
+        </a>
+
+        <a href="../../basa.html">
+          BASA
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =====================================================
+       GAMEPLAY PAGE
+       ===================================================== -->
+
+  <main
+    class="gameplay-page"
+    id="gameplayPage"
+  >
+
+
+    <!-- ===================================================
+         HUD
+         =================================================== -->
+
+    <div
+      class="gameplay-hud"
+      id="gameplayHud"
+      aria-label="Progress permainan"
+    >
+
+      <div class="gameplay-hud-bab">
+
+        <span>
+          BAB
+        </span>
+
+        <strong id="hudChapter">
+          03
+        </strong>
+
+        <span>
+          / 10
+        </span>
+
+      </div>
+
+
+      <div class="gameplay-hud-stats">
+
+
+        <div class="gameplay-stat">
+
+          <span class="gameplay-stat-icon">
+            ✦
+          </span>
+
+          <strong id="hudXp">
+            75
+          </strong>
+
+          <small>
+            XP
+          </small>
+
+        </div>
+
+
+        <div class="gameplay-stat">
+
+          <span class="gameplay-stat-icon">
+            ◈
+          </span>
+
+          <strong id="hudBasa">
+            15
+          </strong>
+
+          <small>
+            BASA
+          </small>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         SCREEN 01
+         =================================================== -->
+
+    <section
+      class="story-screen active"
+      id="story-opening"
+    >
+
+      <div
+        class="story-background chapter03-bg"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="story-overlay"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="story-batik"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="story-content">
+
+
+        <div class="story-eyebrow">
+
+          <span class="story-eyebrow-line"></span>
+
+          <span>
+            LELANA KAMANDAKA
+          </span>
+
+          <span class="story-eyebrow-line"></span>
+
+        </div>
+
+
+        <h1 class="story-title">
+
+          <span class="story-title-small">
+            BAB III
+          </span>
+
+          <span class="story-title-main">
+            Pasir Luhur
+          </span>
+
+        </h1>
+
+
+        <p class="story-intro">
+
+          “Setelah meninggalkan kehidupan lamanya,
+          Kamandaka meneruskan perjalanan hingga tiba
+          di wilayah Pasir Luhur. Tempat baru ini menjadi
+          awal dari babak penting dalam pengembaraannya.”
+
+        </p>
+
+
+        <button
+          type="button"
+          class="story-start-button"
+          id="btnBeginStory"
+        >
+
+          <span>
+            MULAI KISAH
+          </span>
+
+          <span class="story-button-arrow">
+            →
+          </span>
+
+        </button>
+
+
+      </div>
+
+
+      <div
+        class="story-character"
+        aria-hidden="true"
+      >
+
+        <img
+          src="../../assets/images/characters/raden.png"
+          alt=""
+        >
+
+      </div>
+
+
+      <div class="story-chapter-mark">
+
+        <span>
+          03
+        </span>
+
+        <span class="story-chapter-line"></span>
+
+        <span>
+          10
+        </span>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SCREEN 02 — DIALOG
+         =================================================== -->
+
+    <section
+      class="story-screen story-dialog-screen"
+      id="story-dialog"
+    >
+
+      <div
+        class="story-background story-background-dialog chapter03-dialog-bg"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="story-overlay"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="dialog-wrapper">
+
+        <div class="dialog-box">
+
+
+          <div class="dialog-item">
+
+            <h2 class="dialog-character-name">
+              Narator
+            </h2>
+
+            <p class="dialog-text">
+
+              “Wis tekan wewengkon Pasir Luhur.
+              Saka kadohan, Kamandaka ndeleng papan
+              sing beda karo panggonan sing wis dilakoni
+              sadurunge.”
+
+            </p>
+
+          </div>
+
+
+          <div class="dialog-item">
+
+            <h2 class="dialog-character-name">
+              Kamandaka
+            </h2>
+
+            <p class="dialog-text">
+
+              “Iki Pasir Luhur. Saiki aku kudu ngati-ati,
+              nyamar minangka wong biasa lan sinau
+              ngenali papan iki sadurunge nerusake
+              lampahku.”
+
+            </p>
+
+          </div>
+
+
+          <div class="dialog-footer">
+
+
+            <button
+              type="button"
+              class="dialog-listen-button"
+              id="btnListen"
+            >
+
+              <span class="listen-icon">
+                🔊
+              </span>
+
+              <span>
+                DENGARKAN
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="dialog-next-button"
+              id="btnNextStory"
+            >
+
+              <span>
+                LANJUT
+              </span>
+
+              <span>
+                →
+              </span>
+
+            </button>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SCREEN 03 — TRANSITION
+         =================================================== -->
+
+    <section
+      class="story-screen gameplay-transition-screen"
+      id="story-gameplay"
+    >
+
+      <div class="gameplay-transition-content">
+
+
+        <span class="gameplay-transition-label">
+          MEMASUKI WILAYAH BARU
+        </span>
+
+
+        <h2>
+          Mengenal Pasir Luhur
+        </h2>
+
+
+        <p>
+
+          Pasir Luhur menjadi tempat baru bagi Kamandaka.
+          Kenali suasana dan makna penting Pasir Luhur
+          dalam perjalanan cerita sebelum melanjutkan
+          petualangan.
+
+        </p>
+
+
+        <button
+          type="button"
+          class="story-start-button"
+          id="btnStartGameplay"
+        >
+
+          <span>
+            MULAI TANTANGAN
+          </span>
+
+          <span>
+            →
+          </span>
+
+        </button>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SCREEN 04 — SINAU BASA
+         =================================================== -->
+
+    <section
+      class="story-screen learning-basa-screen"
+      id="story-learning-basa"
+    >
+
+      <div
+        class="learning-basa-background chapter03-learning-bg"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="learning-basa-overlay"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="learning-basa-container">
+
+
+        <div class="learning-basa-header">
+
+          <span class="learning-basa-label">
+            TANTANGAN BASA 03
+          </span>
+
+          <h2>
+            SINAU <span>BASA</span>
+          </h2>
+
+          <p>
+
+            Pelajari kosakata yang berkaitan dengan
+            tempat, perjalanan, dan kehidupan Kamandaka
+            di Pasir Luhur.
+
+          </p>
+
+        </div>
+
+
+        <div class="learning-basa-grid">
+
+
+          <div class="learning-basa-visual">
+
+            <div class="learning-basa-frame">
+
+              <div class="learning-basa-frame-label">
+                PASIR LUHUR
+              </div>
+
+
+              <div class="learning-basa-character">
+
+                <img
+                  src="../../assets/images/characters/raden.png"
+                  alt=""
+                >
+
+              </div>
+
+
+              <div class="learning-basa-quote">
+
+                <span class="quote-mark">
+                  “
+                </span>
+
+                <p>
+
+                  Aku kudu ngati-ati nalika mlebu
+                  Pasir Luhur lan nerusake lampahku
+                  minangka wong biasa.
+
+                </p>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+
+          <div class="learning-basa-vocab">
+
+
+            <div class="learning-vocab-intro">
+
+              <span>
+                KOSAKATA PENTING
+              </span>
+
+              <p>
+                Kenali kata-kata yang membantu memahami
+                perjalanan menuju Pasir Luhur.
+              </p>
+
+            </div>
+
+
+            <!-- KOSA KATA 01 -->
+
+            <div class="learning-vocab-card">
+
+              <div class="learning-vocab-number">
+                01
+              </div>
+
+              <div class="learning-vocab-info">
+
+                <h3>
+                  WEWENGKON
+                </h3>
+
+                <span>
+                  WILAYAH / DAERAH
+                </span>
+
+                <p>
+                  Kata untuk menyebut suatu wilayah
+                  atau daerah tertentu.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                class="learning-voice-button"
+                onclick="speakBasa('wewengkon')"
+                aria-label="Dengarkan Wewengkon"
+              >
+                🔊
+              </button>
+
+            </div>
+
+
+            <!-- KOSA KATA 02 -->
+
+            <div class="learning-vocab-card">
+
+              <div class="learning-vocab-number">
+                02
+              </div>
+
+              <div class="learning-vocab-info">
+
+                <h3>
+                  MLEBU
+                </h3>
+
+                <span>
+                  MASUK
+                </span>
+
+                <p>
+                  Berarti masuk atau memasuki
+                  suatu tempat.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                class="learning-voice-button"
+                onclick="speakBasa('mlebu')"
+                aria-label="Dengarkan Mlebu"
+              >
+                🔊
+              </button>
+
+            </div>
+
+
+            <!-- KOSA KATA 03 -->
+
+            <div class="learning-vocab-card">
+
+              <div class="learning-vocab-number">
+                03
+              </div>
+
+              <div class="learning-vocab-info">
+
+                <h3>
+                  NGATI-ATI
+                </h3>
+
+                <span>
+                  BERHATI-HATI
+                </span>
+
+                <p>
+                  Ungkapan untuk mengingatkan agar
+                  bertindak dengan waspada.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                class="learning-voice-button"
+                onclick="speakBasa('ngati-ati')"
+                aria-label="Dengarkan Ngati-ati"
+              >
+                🔊
+              </button>
+
+            </div>
+
+
+            <!-- KOSA KATA 04 -->
+
+            <div class="learning-vocab-card">
+
+              <div class="learning-vocab-number">
+                04
+              </div>
+
+              <div class="learning-vocab-info">
+
+                <h3>
+                  LAMPAH
+                </h3>
+
+                <span>
+                  PERJALANAN / LANGKAH
+                </span>
+
+                <p>
+                  Menggambarkan perjalanan atau langkah
+                  yang sedang ditempuh.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                class="learning-voice-button"
+                onclick="speakBasa('lampah')"
+                aria-label="Dengarkan Lampah"
+              >
+                🔊
+              </button>
+
+            </div>
+
+
+            <div class="learning-basa-footer">
+
+              <span>
+                Gunakan kosakata ini pada tantangan berikutnya.
+              </span>
+
+              <button
+                type="button"
+                class="learning-basa-next"
+                id="btnStartQuizBasa"
+              >
+
+                <span>
+                  LANJUT KE KUIS
+                </span>
+
+                <span>
+                  →
+                </span>
+
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SCREEN 05 — QUIZ
+         =================================================== -->
+
+    <section
+      class="story-screen"
+      id="story-quiz-basa"
+    >
+
+      <div class="quiz-container">
+
+
+        <div class="quiz-header">
+
+          <span class="quiz-label">
+            TANTANGAN BASA 03
+          </span>
+
+          <h2>
+            COBA <span>GUNAKAN</span>
+          </h2>
+
+          <p class="quiz-intro">
+
+            Pilih jawaban yang paling tepat berdasarkan
+            kosakata yang telah kamu pelajari.
+
+          </p>
+
+        </div>
+
+
+        <div class="quiz-progress">
+
+          <span id="quizQuestionNumber">
+            PERTANYAAN 01 / 04
+          </span>
+
+          <div class="quiz-progress-bar">
+
+            <span id="quizProgressFill"></span>
+
+          </div>
+
+        </div>
+
+
+        <div class="quiz-card">
+
+
+          <div class="quiz-question-label">
+            PERTANYAAN
+          </div>
+
+
+          <h3 id="quizQuestion">
+            Apa arti kata “Wewengkon”?
+          </h3>
+
+
+          <div class="quiz-options">
+
+
+            <button
+              type="button"
+              class="quiz-option"
+            >
+              <span class="quiz-option-letter">A</span>
+              <span>Wilayah / daerah</span>
+            </button>
+
+
+            <button
+              type="button"
+              class="quiz-option"
+            >
+              <span class="quiz-option-letter">B</span>
+              <span>Rumah</span>
+            </button>
+
+
+            <button
+              type="button"
+              class="quiz-option"
+            >
+              <span class="quiz-option-letter">C</span>
+              <span>Berangkat</span>
+            </button>
+
+
+            <button
+              type="button"
+              class="quiz-option"
+            >
+              <span class="quiz-option-letter">D</span>
+              <span>Teman</span>
+            </button>
+
+
+          </div>
+
+
+          <div
+            id="quizFeedback"
+            aria-live="polite"
+          ></div>
+
+
+          <div class="quiz-footer">
+
+            <span class="quiz-hint">
+              Ingat kembali kosakata tentang Pasir Luhur.
+            </span>
+
+            <button
+              type="button"
+              id="btnNextQuiz"
+              disabled
+            >
+              SOAL BERIKUTNYA →
+            </button>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SCREEN 06 — CERITA
+         =================================================== -->
+
+    <section
+      class="story-screen sayembara-story-screen"
+      id="story-pasir-story"
+    >
+
+      <div
+        class="sayembara-story-background chapter03-story-bg"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="sayembara-story-batik"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="sayembara-story-container">
+
+
+        <div class="sayembara-story-label">
+          TANTANGAN CERITA 03
+        </div>
+
+
+        <h2 class="sayembara-story-title">
+          Jejak <span>Pasir Luhur</span>
+        </h2>
+
+
+        <div class="sayembara-story-text">
+
+          <p>
+
+            Kamandaka akhirnya memasuki wilayah Pasir Luhur.
+            Ia tidak boleh terburu-buru. Sebagai pengembara
+            yang sedang menyamar, ia perlu memperhatikan
+            tempat, mengenali keadaan sekitar, dan menentukan
+            langkah berikutnya.
+
+          </p>
+
+          <p>
+
+            Perjalanan ini bukan sekadar berpindah tempat.
+            Pasir Luhur menjadi ruang baru yang akan membawa
+            Kamandaka semakin dekat pada babak penting
+            dalam kisahnya.
+
+          </p>
+
+        </div>
+
+
+        <div class="sayembara-story-requirements">
+
+
+          <div class="sayembara-requirement">
+
+            <span class="requirement-icon">
+              ✦
+            </span>
+
+            <div>
+
+              <strong>
+                Memasuki Pasir Luhur
+              </strong>
+
+              <span>
+                Tiba di wilayah yang menjadi tujuan perjalanan.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="sayembara-requirement">
+
+            <span class="requirement-icon">
+              ◎
+            </span>
+
+            <div>
+
+              <strong>
+                Mengamati Sekitar
+              </strong>
+
+              <span>
+                Memperhatikan keadaan sebelum menentukan langkah.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="sayembara-requirement">
+
+            <span class="requirement-icon">
+              ◈
+            </span>
+
+            <div>
+
+              <strong>
+                Menjaga Penyamaran
+              </strong>
+
+              <span>
+                Tetap hidup sebagai orang biasa selama perjalanan.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="sayembara-requirement">
+
+            <span class="requirement-icon">
+              ♧
+            </span>
+
+            <div>
+
+              <strong>
+                Melanjutkan Lampah
+              </strong>
+
+              <span>
+                Menentukan arah perjalanan setelah mengenali
+                Pasir Luhur.
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <p class="sayembara-story-ending">
+
+          Ingat urutan perjalanan Kamandaka di Pasir Luhur.
+          Setelah itu, bantu dia memilih langkah yang tepat.
+
+        </p>
+
+
+        <button
+          type="button"
+          class="story-start-button"
+          id="btnStartSayembara"
+        >
+
+          <span>
+            LANJUT KE TANTANGAN
+          </span>
+
+          <span class="story-button-arrow">
+            →
+          </span>
+
+        </button>
+
+
+      </div>
+
+
+      <div class="sayembara-story-mark">
+
+        <span>06</span>
+
+        <span class="sayembara-story-mark-line"></span>
+
+        <span>07</span>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SCREEN 07 — SAYEMBARA
+         =================================================== -->
+
+    <section
+      class="story-screen sayembara-screen"
+      id="story-sayembara"
+    >
+
+      <div class="sayembara-container">
+
+
+        <div class="sayembara-info">
+
+          <div class="sayembara-flower">
+            ✿
+          </div>
+
+          <span class="sayembara-label">
+            TANTANGAN CERITA 03
+          </span>
+
+          <h2>
+            Jejak Pasir Luhur
+          </h2>
+
+
+          <div class="sayembara-question">
+
+            <p>
+              Apa saja langkah yang tepat ketika
+              Kamandaka memasuki Pasir Luhur?
+            </p>
+
+          </div>
+
+
+          <div class="sayembara-instruction">
+
+            <span>
+              ⓘ
+            </span>
+
+            <span>
+
+              Tarik <strong>4 langkah yang benar</strong>
+              ke dalam kotak perjalanan.
+              Ada beberapa pilihan pengecoh.
+
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="sayembara-game">
+
+
+          <div
+            class="sayembara-dropzone"
+            id="sayembaraDropzone"
+          >
+
+            <div class="sayembara-dropzone-placeholder">
+
+              <span>
+                LETAKKAN LANGKAH
+              </span>
+
+              <strong>
+                PERJALANAN
+              </strong>
+
+              <small>
+                Tarik 4 langkah yang benar ke area ini
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="sayembara-feedback"
+            id="sayembaraFeedback"
+            aria-live="polite"
+          ></div>
+
+
+          <div class="sayembara-options">
+
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="masuk"
+            >
+
+              <span class="sayembara-icon">
+                ✦
+              </span>
+
+              <strong>
+                MEMASUKI<br>
+                PASIR LUHUR
+              </strong>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="amati"
+            >
+
+              <span class="sayembara-icon">
+                ◎
+              </span>
+
+              <strong>
+                MENGAMATI<br>
+                SEKITAR
+              </strong>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="nyamar"
+            >
+
+              <span class="sayembara-icon">
+                ◈
+              </span>
+
+              <strong>
+                MENJAGA<br>
+                PENYAMARAN
+              </strong>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="lampah"
+            >
+
+              <span class="sayembara-icon">
+                ♧
+              </span>
+
+              <strong>
+                MELANJUTKAN<br>
+                LAMPAH
+              </strong>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="mahkota"
+            >
+
+              <span class="sayembara-icon">
+                ◇
+              </span>
+
+              <strong>
+                MEMAKAI<br>
+                MAHKOTA RAJA
+              </strong>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="pulang"
+            >
+
+              <span class="sayembara-icon">
+                ◌
+              </span>
+
+              <strong>
+                KEMBALI<br>
+                KE KERAJAAN
+              </strong>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="tergesa"
+            >
+
+              <span class="sayembara-icon">
+                ▱
+              </span>
+
+              <strong>
+                TERGESA-GESA<br>
+                MEMASUKI KOTA
+              </strong>
+
+            </button>
+
+
+          </div>
+
+
+          <button
+            type="button"
+            class="sayembara-next"
+            id="btnNextSayembara"
+            disabled
+          >
+
+            <span>
+              LANJUT
+            </span>
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         SCREEN 08 — SELESAI
+         =================================================== -->
+
+    <section
+      class="story-screen departure-story-screen"
+      id="story-chapter-08"
+    >
+
+      <div
+        class="departure-story-background chapter03-departure-bg"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="departure-story-overlay"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="departure-story-batik"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="departure-story-container">
+
+
+        <div class="departure-story-label">
+          BABAK BARU DIMULAI
+        </div>
+
+
+        <h2 class="departure-story-title">
+          Menetap di <span>Pasir Luhur</span>
+        </h2>
+
+
+        <div class="departure-story-text">
+
+          <p>
+
+            Kamandaka telah tiba di Pasir Luhur.
+            Ia belajar bahwa sebuah tempat baru harus
+            dikenali dengan sabar sebelum seseorang
+            menentukan langkah.
+
+          </p>
+
+
+          <p>
+
+            Dengan tetap menjaga penyamaran, ia meneruskan
+            pengembaraannya dan bersiap menghadapi
+            peristiwa berikutnya di Pasir Luhur.
+
+          </p>
+
+
+          <p>
+            Perjalanan Kamandaka memasuki babak yang baru.
+          </p>
+
+        </div>
+
+
+        <div class="departure-story-quote">
+
+          <span>
+            “
+          </span>
+
+          <p>
+
+            Ingat marang papan sing kok tekani,
+            amarga saben wewengkon nduweni critane dhewe.
+
+          </p>
+
+        </div>
+
+
+        <div class="departure-story-reward">
+
+
+          <div class="departure-reward-item">
+
+            <span class="departure-reward-icon">
+              ✦
+            </span>
+
+            <div>
+
+              <small>
+                PEROLEHAN
+              </small>
+
+              <strong id="chapterXpReward">
+                +50 XP
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="departure-reward-item">
+
+            <span class="departure-reward-icon">
+              ◈
+            </span>
+
+            <div>
+
+              <small>
+                BASA
+              </small>
+
+              <strong id="chapterBasaReward">
+                +10 BASA
+              </strong>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="departure-story-progress">
+
+          <span>
+            BAB
+          </span>
+
+          <strong id="chapterCurrentNumber">
+            03
+          </strong>
+
+          <span>
+            /
+          </span>
+
+          <strong id="chapterTotalNumber">
+            10
+          </strong>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="story-start-button"
+          id="btnContinueChapter"
+        >
+
+          <span>
+            KEMBALI KE PETA
+          </span>
+
+          <span class="story-button-arrow">
+            →
+          </span>
+
+        </button>
+
+
+      </div>
+
+
+      <div class="departure-story-mark">
+
+        <span>
+          08
+        </span>
+
+        <span class="departure-story-mark-line"></span>
+
+        <span>
+          09
+        </span>
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <!-- MAP ENGINE HARUS SEBELUM APP.JS -->
+  <script src="../../js/components/mapEngine.js"></script>
+
+  <script src="app.js"></script>
+
+  <script src="../../js/components/navbar.js"></script>
+
+
+</body>
+
+</html>

@@ -1,20 +1,12 @@
 /* =========================================================
    GAMEPLAY.CSS
-   SCREEN 01 + SCREEN 02 + SCREEN 03
+   GAMEPLAY 03 — PASIR LUHUR
 
-   SCREEN 01:
-   - TIDAK DIUBAH
-
-   SCREEN 02:
-   - BG PAJAJARAN SAJA
-   - TANPA KARAKTER
-   - 2 DIALOG
-   - TANPA HUD / BAB / XP / BASA
-   - DIALOG LEBIH KECIL
-   - JARAK ANTAR DIALOG LEBIH LEGA
-
-   SCREEN 03:
-   - TIDAK DIUBAH
+   SCREEN 01 — OPENING
+   SCREEN 02 — DIALOG
+   SCREEN 03 — TRANSISI
+   SCREEN 06 — CERITA PASIR LUHUR
+   SCREEN 08 — SELESAI
    ========================================================= */
 
 
@@ -62,26 +54,33 @@
     display: none;
 }
 
-
 .story-screen.active {
     display: block;
 }
 
 
 /* =========================================================
-   =========================================================
    SCREEN 01
    OPENING PAJAJARAN
-   JANGAN DIUBAH
-   =========================================================
    ========================================================= */
+
+#story-opening {
+    position: relative;
+
+    width: 100%;
+    min-height: calc(100vh - 72px);
+
+    overflow: hidden;
+
+    background: var(--story-cream);
+}
 
 
 /* =========================================================
    BACKGROUND SCREEN 01
    ========================================================= */
 
-.story-background {
+#story-opening .story-background {
     position: absolute;
 
     inset: 0;
@@ -103,7 +102,7 @@
    OVERLAY SCREEN 01
    ========================================================= */
 
-.story-overlay {
+#story-opening .story-overlay {
     position: absolute;
 
     inset: 0;
@@ -125,7 +124,7 @@
    BATIK SCREEN 01
    ========================================================= */
 
-.story-batik {
+#story-opening .story-batik {
     position: absolute;
 
     inset: 0;
@@ -149,7 +148,7 @@
    CONTENT SCREEN 01
    ========================================================= */
 
-.story-content {
+#story-opening .story-content {
     position: relative;
 
     z-index: 5;
@@ -184,7 +183,7 @@
    EYEBROW
    ========================================================= */
 
-.story-eyebrow {
+#story-opening .story-eyebrow {
     display: flex;
 
     align-items: center;
@@ -207,7 +206,7 @@
 }
 
 
-.story-eyebrow-line {
+#story-opening .story-eyebrow-line {
     width: 30px;
 
     height: 1px;
@@ -220,7 +219,7 @@
    TITLE
    ========================================================= */
 
-.story-title {
+#story-opening .story-title {
     margin: 0 0 25px;
 
     display: flex;
@@ -229,7 +228,7 @@
 }
 
 
-.story-title-small {
+#story-opening .story-title-small {
     margin-bottom: 8px;
 
     font-family:
@@ -246,7 +245,7 @@
 }
 
 
-.story-title-main {
+#story-opening .story-title-main {
     font-family:
         "Libre Caslon Text",
         serif;
@@ -268,7 +267,7 @@
    INTRO
    ========================================================= */
 
-.story-intro {
+#story-opening .story-intro {
     width:
         min(
             480px,
@@ -291,7 +290,7 @@
 
 
 /* =========================================================
-   BUTTON SCREEN 01
+   BUTTON
    ========================================================= */
 
 .story-start-button {
@@ -363,7 +362,7 @@
    CHARACTER SCREEN 01
    ========================================================= */
 
-.story-character {
+#story-opening .story-character {
     position: absolute;
 
     right: 10%;
@@ -393,7 +392,7 @@
 }
 
 
-.story-character img {
+#story-opening .story-character img {
     width: 100%;
 
     height: 100%;
@@ -416,7 +415,7 @@
    CHAPTER MARK
    ========================================================= */
 
-.story-chapter-mark {
+#story-opening .story-chapter-mark {
     position: absolute;
 
     right: 35px;
@@ -445,7 +444,7 @@
 }
 
 
-.story-chapter-line {
+#story-opening .story-chapter-line {
     width: 35px;
 
     height: 1px;
@@ -461,15 +460,8 @@
 
 
 /* =========================================================
-   =========================================================
    SCREEN 02
    DIALOG PAJAJARAN
-   =========================================================
-   ========================================================= */
-
-
-/* =========================================================
-   SCREEN 02 AREA
    ========================================================= */
 
 #story-dialog.story-dialog-screen {
@@ -490,20 +482,15 @@
 
 /* =========================================================
    BACKGROUND SCREEN 02
-   HANYA BG PAJAJARAN
-
-   Gambar dibuat sedikit lebih besar agar ketika posisinya
-   diturunkan tidak muncul strip kosong/coklat di atas.
    ========================================================= */
 
 #story-dialog .story-background-dialog {
     position: absolute;
 
-    top: -18px;
-    left: -2%;
+    inset: 0;
 
-    width: 104%;
-    height: calc(100% + 55px);
+    width: 100%;
+    height: 100%;
 
     z-index: 0;
 
@@ -515,11 +502,7 @@
     background-size: cover;
 
     background-position:
-        center 38%;
-
-    transform: scale(1.01);
-
-    transform-origin: center center;
+        center calc(50% + 45px);
 }
 
 
@@ -539,9 +522,9 @@
     background:
         linear-gradient(
             180deg,
-            rgba(15, 12, 8, 0.00) 0%,
+            rgba(15, 12, 8, 0.02) 0%,
             rgba(15, 12, 8, 0.04) 55%,
-            rgba(15, 12, 8, 0.20) 100%
+            rgba(15, 12, 8, 0.16) 100%
         );
 }
 
@@ -556,7 +539,7 @@
 
 
 /* =========================================================
-   SCREEN 02 TANPA SEMUA KARAKTER
+   SCREEN 02 TANPA KARAKTER
    ========================================================= */
 
 #story-dialog .story-character,
@@ -570,12 +553,6 @@
 
 /* =========================================================
    SCREEN 02 TANPA HUD
-
-   Tidak ada:
-   - BAB
-   - BASA
-   - XP
-   - SCORE
    ========================================================= */
 
 #story-dialog .gameplay-hud-left,
@@ -598,14 +575,14 @@
 
     left: 50%;
 
-    bottom: 30px;
+    bottom: 24px;
 
     transform:
         translateX(-50%);
 
     width:
         min(
-            900px,
+            860px,
             calc(100% - 220px)
         );
 
@@ -622,23 +599,23 @@
 
     overflow: hidden;
 
-    border-radius: 17px;
+    border-radius: 16px;
 
     background:
         rgba(
             255,
             253,
             247,
-            0.96
+            0.94
         );
 
     box-shadow:
-        0 18px 40px
+        0 15px 35px
         rgba(
             18,
             32,
             9,
-            0.22
+            0.18
         );
 }
 
@@ -649,33 +626,21 @@
 
 #story-dialog .dialog-item {
     padding:
-        18px
-        32px
-        8px;
+        15px
+        28px
+        5px;
 }
 
-
-/* =========================================================
-   DIALOG PERTAMA
-   ========================================================= */
 
 #story-dialog .dialog-item:first-child {
-    padding-top: 23px;
-    padding-bottom: 14px;
+    padding-top: 19px;
 }
 
 
-/* =========================================================
-   DIALOG KEDUA
-
-   JARAK DIBUAT LEBIH LEGA
-   ========================================================= */
-
 #story-dialog .dialog-item + .dialog-item {
-    padding-top: 14px;
-    padding-bottom: 17px;
+    padding-top: 18px;
 
-    margin-top: 2px;
+    padding-bottom: 10px;
 }
 
 
@@ -685,7 +650,7 @@
 
 #story-dialog .dialog-character-name {
     margin:
-        0 0 8px;
+        0 0 7px;
 
     color:
         #18310c;
@@ -695,11 +660,14 @@
         Georgia,
         serif;
 
-    font-size: 21px;
+    font-size:
+        20px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 
-    line-height: 1.25;
+    line-height:
+        1.2;
 }
 
 
@@ -710,7 +678,8 @@
 #story-dialog .dialog-text {
     margin: 0;
 
-    padding-left: 14px;
+    padding-left:
+        13px;
 
     border-left:
         2px solid
@@ -718,7 +687,7 @@
             183,
             154,
             85,
-            0.35
+            0.32
         );
 
     color:
@@ -729,55 +698,64 @@
         Georgia,
         serif;
 
-    font-size: 16px;
+    font-size:
+        15px;
 
-    line-height: 1.55;
+    line-height:
+        1.5;
 }
 
 
 /* =========================================================
-   FOOTER DIALOG
+   FOOTER
    ========================================================= */
 
 #story-dialog .dialog-footer {
-    min-height: 64px;
+    min-height:
+        58px;
 
     padding:
-        7px
-        20px;
+        6px
+        18px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    gap: 20px;
+    gap:
+        15px;
 
     background:
         #fff0a0;
 }
 
 
-/* =========================================================
-   DENGARKAN
-   ========================================================= */
-
 #story-dialog .dialog-listen-button {
-    min-height: 48px;
+    min-height:
+        42px;
 
     padding:
-        0 7px;
+        0 5px;
 
-    display: inline-flex;
+    display:
+        inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 10px;
+    gap:
+        9px;
 
-    border: none;
+    border:
+        none;
 
-    background: transparent;
+    background:
+        transparent;
 
     color:
         #3d401f;
@@ -787,28 +765,32 @@
         Georgia,
         serif;
 
-    font-size: 15px;
+    font-size:
+        14px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
 
-/* =========================================================
-   ICON DENGARKAN
-   ========================================================= */
-
 #story-dialog .listen-icon {
-    width: 44px;
+    width:
+        40px;
 
-    height: 44px;
+    height:
+        40px;
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    border-radius: 5px;
+    border-radius:
+        5px;
 
     background:
         #f8df55;
@@ -817,31 +799,35 @@
         Arial,
         sans-serif;
 
-    font-size: 18px;
+    font-size:
+        17px;
 }
 
 
-/* =========================================================
-   LANJUT
-   ========================================================= */
-
 #story-dialog .dialog-next-button {
-    min-height: 40px;
+    min-height:
+        38px;
 
     padding:
-        0 21px;
+        0 20px;
 
-    display: inline-flex;
+    display:
+        inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    gap: 11px;
+    gap:
+        11px;
 
-    border: none;
+    border:
+        none;
 
-    border-radius: 7px;
+    border-radius:
+        7px;
 
     background:
         #193608;
@@ -853,17 +839,17 @@
         "Hanken Grotesk",
         sans-serif;
 
-    font-size: 9px;
+    font-size:
+        9px;
 
-    font-weight: 700;
+    font-weight:
+        700;
 
-    letter-spacing: 0.08em;
+    letter-spacing:
+        0.08em;
 
-    cursor: pointer;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
+    cursor:
+        pointer;
 }
 
 
@@ -877,13 +863,7 @@
 
 
 /* =========================================================
-   FOOTER DUPLIKAT DI LUAR SCREEN 02
-
-   HTML lama kamu punya .dialog-footer tambahan setelah
-   penutup section Screen 02.
-
-   Kita sembunyikan yang berada langsung di gameplay-page.
-   Footer yang di dalam #story-dialog TETAP TAMPIL.
+   FOOTER DUPLIKAT
    ========================================================= */
 
 .gameplay-page > .dialog-footer {
@@ -892,14 +872,13 @@
 
 
 /* =========================================================
-   =========================================================
    SCREEN 03
-   TRANSISI GAMEPLAY
-   JANGAN DIUBAH
-   =========================================================
+   TRANSISI
    ========================================================= */
 
-.gameplay-transition-screen {
+#story-gameplay {
+    position: relative;
+
     background:
         #fff9ea;
 }
@@ -1002,21 +981,1154 @@
 
 /* =========================================================
    =========================================================
-   TABLET
+   SCREEN 06
+   CERITA — JEJAK PASIR LUHUR
    =========================================================
+   ========================================================= */
+
+
+/*
+   INI BAGIAN PENTING.
+
+   HTML menggunakan:
+
+   id="story-pasir-story"
+
+   Jadi CSS harus memakai #story-pasir-story.
+*/
+
+
+#story-pasir-story {
+    position: relative;
+
+    width: 100%;
+
+    min-height:
+        calc(100vh - 72px);
+
+    overflow: hidden;
+
+    background:
+        #fff9ea;
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   BACKGROUND SCREEN 06
+   ========================================================= */
+
+#story-pasir-story .sayembara-story-background {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        url("../../assets/images/bg_pajajaran.png");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position:
+        center;
+}
+
+
+/* =========================================================
+   OVERLAY SCREEN 06
+   ========================================================= */
+
+#story-pasir-story::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 249, 234, 0.97) 0%,
+            rgba(255, 249, 234, 0.91) 35%,
+            rgba(255, 249, 234, 0.65) 58%,
+            rgba(255, 249, 234, 0.20) 100%
+        );
+}
+
+
+/* =========================================================
+   BATIK SCREEN 06
+   ========================================================= */
+
+#story-pasir-story .sayembara-story-batik {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat: repeat;
+
+    background-size:
+        420px auto;
+
+    opacity:
+        0.035;
+}
+
+
+/* =========================================================
+   CONTAINER SCREEN 06
+   ========================================================= */
+
+#story-pasir-story .sayembara-story-container {
+    position: relative;
+
+    z-index: 3;
+
+    width:
+        min(
+            1180px,
+            calc(100% - 100px)
+        );
+
+    min-height:
+        calc(100vh - 72px);
+
+    margin:
+        0 auto;
+
+    padding:
+        70px
+        0
+        80px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        center;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+#story-pasir-story .sayembara-story-label {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    padding:
+        7px 14px;
+
+    margin-bottom:
+        22px;
+
+    border-radius:
+        20px;
+
+    background:
+        var(--story-dark);
+
+    color:
+        var(--story-cream);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+#story-pasir-story .sayembara-story-title {
+    margin:
+        0 0 25px;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            58px,
+            7vw,
+            96px
+        );
+
+    line-height:
+        0.9;
+
+    letter-spacing:
+        -0.045em;
+
+    font-weight:
+        700;
+
+    color:
+        var(--story-dark);
+
+    max-width:
+        650px;
+}
+
+
+#story-pasir-story .sayembara-story-title span {
+    display:
+        block;
+
+    color:
+        var(--story-brown);
+}
+
+
+/* =========================================================
+   CERITA
+   ========================================================= */
+
+#story-pasir-story .sayembara-story-text {
+    width:
+        min(
+            570px,
+            100%
+        );
+
+    margin-bottom:
+        20px;
+}
+
+
+#story-pasir-story .sayembara-story-text p {
+    margin:
+        0 0 12px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.7;
+
+    color:
+        #55584d;
+}
+
+
+/* =========================================================
+   REQUIREMENTS
+   ========================================================= */
+
+#story-pasir-story .sayembara-story-requirements {
+    width:
+        min(
+            650px,
+            100%
+        );
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    gap:
+        8px 25px;
+
+    margin:
+        5px 0 18px;
+}
+
+
+#story-pasir-story .sayembara-requirement {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        12px;
+
+    padding:
+        9px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            183,
+            154,
+            85,
+            0.18
+        );
+}
+
+
+/* =========================================================
+   REQUIREMENT ICON
+   ========================================================= */
+
+#story-pasir-story .requirement-icon {
+    flex:
+        0 0 32px;
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        8px;
+
+    background:
+        #fff0a0;
+
+    color:
+        var(--story-dark);
+
+    font-size:
+        18px;
+}
+
+
+/* =========================================================
+   REQUIREMENT TEXT
+   ========================================================= */
+
+#story-pasir-story .sayembara-requirement > div {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+}
+
+
+#story-pasir-story .sayembara-requirement strong {
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    color:
+        var(--story-dark);
+}
+
+
+#story-pasir-story .sayembara-requirement > div > span {
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.45;
+
+    color:
+        #777568;
+}
+
+
+/* =========================================================
+   ENDING TEXT
+   ========================================================= */
+
+#story-pasir-story .sayembara-story-ending {
+    width:
+        min(
+            600px,
+            100%
+        );
+
+    margin:
+        5px 0 25px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.65;
+
+    color:
+        #777568;
+}
+
+
+/* =========================================================
+   BUTTON SCREEN 06
+   ========================================================= */
+
+#story-pasir-story #btnStartSayembara {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        22px;
+
+    min-width:
+        205px;
+
+    min-height:
+        50px;
+
+    padding:
+        0 24px;
+
+    border:
+        none;
+
+    border-radius:
+        4px;
+
+    background:
+        var(--story-dark);
+
+    color:
+        var(--story-cream);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+#story-pasir-story #btnStartSayembara:hover {
+    background:
+        var(--story-green);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(
+            23,
+            35,
+            14,
+            0.18
+        );
+}
+
+
+/* =========================================================
+   SCREEN MARK
+   ========================================================= */
+
+#story-pasir-story .sayembara-story-mark {
+    position:
+        absolute;
+
+    right:
+        35px;
+
+    bottom:
+        35px;
+
+    z-index:
+        5;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        var(--story-brown);
+}
+
+
+#story-pasir-story .sayembara-story-mark-line {
+    width:
+        35px;
+
+    height:
+        1px;
+
+    background:
+        rgba(
+            118,
+            80,
+            59,
+            0.4
+        );
+}
+
+
+/* =========================================================
+   SCREEN 08
+   SELESAI
+   ========================================================= */
+
+#story-chapter-08 {
+    position:
+        relative;
+
+    width:
+        100%;
+
+    min-height:
+        calc(100vh - 72px);
+
+    overflow:
+        hidden;
+
+    background:
+        var(--story-cream);
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   BACKGROUND SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .departure-story-background {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        0;
+
+    background-image:
+        url("../../assets/images/bg_pajajaran.png");
+
+    background-position:
+        center;
+
+    background-size:
+        cover;
+
+    background-repeat:
+        no-repeat;
+}
+
+
+/* =========================================================
+   OVERLAY SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .departure-story-overlay {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 249, 234, 0.96) 0%,
+            rgba(255, 249, 234, 0.90) 38%,
+            rgba(255, 249, 234, 0.45) 70%,
+            rgba(255, 249, 234, 0.15) 100%
+        );
+}
+
+
+/* =========================================================
+   BATIK SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .departure-story-batik {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        2;
+
+    pointer-events:
+        none;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat:
+        repeat;
+
+    background-size:
+        420px auto;
+
+    opacity:
+        0.04;
+}
+
+
+/* =========================================================
+   CONTAINER SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .departure-story-container {
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    width:
+        min(
+            1180px,
+            calc(100% - 100px)
+        );
+
+    min-height:
+        calc(100vh - 72px);
+
+    margin:
+        0 auto;
+
+    padding:
+        90px
+        0
+        80px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        flex-start;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+#story-chapter-08 .departure-story-label {
+    margin-bottom:
+        15px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.18em;
+
+    color:
+        var(--story-gold);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+#story-chapter-08 .departure-story-title {
+    margin:
+        0 0 25px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            50px,
+            7vw,
+            90px
+        );
+
+    line-height:
+        0.95;
+
+    letter-spacing:
+        -0.04em;
+
+    color:
+        var(--story-dark);
+}
+
+
+#story-chapter-08 .departure-story-title span {
+    color:
+        var(--story-brown);
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+#story-chapter-08 .departure-story-text {
+    width:
+        min(
+            560px,
+            100%
+        );
+
+    margin-bottom:
+        25px;
+}
+
+
+#story-chapter-08 .departure-story-text p {
+    margin:
+        0 0 12px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.75;
+
+    color:
+        #55584d;
+}
+
+
+/* =========================================================
+   QUOTE
+   ========================================================= */
+
+#story-chapter-08 .departure-story-quote {
+    width:
+        min(
+            500px,
+            100%
+        );
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        25px;
+
+    padding:
+        15px 20px;
+
+    background:
+        rgba(
+            255,
+            253,
+            247,
+            0.88
+        );
+
+    border-left:
+        3px solid
+        var(--story-gold);
+}
+
+
+#story-chapter-08 .departure-story-quote > span {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        38px;
+
+    line-height:
+        0.7;
+
+    color:
+        var(--story-gold);
+}
+
+
+#story-chapter-08 .departure-story-quote p {
+    margin:
+        0;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        18px;
+
+    line-height:
+        1.5;
+
+    font-style:
+        italic;
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   REWARD
+   ========================================================= */
+
+#story-chapter-08 .departure-story-reward {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        20px;
+}
+
+
+#story-chapter-08 .departure-reward-item {
+    min-width:
+        130px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    padding:
+        10px 13px;
+
+    background:
+        rgba(
+            255,
+            249,
+            234,
+            0.90
+        );
+
+    border:
+        1px solid
+        rgba(
+            183,
+            154,
+            85,
+            0.35
+        );
+}
+
+
+#story-chapter-08 .departure-reward-icon {
+    font-size:
+        18px;
+
+    color:
+        var(--story-gold);
+}
+
+
+#story-chapter-08 .departure-reward-item small {
+    display:
+        block;
+
+    margin-bottom:
+        2px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        7px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        var(--story-brown);
+}
+
+
+#story-chapter-08 .departure-reward-item strong {
+    display:
+        block;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+#story-chapter-08 .departure-story-progress {
+    display:
+        flex;
+
+    align-items:
+        baseline;
+
+    gap:
+        7px;
+
+    margin-bottom:
+        22px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        var(--story-brown);
+}
+
+
+#story-chapter-08 .departure-story-progress strong {
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        22px;
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   SCREEN MARK
+   ========================================================= */
+
+#story-chapter-08 .departure-story-mark {
+    position:
+        absolute;
+
+    right:
+        35px;
+
+    bottom:
+        35px;
+
+    z-index:
+        8;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    color:
+        var(--story-brown);
+}
+
+
+#story-chapter-08 .departure-story-mark-line {
+    width:
+        35px;
+
+    height:
+        1px;
+
+    background:
+        rgba(
+            118,
+            80,
+            59,
+            0.4
+        );
+}
+
+
+/* =========================================================
+   TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
 
     /* SCREEN 01 */
 
-    .story-content {
+    #story-opening .story-content {
         width:
             calc(100% - 60px);
     }
 
 
-    .story-overlay {
+    #story-opening .story-overlay {
         background:
             linear-gradient(
                 90deg,
@@ -1027,26 +2139,20 @@
     }
 
 
-    .story-character {
-        right: -5%;
+    #story-opening .story-character {
+        right:
+            -5%;
 
-        width: 48vw;
+        width:
+            48vw;
     }
 
 
     /* SCREEN 02 */
 
     #story-dialog .story-background-dialog {
-        top: -15px;
-
-        left: -3%;
-
-        width: 106%;
-
-        height: calc(100% + 45px);
-
         background-position:
-            center 40%;
+            center calc(50% + 30px);
     }
 
 
@@ -1054,81 +2160,72 @@
         width:
             calc(100% - 100px);
 
-        bottom: 22px;
+        bottom:
+            20px;
     }
 
 
     #story-dialog .dialog-item {
         padding:
-            16px
-            27px
-            8px;
-    }
-
-
-    #story-dialog .dialog-item:first-child {
-        padding-top: 20px;
-
-        padding-bottom: 13px;
-    }
-
-
-    #story-dialog .dialog-item + .dialog-item {
-        padding-top: 13px;
-
-        padding-bottom: 15px;
+            14px
+            24px
+            5px;
     }
 
 
     #story-dialog .dialog-character-name {
-        font-size: 19px;
+        font-size:
+            18px;
     }
 
 
     #story-dialog .dialog-text {
-        font-size: 15px;
-
-        line-height: 1.5;
+        font-size:
+            14px;
     }
 
 
-    #story-dialog .dialog-footer {
-        min-height: 60px;
+    /* SCREEN 06 */
+
+    #story-pasir-story .sayembara-story-container {
+        width:
+            calc(100% - 60px);
 
         padding:
-            6px 17px;
+            60px 0 70px;
     }
 
 
-    #story-dialog .dialog-listen-button {
-        font-size: 14px;
+    #story-pasir-story .sayembara-story-title {
+        font-size:
+            clamp(
+                52px,
+                9vw,
+                78px
+            );
     }
 
 
-    #story-dialog .listen-icon {
-        width: 42px;
-
-        height: 42px;
-
-        font-size: 17px;
+    #story-pasir-story .sayembara-story-requirements {
+        max-width:
+            600px;
     }
 
 
-    #story-dialog .dialog-next-button {
-        min-height: 38px;
+    /* SCREEN 08 */
+
+    #story-chapter-08 .departure-story-container {
+        width:
+            calc(100% - 60px);
 
         padding:
-            0 18px;
-
-        font-size: 8px;
+            80px 0 70px;
     }
 }
 
 
 /* =========================================================
-   =========================================================
    MOBILE
-   =========================================================
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -1140,17 +2237,15 @@
     }
 
 
-    /* =====================================================
-       SCREEN 01
-       ===================================================== */
+    /* SCREEN 01 */
 
-    .story-background {
+    #story-opening .story-background {
         background-position:
             60% center;
     }
 
 
-    .story-overlay {
+    #story-opening .story-overlay {
         background:
             linear-gradient(
                 180deg,
@@ -1161,7 +2256,7 @@
     }
 
 
-    .story-content {
+    #story-opening .story-content {
         width:
             calc(100% - 40px);
 
@@ -1182,21 +2277,22 @@
     }
 
 
-    .story-eyebrow {
+    #story-opening .story-eyebrow {
         justify-content:
             center;
 
-        font-size: 8px;
+        font-size:
+            8px;
     }
 
 
-    .story-title {
+    #story-opening .story-title {
         align-items:
             center;
     }
 
 
-    .story-title-main {
+    #story-opening .story-title-main {
         font-size:
             clamp(
                 48px,
@@ -1206,845 +2302,48 @@
     }
 
 
-    .story-intro {
-        font-size: 13px;
+    #story-opening .story-intro {
+        font-size:
+            13px;
 
-        max-width: 330px;
+        max-width:
+            330px;
     }
 
 
-    .story-start-button {
-        min-height: 48px;
-
-        padding:
-            0 22px;
-    }
-
-
-    .story-character {
-        right: 50%;
+    #story-opening .story-character {
+        right:
+            50%;
 
         transform:
             translateX(50%);
 
-        width: 250px;
+        width:
+            250px;
 
-        height: 43%;
+        height:
+            43%;
 
-        bottom: 0;
-    }
-
-
-    .story-chapter-mark {
-        right: 20px;
-
-        bottom: 18px;
-    }
-
-
-    /* =====================================================
-       SCREEN 02
-       ===================================================== */
-
-    #story-dialog.story-dialog-screen {
-        min-height:
-            calc(100svh - 64px);
-    }
-
-
-    #story-dialog .story-background-dialog {
-        top: -10px;
-
-        left: -5%;
-
-        width: 110%;
-
-        height: calc(100% + 30px);
-
-        background-size: cover;
-
-        background-position:
-            center 42%;
-    }
-
-
-    #story-dialog .dialog-wrapper {
-        left: 12px;
-
-        right: 12px;
-
-        bottom: 10px;
-
-        width: auto;
-
-        transform: none;
-    }
-
-
-    #story-dialog .dialog-box {
-        border-radius: 14px;
-    }
-
-
-    #story-dialog .dialog-item {
-        padding:
-            13px
-            16px
-            6px;
-    }
-
-
-    #story-dialog .dialog-item:first-child {
-        padding-top: 17px;
-
-        padding-bottom: 12px;
-    }
-
-
-    /* Jarak dialog mobile */
-
-    #story-dialog .dialog-item + .dialog-item {
-        padding-top: 12px;
-
-        padding-bottom: 13px;
-
-        margin-top: 1px;
-    }
-
-
-    #story-dialog .dialog-character-name {
-        margin-bottom: 5px;
-
-        font-size: 17px;
-    }
-
-
-    #story-dialog .dialog-text {
-        padding-left: 10px;
-
-        font-size: 13px;
-
-        line-height: 1.5;
-    }
-
-
-    #story-dialog .dialog-footer {
-        min-height: 53px;
-
-        padding:
-            5px 9px;
-    }
-
-
-    #story-dialog .dialog-listen-button {
-        min-height: 40px;
-
-        padding:
-            0 3px;
-
-        gap: 7px;
-
-        font-size: 12px;
-    }
-
-
-    #story-dialog .listen-icon {
-        width: 36px;
-
-        height: 36px;
-
-        font-size: 15px;
-    }
-
-
-    #story-dialog .dialog-next-button {
-        min-height: 34px;
-
-        padding:
-            0 14px;
-
-        gap: 8px;
-
-        border-radius: 6px;
-
-        font-size: 7px;
-    }
-
-
-    /* =====================================================
-       SCREEN 03
-       ===================================================== */
-
-    .gameplay-transition-content {
-        padding:
-            30px 20px;
-    }
-}
-
-
-/* =========================================================
-   VERY SMALL PHONE
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-    /* SCREEN 01 */
-
-    .story-character {
-        width: 260px;
-    }
-
-
-    .story-content {
-        padding-bottom: 270px;
-    }
-
-
-    .story-title-main {
-        font-size: 45px;
-    }
-
-
-    .story-intro {
-        font-size: 12px;
+        bottom:
+            0;
     }
 
 
     /* SCREEN 02 */
 
-    #story-dialog .story-background-dialog {
-        top: -8px;
-
-        left: -7%;
-
-        width: 114%;
-
-        height: calc(100% + 25px);
-
-        background-position:
-            center 43%;
-    }
-
-
-    #story-dialog .dialog-wrapper {
-        left: 9px;
-
-        right: 9px;
-
-        bottom: 8px;
-    }
-
-
-    #story-dialog .dialog-character-name {
-        font-size: 16px;
-    }
-
-
-    #story-dialog .dialog-text {
-        font-size: 12px;
-
-        line-height: 1.45;
-    }
-
-
-    #story-dialog .dialog-footer {
-        min-height: 49px;
-    }
-
-
-    #story-dialog .dialog-listen-button {
-        font-size: 11px;
-    }
-
-
-    #story-dialog .listen-icon {
-        width: 33px;
-
-        height: 33px;
-
-        font-size: 14px;
-    }
-
-
-    #story-dialog .dialog-next-button {
-        min-height: 32px;
-
-        padding:
-            0 12px;
-    }
-
-    /* =========================================================
-   FINAL FIX
-   SCREEN 02 — DIALOG PAJAJARAN
-   ========================================================= */
-
-
-/* =========================================================
-   SCREEN
-   ========================================================= */
-
-#story-dialog.story-dialog-screen {
-
-    position: relative;
-
-    width: 100%;
-
-    min-height:
-        calc(100vh - 80px);
-
-    overflow: hidden;
-
-    background: #302216;
-
-    color: #122009;
-
-}
-
-
-/* =========================================================
-   BACKGROUND
-   =========================================================
-
-   JANGAN memakai top: 45px.
-
-   Background tetap memenuhi seluruh screen,
-   tetapi posisi gambar digeser sedikit ke bawah.
-
-   Jadi:
-   - tidak ada strip kosong
-   - tidak ada warna cokelat di atas
-   - gambar tetap proporsional
-   ========================================================= */
-
-#story-dialog .story-background-dialog {
-
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    z-index: 0;
-
-    background-image:
-        url("../../assets/images/bg_pajajaran.png");
-
-    background-repeat: no-repeat;
-
-    background-size: cover;
-
-    /*
-       Nilai positif = gambar turun.
-    */
-
-    background-position:
-        center calc(50% + 45px);
-
-}
-
-
-/* =========================================================
-   OVERLAY
-   ========================================================= */
-
-#story-dialog .story-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 1;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(15, 12, 8, 0.02) 0%,
-            rgba(15, 12, 8, 0.04) 55%,
-            rgba(15, 12, 8, 0.16) 100%
-        );
-
-}
-
-
-/* =========================================================
-   MATIKAN BATIK
-   ========================================================= */
-
-#story-dialog .story-batik {
-
-    display: none !important;
-
-}
-
-
-/* =========================================================
-   MATIKAN KARAKTER
-   ========================================================= */
-
-#story-dialog .dialog-character,
-#story-dialog .dialogue-character,
-#story-dialog .dialogue-character-raden,
-#story-dialog .dialogue-character-prabu {
-
-    display: none !important;
-
-}
-
-
-/* =========================================================
-   MATIKAN HUD
-   BAB / BASA / XP
-   ========================================================= */
-
-#story-dialog .gameplay-hud-left,
-#story-dialog .gameplay-hud-right,
-#story-dialog .dialog-hud-left,
-#story-dialog .dialog-hud-right,
-#story-dialog .hud-badge,
-#story-dialog .dialogue-location {
-
-    display: none !important;
-
-}
-
-
-/* =========================================================
-   DIALOG WRAPPER
-   ========================================================= */
-
-#story-dialog .dialog-wrapper {
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 24px;
-
-    transform:
-        translateX(-50%);
-
-    width:
-        min(
-            860px,
-            calc(100% - 220px)
-        );
-
-    z-index: 5;
-
-}
-
-
-/* =========================================================
-   DIALOG BOX
-   ========================================================= */
-
-#story-dialog .dialog-box {
-
-    width: 100%;
-
-    overflow: hidden;
-
-    border-radius: 16px;
-
-    background:
-        rgba(
-            255,
-            253,
-            247,
-            0.94
-        );
-
-    box-shadow:
-        0 15px 35px
-        rgba(
-            18,
-            32,
-            9,
-            0.18
-        );
-
-}
-
-
-/* =========================================================
-   DIALOG ITEM
-   ========================================================= */
-
-#story-dialog .dialog-item {
-
-    padding:
-        15px
-        28px
-        5px;
-
-}
-
-
-/* DIALOG PERTAMA */
-
-#story-dialog .dialog-item:first-child {
-
-    padding-top: 19px;
-
-}
-
-
-/* =========================================================
-   JARAK ANTAR DIALOG
-   =========================================================
-
-   INI YANG MEMPERBAIKI MASALAH
-   "BARIS TERLALU DEKAT".
-   ========================================================= */
-
-#story-dialog .dialog-item + .dialog-item {
-
-    padding-top: 18px;
-
-    padding-bottom: 10px;
-
-}
-
-
-/* =========================================================
-   NAMA PEMBICARA
-   ========================================================= */
-
-#story-dialog .dialog-character-name {
-
-    margin:
-        0 0 7px;
-
-    color:
-        #18310c;
-
-    font-family:
-        "Libre Caslon Text",
-        Georgia,
-        serif;
-
-    font-size:
-        20px;
-
-    font-weight:
-        700;
-
-    line-height:
-        1.2;
-
-}
-
-
-/* =========================================================
-   TEKS
-   ========================================================= */
-
-#story-dialog .dialog-text {
-
-    margin: 0;
-
-    padding-left:
-        13px;
-
-    border-left:
-        2px solid
-        rgba(
-            183,
-            154,
-            85,
-            0.32
-        );
-
-    color:
-        #45473f;
-
-    font-family:
-        "Libre Caslon Text",
-        Georgia,
-        serif;
-
-    font-size:
-        15px;
-
-    line-height:
-        1.5;
-
-}
-
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-#story-dialog .dialog-footer {
-
-    min-height:
-        58px;
-
-    padding:
-        6px
-        18px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    gap:
-        15px;
-
-    background:
-        #fff0a0;
-
-}
-
-
-/* =========================================================
-   DENGARKAN
-   ========================================================= */
-
-#story-dialog .dialog-listen-button {
-
-    min-height:
-        42px;
-
-    padding:
-        0 5px;
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    gap:
-        9px;
-
-    border:
-        none;
-
-    background:
-        transparent;
-
-    color:
-        #3d401f;
-
-    font-family:
-        "Libre Caslon Text",
-        Georgia,
-        serif;
-
-    font-size:
-        14px;
-
-    cursor:
-        pointer;
-
-}
-
-
-/* =========================================================
-   ICON
-   ========================================================= */
-
-#story-dialog .listen-icon {
-
-    width:
-        40px;
-
-    height:
-        40px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border-radius:
-        5px;
-
-    background:
-        #f8df55;
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size:
-        17px;
-
-}
-
-
-/* =========================================================
-   LANJUT
-   ========================================================= */
-
-#story-dialog .dialog-next-button {
-
-    min-height:
-        38px;
-
-    padding:
-        0 20px;
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        11px;
-
-    border:
-        none;
-
-    border-radius:
-        7px;
-
-    background:
-        #193608;
-
-    color:
-        #fff;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size:
-        9px;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        0.08em;
-
-    cursor:
-        pointer;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-
-}
-
-
-#story-dialog .dialog-next-button:hover {
-
-    transform:
-        translateY(-2px);
-
-    background:
-        #2c4a18;
-
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-    #story-dialog .story-background-dialog {
-
-        background-position:
-            center calc(50% + 30px);
-
-    }
-
-
-    #story-dialog .dialog-wrapper {
-
-        width:
-            calc(100% - 100px);
-
-        bottom:
-            20px;
-
-    }
-
-
-    #story-dialog .dialog-item {
-
-        padding:
-            14px
-            24px
-            5px;
-
-    }
-
-
-    #story-dialog .dialog-item + .dialog-item {
-
-        padding-top:
-            16px;
-
-    }
-
-
-    #story-dialog .dialog-character-name {
-
-        font-size:
-            18px;
-
-    }
-
-
-    #story-dialog .dialog-text {
-
-        font-size:
-            14px;
-
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
-
     #story-dialog.story-dialog-screen {
-
         min-height:
             calc(100svh - 64px);
-
     }
 
 
     #story-dialog .story-background-dialog {
-
-        background-size:
-            cover;
-
         background-position:
             center calc(50% + 20px);
-
     }
 
 
     #story-dialog .dialog-wrapper {
-
         left:
             12px;
 
@@ -2059,62 +2358,45 @@
 
         transform:
             none;
-
     }
 
 
     #story-dialog .dialog-box {
-
         border-radius:
             14px;
-
     }
 
 
     #story-dialog .dialog-item {
-
         padding:
             12px
             15px
             3px;
-
     }
 
 
     #story-dialog .dialog-item:first-child {
-
         padding-top:
             15px;
-
     }
 
 
-    /* JARAK DIALOG MOBILE */
-
     #story-dialog .dialog-item + .dialog-item {
-
         padding-top:
             15px;
 
         padding-bottom:
             8px;
-
     }
 
 
     #story-dialog .dialog-character-name {
-
-        margin-bottom:
-            5px;
-
         font-size:
             17px;
-
     }
 
 
     #story-dialog .dialog-text {
-
         padding-left:
             9px;
 
@@ -2123,41 +2405,20 @@
 
         line-height:
             1.45;
-
     }
 
 
     #story-dialog .dialog-footer {
-
         min-height:
             52px;
 
         padding:
             5px
             9px;
-
-    }
-
-
-    #story-dialog .dialog-listen-button {
-
-        min-height:
-            38px;
-
-        padding:
-            0 3px;
-
-        gap:
-            7px;
-
-        font-size:
-            12px;
-
     }
 
 
     #story-dialog .listen-icon {
-
         width:
             36px;
 
@@ -2166,29 +2427,183 @@
 
         font-size:
             15px;
-
     }
 
 
     #story-dialog .dialog-next-button {
-
         min-height:
             34px;
 
         padding:
             0 14px;
 
-        gap:
-            8px;
-
-        border-radius:
-            6px;
-
         font-size:
             7px;
-
     }
 
+
+    /* SCREEN 03 */
+
+    .gameplay-transition-content {
+        padding:
+            30px 20px;
+    }
+
+
+    /* SCREEN 06 */
+
+    #story-pasir-story {
+        min-height:
+            calc(100svh - 64px);
+    }
+
+
+    #story-pasir-story .sayembara-story-background {
+        background-position:
+            60% center;
+    }
+
+
+    #story-pasir-story::before {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255, 249, 234, 0.96) 0%,
+                rgba(255, 249, 234, 0.91) 50%,
+                rgba(255, 249, 234, 0.78) 100%
+            );
+    }
+
+
+    #story-pasir-story .sayembara-story-container {
+        width:
+            calc(100% - 40px);
+
+        min-height:
+            calc(100svh - 64px);
+
+        padding:
+            45px
+            0
+            100px;
+
+        justify-content:
+            flex-start;
+    }
+
+
+    #story-pasir-story .sayembara-story-title {
+        font-size:
+            clamp(
+                45px,
+                14vw,
+                65px
+            );
+
+        line-height:
+            0.92;
+    }
+
+
+    #story-pasir-story .sayembara-story-text p {
+        font-size:
+            13px;
+
+        line-height:
+            1.65;
+    }
+
+
+    #story-pasir-story .sayembara-story-requirements {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            0;
+    }
+
+
+    #story-pasir-story .sayembara-requirement {
+        padding:
+            8px 0;
+    }
+
+
+    #story-pasir-story .sayembara-story-mark {
+        right:
+            20px;
+
+        bottom:
+            18px;
+    }
+
+
+    #story-pasir-story #btnStartSayembara {
+        min-width:
+            190px;
+
+        min-height:
+            48px;
+    }
+
+
+    /* SCREEN 08 */
+
+    #story-chapter-08 {
+        min-height:
+            calc(100svh - 64px);
+    }
+
+
+    #story-chapter-08 .departure-story-container {
+        width:
+            calc(100% - 40px);
+
+        min-height:
+            calc(100svh - 64px);
+
+        padding:
+            80px
+            0
+            60px;
+    }
+
+
+    #story-chapter-08 .departure-story-title {
+        font-size:
+            clamp(
+                44px,
+                14vw,
+                65px
+            );
+    }
+
+
+    #story-chapter-08 .departure-story-text p {
+        font-size:
+            13px;
+    }
+
+
+    #story-chapter-08 .departure-story-reward {
+        flex-wrap:
+            wrap;
+    }
+
+
+    #story-chapter-08 .departure-reward-item {
+        min-width:
+            115px;
+    }
+
+
+    #story-chapter-08 .departure-story-mark {
+        right:
+            18px;
+
+        bottom:
+            18px;
+    }
 }
 
 
@@ -2198,16 +2613,33 @@
 
 @media (max-width: 380px) {
 
-    #story-dialog .story-background-dialog {
-
-        background-position:
-            center calc(50% + 15px);
-
+    #story-opening .story-character {
+        width:
+            260px;
     }
 
 
-    #story-dialog .dialog-wrapper {
+    #story-opening .story-content {
+        padding-bottom:
+            270px;
+    }
 
+
+    #story-opening .story-title-main {
+        font-size:
+            45px;
+    }
+
+
+    #story-opening .story-intro {
+        font-size:
+            12px;
+    }
+
+
+    /* SCREEN 02 */
+
+    #story-dialog .dialog-wrapper {
         left:
             9px;
 
@@ -2216,44 +2648,34 @@
 
         bottom:
             8px;
-
     }
 
 
     #story-dialog .dialog-character-name {
-
         font-size:
             16px;
-
     }
 
 
     #story-dialog .dialog-text {
-
         font-size:
             12px;
-
     }
 
 
     #story-dialog .dialog-footer {
-
         min-height:
             48px;
-
     }
 
 
     #story-dialog .dialog-listen-button {
-
         font-size:
             11px;
-
     }
 
 
     #story-dialog .listen-icon {
-
         width:
             33px;
 
@@ -2262,19 +2684,104 @@
 
         font-size:
             14px;
-
     }
 
 
     #story-dialog .dialog-next-button {
-
         min-height:
             32px;
 
         padding:
             0 12px;
-
     }
 
-}
+
+    /* SCREEN 06 */
+
+    #story-pasir-story .sayembara-story-container {
+        width:
+            calc(100% - 30px);
+
+        padding:
+            40px
+            0
+            80px;
+    }
+
+
+    #story-pasir-story .sayembara-story-title {
+        font-size:
+            40px;
+    }
+
+
+    #story-pasir-story .sayembara-story-text p {
+        font-size:
+            12px;
+    }
+
+
+    #story-pasir-story .requirement-icon {
+        width:
+            29px;
+
+        height:
+            29px;
+
+        flex-basis:
+            29px;
+    }
+
+
+    #story-pasir-story .sayembara-requirement strong {
+        font-size:
+            11px;
+    }
+
+
+    #story-pasir-story .sayembara-requirement > div > span {
+        font-size:
+            10px;
+    }
+
+
+    /* SCREEN 08 */
+
+    #story-chapter-08 .departure-story-container {
+        width:
+            calc(100% - 30px);
+
+        padding:
+            60px
+            0
+            50px;
+    }
+
+
+    #story-chapter-08 .departure-story-title {
+        font-size:
+            40px;
+    }
+
+
+    #story-chapter-08 .departure-story-text p {
+        font-size:
+            12px;
+    }
+
+
+    #story-chapter-08 .departure-story-reward {
+        gap:
+            6px;
+    }
+
+
+    #story-chapter-08 .departure-reward-item {
+        min-width:
+            82px;
+
+        padding:
+            7px
+            9px;
+    }
 }
