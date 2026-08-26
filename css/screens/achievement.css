@@ -1,86 +1,1167 @@
-/* ==========================================
-   SCREEN 07 — MANUSCRIPT PROGRESS & ACHIEVEMENTS
-   ========================================== */
+/* =========================================================
+   LELANA KAMANDAKA
+   PENCAPAIAN
+   ========================================================= */
 
-#screen-achievement {
-  background: var(--color-bistre);
-  padding-top: calc(var(--navbar-height) + 32px);
-  padding-bottom: 60px;
-  min-height: 100vh;
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.achievement-page {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: calc(100vh - 80px);
+
+    overflow: hidden;
+
+    background: #fff9ea;
+
+    color: #3f2a1d;
+
 }
 
-.achievement-container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 24px;
+
+.achievement-page::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat: repeat;
+
+    background-position: center top;
+
+    background-size: 330px auto;
+
+    opacity: 0.07;
+
+    mix-blend-mode: multiply;
+
 }
 
-.achievement-hero-card {
-  background: var(--color-parchment-light);
-  border: var(--border-ink);
-  border-radius: var(--radius-md);
-  padding: 28px 32px;
-  margin-bottom: 32px;
-  color: var(--color-ink-brown);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  box-shadow: var(--shadow-paper);
+
+.achievement-page > * {
+
+    position: relative;
+
+    z-index: 1;
+
 }
 
-.progress-track-bg {
-  width: 100%;
-  height: 12px;
-  background: var(--color-parchment-dim);
-  border: var(--border-ink-soft);
-  border-radius: var(--radius-pill);
-  overflow: hidden;
-  margin-top: 10px;
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.achievement-hero {
+
+    position: relative;
+
+    min-height: 320px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 75px 25px 55px;
+
+    overflow: hidden;
+
+    background: #4a2c1d;
+
 }
 
-.progress-fill {
-  height: 100%;
-  background: var(--color-dark-moss);
-  width: 10%;
-  transition: width 0.8s ease-out;
+
+.achievement-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat: repeat;
+
+    background-position: center;
+
+    background-size: 300px auto;
+
+    opacity: 0.12;
+
+    mix-blend-mode: screen;
+
 }
 
-.badges-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 20px;
+
+.achievement-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 24px;
+
+    border:
+        1px solid rgba(216, 182, 109, 0.35);
+
 }
 
-.badge-card {
-  background: var(--color-parchment-dim);
-  border: var(--border-ink-soft);
-  border-radius: var(--radius-sm);
-  padding: 20px 16px;
-  text-align: center;
-  transition: all var(--transition-fast);
-  opacity: 0.55;
+
+.achievement-hero-inner {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(760px, 100%);
+
+    text-align: center;
+
 }
 
-.badge-card.unlocked {
-  background: var(--color-parchment-light);
-  border: var(--border-ink);
-  opacity: 1;
-  box-shadow: var(--shadow-subtle);
+
+.achievement-eyebrow {
+
+    display: block;
+
+    margin-bottom: 14px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.28em;
+
+    color: #d8b66d;
+
 }
 
-.badge-name {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--color-dark-moss);
-  margin-bottom: 6px;
+
+.achievement-hero h1 {
+
+    margin: 0;
+
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size:
+        clamp(50px, 7vw, 76px);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    color: #fff9ea;
+
 }
 
-.badge-desc {
-  font-size: 13px;
-  color: var(--color-ink-brown);
-  line-height: 1.5;
+
+.achievement-hero p {
+
+    max-width: 610px;
+
+    margin: 21px auto 0;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color:
+        rgba(255, 249, 234, 0.78);
+
+}
+
+
+.achievement-hero-line {
+
+    width: 65px;
+
+    height: 1px;
+
+    margin: 27px auto 17px;
+
+    background:
+        rgba(216, 182, 109, 0.75);
+
+}
+
+
+.achievement-hero-caption {
+
+    display: block;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.22em;
+
+    color:
+        rgba(216, 182, 109, 0.8);
+
+}
+
+
+/* =========================================================
+   PROGRESS SECTION
+   ========================================================= */
+
+.achievement-progress-section {
+
+    position: relative;
+
+    padding: 75px 20px 20px;
+
+}
+
+
+.achievement-progress-inner {
+
+    width:
+        min(900px, 100%);
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   PROGRESS HEADING
+   ========================================================= */
+
+.achievement-progress-heading {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+}
+
+
+.achievement-progress-heading span {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.27em;
+
+    color: #a87525;
+
+}
+
+
+.achievement-progress-heading h2 {
+
+    margin: 0;
+
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size:
+        clamp(32px, 4vw, 45px);
+
+    font-weight: 400;
+
+    color: #3f2a1d;
+
+}
+
+
+/* =========================================================
+   PROGRESS BOX
+   ========================================================= */
+
+.achievement-progress-box {
+
+    padding: 25px 30px 27px;
+
+    border:
+        1px solid rgba(125, 85, 62, 0.17);
+
+    background:
+        rgba(255, 249, 234, 0.85);
+
+    box-shadow:
+        0 7px 22px rgba(63, 42, 29, 0.035);
+
+}
+
+
+.achievement-progress-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 13px;
+
+}
+
+
+.achievement-progress-top span {
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    color: #8a6249;
+
+}
+
+
+.achievement-progress-top strong {
+
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size: 21px;
+
+    font-weight: 400;
+
+    color: #a87525;
+
+}
+
+
+/* =========================================================
+   PROGRESS TRACK
+   ========================================================= */
+
+.achievement-progress-track {
+
+    width: 100%;
+
+    height: 5px;
+
+    overflow: hidden;
+
+    background:
+        rgba(125, 85, 62, 0.12);
+
+}
+
+
+.achievement-progress-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #a87525;
+
+    transition:
+        width 0.6s ease;
+
+}
+
+
+.achievement-progress-box p {
+
+    margin: 14px 0 0;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    color:
+        rgba(63, 42, 29, 0.57);
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.achievement-content {
+
+    width:
+        min(1100px, calc(100% - 50px));
+
+    margin: 0 auto;
+
+    padding:
+        65px 0 90px;
+
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.achievement-section-heading {
+
+    margin-bottom: 48px;
+
+    text-align: center;
+
+}
+
+
+.achievement-section-heading span {
+
+    display: block;
+
+    margin-bottom: 13px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.27em;
+
+    color: #a87525;
+
+}
+
+
+.achievement-section-heading h2 {
+
+    margin: 0;
+
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size:
+        clamp(38px, 5vw, 55px);
+
+    font-weight: 400;
+
+    line-height: 1.08;
+
+    color: #3f2a1d;
+
+}
+
+
+.achievement-heading-line {
+
+    width: 90px;
+
+    height: 1px;
+
+    margin: 24px auto 0;
+
+    background:
+        rgba(168, 117, 37, 0.65);
+
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.achievement-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px 22px;
+
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.achievement-card {
+
+    position: relative;
+
+    min-height: 215px;
+
+    display: grid;
+
+    grid-template-columns: 45px 52px 1fr;
+
+    grid-template-rows: auto 1fr auto;
+
+    column-gap: 18px;
+
+    padding: 25px 27px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(125, 85, 62, 0.17);
+
+    background:
+        rgba(255, 249, 234, 0.9);
+
+    box-shadow:
+        0 7px 22px rgba(63, 42, 29, 0.035);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.achievement-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 4px;
+
+    background: #8a6249;
+
+    opacity: 0.7;
+
+}
+
+
+.achievement-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat: repeat;
+
+    background-size: 270px auto;
+
+    opacity: 0.025;
+
+    mix-blend-mode: multiply;
+
+}
+
+
+.achievement-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 14px 30px rgba(63, 42, 29, 0.08);
+
+}
+
+
+/* =========================================================
+   CARD NUMBER
+   ========================================================= */
+
+.achievement-card-number {
+
+    position: relative;
+
+    z-index: 2;
+
+    grid-column: 1;
+
+    grid-row: 1;
+
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size: 24px;
+
+    color: #b58b4e;
+
+}
+
+
+/* =========================================================
+   CARD ICON
+   ========================================================= */
+
+.achievement-card-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    grid-column: 2;
+
+    grid-row: 1;
+
+    width: 43px;
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid rgba(168, 117, 37, 0.35);
+
+    border-radius: 50%;
+
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size: 16px;
+
+    color: #b58b4e;
+
+    background:
+        rgba(255, 249, 234, 0.65);
+
+}
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.achievement-card-body {
+
+    position: relative;
+
+    z-index: 2;
+
+    grid-column: 3;
+
+    grid-row: 1 / span 2;
+
+}
+
+
+.achievement-card-body span {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    color: #8a6249;
+
+}
+
+
+.achievement-card-body h3 {
+
+    margin: 0 0 10px;
+
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size:
+        clamp(23px, 2.5vw, 31px);
+
+    font-weight: 400;
+
+    line-height: 1.12;
+
+    color: #3f2a1d;
+
+}
+
+
+.achievement-card-body p {
+
+    max-width: 400px;
+
+    margin: 0;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.75;
+
+    color:
+        rgba(63, 42, 29, 0.62);
+
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.achievement-card-status {
+
+    position: relative;
+
+    z-index: 2;
+
+    grid-column: 1 / span 2;
+
+    grid-row: 3;
+
+    align-self: end;
+
+    margin-top: 18px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+
+    color:
+        rgba(63, 42, 29, 0.38);
+
+}
+
+
+/* =========================================================
+   UNLOCKED
+   ========================================================= */
+
+.achievement-card.unlocked {
+
+    border-color:
+        rgba(168, 117, 37, 0.35);
+
+}
+
+
+.achievement-card.unlocked::before {
+
+    background: #a87525;
+
+    opacity: 1;
+
+}
+
+
+.achievement-card.unlocked .achievement-card-icon {
+
+    border-color:
+        rgba(168, 117, 37, 0.65);
+
+    color: #a87525;
+
+}
+
+
+.achievement-card.unlocked .achievement-card-status {
+
+    color: #a87525;
+
+}
+
+
+/* =========================================================
+   ENDING
+   ========================================================= */
+
+.achievement-ending {
+
+    position: relative;
+
+    min-height: 300px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 65px 25px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background: #40291d;
+
+}
+
+
+.achievement-ending::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat: repeat;
+
+    background-position: center;
+
+    background-size: 310px auto;
+
+    opacity: 0.09;
+
+    mix-blend-mode: screen;
+
+}
+
+
+.achievement-ending-inner {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.achievement-ending-inner span {
+
+    display: block;
+
+    margin-bottom: 16px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.27em;
+
+    color: #d8b66d;
+
+}
+
+
+.achievement-ending-inner h2 {
+
+    margin: 0;
+
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size:
+        clamp(36px, 5vw, 58px);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: #fff9ea;
+
+}
+
+
+.achievement-ending-inner h2 em {
+
+    color: #f0d18a;
+
+    font-style: italic;
+
+}
+
+
+.achievement-ending-line {
+
+    width: 100px;
+
+    height: 1px;
+
+    margin: 26px auto 0;
+
+    background:
+        rgba(216, 182, 109, 0.65);
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .achievement-content {
+
+        width:
+            min(700px, calc(100% - 40px));
+
+    }
+
+
+    .achievement-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .achievement-hero {
+
+        min-height: 300px;
+
+        padding:
+            75px 20px 45px;
+
+    }
+
+
+    .achievement-hero::after {
+
+        inset: 15px;
+
+    }
+
+
+    .achievement-hero h1 {
+
+        font-size: 49px;
+
+    }
+
+
+    .achievement-hero p {
+
+        max-width: 330px;
+
+        font-size: 11px;
+
+        line-height: 1.7;
+
+    }
+
+
+    .achievement-progress-section {
+
+        padding:
+            60px 15px 10px;
+
+    }
+
+
+    .achievement-progress-box {
+
+        padding:
+            22px;
+
+    }
+
+
+    .achievement-content {
+
+        width:
+            calc(100% - 30px);
+
+        padding:
+            55px 0 70px;
+
+    }
+
+
+    .achievement-section-heading {
+
+        margin-bottom: 35px;
+
+    }
+
+
+    .achievement-section-heading h2 {
+
+        font-size: 35px;
+
+    }
+
+
+    .achievement-card {
+
+        min-height: 205px;
+
+        grid-template-columns:
+            38px 45px 1fr;
+
+        column-gap: 12px;
+
+        padding:
+            23px 20px 23px 24px;
+
+    }
+
+
+    .achievement-card-icon {
+
+        width: 38px;
+
+        height: 38px;
+
+        font-size: 14px;
+
+    }
+
+
+    .achievement-card-number {
+
+        font-size: 21px;
+
+    }
+
+
+    .achievement-card-body h3 {
+
+        font-size: 25px;
+
+    }
+
+
+    .achievement-card-body p {
+
+        font-size: 10px;
+
+    }
+
+
+    .achievement-ending {
+
+        min-height: 270px;
+
+    }
+
+
+    .achievement-ending-inner h2 {
+
+        font-size: 36px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .achievement-card {
+
+        grid-template-columns:
+            34px 40px 1fr;
+
+        column-gap: 9px;
+
+        padding:
+            21px 17px 21px 22px;
+
+    }
+
+
+    .achievement-card-icon {
+
+        width: 34px;
+
+        height: 34px;
+
+        font-size: 12px;
+
+    }
+
+
+    .achievement-card-body h3 {
+
+        font-size: 22px;
+
+    }
+
 }
