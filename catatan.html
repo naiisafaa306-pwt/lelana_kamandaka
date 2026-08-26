@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Lelana Kamandaka — Catatan</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+         ===================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         GLOBAL CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/variables.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/base.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/components/navbar.css"
+    >
+
+
+    <!-- =====================================================
+         CATATAN CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/screens/catatan.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+
+    <header
+        class="site-navbar"
+        id="siteNavbar"
+    >
+
+        <div class="navbar-inner">
+
+
+            <!-- LOGO -->
+
+            <a
+                href="index.html"
+                class="navbar-logo"
+            >
+                LELANA KAMANDAKA
+            </a>
+
+
+            <!-- MENU -->
+
+            <nav
+                class="navbar-menu"
+                id="navbarMenu"
+            >
+
+                <a href="index.html">
+                    BERANDA
+                </a>
+
+                <a
+                    href="catatan.html"
+                    class="active"
+                >
+                    CATATAN
+                </a>
+
+                <a href="pencapaian.html">
+                    PENCAPAIAN
+                </a>
+
+            </nav>
+
+
+            <!-- HAMBURGER -->
+
+            <button
+                class="navbar-toggle"
+                id="navbarToggle"
+                type="button"
+                aria-label="Buka menu"
+                aria-expanded="false"
+            >
+
+                <span></span>
+
+            </button>
+
+
+            <!-- MENU TAMBAHAN -->
+
+            <div
+                class="navbar-extra"
+                id="navbarExtra"
+            >
+
+                <a href="peta.html">
+                    PETA
+                </a>
+
+                <a href="basa.html">
+                    BASA
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="catatan-page">
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="catatan-hero">
+
+            <div class="catatan-hero-inner">
+
+                <span class="catatan-eyebrow">
+                    LELANA KAMANDAKA
+                </span>
+
+                <h1 class="catatan-hero-title">
+                    Catatan
+                </h1>
+
+                <p class="catatan-hero-description">
+                    Kumpulan pengetahuan, tokoh, tempat,
+                    budaya, dan basa yang kamu temukan
+                    sepanjang perjalanan Lelana Kamandaka.
+                </p>
+
+                <div class="catatan-hero-line"></div>
+
+                <span class="catatan-hero-caption">
+                    JEJAK · PENGETAHUAN · PERJALANAN
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FILTER
+             ================================================= -->
+
+        <section class="catatan-filter-section">
+
+            <div
+                class="catatan-tabs"
+                role="tablist"
+                aria-label="Kategori catatan"
+            >
+
+                <button
+                    class="catatan-tab active"
+                    type="button"
+                    data-category="semua"
+                    role="tab"
+                    aria-selected="true"
+                >
+                    SEMUA
+                </button>
+
+                <button
+                    class="catatan-tab"
+                    type="button"
+                    data-category="tokoh"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    TOKOH
+                </button>
+
+                <button
+                    class="catatan-tab"
+                    type="button"
+                    data-category="tempat"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    TEMPAT
+                </button>
+
+                <button
+                    class="catatan-tab"
+                    type="button"
+                    data-category="budaya"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    BUDAYA
+                </button>
+
+                <button
+                    class="catatan-tab"
+                    type="button"
+                    data-category="basa"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    BASA
+                </button>
+
+                <button
+                    class="catatan-tab"
+                    type="button"
+                    data-category="cerita"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    CERITA
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <section class="catatan-content">
+
+
+            <!-- SECTION TITLE -->
+
+            <div class="catatan-section-heading">
+
+                <span class="catatan-section-eyebrow">
+                    JEJAK PERJALANAN
+                </span>
+
+                <h2
+                    id="catatanSectionTitle"
+                    class="catatan-section-title"
+                >
+                    Catatan yang Telah Ditemukan
+                </h2>
+
+                <div class="catatan-heading-line"></div>
+
+            </div>
+
+
+            <!-- =================================================
+                 GRID
+                 ================================================= -->
+
+            <div
+                class="catatan-grid"
+                id="catatanGrid"
+            >
+
+
+                <!-- TOKOH -->
+
+                <article
+                    class="catatan-card"
+                    data-category="tokoh"
+                >
+
+                    <div class="catatan-card-number">
+                        01
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            TOKOH
+                        </span>
+
+                        <h3>
+                            Raden Kamandaka
+                        </h3>
+
+                        <p>
+                            Pemuda dari Pajajaran yang menjadi
+                            tokoh utama dalam perjalanan
+                            Lelana Kamandaka.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="catatan-card"
+                    data-category="tokoh"
+                >
+
+                    <div class="catatan-card-number">
+                        02
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            TOKOH
+                        </span>
+
+                        <h3>
+                            Prabu Silihwangi
+                        </h3>
+
+                        <p>
+                            Raja Pajajaran yang menjadi bagian
+                            penting dalam kisah perjalanan
+                            Kamandaka.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- TEMPAT -->
+
+                <article
+                    class="catatan-card"
+                    data-category="tempat"
+                >
+
+                    <div class="catatan-card-number">
+                        03
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            TEMPAT
+                        </span>
+
+                        <h3>
+                            Pajajaran
+                        </h3>
+
+                        <p>
+                            Tanah asal Kamandaka dan tempat
+                            perjalanan kisahnya bermula.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="catatan-card"
+                    data-category="tempat"
+                >
+
+                    <div class="catatan-card-number">
+                        04
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            TEMPAT
+                        </span>
+
+                        <h3>
+                            Pasir Luhur
+                        </h3>
+
+                        <p>
+                            Salah satu tempat yang menjadi bagian
+                            dari perjalanan Kamandaka.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="catatan-card"
+                    data-category="tempat"
+                >
+
+                    <div class="catatan-card-number">
+                        05
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            TEMPAT
+                        </span>
+
+                        <h3>
+                            Kali Logawa
+                        </h3>
+
+                        <p>
+                            Salah satu lokasi yang dilewati dalam
+                            perjalanan menuju wilayah Banyumas.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BUDAYA -->
+
+                <article
+                    class="catatan-card"
+                    data-category="budaya"
+                >
+
+                    <div class="catatan-card-number">
+                        06
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            BUDAYA
+                        </span>
+
+                        <h3>
+                            Budaya Banyumas
+                        </h3>
+
+                        <p>
+                            Catatan mengenai budaya dan kehidupan
+                            masyarakat yang ditemui sepanjang
+                            perjalanan Kamandaka.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="catatan-card"
+                    data-category="budaya"
+                >
+
+                    <div class="catatan-card-number">
+                        07
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            BUDAYA
+                        </span>
+
+                        <h3>
+                            Tradisi Lokal
+                        </h3>
+
+                        <p>
+                            Berbagai kebiasaan dan nilai budaya
+                            yang menjadi bagian dari perjalanan
+                            Lelana Kamandaka.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- BASA -->
+
+                <article
+                    class="catatan-card"
+                    data-category="basa"
+                >
+
+                    <div class="catatan-card-number">
+                        08
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            BASA
+                        </span>
+
+                        <h3>
+                            Kula
+                        </h3>
+
+                        <span class="catatan-card-meaning">
+                            Berarti "saya".
+                        </span>
+
+                        <p>
+                            Digunakan untuk menyebut diri sendiri
+                            ketika berbicara dengan orang yang
+                            lebih tua atau dihormati.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="catatan-card"
+                    data-category="basa"
+                >
+
+                    <div class="catatan-card-number">
+                        09
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            BASA
+                        </span>
+
+                        <h3>
+                            Nyuwun Pangestu
+                        </h3>
+
+                        <span class="catatan-card-meaning">
+                            Berarti "memohon restu".
+                        </span>
+
+                        <p>
+                            Digunakan ketika hendak meminta restu
+                            sebelum melakukan sesuatu yang penting.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="catatan-card"
+                    data-category="basa"
+                >
+
+                    <div class="catatan-card-number">
+                        10
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            BASA
+                        </span>
+
+                        <h3>
+                            Badhé
+                        </h3>
+
+                        <span class="catatan-card-meaning">
+                            Berarti "akan / hendak".
+                        </span>
+
+                        <p>
+                            Digunakan untuk menyatakan sesuatu
+                            yang akan atau hendak dilakukan.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="catatan-card"
+                    data-category="basa"
+                >
+
+                    <div class="catatan-card-number">
+                        11
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            BASA
+                        </span>
+
+                        <h3>
+                            Rama
+                        </h3>
+
+                        <span class="catatan-card-meaning">
+                            Sapaan untuk ayah.
+                        </span>
+
+                        <p>
+                            Digunakan ketika berbicara kepada
+                            ayah atau orang yang dituakan.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CERITA -->
+
+                <article
+                    class="catatan-card"
+                    data-category="cerita"
+                >
+
+                    <div class="catatan-card-number">
+                        12
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            CERITA
+                        </span>
+
+                        <h3>
+                            Awal Perjalanan
+                        </h3>
+
+                        <p>
+                            Kisah dimulai dari Kerajaan Pajajaran,
+                            tempat Kamandaka menjalani kehidupan
+                            sebelum memulai perjalanannya.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="catatan-card"
+                    data-category="cerita"
+                >
+
+                    <div class="catatan-card-number">
+                        13
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            CERITA
+                        </span>
+
+                        <h3>
+                            Meninggalkan Pajajaran
+                        </h3>
+
+                        <p>
+                            Sebuah keputusan membawa Kamandaka
+                            meninggalkan tanah Pajajaran dan
+                            memulai perjalanan panjang.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="catatan-card"
+                    data-category="cerita"
+                >
+
+                    <div class="catatan-card-number">
+                        14
+                    </div>
+
+                    <div class="catatan-card-content">
+
+                        <span class="catatan-card-category">
+                            CERITA
+                        </span>
+
+                        <h3>
+                            Menuju Banyumas
+                        </h3>
+
+                        <p>
+                            Perjalanan Kamandaka membawanya menuju
+                            berbagai tempat yang penuh dengan
+                            tantangan dan pengalaman baru.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- EMPTY -->
+
+            <div
+                id="catatanEmpty"
+                class="catatan-empty"
+            >
+
+                <span>
+                    CATATAN
+                </span>
+
+                <h3>
+                    Belum ada catatan
+                </h3>
+
+                <p>
+                    Belum ada catatan yang tersedia
+                    untuk kategori ini.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ENDING
+             ================================================= -->
+
+        <section class="catatan-ending">
+
+            <div class="catatan-ending-inner">
+
+                <span>
+                    BASA · BUDAYA · PERJALANAN
+                </span>
+
+                <h2>
+                    Setiap jejak
+                    <em>menjadi cerita.</em>
+                </h2>
+
+                <div class="catatan-ending-line"></div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="js/navbar.js"></script>
+
+    <script src="js/catatan.js"></script>
+
+
+</body>
+
+</html>
