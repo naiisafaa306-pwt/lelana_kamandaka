@@ -3,55 +3,30 @@
    ========================================================= */
 
 (() => {
-
-  const screens = [
-    ...document.querySelectorAll(".story-screen")
-  ];
-
+  const screens = [...document.querySelectorAll(".story-screen")];
 
   /* =========================================================
-     SCREEN
+     NAVIGASI SCREEN
      ========================================================= */
 
   const showScreen = (id) => {
-
     screens.forEach(screen => {
-
-      screen.classList.toggle(
-        "active",
-        screen.id === id
-      );
-
+      screen.classList.toggle("active", screen.id === id);
     });
-
 
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
-
   };
 
 
-  /* =========================================================
-     SAFE CLICK
-     ========================================================= */
-
   const safeClick = (id, handler) => {
-
-    const el =
-      document.getElementById(id);
-
+    const el = document.getElementById(id);
 
     if (el) {
-
-      el.addEventListener(
-        "click",
-        handler
-      );
-
+      el.addEventListener("click", handler);
     }
-
   };
 
 
@@ -59,106 +34,60 @@
      NAVIGASI CERITA
      ========================================================= */
 
-  safeClick(
-    "btnBeginStory",
-    () => {
-
-      showScreen(
-        "story-dialog"
-      );
-
-    }
-  );
+  safeClick("btnBeginStory", () => {
+    showScreen("story-dialog");
+  });
 
 
-  safeClick(
-    "btnNextStory",
-    () => {
-
-      showScreen(
-        "story-gameplay"
-      );
-
-    }
-  );
+  safeClick("btnNextStory", () => {
+    showScreen("story-gameplay");
+  });
 
 
-  safeClick(
-    "btnStartGameplay",
-    () => {
-
-      showScreen(
-        "story-learning-basa"
-      );
-
-    }
-  );
+  safeClick("btnStartGameplay", () => {
+    showScreen("story-learning-basa");
+  });
 
 
-  safeClick(
-    "btnStartQuizBasa",
-    () => {
-
-      resetQuiz();
-
-      showScreen(
-        "story-quiz-basa"
-      );
-
-    }
-  );
+  safeClick("btnStartQuizBasa", () => {
+    resetQuiz();
+    showScreen("story-quiz-basa");
+  });
 
 
-  safeClick(
-    "btnStartSayembara",
-    () => {
-
-      resetDragGame();
-
-      showScreen(
-        "story-sayembara"
-      );
-
-    }
-  );
+  safeClick("btnStartSayembara", () => {
+    resetDragGame();
+    showScreen("story-sayembara");
+  });
 
 
   /* =========================================================
      SELESAI GAMEPLAY 02
      ========================================================= */
 
-  safeClick(
-    "btnNextSayembara",
-    () => {
+  safeClick("btnNextSayembara", () => {
 
-      updateReward(
-        50,
-        10
-      );
+    // Reward setelah sayembara selesai
+    updateReward(50, 10);
 
-      completeGameplay02();
+    // Tandai Gameplay 02 selesai
+    completeGameplay02();
 
-      showScreen(
-        "story-chapter-08"
-      );
+    // Tampilkan halaman reward / chapter selesai
+    showScreen("story-chapter-08");
 
-    }
-  );
+  });
 
 
   /* =========================================================
      KEMBALI KE PETA
      ========================================================= */
 
-  safeClick(
-    "btnContinueChapter",
-    () => {
+  safeClick("btnContinueChapter", () => {
 
-      window.location.href =
-        "../../peta.html";
+    window.location.href = "../../peta.html";
 
-    }
-  );
+  });
 
 
   /* =========================================================
@@ -168,14 +97,11 @@
   function completeGameplay02() {
 
     /*
-     * Kalau mapEngine.js tersedia,
-     * gunakan completeChapter().
+     * Jika mapEngine.js tersedia,
+     * gunakan fungsi completeChapter().
      */
 
-    if (
-      typeof completeChapter ===
-      "function"
-    ) {
+    if (typeof completeChapter === "function") {
 
       completeChapter(2);
 
@@ -185,7 +111,8 @@
 
 
     /*
-     * Fallback menggunakan sessionStorage.
+     * Fallback jika completeChapter()
+     * tidak tersedia.
      */
 
     const MAP_PROGRESS_KEY =
@@ -224,33 +151,21 @@
        Pastikan struktur progress tersedia
        ----------------------------------------- */
 
-    if (
-      !Array.isArray(
-        progress.completedChapters
-      )
-    ) {
+    if (!Array.isArray(progress.completedChapters)) {
 
       progress.completedChapters = [];
 
     }
 
 
-    if (
-      !Array.isArray(
-        progress.completedLocations
-      )
-    ) {
+    if (!Array.isArray(progress.completedLocations)) {
 
       progress.completedLocations = [];
 
     }
 
 
-    if (
-      !Array.isArray(
-        progress.unlockedLocations
-      )
-    ) {
+    if (!Array.isArray(progress.unlockedLocations)) {
 
       progress.unlockedLocations = [1];
 
@@ -261,9 +176,7 @@
        Chapter 2 selesai
        ----------------------------------------- */
 
-    if (
-      !progress.completedChapters.includes(2)
-    ) {
+    if (!progress.completedChapters.includes(2)) {
 
       progress.completedChapters.push(2);
 
@@ -274,9 +187,7 @@
        Lokasi 2 selesai
        ----------------------------------------- */
 
-    if (
-      !progress.completedLocations.includes(2)
-    ) {
+    if (!progress.completedLocations.includes(2)) {
 
       progress.completedLocations.push(2);
 
@@ -285,11 +196,10 @@
 
     /* -----------------------------------------
        Unlock lokasi 3
+       PASIR LUHUR
        ----------------------------------------- */
 
-    if (
-      !progress.unlockedLocations.includes(3)
-    ) {
+    if (!progress.unlockedLocations.includes(3)) {
 
       progress.unlockedLocations.push(3);
 
@@ -348,7 +258,7 @@
 
 
     /* -----------------------------------------
-       Simpan
+       Simpan progress
        ----------------------------------------- */
 
     try {
@@ -378,80 +288,70 @@
     "Yen kowe kepengin nemokake jodhomu, le, kudu gelem ninggalake uripmu minangka putra raja. Nyuwun pitutur, Ki Ajar. Kula siap nglakoni apa wae sing kedah kula lakoni.";
 
 
-  safeClick(
-    "btnListen",
-    () => {
+  safeClick("btnListen", () => {
 
-      if (
-        !("speechSynthesis" in window)
-      ) {
+    if (!("speechSynthesis" in window)) {
 
-        alert(
-          "Browser ini belum mendukung fitur suara."
-        );
-
-        return;
-
-      }
-
-
-      window.speechSynthesis.cancel();
-
-
-      const utterance =
-        new SpeechSynthesisUtterance(
-          dialogueText
-        );
-
-
-      utterance.lang = "id-ID";
-      utterance.rate = 0.88;
-      utterance.pitch = 1;
-
-
-      window.speechSynthesis.speak(
-        utterance
+      alert(
+        "Browser ini belum mendukung fitur suara."
       );
+
+      return;
 
     }
-  );
 
 
-  window.speakBasa =
-    function (text) {
-
-      if (
-        !("speechSynthesis" in window)
-      ) {
-
-        alert(
-          "Browser ini belum mendukung fitur suara."
-        );
-
-        return;
-
-      }
+    window.speechSynthesis.cancel();
 
 
-      window.speechSynthesis.cancel();
-
-
-      const utterance =
-        new SpeechSynthesisUtterance(
-          text
-        );
-
-
-      utterance.lang = "id-ID";
-      utterance.rate = 0.78;
-      utterance.pitch = 1;
-
-
-      window.speechSynthesis.speak(
-        utterance
+    const utterance =
+      new SpeechSynthesisUtterance(
+        dialogueText
       );
 
-    };
+
+    utterance.lang = "id-ID";
+    utterance.rate = 0.88;
+    utterance.pitch = 1;
+
+
+    window.speechSynthesis.speak(
+      utterance
+    );
+
+  });
+
+
+  window.speakBasa = function(text) {
+
+    if (!("speechSynthesis" in window)) {
+
+      alert(
+        "Browser ini belum mendukung fitur suara."
+      );
+
+      return;
+
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    const utterance =
+      new SpeechSynthesisUtterance(text);
+
+
+    utterance.lang = "id-ID";
+    utterance.rate = 0.78;
+    utterance.pitch = 1;
+
+
+    window.speechSynthesis.speak(
+      utterance
+    );
+
+  };
 
 
   /* =========================================================
@@ -527,7 +427,6 @@
 
 
   let quizIndex = 0;
-
   let quizAnswered = false;
 
 
@@ -575,9 +474,7 @@
 
 
     if (!item) {
-
       return;
-
     }
 
 
@@ -619,7 +516,6 @@
     if (quizFeedback) {
 
       quizFeedback.textContent = "";
-
       quizFeedback.style.color = "";
 
     }
@@ -675,147 +571,135 @@
   }
 
 
-  quizOptions.forEach(
-    button => {
+  quizOptions.forEach(button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-          if (quizAnswered) {
+        if (quizAnswered) {
+          return;
+        }
 
-            return;
+
+        quizAnswered = true;
+
+
+        const chosen =
+          button.dataset.answer;
+
+
+        const correct =
+          quizQuestions[
+            quizIndex
+          ].correct;
+
+
+        quizOptions.forEach(
+          option => {
+
+            option.disabled = true;
 
           }
+        );
 
 
-          quizAnswered = true;
+        if (chosen === correct) {
 
-
-          const chosen =
-            button.dataset.answer;
-
-
-          const correct =
-            quizQuestions[
-              quizIndex
-            ].correct;
-
-
-          quizOptions.forEach(
-            option => {
-
-              option.disabled = true;
-
-            }
+          button.classList.add(
+            "correct"
           );
 
 
-          if (
-            chosen === correct
-          ) {
+          if (quizFeedback) {
 
-            button.classList.add(
-              "correct"
-            );
+            quizFeedback.textContent =
+              "Benar! Jawabanmu tepat.";
 
 
-            if (quizFeedback) {
-
-              quizFeedback.textContent =
-                "Benar! Jawabanmu tepat.";
-
-
-              quizFeedback.style.color =
-                "#3f713c";
-
-            }
-
-
-            addXp(10);
-
-          } else {
-
-            button.classList.add(
-              "wrong"
-            );
-
-
-            const correctButton =
-              quizOptions.find(
-                option =>
-                  option.dataset.answer ===
-                  correct
-              );
-
-
-            if (correctButton) {
-
-              correctButton.classList.add(
-                "correct"
-              );
-
-            }
-
-
-            if (quizFeedback) {
-
-              quizFeedback.textContent =
-                `Belum tepat. Jawaban yang benar: ${correct}.`;
-
-
-              quizFeedback.style.color =
-                "#9b4d3f";
-
-            }
+            quizFeedback.style.color =
+              "#3f713c";
 
           }
 
 
-          if (btnNextQuiz) {
+          addXp(10);
 
-            btnNextQuiz.disabled =
-              false;
+        } else {
+
+          button.classList.add(
+            "wrong"
+          );
+
+
+          const correctButton =
+            quizOptions.find(
+              option =>
+                option.dataset.answer ===
+                correct
+            );
+
+
+          if (correctButton) {
+
+            correctButton.classList.add(
+              "correct"
+            );
+
+          }
+
+
+          if (quizFeedback) {
+
+            quizFeedback.textContent =
+              `Belum tepat. Jawaban yang benar: ${correct}.`;
+
+
+            quizFeedback.style.color =
+              "#9b4d3f";
 
           }
 
         }
+
+
+        if (btnNextQuiz) {
+
+          btnNextQuiz.disabled = false;
+
+        }
+
+      }
+    );
+
+  });
+
+
+  safeClick("btnNextQuiz", () => {
+
+    if (!quizAnswered) {
+      return;
+    }
+
+
+    if (
+      quizIndex <
+      quizQuestions.length - 1
+    ) {
+
+      quizIndex++;
+
+      renderQuiz();
+
+    } else {
+
+      showScreen(
+        "story-sayembara-story"
       );
 
     }
-  );
 
-
-  safeClick(
-    "btnNextQuiz",
-    () => {
-
-      if (!quizAnswered) {
-
-        return;
-
-      }
-
-
-      if (
-        quizIndex <
-        quizQuestions.length - 1
-      ) {
-
-        quizIndex++;
-
-        renderQuiz();
-
-      } else {
-
-        showScreen(
-          "story-sayembara-story"
-        );
-
-      }
-
-    }
-  );
+  });
 
 
   function resetQuiz() {
@@ -869,53 +753,51 @@
     new Set();
 
 
-  optionButtons.forEach(
-    option => {
+  optionButtons.forEach(option => {
 
-      option.addEventListener(
-        "dragstart",
-        event => {
+    option.addEventListener(
+      "dragstart",
+      event => {
 
-          event.dataTransfer.setData(
-            "text/plain",
-            option.dataset.answer
-          );
-
-
-          option.classList.add(
-            "dragging"
-          );
-
-        }
-      );
+        event.dataTransfer.setData(
+          "text/plain",
+          option.dataset.answer
+        );
 
 
-      option.addEventListener(
-        "dragend",
-        () => {
+        option.classList.add(
+          "dragging"
+        );
 
-          option.classList.remove(
-            "dragging"
-          );
-
-        }
-      );
+      }
+    );
 
 
-      option.addEventListener(
-        "click",
-        () => {
+    option.addEventListener(
+      "dragend",
+      () => {
 
-          addDropItem(
-            option.dataset.answer,
-            option
-          );
+        option.classList.remove(
+          "dragging"
+        );
 
-        }
-      );
+      }
+    );
 
-    }
-  );
+
+    option.addEventListener(
+      "click",
+      () => {
+
+        addDropItem(
+          option.dataset.answer,
+          option
+        );
+
+      }
+    );
+
+  });
 
 
   if (dropzone) {
@@ -1026,20 +908,21 @@
 
 
     if (!holder) {
-
       return;
-
     }
 
 
     const chip =
       document.createElement(
-        "div"
+        "button"
       );
 
 
+    chip.type = "button";
+
+
     chip.className =
-      "sayembara-dropped";
+      "dropped-item";
 
 
     chip.dataset.answer =
@@ -1145,9 +1028,7 @@
       [...selectedSteps];
 
 
-    if (
-      values.length < 4
-    ) {
+    if (values.length < 4) {
 
       if (feedback) {
 
