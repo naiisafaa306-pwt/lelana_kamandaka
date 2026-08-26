@@ -3,25 +3,55 @@
    ========================================================= */
 
 (() => {
-  const screens = [...document.querySelectorAll(".story-screen")];
+
+  const screens = [
+    ...document.querySelectorAll(".story-screen")
+  ];
+
+
+  /* =========================================================
+     SCREEN
+     ========================================================= */
 
   const showScreen = (id) => {
-    screens.forEach(screen =>
-      screen.classList.toggle("active", screen.id === id)
-    );
+
+    screens.forEach(screen => {
+
+      screen.classList.toggle(
+        "active",
+        screen.id === id
+      );
+
+    });
+
 
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
+
   };
 
+
+  /* =========================================================
+     SAFE CLICK
+     ========================================================= */
+
   const safeClick = (id, handler) => {
-    const el = document.getElementById(id);
+
+    const el =
+      document.getElementById(id);
+
 
     if (el) {
-      el.addEventListener("click", handler);
+
+      el.addEventListener(
+        "click",
+        handler
+      );
+
     }
+
   };
 
 
@@ -29,56 +59,106 @@
      NAVIGASI CERITA
      ========================================================= */
 
-  safeClick("btnBeginStory", () => {
-    showScreen("story-dialog");
-  });
+  safeClick(
+    "btnBeginStory",
+    () => {
 
-  safeClick("btnNextStory", () => {
-    showScreen("story-gameplay");
-  });
+      showScreen(
+        "story-dialog"
+      );
 
-  safeClick("btnStartGameplay", () => {
-    showScreen("story-learning-basa");
-  });
+    }
+  );
 
-  safeClick("btnStartQuizBasa", () => {
-    resetQuiz();
-    showScreen("story-quiz-basa");
-  });
 
-  safeClick("btnStartSayembara", () => {
-    resetDragGame();
-    showScreen("story-sayembara");
-  });
+  safeClick(
+    "btnNextStory",
+    () => {
+
+      showScreen(
+        "story-gameplay"
+      );
+
+    }
+  );
+
+
+  safeClick(
+    "btnStartGameplay",
+    () => {
+
+      showScreen(
+        "story-learning-basa"
+      );
+
+    }
+  );
+
+
+  safeClick(
+    "btnStartQuizBasa",
+    () => {
+
+      resetQuiz();
+
+      showScreen(
+        "story-quiz-basa"
+      );
+
+    }
+  );
+
+
+  safeClick(
+    "btnStartSayembara",
+    () => {
+
+      resetDragGame();
+
+      showScreen(
+        "story-sayembara"
+      );
+
+    }
+  );
 
 
   /* =========================================================
      SELESAI GAMEPLAY 02
      ========================================================= */
 
-  safeClick("btnNextSayembara", () => {
+  safeClick(
+    "btnNextSayembara",
+    () => {
 
-    // Berikan reward
-    updateReward(50, 10);
+      updateReward(
+        50,
+        10
+      );
 
-    // Tandai Gameplay 02 / Chapter 2 selesai
-    completeGameplay02();
+      completeGameplay02();
 
-    // Tampilkan halaman reward / chapter selesai
-    showScreen("story-chapter-08");
-  });
+      showScreen(
+        "story-chapter-08"
+      );
+
+    }
+  );
 
 
   /* =========================================================
      KEMBALI KE PETA
      ========================================================= */
 
-  safeClick("btnContinueChapter", () => {
+  safeClick(
+    "btnContinueChapter",
+    () => {
 
-    // Kembali ke peta
-    window.location.href = "../../peta.html";
+      window.location.href =
+        "../../peta.html";
 
-  });
+    }
+  );
 
 
   /* =========================================================
@@ -89,30 +169,31 @@
 
     /*
      * Kalau mapEngine.js tersedia,
-     * gunakan fungsi completeChapter() milik map engine.
+     * gunakan completeChapter().
      */
 
-    if (typeof completeChapter === "function") {
+    if (
+      typeof completeChapter ===
+      "function"
+    ) {
 
       completeChapter(2);
 
       return;
+
     }
 
 
     /*
-     * Fallback:
-     * Kalau completeChapter() tidak tersedia,
-     * update sessionStorage secara langsung.
-     *
-     * mapEngine.js menggunakan key:
-     * "lelanaKamandakaProgress"
+     * Fallback menggunakan sessionStorage.
      */
 
     const MAP_PROGRESS_KEY =
       "lelanaKamandakaProgress";
 
+
     let progress = {};
+
 
     try {
 
@@ -121,8 +202,12 @@
           MAP_PROGRESS_KEY
         );
 
+
       if (saved) {
-        progress = JSON.parse(saved);
+
+        progress =
+          JSON.parse(saved);
+
       }
 
     } catch (error) {
@@ -139,16 +224,36 @@
        Pastikan struktur progress tersedia
        ----------------------------------------- */
 
-    if (!Array.isArray(progress.completedChapters)) {
+    if (
+      !Array.isArray(
+        progress.completedChapters
+      )
+    ) {
+
       progress.completedChapters = [];
+
     }
 
-    if (!Array.isArray(progress.completedLocations)) {
+
+    if (
+      !Array.isArray(
+        progress.completedLocations
+      )
+    ) {
+
       progress.completedLocations = [];
+
     }
 
-    if (!Array.isArray(progress.unlockedLocations)) {
+
+    if (
+      !Array.isArray(
+        progress.unlockedLocations
+      )
+    ) {
+
       progress.unlockedLocations = [1];
+
     }
 
 
@@ -156,8 +261,12 @@
        Chapter 2 selesai
        ----------------------------------------- */
 
-    if (!progress.completedChapters.includes(2)) {
+    if (
+      !progress.completedChapters.includes(2)
+    ) {
+
       progress.completedChapters.push(2);
+
     }
 
 
@@ -165,42 +274,57 @@
        Lokasi 2 selesai
        ----------------------------------------- */
 
-    if (!progress.completedLocations.includes(2)) {
+    if (
+      !progress.completedLocations.includes(2)
+    ) {
+
       progress.completedLocations.push(2);
+
     }
 
 
     /* -----------------------------------------
-       UNLOCK PASIR LUHUR
-       Lokasi 3
+       Unlock lokasi 3
        ----------------------------------------- */
 
-    if (!progress.unlockedLocations.includes(3)) {
+    if (
+      !progress.unlockedLocations.includes(3)
+    ) {
+
       progress.unlockedLocations.push(3);
+
     }
 
 
     /* -----------------------------------------
-       Current chapter berikutnya
+       Chapter berikutnya
        ----------------------------------------- */
 
     progress.currentChapter = 3;
 
 
     /* -----------------------------------------
-       Rapikan array
+       Hilangkan duplikat
        ----------------------------------------- */
 
     progress.completedChapters = [
-      ...new Set(progress.completedChapters)
+      ...new Set(
+        progress.completedChapters
+      )
     ];
+
 
     progress.completedLocations = [
-      ...new Set(progress.completedLocations)
+      ...new Set(
+        progress.completedLocations
+      )
     ];
 
+
     progress.unlockedLocations = [
-      ...new Set(progress.unlockedLocations)
+      ...new Set(
+        progress.unlockedLocations
+      )
     ];
 
 
@@ -212,9 +336,11 @@
       (a, b) => a - b
     );
 
+
     progress.completedLocations.sort(
       (a, b) => a - b
     );
+
 
     progress.unlockedLocations.sort(
       (a, b) => a - b
@@ -252,68 +378,80 @@
     "Yen kowe kepengin nemokake jodhomu, le, kudu gelem ninggalake uripmu minangka putra raja. Nyuwun pitutur, Ki Ajar. Kula siap nglakoni apa wae sing kedah kula lakoni.";
 
 
-  safeClick("btnListen", () => {
+  safeClick(
+    "btnListen",
+    () => {
 
-    if (!("speechSynthesis" in window)) {
+      if (
+        !("speechSynthesis" in window)
+      ) {
 
-      alert(
-        "Browser ini belum mendukung fitur suara."
+        alert(
+          "Browser ini belum mendukung fitur suara."
+        );
+
+        return;
+
+      }
+
+
+      window.speechSynthesis.cancel();
+
+
+      const utterance =
+        new SpeechSynthesisUtterance(
+          dialogueText
+        );
+
+
+      utterance.lang = "id-ID";
+      utterance.rate = 0.88;
+      utterance.pitch = 1;
+
+
+      window.speechSynthesis.speak(
+        utterance
       );
 
-      return;
     }
+  );
 
 
-    window.speechSynthesis.cancel();
+  window.speakBasa =
+    function (text) {
+
+      if (
+        !("speechSynthesis" in window)
+      ) {
+
+        alert(
+          "Browser ini belum mendukung fitur suara."
+        );
+
+        return;
+
+      }
 
 
-    const utterance =
-      new SpeechSynthesisUtterance(
-        dialogueText
+      window.speechSynthesis.cancel();
+
+
+      const utterance =
+        new SpeechSynthesisUtterance(
+          text
+        );
+
+
+      utterance.lang = "id-ID";
+      utterance.rate = 0.78;
+      utterance.pitch = 1;
+
+
+      window.speechSynthesis.speak(
+        utterance
       );
 
-
-    utterance.lang = "id-ID";
-    utterance.rate = 0.88;
-    utterance.pitch = 1;
-
-
-    window.speechSynthesis.speak(
-      utterance
-    );
-
-  });
-
-
-  window.speakBasa = function(text) {
-
-    if (!("speechSynthesis" in window)) {
-
-      alert(
-        "Browser ini belum mendukung fitur suara."
-      );
-
-      return;
-    }
-
-
-    window.speechSynthesis.cancel();
-
-
-    const utterance =
-      new SpeechSynthesisUtterance(text);
-
-
-    utterance.lang = "id-ID";
-    utterance.rate = 0.78;
-    utterance.pitch = 1;
-
-
-    window.speechSynthesis.speak(
-      utterance
-    );
-
-  };
+    };
 
 
   /* =========================================================
@@ -323,7 +461,8 @@
   const quizQuestions = [
 
     {
-      question: 'Apa arti kata "Pitutur"?',
+      question:
+        'Apa arti kata "Pitutur"?',
 
       answers: [
         "Nasihat / petuah",
@@ -332,12 +471,14 @@
         "Saya"
       ],
 
-      correct: "Nasihat / petuah"
+      correct:
+        "Nasihat / petuah"
     },
 
 
     {
-      question: 'Apa arti kata "Lampah"?',
+      question:
+        'Apa arti kata "Lampah"?',
 
       answers: [
         "Nama orang",
@@ -346,12 +487,14 @@
         "Kerajaan"
       ],
 
-      correct: "Perjalanan / langkah"
+      correct:
+        "Perjalanan / langkah"
     },
 
 
     {
-      question: 'Apa arti kata "Nyamar"?',
+      question:
+        'Apa arti kata "Nyamar"?',
 
       answers: [
         "Menyamar",
@@ -360,12 +503,14 @@
         "Menolong"
       ],
 
-      correct: "Menyamar"
+      correct:
+        "Menyamar"
     },
 
 
     {
-      question: 'Apa arti kata "Kula"?',
+      question:
+        'Apa arti kata "Kula"?',
 
       answers: [
         "Ayah",
@@ -374,13 +519,15 @@
         "Teman"
       ],
 
-      correct: "Saya"
+      correct:
+        "Saya"
     }
 
   ];
 
 
   let quizIndex = 0;
+
   let quizAnswered = false;
 
 
@@ -414,12 +561,11 @@
     );
 
 
-  const quizOptions =
-    [
-      ...document.querySelectorAll(
-        ".quiz-option"
-      )
-    ];
+  const quizOptions = [
+    ...document.querySelectorAll(
+      ".quiz-option"
+    )
+  ];
 
 
   function renderQuiz() {
@@ -429,7 +575,9 @@
 
 
     if (!item) {
+
       return;
+
     }
 
 
@@ -471,6 +619,7 @@
     if (quizFeedback) {
 
       quizFeedback.textContent = "";
+
       quizFeedback.style.color = "";
 
     }
@@ -479,6 +628,7 @@
     if (btnNextQuiz) {
 
       btnNextQuiz.disabled = true;
+
 
       btnNextQuiz.textContent =
         quizIndex ===
@@ -497,6 +647,7 @@
           "correct",
           "wrong"
         );
+
 
         button.disabled = false;
 
@@ -524,131 +675,147 @@
   }
 
 
-  quizOptions.forEach(button => {
+  quizOptions.forEach(
+    button => {
 
-    button.addEventListener(
-      "click",
-      () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-        if (quizAnswered) {
-          return;
-        }
+          if (quizAnswered) {
 
-
-        quizAnswered = true;
-
-
-        const chosen =
-          button.dataset.answer;
-
-
-        const correct =
-          quizQuestions[
-            quizIndex
-          ].correct;
-
-
-        quizOptions.forEach(
-          option => {
-            option.disabled = true;
-          }
-        );
-
-
-        if (chosen === correct) {
-
-          button.classList.add(
-            "correct"
-          );
-
-
-          if (quizFeedback) {
-
-            quizFeedback.textContent =
-              "Benar! Jawabanmu tepat.";
-
-            quizFeedback.style.color =
-              "#3f713c";
+            return;
 
           }
 
 
-          addXp(10);
+          quizAnswered = true;
 
-        } else {
 
-          button.classList.add(
-            "wrong"
+          const chosen =
+            button.dataset.answer;
+
+
+          const correct =
+            quizQuestions[
+              quizIndex
+            ].correct;
+
+
+          quizOptions.forEach(
+            option => {
+
+              option.disabled = true;
+
+            }
           );
 
 
-          const correctButton =
-            quizOptions.find(
-              option =>
-                option.dataset.answer ===
-                correct
-            );
+          if (
+            chosen === correct
+          ) {
 
-
-          if (correctButton) {
-
-            correctButton.classList.add(
+            button.classList.add(
               "correct"
             );
 
+
+            if (quizFeedback) {
+
+              quizFeedback.textContent =
+                "Benar! Jawabanmu tepat.";
+
+
+              quizFeedback.style.color =
+                "#3f713c";
+
+            }
+
+
+            addXp(10);
+
+          } else {
+
+            button.classList.add(
+              "wrong"
+            );
+
+
+            const correctButton =
+              quizOptions.find(
+                option =>
+                  option.dataset.answer ===
+                  correct
+              );
+
+
+            if (correctButton) {
+
+              correctButton.classList.add(
+                "correct"
+              );
+
+            }
+
+
+            if (quizFeedback) {
+
+              quizFeedback.textContent =
+                `Belum tepat. Jawaban yang benar: ${correct}.`;
+
+
+              quizFeedback.style.color =
+                "#9b4d3f";
+
+            }
+
           }
 
 
-          if (quizFeedback) {
+          if (btnNextQuiz) {
 
-            quizFeedback.textContent =
-              `Belum tepat. Jawaban yang benar: ${correct}.`;
-
-            quizFeedback.style.color =
-              "#9b4d3f";
+            btnNextQuiz.disabled =
+              false;
 
           }
 
         }
-
-
-        if (btnNextQuiz) {
-
-          btnNextQuiz.disabled = false;
-
-        }
-
-      }
-    );
-
-  });
-
-
-  safeClick("btnNextQuiz", () => {
-
-    if (!quizAnswered) {
-      return;
-    }
-
-
-    if (
-      quizIndex <
-      quizQuestions.length - 1
-    ) {
-
-      quizIndex++;
-
-      renderQuiz();
-
-    } else {
-
-      showScreen(
-        "story-sayembara-story"
       );
 
     }
+  );
 
-  });
+
+  safeClick(
+    "btnNextQuiz",
+    () => {
+
+      if (!quizAnswered) {
+
+        return;
+
+      }
+
+
+      if (
+        quizIndex <
+        quizQuestions.length - 1
+      ) {
+
+        quizIndex++;
+
+        renderQuiz();
+
+      } else {
+
+        showScreen(
+          "story-sayembara-story"
+        );
+
+      }
+
+    }
+  );
 
 
   function resetQuiz() {
@@ -682,12 +849,11 @@
     );
 
 
-  const optionButtons =
-    [
-      ...document.querySelectorAll(
-        ".sayembara-option"
-      )
-    ];
+  const optionButtons = [
+    ...document.querySelectorAll(
+      ".sayembara-option"
+    )
+  ];
 
 
   const correctSteps =
@@ -703,52 +869,53 @@
     new Set();
 
 
-  optionButtons.forEach(option => {
+  optionButtons.forEach(
+    option => {
 
-    option.addEventListener(
-      "dragstart",
-      event => {
+      option.addEventListener(
+        "dragstart",
+        event => {
 
-        event.dataTransfer.setData(
-          "text/plain",
-          option.dataset.answer
-        );
-
-
-        option.classList.add(
-          "dragging"
-        );
-
-      }
-    );
+          event.dataTransfer.setData(
+            "text/plain",
+            option.dataset.answer
+          );
 
 
-    option.addEventListener(
-      "dragend",
-      () => {
+          option.classList.add(
+            "dragging"
+          );
 
-        option.classList.remove(
-          "dragging"
-        );
-
-      }
-    );
+        }
+      );
 
 
-    // Klik juga didukung agar nyaman di HP
-    option.addEventListener(
-      "click",
-      () => {
+      option.addEventListener(
+        "dragend",
+        () => {
 
-        addDropItem(
-          option.dataset.answer,
-          option
-        );
+          option.classList.remove(
+            "dragging"
+          );
 
-      }
-    );
+        }
+      );
 
-  });
+
+      option.addEventListener(
+        "click",
+        () => {
+
+          addDropItem(
+            option.dataset.answer,
+            option
+          );
+
+        }
+      );
+
+    }
+  );
 
 
   if (dropzone) {
@@ -859,7 +1026,9 @@
 
 
     if (!holder) {
+
       return;
+
     }
 
 
@@ -976,7 +1145,9 @@
       [...selectedSteps];
 
 
-    if (values.length < 4) {
+    if (
+      values.length < 4
+    ) {
 
       if (feedback) {
 
