@@ -20,7 +20,7 @@ const mapLocations = [
 
     {
         id: 1,
-        name: "Padjajaran",
+        name: "Pajajaran",
         gameplay: "gameplay/gameplay01/index.html"
     },
 

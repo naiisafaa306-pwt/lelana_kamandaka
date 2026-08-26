@@ -1,335 +1,368 @@
 /* =========================================================
    LELANA KAMANDAKA
-   SCREEN 02 — INTRO CERITA
+   INTRO PAGE
+   INTRO.CSS
    ========================================================= */
 
 
 /* =========================================================
-   STORY SCREEN
+   INTRO MAIN
    ========================================================= */
 
-#screen-story {
-  position: relative;
+.intro-main {
 
-  width: 100%;
-  min-height: 100vh;
+    position: relative;
 
-  overflow: hidden;
+    width: 100%;
 
-  display: grid;
-  grid-template-columns: 36% 64%;
+    min-height:
+        calc(100vh - 80px);
 
-  background: #fff9ea !important;
-  color: #122009;
+    overflow: hidden;
+
+    background:
+        #f5eddd;
+
 }
 
 
 /* =========================================================
-   PANEL TEKS KIRI
+   MOTIF BATIK UTAMA
    ========================================================= */
 
-.story-text-panel {
-  position: relative;
+/*
+   Motif:
+   ../assets/images/motif.png
 
-  z-index: 2;
+   Motif dibuat sebagai tekstur
+   identitas visual Lelana Kamandaka.
+*/
 
-  min-height: 100vh;
+.intro-main::before {
 
-  display: flex;
-  flex-direction: column;
+    content: "";
 
-  justify-content: center;
+    position: absolute;
 
-  padding: 60px clamp(35px, 5vw, 70px);
+    z-index: 10;
 
-  background: #fff3ad;
+    inset: 0;
 
-  border-right: 1px solid rgba(185, 154, 85, 0.18);
+    pointer-events: none;
+
+    background-image:
+        url("../assets/images/motif.png");
+
+    background-repeat:
+        repeat;
+
+    background-size:
+        500px auto;
+
+    background-position:
+        center center;
+
+    opacity:
+        0.055;
+
+    mix-blend-mode:
+        multiply;
+
 }
 
 
 /* =========================================================
-   ORNAMENT ATAS
+   MOTIF PANEL KIRI
    ========================================================= */
 
-.story-ornament {
-  display: flex;
+.story-text-panel::before {
 
-  align-items: center;
-  justify-content: center;
+    content: "";
 
-  gap: 10px;
+    position: absolute;
 
-  margin-bottom: 30px;
-}
+    z-index: 0;
 
+    width:
+        420px;
 
-.story-leaf-icon {
-  width: 9px;
-  height: 9px;
+    height:
+        420px;
 
-  object-fit: contain;
+    left:
+        -250px;
 
-  opacity: 0.6;
-}
+    bottom:
+        -210px;
 
+    background-image:
+        url("../assets/images/motif.png");
 
-.story-ornament-rule {
-  width: 30px;
-  height: 1px;
+    background-repeat:
+        repeat;
 
-  background: rgba(125, 85, 62, 0.35);
+    background-size:
+        230px auto;
+
+    background-position:
+        center center;
+
+    opacity:
+        0.065;
+
+    mix-blend-mode:
+        multiply;
+
+    pointer-events:
+        none;
+
+    transform:
+        rotate(8deg);
+
 }
 
 
 /* =========================================================
-   QUOTE DECORATION
+   MOTIF PANEL GAMBAR
    ========================================================= */
 
-.story-quote-open,
-.story-quote-close {
-  position: absolute;
+.story-illustration-panel::before {
 
-  font-family: "Libre Caslon Text", serif;
+    content: "";
 
-  font-size: 18px;
-  font-weight: 400;
+    position: absolute;
 
-  color: rgba(125, 85, 62, 0.35);
+    z-index: 3;
 
-  pointer-events: none;
-}
+    inset:
+        0;
 
+    pointer-events:
+        none;
 
-.story-quote-open {
-  top: 38%;
+    background-image:
+        url("../assets/images/motif.png");
 
-  left: 28px;
-}
+    background-repeat:
+        repeat;
 
+    background-size:
+        390px auto;
 
-.story-quote-close {
-  right: 28px;
+    background-position:
+        center center;
 
-  bottom: 28%;
+    opacity:
+        0.035;
+
+    mix-blend-mode:
+        soft-light;
+
 }
 
 
 /* =========================================================
-   TEXT CERITA
-   ========================================================= */
-
-.story-body-text {
-  width: 100%;
-  max-width: 300px;
-
-  margin: 0 auto;
-
-  font-family: "Libre Caslon Text", serif;
-
-  font-size: clamp(24px, 2.35vw, 34px);
-
-  font-weight: 400;
-
-  line-height: 1.35;
-
-  letter-spacing: -0.015em;
-
-  color: #3f2a1d;
-
-  text-align: left;
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-
-
-/* =========================================================
-   FOOTER TOMBOL
-   ========================================================= */
-
-.story-panel-footer {
-  width: 100%;
-  max-width: 300px;
-
-  margin: 42px auto 0;
-
-  display: flex;
-
-  justify-content: flex-end;
-}
-
-
-/* =========================================================
-   TOMBOL LANJUT
-   ========================================================= */
-
-.story-lanjut-btn {
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 8px;
-
-  min-width: 78px;
-  height: 27px;
-
-  padding: 0 12px;
-
-  border: 0;
-  border-radius: 5px;
-
-  background: #122009;
-  color: #fff9ea;
-
-  font-family: "Hanken Grotesk", sans-serif;
-
-  font-size: 8px;
-  font-weight: 700;
-
-  letter-spacing: 0.05em;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-
-.story-lanjut-btn span {
-  font-size: 11px;
-}
-
-
-.story-lanjut-btn:hover {
-  transform: translateY(-2px);
-
-  background: #2a381f;
-
-  box-shadow:
-    0 8px 18px rgba(18, 32, 9, 0.15);
-}
-
-
-.story-lanjut-btn:active {
-  transform: translateY(0);
-}
-
-
-/* =========================================================
-   TOMBOL LEWATI
-   ========================================================= */
-
-.story-skip-btn {
-  position: absolute;
-
-  left: 50%;
-  bottom: 18px;
-
-  transform: translateX(-50%);
-
-  border: 0;
-
-  background: transparent;
-
-  font-family: "Hanken Grotesk", sans-serif;
-
-  font-size: 9px;
-
-  color: rgba(125, 85, 62, 0.55);
-
-  cursor: pointer;
-
-  opacity: 0;
-
-  transition: opacity 0.25s ease;
-}
-
-
-.story-text-panel:hover .story-skip-btn {
-  opacity: 1;
-}
-
-
-.story-skip-btn:hover {
-  color: #7d553e;
-}
-
-
-/* =========================================================
-   PANEL GAMBAR KANAN
+   BACKGROUND PANEL GAMBAR
    ========================================================= */
 
 .story-illustration-panel {
-  position: relative;
 
-  width: 100%;
-  height: 100vh;
+    background:
+        #4a2c1d;
 
-  overflow: hidden;
-
-  background: #ded4a9;
 }
 
 
 /* =========================================================
-   GAMBAR INTRO
+   LAYERING
+   ========================================================= */
+
+/*
+   Motif intro berada di atas background,
+   tetapi tidak boleh menutupi isi halaman.
+*/
+
+.intro-main > * {
+
+    position:
+        relative;
+
+}
+
+
+/*
+   Story panel harus tetap berada
+   di atas motif global.
+*/
+
+#screen-story {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+}
+
+
+/*
+   Isi panel teks berada di atas
+   dekorasi motif.
+*/
+
+.story-text-panel > * {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+/*
+   Isi gambar berada di atas motif panel.
+*/
+
+.story-illustration-panel > * {
+
+    position:
+        relative;
+
+}
+
+
+/* =========================================================
+   MOTIF TIDAK MENGGANGGU GAMBAR
    ========================================================= */
 
 .story-illustration-img {
-  display: block;
 
-  width: 100%;
-  height: 100%;
+    position:
+        relative;
 
-  object-fit: cover;
+    z-index:
+        1;
 
-  object-position: center;
+}
 
-  transform: scale(1.001);
 
-  transition:
-    opacity 0.35s ease,
-    transform 0.5s ease;
+.story-image-overlay {
+
+    position:
+        absolute;
+
+    z-index:
+        2;
+
+}
+
+
+.story-image-caption {
+
+    position:
+        absolute;
+
+    z-index:
+        4;
+
 }
 
 
 /* =========================================================
-   FRAME / OVERLAY GAMBAR
+   FRAME GAMBAR
    ========================================================= */
 
 .story-illustration-panel::after {
-  content: "";
 
-  position: absolute;
+    content:
+        "";
 
-  inset: 0;
+    position:
+        absolute;
 
-  pointer-events: none;
+    z-index:
+        5;
 
-  border-left: 1px solid rgba(185, 154, 85, 0.18);
+    inset:
+        18px;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255, 249, 234, 0.08),
-      transparent 15%
-    );
+    border:
+        1px solid
+        rgba(245, 237, 221, 0.22);
+
+    pointer-events:
+        none;
+
 }
 
 
 /* =========================================================
-   TRANSITION SAAT GANTI CERITA
+   ORNAMEN TAMBAHAN PANEL KIRI
    ========================================================= */
 
-.story-changing {
-  opacity: 0 !important;
+.story-text-panel {
 
-  transform: translateY(7px) !important;
+    background:
+        #f5eddd;
+
+}
+
+
+/*
+   Garis dekoratif tipis
+   agar panel tidak terlihat terlalu kosong.
+*/
+
+.story-text-panel {
+
+    box-shadow:
+        inset -1px 0
+        rgba(184, 138, 66, 0.12);
+
+}
+
+
+/* =========================================================
+   MOTIF UNTUK DESKTOP BESAR
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+    .intro-main::before {
+
+        background-size:
+            560px auto;
+
+        opacity:
+            0.06;
+
+    }
+
+
+    .story-text-panel::before {
+
+        background-size:
+            260px auto;
+
+        opacity:
+            0.07;
+
+    }
+
+
+    .story-illustration-panel::before {
+
+        background-size:
+            430px auto;
+
+        opacity:
+            0.04;
+
+    }
+
 }
 
 
@@ -337,40 +370,51 @@
    TABLET
    ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
-  #screen-story {
-    grid-template-columns: 40% 60%;
-  }
+    .intro-main::before {
 
+        background-size:
+            420px auto;
 
-  .story-text-panel {
-    padding: 45px 30px;
-  }
+        opacity:
+            0.05;
 
-
-  .story-body-text {
-    max-width: 250px;
-
-    font-size: clamp(20px, 2.8vw, 29px);
-  }
+    }
 
 
-  .story-panel-footer {
-    max-width: 250px;
+    .story-text-panel::before {
 
-    margin-top: 32px;
-  }
+        width:
+            350px;
+
+        height:
+            350px;
+
+        left:
+            -210px;
+
+        bottom:
+            -180px;
+
+        background-size:
+            200px auto;
+
+        opacity:
+            0.055;
+
+    }
 
 
-  .story-quote-open {
-    left: 18px;
-  }
+    .story-illustration-panel::before {
 
+        background-size:
+            330px auto;
 
-  .story-quote-close {
-    right: 18px;
-  }
+        opacity:
+            0.03;
+
+    }
 
 }
 
@@ -379,87 +423,87 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-  #screen-story {
-    min-height: 100svh;
+    .intro-main {
 
-    grid-template-columns: 1fr;
+        min-height:
+            calc(100svh - 70px);
 
-    grid-template-rows: 52% 48%;
-  }
-
-
-  /* Gambar di atas */
-
-  .story-illustration-panel {
-    order: 1;
-
-    height: auto;
-
-    min-height: 0;
-  }
+    }
 
 
-  /* Teks di bawah */
+    /*
+       Motif global diperkecil
+       agar tidak terlalu ramai.
+    */
 
-  .story-text-panel {
-    order: 2;
+    .intro-main::before {
 
-    min-height: 0;
+        background-size:
+            300px auto;
 
-    padding: 25px 25px 30px;
+        background-position:
+            center center;
 
-    justify-content: center;
+        opacity:
+            0.045;
 
-    border-right: 0;
-
-    border-top: 1px solid rgba(185, 154, 85, 0.18);
-  }
-
-
-  .story-ornament {
-    margin-bottom: 15px;
-  }
+    }
 
 
-  .story-body-text {
-    max-width: 340px;
+    /*
+       Motif panel kiri.
+    */
 
-    font-size: 20px;
+    .story-text-panel::before {
 
-    line-height: 1.4;
+        width:
+            300px;
 
-    text-align: center;
-  }
+        height:
+            300px;
 
+        left:
+            -190px;
 
-  .story-panel-footer {
-    max-width: 340px;
+        bottom:
+            -150px;
 
-    margin-top: 20px;
+        background-size:
+            170px auto;
 
-    justify-content: center;
-  }
+        opacity:
+            0.05;
 
-
-  .story-skip-btn {
-    display: none;
-  }
-
-
-  .story-quote-open {
-    top: 48%;
-
-    left: 18px;
-  }
+    }
 
 
-  .story-quote-close {
-    right: 18px;
+    /*
+       Motif pada gambar.
+    */
 
-    bottom: 15%;
-  }
+    .story-illustration-panel::before {
+
+        background-size:
+            280px auto;
+
+        opacity:
+            0.028;
+
+    }
+
+
+    /*
+       Frame gambar lebih kecil.
+    */
+
+    .story-illustration-panel::after {
+
+        inset:
+            12px;
+
+    }
 
 }
 
@@ -468,34 +512,111 @@
    HP KECIL
    ========================================================= */
 
+@media (max-width: 480px) {
+
+    .intro-main::before {
+
+        background-size:
+            250px auto;
+
+        opacity:
+            0.04;
+
+    }
+
+
+    .story-text-panel::before {
+
+        width:
+            250px;
+
+        height:
+            250px;
+
+        left:
+            -170px;
+
+        bottom:
+            -130px;
+
+        background-size:
+            150px auto;
+
+        opacity:
+            0.045;
+
+    }
+
+
+    .story-illustration-panel::before {
+
+        background-size:
+            240px auto;
+
+        opacity:
+            0.025;
+
+    }
+
+
+    .story-illustration-panel::after {
+
+        inset:
+            10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   HP SANGAT KECIL
+   ========================================================= */
+
 @media (max-width: 380px) {
 
-  #screen-story {
-    grid-template-rows: 48% 52%;
-  }
+    .intro-main::before {
+
+        background-size:
+            220px auto;
+
+        opacity:
+            0.035;
+
+    }
 
 
-  .story-text-panel {
-    padding: 20px 20px 25px;
-  }
+    .story-text-panel::before {
+
+        width:
+            220px;
+
+        height:
+            220px;
+
+        left:
+            -150px;
+
+        bottom:
+            -115px;
+
+        background-size:
+            135px auto;
+
+        opacity:
+            0.04;
+
+    }
 
 
-  .story-body-text {
-    font-size: 18px;
+    .story-illustration-panel::before {
 
-    line-height: 1.35;
-  }
+        background-size:
+            210px auto;
 
+        opacity:
+            0.02;
 
-  .story-panel-footer {
-    margin-top: 16px;
-  }
-
-
-  .story-lanjut-btn {
-    min-width: 75px;
-
-    height: 26px;
-  }
+    }
 
 }
