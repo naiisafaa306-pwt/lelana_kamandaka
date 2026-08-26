@@ -1485,7 +1485,6 @@ function loadQuizQuestion() {
 
 }
 
-
 /* =========================================================
    QUIZ PILIHAN
    ========================================================= */
@@ -1589,6 +1588,10 @@ quizOptions.forEach(
                     }
 
 
+                    /*
+                     * Kunci semua pilihan
+                     */
+
                     quizOptions.forEach(
                         function (item) {
 
@@ -1614,6 +1617,15 @@ quizOptions.forEach(
                    ===================================== */
 
                 else {
+
+                    /*
+                     * Begitu salah,
+                     * soal langsung dikunci.
+                     */
+
+                    selectedAnswer =
+                        true;
+
 
                     option.classList.remove(
                         "correct"
@@ -1644,16 +1656,52 @@ quizOptions.forEach(
                     }
 
 
-                    setTimeout(
-                        function () {
+                    /*
+                     * Tampilkan jawaban yang benar
+                     */
 
-                            option.classList.remove(
-                                "wrong"
-                            );
+                    quizOptions.forEach(
+                        function (item) {
 
-                        },
-                        700
+                            if (
+                                item.dataset.answer ===
+                                currentQuestion.answer
+                            ) {
+
+                                item.classList.add(
+                                    "correct"
+                                );
+
+                            }
+
+                        }
                     );
+
+
+                    /*
+                     * Kunci semua pilihan
+                     */
+
+                    quizOptions.forEach(
+                        function (item) {
+
+                            item.disabled =
+                                true;
+
+                        }
+                    );
+
+
+                    /*
+                     * Izinkan lanjut ke soal berikutnya
+                     */
+
+                    if (btnNextQuiz) {
+
+                        btnNextQuiz.disabled =
+                            false;
+
+                    }
 
                 }
 
@@ -1662,7 +1710,6 @@ quizOptions.forEach(
 
     }
 );
-
 
 /* =========================================================
    SCREEN 04

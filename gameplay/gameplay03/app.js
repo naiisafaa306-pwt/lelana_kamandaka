@@ -6,6 +6,14 @@
 (() => {
 
     /* =====================================================
+       STORAGE
+       ===================================================== */
+
+    const MAP_PROGRESS_KEY =
+        "lelanaKamandakaProgress";
+
+
+    /* =====================================================
        SCREEN
        ===================================================== */
 
@@ -25,6 +33,7 @@
 
         });
 
+
         window.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -37,6 +46,7 @@
 
         const element =
             document.getElementById(id);
+
 
         if (element) {
 
@@ -108,6 +118,7 @@
 
             resetQuiz();
 
+
             showScreen(
                 "story-quiz-basa"
             );
@@ -124,8 +135,12 @@
         "btnNextQuiz",
         () => {
 
-            if (!quizAnswered) {
+            if (
+                !quizAnswered
+            ) {
+
                 return;
+
             }
 
 
@@ -135,6 +150,7 @@
             ) {
 
                 quizIndex++;
+
 
                 renderQuiz();
 
@@ -162,6 +178,7 @@
 
             resetDragGame();
 
+
             showScreen(
                 "story-sayembara"
             );
@@ -180,7 +197,7 @@
         () => {
 
             /*
-             * Harus memilih tepat 4 langkah.
+             * Harus memilih tepat 4 pilihan.
              */
 
             if (
@@ -193,32 +210,40 @@
 
 
             /*
-             * Pastikan semua benar.
+             * Cek semua jawaban.
              */
 
             const values =
                 [...selectedSteps];
 
+
             const allCorrect =
                 values.length === 4 &&
                 values.every(
                     value =>
-                        correctSteps.has(value)
+                        correctSteps.has(
+                            value
+                        )
                 );
 
 
-            if (!allCorrect) {
+            /*
+             * Kalau salah,
+             * tidak boleh lanjut.
+             */
 
-                checkDragGame();
+            if (
+                !allCorrect
+            ) {
 
                 return;
 
             }
 
 
-            /*
-             * Reward Gameplay 03
-             */
+            /* =================================================
+               REWARD GAMEPLAY 03
+               ================================================= */
 
             updateReward(
                 50,
@@ -226,37 +251,17 @@
             );
 
 
-            /*
-             * Tandai BAB 03 selesai.
-             *
-             * mapEngine.js akan menangani:
-             *
-             * completedChapters
-             * completedLocations
-             * unlockedLocations
-             */
+            /* =================================================
+               SIMPAN PROGRESS
+               SESUAI SISTEM MAP ENGINE
+               ================================================= */
 
-            if (
-                typeof completeChapter ===
-                "function"
-            ) {
-
-                completeChapter(3);
-
-            }
-
-            else {
-
-                console.warn(
-                    "completeChapter() tidak ditemukan."
-                );
-
-            }
+            completeGameplay03();
 
 
-            /*
-             * Masuk ke Screen 08
-             */
+            /* =================================================
+               MASUK SCREEN 08
+               ================================================= */
 
             showScreen(
                 "story-chapter-08"
@@ -264,6 +269,313 @@
 
         }
     );
+
+
+    /* =====================================================
+       COMPLETE GAMEPLAY 03
+       ===================================================== */
+
+    function completeGameplay03() {
+
+        let progress = {};
+
+
+        /* =================================================
+           AMBIL PROGRESS LAMA
+           ================================================= */
+
+        try {
+
+            const saved =
+                sessionStorage.getItem(
+                    MAP_PROGRESS_KEY
+                );
+
+
+            if (saved) {
+
+                progress =
+                    JSON.parse(saved);
+
+            }
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Progress lama tidak dapat dibaca.",
+                error
+            );
+
+        }
+
+
+        /* =================================================
+           STRUKTUR DEFAULT
+           SAMA DENGAN MAP ENGINE
+           ================================================= */
+
+        if (
+            typeof progress.currentChapter !==
+            "number"
+        ) {
+
+            progress.currentChapter =
+                1;
+
+        }
+
+
+        if (
+            typeof progress.totalChapters !==
+            "number"
+        ) {
+
+            progress.totalChapters =
+                10;
+
+        }
+
+
+        if (
+            typeof progress.xp !==
+            "number"
+        ) {
+
+            progress.xp =
+                0;
+
+        }
+
+
+        if (
+            typeof progress.basa !==
+            "number"
+        ) {
+
+            progress.basa =
+                0;
+
+        }
+
+
+        if (
+            typeof progress.quizCompleted !==
+            "boolean"
+        ) {
+
+            progress.quizCompleted =
+                false;
+
+        }
+
+
+        if (
+            typeof progress.sayembaraCompleted !==
+            "boolean"
+        ) {
+
+            progress.sayembaraCompleted =
+                false;
+
+        }
+
+
+        if (
+            !Array.isArray(
+                progress.completedChapters
+            )
+        ) {
+
+            progress.completedChapters =
+                [];
+
+        }
+
+
+        if (
+            !Array.isArray(
+                progress.completedLocations
+            )
+        ) {
+
+            progress.completedLocations =
+                [];
+
+        }
+
+
+        if (
+            !Array.isArray(
+                progress.unlockedLocations
+            )
+        ) {
+
+            progress.unlockedLocations =
+                [1];
+
+        }
+
+
+        /* =================================================
+           PAJAJARAN SELALU TERBUKA
+           ================================================= */
+
+        if (
+            !progress.unlockedLocations.includes(
+                1
+            )
+        ) {
+
+            progress.unlockedLocations.unshift(
+                1
+            );
+
+        }
+
+
+        /* =================================================
+           TANDAI CHAPTER 03 SELESAI
+           ================================================= */
+
+        if (
+            !progress.completedChapters.includes(
+                3
+            )
+        ) {
+
+            progress.completedChapters.push(
+                3
+            );
+
+        }
+
+
+        /* =================================================
+           TANDAI LOKASI 03 SELESAI
+           ================================================= */
+
+        if (
+            !progress.completedLocations.includes(
+                3
+            )
+        ) {
+
+            progress.completedLocations.push(
+                3
+            );
+
+        }
+
+
+        /* =================================================
+           BUKA LOKASI 04
+           KALI LOGAWA
+           ================================================= */
+
+        if (
+            !progress.unlockedLocations.includes(
+                4
+            )
+        ) {
+
+            progress.unlockedLocations.push(
+                4
+            );
+
+        }
+
+
+        /* =================================================
+           CHAPTER BERIKUTNYA
+           ================================================= */
+
+        progress.currentChapter =
+            4;
+
+
+        /* =================================================
+           HILANGKAN DUPLIKAT
+           ================================================= */
+
+        progress.completedChapters = [
+            ...new Set(
+                progress.completedChapters
+            )
+        ];
+
+
+        progress.completedLocations = [
+            ...new Set(
+                progress.completedLocations
+            )
+        ];
+
+
+        progress.unlockedLocations = [
+            ...new Set(
+                progress.unlockedLocations
+            )
+        ];
+
+
+        /* =================================================
+           URUTKAN
+           ================================================= */
+
+        progress.completedChapters.sort(
+            (a, b) => a - b
+        );
+
+
+        progress.completedLocations.sort(
+            (a, b) => a - b
+        );
+
+
+        progress.unlockedLocations.sort(
+            (a, b) => a - b
+        );
+
+
+        /* =================================================
+           SIMPAN KE SESSION STORAGE
+           ================================================= */
+
+        try {
+
+            sessionStorage.setItem(
+                MAP_PROGRESS_KEY,
+                JSON.stringify(progress)
+            );
+
+
+            console.log(
+                "Gameplay 03 selesai."
+            );
+
+
+            console.log(
+                "Progress:",
+                progress
+            );
+
+
+            console.log(
+                "Lokasi 04 terbuka."
+            );
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Progress tidak dapat disimpan.",
+                error
+            );
+
+        }
+
+    }
 
 
     /* =====================================================
@@ -402,74 +714,105 @@
     const quizQuestions = [
 
         {
+
             question:
                 'Apa arti kata "Wewengkon"?',
 
             answers: [
+
                 "Wilayah / daerah",
+
                 "Rumah",
+
                 "Berangkat",
+
                 "Teman"
+
             ],
 
             correct:
                 "Wilayah / daerah"
+
         },
 
 
         {
+
             question:
                 'Apa arti kata "Mlebu"?',
 
             answers: [
+
                 "Keluar",
+
                 "Masuk",
+
                 "Berjalan",
+
                 "Berbicara"
+
             ],
 
             correct:
                 "Masuk"
+
         },
 
 
         {
+
             question:
                 'Apa arti kata "Ngati-ati"?',
 
             answers: [
+
                 "Bergegas",
+
                 "Bermain",
+
                 "Berhati-hati",
+
                 "Berkumpul"
+
             ],
 
             correct:
                 "Berhati-hati"
+
         },
 
 
         {
+
             question:
                 'Apa arti kata "Lampah"?',
 
             answers: [
+
                 "Perjalanan / langkah",
+
                 "Kerajaan",
+
                 "Rumah",
+
                 "Nama orang"
+
             ],
 
             correct:
                 "Perjalanan / langkah"
+
         }
 
     ];
 
 
-    let quizIndex = 0;
+    let quizIndex =
+        0;
 
-    let quizAnswered = false;
+
+    let quizAnswered =
+        false;
 
 
     const quizQuestion =
@@ -522,7 +865,9 @@
 
 
         if (!item) {
+
             return;
+
         }
 
 
@@ -557,7 +902,9 @@
             quizFill.style.width =
                 `${
                     (
-                        (quizIndex + 1) /
+                        (
+                            quizIndex + 1
+                        ) /
                         quizQuestions.length
                     ) * 100
                 }%`;
@@ -594,7 +941,10 @@
 
 
         quizOptions.forEach(
-            (button, index) => {
+            (
+                button,
+                index
+            ) => {
 
                 button.classList.remove(
                     "selected",
@@ -641,6 +991,11 @@
                 "click",
                 () => {
 
+                    /*
+                     * Setelah menjawab,
+                     * soal langsung terkunci.
+                     */
+
                     if (
                         quizAnswered
                     ) {
@@ -664,6 +1019,10 @@
                         ].correct;
 
 
+                    /*
+                     * SEMUA PILIHAN DIKUNCI.
+                     */
+
                     quizOptions.forEach(
                         option => {
 
@@ -673,6 +1032,10 @@
                         }
                     );
 
+
+                    /* =========================
+                       BENAR
+                       ========================= */
 
                     if (
                         chosen === correct
@@ -694,9 +1057,16 @@
                         }
 
 
-                        addXp(10);
+                        addXp(
+                            10
+                        );
 
                     }
+
+
+                    /* =========================
+                       SALAH
+                       ========================= */
 
                     else {
 
@@ -737,7 +1107,13 @@
                     }
 
 
-                    if (btnNextQuiz) {
+                    /*
+                     * Tombol berikutnya aktif.
+                     */
+
+                    if (
+                        btnNextQuiz
+                    ) {
 
                         btnNextQuiz.disabled =
                             false;
@@ -759,6 +1135,11 @@
 
         quizIndex =
             0;
+
+
+        quizAnswered =
+            false;
+
 
         renderQuiz();
 
@@ -816,6 +1197,18 @@
         new Set();
 
 
+    /*
+     * STATUS GAME
+     *
+     * false = masih bisa memilih
+     * true  = sudah memilih 4
+     *        dan game terkunci
+     */
+
+    let dragAnswered =
+        false;
+
+
     /* =====================================================
        OPTION DRAG
        ===================================================== */
@@ -823,9 +1216,34 @@
     optionButtons.forEach(
         option => {
 
+            /* =============================================
+               DRAG START
+               ============================================= */
+
             option.addEventListener(
                 "dragstart",
                 event => {
+
+                    /*
+                     * Kalau sudah terkunci,
+                     * tidak boleh drag.
+                     */
+
+                    if (
+                        dragAnswered
+                    ) {
+
+                        event.preventDefault();
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Kalau sudah masuk,
+                     * tidak boleh drag lagi.
+                     */
 
                     if (
                         option.classList.contains(
@@ -858,6 +1276,10 @@
             );
 
 
+            /* =============================================
+               DRAG END
+               ============================================= */
+
             option.addEventListener(
                 "dragend",
                 () => {
@@ -870,13 +1292,53 @@
             );
 
 
-            /*
-             * Klik juga bisa digunakan.
-             */
+            /* =============================================
+               KLIK PILIHAN
+               ============================================= */
 
             option.addEventListener(
                 "click",
                 () => {
+
+                    /*
+                     * Kalau game sudah dikunci,
+                     * klik tidak bekerja.
+                     */
+
+                    if (
+                        dragAnswered
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Kalau sudah masuk ke kotak,
+                     * klik lagi untuk mengeluarkan.
+                     */
+
+                    if (
+                        option.classList.contains(
+                            "used"
+                        )
+                    ) {
+
+                        removeDropItem(
+                            option.dataset.answer,
+                            option
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Masukkan ke kotak.
+                     */
 
                     addDropItem(
                         option.dataset.answer,
@@ -899,6 +1361,20 @@
         dropzone.addEventListener(
             "dragover",
             event => {
+
+                /*
+                 * Kalau sudah dikunci,
+                 * tidak menerima drag.
+                 */
+
+                if (
+                    dragAnswered
+                ) {
+
+                    return;
+
+                }
+
 
                 event.preventDefault();
 
@@ -943,6 +1419,20 @@
             "drop",
             event => {
 
+                /*
+                 * Kalau sudah dikunci,
+                 * tidak menerima drop.
+                 */
+
+                if (
+                    dragAnswered
+                ) {
+
+                    return;
+
+                }
+
+
                 event.preventDefault();
 
 
@@ -958,7 +1448,9 @@
 
 
                 if (!key) {
+
                     return;
+
                 }
 
 
@@ -968,6 +1460,29 @@
                             item.dataset.answer ===
                             key
                     );
+
+
+                if (!option) {
+
+                    return;
+
+                }
+
+
+                /*
+                 * Jangan masukkan pilihan
+                 * yang sudah digunakan.
+                 */
+
+                if (
+                    option.classList.contains(
+                        "used"
+                    )
+                ) {
+
+                    return;
+
+                }
 
 
                 addDropItem(
@@ -990,9 +1505,13 @@
         option
     ) {
 
+        /*
+         * Kalau sudah terkunci,
+         * tidak boleh menambah.
+         */
+
         if (
-            !key ||
-            selectedSteps.has(key)
+            dragAnswered
         ) {
 
             return;
@@ -1000,10 +1519,44 @@
         }
 
 
+        /*
+         * Tidak boleh kosong.
+         */
+
+        if (!key) {
+
+            return;
+
+        }
+
+
+        /*
+         * Tidak boleh duplikat.
+         */
+
+        if (
+            selectedSteps.has(
+                key
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Masukkan pilihan.
+         */
+
         selectedSteps.add(
             key
         );
 
+
+        /*
+         * Tandai pilihan asal.
+         */
 
         if (option) {
 
@@ -1014,9 +1567,9 @@
         }
 
 
-        /*
-         * Buat container item
-         */
+        /* =================================================
+           HOLDER
+           ================================================= */
 
         let holder =
             dropzone.querySelector(
@@ -1047,18 +1600,14 @@
         }
 
 
-        /*
-         * Buat item
-         */
+        /* =================================================
+           BUAT KOTAK ITEM
+           ================================================= */
 
         const chip =
             document.createElement(
-                "button"
+                "div"
             );
-
-
-        chip.type =
-            "button";
 
 
         chip.className =
@@ -1073,45 +1622,82 @@
             labelFor(key);
 
 
+        chip.setAttribute(
+            "role",
+            "button"
+        );
+
+
+        chip.setAttribute(
+            "tabindex",
+            "0"
+        );
+
+
         chip.title =
             "Klik untuk menghapus";
 
 
-        /*
-         * Klik item untuk menghapus
-         */
+        /* =================================================
+           KLIK KOTAK → HAPUS
+           SELAMA BELUM TERKUNCI
+           ================================================= */
 
         chip.addEventListener(
             "click",
             () => {
 
-                selectedSteps.delete(
-                    key
+                if (
+                    dragAnswered
+                ) {
+
+                    return;
+
+                }
+
+
+                removeDropItem(
+                    key,
+                    option
                 );
 
+            }
+        );
 
-                if (option) {
 
-                    option.classList.remove(
-                        "used"
+        /* =================================================
+           KEYBOARD
+           ================================================= */
+
+        chip.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key ===
+                    "Enter" ||
+                    event.key ===
+                    " "
+                ) {
+
+                    event.preventDefault();
+
+
+                    if (
+                        dragAnswered
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    removeDropItem(
+                        key,
+                        option
                     );
 
                 }
-
-
-                chip.remove();
-
-
-                if (
-                    selectedSteps.size === 0
-                ) {
-
-                    resetDropzoneVisual();
-
-                }
-
-
-                checkDragGame();
 
             }
         );
@@ -1122,14 +1708,97 @@
         );
 
 
-        /*
-         * Tandai dropzone punya item
-         */
-
         dropzone.classList.add(
             "has-items"
         );
 
+
+        /*
+         * Cek apakah sudah 4.
+         */
+
+        checkDragGame();
+
+    }
+
+
+    /* =====================================================
+       HAPUS ITEM DARI DROPZONE
+       ===================================================== */
+
+    function removeDropItem(
+        key,
+        option
+    ) {
+
+        /*
+         * Kalau sudah terkunci,
+         * tidak boleh menghapus.
+         */
+
+        if (
+            dragAnswered
+        ) {
+
+            return;
+
+        }
+
+
+        selectedSteps.delete(
+            key
+        );
+
+
+        /*
+         * Kembalikan pilihan asal.
+         */
+
+        if (option) {
+
+            option.classList.remove(
+                "used",
+                "correct",
+                "wrong"
+            );
+
+        }
+
+
+        /*
+         * Cari kotak item.
+         */
+
+        const chip =
+            dropzone.querySelector(
+                `.dropped-item[data-answer="${key}"]`
+            );
+
+
+        if (chip) {
+
+            chip.remove();
+
+        }
+
+
+        /*
+         * Kalau kosong,
+         * kembalikan placeholder.
+         */
+
+        if (
+            selectedSteps.size === 0
+        ) {
+
+            resetDropzoneVisual();
+
+        }
+
+
+        /*
+         * Cek kembali.
+         */
 
         checkDragGame();
 
@@ -1177,7 +1846,7 @@
 
 
     /* =====================================================
-       CEK GAME
+       CEK GAME DRAG
        ===================================================== */
 
     function checkDragGame() {
@@ -1186,9 +1855,9 @@
             [...selectedSteps];
 
 
-        /*
-         * Belum 4 pilihan
-         */
+        /* =================================================
+           BELUM 4
+           ================================================= */
 
         if (
             values.length < 4
@@ -1212,6 +1881,11 @@
                 nextSayembara.disabled =
                     true;
 
+
+                nextSayembara.classList.remove(
+                    "ready"
+                );
+
             }
 
 
@@ -1220,9 +1894,37 @@
         }
 
 
+        /* =================================================
+           SUDAH 4
+           
+           LANGSUNG KUNCI
+           ================================================= */
+
+        dragAnswered =
+            true;
+
+
         /*
-         * Cek apakah semuanya benar
+         * Semua pilihan luar dikunci.
          */
+
+        optionButtons.forEach(
+            option => {
+
+                option.draggable =
+                    false;
+
+
+                option.disabled =
+                    true;
+
+            }
+        );
+
+
+        /* =================================================
+           CEK BENAR / SALAH
+           ================================================= */
 
         const allCorrect =
             values.length === 4 &&
@@ -1234,7 +1936,13 @@
             );
 
 
-        if (allCorrect) {
+        /* =================================================
+           BENAR
+           ================================================= */
+
+        if (
+            allCorrect
+        ) {
 
             if (feedback) {
 
@@ -1247,10 +1955,38 @@
             }
 
 
+            /*
+             * Tandai semua kotak sebagai benar.
+             */
+
+            if (dropzone) {
+
+                dropzone
+                    .querySelectorAll(
+                        ".dropped-item"
+                    )
+                    .forEach(
+                        item => {
+
+                            item.classList.add(
+                                "correct"
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            /*
+             * Tombol lanjut aktif.
+             */
+
             if (nextSayembara) {
 
                 nextSayembara.disabled =
                     false;
+
 
                 nextSayembara.classList.add(
                     "ready"
@@ -1260,12 +1996,17 @@
 
         }
 
+
+        /* =================================================
+           SALAH
+           ================================================= */
+
         else {
 
             if (feedback) {
 
                 feedback.textContent =
-                    "Masih ada langkah yang keliru. Hapus pilihan yang salah lalu coba lagi.";
+                    "Susunan langkah belum tepat.";
 
                 feedback.style.color =
                     "#9b4d3f";
@@ -1273,10 +2014,64 @@
             }
 
 
+            /*
+             * Tandai yang benar dan salah.
+             */
+
+            if (dropzone) {
+
+                dropzone
+                    .querySelectorAll(
+                        ".dropped-item"
+                    )
+                    .forEach(
+                        item => {
+
+                            const key =
+                                item.dataset.answer;
+
+
+                            if (
+                                correctSteps.has(
+                                    key
+                                )
+                            ) {
+
+                                item.classList.add(
+                                    "correct"
+                                );
+
+                            }
+
+                            else {
+
+                                item.classList.add(
+                                    "wrong"
+                                );
+
+                            }
+
+                        }
+                    );
+
+            }
+
+
+            /*
+             * SALAH = TETAP TERKUNCI.
+             *
+             * Tidak bisa:
+             * - klik pilihan lain
+             * - drag pilihan lain
+             * - hapus pilihan
+             * - memperbaiki jawaban
+             */
+
             if (nextSayembara) {
 
                 nextSayembara.disabled =
                     true;
+
 
                 nextSayembara.classList.remove(
                     "ready"
@@ -1296,7 +2091,9 @@
     function resetDropzoneVisual() {
 
         if (!dropzone) {
+
             return;
+
         }
 
 
@@ -1338,6 +2135,10 @@
         selectedSteps.clear();
 
 
+        dragAnswered =
+            false;
+
+
         if (feedback) {
 
             feedback.textContent =
@@ -1354,6 +2155,7 @@
             nextSayembara.disabled =
                 true;
 
+
             nextSayembara.classList.remove(
                 "ready"
             );
@@ -1366,8 +2168,18 @@
 
                 option.classList.remove(
                     "used",
+                    "correct",
+                    "wrong",
                     "dragging"
                 );
+
+
+                option.disabled =
+                    false;
+
+
+                option.draggable =
+                    true;
 
             }
         );
@@ -1391,7 +2203,9 @@
 
 
         if (!element) {
+
             return 0;
+
         }
 
 
@@ -1415,12 +2229,16 @@
 
 
         if (!element) {
+
             return;
+
         }
 
 
         element.textContent =
-            getNumber("hudXp") +
+            getNumber(
+                "hudXp"
+            ) +
             amount;
 
     }
@@ -1439,12 +2257,16 @@
 
 
         if (!element) {
+
             return;
+
         }
 
 
         element.textContent =
-            getNumber("hudBasa") +
+            getNumber(
+                "hudBasa"
+            ) +
             amount;
 
     }
@@ -1506,10 +2328,9 @@
     resetQuiz();
 
 
-    /*
-     * Pastikan screen pertama yang aktif
-     * adalah opening.
-     */
+    /* =====================================================
+       PASTIKAN SCREEN PERTAMA
+       ===================================================== */
 
     screens.forEach(
         screen => {
@@ -1535,6 +2356,5 @@
         );
 
     }
-
 
 })();
