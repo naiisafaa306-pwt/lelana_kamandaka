@@ -6,7 +6,10 @@
    SCREEN 02 — DIALOG
    SCREEN 03 — TRANSISI
    SCREEN 06 — CERITA PASIR LUHUR
-   SCREEN 08 — SELESAI
+   SCREEN 07 — BATUR AGUNG
+   SCREEN 08 — SAWANGAN
+   SCREEN 09 — KALI SERAYU
+   SCREEN 10 — DESA ROSARI
    ========================================================= */
 
 
@@ -980,23 +983,9 @@
 
 
 /* =========================================================
-   =========================================================
    SCREEN 06
    CERITA — JEJAK PASIR LUHUR
-   =========================================================
    ========================================================= */
-
-
-/*
-   INI BAGIAN PENTING.
-
-   HTML menggunakan:
-
-   id="story-pasir-story"
-
-   Jadi CSS harus memakai #story-pasir-story.
-*/
-
 
 #story-pasir-story {
     position: relative;
@@ -1563,11 +1552,13 @@
 
 
 /* =========================================================
-   SCREEN 08
-   SELESAI
+   =========================================================
+   SCREEN 07
+   BATUR AGUNG
+   =========================================================
    ========================================================= */
 
-#story-chapter-08 {
+#story-chapter-07 {
     position:
         relative;
 
@@ -1589,10 +1580,10 @@
 
 
 /* =========================================================
-   BACKGROUND SCREEN 08
+   BACKGROUND SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-background {
+#story-chapter-07 .journey-story-background {
     position:
         absolute;
 
@@ -1605,22 +1596,22 @@
     background-image:
         url("../../assets/images/bg_pajajaran.png");
 
+    background-repeat:
+        no-repeat;
+
     background-position:
         center;
 
     background-size:
         cover;
-
-    background-repeat:
-        no-repeat;
 }
 
 
 /* =========================================================
-   OVERLAY SCREEN 08
+   OVERLAY SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-overlay {
+#story-chapter-07 .journey-story-overlay {
     position:
         absolute;
 
@@ -1633,19 +1624,19 @@
     background:
         linear-gradient(
             90deg,
-            rgba(255, 249, 234, 0.96) 0%,
+            rgba(255, 249, 234, 0.97) 0%,
             rgba(255, 249, 234, 0.90) 38%,
-            rgba(255, 249, 234, 0.45) 70%,
-            rgba(255, 249, 234, 0.15) 100%
+            rgba(255, 249, 234, 0.55) 68%,
+            rgba(255, 249, 234, 0.18) 100%
         );
 }
 
 
 /* =========================================================
-   BATIK SCREEN 08
+   BATIK SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-batik {
+#story-chapter-07 .journey-story-batik {
     position:
         absolute;
 
@@ -1668,15 +1659,15 @@
         420px auto;
 
     opacity:
-        0.04;
+        0.035;
 }
 
 
 /* =========================================================
-   CONTAINER SCREEN 08
+   CONTAINER SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-container {
+#story-chapter-07 .journey-story-container {
     position:
         relative;
 
@@ -1715,10 +1706,10 @@
 
 
 /* =========================================================
-   LABEL
+   LABEL SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-label {
+#story-chapter-07 .journey-story-label {
     margin-bottom:
         15px;
 
@@ -1737,14 +1728,17 @@
 
     color:
         var(--story-gold);
+
+    text-transform:
+        uppercase;
 }
 
 
 /* =========================================================
-   TITLE
+   TITLE SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-title {
+#story-chapter-07 .journey-story-title {
     margin:
         0 0 25px;
 
@@ -1774,20 +1768,23 @@
 
     color:
         var(--story-dark);
+
+    max-width:
+        700px;
 }
 
 
-#story-chapter-08 .departure-story-title span {
+#story-chapter-07 .journey-story-title span {
     color:
         var(--story-brown);
 }
 
 
 /* =========================================================
-   TEXT
+   TEXT SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-text {
+#story-chapter-07 .journey-story-text {
     width:
         min(
             560px,
@@ -1799,7 +1796,7 @@
 }
 
 
-#story-chapter-08 .departure-story-text p {
+#story-chapter-07 .journey-story-text p {
     margin:
         0 0 12px;
 
@@ -1819,13 +1816,13 @@
 
 
 /* =========================================================
-   QUOTE
+   INFO SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-quote {
+#story-chapter-07 .journey-story-info {
     width:
         min(
-            500px,
+            560px,
             100%
         );
 
@@ -1842,7 +1839,7 @@
         25px;
 
     padding:
-        15px 20px;
+        15px 18px;
 
     background:
         rgba(
@@ -1858,23 +1855,19 @@
 }
 
 
-#story-chapter-08 .departure-story-quote > span {
-    font-family:
-        Georgia,
-        serif;
+#story-chapter-07 .journey-story-info-icon {
+    flex:
+        0 0 auto;
 
     font-size:
-        38px;
-
-    line-height:
-        0.7;
+        20px;
 
     color:
         var(--story-gold);
 }
 
 
-#story-chapter-08 .departure-story-quote p {
+#story-chapter-07 .journey-story-info p {
     margin:
         0;
 
@@ -1884,13 +1877,10 @@
         serif;
 
     font-size:
-        18px;
+        16px;
 
     line-height:
-        1.5;
-
-    font-style:
-        italic;
+        1.55;
 
     color:
         var(--story-dark);
@@ -1898,166 +1888,89 @@
 
 
 /* =========================================================
-   REWARD
+   BUTTON SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-reward {
+#story-chapter-07 .journey-story-button {
     display:
-        flex;
+        inline-flex;
 
     align-items:
         center;
 
-    gap:
-        12px;
+    justify-content:
+        center;
 
-    margin-bottom:
+    gap:
         20px;
-}
 
-
-#story-chapter-08 .departure-reward-item {
     min-width:
-        130px;
+        195px;
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
+    min-height:
+        50px;
 
     padding:
-        10px 13px;
-
-    background:
-        rgba(
-            255,
-            249,
-            234,
-            0.90
-        );
+        0 24px;
 
     border:
-        1px solid
+        none;
+
+    border-radius:
+        4px;
+
+    background:
+        var(--story-dark);
+
+    color:
+        var(--story-cream);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+#story-chapter-07 .journey-story-button:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        var(--story-green);
+
+    box-shadow:
+        0 14px 30px
         rgba(
-            183,
-            154,
-            85,
-            0.35
+            23,
+            35,
+            14,
+            0.18
         );
 }
 
 
-#story-chapter-08 .departure-reward-icon {
-    font-size:
-        18px;
-
-    color:
-        var(--story-gold);
-}
-
-
-#story-chapter-08 .departure-reward-item small {
-    display:
-        block;
-
-    margin-bottom:
-        2px;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size:
-        7px;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        0.12em;
-
-    color:
-        var(--story-brown);
-}
-
-
-#story-chapter-08 .departure-reward-item strong {
-    display:
-        block;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size:
-        12px;
-
-    font-weight:
-        700;
-
-    color:
-        var(--story-dark);
-}
-
-
 /* =========================================================
-   PROGRESS
+   MARK SCREEN 07
    ========================================================= */
 
-#story-chapter-08 .departure-story-progress {
-    display:
-        flex;
-
-    align-items:
-        baseline;
-
-    gap:
-        7px;
-
-    margin-bottom:
-        22px;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size:
-        9px;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        0.12em;
-
-    color:
-        var(--story-brown);
-}
-
-
-#story-chapter-08 .departure-story-progress strong {
-    font-family:
-        "Libre Caslon Text",
-        Georgia,
-        serif;
-
-    font-size:
-        22px;
-
-    color:
-        var(--story-dark);
-}
-
-
-/* =========================================================
-   SCREEN MARK
-   ========================================================= */
-
-#story-chapter-08 .departure-story-mark {
+#story-chapter-07 .journey-story-mark {
     position:
         absolute;
 
@@ -2097,7 +2010,1567 @@
 }
 
 
-#story-chapter-08 .departure-story-mark-line {
+#story-chapter-07 .journey-story-mark-line {
+    width:
+        35px;
+
+    height:
+        1px;
+
+    background:
+        rgba(
+            118,
+            80,
+            59,
+            0.4
+        );
+}
+
+
+/* =========================================================
+   SCREEN 08
+   SAWANGAN
+   ========================================================= */
+
+#story-chapter-08 {
+    position:
+        relative;
+
+    width:
+        100%;
+
+    min-height:
+        calc(100vh - 72px);
+
+    overflow:
+        hidden;
+
+    background:
+        var(--story-cream);
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   BACKGROUND SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-background {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        0;
+
+    background-image:
+        url("../../assets/images/bg_pajajaran.png");
+
+    background-position:
+        center;
+
+    background-size:
+        cover;
+
+    background-repeat:
+        no-repeat;
+}
+
+
+/* =========================================================
+   OVERLAY SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-overlay {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 249, 234, 0.96) 0%,
+            rgba(255, 249, 234, 0.90) 38%,
+            rgba(255, 249, 234, 0.48) 70%,
+            rgba(255, 249, 234, 0.15) 100%
+        );
+}
+
+
+/* =========================================================
+   BATIK SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-batik {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        2;
+
+    pointer-events:
+        none;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat:
+        repeat;
+
+    background-size:
+        420px auto;
+
+    opacity:
+        0.04;
+}
+
+
+/* =========================================================
+   CONTAINER SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-container {
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    width:
+        min(
+            1180px,
+            calc(100% - 100px)
+        );
+
+    min-height:
+        calc(100vh - 72px);
+
+    margin:
+        0 auto;
+
+    padding:
+        90px
+        0
+        80px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        flex-start;
+}
+
+
+/* =========================================================
+   LABEL SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-label {
+    margin-bottom:
+        15px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.18em;
+
+    color:
+        var(--story-gold);
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   TITLE SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-title {
+    margin:
+        0 0 25px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            50px,
+            7vw,
+            90px
+        );
+
+    line-height:
+        0.95;
+
+    letter-spacing:
+        -0.04em;
+
+    color:
+        var(--story-dark);
+
+    max-width:
+        700px;
+}
+
+
+#story-chapter-08 .journey-story-title span {
+    color:
+        var(--story-brown);
+}
+
+
+/* =========================================================
+   TEXT SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-text {
+    width:
+        min(
+            570px,
+            100%
+        );
+
+    margin-bottom:
+        25px;
+}
+
+
+#story-chapter-08 .journey-story-text p {
+    margin:
+        0 0 12px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.75;
+
+    color:
+        #55584d;
+}
+
+
+/* =========================================================
+   LOCATION INFO SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-location {
+    width:
+        min(
+            600px,
+            100%
+        );
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        10px;
+
+    margin-bottom:
+        25px;
+}
+
+
+#story-chapter-08 .journey-location-item {
+    padding:
+        12px
+        14px;
+
+    background:
+        rgba(
+            255,
+            253,
+            247,
+            0.88
+        );
+
+    border:
+        1px solid
+        rgba(
+            183,
+            154,
+            85,
+            0.25
+        );
+}
+
+
+#story-chapter-08 .journey-location-item small {
+    display:
+        block;
+
+    margin-bottom:
+        4px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        var(--story-brown);
+
+    text-transform:
+        uppercase;
+}
+
+
+#story-chapter-08 .journey-location-item strong {
+    display:
+        block;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.45;
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   BUTTON SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-button {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        20px;
+
+    min-width:
+        195px;
+
+    min-height:
+        50px;
+
+    padding:
+        0 24px;
+
+    border:
+        none;
+
+    border-radius:
+        4px;
+
+    background:
+        var(--story-dark);
+
+    color:
+        var(--story-cream);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+#story-chapter-08 .journey-story-button:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        var(--story-green);
+
+    box-shadow:
+        0 14px 30px
+        rgba(
+            23,
+            35,
+            14,
+            0.18
+        );
+}
+
+
+/* =========================================================
+   MARK SCREEN 08
+   ========================================================= */
+
+#story-chapter-08 .journey-story-mark {
+    position:
+        absolute;
+
+    right:
+        35px;
+
+    bottom:
+        35px;
+
+    z-index:
+        8;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    color:
+        var(--story-brown);
+}
+
+
+#story-chapter-08 .journey-story-mark-line {
+    width:
+        35px;
+
+    height:
+        1px;
+
+    background:
+        rgba(
+            118,
+            80,
+            59,
+            0.4
+        );
+}
+
+
+/* =========================================================
+   SCREEN 09
+   KALI SERAYU
+   ========================================================= */
+
+#story-chapter-09 {
+    position:
+        relative;
+
+    width:
+        100%;
+
+    min-height:
+        calc(100vh - 72px);
+
+    overflow:
+        hidden;
+
+    background:
+        var(--story-cream);
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   BACKGROUND SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-background {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        0;
+
+    background-image:
+        url("../../assets/images/bg_pajajaran.png");
+
+    background-repeat:
+        no-repeat;
+
+    background-position:
+        center;
+
+    background-size:
+        cover;
+}
+
+
+/* =========================================================
+   OVERLAY SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-overlay {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 249, 234, 0.97) 0%,
+            rgba(255, 249, 234, 0.90) 36%,
+            rgba(255, 249, 234, 0.52) 68%,
+            rgba(255, 249, 234, 0.16) 100%
+        );
+}
+
+
+/* =========================================================
+   BATIK SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-batik {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        2;
+
+    pointer-events:
+        none;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat:
+        repeat;
+
+    background-size:
+        420px auto;
+
+    opacity:
+        0.035;
+}
+
+
+/* =========================================================
+   CONTAINER SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-container {
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    width:
+        min(
+            1180px,
+            calc(100% - 100px)
+        );
+
+    min-height:
+        calc(100vh - 72px);
+
+    margin:
+        0 auto;
+
+    padding:
+        90px
+        0
+        80px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        flex-start;
+}
+
+
+/* =========================================================
+   LABEL SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-label {
+    margin-bottom:
+        15px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.18em;
+
+    color:
+        var(--story-gold);
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   TITLE SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-title {
+    margin:
+        0 0 25px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            50px,
+            7vw,
+            90px
+        );
+
+    line-height:
+        0.95;
+
+    letter-spacing:
+        -0.04em;
+
+    color:
+        var(--story-dark);
+
+    max-width:
+        700px;
+}
+
+
+#story-chapter-09 .journey-story-title span {
+    color:
+        var(--story-brown);
+}
+
+
+/* =========================================================
+   TEXT SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-text {
+    width:
+        min(
+            600px,
+            100%
+        );
+
+    margin-bottom:
+        25px;
+}
+
+
+#story-chapter-09 .journey-story-text p {
+    margin:
+        0 0 12px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.75;
+
+    color:
+        #55584d;
+}
+
+
+/* =========================================================
+   STORY STEPS SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-steps {
+    width:
+        min(
+            650px,
+            100%
+        );
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap:
+        10px;
+
+    margin-bottom:
+        25px;
+}
+
+
+#story-chapter-09 .journey-step {
+    min-height:
+        82px;
+
+    padding:
+        12px
+        13px;
+
+    background:
+        rgba(
+            255,
+            253,
+            247,
+            0.88
+        );
+
+    border:
+        1px solid
+        rgba(
+            183,
+            154,
+            85,
+            0.25
+        );
+}
+
+
+#story-chapter-09 .journey-step-number {
+    display:
+        block;
+
+    margin-bottom:
+        7px;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        18px;
+
+    color:
+        var(--story-gold);
+}
+
+
+#story-chapter-09 .journey-step span {
+    display:
+        block;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   BUTTON SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-button {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        20px;
+
+    min-width:
+        195px;
+
+    min-height:
+        50px;
+
+    padding:
+        0 24px;
+
+    border:
+        none;
+
+    border-radius:
+        4px;
+
+    background:
+        var(--story-dark);
+
+    color:
+        var(--story-cream);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+#story-chapter-09 .journey-story-button:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        var(--story-green);
+
+    box-shadow:
+        0 14px 30px
+        rgba(
+            23,
+            35,
+            14,
+            0.18
+        );
+}
+
+
+/* =========================================================
+   MARK SCREEN 09
+   ========================================================= */
+
+#story-chapter-09 .journey-story-mark {
+    position:
+        absolute;
+
+    right:
+        35px;
+
+    bottom:
+        35px;
+
+    z-index:
+        8;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    color:
+        var(--story-brown);
+}
+
+
+#story-chapter-09 .journey-story-mark-line {
+    width:
+        35px;
+
+    height:
+        1px;
+
+    background:
+        rgba(
+            118,
+            80,
+            59,
+            0.4
+        );
+}
+
+
+/* =========================================================
+   SCREEN 10
+   DESA ROSARI
+   ========================================================= */
+
+#story-chapter-10 {
+    position:
+        relative;
+
+    width:
+        100%;
+
+    min-height:
+        calc(100vh - 72px);
+
+    overflow:
+        hidden;
+
+    background:
+        var(--story-cream);
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   BACKGROUND SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-background {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        0;
+
+    background-image:
+        url("../../assets/images/bg_pajajaran.png");
+
+    background-repeat:
+        no-repeat;
+
+    background-position:
+        center;
+
+    background-size:
+        cover;
+}
+
+
+/* =========================================================
+   OVERLAY SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-overlay {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 249, 234, 0.97) 0%,
+            rgba(255, 249, 234, 0.91) 38%,
+            rgba(255, 249, 234, 0.50) 70%,
+            rgba(255, 249, 234, 0.15) 100%
+        );
+}
+
+
+/* =========================================================
+   BATIK SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-batik {
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        2;
+
+    pointer-events:
+        none;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat:
+        repeat;
+
+    background-size:
+        420px auto;
+
+    opacity:
+        0.04;
+}
+
+
+/* =========================================================
+   CONTAINER SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-container {
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    width:
+        min(
+            1180px,
+            calc(100% - 100px)
+        );
+
+    min-height:
+        calc(100vh - 72px);
+
+    margin:
+        0 auto;
+
+    padding:
+        90px
+        0
+        80px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        flex-start;
+}
+
+
+/* =========================================================
+   LABEL SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-label {
+    margin-bottom:
+        15px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.18em;
+
+    color:
+        var(--story-gold);
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   TITLE SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-title {
+    margin:
+        0 0 25px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            50px,
+            7vw,
+            90px
+        );
+
+    line-height:
+        0.95;
+
+    letter-spacing:
+        -0.04em;
+
+    color:
+        var(--story-dark);
+
+    max-width:
+        700px;
+}
+
+
+#story-chapter-10 .journey-story-title span {
+    color:
+        var(--story-brown);
+}
+
+
+/* =========================================================
+   TEXT SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-text {
+    width:
+        min(
+            580px,
+            100%
+        );
+
+    margin-bottom:
+        25px;
+}
+
+
+#story-chapter-10 .journey-story-text p {
+    margin:
+        0 0 12px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.75;
+
+    color:
+        #55584d;
+}
+
+
+/* =========================================================
+   QUOTE SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-quote {
+    width:
+        min(
+            520px,
+            100%
+        );
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        25px;
+
+    padding:
+        15px
+        20px;
+
+    background:
+        rgba(
+            255,
+            253,
+            247,
+            0.88
+        );
+
+    border-left:
+        3px solid
+        var(--story-gold);
+}
+
+
+#story-chapter-10 .journey-story-quote > span {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        34px;
+
+    line-height:
+        0.7;
+
+    color:
+        var(--story-gold);
+}
+
+
+#story-chapter-10 .journey-story-quote p {
+    margin:
+        0;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.5;
+
+    color:
+        var(--story-dark);
+}
+
+
+/* =========================================================
+   CHARACTER / PLACE INFO SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-info {
+    width:
+        min(
+            560px,
+            100%
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        25px;
+
+    padding:
+        12px
+        15px;
+
+    background:
+        rgba(
+            255,
+            249,
+            234,
+            0.90
+        );
+
+    border:
+        1px solid
+        rgba(
+            183,
+            154,
+            85,
+            0.30
+        );
+}
+
+
+#story-chapter-10 .journey-story-info strong {
+    display:
+        block;
+
+    margin-bottom:
+        3px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        11px;
+
+    color:
+        var(--story-dark);
+}
+
+
+#story-chapter-10 .journey-story-info span {
+    display:
+        block;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    color:
+        #777568;
+}
+
+
+/* =========================================================
+   BUTTON SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-button {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        20px;
+
+    min-width:
+        195px;
+
+    min-height:
+        50px;
+
+    padding:
+        0 24px;
+
+    border:
+        none;
+
+    border-radius:
+        4px;
+
+    background:
+        var(--story-dark);
+
+    color:
+        var(--story-cream);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+#story-chapter-10 .journey-story-button:hover {
+    transform:
+        translateY(-3px);
+
+    background:
+        var(--story-green);
+
+    box-shadow:
+        0 14px 30px
+        rgba(
+            23,
+            35,
+            14,
+            0.18
+        );
+}
+
+
+/* =========================================================
+   MARK SCREEN 10
+   ========================================================= */
+
+#story-chapter-10 .journey-story-mark {
+    position:
+        absolute;
+
+    right:
+        35px;
+
+    bottom:
+        35px;
+
+    z-index:
+        8;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    color:
+        var(--story-brown);
+}
+
+
+#story-chapter-10 .journey-story-mark-line {
     width:
         35px;
 
@@ -2212,14 +3685,47 @@
     }
 
 
+    /* SCREEN 07 */
+
+    #story-chapter-07 .journey-story-container,
+
     /* SCREEN 08 */
 
-    #story-chapter-08 .departure-story-container {
+    #story-chapter-08 .journey-story-container,
+
+    /* SCREEN 09 */
+
+    #story-chapter-09 .journey-story-container,
+
+    /* SCREEN 10 */
+
+    #story-chapter-10 .journey-story-container {
         width:
             calc(100% - 60px);
 
         padding:
-            80px 0 70px;
+            80px
+            0
+            70px;
+    }
+
+
+    #story-chapter-07 .journey-story-title,
+    #story-chapter-08 .journey-story-title,
+    #story-chapter-09 .journey-story-title,
+    #story-chapter-10 .journey-story-title {
+        font-size:
+            clamp(
+                48px,
+                8vw,
+                78px
+            );
+    }
+
+
+    #story-chapter-09 .journey-story-steps {
+        max-width:
+            620px;
     }
 }
 
@@ -2237,7 +3743,9 @@
     }
 
 
-    /* SCREEN 01 */
+    /* =====================================================
+       SCREEN 01
+       ===================================================== */
 
     #story-opening .story-background {
         background-position:
@@ -2329,7 +3837,9 @@
     }
 
 
-    /* SCREEN 02 */
+    /* =====================================================
+       SCREEN 02
+       ===================================================== */
 
     #story-dialog.story-dialog-screen {
         min-height:
@@ -2442,7 +3952,9 @@
     }
 
 
-    /* SCREEN 03 */
+    /* =====================================================
+       SCREEN 03
+       ===================================================== */
 
     .gameplay-transition-content {
         padding:
@@ -2450,7 +3962,9 @@
     }
 
 
-    /* SCREEN 06 */
+    /* =====================================================
+       SCREEN 06
+       ===================================================== */
 
     #story-pasir-story {
         min-height:
@@ -2547,15 +4061,46 @@
     }
 
 
-    /* SCREEN 08 */
+    /* =====================================================
+       SCREEN 07
+       ===================================================== */
 
-    #story-chapter-08 {
+    #story-chapter-07,
+    #story-chapter-08,
+    #story-chapter-09,
+    #story-chapter-10 {
         min-height:
             calc(100svh - 64px);
     }
 
 
-    #story-chapter-08 .departure-story-container {
+    #story-chapter-07 .journey-story-background,
+    #story-chapter-08 .journey-story-background,
+    #story-chapter-09 .journey-story-background,
+    #story-chapter-10 .journey-story-background {
+        background-position:
+            60% center;
+    }
+
+
+    #story-chapter-07 .journey-story-overlay,
+    #story-chapter-08 .journey-story-overlay,
+    #story-chapter-09 .journey-story-overlay,
+    #story-chapter-10 .journey-story-overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255, 249, 234, 0.96) 0%,
+                rgba(255, 249, 234, 0.91) 50%,
+                rgba(255, 249, 234, 0.76) 100%
+            );
+    }
+
+
+    #story-chapter-07 .journey-story-container,
+    #story-chapter-08 .journey-story-container,
+    #story-chapter-09 .journey-story-container,
+    #story-chapter-10 .journey-story-container {
         width:
             calc(100% - 40px);
 
@@ -2563,43 +4108,175 @@
             calc(100svh - 64px);
 
         padding:
-            80px
+            55px
             0
-            60px;
+            100px;
+
+        justify-content:
+            flex-start;
     }
 
 
-    #story-chapter-08 .departure-story-title {
+    #story-chapter-07 .journey-story-label,
+    #story-chapter-08 .journey-story-label,
+    #story-chapter-09 .journey-story-label,
+    #story-chapter-10 .journey-story-label {
+        font-size:
+            8px;
+    }
+
+
+    #story-chapter-07 .journey-story-title,
+    #story-chapter-08 .journey-story-title,
+    #story-chapter-09 .journey-story-title,
+    #story-chapter-10 .journey-story-title {
         font-size:
             clamp(
-                44px,
+                45px,
                 14vw,
                 65px
             );
+
+        line-height:
+            0.92;
     }
 
 
-    #story-chapter-08 .departure-story-text p {
+    #story-chapter-07 .journey-story-text p,
+    #story-chapter-08 .journey-story-text p,
+    #story-chapter-09 .journey-story-text p,
+    #story-chapter-10 .journey-story-text p {
         font-size:
             13px;
+
+        line-height:
+            1.65;
     }
 
 
-    #story-chapter-08 .departure-story-reward {
-        flex-wrap:
-            wrap;
+    /* =====================================================
+       SCREEN 07 MOBILE
+       ===================================================== */
+
+    #story-chapter-07 .journey-story-info {
+        width:
+            100%;
+
+        padding:
+            13px
+            15px;
     }
 
 
-    #story-chapter-08 .departure-reward-item {
-        min-width:
-            115px;
+    #story-chapter-07 .journey-story-info p {
+        font-size:
+            14px;
     }
 
 
-    #story-chapter-08 .departure-story-mark {
+    /* =====================================================
+       SCREEN 08 MOBILE
+       ===================================================== */
+
+    #story-chapter-08 .journey-story-location {
+        grid-template-columns:
+            1fr;
+
+        width:
+            100%;
+
+        gap:
+            7px;
+    }
+
+
+    #story-chapter-08 .journey-location-item {
+        padding:
+            10px
+            12px;
+    }
+
+
+    /* =====================================================
+       SCREEN 09 MOBILE
+       ===================================================== */
+
+    #story-chapter-09 .journey-story-steps {
+        width:
+            100%;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            7px;
+    }
+
+
+    #story-chapter-09 .journey-step {
+        min-height:
+            auto;
+
+        padding:
+            10px
+            12px;
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            10px;
+    }
+
+
+    #story-chapter-09 .journey-step-number {
+        margin:
+            0;
+
+        flex:
+            0 0 25px;
+    }
+
+
+    /* =====================================================
+       SCREEN 10 MOBILE
+       ===================================================== */
+
+    #story-chapter-10 .journey-story-quote {
+        width:
+            100%;
+
+        padding:
+            13px
+            15px;
+    }
+
+
+    #story-chapter-10 .journey-story-quote p {
+        font-size:
+            15px;
+    }
+
+
+    #story-chapter-10 .journey-story-info {
+        width:
+            100%;
+    }
+
+
+    /* =====================================================
+       MARK MOBILE
+       ===================================================== */
+
+    #story-chapter-07 .journey-story-mark,
+    #story-chapter-08 .journey-story-mark,
+    #story-chapter-09 .journey-story-mark,
+    #story-chapter-10 .journey-story-mark {
         right:
-            18px;
+            20px;
 
         bottom:
             18px;
@@ -2612,6 +4289,8 @@
    ========================================================= */
 
 @media (max-width: 380px) {
+
+    /* SCREEN 01 */
 
     #story-opening .story-character {
         width:
@@ -2745,43 +4424,86 @@
     }
 
 
-    /* SCREEN 08 */
+    /* =====================================================
+       SCREEN 07–10
+       ===================================================== */
 
-    #story-chapter-08 .departure-story-container {
+    #story-chapter-07 .journey-story-container,
+    #story-chapter-08 .journey-story-container,
+    #story-chapter-09 .journey-story-container,
+    #story-chapter-10 .journey-story-container {
         width:
             calc(100% - 30px);
 
         padding:
-            60px
+            45px
             0
-            50px;
+            80px;
     }
 
 
-    #story-chapter-08 .departure-story-title {
+    #story-chapter-07 .journey-story-title,
+    #story-chapter-08 .journey-story-title,
+    #story-chapter-09 .journey-story-title,
+    #story-chapter-10 .journey-story-title {
         font-size:
             40px;
     }
 
 
-    #story-chapter-08 .departure-story-text p {
+    #story-chapter-07 .journey-story-text p,
+    #story-chapter-08 .journey-story-text p,
+    #story-chapter-09 .journey-story-text p,
+    #story-chapter-10 .journey-story-text p {
         font-size:
             12px;
     }
 
 
-    #story-chapter-08 .departure-story-reward {
-        gap:
-            6px;
+    #story-chapter-07 .journey-story-info p {
+        font-size:
+            13px;
     }
 
 
-    #story-chapter-08 .departure-reward-item {
-        min-width:
-            82px;
+    #story-chapter-08 .journey-location-item strong {
+        font-size:
+            11px;
+    }
 
-        padding:
-            7px
+
+    #story-chapter-09 .journey-step span {
+        font-size:
             9px;
+    }
+
+
+    #story-chapter-10 .journey-story-quote p {
+        font-size:
+            14px;
+    }
+
+
+    #story-chapter-07 .journey-story-button,
+    #story-chapter-08 .journey-story-button,
+    #story-chapter-09 .journey-story-button,
+    #story-chapter-10 .journey-story-button {
+        min-width:
+            180px;
+
+        min-height:
+            47px;
+    }
+
+
+    #story-chapter-07 .journey-story-mark,
+    #story-chapter-08 .journey-story-mark,
+    #story-chapter-09 .journey-story-mark,
+    #story-chapter-10 .journey-story-mark {
+        right:
+            18px;
+
+        bottom:
+            16px;
     }
 }

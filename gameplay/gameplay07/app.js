@@ -1,6 +1,6 @@
 /* =========================================================
    LELANA KAMANDAKA
-   GAMEPLAY 03 — PASIR LUHUR
+   GAMEPLAY 07 — BATUR AGUNG
    APP.JS
    ========================================================= */
 
@@ -404,13 +404,15 @@
        ===================================================== */
 
     const dialogueText =
-        "Wis tekan wewengkon Pasir Luhur. " +
-        "Saka kadohan, Kamandaka ndeleng papan " +
-        "sing beda karo panggonan sing wis dilakoni " +
-        "sadurunge. Iki Pasir Luhur. Saiki aku kudu " +
-        "ngati-ati, nyamar minangka wong biasa lan " +
-        "sinau ngenali papan iki sadurunge nerusake " +
-        "lampahku.";
+        "Sawise metu saka Goa Jatijajar, " +
+        "Kamandaka nerusake lampah menyang " +
+        "kawasan Batur Agung. Pegunungan lan " +
+        "alas sing ngubengi dalan nggawe " +
+        "perjalanan dadi luwih meneng. " +
+        "Dalan ing kene luwih akeh cabange. " +
+        "Kamandaka kudu nggatekake tandha ing alam " +
+        "supaya ora salah milih dalan. " +
+        "Dheweke ora kena kesusu.";
 
 
     safeClick(
@@ -551,7 +553,7 @@
 
 
     /* =====================================================
-       QUIZ 03
+       QUIZ 07
        ===================================================== */
 
     const quizQuestion =
@@ -595,13 +597,13 @@
 
         {
             question:
-                'Apa arti kata "Wewengkon"?',
+                "Apa arti kata “Tandha”?",
 
             options: [
-                "Wilayah / daerah",
-                "Rumah",
-                "Berangkat",
-                "Teman"
+                "Tanda",
+                "Jalan",
+                "Jejak",
+                "Hutan"
             ],
 
             answer: 0
@@ -609,13 +611,13 @@
 
         {
             question:
-                'Apa arti kata "Mlebu"?',
+                "Apa arti kata “Dalan”?",
 
             options: [
-                "Keluar",
-                "Masuk",
-                "Berjalan",
-                "Berbicara"
+                "Tanda",
+                "Jalan",
+                "Jejak",
+                "Gunung"
             ],
 
             answer: 1
@@ -623,13 +625,13 @@
 
         {
             question:
-                'Apa arti kata "Ngati-ati"?',
+                "Apa arti kata “Jejak”?",
 
             options: [
-                "Bergegas",
-                "Bermain",
-                "Berhati-hati",
-                "Berkumpul"
+                "Hutan",
+                "Tanda",
+                "Jejak",
+                "Jalan"
             ],
 
             answer: 2
@@ -637,13 +639,13 @@
 
         {
             question:
-                'Apa arti kata "Lampah"?',
+                "Apa arti kata “Ati-Ati”?",
 
             options: [
-                "Perjalanan / langkah",
-                "Kerajaan",
-                "Rumah",
-                "Nama orang"
+                "Berhati-hati",
+                "Berjalan",
+                "Jejak",
+                "Tanda"
             ],
 
             answer: 0
@@ -985,8 +987,8 @@
 
 
     /* =====================================================
-       GAMEPLAY 03
-       SAYEMBARA — PASIR LUHUR
+       GAMEPLAY 07
+       SAYEMBARA — JEJAK BATUR AGUNG
        ===================================================== */
 
     const sayembaraDropzone =
@@ -1019,18 +1021,18 @@
        ===================================================== */
 
     const correctSayembaraAnswers = [
-        "masuk",
-        "amati",
-        "nyamar",
-        "lampah"
+        "tanda",
+        "jejak",
+        "sekitar",
+        "tenang"
     ];
 
 
     const acceptedSayembaraAnswers = [
-        "masuk",
-        "amati",
-        "nyamar",
-        "lampah"
+        "tanda",
+        "jejak",
+        "sekitar",
+        "tenang"
     ];
 
 
@@ -1102,7 +1104,6 @@
 
     /* =====================================================
        BUAT SLOT 1–4 DI DALAM DROPZONE
-       SAMA SEPERTI GAMEPLAY 07
        ===================================================== */
 
     function getSayembaraSlots() {
@@ -1837,7 +1838,7 @@
 
 
             /* =============================================
-               REWARD GAMEPLAY 03
+               REWARD GAMEPLAY 07
                ============================================= */
 
             updateReward(
@@ -1864,11 +1865,11 @@
 
 
             /* =============================================
-               COMPLETE GAMEPLAY 03
-               LANGSUNG UNLOCK LOKASI 04
+               COMPLETE GAMEPLAY 07
+               LANGSUNG UNLOCK LOKASI 08
                ============================================= */
 
-            completeGameplay03();
+            completeGameplay07();
 
 
             /* =============================================
@@ -1932,12 +1933,15 @@
        ===================================================== */
 
     const finalDialogueText =
-        "Kamandaka wis tekan Pasir Luhur. " +
-        "Dheweke kudu tetep ngati-ati lan " +
-        "njaga penyamaran. Sawise ngerti " +
-        "kahanan ing papan iki, Kamandaka " +
-        "siap nerusake lampah menyang papan " +
-        "sabanjure.";
+        "Kamandaka wis nemtokake dalan " +
+        "sing trep. Saka Batur Agung, " +
+        "perjalanan isih bakal nggawa dheweke " +
+        "menyang papan liyane sing durung " +
+        "dingerteni. " +
+        "Kamandaka wis nemokake dalan sing aman. " +
+        "Saiki dheweke kudu nerusake lampah " +
+        "lan tetep nggatekake saben tandha " +
+        "sing ana ing perjalanan.";
 
 
     safeClick(
@@ -1990,61 +1994,61 @@
 
 
     /* =====================================================
-       COMPLETE GAMEPLAY 03
+       COMPLETE GAMEPLAY 07
        ===================================================== */
 
-    function completeGameplay03() {
+    function completeGameplay07() {
 
         const progress =
             getProgress();
 
 
         /* =============================================
-           CHAPTER 03 SELESAI
+           CHAPTER 07 SELESAI
            ============================================= */
 
         if (
             !progress.completedChapters.includes(
-                3
+                7
             )
         ) {
 
             progress.completedChapters.push(
-                3
+                7
             );
 
         }
 
 
         /* =============================================
-           LOKASI 03 SELESAI
+           LOKASI 07 SELESAI
            ============================================= */
 
         if (
             !progress.completedLocations.includes(
-                3
+                7
             )
         ) {
 
             progress.completedLocations.push(
-                3
+                7
             );
 
         }
 
 
         /* =============================================
-           UNLOCK LOKASI 04
+           UNLOCK LOKASI 08
            ============================================= */
 
         if (
             !progress.unlockedLocations.includes(
-                4
+                8
             )
         ) {
 
             progress.unlockedLocations.push(
-                4
+                8
             );
 
         }
@@ -2055,7 +2059,7 @@
            ============================================= */
 
         progress.currentChapter =
-            4;
+            8;
 
 
         /* =============================================
@@ -2112,7 +2116,7 @@
 
 
         console.log(
-            "Gameplay 03 — Pasir Luhur selesai."
+            "Gameplay 07 — Batur Agung selesai."
         );
 
 
@@ -2123,7 +2127,7 @@
 
 
         console.log(
-            "Lokasi 04 — Kali Logawa terbuka."
+            "Lokasi 08 — Sawangan terbuka."
         );
 
     }
@@ -2138,11 +2142,11 @@
         () => {
 
             /*
-               Pastikan Gameplay 03 sudah selesai
+               Pastikan Gameplay 07 sudah selesai
                sebelum kembali ke peta.
             */
 
-            completeGameplay03();
+            completeGameplay07();
 
 
             window.location.href =
@@ -2241,7 +2245,7 @@
        ===================================================== */
 
     console.log(
-        "Gameplay 03 — Pasir Luhur berhasil dimuat."
+        "Gameplay 07 — Batur Agung berhasil dimuat."
     );
 
 
