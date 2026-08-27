@@ -1069,4 +1069,4 @@ document.addEventListener(
         setupNavbar();
 
     }
-);
+); 

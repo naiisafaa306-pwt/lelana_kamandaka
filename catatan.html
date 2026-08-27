@@ -13,14 +13,9 @@
     <title>Lelana Kamandaka — Catatan</title>
 
 
-    <!-- =====================================================
-         GOOGLE FONTS
-         ===================================================== -->
+    <!-- GOOGLE FONTS -->
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
         rel="preconnect"
@@ -34,9 +29,7 @@
     >
 
 
-    <!-- =====================================================
-         GLOBAL CSS
-         ===================================================== -->
+    <!-- GLOBAL CSS -->
 
     <link
         rel="stylesheet"
@@ -54,9 +47,7 @@
     >
 
 
-    <!-- =====================================================
-         CATATAN CSS
-         ===================================================== -->
+    <!-- CATATAN CSS -->
 
     <link
         rel="stylesheet"
@@ -80,9 +71,6 @@
 
         <div class="navbar-inner">
 
-
-            <!-- LOGO -->
-
             <a
                 href="index.html"
                 class="navbar-logo"
@@ -90,8 +78,6 @@
                 LELANA KAMANDAKA
             </a>
 
-
-            <!-- MENU -->
 
             <nav
                 class="navbar-menu"
@@ -116,8 +102,6 @@
             </nav>
 
 
-            <!-- HAMBURGER -->
-
             <button
                 class="navbar-toggle"
                 id="navbarToggle"
@@ -125,13 +109,9 @@
                 aria-label="Buka menu"
                 aria-expanded="false"
             >
-
                 <span></span>
-
             </button>
 
-
-            <!-- MENU TAMBAHAN -->
 
             <div
                 class="navbar-extra"
@@ -151,6 +131,7 @@
         </div>
 
     </header>
+
 
 
     <!-- =====================================================
@@ -193,6 +174,51 @@
         </section>
 
 
+
+        <!-- =================================================
+             PROGRESS
+             ================================================= -->
+
+        <section class="catatan-progress-section">
+
+            <div class="catatan-progress-inner">
+
+                <div class="catatan-progress-heading">
+
+                    <div>
+                        <span>
+                            PROGRESS PERJALANAN
+                        </span>
+                    </div>
+
+                    <strong id="catatanLevel">
+                        LEVEL 01 / 10
+                    </strong>
+
+                </div>
+
+
+                <div class="catatan-progress-track">
+
+                    <div
+                        class="catatan-progress-fill"
+                        id="catatanProgressFill"
+                    ></div>
+
+                </div>
+
+
+                <p id="catatanProgressText">
+                    Lanjutkan perjalanan menuju Level 02
+                    untuk menemukan catatan baru.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
         <!-- =================================================
              FILTER
              ================================================= -->
@@ -209,8 +235,6 @@
                     class="catatan-tab active"
                     type="button"
                     data-category="semua"
-                    role="tab"
-                    aria-selected="true"
                 >
                     SEMUA
                 </button>
@@ -219,8 +243,6 @@
                     class="catatan-tab"
                     type="button"
                     data-category="tokoh"
-                    role="tab"
-                    aria-selected="false"
                 >
                     TOKOH
                 </button>
@@ -229,8 +251,6 @@
                     class="catatan-tab"
                     type="button"
                     data-category="tempat"
-                    role="tab"
-                    aria-selected="false"
                 >
                     TEMPAT
                 </button>
@@ -239,8 +259,6 @@
                     class="catatan-tab"
                     type="button"
                     data-category="budaya"
-                    role="tab"
-                    aria-selected="false"
                 >
                     BUDAYA
                 </button>
@@ -249,8 +267,6 @@
                     class="catatan-tab"
                     type="button"
                     data-category="basa"
-                    role="tab"
-                    aria-selected="false"
                 >
                     BASA
                 </button>
@@ -259,8 +275,6 @@
                     class="catatan-tab"
                     type="button"
                     data-category="cerita"
-                    role="tab"
-                    aria-selected="false"
                 >
                     CERITA
                 </button>
@@ -270,14 +284,13 @@
         </section>
 
 
+
         <!-- =================================================
              CONTENT
              ================================================= -->
 
         <section class="catatan-content">
 
-
-            <!-- SECTION TITLE -->
 
             <div class="catatan-section-heading">
 
@@ -286,8 +299,8 @@
                 </span>
 
                 <h2
-                    id="catatanSectionTitle"
                     class="catatan-section-title"
+                    id="catatanSectionTitle"
                 >
                     Catatan yang Telah Ditemukan
                 </h2>
@@ -295,6 +308,7 @@
                 <div class="catatan-heading-line"></div>
 
             </div>
+
 
 
             <!-- =================================================
@@ -307,11 +321,12 @@
             >
 
 
-                <!-- TOKOH -->
+                <!-- ================= TOKOH ================= -->
 
                 <article
                     class="catatan-card"
                     data-category="tokoh"
+                    data-level="1"
                 >
 
                     <div class="catatan-card-number">
@@ -334,34 +349,35 @@
                             Lelana Kamandaka.
                         </p>
 
+                        <div class="catatan-card-status">
+                            TERBUKA
+                        </div>
+
                     </div>
 
                 </article>
 
 
+
                 <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="tokoh"
+                    data-level="2"
                 >
 
-                    <div class="catatan-card-number">
-                        02
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            TOKOH
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
-                        <h3>
-                            Prabu Silihwangi
-                        </h3>
-
                         <p>
-                            Raja Pajajaran yang menjadi bagian
-                            penting dalam kisah perjalanan
-                            Kamandaka.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
@@ -369,30 +385,28 @@
                 </article>
 
 
-                <!-- TEMPAT -->
+
+                <!-- ================= TEMPAT ================= -->
 
                 <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="tempat"
+                    data-level="2"
                 >
 
-                    <div class="catatan-card-number">
-                        03
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            TEMPAT
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
-                        <h3>
-                            Pajajaran
-                        </h3>
-
                         <p>
-                            Tanah asal Kamandaka dan tempat
-                            perjalanan kisahnya bermula.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
@@ -400,28 +414,26 @@
                 </article>
 
 
+
                 <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="tempat"
+                    data-level="3"
                 >
 
-                    <div class="catatan-card-number">
-                        04
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            TEMPAT
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
-                        <h3>
-                            Pasir Luhur
-                        </h3>
-
                         <p>
-                            Salah satu tempat yang menjadi bagian
-                            dari perjalanan Kamandaka.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
@@ -429,28 +441,26 @@
                 </article>
 
 
+
                 <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="tempat"
+                    data-level="4"
                 >
 
-                    <div class="catatan-card-number">
-                        05
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            TEMPAT
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
-                        <h3>
-                            Kali Logawa
-                        </h3>
-
                         <p>
-                            Salah satu lokasi yang dilewati dalam
-                            perjalanan menuju wilayah Banyumas.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
@@ -458,31 +468,28 @@
                 </article>
 
 
-                <!-- BUDAYA -->
+
+                <!-- ================= BUDAYA ================= -->
 
                 <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="budaya"
+                    data-level="5"
                 >
 
-                    <div class="catatan-card-number">
-                        06
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            BUDAYA
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
-                        <h3>
-                            Budaya Banyumas
-                        </h3>
-
                         <p>
-                            Catatan mengenai budaya dan kehidupan
-                            masyarakat yang ditemui sepanjang
-                            perjalanan Kamandaka.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
@@ -490,29 +497,26 @@
                 </article>
 
 
+
                 <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="budaya"
+                    data-level="6"
                 >
 
-                    <div class="catatan-card-number">
-                        07
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            BUDAYA
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
-                        <h3>
-                            Tradisi Lokal
-                        </h3>
-
                         <p>
-                            Berbagai kebiasaan dan nilai budaya
-                            yang menjadi bagian dari perjalanan
-                            Lelana Kamandaka.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
@@ -520,35 +524,28 @@
                 </article>
 
 
-                <!-- BASA -->
+
+                <!-- ================= BASA ================= -->
 
                 <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="basa"
+                    data-level="2"
                 >
 
-                    <div class="catatan-card-number">
-                        08
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            BASA
-                        </span>
-
-                        <h3>
-                            Kula
-                        </h3>
-
-                        <span class="catatan-card-meaning">
-                            Berarti "saya".
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
                         <p>
-                            Digunakan untuk menyebut diri sendiri
-                            ketika berbicara dengan orang yang
-                            lebih tua atau dihormati.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
@@ -556,32 +553,26 @@
                 </article>
 
 
+
                 <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="basa"
+                    data-level="3"
                 >
 
-                    <div class="catatan-card-number">
-                        09
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            BASA
-                        </span>
-
-                        <h3>
-                            Nyuwun Pangestu
-                        </h3>
-
-                        <span class="catatan-card-meaning">
-                            Berarti "memohon restu".
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
                         <p>
-                            Digunakan ketika hendak meminta restu
-                            sebelum melakukan sesuatu yang penting.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
@@ -589,172 +580,72 @@
                 </article>
 
 
-                <article
-                    class="catatan-card"
-                    data-category="basa"
-                >
 
-                    <div class="catatan-card-number">
-                        10
-                    </div>
-
-                    <div class="catatan-card-content">
-
-                        <span class="catatan-card-category">
-                            BASA
-                        </span>
-
-                        <h3>
-                            Badhé
-                        </h3>
-
-                        <span class="catatan-card-meaning">
-                            Berarti "akan / hendak".
-                        </span>
-
-                        <p>
-                            Digunakan untuk menyatakan sesuatu
-                            yang akan atau hendak dilakukan.
-                        </p>
-
-                    </div>
-
-                </article>
-
+                <!-- ================= CERITA ================= -->
 
                 <article
-                    class="catatan-card"
-                    data-category="basa"
-                >
-
-                    <div class="catatan-card-number">
-                        11
-                    </div>
-
-                    <div class="catatan-card-content">
-
-                        <span class="catatan-card-category">
-                            BASA
-                        </span>
-
-                        <h3>
-                            Rama
-                        </h3>
-
-                        <span class="catatan-card-meaning">
-                            Sapaan untuk ayah.
-                        </span>
-
-                        <p>
-                            Digunakan ketika berbicara kepada
-                            ayah atau orang yang dituakan.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- CERITA -->
-
-                <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="cerita"
+                    data-level="1"
                 >
 
-                    <div class="catatan-card-number">
-                        12
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            CERITA
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
-                        <h3>
-                            Awal Perjalanan
-                        </h3>
-
                         <p>
-                            Kisah dimulai dari Kerajaan Pajajaran,
-                            tempat Kamandaka menjalani kehidupan
-                            sebelum memulai perjalanannya.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
 
                 </article>
+
 
 
                 <article
-                    class="catatan-card"
+                    class="catatan-card locked"
                     data-category="cerita"
+                    data-level="2"
                 >
 
-                    <div class="catatan-card-number">
-                        13
-                    </div>
+                    <div class="catatan-lock">
 
-                    <div class="catatan-card-content">
+                        <div class="catatan-lock-icon">
+                            🔒
+                        </div>
 
-                        <span class="catatan-card-category">
-                            CERITA
+                        <span>
+                            CATATAN TERKUNCI
                         </span>
 
-                        <h3>
-                            Meninggalkan Pajajaran
-                        </h3>
-
                         <p>
-                            Sebuah keputusan membawa Kamandaka
-                            meninggalkan tanah Pajajaran dan
-                            memulai perjalanan panjang.
+                            Selesaikan perjalanan untuk
+                            membuka catatan ini.
                         </p>
 
                     </div>
 
                 </article>
 
-
-                <article
-                    class="catatan-card"
-                    data-category="cerita"
-                >
-
-                    <div class="catatan-card-number">
-                        14
-                    </div>
-
-                    <div class="catatan-card-content">
-
-                        <span class="catatan-card-category">
-                            CERITA
-                        </span>
-
-                        <h3>
-                            Menuju Banyumas
-                        </h3>
-
-                        <p>
-                            Perjalanan Kamandaka membawanya menuju
-                            berbagai tempat yang penuh dengan
-                            tantangan dan pengalaman baru.
-                        </p>
-
-                    </div>
-
-                </article>
 
 
             </div>
 
 
+
             <!-- EMPTY -->
 
             <div
-                id="catatanEmpty"
                 class="catatan-empty"
+                id="catatanEmpty"
             >
 
                 <span>
@@ -766,13 +657,13 @@
                 </h3>
 
                 <p>
-                    Belum ada catatan yang tersedia
-                    untuk kategori ini.
+                    Belum ada catatan untuk kategori ini.
                 </p>
 
             </div>
 
         </section>
+
 
 
         <!-- =================================================
@@ -802,9 +693,8 @@
     </main>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-         ===================================================== -->
+
+    <!-- JAVASCRIPT -->
 
     <script src="js/navbar.js"></script>
 

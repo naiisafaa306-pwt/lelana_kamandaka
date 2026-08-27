@@ -1,473 +1,319 @@
 /* =========================================================
-   LELANA KAMANDAKA
-   CATATAN JAVASCRIPT
+   CATATAN — LEVEL SYSTEM
    ========================================================= */
 
+document.addEventListener("DOMContentLoaded", () => {
 
-/* =========================================================
-   ELEMENT
-   ========================================================= */
+    const cards = document.querySelectorAll(".catatan-card");
 
-const catatanTabs =
-    document.querySelectorAll(
-        ".catatan-tab"
-    );
+    const tabs = document.querySelectorAll(".catatan-tab");
 
+    const empty = document.getElementById("catatanEmpty");
 
-const catatanCards =
-    document.querySelectorAll(
-        ".catatan-card"
-    );
+    const levelText = document.getElementById("catatanLevel");
 
+    const progressFill =
+        document.getElementById("catatanProgressFill");
 
-const catatanSectionTitle =
-    document.getElementById(
-        "catatanSectionTitle"
-    );
+    const progressText =
+        document.getElementById("catatanProgressText");
 
 
-const catatanEmpty =
-    document.getElementById(
-        "catatanEmpty"
-    );
+    /* =====================================================
+       LEVEL PEMAIN
+       ===================================================== */
+
+    /*
+       Untuk sementara Level 01.
+
+       Nanti kalau sistem peta sudah punya level,
+       angka ini bisa diambil dari localStorage.
+    */
+
+    let currentLevel =
+        parseInt(
+            localStorage.getItem("kamandakaLevel")
+        ) || 1;
 
 
-/* =========================================================
-   JUDUL KATEGORI
-   ========================================================= */
+    /* Batas */
 
-const sectionTitles = {
-
-    semua:
-        "Catatan yang Telah Ditemukan",
-
-    tokoh:
-        "Tokoh yang Telah Ditemukan",
-
-    tempat:
-        "Tempat yang Telah Ditemukan",
-
-    budaya:
-        "Budaya yang Telah Ditemukan",
-
-    basa:
-        "Basa yang Telah Dipelajari",
-
-    cerita:
-        "Cerita yang Telah Ditemukan"
-
-};
+    currentLevel =
+        Math.max(
+            1,
+            Math.min(currentLevel, 10)
+        );
 
 
-/* =========================================================
-   FILTER CATATAN
-   ========================================================= */
+    /* =====================================================
+       UPDATE LEVEL
+       ===================================================== */
 
-function filterCatatan(
-    category
-) {
+    function updateLevel() {
 
-    let visibleCards = 0;
+        if (levelText) {
+
+            levelText.textContent =
+                `LEVEL ${String(currentLevel).padStart(2, "0")} / 10`;
+
+        }
 
 
-    catatanCards.forEach(
-        function(card) {
+        if (progressFill) {
+
+            const percentage =
+                (currentLevel / 10) * 100;
+
+            progressFill.style.width =
+                `${percentage}%`;
+
+        }
+
+
+        if (progressText) {
+
+            if (currentLevel >= 10) {
+
+                progressText.textContent =
+                    "Seluruh catatan perjalanan telah ditemukan.";
+
+            } else {
+
+                const nextLevel =
+                    currentLevel + 1;
+
+                progressText.textContent =
+                    `Lanjutkan perjalanan menuju Level ${String(nextLevel).padStart(2, "0")} untuk menemukan catatan baru.`;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       BUKA / KUNCI CARD
+       ===================================================== */
+
+    function updateCards() {
+
+        cards.forEach(card => {
+
+            const requiredLevel =
+                parseInt(
+                    card.dataset.level
+                ) || 1;
+
+
+            /*
+             * Kalau level pemain sudah mencukupi,
+             * card dibuka.
+             */
+
+            if (currentLevel >= requiredLevel) {
+
+                card.classList.remove("locked");
+
+
+                /*
+                 * Kalau card belum punya isi normal,
+                 * buat status sederhana.
+                 */
+
+                if (
+                    !card.querySelector(
+                        ".catatan-card-content"
+                    )
+                ) {
+
+                    const number =
+                        document.createElement("div");
+
+                    number.className =
+                        "catatan-card-number";
+
+                    number.textContent =
+                        "—";
+
+
+                    const content =
+                        document.createElement("div");
+
+                    content.className =
+                        "catatan-card-content";
+
+
+                    const category =
+                        document.createElement("span");
+
+                    category.className =
+                        "catatan-card-category";
+
+                    category.textContent =
+                        card.dataset.category.toUpperCase();
+
+
+                    const title =
+                        document.createElement("h3");
+
+                    title.textContent =
+                        "Catatan Baru";
+
+
+                    const description =
+                        document.createElement("p");
+
+                    description.textContent =
+                        "Catatan ini telah ditemukan dalam perjalanan Lelana Kamandaka.";
+
+
+                    const status =
+                        document.createElement("div");
+
+                    status.className =
+                        "catatan-card-status";
+
+                    status.textContent =
+                        "TERBUKA";
+
+
+                    content.appendChild(category);
+                    content.appendChild(title);
+                    content.appendChild(description);
+                    content.appendChild(status);
+
+                    card.appendChild(number);
+                    card.appendChild(content);
+
+                }
+
+
+                /*
+                 * Lock dihapus dari tampilan.
+                 */
+
+                const lock =
+                    card.querySelector(".catatan-lock");
+
+                if (lock) {
+
+                    lock.remove();
+
+                }
+
+            }
+
+
+            /*
+             * Kalau belum mencapai level,
+             * card tetap locked.
+             */
+
+            else {
+
+                card.classList.add("locked");
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       FILTER
+       ===================================================== */
+
+    function filterCards(category) {
+
+        let visibleCards = 0;
+
+
+        cards.forEach(card => {
 
             const cardCategory =
                 card.dataset.category;
 
 
-            const isVisible =
+            const match =
                 category === "semua" ||
-                cardCategory === category;
+                category === cardCategory;
 
 
-            if (isVisible) {
+            if (match) {
 
-                card.classList.remove(
-                    "hidden"
-                );
+                card.style.display = "";
 
                 visibleCards++;
 
-            }
+            } else {
 
-            else {
-
-                card.classList.add(
-                    "hidden"
-                );
+                card.style.display = "none";
 
             }
 
-        }
-    );
+        });
 
 
-    /* =============================================
-       UPDATE JUDUL
-       ============================================= */
+        if (empty) {
 
-    if (catatanSectionTitle) {
-
-        catatanSectionTitle.style.opacity =
-            "0";
-
-
-        setTimeout(
-            function() {
-
-                catatanSectionTitle.textContent =
-                    sectionTitles[category] ||
-                    sectionTitles.semua;
-
-
-                catatanSectionTitle.style.opacity =
-                    "1";
-
-            },
-            120
-        );
-
-    }
-
-
-    /* =============================================
-       EMPTY STATE
-       ============================================= */
-
-    if (catatanEmpty) {
-
-        if (visibleCards === 0) {
-
-            catatanEmpty.classList.add(
-                "show"
+            empty.classList.toggle(
+                "show",
+                visibleCards === 0
             );
 
         }
 
-        else {
 
-            catatanEmpty.classList.remove(
-                "show"
-            );
+        tabs.forEach(tab => {
 
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   ACTIVE TAB
-   ========================================================= */
-
-function setActiveTab(
-    activeTab
-) {
-
-    catatanTabs.forEach(
-        function(tab) {
-
-            const isActive =
-                tab === activeTab;
-
+            const active =
+                tab.dataset.category === category;
 
             tab.classList.toggle(
                 "active",
-                isActive
+                active
             );
-
 
             tab.setAttribute(
                 "aria-selected",
-                isActive
-                    ? "true"
-                    : "false"
+                active ? "true" : "false"
             );
 
-        }
-    );
+        });
 
-}
+    }
 
 
-/* =========================================================
-   TAB CLICK
-   ========================================================= */
+    /* =====================================================
+       TAB EVENT
+       ===================================================== */
 
-catatanTabs.forEach(
-    function(tab) {
+    tabs.forEach(tab => {
 
         tab.addEventListener(
             "click",
-            function() {
+            () => {
 
-                const category =
-                    this.dataset.category;
-
-
-                if (!category) {
-
-                    return;
-
-                }
-
-
-                setActiveTab(
-                    this
+                filterCards(
+                    tab.dataset.category
                 );
-
-
-                filterCatatan(
-                    category
-                );
-
-
-                /* =================================
-                   SCROLL HALUS KE KONTEN
-                   ================================= */
-
-                const content =
-                    document.querySelector(
-                        ".catatan-content"
-                    );
-
-
-                if (content) {
-
-                    const navbar =
-                        document.querySelector(
-                            ".site-navbar"
-                        );
-
-
-                    const navbarHeight =
-                        navbar
-                            ? navbar.offsetHeight
-                            : 0;
-
-
-                    const target =
-                        content.getBoundingClientRect()
-                            .top +
-                        window.scrollY -
-                        navbarHeight -
-                        25;
-
-
-                    window.scrollTo({
-
-                        top:
-                            target,
-
-                        behavior:
-                            "smooth"
-
-                    });
-
-                }
 
             }
         );
 
-    }
-);
+    });
 
 
-/* =========================================================
-   NAVBAR SCROLL
-   ========================================================= */
+    /* =====================================================
+       INIT
+       ===================================================== */
 
-function setupNavbarScroll() {
+    updateLevel();
 
-    const navbar =
-        document.getElementById(
-            "siteNavbar"
-        );
+    updateCards();
 
+    filterCards("semua");
 
-    if (!navbar) {
-
-        return;
-
-    }
-
-
-    function handleScroll() {
-
-        if (
-            window.scrollY > 30
-        ) {
-
-            navbar.classList.add(
-                "scrolled"
-            );
-
-        }
-
-        else {
-
-            navbar.classList.remove(
-                "scrolled"
-            );
-
-        }
-
-    }
-
-
-    handleScroll();
-
-
-    window.addEventListener(
-        "scroll",
-        handleScroll,
-        {
-            passive: true
-        }
-    );
-
-}
-
-
-/* =========================================================
-   KEYBOARD NAVIGATION TAB
-   ========================================================= */
-
-catatanTabs.forEach(
-    function(tab, index) {
-
-        tab.addEventListener(
-            "keydown",
-            function(event) {
-
-                let newIndex =
-                    index;
-
-
-                /* =============================
-                   ARROW RIGHT
-                   ============================= */
-
-                if (
-                    event.key ===
-                    "ArrowRight"
-                ) {
-
-                    newIndex =
-                        (index + 1) %
-                        catatanTabs.length;
-
-                }
-
-
-                /* =============================
-                   ARROW LEFT
-                   ============================= */
-
-                else if (
-                    event.key ===
-                    "ArrowLeft"
-                ) {
-
-                    newIndex =
-                        (
-                            index -
-                            1 +
-                            catatanTabs.length
-                        ) %
-                        catatanTabs.length;
-
-                }
-
-
-                /* =============================
-                   ENTER / SPACE
-                   ============================= */
-
-                else if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                ) {
-
-                    event.preventDefault();
-
-                    tab.click();
-
-                    return;
-
-                }
-
-                else {
-
-                    return;
-
-                }
-
-
-                event.preventDefault();
-
-
-                catatanTabs[
-                    newIndex
-                ].focus();
-
-
-                catatanTabs[
-                    newIndex
-                ].click();
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   INITIALIZE
-   ========================================================= */
-
-function initializeCatatan() {
-
-    /* =============================
-       DEFAULT = SEMUA
-       ============================= */
-
-    filterCatatan(
-        "semua"
-    );
-
-
-    /* =============================
-       NAVBAR
-       ============================= */
-
-    setupNavbarScroll();
-
-}
-
-
-/* =========================================================
-   DOM READY
-   ========================================================= */
-
-if (
-    document.readyState ===
-    "loading"
-) {
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        initializeCatatan
-    );
-
-}
-
-else {
-
-    initializeCatatan();
-
-}
+});

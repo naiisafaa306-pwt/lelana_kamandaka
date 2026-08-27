@@ -1,6 +1,6 @@
 /* =========================================================
    LELANA KAMANDAKA
-   GAMEPLAY 03 — PASIR LUHUR
+   GAMEPLAY 06 — GOA JATIJAJAR
    APP.JS
    ========================================================= */
 
@@ -362,6 +362,34 @@
             progress
         );
 
+
+        const xpReward =
+            document.getElementById(
+                "chapterXpReward"
+            );
+
+
+        const basaReward =
+            document.getElementById(
+                "chapterBasaReward"
+            );
+
+
+        if (xpReward) {
+
+            xpReward.textContent =
+                `+${xpAmount} XP`;
+
+        }
+
+
+        if (basaReward) {
+
+            basaReward.textContent =
+                `+${basaAmount} BASA`;
+
+        }
+
     }
 
 
@@ -404,13 +432,10 @@
        ===================================================== */
 
     const dialogueText =
-        "Wis tekan wewengkon Pasir Luhur. " +
-        "Saka kadohan, Kamandaka ndeleng papan " +
-        "sing beda karo panggonan sing wis dilakoni " +
-        "sadurunge. Iki Pasir Luhur. Saiki aku kudu " +
-        "ngati-ati, nyamar minangka wong biasa lan " +
-        "sinau ngenali papan iki sadurunge nerusake " +
-        "lampahku.";
+        "Sawise nerusake lampah, Kamandaka tekan " +
+        "ing Goa Jatijajar. Ing papan iki dheweke " +
+        "kudu ngati-ati nalika nyusuri lorong " +
+        "guwa sing peteng lan watu-watu.";
 
 
     safeClick(
@@ -484,7 +509,7 @@
        ===================================================== */
 
     window.speakBasa =
-        function(word) {
+        function(text) {
 
             if (
                 !(
@@ -507,7 +532,7 @@
 
             const utterance =
                 new SpeechSynthesisUtterance(
-                    word
+                    text
                 );
 
 
@@ -516,7 +541,7 @@
 
 
             utterance.rate =
-                0.8;
+                0.78;
 
 
             utterance.pitch =
@@ -551,7 +576,8 @@
 
 
     /* =====================================================
-       QUIZ 03
+       QUIZ 06
+       SESUAI DATA GAMEPLAY 06
        ===================================================== */
 
     const quizQuestion =
@@ -594,59 +620,74 @@
     const quizQuestions = [
 
         {
+
             question:
-                'Apa arti kata "Wewengkon"?',
+                'Apa arti kata "Guwa"?',
 
             options: [
-                "Wilayah / daerah",
-                "Rumah",
-                "Berangkat",
-                "Teman"
+                "Goa",
+                "Sungai",
+                "Gunung",
+                "Desa"
             ],
 
-            answer: 0
+            answer:
+                0
+
         },
 
+
         {
+
             question:
-                'Apa arti kata "Mlebu"?',
+                'Apa arti kata "Watu"?',
 
             options: [
-                "Keluar",
-                "Masuk",
-                "Berjalan",
-                "Berbicara"
+                "Air",
+                "Batu",
+                "Hutan",
+                "Jalan"
             ],
 
-            answer: 1
+            answer:
+                1
+
         },
 
+
         {
+
+            question:
+                'Apa arti kata "Peteng"?',
+
+            options: [
+                "Terang",
+                "Gelap",
+                "Dingin",
+                "Jauh"
+            ],
+
+            answer:
+                1
+
+        },
+
+
+        {
+
             question:
                 'Apa arti kata "Ngati-ati"?',
 
             options: [
-                "Bergegas",
-                "Bermain",
+                "Berjalan",
+                "Berhenti",
                 "Berhati-hati",
-                "Berkumpul"
+                "Berlari"
             ],
 
-            answer: 2
-        },
+            answer:
+                2
 
-        {
-            question:
-                'Apa arti kata "Lampah"?',
-
-            options: [
-                "Perjalanan / langkah",
-                "Kerajaan",
-                "Rumah",
-                "Nama orang"
-            ],
-
-            answer: 0
         }
 
     ];
@@ -699,7 +740,10 @@
                 `PERTANYAAN ${
                     String(
                         currentQuizQuestion + 1
-                    ).padStart(2, "0")
+                    ).padStart(
+                        2,
+                        "0"
+                    )
                 } / 04`;
 
         }
@@ -710,8 +754,7 @@
             const progress =
                 (
                     (
-                        currentQuizQuestion
-                        + 1
+                        currentQuizQuestion + 1
                     )
                     /
                     quizQuestions.length
@@ -757,6 +800,12 @@
                         ];
 
                 }
+
+
+                option.dataset.answer =
+                    String(
+                        index
+                    );
 
             }
         );
@@ -954,6 +1003,7 @@
 
                 updateQuiz();
 
+
                 return;
 
             }
@@ -985,8 +1035,28 @@
 
 
     /* =====================================================
-       GAMEPLAY 03
-       SAYEMBARA — PASIR LUHUR
+       SCREEN 06
+       CERITA → SAYEMBARA
+       ===================================================== */
+
+    safeClick(
+        "btnStartSayembara",
+        () => {
+
+            resetSayembara();
+
+
+            showScreen(
+                "story-sayembara"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       SAYEMBARA
+       SESUAI DATA-ANSWER HTML GAMEPLAY 06
        ===================================================== */
 
     const sayembaraDropzone =
@@ -1016,25 +1086,27 @@
 
     /* =====================================================
        EMPAT JAWABAN BENAR
+       SESUAI GAMEPLAY 06
        ===================================================== */
 
     const correctSayembaraAnswers = [
         "masuk",
-        "amati",
-        "nyamar",
-        "lampah"
+        "ati",
+        "susuri",
+        "sendang"
     ];
 
 
     const acceptedSayembaraAnswers = [
         "masuk",
-        "amati",
-        "nyamar",
-        "lampah"
+        "ati",
+        "susuri",
+        "sendang"
     ];
 
 
-    let selectedSayembaraAnswers = [];
+    let selectedSayembaraAnswers =
+        [];
 
 
     let sayembaraCompleted =
@@ -1102,7 +1174,6 @@
 
     /* =====================================================
        BUAT SLOT 1–4 DI DALAM DROPZONE
-       SAMA SEPERTI GAMEPLAY 07
        ===================================================== */
 
     function getSayembaraSlots() {
@@ -1269,7 +1340,8 @@
 
 
         btnNextSayembara.disabled =
-            selectedSayembaraAnswers.length !== 4;
+            selectedSayembaraAnswers.length !==
+            4;
 
     }
 
@@ -1298,6 +1370,10 @@
         }
 
 
+        /* =================================================
+           JANGAN BOLEH DUPLIKAT
+           ================================================= */
+
         if (
             selectedSayembaraAnswers.includes(
                 answer
@@ -1309,10 +1385,15 @@
                 "wrong"
             );
 
+
             return false;
 
         }
 
+
+        /* =================================================
+           HANYA JAWABAN BENAR
+           ================================================= */
 
         if (
             !isCorrectSayembaraAnswer(
@@ -1325,13 +1406,19 @@
                 "wrong"
             );
 
+
             return false;
 
         }
 
 
+        /* =================================================
+           BATASI 4
+           ================================================= */
+
         if (
-            selectedSayembaraAnswers.length >= 4
+            selectedSayembaraAnswers.length >=
+            4
         ) {
 
             return false;
@@ -1356,10 +1443,18 @@
         }
 
 
+        /* =================================================
+           SIMPAN JAWABAN
+           ================================================= */
+
         selectedSayembaraAnswers.push(
             answer
         );
 
+
+        /* =================================================
+           COPY KARTU
+           ================================================= */
 
         const copy =
             option.cloneNode(
@@ -1419,6 +1514,10 @@
         }
 
 
+        /* =================================================
+           TANDAI KARTU ASLI
+           ================================================= */
+
         option.classList.add(
             "selected"
         );
@@ -1441,6 +1540,10 @@
         option.style.pointerEvents =
             "none";
 
+
+        /* =================================================
+           FEEDBACK
+           ================================================= */
 
         if (
             selectedSayembaraAnswers.length <
@@ -1521,6 +1624,7 @@
                     ) {
 
                         event.preventDefault();
+
 
                         return;
 
@@ -1660,12 +1764,17 @@
                 }
 
 
+                /* =================================================
+                   CARI KARTU ASLI
+                   ================================================= */
+
                 const option =
                     sayembaraOptions.find(
                         item =>
                             getAnswerValue(
                                 item
-                            ) === answer
+                            ) ===
+                            answer
                     );
 
 
@@ -1698,6 +1807,10 @@
             false;
 
 
+        /* =================================================
+           BUAT SLOT
+           ================================================= */
+
         ensureSayembaraSlots();
 
 
@@ -1724,6 +1837,10 @@
             }
         );
 
+
+        /* =================================================
+           RESET KARTU
+           ================================================= */
 
         sayembaraOptions.forEach(
             option => {
@@ -1755,6 +1872,10 @@
         );
 
 
+        /* =================================================
+           ACAK PILIHAN
+           ================================================= */
+
         shuffleSayembaraOptions();
 
 
@@ -1781,32 +1902,16 @@
 
 
     /* =====================================================
-       SCREEN 06
-       CERITA → SAYEMBARA
-       ===================================================== */
-
-    safeClick(
-        "btnStartSayembara",
-        () => {
-
-            resetSayembara();
-
-
-            showScreen(
-                "story-sayembara"
-            );
-
-        }
-    );
-
-
-    /* =====================================================
        SAYEMBARA → SELESAI
        ===================================================== */
 
     safeClick(
         "btnNextSayembara",
         () => {
+
+            /* =================================================
+               HARUS 4 JAWABAN
+               ================================================= */
 
             if (
                 selectedSayembaraAnswers.length !==
@@ -1818,10 +1923,15 @@
                     "wrong"
                 );
 
+
                 return;
 
             }
 
+
+            /* =================================================
+               JANGAN REWARD DUPLIKAT
+               ================================================= */
 
             if (
                 sayembaraCompleted
@@ -1836,9 +1946,9 @@
                 true;
 
 
-            /* =============================================
-               REWARD GAMEPLAY 03
-               ============================================= */
+            /* =================================================
+               REWARD GAMEPLAY 06
+               ================================================= */
 
             updateReward(
                 50,
@@ -1846,9 +1956,9 @@
             );
 
 
-            /* =============================================
+            /* =================================================
                SIMPAN STATUS SAYEMBARA
-               ============================================= */
+               ================================================= */
 
             const progress =
                 getProgress();
@@ -1863,17 +1973,16 @@
             );
 
 
-            /* =============================================
-               COMPLETE GAMEPLAY 03
-               LANGSUNG UNLOCK LOKASI 04
-               ============================================= */
+            /* =================================================
+               COMPLETE GAMEPLAY 06
+               ================================================= */
 
-            completeGameplay03();
+            completeGameplay06();
 
 
-            /* =============================================
+            /* =================================================
                UPDATE REWARD DISPLAY
-               ============================================= */
+               ================================================= */
 
             const sayembaraXpReward =
                 document.getElementById(
@@ -1907,9 +2016,9 @@
             }
 
 
-            /* =============================================
+            /* =================================================
                TAMPILKAN SCREEN SELESAI
-               ============================================= */
+               ================================================= */
 
             if (
                 document.getElementById(
@@ -1932,12 +2041,11 @@
        ===================================================== */
 
     const finalDialogueText =
-        "Kamandaka wis tekan Pasir Luhur. " +
-        "Dheweke kudu tetep ngati-ati lan " +
-        "njaga penyamaran. Sawise ngerti " +
-        "kahanan ing papan iki, Kamandaka " +
-        "siap nerusake lampah menyang papan " +
-        "sabanjure.";
+        "Sawise ngliwati Goa Jatijajar, " +
+        "Kamandaka nerusake lampah. " +
+        "Dheweke wis luwih ngerti carane " +
+        "nggatekake lingkungan lan njaga langkah " +
+        "nalika liwat papan sing durung dikenal.";
 
 
     safeClick(
@@ -1954,6 +2062,7 @@
                 alert(
                     "Browser ini belum mendukung fitur suara."
                 );
+
 
                 return;
 
@@ -1990,77 +2099,77 @@
 
 
     /* =====================================================
-       COMPLETE GAMEPLAY 03
+       COMPLETE GAMEPLAY 06
        ===================================================== */
 
-    function completeGameplay03() {
+    function completeGameplay06() {
 
         const progress =
             getProgress();
 
 
-        /* =============================================
-           CHAPTER 03 SELESAI
-           ============================================= */
+        /* =================================================
+           CHAPTER 06 SELESAI
+           ================================================= */
 
         if (
             !progress.completedChapters.includes(
-                3
+                6
             )
         ) {
 
             progress.completedChapters.push(
-                3
+                6
             );
 
         }
 
 
-        /* =============================================
-           LOKASI 03 SELESAI
-           ============================================= */
+        /* =================================================
+           LOKASI 06 SELESAI
+           ================================================= */
 
         if (
             !progress.completedLocations.includes(
-                3
+                6
             )
         ) {
 
             progress.completedLocations.push(
-                3
+                6
             );
 
         }
 
 
-        /* =============================================
-           UNLOCK LOKASI 04
-           ============================================= */
+        /* =================================================
+           UNLOCK LOKASI 07
+           ================================================= */
 
         if (
             !progress.unlockedLocations.includes(
-                4
+                7
             )
         ) {
 
             progress.unlockedLocations.push(
-                4
+                7
             );
 
         }
 
 
-        /* =============================================
+        /* =================================================
            CHAPTER BERIKUTNYA
-           ============================================= */
+           ================================================= */
 
         progress.currentChapter =
-            4;
+            7;
 
 
-        /* =============================================
+        /* =================================================
            HILANGKAN DUPLIKAT
-           ============================================= */
+           ================================================= */
 
         progress.completedChapters = [
             ...new Set(
@@ -2083,9 +2192,9 @@
         ];
 
 
-        /* =============================================
+        /* =================================================
            URUTKAN
-           ============================================= */
+           ================================================= */
 
         progress.completedChapters.sort(
             (a, b) => a - b
@@ -2102,9 +2211,9 @@
         );
 
 
-        /* =============================================
+        /* =================================================
            SIMPAN
-           ============================================= */
+           ================================================= */
 
         saveProgress(
             progress
@@ -2112,7 +2221,7 @@
 
 
         console.log(
-            "Gameplay 03 — Pasir Luhur selesai."
+            "Gameplay 06 — Goa Jatijajar selesai."
         );
 
 
@@ -2123,7 +2232,7 @@
 
 
         console.log(
-            "Lokasi 04 — Kali Logawa terbuka."
+            "Lokasi 07 terbuka."
         );
 
     }
@@ -2138,11 +2247,11 @@
         () => {
 
             /*
-               Pastikan Gameplay 03 sudah selesai
+               Pastikan Gameplay 06 selesai
                sebelum kembali ke peta.
             */
 
-            completeGameplay03();
+            completeGameplay06();
 
 
             window.location.href =
@@ -2241,7 +2350,7 @@
        ===================================================== */
 
     console.log(
-        "Gameplay 03 — Pasir Luhur berhasil dimuat."
+        "Gameplay 06 — Goa Jatijajar berhasil dimuat."
     );
 
 
