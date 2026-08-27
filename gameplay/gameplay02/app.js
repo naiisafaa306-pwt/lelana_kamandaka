@@ -1,6 +1,6 @@
 /* =========================================================
    LELANA KAMANDAKA
-   GAMEPLAY 01 — PAJAJARAN
+   GAMEPLAY 02 — KI AJAR WINARONG
    APP.JS
    ========================================================= */
 
@@ -227,6 +227,27 @@
         }
 
 
+        /* =================================================
+           LOKASI 02 TETAP TERBUKA
+           JIKA CHAPTER 01 SUDAH SELESAI
+           ================================================= */
+
+        if (
+            progress.completedChapters.includes(
+                1
+            ) &&
+            !progress.unlockedLocations.includes(
+                2
+            )
+        ) {
+
+            progress.unlockedLocations.push(
+                2
+            );
+
+        }
+
+
         return progress;
 
     }
@@ -400,13 +421,14 @@
 
 
     /* =====================================================
-       AUDIO DIALOG PERTAMA
+       AUDIO DIALOG
        ===================================================== */
 
     const dialogueText =
-        "Angger Banyakcatra, apa sing dadi karepmu? " +
-        "Nyuwun pangestu, Rama. Kula badhe " +
-        "nglajengaken lampah.";
+        "Yen kowe kepengin nemokake jodhomu, le, " +
+        "kudu gelem ninggalake uripmu minangka putra raja. " +
+        "Nyuwun pitutur, Ki Ajar. Kula siap nglakoni " +
+        "apa wae sing kedah kula lakoni.";
 
 
     safeClick(
@@ -512,7 +534,7 @@
 
 
             utterance.rate =
-                0.8;
+                0.78;
 
 
             utterance.pitch =
@@ -547,7 +569,7 @@
 
 
     /* =====================================================
-       QUIZ 01
+       QUIZ BASA
        ===================================================== */
 
     const quizQuestion =
@@ -591,65 +613,61 @@
 
         {
             question:
-                "Apa arti dari kata \"Kula\"?",
+                'Apa arti kata "Pitutur"?',
 
             options: [
-                "Saya",
-                "Ayah",
-                "Akan / hendak",
-                "Memohon restu"
+                "Nasihat / petuah",
+                "Perjalanan",
+                "Menyamar",
+                "Saya"
             ],
 
             answer: 0
-
         },
 
 
         {
             question:
-                "Apa arti dari kata \"Nyuwun Pangestu\"?",
+                'Apa arti kata "Lampah"?',
 
             options: [
-                "Saya",
-                "Memohon restu",
-                "Ayah",
-                "Akan / hendak"
+                "Nama orang",
+                "Perjalanan / langkah",
+                "Nasihat",
+                "Kerajaan"
             ],
 
             answer: 1
-
         },
 
 
         {
             question:
-                "Apa arti dari kata \"Badhé\"?",
+                'Apa arti kata "Nyamar"?',
+
+            options: [
+                "Menyamar",
+                "Berangkat",
+                "Berbicara",
+                "Menolong"
+            ],
+
+            answer: 0
+        },
+
+
+        {
+            question:
+                'Apa arti kata "Kula"?',
 
             options: [
                 "Ayah",
+                "Guru",
                 "Saya",
-                "Akan / hendak",
-                "Memohon restu"
+                "Teman"
             ],
 
             answer: 2
-
-        },
-
-
-        {
-            question:
-                "Apa arti dari kata \"Rama\"?",
-
-            options: [
-                "Saya",
-                "Memohon restu",
-                "Akan / hendak",
-                "Ayah"
-            ],
-
-            answer: 3
-
         }
 
     ];
@@ -706,7 +724,9 @@
                         2,
                         "0"
                     )
-                } / 04`;
+                } / ${
+                    quizQuestions.length
+                }`;
 
         }
 
@@ -763,6 +783,12 @@
                         ];
 
                 }
+
+
+                option.dataset.answer =
+                    currentQuestion.options[
+                        index
+                    ];
 
             }
         );
@@ -862,6 +888,11 @@
                                 "correct";
 
                         }
+
+
+                        addXp(
+                            10
+                        );
 
 
                         quizScore++;
@@ -991,8 +1022,8 @@
 
 
     /* =====================================================
-       GAMEPLAY 01
-       SAYEMBARA — PRABU SILIHWANGI
+       GAMEPLAY 02
+       SAYEMBARA — PETUAH KI AJAR WINARONG
        ===================================================== */
 
     const sayembaraDropzone =
@@ -1025,18 +1056,20 @@
        ===================================================== */
 
     const correctSayembaraAnswers = [
-        "putri",
-        "mori",
-        "kuda",
-        "beras"
+        "rakyat",
+        "keraton",
+        "sayembara",
+        "nama",
+        "pasirluhur"
     ];
 
 
     const acceptedSayembaraAnswers = [
-        "putri",
-        "mori",
-        "kuda",
-        "beras"
+        "rakyat",
+        "keraton",
+        "sayembara",
+        "nama",
+        "pasirluhur"
     ];
 
 
@@ -1275,7 +1308,8 @@
 
 
         btnNextSayembara.disabled =
-            selectedSayembaraAnswers.length !== 4;
+            selectedSayembaraAnswers.length !==
+            4;
 
     }
 
@@ -1327,7 +1361,7 @@
         ) {
 
             setSayembaraFeedback(
-                "Belum tepat. Pilihan tersebut merupakan pengecoh. Coba pilih syarat yang benar.",
+                "Belum tepat. Pilihan tersebut merupakan pengecoh. Coba pilih langkah yang benar.",
                 "wrong"
             );
 
@@ -1337,7 +1371,8 @@
 
 
         if (
-            selectedSayembaraAnswers.length >= 4
+            selectedSayembaraAnswers.length >=
+            4
         ) {
 
             return false;
@@ -1454,7 +1489,7 @@
         ) {
 
             setSayembaraFeedback(
-                "Benar! Syarat ini sudah dimasukkan ke sayembara.",
+                "Benar! Langkah ini sudah dimasukkan ke perjalanan.",
                 "correct"
             );
 
@@ -1463,7 +1498,7 @@
         else {
 
             setSayembaraFeedback(
-                "Benar! Semua 4 syarat yang tepat sudah dipilih.",
+                "Benar! Semua 4 langkah yang tepat sudah dipilih.",
                 "correct"
             );
 
@@ -1820,7 +1855,7 @@
             ) {
 
                 setSayembaraFeedback(
-                    "Pilih 4 syarat yang benar terlebih dahulu.",
+                    "Pilih 4 langkah yang benar terlebih dahulu.",
                     "wrong"
                 );
 
@@ -1843,7 +1878,7 @@
 
 
             /* =============================================
-               REWARD GAMEPLAY 01
+               REWARD GAMEPLAY 02
                ============================================= */
 
             updateReward(
@@ -1870,11 +1905,11 @@
 
 
             /* =============================================
-               COMPLETE GAMEPLAY 01
-               LANGSUNG UNLOCK LOKASI 02
+               COMPLETE GAMEPLAY 02
+               LANGSUNG UNLOCK LOKASI 03
                ============================================= */
 
-            completeGameplay01();
+            completeGameplay02();
 
 
             /* =============================================
@@ -1893,18 +1928,6 @@
                 );
 
 
-            const chapterXpReward =
-                document.getElementById(
-                    "chapterXpReward"
-                );
-
-
-            const chapterBasaReward =
-                document.getElementById(
-                    "chapterBasaReward"
-                );
-
-
             if (
                 sayembaraXpReward
             ) {
@@ -1920,26 +1943,6 @@
             ) {
 
                 sayembaraBasaReward.textContent =
-                    "+5 BASA";
-
-            }
-
-
-            if (
-                chapterXpReward
-            ) {
-
-                chapterXpReward.textContent =
-                    "+25 XP";
-
-            }
-
-
-            if (
-                chapterBasaReward
-            ) {
-
-                chapterBasaReward.textContent =
                     "+5 BASA";
 
             }
@@ -1966,123 +1969,61 @@
 
 
     /* =====================================================
-       AUDIO DIALOG LANJUTAN
+       COMPLETE GAMEPLAY 02
        ===================================================== */
 
-    const finalDialogueText =
-        "Sawise ngerti syarat sayembara, " +
-        "Banyakcatra ngerti yen perjalanan " +
-        "sing bakal ditempuh ora gampang. " +
-        "Dheweke banjur ninggalake Pajajaran " +
-        "kanggo nerusake lampah lan nggoleki " +
-        "dalan menyang takdire.";
-
-
-    safeClick(
-        "btnListenFinal",
-        () => {
-
-            if (
-                !(
-                    "speechSynthesis"
-                    in window
-                )
-            ) {
-
-                alert(
-                    "Browser ini belum mendukung fitur suara."
-                );
-
-                return;
-
-            }
-
-
-            window.speechSynthesis.cancel();
-
-
-            const utterance =
-                new SpeechSynthesisUtterance(
-                    finalDialogueText
-                );
-
-
-            utterance.lang =
-                "id-ID";
-
-
-            utterance.rate =
-                0.86;
-
-
-            utterance.pitch =
-                1;
-
-
-            window.speechSynthesis.speak(
-                utterance
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       COMPLETE GAMEPLAY 01
-       ===================================================== */
-
-    function completeGameplay01() {
+    function completeGameplay02() {
 
         const progress =
             getProgress();
 
 
         /* =============================================
-           CHAPTER 01 SELESAI
+           CHAPTER 02 SELESAI
            ============================================= */
 
         if (
             !progress.completedChapters.includes(
-                1
+                2
             )
         ) {
 
             progress.completedChapters.push(
-                1
+                2
             );
 
         }
 
 
         /* =============================================
-           LOKASI 01 SELESAI
+           LOKASI 02 SELESAI
            ============================================= */
 
         if (
             !progress.completedLocations.includes(
-                1
+                2
             )
         ) {
 
             progress.completedLocations.push(
-                1
+                2
             );
 
         }
 
 
         /* =============================================
-           UNLOCK LOKASI 02
+           UNLOCK LOKASI 03
            ============================================= */
 
         if (
             !progress.unlockedLocations.includes(
-                2
+                3
             )
         ) {
 
             progress.unlockedLocations.push(
-                2
+                3
             );
 
         }
@@ -2093,7 +2034,7 @@
            ============================================= */
 
         progress.currentChapter =
-            2;
+            3;
 
 
         /* =============================================
@@ -2150,7 +2091,7 @@
 
 
         console.log(
-            "Gameplay 01 — Pajajaran selesai."
+            "Gameplay 02 — Ki Ajar Winarong selesai."
         );
 
 
@@ -2161,7 +2102,7 @@
 
 
         console.log(
-            "Lokasi 02 — terbuka."
+            "Lokasi 03 terbuka."
         );
 
     }
@@ -2176,11 +2117,11 @@
         () => {
 
             /*
-               Pastikan Gameplay 01 sudah selesai
-               sebelum kembali ke peta.
-            */
+             * Pastikan Gameplay 02 sudah selesai
+             * sebelum kembali ke peta.
+             */
 
-            completeGameplay01();
+            completeGameplay02();
 
 
             window.location.href =
@@ -2279,7 +2220,7 @@
        ===================================================== */
 
     console.log(
-        "Gameplay 01 — Pajajaran berhasil dimuat."
+        "Gameplay 02 — Ki Ajar Winarong berhasil dimuat."
     );
 
 

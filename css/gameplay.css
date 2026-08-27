@@ -4810,22 +4810,29 @@
 
 /* =========================================================
    SCREEN 07 — SAYEMBARA PRABU SILIHWANGI
-   CLEAN / FINAL VERSION
+   CLEAN FINAL
    ========================================================= */
 
-/* ---------------------------------------------------------
+
+/* =========================================================
    SCREEN STATE
-   --------------------------------------------------------- */
+   ========================================================= */
 
 #story-sayembara {
     position: relative;
+
     width: 100%;
     min-height: calc(100vh - 72px);
+
     display: none;
+
     overflow: hidden;
+
     background: #fffbea;
+
     color: #17230e;
-    isolation: isolate;
+
+    box-sizing: border-box;
 }
 
 #story-sayembara.active {
@@ -4833,520 +4840,1198 @@
 }
 
 
-/* ---------------------------------------------------------
-   BATIK BACKGROUND
-   --------------------------------------------------------- */
+/* =========================================================
+   ORNAMEN BATIK
+   ========================================================= */
 
 #story-sayembara::after {
     content: "";
+
     position: absolute;
+
     inset: 0;
-    background-image: url("../../assets/images/motif.png");
-    background-repeat: repeat;
-    background-size: 420px auto;
-    background-position: center;
-    opacity: 0.045;
+
+    z-index: 0;
+
     pointer-events: none;
-    z-index: -2;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat: repeat;
+
+    background-size: 420px auto;
+
+    background-position: center;
+
+    opacity: 0.035;
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    ORNAMEN LINGKARAN
-   --------------------------------------------------------- */
+   ========================================================= */
 
 #story-sayembara::before {
     content: "";
+
     position: absolute;
+
     width: 560px;
     height: 560px;
+
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid rgba(183, 154, 85, 0.14);
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid
+        rgba(183, 154, 85, 0.14);
+
     border-radius: 50%;
+
     pointer-events: none;
-    z-index: -1;
+
+    z-index: 1;
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    CONTAINER UTAMA
-   --------------------------------------------------------- */
+   ========================================================= */
 
 #story-sayembara .sayembara-container {
     position: relative;
-    z-index: 1;
-    width: min(1180px, calc(100% - 100px));
-    min-height: calc(100vh - 72px);
-    margin: 0 auto;
-    padding: 55px 0;
-    display: grid;
-    grid-template-columns: 430px minmax(0, 1fr);
-    align-items: center;
-    gap: 60px;
+
+    z-index: 2;
+
+    width:
+        min(
+            1180px,
+            calc(100% - 100px)
+        );
+
+    min-height:
+        calc(100vh - 72px);
+
+    margin:
+        0 auto;
+
+    padding:
+        55px 0;
+
     box-sizing: border-box;
+
+    display: grid;
+
+    grid-template-columns:
+        400px
+        minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 60px;
 }
 
 
-/* ---------------------------------------------------------
-   KIRI — KARTU TANTANGAN
-   --------------------------------------------------------- */
+/* =========================================================
+   BAGIAN KIRI
+   ========================================================= */
 
 #story-sayembara .sayembara-info {
     position: relative;
+
     width: 100%;
+
     box-sizing: border-box;
-    padding: 38px 36px;
-    background: #fff4a8;
-    border: 1px solid rgba(183, 154, 85, 0.35);
-    border-radius: 8px;
-    box-shadow: 0 15px 35px rgba(60, 45, 15, 0.08);
+
+    padding:
+        36px 34px;
+
+    background:
+        #fff4a8;
+
+    border:
+        1px solid
+        rgba(183, 154, 85, 0.35);
+
+    border-radius:
+        8px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(60, 45, 15, 0.08);
 }
+
+
+/* =========================================================
+   BUNGA
+   ========================================================= */
 
 #story-sayembara .sayembara-flower {
     position: absolute;
+
     top: -20px;
     left: -18px;
+
     font-size: 35px;
-    color: #8d9865;
+
+    color:
+        #8d9865;
+
+    line-height: 1;
 }
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
 
 #story-sayembara .sayembara-label {
-    display: inline-block;
-    margin-bottom: 28px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: #17230e;
-    color: #fffbea;
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    display:
+        inline-block;
+
+    margin-bottom:
+        25px;
+
+    padding:
+        6px 14px;
+
+    border-radius:
+        20px;
+
+    background:
+        #17230e;
+
+    color:
+        #fffbea;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
 }
+
+
+/* =========================================================
+   JUDUL
+   ========================================================= */
 
 #story-sayembara .sayembara-info h2 {
-    margin: 0;
-    font-family: "Libre Caslon Text", Georgia, serif;
-    font-size: clamp(42px, 4vw, 56px);
-    line-height: 1.04;
-    color: #17230e;
+    margin:
+        0;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            40px,
+            4vw,
+            55px
+        );
+
+    line-height:
+        1.04;
+
+    font-weight:
+        700;
+
+    color:
+        #17230e;
 }
+
+
+/* =========================================================
+   PERTANYAAN
+   ========================================================= */
 
 #story-sayembara .sayembara-question {
-    margin-top: 30px;
-    padding-left: 17px;
-    border-left: 2px solid #536b35;
+    margin-top:
+        28px;
+
+    padding-left:
+        16px;
+
+    border-left:
+        2px solid
+        #536b35;
 }
+
 
 #story-sayembara .sayembara-question p {
-    margin: 0;
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
-    color: #45483c;
+    margin:
+        0;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        16px;
+
+    line-height:
+        1.6;
+
+    color:
+        #45483c;
 }
+
+
+/* =========================================================
+   INSTRUKSI
+   ========================================================= */
 
 #story-sayembara .sayembara-instruction {
-    display: flex;
-    align-items: flex-start;
-    gap: 9px;
-    margin-top: 32px;
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: 13px;
-    line-height: 1.45;
-    color: #7a765e;
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    gap:
+        9px;
+
+    margin-top:
+        28px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.5;
+
+    color:
+        #7a765e;
 }
 
 
-/* ---------------------------------------------------------
-   KANAN — AREA GAME
-   --------------------------------------------------------- */
+#story-sayembara .sayembara-instruction strong {
+    font-weight:
+        700;
+
+    color:
+        #536b35;
+}
+
+
+/* =========================================================
+   BAGIAN KANAN
+   ========================================================= */
 
 #story-sayembara .sayembara-game {
     width: 100%;
+
     min-width: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    box-sizing: border-box;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        stretch;
+
+    justify-content:
+        center;
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    DROPZONE
-   --------------------------------------------------------- */
+   ========================================================= */
 
 #story-sayembara .sayembara-dropzone {
     position: relative;
+
     width: 100%;
-    min-height: 275px;
-    padding: 28px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    gap: 8px;
-    text-align: center;
-    border: 2px dashed rgba(118, 126, 92, 0.4);
-    border-radius: 15px;
-    background: rgba(255, 252, 237, 0.62);
-    transition: 0.25s ease;
+
+    min-height:
+        250px;
+
+    padding:
+        25px;
+
+    box-sizing:
+        border-box;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    align-content:
+        center;
+
+    gap:
+        10px;
+
+    text-align:
+        center;
+
+    border:
+        2px dashed
+        rgba(118, 126, 92, 0.4);
+
+    border-radius:
+        15px;
+
+    background:
+        rgba(255, 252, 237, 0.55);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
 }
 
-#story-sayembara .sayembara-dropzone.drag-over {
-    border-color: #536b35;
-    background: rgba(255, 244, 168, 0.5);
-    transform: scale(1.01);
+
+/* =========================================================
+   DROPZONE SAAT DRAG
+   ========================================================= */
+
+#story-sayembara .sayembara-dropzone.drag-over,
+#story-sayembara .sayembara-dropzone.dragover {
+    border-color:
+        #536b35;
+
+    background:
+        rgba(255, 244, 168, 0.5);
+
+    transform:
+        scale(1.01);
 }
 
 
-/* ---------------------------------------------------------
-   DROPZONE PLACEHOLDER
-   --------------------------------------------------------- */
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
 
 #story-sayembara .sayembara-dropzone-placeholder {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    text-align: center;
-}
 
-#story-sayembara .sayembara-dropzone-placeholder > span {
-    font-family: "Libre Caslon Text", Georgia, serif;
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 1.15;
-    color: rgba(91, 88, 69, 0.55);
-}
+    display:
+        flex;
 
-#story-sayembara .sayembara-dropzone-placeholder > strong {
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: #536b35;
-}
+    flex-direction:
+        column;
 
-#story-sayembara .sayembara-dropzone-placeholder > small {
-    margin-top: 7px;
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #8b8876;
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        5px;
+
+    text-align:
+        center;
 }
 
 
-/* ---------------------------------------------------------
+#story-sayembara
+.sayembara-dropzone-placeholder > span {
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        25px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.2;
+
+    color:
+        rgba(91, 88, 69, 0.55);
+}
+
+
+#story-sayembara
+.sayembara-dropzone-placeholder > strong {
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        #536b35;
+}
+
+
+#story-sayembara
+.sayembara-dropzone-placeholder > small {
+    margin-top:
+        5px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+
+    color:
+        #8b8876;
+}
+
+
+/* =========================================================
    PILIHAN JAWABAN
-   --------------------------------------------------------- */
+   ========================================================= */
 
 #story-sayembara .sayembara-options {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 15px;
-    margin-top: 30px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        12px;
+
+    margin-top:
+        25px;
 }
+
+
+/* =========================================================
+   KARTU PILIHAN
+   ========================================================= */
 
 #story-sayembara .sayembara-option {
-    min-height: 135px;
-    padding: 15px;
-    box-sizing: border-box;
-    border: 1px solid rgba(183, 154, 85, 0.4);
-    border-radius: 4px;
-    background: #eee47c;
-    color: #17230e;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    cursor: grab;
-    user-select: none;
-    -webkit-user-select: none;
+    width: 100%;
+
+    min-height:
+        125px;
+
+    padding:
+        14px;
+
+    box-sizing:
+        border-box;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    border:
+        1px solid
+        rgba(183, 154, 85, 0.4);
+
+    border-radius:
+        5px;
+
+    background:
+        #eee47c;
+
+    color:
+        #17230e;
+
+    cursor:
+        grab;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+
     transition:
         transform 0.2s ease,
         background 0.2s ease,
         opacity 0.2s ease;
 }
+
 
 #story-sayembara .sayembara-option:hover {
-    transform: translateY(-4px);
-    background: #f2e98d;
+    transform:
+        translateY(-4px);
+
+    background:
+        #f2e98d;
 }
+
 
 #story-sayembara .sayembara-option:active {
-    cursor: grabbing;
+    cursor:
+        grabbing;
 }
+
+
+/* =========================================================
+   OPTION SUDAH DIGUNAKAN
+   ========================================================= */
 
 #story-sayembara .sayembara-option.used {
-    opacity: 0.28;
-    transform: none;
-    cursor: default;
-    pointer-events: none;
+    opacity:
+        0.3;
+
+    transform:
+        none;
+
+    cursor:
+        default;
+
+    pointer-events:
+        none;
 }
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
 
 #story-sayembara .sayembara-icon {
-    width: 54px;
-    height: 54px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    border-radius: 12px;
-    background: rgba(255, 250, 205, 0.7);
-    font-size: 25px;
+    width:
+        48px;
+
+    height:
+        48px;
+
+    flex:
+        0 0 auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(
+            255,
+            250,
+            205,
+            0.7
+        );
+
+    font-size:
+        23px;
 }
+
+
+/* =========================================================
+   TEKS OPTION
+   ========================================================= */
 
 #story-sayembara .sayembara-option strong {
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: 12px;
-    line-height: 1.2;
-    text-align: center;
-    letter-spacing: 0.02em;
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.3;
+
+    font-weight:
+        700;
+
+    text-align:
+        center;
+
+    letter-spacing:
+        0.02em;
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    ITEM YANG SUDAH MASUK DROPZONE
-   --------------------------------------------------------- */
+   ========================================================= */
 
 #story-sayembara .sayembara-dropped {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 110px;
-    min-height: 55px;
-    margin: 5px;
-    padding: 10px 16px;
-    box-sizing: border-box;
-    border-radius: 30px;
-    background: #17230e;
-    color: #fffbea;
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 1.25;
-    animation: sayembaraDropIn 0.25s ease;
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-width:
+        110px;
+
+    min-height:
+        48px;
+
+    padding:
+        9px 15px;
+
+    box-sizing:
+        border-box;
+
+    border:
+        none;
+
+    border-radius:
+        5px;
+
+    background:
+        #17230e;
+
+    color:
+        #fffbea;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.25;
+
+    text-align:
+        center;
+
+    animation:
+        sayembaraDropIn
+        0.25s ease;
 }
+
 
 @keyframes sayembaraDropIn {
+
     from {
-        opacity: 0;
-        transform: translateY(8px) scale(0.95);
+        opacity:
+            0;
+
+        transform:
+            translateY(8px)
+            scale(0.95);
     }
+
     to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
     }
+
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
+   DROPZONE SAAT SUDAH ADA ITEM
+   ========================================================= */
+
+#story-sayembara
+.sayembara-dropzone.has-items {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    align-items:
+        center;
+
+    align-content:
+        center;
+
+    justify-content:
+        stretch;
+
+    gap:
+        10px;
+}
+
+
+/* PLACEHOLDER HILANG */
+
+#story-sayembara
+.sayembara-dropzone.has-items
+.sayembara-dropzone-placeholder {
+    display:
+        none;
+}
+
+
+/* =========================================================
    FEEDBACK
-   --------------------------------------------------------- */
+   ========================================================= */
 
 #story-sayembara .sayembara-feedback {
-    width: 100%;
-    min-height: 24px;
-    margin-top: 12px;
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.5;
-    text-align: center;
-    color: #76503b;
+    width:
+        100%;
+
+    min-height:
+        24px;
+
+    margin-top:
+        10px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.5;
+
+    text-align:
+        center;
+
+    color:
+        #76503b;
 }
+
 
 #story-sayembara .sayembara-feedback.correct {
-    color: #536b35;
-    animation: sayembaraFeedbackIn 0.25s ease;
+    color:
+        #536b35;
+
+    animation:
+        sayembaraFeedbackIn
+        0.25s ease;
 }
+
 
 #story-sayembara .sayembara-feedback.wrong {
-    color: #9b5d4b;
-    animation: sayembaraFeedbackIn 0.25s ease;
+    color:
+        #9b5d4b;
+
+    animation:
+        sayembaraFeedbackIn
+        0.25s ease;
 }
+
 
 @keyframes sayembaraFeedbackIn {
+
     from {
-        opacity: 0;
-        transform: translateY(4px);
+        opacity:
+            0;
+
+        transform:
+            translateY(4px);
     }
+
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
     }
+
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
    TOMBOL LANJUT
-   --------------------------------------------------------- */
+   ========================================================= */
 
 #story-sayembara .sayembara-next {
-    align-self: flex-end;
-    min-width: 160px;
-    min-height: 45px;
-    margin-top: 20px;
-    padding: 14px 22px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    border: none;
-    border-radius: 12px;
-    background: #17230e;
-    color: #fffbea;
-    font-family: "Hanken Grotesk", sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    cursor: pointer;
+    align-self:
+        flex-end;
+
+    min-width:
+        160px;
+
+    min-height:
+        45px;
+
+    margin-top:
+        18px;
+
+    padding:
+        0 22px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    border:
+        none;
+
+    border-radius:
+        4px;
+
+    background:
+        #17230e;
+
+    color:
+        #fffbea;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+
+    cursor:
+        pointer;
+
     transition:
         transform 0.2s ease,
         background 0.2s ease,
         opacity 0.2s ease;
 }
 
-#story-sayembara .sayembara-next:hover:not(:disabled) {
-    transform: translateY(-3px);
-    background: #2d401d;
+
+#story-sayembara
+.sayembara-next:hover:not(:disabled) {
+    transform:
+        translateY(-3px);
+
+    background:
+        #2d401d;
 }
 
-#story-sayembara .sayembara-next:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
+
+#story-sayembara
+.sayembara-next:disabled {
+    opacity:
+        0.35;
+
+    cursor:
+        not-allowed;
 }
 
 
-/* ---------------------------------------------------------
-   RESPONSIVE — TABLET
-   --------------------------------------------------------- */
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 1000px) {
-    #story-sayembara .sayembara-container {
-        width: calc(100% - 60px);
-        grid-template-columns: 360px minmax(0, 1fr);
-        gap: 35px;
+
+    #story-sayembara
+    .sayembara-container {
+        width:
+            calc(100% - 60px);
+
+        grid-template-columns:
+            350px
+            minmax(0, 1fr);
+
+        gap:
+            35px;
     }
 
-    #story-sayembara .sayembara-info h2 {
-        font-size: 42px;
+
+    #story-sayembara
+    .sayembara-info {
+        padding:
+            32px 28px;
     }
 
-    #story-sayembara .sayembara-options {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
+
+    #story-sayembara
+    .sayembara-info h2 {
+        font-size:
+            40px;
     }
+
+
+    #story-sayembara
+    .sayembara-options {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            12px;
+    }
+
 }
 
 
-/* ---------------------------------------------------------
-   RESPONSIVE — MOBILE
-   --------------------------------------------------------- */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 750px) {
-    #story-sayembara .sayembara-container {
-        width: calc(100% - 35px);
-        min-height: auto;
-        padding: 45px 0 60px;
-        grid-template-columns: 1fr;
-        gap: 35px;
+
+    #story-sayembara {
+        min-height:
+            calc(100svh - 64px);
     }
 
-    #story-sayembara .sayembara-game {
-        width: 100%;
+
+    #story-sayembara
+    .sayembara-container {
+        width:
+            calc(100% - 35px);
+
+        min-height:
+            auto;
+
+        padding:
+            45px 0 60px;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            30px;
     }
 
-    #story-sayembara .sayembara-dropzone {
-        min-height: 230px;
+
+    #story-sayembara
+    .sayembara-info {
+        padding:
+            30px 26px;
     }
 
-    #story-sayembara .sayembara-options {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    #story-sayembara
+    .sayembara-game {
+        width:
+            100%;
     }
 
-    #story-sayembara .sayembara-next {
-        width: 100%;
-        align-self: stretch;
+
+    #story-sayembara
+    .sayembara-dropzone {
+        min-height:
+            220px;
+
+        padding:
+            18px;
     }
+
+
+    #story-sayembara
+    .sayembara-options {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            10px;
+    }
+
+
+    #story-sayembara
+    .sayembara-next {
+        width:
+            100%;
+
+        align-self:
+            stretch;
+    }
+
 }
 
 
-/* ---------------------------------------------------------
-   RESPONSIVE — HP KECIL
-   --------------------------------------------------------- */
+/* =========================================================
+   HP KECIL
+   ========================================================= */
 
 @media (max-width: 450px) {
-    #story-sayembara .sayembara-container {
-        width: calc(100% - 25px);
+
+    #story-sayembara
+    .sayembara-container {
+        width:
+            calc(100% - 25px);
+
+        padding:
+            35px 0 50px;
     }
 
-    #story-sayembara .sayembara-info {
-        padding: 30px 25px;
+
+    #story-sayembara
+    .sayembara-info {
+        padding:
+            28px 22px;
     }
 
-    #story-sayembara .sayembara-info h2 {
-        font-size: 38px;
+
+    #story-sayembara
+    .sayembara-info h2 {
+        font-size:
+            36px;
     }
 
-    #story-sayembara .sayembara-dropzone {
-        min-height: 220px;
-        padding: 18px;
+
+    #story-sayembara
+    .sayembara-question p {
+        font-size:
+            14px;
     }
 
-    #story-sayembara .sayembara-dropzone-placeholder > span {
-        font-size: 23px;
+
+    #story-sayembara
+    .sayembara-instruction {
+        font-size:
+            11px;
     }
 
-    #story-sayembara .sayembara-dropzone-placeholder > strong {
-        font-size: 12px;
+
+    #story-sayembara
+    .sayembara-dropzone {
+        min-height:
+            210px;
     }
 
-    #story-sayembara .sayembara-dropzone-placeholder > small {
-        font-size: 9px;
+
+    #story-sayembara
+    .sayembara-dropzone-placeholder > span {
+        font-size:
+            21px;
     }
 
-    #story-sayembara .sayembara-options {
-        gap: 10px;
+
+    #story-sayembara
+    .sayembara-dropzone-placeholder > strong {
+        font-size:
+            11px;
     }
 
-    #story-sayembara .sayembara-option {
-        min-height: 115px;
-        padding: 10px;
+
+    #story-sayembara
+    .sayembara-dropzone-placeholder > small {
+        font-size:
+            9px;
     }
 
-    #story-sayembara .sayembara-icon {
-        width: 42px;
-        height: 42px;
-        font-size: 23px;
+
+    #story-sayembara
+    .sayembara-option {
+        min-height:
+            110px;
+
+        padding:
+            9px;
     }
 
-    #story-sayembara .sayembara-option strong {
-        font-size: 10px;
+
+    #story-sayembara
+    .sayembara-icon {
+        width:
+            40px;
+
+        height:
+            40px;
+
+        font-size:
+            20px;
     }
 
-    #story-sayembara .sayembara-dropped {
-        min-width: 90px;
-        min-height: 48px;
-        margin: 4px;
-        padding: 8px 13px;
-        font-size: 10px;
+
+    #story-sayembara
+    .sayembara-option strong {
+        font-size:
+            9px;
     }
-    
-    /* =========================================================
+
+
+    #story-sayembara
+    .sayembara-dropped {
+        min-width:
+            85px;
+
+        min-height:
+            44px;
+
+        padding:
+            7px 10px;
+
+        font-size:
+            9px;
+    }
+
+}
+
+/* ---------------------------------------------------------
    GAMEPLAY HUD
    BAB / BASA / XP
    ========================================================= */
@@ -6021,9 +6706,6 @@
     }
 
 }
-
-}
-
 
 /* =========================================================
    FINAL FIX — SCREEN 01 / OPENING PAJAJARAN
@@ -6988,5 +7670,1495 @@
         right: 18px;
         bottom: 18px;
     }
+
+    /* =========================================================
+   SCREEN 07
+   HASIL LANGKAH YANG SUDAH DIPILIH
+   ========================================================= */
+
+#story-sayembara .sayembara-dropzone {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+}
+
+#story-sayembara .sayembara-dropzone-placeholder {
+    width: 100%;
+}
+
+#story-sayembara .sayembara-dropzone.has-items
+.sayembara-dropzone-placeholder {
+    display: none;
+}
+
+#story-sayembara .sayembara-dropped {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 10px 16px;
+
+    background: #425a35;
+
+    color: #fff;
+
+    border: 0;
+    border-radius: 4px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    text-align: center;
+}
+
+
+/* BENAR */
+
+#story-sayembara .sayembara-dropped.correct {
+    background: #425a35;
+    color: #fff;
+}
+
+
+/* SALAH */
+
+#story-sayembara .sayembara-dropped.wrong {
+    background: #9b4d3f;
+    color: #fff;
+}
+
+
+/* =========================================================
+   DROPZONE SAAT ADA ITEM
+   ========================================================= */
+
+#story-sayembara .sayembara-dropzone.has-items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    justify-content: stretch;
+    align-items: center;
+    align-content: center;
+}
+
+
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
+
+#story-sayembara .sayembara-feedback.correct {
+    color: #3f713c;
+}
+
+#story-sayembara .sayembara-feedback.wrong {
+    color: #9b4d3f;
+}
+
+
+/* =========================================================
+   BUTTON LANJUT
+   ========================================================= */
+
+#story-sayembara .sayembara-next {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border: none;
+    border-radius: 4px;
+
+    background: #193608;
+    color: #fff;
+
+    padding: 12px 22px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+}
+
+#story-sayembara .sayembara-next:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#story-sayembara .sayembara-next.ready {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* =========================================================
+   DRAG & DROP
+   GLOBAL GAMEPLAY
+   ========================================================= */
+
+.dropped-items {
+
+    width: 100%;
+
+    min-height: 100%;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   ITEM YANG SUDAH MASUK DROPZONE
+   ========================================================= */
+
+.dropped-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 150px;
+
+    min-height: 52px;
+
+    padding: 12px 22px;
+
+    box-sizing: border-box;
+
+    border-radius: 4px;
+
+    background: var(--story-dark);
+
+    color: var(--story-cream);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    text-align: center;
+
+    cursor: default;
+
+    user-select: none;
+
+}
+
+
+/* =========================================================
+   BENAR
+   ========================================================= */
+
+.dropped-item.correct {
+
+    background:
+        var(--story-dark);
+
+    color:
+        var(--story-cream);
+
+}
+
+
+/* =========================================================
+   SALAH
+   ========================================================= */
+
+.dropped-item.wrong {
+
+    background:
+        var(--story-brown);
+
+    color:
+        var(--story-cream);
+
+}
+
+
+/* =========================================================
+   ITEM YANG SUDAH DIPAKAI
+   ========================================================= */
+
+.sayembara-option.used {
+
+    opacity: 0.45;
+
+    cursor: default;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   DROPZONE SAAT DRAG
+   ========================================================= */
+
+.sayembara-dropzone.dragover {
+
+    border-color:
+        var(--story-gold);
+
+    background:
+        rgba(255, 249, 234, 0.85);
+
+}
+
+/* =========================================================
+   SCREEN 07 — SAYEMBARA
+   SESUAI STYLE GAMEPLAY 01
+   ========================================================= */
+
+#story-sayembara {
+    display: none;
+}
+
+#story-sayembara.active {
+    display: block;
+}
+
+
+#story-sayembara {
+    position: relative;
+
+    width: 100%;
+
+    min-height:
+        calc(100vh - 72px);
+
+    background:
+        #fffbea;
+
+    color:
+        #17230e;
+
+    overflow:
+        hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND ORNAMEN
+   ========================================================= */
+
+#story-sayembara::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle at center,
+            transparent 0 280px,
+            rgba(183, 154, 85, 0.15) 281px,
+            transparent 282px
+        );
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+#story-sayembara .sayembara-container {
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            1050px,
+            calc(100% - 80px)
+        );
+
+    min-height:
+        calc(100vh - 72px);
+
+    margin:
+        0 auto;
+
+    padding:
+        70px 0;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        390px 1fr;
+
+    align-items:
+        center;
+
+    gap:
+        55px;
+}
+
+
+/* =========================================================
+   BAGIAN KIRI
+   ========================================================= */
+
+#story-sayembara .sayembara-info {
+    position:
+        relative;
+
+    padding:
+        34px 32px;
+
+    background:
+        #fff4a8;
+
+    border:
+        1px solid
+        rgba(
+            183,
+            154,
+            85,
+            0.35
+        );
+
+    border-radius:
+        8px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(
+            60,
+            45,
+            15,
+            0.08
+        );
+}
+
+
+/* =========================================================
+   BUNGA
+   ========================================================= */
+
+#story-sayembara .sayembara-flower {
+    position:
+        absolute;
+
+    top:
+        -20px;
+
+    left:
+        -18px;
+
+    font-size:
+        35px;
+
+    color:
+        #8d9865;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+#story-sayembara .sayembara-label {
+    display:
+        inline-block;
+
+    margin-bottom:
+        28px;
+
+    padding:
+        5px 13px;
+
+    border-radius:
+        20px;
+
+    background:
+        #17230e;
+
+    color:
+        #fffbea;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.1em;
+}
+
+
+/* =========================================================
+   JUDUL
+   ========================================================= */
+
+#story-sayembara .sayembara-info h2 {
+    margin:
+        0;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            38px,
+            4vw,
+            54px
+        );
+
+    line-height:
+        1.05;
+
+    color:
+        #17230e;
+}
+
+
+/* =========================================================
+   PERTANYAAN
+   ========================================================= */
+
+#story-sayembara .sayembara-question {
+    margin-top:
+        28px;
+
+    padding-left:
+        17px;
+
+    border-left:
+        2px solid
+        #536b35;
+}
+
+
+#story-sayembara .sayembara-question p {
+    margin:
+        0;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.6;
+
+    color:
+        #45483c;
+}
+
+
+/* =========================================================
+   INSTRUKSI
+   ========================================================= */
+
+#story-sayembara .sayembara-instruction {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    margin-top:
+        32px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        13px;
+
+    color:
+        #7a765e;
+}
+
+
+/* =========================================================
+   BAGIAN KANAN
+   ========================================================= */
+
+#story-sayembara .sayembara-game {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-end;
+}
+
+
+/* =========================================================
+   DROPZONE
+   ========================================================= */
+
+#story-sayembara .sayembara-dropzone {
+    width:
+        100%;
+
+    min-height:
+        250px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    border:
+        2px dashed
+        rgba(
+            118,
+            126,
+            92,
+            0.4
+        );
+
+    border-radius:
+        15px;
+
+    background:
+        rgba(
+            255,
+            252,
+            237,
+            0.55
+        );
+
+    transition:
+        0.25s ease;
+}
+
+
+#story-sayembara .sayembara-dropzone.drag-over {
+    border-color:
+        #536b35;
+
+    background:
+        rgba(
+            255,
+            244,
+            168,
+            0.5
+        );
+
+    transform:
+        scale(1.01);
+}
+
+
+/* =========================================================
+   PLACEHOLDER DROPZONE
+   ========================================================= */
+
+#story-sayembara .sayembara-dropzone-placeholder {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        5px;
+
+    width:
+        100%;
+}
+
+
+#story-sayembara .sayembara-dropzone-placeholder > span {
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        24px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.2;
+
+    color:
+        rgba(
+            91,
+            88,
+            69,
+            0.55
+        );
+}
+
+
+#story-sayembara .sayembara-dropzone-placeholder > strong {
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+    color:
+        #536b35;
+}
+
+
+#story-sayembara .sayembara-dropzone-placeholder > small {
+    margin-top:
+        5px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        400;
+
+    color:
+        #8b8876;
+}
+
+
+/* =========================================================
+   PILIHAN
+   ========================================================= */
+
+#story-sayembara .sayembara-options {
+    width:
+        100%;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    gap:
+        15px;
+
+    margin-top:
+        48px;
+}
+
+
+/* =========================================================
+   KARTU PILIHAN
+   ========================================================= */
+
+#story-sayembara .sayembara-option {
+    min-height:
+        135px;
+
+    padding:
+        15px;
+
+    border:
+        1px solid
+        rgba(
+            183,
+            154,
+            85,
+            0.4
+        );
+
+    border-radius:
+        4px;
+
+    background:
+        #eee47c;
+
+    color:
+        #17230e;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    cursor:
+        grab;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+#story-sayembara .sayembara-option:hover {
+    transform:
+        translateY(-4px);
+
+    background:
+        #f2e98d;
+}
+
+
+#story-sayembara .sayembara-option:active {
+    cursor:
+        grabbing;
+
+    transform:
+        scale(0.97);
+}
+
+
+#story-sayembara .sayembara-option.used {
+    opacity:
+        0.35;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+#story-sayembara .sayembara-icon {
+    width:
+        50px;
+
+    height:
+        50px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.2
+        );
+
+    font-size:
+        28px;
+}
+
+
+/* =========================================================
+   TEXT KARTU
+   ========================================================= */
+
+#story-sayembara .sayembara-option strong {
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.1;
+
+    text-align:
+        center;
+
+    letter-spacing:
+        0.02em;
+}
+
+
+/* =========================================================
+   ITEM YANG SUDAH MASUK DROPZONE
+   ========================================================= */
+
+#story-sayembara .sayembara-dropped {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin:
+        7px;
+
+    padding:
+        10px 18px;
+
+    border-radius:
+        30px;
+
+    background:
+        #17230e;
+
+    color:
+        #fffbea;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+
+    animation:
+        sayembaraDropIn
+        0.25s
+        ease;
+}
+
+
+@keyframes sayembaraDropIn {
+
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateY(8px)
+            scale(0.95);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
+
+#story-sayembara .sayembara-feedback {
+    width:
+        100%;
+
+    min-height:
+        24px;
+
+    margin-top:
+        16px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.5;
+
+    text-align:
+        center;
+
+    color:
+        #76503b;
+}
+
+
+#story-sayembara .sayembara-feedback.correct {
+    color:
+        #536b35;
+}
+
+
+#story-sayembara .sayembara-feedback.wrong {
+    color:
+        #9b5d4b;
+}
+
+
+/* =========================================================
+   TOMBOL LANJUT
+   ========================================================= */
+
+#story-sayembara .sayembara-next {
+    margin-top:
+        30px;
+
+    min-width:
+        145px;
+
+    min-height:
+        45px;
+
+    padding:
+        0 22px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        15px;
+
+    border:
+        none;
+
+    border-radius:
+        12px;
+
+    background:
+        #17230e;
+
+    color:
+        #fffbea;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+#story-sayembara .sayembara-next:disabled {
+    opacity:
+        0.35;
+
+    cursor:
+        not-allowed;
+}
+
+
+#story-sayembara .sayembara-next:not(:disabled):hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        #2d401d;
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #story-sayembara .sayembara-container {
+        width:
+            calc(100% - 40px);
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            35px;
+
+        padding:
+            50px 0;
+    }
+
+
+    #story-sayembara .sayembara-info {
+        width:
+            100%;
+    }
+
+
+    #story-sayembara .sayembara-game {
+        width:
+            100%;
+    }
+
+
+    #story-sayembara .sayembara-options {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+        gap:
+            12px;
+    }
+
+
+    #story-sayembara .sayembara-dropzone {
+        min-height:
+            260px;
+    }
+
+
+    #story-sayembara .sayembara-dropzone-placeholder > span {
+        font-size:
+            22px;
+    }
+
+
+    #story-sayembara .sayembara-dropzone-placeholder > strong {
+        font-size:
+            13px;
+    }
+
+
+    #story-sayembara .sayembara-dropzone-placeholder > small {
+        font-size:
+            10px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE MOBILE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+    #story-sayembara .sayembara-container {
+        width:
+            calc(100% - 25px);
+    }
+
+
+    #story-sayembara .sayembara-info h2 {
+        font-size:
+            38px;
+    }
+
+
+    #story-sayembara .sayembara-options {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+        gap:
+            10px;
+    }
+
+
+    #story-sayembara .sayembara-option {
+        min-height:
+            115px;
+
+        padding:
+            12px;
+    }
+
+
+    #story-sayembara .sayembara-icon {
+        width:
+            42px;
+
+        height:
+            42px;
+
+        font-size:
+            23px;
+    }
+
+
+    #story-sayembara .sayembara-option strong {
+        font-size:
+            10px;
+    }
+
+
+    #story-sayembara .sayembara-dropzone {
+        min-height:
+            220px;
+
+        padding:
+            18px;
+    }
+
+
+    #story-sayembara .sayembara-dropzone-placeholder > span {
+        font-size:
+            20px;
+    }
+
+
+    #story-sayembara .sayembara-dropzone-placeholder > strong {
+        font-size:
+            12px;
+    }
+
+
+    #story-sayembara .sayembara-dropzone-placeholder > small {
+        font-size:
+            9px;
+    }
+
+
+    #story-sayembara .sayembara-dropped {
+        margin:
+            5px;
+
+        padding:
+            8px 13px;
+
+        font-size:
+            10px;
+    }
+}
+
+/* =========================================================
+   GAMEPLAY 07 — BATUR AGUNG
+   FINAL BACKGROUND FIX
+   MENGIKUTI BACKGROUND GAMEPLAY SEBELUMNYA
+   ========================================================= */
+
+
+/* =========================================================
+   BACKGROUND SEMUA SCREEN GAMEPLAY 07
+   ========================================================= */
+
+#story-opening .chapter07-bg,
+#story-dialog .chapter07-dialog-bg,
+#story-gameplay07 .chapter07-gameplay-bg,
+#story-result07 .chapter07-story-bg,
+#story-dialog-final .chapter07-dialog-bg,
+#story-chapter-08 .chapter07-complete-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background-image:
+        url("../../assets/images/Gameplay 01 - Padjajaran.png") !important;
+
+    background-repeat: no-repeat !important;
+
+    background-size: cover !important;
+
+    background-position: center center !important;
+
+    background-color: transparent !important;
+
+}
+
+
+/* =========================================================
+   MATIKAN GRADIENT / SILUET / KABUT BUATAN GAMEPLAY 07
+   ========================================================= */
+
+#story-opening .chapter07-bg::before,
+#story-opening .chapter07-bg::after,
+
+#story-dialog .chapter07-dialog-bg::before,
+#story-dialog .chapter07-dialog-bg::after,
+
+#story-gameplay07 .chapter07-gameplay-bg::before,
+#story-gameplay07 .chapter07-gameplay-bg::after,
+
+#story-result07 .chapter07-story-bg::before,
+#story-result07 .chapter07-story-bg::after,
+
+#story-dialog-final .chapter07-dialog-bg::before,
+#story-dialog-final .chapter07-dialog-bg::after,
+
+#story-chapter-08 .chapter07-complete-bg::before,
+#story-chapter-08 .chapter07-complete-bg::after {
+
+    display: none !important;
+
+    content: none !important;
+
+}
+
+
+/* =========================================================
+   SCREEN 01 — OPENING
+   BACKGROUND SAMA DENGAN GAMEPLAY SEBELUMNYA
+   ========================================================= */
+
+#story-opening {
+
+    background: transparent !important;
+
+}
+
+
+/* =========================================================
+   SCREEN 02 — DIALOG
+   ========================================================= */
+
+#story-dialog {
+
+    background: transparent !important;
+
+}
+
+
+#story-dialog .story-background-dialog {
+
+    filter: none !important;
+
+    opacity: 1 !important;
+
+}
+
+
+/* =========================================================
+   SCREEN 03 — GAMEPLAY
+   ========================================================= */
+
+#story-gameplay07 {
+
+    position: relative;
+
+    background: transparent !important;
+
+}
+
+
+#story-gameplay07 .chapter07-gameplay-bg {
+
+    z-index: 0;
+
+}
+
+
+/* Jangan menghilangkan background karena overlay */
+
+#story-gameplay07 .story-overlay {
+
+    z-index: 1;
+
+}
+
+
+/* =========================================================
+   SCREEN 04 — RESULT
+   ========================================================= */
+
+#story-result07 {
+
+    background: transparent !important;
+
+}
+
+
+#story-result07 .chapter07-story-bg {
+
+    z-index: 0;
+
+}
+
+
+/* =========================================================
+   SCREEN 05 — DIALOG FINAL
+   ========================================================= */
+
+#story-dialog-final {
+
+    background: transparent !important;
+
+}
+
+
+#story-dialog-final .chapter07-dialog-bg {
+
+    z-index: 0;
+
+}
+
+
+/* =========================================================
+   SCREEN 06 — CHAPTER COMPLETE
+   ========================================================= */
+
+#story-chapter-08 {
+
+    background: transparent !important;
+
+}
+
+
+#story-chapter-08 .chapter07-complete-bg {
+
+    z-index: 0;
+
+}
+
+
+/* =========================================================
+   BATIK
+   TETAP MENGIKUTI STYLE GAMEPLAY SEBELUMNYA
+   ========================================================= */
+
+#story-opening .story-batik,
+#story-result07 .story-batik,
+#story-chapter-08 .departure-story-batik {
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #story-opening .chapter07-bg,
+    #story-dialog .chapter07-dialog-bg,
+    #story-gameplay07 .chapter07-gameplay-bg,
+    #story-result07 .chapter07-story-bg,
+    #story-dialog-final .chapter07-dialog-bg,
+    #story-chapter-08 .chapter07-complete-bg {
+
+        background-position: center center !important;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    #story-opening .chapter07-bg,
+    #story-dialog .chapter07-dialog-bg,
+    #story-gameplay07 .chapter07-gameplay-bg,
+    #story-result07 .chapter07-story-bg,
+    #story-dialog-final .chapter07-dialog-bg,
+    #story-chapter-08 .chapter07-complete-bg {
+
+        background-size: cover !important;
+
+        background-position: 60% center !important;
+
+    }
+
+}
 
 }

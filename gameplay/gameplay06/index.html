@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Lelana Kamandaka — Goa Jatijajar</title>
+
+
+  <!-- =====================================================
+       FONT
+       ===================================================== -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =====================================================
+       CSS GLOBAL
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="../../css/variables.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/base.css"
+  >
+
+
+  <!-- =====================================================
+       CSS COMPONENT
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/navbar.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/buttons.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/dialogue.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/card.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../../css/components/modal.css"
+  >
+
+
+  <!-- =====================================================
+       CSS KHUSUS SCREEN GAMEPLAY
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="../../css/screens/gameplay.css"
+  >
+
+
+  <!-- =====================================================
+       CSS GAMEPLAY
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="../../css/gameplay.css"
+  >
+
+
+  <style>
+
+    /* =====================================================
+       GAMEPLAY 06 — GOA JATIJAJAR
+       Visual override only for this page.
+       Tidak mengubah CSS global Gameplay 01–05.
+       ===================================================== */
+
+    .chapter06-bg,
+    .chapter06-dialog-bg,
+    .chapter06-learning-bg,
+    .chapter06-story-bg,
+    .chapter06-departure-bg {
+      background:
+        radial-gradient(
+          circle at 68% 24%,
+          rgba(214, 190, 132, .18),
+          transparent 23%
+        ),
+        radial-gradient(
+          circle at 25% 72%,
+          rgba(88, 103, 79, .26),
+          transparent 32%
+        ),
+        linear-gradient(
+          125deg,
+          #111813 0%,
+          #273329 43%,
+          #151b16 100%
+        );
+    }
+
+
+    .chapter06-bg::before,
+    .chapter06-dialog-bg::before,
+    .chapter06-learning-bg::before,
+    .chapter06-story-bg::before,
+    .chapter06-departure-bg::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      opacity: .48;
+
+      background:
+        radial-gradient(
+          ellipse at 78% 30%,
+          rgba(227, 208, 159, .24) 0 5%,
+          transparent 25%
+        ),
+        radial-gradient(
+          ellipse at 18% 88%,
+          rgba(7, 10, 8, .55) 0 12%,
+          transparent 42%
+        );
+
+      pointer-events: none;
+    }
+
+
+    .chapter06-bg,
+    .chapter06-dialog-bg,
+    .chapter06-learning-bg,
+    .chapter06-story-bg,
+    .chapter06-departure-bg {
+      background-size: cover;
+
+      background-position: center;
+    }
+
+
+    .gameplay-transition-screen {
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(204, 183, 125, .14),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #121914,
+          #28352b 55%,
+          #151c16
+        );
+    }
+
+
+    .chapter06-bg,
+    .chapter06-dialog-bg,
+    .chapter06-learning-bg,
+    .chapter06-story-bg,
+    .chapter06-departure-bg {
+      position: absolute;
+
+      overflow: hidden;
+    }
+
+
+    .chapter06-story-bg::after,
+    .chapter06-departure-bg::after {
+      content: "";
+
+      position: absolute;
+
+      width: 28vw;
+      height: 28vw;
+
+      min-width: 220px;
+      min-height: 220px;
+
+      right: -8vw;
+      top: -8vw;
+
+      border-radius: 50%;
+
+      background:
+        rgba(
+          208,
+          187,
+          132,
+          .08
+        );
+
+      box-shadow:
+        -90px 80px 0 rgba(8, 12, 9, .18),
+        -180px 150px 0 rgba(8, 12, 9, .12);
+
+      pointer-events: none;
+    }
+
+
+    .sayembara-story-screen .chapter06-story-bg,
+    .departure-story-screen .chapter06-departure-bg {
+      filter: saturate(.82);
+    }
+
+
+    @media (max-width: 900px) {
+
+      .chapter06-bg,
+      .chapter06-dialog-bg,
+      .chapter06-learning-bg,
+      .chapter06-story-bg,
+      .chapter06-departure-bg {
+        background-position: center;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .chapter06-bg,
+      .chapter06-dialog-bg,
+      .chapter06-learning-bg,
+      .chapter06-story-bg,
+      .chapter06-departure-bg {
+        background-position: 62% center;
+      }
+
+
+      .gameplay-page {
+        overflow-x: hidden;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       NAVBAR
+       ===================================================== -->
+
+  <header
+    class="site-navbar"
+    id="siteNavbar"
+  >
+
+    <div class="navbar-inner">
+
+      <a
+        href="../../index.html"
+        class="navbar-logo"
+      >
+        LELANA KAMANDAKA
+      </a>
+
+
+      <nav
+        class="navbar-menu"
+        id="navbarMenu"
+      >
+
+        <a href="../../index.html">
+          BERANDA
+        </a>
+
+        <a href="../../catatan.html">
+          CATATAN
+        </a>
+
+        <a href="../../pencapaian.html">
+          PENCAPAIAN
+        </a>
+
+      </nav>
+
+
+      <button
+        type="button"
+        class="navbar-toggle"
+        id="navbarToggle"
+        aria-label="Buka menu"
+        aria-expanded="false"
+      >
+
+        <span></span>
+
+      </button>
+
+
+      <div
+        class="navbar-extra"
+        id="navbarExtra"
+      >
+
+        <a href="../../peta.html">
+          PETA
+        </a>
+
+        <a href="../../basa.html">
+          BASA
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       GAMEPLAY PAGE
+       ===================================================== -->
+
+  <main
+    class="gameplay-page"
+    id="gameplayPage"
+  >
+
+
+    <!-- ===================================================
+         HUD
+         =================================================== -->
+
+    <div
+      class="gameplay-hud"
+      id="gameplayHud"
+      aria-label="Progress permainan"
+    >
+
+      <div class="gameplay-hud-bab">
+
+        <span>
+          BAB
+        </span>
+
+        <strong id="hudChapter">
+          06
+        </strong>
+
+        <span>
+          / 10
+        </span>
+
+      </div>
+
+
+      <div class="gameplay-hud-stats">
+
+        <div class="gameplay-stat">
+
+          <span class="gameplay-stat-icon">
+            ✦
+          </span>
+
+          <strong id="hudXp">
+            125
+          </strong>
+
+          <small>
+            XP
+          </small>
+
+        </div>
+
+
+        <div class="gameplay-stat">
+
+          <span class="gameplay-stat-icon">
+            ◈
+          </span>
+
+          <strong id="hudBasa">
+            25
+          </strong>
+
+          <small>
+            BASA
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         SCREEN 01 — OPENING
+         =================================================== -->
+
+    <section
+      class="story-screen active"
+      id="story-opening"
+    >
+
+      <div
+        class="story-background chapter06-bg"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="story-overlay"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="story-batik"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="story-content">
+
+        <div class="story-eyebrow">
+
+          <span class="story-eyebrow-line"></span>
+
+          <span>
+            LELANA KAMANDAKA
+          </span>
+
+          <span class="story-eyebrow-line"></span>
+
+        </div>
+
+
+        <h1 class="story-title">
+
+          <span class="story-title-small">
+            BAB VI
+          </span>
+
+          <span class="story-title-main">
+            Goa Jatijajar
+          </span>
+
+        </h1>
+
+
+        <p class="story-intro">
+
+          “Perjalanan Kamandaka berlanjut menuju Goa Jatijajar.
+          Di balik lorong batu dan cahaya yang remang,
+          ia memasuki tempat yang menyimpan jejak legenda
+          sekaligus menuntutnya untuk lebih berhati-hati.”
+
+        </p>
+
+
+        <button
+          type="button"
+          class="story-start-button"
+          id="btnBeginStory"
+        >
+
+          <span>
+            MULAI KISAH
+          </span>
+
+          <span class="story-button-arrow">
+            →
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <div
+        class="story-character"
+        aria-hidden="true"
+      >
+
+        <img
+          src="../../assets/images/characters/raden.png"
+          alt=""
+        >
+
+      </div>
+
+
+      <div class="story-chapter-mark">
+
+        <span>
+          06
+        </span>
+
+        <span class="story-chapter-line"></span>
+
+        <span>
+          10
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SCREEN 02 — DIALOG
+         =================================================== -->
+
+    <section
+      class="story-screen story-dialog-screen"
+      id="story-dialog"
+    >
+
+      <div
+        class="story-background story-background-dialog chapter06-dialog-bg"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="story-overlay"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="dialog-wrapper">
+
+        <div class="dialog-box">
+
+          <div class="dialog-item">
+
+            <h2 class="dialog-character-name">
+              Narator
+            </h2>
+
+            <p class="dialog-text">
+
+              “Sawise nerusake lampah, Kamandaka tekan
+              ing Goa Jatijajar. Ing papan iki dheweke
+              kudu ngati-ati nalika nyusuri lorong
+              guwa sing peteng lan watu-watu.”
+
+            </p>
+
+          </div>
+
+
+          <div class="dialog-item">
+
+            <h2 class="dialog-character-name">
+              Kamandaka
+            </h2>
+
+            <p class="dialog-text">
+
+              “Goa Jatijajar. Aku kudu ngati-ati lan
+              nggatekake dalan ing njero guwa.
+              Aku kudu tetep tenang nalika nerusake lampah.”
+
+            </p>
+
+          </div>
+
+
+          <div class="dialog-footer">
+
+            <button
+              type="button"
+              class="dialog-listen-button"
+              id="btnListen"
+            >
+
+              <span class="listen-icon">
+                🔊
+              </span>
+
+              <span>
+                DENGARKAN
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="dialog-next-button"
+              id="btnNextStory"
+            >
+
+              <span>
+                LANJUT
+              </span>
+
+              <span>
+                →
+              </span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SCREEN 03 — TRANSITION
+         =================================================== -->
+
+    <section
+      class="story-screen gameplay-transition-screen"
+      id="story-gameplay"
+    >
+
+      <div class="gameplay-transition-content">
+
+        <span class="gameplay-transition-label">
+          MEMASUKI WILAYAH BARU
+        </span>
+
+
+        <h2>
+          Menyusuri Goa Jatijajar
+        </h2>
+
+
+        <p>
+
+          Goa Jatijajar merupakan gua batu kapur dengan
+          lorong, stalaktit, stalagmit, dan beberapa sendang.
+          Dalam kisah yang melekat pada tempat ini,
+          Goa Jatijajar menjadi bagian dari legenda Kamandaka.
+
+        </p>
+
+
+        <button
+          type="button"
+          class="story-start-button"
+          id="btnStartGameplay"
+        >
+
+          <span>
+            MULAI TANTANGAN
+          </span>
+
+          <span>
+            →
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SCREEN 04 — SINAU BASA
+         =================================================== -->
+
+    <section
+      class="story-screen learning-basa-screen"
+      id="story-learning-basa"
+    >
+
+      <div
+        class="learning-basa-background chapter06-learning-bg"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="learning-basa-overlay"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="learning-basa-container">
+
+        <div class="learning-basa-header">
+
+          <span class="learning-basa-label">
+            TANTANGAN BASA 06
+          </span>
+
+
+          <h2>
+            SINAU
+            <span>BASA</span>
+          </h2>
+
+
+          <p>
+
+            Pelajari kosakata yang berkaitan dengan
+            perjalanan Kamandaka dan suasana
+            di Goa Jatijajar.
+
+          </p>
+
+        </div>
+
+
+        <div class="learning-basa-grid">
+
+
+          <!-- VISUAL -->
+
+          <div class="learning-basa-visual">
+
+            <div class="learning-basa-frame">
+
+              <div class="learning-basa-frame-label">
+                GOA JATIJAJAR
+              </div>
+
+
+              <div class="learning-basa-character">
+
+                <img
+                  src="../../assets/images/characters/raden.png"
+                  alt=""
+                >
+
+              </div>
+
+
+              <div class="learning-basa-quote">
+
+                <span class="quote-mark">
+                  “
+                </span>
+
+                <p>
+
+                  Aku kudu ngati-ati nalika
+                  nyusuri lorong Goa Jatijajar
+                  sadurunge nerusake lampah.
+
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- WORD LIST -->
+
+          <div class="learning-basa-vocab">
+
+            <div class="learning-vocab-intro">
+
+              <span>
+                KOSAKATA PENTING
+              </span>
+
+              <p>
+
+                Kenali kata-kata yang membantu memahami
+                perjalanan Kamandaka di Goa Jatijajar.
+
+              </p>
+
+            </div>
+
+
+            <!-- KOSA KATA 01 -->
+
+            <div class="learning-vocab-card">
+
+              <div class="learning-vocab-number">
+                01
+              </div>
+
+              <div class="learning-vocab-info">
+
+                <h3>
+                  GUWA
+                </h3>
+
+                <span>
+                  GOA
+                </span>
+
+                <p>
+
+                  Kata untuk menyebut suatu wilayah
+                  tempat tinggal masyarakat.
+
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                class="learning-voice-button"
+                onclick="speakBasa('guwa')"
+                aria-label="Dengarkan Guwa"
+              >
+
+                🔊
+
+              </button>
+
+            </div>
+
+
+            <!-- KOSA KATA 02 -->
+
+            <div class="learning-vocab-card">
+
+              <div class="learning-vocab-number">
+                02
+              </div>
+
+              <div class="learning-vocab-info">
+
+                <h3>
+                  WATU
+                </h3>
+
+                <span>
+                  BATU
+                </span>
+
+                <p>
+
+                  Kata yang digunakan untuk menyebut
+                  perjalanan atau langkah yang ditempuh.
+
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                class="learning-voice-button"
+                onclick="speakBasa('watu')"
+                aria-label="Dengarkan Watu"
+              >
+
+                🔊
+
+              </button>
+
+            </div>
+
+
+            <!-- KOSA KATA 03 -->
+
+            <div class="learning-vocab-card">
+
+              <div class="learning-vocab-number">
+                03
+              </div>
+
+              <div class="learning-vocab-info">
+
+                <h3>
+                  PETENG
+                </h3>
+
+                <span>
+                  GELAP
+                </span>
+
+                <p>
+
+                  Kata untuk menyebut jalan atau
+                  jalur yang dilalui dalam perjalanan.
+
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                class="learning-voice-button"
+                onclick="speakBasa('peteng')"
+                aria-label="Dengarkan Peteng"
+              >
+
+                🔊
+
+              </button>
+
+            </div>
+
+
+            <!-- KOSA KATA 04 -->
+
+            <div class="learning-vocab-card">
+
+              <div class="learning-vocab-number">
+                04
+              </div>
+
+              <div class="learning-vocab-info">
+
+                <h3>
+                  NGATI-ATI
+                </h3>
+
+                <span>
+                  BERHATI-HATI
+                </span>
+
+                <p>
+
+                  Kata yang digunakan ketika meneruskan
+                  perjalanan atau kegiatan.
+
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                class="learning-voice-button"
+                onclick="speakBasa('ngati-ati')"
+                aria-label="Dengarkan Ngati-Ati"
+              >
+
+                🔊
+
+              </button>
+
+            </div>
+
+
+            <div class="learning-basa-footer">
+
+              <span>
+
+                Gunakan kosakata ini pada tantangan berikutnya.
+
+              </span>
+
+
+              <button
+                type="button"
+                class="learning-basa-next"
+                id="btnStartQuizBasa"
+              >
+
+                <span>
+                  LANJUT KE KUIS
+                </span>
+
+                <span>
+                  →
+                </span>
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SCREEN 05 — QUIZ
+         =================================================== -->
+
+    <section
+      class="story-screen"
+      id="story-quiz-basa"
+    >
+
+      <div class="quiz-container">
+
+        <div class="quiz-header">
+
+          <span class="quiz-label">
+            TANTANGAN BASA 06
+          </span>
+
+
+          <h2>
+            COBA
+            <span>GUNAKAN</span>
+          </h2>
+
+
+          <p class="quiz-intro">
+
+            Pilih jawaban yang paling tepat berdasarkan
+            kosakata yang telah kamu pelajari.
+
+          </p>
+
+        </div>
+
+
+        <div class="quiz-progress">
+
+          <span id="quizQuestionNumber">
+            PERTANYAAN 01 / 04
+          </span>
+
+
+          <div class="quiz-progress-bar">
+
+            <span id="quizProgressFill"></span>
+
+          </div>
+
+        </div>
+
+
+        <div class="quiz-card">
+
+          <div class="quiz-question-label">
+            PERTANYAAN
+          </div>
+
+
+          <h3 id="quizQuestion">
+            Apa arti kata “Guwa”?
+          </h3>
+
+
+          <div class="quiz-options">
+
+
+            <button
+              type="button"
+              class="quiz-option"
+            >
+
+              <span class="quiz-option-letter">
+                A
+              </span>
+
+              <span>
+                Goa
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="quiz-option"
+            >
+
+              <span class="quiz-option-letter">
+                B
+              </span>
+
+              <span>
+                Sungai
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="quiz-option"
+            >
+
+              <span class="quiz-option-letter">
+                C
+              </span>
+
+              <span>
+                Gunung
+              </span>
+
+            </button>
+
+
+            <button
+              type="button"
+              class="quiz-option"
+            >
+
+              <span class="quiz-option-letter">
+                D
+              </span>
+
+              <span>
+                Desa
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <div
+            id="quizFeedback"
+            aria-live="polite"
+          ></div>
+
+
+          <div class="quiz-footer">
+
+            <span class="quiz-hint">
+
+              Ingat kembali kosakata tentang perjalanan
+              di Goa Jatijajar.
+
+            </span>
+
+
+            <button
+              type="button"
+              id="btnNextQuiz"
+              disabled
+            >
+
+              SOAL BERIKUTNYA →
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SCREEN 06 — CERITA
+         =================================================== -->
+
+    <section
+      class="story-screen sayembara-story-screen"
+      id="story-pasir-story"
+    >
+
+      <div
+        class="sayembara-story-background chapter06-story-bg"
+        aria-hidden="true"
+      ></div>
+
+
+      <div
+        class="sayembara-story-batik"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="sayembara-story-container">
+
+        <div class="sayembara-story-label">
+          TANTANGAN CERITA 06
+        </div>
+
+
+        <h2 class="sayembara-story-title">
+
+          Jejak
+          <span>
+            Goa Jatijajar
+          </span>
+
+        </h2>
+
+
+        <div class="sayembara-story-text">
+
+          <p>
+
+            Setelah melanjutkan perjalanan dari Desa Panagih,
+            Kamandaka tiba di Goa Jatijajar dan memasuki
+            bagian perjalanan yang lebih sunyi.
+
+          </p>
+
+
+          <p>
+
+            Di dalam gua terdapat lorong batu dan sumber air
+            yang menjadi bagian dari lingkungan gua. Kamandaka
+            harus memperhatikan langkahnya dan tidak tergesa-gesa.
+
+          </p>
+
+        </div>
+
+
+        <div class="sayembara-story-requirements">
+
+
+          <!-- REQUIREMENT 01 -->
+
+          <div class="sayembara-requirement">
+
+            <span class="requirement-icon">
+              ✦
+            </span>
+
+            <div>
+
+              <strong>
+                Memasuki Goa
+              </strong>
+
+              <span>
+                Kamandaka memasuki Goa Jatijajar dengan hati-hati.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- REQUIREMENT 02 -->
+
+          <div class="sayembara-requirement">
+
+            <span class="requirement-icon">
+              ◎
+            </span>
+
+            <div>
+
+              <strong>
+                Menjaga Langkah
+              </strong>
+
+              <span>
+                Kamandaka tidak tergesa-gesa saat berada di lorong gua.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- REQUIREMENT 03 -->
+
+          <div class="sayembara-requirement">
+
+            <span class="requirement-icon">
+              ◈
+            </span>
+
+            <div>
+
+              <strong>
+                Menyusuri Lorong
+              </strong>
+
+              <span>
+                Kamandaka memperhatikan jalan yang dilaluinya di dalam gua.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- REQUIREMENT 04 -->
+
+          <div class="sayembara-requirement">
+
+            <span class="requirement-icon">
+              ♧
+            </span>
+
+            <div>
+
+              <strong>
+                Mengamati Sendang
+              </strong>
+
+              <span>
+                Kamandaka mengenali keberadaan sumber air di dalam gua.
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <p class="sayembara-story-ending">
+
+          Ingat langkah Kamandaka di Goa Jatijajar.
+          Setelah itu, bantu dia memilih tindakan yang tepat
+          saat menyusuri bagian perjalanan yang lebih sunyi.
+
+        </p>
+
+
+        <button
+          type="button"
+          class="story-start-button"
+          id="btnStartSayembara"
+        >
+
+          <span>
+            LANJUT KE TANTANGAN
+          </span>
+
+          <span class="story-button-arrow">
+            →
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <div class="sayembara-story-mark">
+
+        <span>
+          07
+        </span>
+
+        <span class="sayembara-story-mark-line"></span>
+
+        <span>
+          08
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SCREEN 07 — SAYEMBARA
+         =================================================== -->
+
+    <section
+      class="story-screen sayembara-screen"
+      id="story-sayembara"
+    >
+
+      <div class="sayembara-container">
+
+
+        <div class="sayembara-info">
+
+          <div class="sayembara-flower">
+            ✿
+          </div>
+
+
+          <span class="sayembara-label">
+            TANTANGAN CERITA 06
+          </span>
+
+
+          <h2>
+            Jejak Goa Jatijajar
+          </h2>
+
+
+          <div class="sayembara-question">
+
+            <p>
+
+              Apa saja langkah penting Kamandaka ketika
+              menyusuri Goa Jatijajar?
+
+            </p>
+
+          </div>
+
+
+          <div class="sayembara-instruction">
+
+            <span>
+              ⓘ
+            </span>
+
+            <span>
+
+              Tarik
+              <strong>
+                4 langkah yang benar
+              </strong>
+              ke dalam kotak perjalanan.
+              Ada beberapa pilihan pengecoh.
+
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="sayembara-game">
+
+
+          <!-- DROPZONE -->
+
+          <div
+            class="sayembara-dropzone"
+            id="sayembaraDropzone"
+          >
+
+            <div class="sayembara-dropzone-placeholder">
+
+              <span>
+                LETAKKAN LANGKAH
+              </span>
+
+              <strong>
+                PERJALANAN
+              </strong>
+
+              <small>
+                Tarik 4 langkah yang benar
+                ke area ini
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <!-- FEEDBACK -->
+
+          <div
+            class="sayembara-feedback"
+            id="sayembaraFeedback"
+            aria-live="polite"
+          ></div>
+
+
+          <!-- OPTIONS -->
+
+          <div class="sayembara-options">
+
+
+            <!-- BENAR 01 -->
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="masuk"
+            >
+
+              <span class="sayembara-icon">
+                ✦
+              </span>
+
+              <strong>
+                MEMASUKI<br>
+                GOA
+              </strong>
+
+            </button>
+
+
+            <!-- BENAR 02 -->
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="ati"
+            >
+
+              <span class="sayembara-icon">
+                ◎
+              </span>
+
+              <strong>
+                MENJAGA<br>
+                LANGKAH
+              </strong>
+
+            </button>
+
+
+            <!-- BENAR 03 -->
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="susuri"
+            >
+
+              <span class="sayembara-icon">
+                ◈
+              </span>
+
+              <strong>
+                MENYUSURI<br>
+                LORONG
+              </strong>
+
+            </button>
+
+
+            <!-- BENAR 04 -->
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="sendang"
+            >
+
+              <span class="sayembara-icon">
+                ♧
+              </span>
+
+              <strong>
+                MENGAMATI<br>
+                SENDANG
+              </strong>
+
+            </button>
+
+
+            <!-- SALAH 01 -->
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="mahkota"
+            >
+
+              <span class="sayembara-icon">
+                ◇
+              </span>
+
+              <strong>
+                MEMAKAI<br>
+                MAHKOTA RAJA
+              </strong>
+
+            </button>
+
+
+            <!-- SALAH 02 -->
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="pulang"
+            >
+
+              <span class="sayembara-icon">
+                ◌
+              </span>
+
+              <strong>
+                KEMBALI<br>
+                KE PAJAJARAN
+              </strong>
+
+            </button>
+
+
+            <!-- SALAH 03 -->
+
+            <button
+              type="button"
+              class="sayembara-option"
+              draggable="true"
+              data-answer="lari"
+            >
+
+              <span class="sayembara-icon">
+                ▱
+              </span>
+
+              <strong>
+                BERLARI<br>
+                TANPA ARAH
+              </strong>
+
+            </button>
+
+          </div>
+
+
+          <!-- NEXT -->
+
+          <button
+            type="button"
+            class="sayembara-next"
+            id="btnNextSayembara"
+            disabled
+          >
+
+            <span>
+              LANJUT
+            </span>
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SCREEN 08 — SELESAI
+         =================================================== -->
+
+    <section
+      class="story-screen departure-story-screen"
+      id="story-chapter-08"
+    >
+
+      <div
+        class="departure-story-background chapter06-departure-bg"
+        aria-hidden="true"
+      ></div>
+
+
+      <div
+        class="departure-story-overlay"
+        aria-hidden="true"
+      ></div>
+
+
+      <div
+        class="departure-story-batik"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="departure-story-container">
+
+        <div class="departure-story-label">
+          BABAK BARU DIMULAI
+        </div>
+
+
+        <h2 class="departure-story-title">
+
+          Jejak di
+          <span>
+            Goa Jatijajar
+          </span>
+
+        </h2>
+
+
+        <div class="departure-story-text">
+
+          <p>
+
+            Kamandaka telah menyusuri Goa Jatijajar dengan
+            memperhatikan setiap langkah dan keadaan di dalam gua.
+
+          </p>
+
+
+          <p>
+
+            Goa Jatijajar merupakan gua batu kapur yang memiliki
+            lorong dan beberapa sendang. Tempat ini juga dikenal
+            melalui diorama yang mengisahkan legenda Raden Kamandaka.
+
+          </p>
+
+
+          <p>
+
+            Perjalanan Kamandaka menuju tempat berikutnya
+            pun kembali dimulai.
+
+          </p>
+
+        </div>
+
+
+        <!-- QUOTE -->
+
+        <div class="departure-story-quote">
+
+          <span>
+            “
+          </span>
+
+          <p>
+
+            Saben papan sing diliwati mesthi
+            nggawa crita lan pertemuan anyar.
+
+          </p>
+
+        </div>
+
+
+        <!-- REWARD -->
+
+        <div class="departure-story-reward">
+
+          <div class="departure-reward-item">
+
+            <span class="departure-reward-icon">
+              ✦
+            </span>
+
+            <div>
+
+              <small>
+                PEROLEHAN
+              </small>
+
+              <strong id="chapterXpReward">
+                +50 XP
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="departure-reward-item">
+
+            <span class="departure-reward-icon">
+              ◈
+            </span>
+
+            <div>
+
+              <small>
+                BASA
+              </small>
+
+              <strong id="chapterBasaReward">
+                +10 BASA
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div class="departure-story-progress">
+
+          <span>
+            BAB
+          </span>
+
+          <strong id="chapterCurrentNumber">
+            06
+          </strong>
+
+          <span>
+            /
+          </span>
+
+          <strong id="chapterTotalNumber">
+            10
+          </strong>
+
+        </div>
+
+
+        <!-- BACK TO MAP -->
+
+        <button
+          type="button"
+          class="story-start-button"
+          id="btnContinueChapter"
+        >
+
+          <span>
+            KEMBALI KE PETA
+          </span>
+
+          <span class="story-button-arrow">
+            →
+          </span>
+
+        </button>
+
+      </div>
+
+
+      <div class="departure-story-mark">
+
+        <span>
+          08
+        </span>
+
+        <span class="departure-story-mark-line"></span>
+
+        <span>
+          09
+        </span>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <!-- MAP ENGINE HARUS SEBELUM APP.JS -->
+
+  <script src="../../js/components/mapEngine.js"></script>
+
+  <script src="app.js"></script>
+
+  <script src="../../js/components/navbar.js"></script>
+
+
+</body>
+
+</html>

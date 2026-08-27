@@ -1,6 +1,6 @@
 /* =========================================================
    LELANA KAMANDAKA
-   GAMEPLAY 01 — PAJAJARAN
+   GAMEPLAY 07 — BATUR AGUNG
    APP.JS
    ========================================================= */
 
@@ -404,9 +404,15 @@
        ===================================================== */
 
     const dialogueText =
-        "Angger Banyakcatra, apa sing dadi karepmu? " +
-        "Nyuwun pangestu, Rama. Kula badhe " +
-        "nglajengaken lampah.";
+        "Sawise metu saka Goa Jatijajar, " +
+        "Kamandaka nerusake lampah menyang " +
+        "kawasan Batur Agung. Pegunungan lan " +
+        "alas sing ngubengi dalan nggawe " +
+        "perjalanan dadi luwih meneng. " +
+        "Dalan ing kene luwih akeh cabange. " +
+        "Kamandaka kudu nggatekake tandha ing alam " +
+        "supaya ora salah milih dalan. " +
+        "Dheweke ora kena kesusu.";
 
 
     safeClick(
@@ -443,7 +449,7 @@
 
 
             utterance.rate =
-                0.88;
+                0.86;
 
 
             utterance.pitch =
@@ -547,7 +553,7 @@
 
 
     /* =====================================================
-       QUIZ 01
+       QUIZ 07
        ===================================================== */
 
     const quizQuestion =
@@ -591,65 +597,58 @@
 
         {
             question:
-                "Apa arti dari kata \"Kula\"?",
+                "Apa arti kata “Tandha”?",
 
             options: [
-                "Saya",
-                "Ayah",
-                "Akan / hendak",
-                "Memohon restu"
+                "Tanda",
+                "Jalan",
+                "Jejak",
+                "Hutan"
             ],
 
             answer: 0
-
         },
-
 
         {
             question:
-                "Apa arti dari kata \"Nyuwun Pangestu\"?",
+                "Apa arti kata “Dalan”?",
 
             options: [
-                "Saya",
-                "Memohon restu",
-                "Ayah",
-                "Akan / hendak"
+                "Tanda",
+                "Jalan",
+                "Jejak",
+                "Gunung"
             ],
 
             answer: 1
-
         },
-
 
         {
             question:
-                "Apa arti dari kata \"Badhé\"?",
+                "Apa arti kata “Jejak”?",
 
             options: [
-                "Ayah",
-                "Saya",
-                "Akan / hendak",
-                "Memohon restu"
+                "Hutan",
+                "Tanda",
+                "Jejak",
+                "Jalan"
             ],
 
             answer: 2
-
         },
-
 
         {
             question:
-                "Apa arti dari kata \"Rama\"?",
+                "Apa arti kata “Ati-Ati”?",
 
             options: [
-                "Saya",
-                "Memohon restu",
-                "Akan / hendak",
-                "Ayah"
+                "Berhati-hati",
+                "Berjalan",
+                "Jejak",
+                "Tanda"
             ],
 
-            answer: 3
-
+            answer: 0
         }
 
     ];
@@ -702,10 +701,7 @@
                 `PERTANYAAN ${
                     String(
                         currentQuizQuestion + 1
-                    ).padStart(
-                        2,
-                        "0"
-                    )
+                    ).padStart(2, "0")
                 } / 04`;
 
         }
@@ -983,7 +979,7 @@
 
 
             showScreen(
-                "story-sayembara-story"
+                "story-pasir-story"
             );
 
         }
@@ -991,8 +987,8 @@
 
 
     /* =====================================================
-       GAMEPLAY 01
-       SAYEMBARA — PRABU SILIHWANGI
+       GAMEPLAY 07
+       SAYEMBARA — JEJAK BATUR AGUNG
        ===================================================== */
 
     const sayembaraDropzone =
@@ -1025,23 +1021,22 @@
        ===================================================== */
 
     const correctSayembaraAnswers = [
-        "putri",
-        "mori",
-        "kuda",
-        "beras"
+        "tanda",
+        "jejak",
+        "sekitar",
+        "tenang"
     ];
 
 
     const acceptedSayembaraAnswers = [
-        "putri",
-        "mori",
-        "kuda",
-        "beras"
+        "tanda",
+        "jejak",
+        "sekitar",
+        "tenang"
     ];
 
 
-    let selectedSayembaraAnswers =
-        [];
+    let selectedSayembaraAnswers = [];
 
 
     let sayembaraCompleted =
@@ -1327,7 +1322,7 @@
         ) {
 
             setSayembaraFeedback(
-                "Belum tepat. Pilihan tersebut merupakan pengecoh. Coba pilih syarat yang benar.",
+                "Belum tepat. Pilihan tersebut merupakan pengecoh. Coba pilih langkah yang benar.",
                 "wrong"
             );
 
@@ -1454,7 +1449,7 @@
         ) {
 
             setSayembaraFeedback(
-                "Benar! Syarat ini sudah dimasukkan ke sayembara.",
+                "Benar! Langkah ini sudah dimasukkan ke perjalanan.",
                 "correct"
             );
 
@@ -1463,7 +1458,7 @@
         else {
 
             setSayembaraFeedback(
-                "Benar! Semua 4 syarat yang tepat sudah dipilih.",
+                "Benar! Semua 4 langkah yang tepat sudah dipilih.",
                 "correct"
             );
 
@@ -1820,7 +1815,7 @@
             ) {
 
                 setSayembaraFeedback(
-                    "Pilih 4 syarat yang benar terlebih dahulu.",
+                    "Pilih 4 langkah yang benar terlebih dahulu.",
                     "wrong"
                 );
 
@@ -1843,12 +1838,12 @@
 
 
             /* =============================================
-               REWARD GAMEPLAY 01
+               REWARD GAMEPLAY 07
                ============================================= */
 
             updateReward(
-                25,
-                5
+                50,
+                10
             );
 
 
@@ -1870,11 +1865,11 @@
 
 
             /* =============================================
-               COMPLETE GAMEPLAY 01
-               LANGSUNG UNLOCK LOKASI 02
+               COMPLETE GAMEPLAY 07
+               LANGSUNG UNLOCK LOKASI 08
                ============================================= */
 
-            completeGameplay01();
+            completeGameplay07();
 
 
             /* =============================================
@@ -1893,24 +1888,12 @@
                 );
 
 
-            const chapterXpReward =
-                document.getElementById(
-                    "chapterXpReward"
-                );
-
-
-            const chapterBasaReward =
-                document.getElementById(
-                    "chapterBasaReward"
-                );
-
-
             if (
                 sayembaraXpReward
             ) {
 
                 sayembaraXpReward.textContent =
-                    "+25 XP";
+                    "+50 XP";
 
             }
 
@@ -1920,27 +1903,7 @@
             ) {
 
                 sayembaraBasaReward.textContent =
-                    "+5 BASA";
-
-            }
-
-
-            if (
-                chapterXpReward
-            ) {
-
-                chapterXpReward.textContent =
-                    "+25 XP";
-
-            }
-
-
-            if (
-                chapterBasaReward
-            ) {
-
-                chapterBasaReward.textContent =
-                    "+5 BASA";
+                    "+10 BASA";
 
             }
 
@@ -1970,12 +1933,15 @@
        ===================================================== */
 
     const finalDialogueText =
-        "Sawise ngerti syarat sayembara, " +
-        "Banyakcatra ngerti yen perjalanan " +
-        "sing bakal ditempuh ora gampang. " +
-        "Dheweke banjur ninggalake Pajajaran " +
-        "kanggo nerusake lampah lan nggoleki " +
-        "dalan menyang takdire.";
+        "Kamandaka wis nemtokake dalan " +
+        "sing trep. Saka Batur Agung, " +
+        "perjalanan isih bakal nggawa dheweke " +
+        "menyang papan liyane sing durung " +
+        "dingerteni. " +
+        "Kamandaka wis nemokake dalan sing aman. " +
+        "Saiki dheweke kudu nerusake lampah " +
+        "lan tetep nggatekake saben tandha " +
+        "sing ana ing perjalanan.";
 
 
     safeClick(
@@ -2028,61 +1994,61 @@
 
 
     /* =====================================================
-       COMPLETE GAMEPLAY 01
+       COMPLETE GAMEPLAY 07
        ===================================================== */
 
-    function completeGameplay01() {
+    function completeGameplay07() {
 
         const progress =
             getProgress();
 
 
         /* =============================================
-           CHAPTER 01 SELESAI
+           CHAPTER 07 SELESAI
            ============================================= */
 
         if (
             !progress.completedChapters.includes(
-                1
+                7
             )
         ) {
 
             progress.completedChapters.push(
-                1
+                7
             );
 
         }
 
 
         /* =============================================
-           LOKASI 01 SELESAI
+           LOKASI 07 SELESAI
            ============================================= */
 
         if (
             !progress.completedLocations.includes(
-                1
+                7
             )
         ) {
 
             progress.completedLocations.push(
-                1
+                7
             );
 
         }
 
 
         /* =============================================
-           UNLOCK LOKASI 02
+           UNLOCK LOKASI 08
            ============================================= */
 
         if (
             !progress.unlockedLocations.includes(
-                2
+                8
             )
         ) {
 
             progress.unlockedLocations.push(
-                2
+                8
             );
 
         }
@@ -2093,7 +2059,7 @@
            ============================================= */
 
         progress.currentChapter =
-            2;
+            8;
 
 
         /* =============================================
@@ -2150,7 +2116,7 @@
 
 
         console.log(
-            "Gameplay 01 — Pajajaran selesai."
+            "Gameplay 07 — Batur Agung selesai."
         );
 
 
@@ -2161,7 +2127,7 @@
 
 
         console.log(
-            "Lokasi 02 — terbuka."
+            "Lokasi 08 — Sawangan terbuka."
         );
 
     }
@@ -2176,11 +2142,11 @@
         () => {
 
             /*
-               Pastikan Gameplay 01 sudah selesai
+               Pastikan Gameplay 07 sudah selesai
                sebelum kembali ke peta.
             */
 
-            completeGameplay01();
+            completeGameplay07();
 
 
             window.location.href =
@@ -2239,7 +2205,7 @@
     ) {
 
         initialSayembaraXpReward.textContent =
-            "+25 XP";
+            "+50 XP";
 
     }
 
@@ -2249,7 +2215,7 @@
     ) {
 
         initialSayembaraBasaReward.textContent =
-            "+5 BASA";
+            "+10 BASA";
 
     }
 
@@ -2259,7 +2225,7 @@
     ) {
 
         initialChapterXpReward.textContent =
-            "+25 XP";
+            "+50 XP";
 
     }
 
@@ -2269,7 +2235,7 @@
     ) {
 
         initialChapterBasaReward.textContent =
-            "+5 BASA";
+            "+10 BASA";
 
     }
 
@@ -2279,7 +2245,7 @@
        ===================================================== */
 
     console.log(
-        "Gameplay 01 — Pajajaran berhasil dimuat."
+        "Gameplay 07 — Batur Agung berhasil dimuat."
     );
 
 
