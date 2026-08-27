@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Lelana Kamandaka — Basa</title>
+
+
+    <!-- GOOGLE FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS GLOBAL -->
+
+    <link
+        rel="stylesheet"
+        href="css/variables.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/base.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/components/navbar.css"
+    >
+
+
+    <!-- CSS BASA -->
+
+    <link
+        rel="stylesheet"
+        href="css/screens/basa.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         NAVBAR
+         ================================================== -->
+
+    <header
+        class="site-navbar"
+        id="siteNavbar"
+    >
+
+        <div class="navbar-inner">
+
+
+            <!-- LOGO -->
+
+            <a
+                href="index.html"
+                class="navbar-logo"
+            >
+                LELANA KAMANDAKA
+            </a>
+
+
+            <!-- MENU -->
+
+            <nav
+                class="navbar-menu"
+                id="navbarMenu"
+            >
+
+                <a href="index.html">
+                    BERANDA
+                </a>
+
+                <a href="catatan.html">
+                    CATATAN
+                </a>
+
+                <a href="pencapaian.html">
+                    PENCAPAIAN
+                </a>
+
+            </nav>
+
+
+            <!-- HAMBURGER -->
+
+            <button
+                type="button"
+                class="navbar-toggle"
+                id="navbarToggle"
+                aria-label="Buka menu"
+                aria-expanded="false"
+                onclick="
+                    this.classList.toggle('active');
+                    document
+                        .getElementById('navbarExtra')
+                        .classList.toggle('open');
+
+                    this.setAttribute(
+                        'aria-expanded',
+                        this.classList.contains('active')
+                    );
+                "
+            >
+
+                <span></span>
+
+            </button>
+
+
+            <!-- MENU TAMBAHAN -->
+
+            <div
+                class="navbar-extra"
+                id="navbarExtra"
+            >
+
+                <a href="peta.html">
+                    PETA
+                </a>
+
+                <a href="basa.html">
+                    BASA
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==================================================
+         MAIN
+         ================================================== -->
+
+    <main class="basa-page">
+
+
+        <!-- ==================================================
+             HERO BASA
+             ================================================== -->
+
+        <section class="basa-hero">
+
+
+            <!-- MOTIF BATIK -->
+
+            <div
+                class="basa-batik basa-batik-left"
+            ></div>
+
+            <div
+                class="basa-batik basa-batik-right"
+            ></div>
+
+
+            <!-- OVERLAY -->
+
+            <div class="basa-hero-overlay"></div>
+
+
+            <!-- CONTENT -->
+
+            <div class="basa-hero-content">
+
+
+                <span class="basa-eyebrow">
+
+                    LELANA KAMANDAKA
+
+                </span>
+
+
+                <h1>
+
+                    Sinau
+                    <em>Basa</em>
+
+                </h1>
+
+
+                <p>
+
+                    Kenali kosakata Basa Banyumasan
+                    yang digunakan sepanjang perjalanan
+                    Kamandaka.
+
+                </p>
+
+
+                <!-- FEATURE -->
+
+                <div class="basa-feature-list">
+
+
+                    <div class="basa-feature">
+
+                        <span class="basa-feature-number">
+                            01
+                        </span>
+
+                        <span>
+                            KOSAKATA
+                        </span>
+
+                    </div>
+
+
+                    <div class="basa-feature">
+
+                        <span class="basa-feature-number">
+                            02
+                        </span>
+
+                        <span>
+                            UNGGAH-UNGGUH
+                        </span>
+
+                    </div>
+
+
+                    <div class="basa-feature">
+
+                        <span class="basa-feature-number">
+                            03
+                        </span>
+
+                        <span>
+                            PELAFALAN
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             KOSAKATA
+             ================================================== -->
+
+        <section class="basa-vocabulary">
+
+
+            <!-- DEKORASI -->
+
+            <div class="basa-decoration basa-decoration-left">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <div class="basa-decoration basa-decoration-right">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <!-- HEADER -->
+
+            <div class="basa-section-heading">
+
+
+                <span class="basa-section-label">
+
+                    KENALI BASANYA
+
+                </span>
+
+
+                <h2>
+
+                    Kata-kata dalam
+                    <em>perjalanan.</em>
+
+                </h2>
+
+
+                <p>
+
+                    Bahasa menjadi bagian dari perjalanan
+                    Kamandaka. Pelajari kata dan ungkapan
+                    yang digunakan dalam cerita.
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- CARD GRID -->
+
+            <div class="basa-card-grid">
+
+
+                <!-- CARD 01 -->
+
+                <article class="basa-card">
+
+
+                    <div class="basa-card-top">
+
+                        <span class="basa-card-number">
+                            01
+                        </span>
+
+                        <span class="basa-card-category">
+                            UNGGAH-UNGGUH
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Kula
+                    </h3>
+
+
+                    <strong>
+                        Saya
+                    </strong>
+
+
+                    <p>
+
+                        Digunakan untuk menyebut diri
+                        sendiri ketika berbicara dengan
+                        orang yang lebih tua atau dihormati.
+
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="basa-sound"
+                        onclick="speakBasa('Kula')"
+                        aria-label="Dengarkan Kula"
+                    >
+
+                        🔊
+
+                    </button>
+
+
+                </article>
+
+
+
+                <!-- CARD 02 -->
+
+                <article class="basa-card">
+
+
+                    <div class="basa-card-top">
+
+                        <span class="basa-card-number">
+                            02
+                        </span>
+
+                        <span class="basa-card-category">
+                            UNGKAPAN
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Nyuwun Pangestu
+                    </h3>
+
+
+                    <strong>
+                        Memohon restu
+                    </strong>
+
+
+                    <p>
+
+                        Digunakan ketika hendak meminta
+                        restu sebelum melakukan sesuatu
+                        yang penting.
+
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="basa-sound"
+                        onclick="speakBasa('Nyuwun Pangestu')"
+                        aria-label="Dengarkan Nyuwun Pangestu"
+                    >
+
+                        🔊
+
+                    </button>
+
+
+                </article>
+
+
+
+                <!-- CARD 03 -->
+
+                <article class="basa-card">
+
+
+                    <div class="basa-card-top">
+
+                        <span class="basa-card-number">
+                            03
+                        </span>
+
+                        <span class="basa-card-category">
+                            UNGGAH-UNGGUH
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Badhé
+                    </h3>
+
+
+                    <strong>
+                        Akan / hendak
+                    </strong>
+
+
+                    <p>
+
+                        Digunakan untuk menyatakan
+                        sesuatu yang akan atau hendak
+                        dilakukan.
+
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="basa-sound"
+                        onclick="speakBasa('Badhe')"
+                        aria-label="Dengarkan Badhe"
+                    >
+
+                        🔊
+
+                    </button>
+
+
+                </article>
+
+
+
+                <!-- CARD 04 -->
+
+                <article class="basa-card">
+
+
+                    <div class="basa-card-top">
+
+                        <span class="basa-card-number">
+                            04
+                        </span>
+
+                        <span class="basa-card-category">
+                            SAPAAN
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Rama
+                    </h3>
+
+
+                    <strong>
+                        Ayah
+                    </strong>
+
+
+                    <p>
+
+                        Sapaan yang digunakan ketika
+                        berbicara kepada ayah atau
+                        orang yang dituakan.
+
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="basa-sound"
+                        onclick="speakBasa('Rama')"
+                        aria-label="Dengarkan Rama"
+                    >
+
+                        🔊
+
+                    </button>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================================
+             PENUTUP
+             ================================================== -->
+
+        <section class="basa-closing">
+
+            <span>
+                BASA · BUDAYA · PERJALANAN
+            </span>
+
+            <h2>
+                Belajar bahasa,
+                <em>menyusuri cerita.</em>
+            </h2>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ================================================== -->
+
+    <script>
+
+        function speakBasa(word) {
+
+            if (!("speechSynthesis" in window)) {
+
+                alert(
+                    "Fitur suara tidak tersedia di browser ini."
+                );
+
+                return;
+
+            }
+
+
+            let text = word;
+
+
+            switch (word) {
+
+                case "Kula":
+
+                    text =
+                        "Kula. Artinya saya.";
+
+                    break;
+
+
+                case "Nyuwun Pangestu":
+
+                    text =
+                        "Nyuwun pangestu. Artinya memohon restu.";
+
+                    break;
+
+
+                case "Badhe":
+
+                    text =
+                        "Badhé. Artinya akan atau hendak.";
+
+                    break;
+
+
+                case "Rama":
+
+                    text =
+                        "Rama. Artinya ayah.";
+
+                    break;
+
+            }
+
+
+            window.speechSynthesis.cancel();
+
+
+            const utterance =
+                new SpeechSynthesisUtterance(
+                    text
+                );
+
+
+            utterance.lang =
+                "id-ID";
+
+
+            utterance.rate =
+                0.85;
+
+
+            utterance.pitch =
+                1;
+
+
+            window.speechSynthesis.speak(
+                utterance
+            );
+
+        }
+
+
+        /* ==================================================
+           NAVBAR SCROLL
+           ================================================== */
+
+        const navbar =
+            document.getElementById(
+                "siteNavbar"
+            );
+
+
+        function handleNavbarScroll() {
+
+            if (!navbar) {
+
+                return;
+
+            }
+
+
+            if (window.scrollY > 30) {
+
+                navbar.classList.add(
+                    "scrolled"
+                );
+
+            }
+
+            else {
+
+                navbar.classList.remove(
+                    "scrolled"
+                );
+
+            }
+
+        }
+
+
+        handleNavbarScroll();
+
+
+        window.addEventListener(
+            "scroll",
+            handleNavbarScroll,
+            {
+                passive: true
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

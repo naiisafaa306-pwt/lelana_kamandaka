@@ -1,521 +1,2280 @@
-/* ==========================================
-   SCREEN 04 — GAMEPLAY 01 (PAJAJARAN)
-   ========================================== */
+/* =========================================================
+   GAMEPLAY.CSS
+   SCREEN 01 + SCREEN 02 + SCREEN 03
 
-#screen-gameplay {
-  background: url('../assets/images/bg_pajajaran.png') center/cover no-repeat;
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+   SCREEN 01:
+   - TIDAK DIUBAH
+
+   SCREEN 02:
+   - BG PAJAJARAN SAJA
+   - TANPA KARAKTER
+   - 2 DIALOG
+   - TANPA HUD / BAB / XP / BASA
+   - DIALOG LEBIH KECIL
+   - JARAK ANTAR DIALOG LEBIH LEGA
+
+   SCREEN 03:
+   - TIDAK DIUBAH
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+:root {
+    --story-dark: #17230e;
+    --story-green: #2d401d;
+    --story-brown: #76503b;
+    --story-gold: #b79a55;
+    --story-cream: #fff9ea;
 }
 
-/* Subtle vignette so dialogue panel stands out */
-#screen-gameplay::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(20, 10, 2, 0.15) 0%,
-    rgba(20, 10, 2, 0.10) 55%,
-    rgba(20, 10, 2, 0.35) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+
+/* =========================================================
+   GAMEPLAY PAGE
+   ========================================================= */
+
+.gameplay-page {
+    position: relative;
+
+    width: 100%;
+    min-height: calc(100vh - 72px);
+
+    overflow: hidden;
+
+    background: var(--story-cream);
 }
 
-/* ── HUD Badges ── */
-.gameplay-hud-left,
-.gameplay-hud-right {
-  position: absolute;
-  top: 24px;
-  z-index: 20;
+
+/* =========================================================
+   STORY SCREEN
+   ========================================================= */
+
+.story-screen {
+    position: relative;
+
+    width: 100%;
+    min-height: calc(100vh - 72px);
+
+    overflow: hidden;
+
+    display: none;
 }
 
-.gameplay-hud-left {
-  left: 24px;
+
+.story-screen.active {
+    display: block;
 }
 
-.gameplay-hud-right {
-  right: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
+
+/* =========================================================
+   =========================================================
+   SCREEN 01
+   OPENING PAJAJARAN
+   JANGAN DIUBAH
+   =========================================================
+   ========================================================= */
+
+
+/* =========================================================
+   BACKGROUND SCREEN 01
+   ========================================================= */
+
+.story-background {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        url("../../assets/images/Gameplay 01 - Padjajaran.png");
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    background-size: cover;
 }
 
-.gameplay-bab-badge {
-  background: var(--color-flax, #ede383);
-  border: none;
-  border-radius: var(--radius-pill, 9999px);
-  padding: 6px 18px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--color-bistre, #351903);
-  letter-spacing: 0.08em;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+
+/* =========================================================
+   OVERLAY SCREEN 01
+   ========================================================= */
+
+.story-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 249, 234, 0.97) 0%,
+            rgba(255, 249, 234, 0.86) 32%,
+            rgba(255, 249, 234, 0.30) 62%,
+            rgba(255, 249, 234, 0.08) 100%
+        );
 }
 
-.gameplay-stat-badge {
-  background: var(--color-flax, #ede383);
-  border: none;
-  border-radius: var(--radius-pill, 9999px);
-  padding: 6px 18px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--color-bistre, #351903);
-  letter-spacing: 0.08em;
-  min-width: 110px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+
+/* =========================================================
+   BATIK SCREEN 01
+   ========================================================= */
+
+.story-batik {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat: repeat;
+
+    background-size: 420px auto;
+
+    opacity: 0.035;
 }
 
-/* ── Cinematic Intro Card ── */
-.gameplay-intro-card {
-  position: absolute;
-  inset: 0;
-  z-index: 15;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 48px;
-  padding: 0 60px;
-  pointer-events: auto;
-  animation: introCardFadeIn 0.7s ease both;
+
+/* =========================================================
+   CONTENT SCREEN 01
+   ========================================================= */
+
+.story-content {
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(
+            1180px,
+            calc(100% - 100px)
+        );
+
+    min-height:
+        calc(100vh - 72px);
+
+    margin: 0 auto;
+
+    padding:
+        clamp(70px, 10vh, 120px)
+        0
+        80px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: flex-start;
 }
 
-.gameplay-intro-card.hidden {
-  display: none;
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.story-eyebrow {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+
+    color: var(--story-gold);
 }
 
-@keyframes introCardFadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+.story-eyebrow-line {
+    width: 30px;
+
+    height: 1px;
+
+    background: var(--story-gold);
 }
 
-.gameplay-intro-text {
-  background: rgba(255, 255, 255, 0.62);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 18px;
-  padding: 52px 72px;
-  max-width: 780px;
-  width: 100%;
-  font-family: var(--font-serif);
-  font-size: clamp(22px, 2.8vw, 34px);
-  line-height: 1.55;
-  color: var(--color-bistre, #351903);
-  text-align: center;
-  font-style: italic;
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.story-title {
+    margin: 0 0 25px;
+
+    display: flex;
+
+    flex-direction: column;
 }
 
-.gameplay-start-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-dark-moss, #2d3e2f);
-  color: var(--color-parchment-light, #f5f0e8);
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  padding: 16px 56px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-  transition: background 0.15s, transform 0.1s;
+
+.story-title-small {
+    margin-bottom: 8px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+
+    color: var(--story-brown);
 }
 
-.gameplay-start-btn:hover {
-  background: #1f2b21;
-  transform: translateY(-2px);
+
+.story-title-main {
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size:
+        clamp(58px, 8vw, 105px);
+
+    line-height: 0.9;
+
+    font-weight: 700;
+
+    letter-spacing: -0.045em;
+
+    color: var(--story-dark);
 }
 
-.gameplay-start-btn:active {
-  transform: translateY(0);
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.story-intro {
+    width:
+        min(
+            480px,
+            100%
+        );
+
+    margin:
+        0 0 35px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #55584d;
 }
 
-/* Ornament rule at top of dialogue panel — CSS-only */
-.dialogue-panel::before {
-  content: '';
-  display: block;
-  width: 60%;
-  max-width: 320px;
-  height: 1px;
-  background: var(--color-golden-brown, #925E06);
-  opacity: 0.30;
-  margin: 0 auto 10px;
-  flex-shrink: 0;
+
+/* =========================================================
+   BUTTON SCREEN 01
+   ========================================================= */
+
+.story-start-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    min-height: 52px;
+
+    padding: 0 28px;
+
+    border: none;
+
+    border-radius: 3px;
+
+    background: var(--story-dark);
+
+    color: var(--story-cream);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-/* ── Dialogue Panel (bottom sheet) ── */
-.dialogue-panel {
-  position: relative;
-  z-index: 10;
-  background: #ffffff;
-  border-radius: 16px 16px 0 0;
-  padding: 16px 36px 0;
-  max-height: 46vh;
-  overflow: hidden;
-  box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
-  display: flex;
-  flex-direction: column;
+
+.story-start-button:hover {
+    transform: translateY(-3px);
+
+    background: var(--story-green);
+
+    box-shadow:
+        0 15px 30px
+        rgba(23, 35, 14, 0.18);
 }
 
-/* ── Speaker Entry Blocks ── */
-.dialogue-entries {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 16px;
+
+.story-button-arrow {
+    font-size: 19px;
+
+    transition:
+        transform 0.25s ease;
 }
 
-.dialogue-entry {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto;
-  column-gap: 14px;
-  row-gap: 4px;
+
+.story-start-button:hover
+.story-button-arrow {
+    transform: translateX(5px);
 }
 
-.dialogue-entry-avatar {
-  grid-row: 1 / 3;
-  width: 36px;
-  height: 36px;
-  background: var(--color-parchment-dim, #e8e0d0);
-  border-radius: 4px;
-  flex-shrink: 0;
-  align-self: start;
-  margin-top: 2px;
+
+/* =========================================================
+   CHARACTER SCREEN 01
+   ========================================================= */
+
+.story-character {
+    position: absolute;
+
+    right: 10%;
+
+    bottom: -74px;
+
+    width:
+        clamp(
+            420px,
+            38vw,
+            580px
+        );
+
+    height: 90%;
+
+    object-fit: contain;
+
+    object-position: center bottom;
+
+    z-index: 3;
+
+    filter:
+        drop-shadow(
+            0 18px 25px
+            rgba(30, 40, 20, 0.18)
+        );
 }
 
-.dialogue-entry-name {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-dark-moss, #2d3e2f);
-  line-height: 1.2;
+
+.story-character img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    object-position: bottom center;
+
+    transform: scaleX(-1);
+
+    filter:
+        drop-shadow(
+            0 18px 25px
+            rgba(45, 36, 25, 0.18)
+        );
 }
 
-.dialogue-entry-text {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--color-ink-brown, #3e2b1e);
-  font-style: italic;
+
+/* =========================================================
+   CHAPTER MARK
+   ========================================================= */
+
+.story-chapter-mark {
+    position: absolute;
+
+    right: 35px;
+
+    bottom: 40px;
+
+    z-index: 7;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    color: var(--story-brown);
 }
 
-/* Dim the non-speaking (previous) entry */
-.dialogue-entry.dim {
-  opacity: 0.45;
+
+.story-chapter-line {
+    width: 35px;
+
+    height: 1px;
+
+    background:
+        rgba(
+            118,
+            80,
+            59,
+            0.4
+        );
 }
 
-/* ── Action Bar (audio + next button) ── */
-.dialogue-action-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #f5f2c8;
-  margin: 0 -36px;
-  padding: 14px 36px;
+
+/* =========================================================
+   =========================================================
+   SCREEN 02
+   DIALOG PAJAJARAN
+   =========================================================
+   ========================================================= */
+
+
+/* =========================================================
+   SCREEN 02 AREA
+   ========================================================= */
+
+#story-dialog.story-dialog-screen {
+    position: relative;
+
+    width: 100%;
+
+    min-height:
+        calc(100vh - 72px);
+
+    overflow: hidden;
+
+    background: #302216;
+
+    color: var(--story-dark);
 }
 
-.dialogue-audio-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--color-dark-moss, #2d3e2f);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 18px;
-  cursor: pointer;
-  color: var(--color-parchment-light, #f5f0e8);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  transition: opacity 0.15s;
+
+/* =========================================================
+   BACKGROUND SCREEN 02
+   HANYA BG PAJAJARAN
+
+   Gambar dibuat sedikit lebih besar agar ketika posisinya
+   diturunkan tidak muncul strip kosong/coklat di atas.
+   ========================================================= */
+
+#story-dialog .story-background-dialog {
+    position: absolute;
+
+    top: -18px;
+    left: -2%;
+
+    width: 104%;
+    height: calc(100% + 55px);
+
+    z-index: 0;
+
+    background-image:
+        url("../../assets/images/bg_pajajaran.png");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position:
+        center 38%;
+
+    transform: scale(1.01);
+
+    transform-origin: center center;
 }
 
-.dialogue-audio-btn:hover {
-  opacity: 0.85;
+
+/* =========================================================
+   OVERLAY SCREEN 02
+   ========================================================= */
+
+#story-dialog .story-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15, 12, 8, 0.00) 0%,
+            rgba(15, 12, 8, 0.04) 55%,
+            rgba(15, 12, 8, 0.20) 100%
+        );
 }
 
-.audio-icon {
-  font-size: 18px;
+
+/* =========================================================
+   SCREEN 02 TANPA BATIK
+   ========================================================= */
+
+#story-dialog .story-batik {
+    display: none !important;
 }
 
-.dialogue-footer-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+
+/* =========================================================
+   SCREEN 02 TANPA SEMUA KARAKTER
+   ========================================================= */
+
+#story-dialog .story-character,
+#story-dialog .dialog-character,
+#story-dialog .dialogue-character,
+#story-dialog .dialogue-character-raden,
+#story-dialog .dialogue-character-prabu {
+    display: none !important;
 }
 
-/* ── Quiz Options inside the panel ── */
-.quiz-container {
-  margin-bottom: 16px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+
+/* =========================================================
+   SCREEN 02 TANPA HUD
+
+   Tidak ada:
+   - BAB
+   - BASA
+   - XP
+   - SCORE
+   ========================================================= */
+
+#story-dialog .gameplay-hud-left,
+#story-dialog .gameplay-hud-right,
+#story-dialog .dialog-hud-left,
+#story-dialog .dialog-hud-right,
+#story-dialog .hud-badge,
+#story-dialog .dialogue-location,
+#story-dialog .story-chapter-mark {
+    display: none !important;
 }
 
-.quiz-option-btn {
-  background: var(--color-parchment, #f0ead8);
-  border: 1.5px solid var(--color-golden-brown, #a0742a);
-  border-radius: var(--radius-sm, 6px);
-  padding: 12px 16px;
-  text-align: left;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-ink-brown, #3a2510);
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+
+/* =========================================================
+   DIALOG WRAPPER
+   ========================================================= */
+
+#story-dialog .dialog-wrapper {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        min(
+            900px,
+            calc(100% - 220px)
+        );
+
+    z-index: 5;
 }
 
-.quiz-option-btn:hover:not(:disabled) {
-  background: var(--color-parchment-dim, #e8e0d0);
-  border-color: var(--color-dark-moss, #2d3e2f);
+
+/* =========================================================
+   DIALOG BOX
+   ========================================================= */
+
+#story-dialog .dialog-box {
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 17px;
+
+    background:
+        rgba(
+            255,
+            253,
+            247,
+            0.96
+        );
+
+    box-shadow:
+        0 18px 40px
+        rgba(
+            18,
+            32,
+            9,
+            0.22
+        );
 }
 
-.quiz-option-btn.selected-correct {
-  background: rgba(90, 138, 60, 0.15);
-  border-color: var(--color-apple-green, #5a8a3c);
-  color: var(--color-dark-moss, #2d3e2f);
-  font-weight: 700;
+
+/* =========================================================
+   DIALOG ITEM
+   ========================================================= */
+
+#story-dialog .dialog-item {
+    padding:
+        18px
+        32px
+        8px;
 }
 
-.quiz-option-btn.selected-wrong {
-  background: rgba(186, 26, 26, 0.1);
-  border-color: #ba1a1a;
-  color: #700;
+
+/* =========================================================
+   DIALOG PERTAMA
+   ========================================================= */
+
+#story-dialog .dialog-item:first-child {
+    padding-top: 23px;
+    padding-bottom: 14px;
 }
 
-@media (max-width: 768px) {
-  .dialogue-panel {
-    padding: 20px 20px 0;
-    max-height: 52vh;
-  }
-  .dialogue-action-bar {
-    margin: 0 -20px;
-    padding: 12px 20px;
-  }
-  .quiz-container {
-    grid-template-columns: 1fr;
-  }
-  .dialogue-entry-name {
+
+/* =========================================================
+   DIALOG KEDUA
+
+   JARAK DIBUAT LEBIH LEGA
+   ========================================================= */
+
+#story-dialog .dialog-item + .dialog-item {
+    padding-top: 14px;
+    padding-bottom: 17px;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   NAMA PEMBICARA
+   ========================================================= */
+
+#story-dialog .dialog-character-name {
+    margin:
+        0 0 8px;
+
+    color:
+        #18310c;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   TEKS DIALOG
+   ========================================================= */
+
+#story-dialog .dialog-text {
+    margin: 0;
+
+    padding-left: 14px;
+
+    border-left:
+        2px solid
+        rgba(
+            183,
+            154,
+            85,
+            0.35
+        );
+
+    color:
+        #45473f;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 16px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   FOOTER DIALOG
+   ========================================================= */
+
+#story-dialog .dialog-footer {
+    min-height: 64px;
+
+    padding:
+        7px
+        20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background:
+        #fff0a0;
+}
+
+
+/* =========================================================
+   DENGARKAN
+   ========================================================= */
+
+#story-dialog .dialog-listen-button {
+    min-height: 48px;
+
+    padding:
+        0 7px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        #3d401f;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
     font-size: 15px;
-  }
-  .dialogue-entry-text {
-    font-size: 13px;
-  }
+
+    cursor: pointer;
 }
 
-/* ============================================
-   CHALLENGE CARD MODAL
-   ============================================ */
 
-/* Backdrop */
-.challenge-card-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(20, 10, 2, 0.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9000;
-  animation: backdropFadeIn 0.22s ease both;
+/* =========================================================
+   ICON DENGARKAN
+   ========================================================= */
+
+#story-dialog .listen-icon {
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 5px;
+
+    background:
+        #f8df55;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 18px;
 }
 
-.challenge-card-backdrop[hidden] {
-  display: none;
+
+/* =========================================================
+   LANJUT
+   ========================================================= */
+
+#story-dialog .dialog-next-button {
+    min-height: 40px;
+
+    padding:
+        0 21px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 11px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background:
+        #193608;
+
+    color:
+        #fff;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
 }
 
-@keyframes backdropFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+
+#story-dialog .dialog-next-button:hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        #2c4a18;
 }
 
-/* Card container */
-.challenge-card {
-  background: var(--color-parchment, #f0ead8);
-  border: 2px solid var(--color-golden-brown, #a0742a);
-  border-radius: 14px;
-  width: min(94%, 560px);
-  padding: 0 36px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.38);
-  animation: cardSlideUp 0.28s ease both;
-  overflow: hidden;
+
+/* =========================================================
+   FOOTER DUPLIKAT DI LUAR SCREEN 02
+
+   HTML lama kamu punya .dialog-footer tambahan setelah
+   penutup section Screen 02.
+
+   Kita sembunyikan yang berada langsung di gameplay-page.
+   Footer yang di dalam #story-dialog TETAP TAMPIL.
+   ========================================================= */
+
+.gameplay-page > .dialog-footer {
+    display: none !important;
 }
 
-@keyframes cardSlideUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+/* =========================================================
+   =========================================================
+   SCREEN 03
+   TRANSISI GAMEPLAY
+   JANGAN DIUBAH
+   =========================================================
+   ========================================================= */
+
+.gameplay-transition-screen {
+    background:
+        #fff9ea;
 }
 
-/* Ornament rules on challenge card — CSS-only horizontal lines */
-.challenge-card-scroll-top,
-.challenge-card-scroll-bottom {
-  width: calc(100% + 72px);
-  height: 1px;
-  margin: 0 -36px;
-  background: var(--color-golden-brown, #925E06);
-  opacity: 0.30;
+
+.gameplay-transition-screen::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat: repeat;
+
+    background-size: 380px auto;
+
+    opacity: 0.1;
 }
 
-.challenge-card-scroll-top {
-  margin-bottom: 14px;
+
+.gameplay-transition-content {
+    position: relative;
+
+    z-index: 2;
+
+    min-height:
+        calc(100vh - 72px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px;
 }
 
-.challenge-card-scroll-bottom {
-  margin-top: 14px;
+
+.gameplay-transition-label {
+    margin-bottom: 15px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+
+    color:
+        var(--story-gold);
 }
 
-/* Header row: pill label + close */
-.challenge-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
+
+.gameplay-transition-content h2 {
+    margin:
+        0 0 15px;
+
+    font-family:
+        "Libre Caslon Text",
+        serif;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            65px
+        );
+
+    color:
+        var(--story-dark);
 }
 
-.challenge-card-label {
-  background: var(--color-apple-green, #5a8a3c);
-  color: #fff;
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  padding: 5px 14px;
-  border-radius: 50px;
-  text-transform: uppercase;
+
+.gameplay-transition-content p {
+    max-width: 500px;
+
+    margin:
+        0 0 30px;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    line-height: 1.7;
+
+    color:
+        #66695f;
 }
 
-/* Banyumasan word block */
-.challenge-word-block {
-  text-align: center;
-  margin-bottom: 20px;
+
+/* =========================================================
+   =========================================================
+   TABLET
+   =========================================================
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    /* SCREEN 01 */
+
+    .story-content {
+        width:
+            calc(100% - 60px);
+    }
+
+
+    .story-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255, 249, 234, 0.97) 0%,
+                rgba(255, 249, 234, 0.75) 45%,
+                rgba(255, 249, 234, 0.15) 100%
+            );
+    }
+
+
+    .story-character {
+        right: -5%;
+
+        width: 48vw;
+    }
+
+
+    /* SCREEN 02 */
+
+    #story-dialog .story-background-dialog {
+        top: -15px;
+
+        left: -3%;
+
+        width: 106%;
+
+        height: calc(100% + 45px);
+
+        background-position:
+            center 40%;
+    }
+
+
+    #story-dialog .dialog-wrapper {
+        width:
+            calc(100% - 100px);
+
+        bottom: 22px;
+    }
+
+
+    #story-dialog .dialog-item {
+        padding:
+            16px
+            27px
+            8px;
+    }
+
+
+    #story-dialog .dialog-item:first-child {
+        padding-top: 20px;
+
+        padding-bottom: 13px;
+    }
+
+
+    #story-dialog .dialog-item + .dialog-item {
+        padding-top: 13px;
+
+        padding-bottom: 15px;
+    }
+
+
+    #story-dialog .dialog-character-name {
+        font-size: 19px;
+    }
+
+
+    #story-dialog .dialog-text {
+        font-size: 15px;
+
+        line-height: 1.5;
+    }
+
+
+    #story-dialog .dialog-footer {
+        min-height: 60px;
+
+        padding:
+            6px 17px;
+    }
+
+
+    #story-dialog .dialog-listen-button {
+        font-size: 14px;
+    }
+
+
+    #story-dialog .listen-icon {
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 17px;
+    }
+
+
+    #story-dialog .dialog-next-button {
+        min-height: 38px;
+
+        padding:
+            0 18px;
+
+        font-size: 8px;
+    }
 }
 
-.challenge-basa-word {
-  font-family: var(--font-serif);
-  font-size: clamp(40px, 7vw, 60px);
-  font-weight: 700;
-  color: var(--color-bistre, #351903);
-  line-height: 1.1;
-  margin-bottom: 6px;
-  -webkit-text-stroke: 0.8px rgba(60, 30, 5, 0.4);
+
+/* =========================================================
+   =========================================================
+   MOBILE
+   =========================================================
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .gameplay-page,
+    .story-screen {
+        min-height:
+            calc(100svh - 64px);
+    }
+
+
+    /* =====================================================
+       SCREEN 01
+       ===================================================== */
+
+    .story-background {
+        background-position:
+            60% center;
+    }
+
+
+    .story-overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255, 249, 234, 0.94) 0%,
+                rgba(255, 249, 234, 0.82) 45%,
+                rgba(255, 249, 234, 0.35) 100%
+            );
+    }
+
+
+    .story-content {
+        width:
+            calc(100% - 40px);
+
+        min-height:
+            calc(100svh - 64px);
+
+        padding:
+            50px 0 300px;
+
+        justify-content:
+            flex-start;
+
+        align-items:
+            center;
+
+        text-align:
+            center;
+    }
+
+
+    .story-eyebrow {
+        justify-content:
+            center;
+
+        font-size: 8px;
+    }
+
+
+    .story-title {
+        align-items:
+            center;
+    }
+
+
+    .story-title-main {
+        font-size:
+            clamp(
+                48px,
+                16vw,
+                70px
+            );
+    }
+
+
+    .story-intro {
+        font-size: 13px;
+
+        max-width: 330px;
+    }
+
+
+    .story-start-button {
+        min-height: 48px;
+
+        padding:
+            0 22px;
+    }
+
+
+    .story-character {
+        right: 50%;
+
+        transform:
+            translateX(50%);
+
+        width: 250px;
+
+        height: 43%;
+
+        bottom: 0;
+    }
+
+
+    .story-chapter-mark {
+        right: 20px;
+
+        bottom: 18px;
+    }
+
+
+    /* =====================================================
+       SCREEN 02
+       ===================================================== */
+
+    #story-dialog.story-dialog-screen {
+        min-height:
+            calc(100svh - 64px);
+    }
+
+
+    #story-dialog .story-background-dialog {
+        top: -10px;
+
+        left: -5%;
+
+        width: 110%;
+
+        height: calc(100% + 30px);
+
+        background-size: cover;
+
+        background-position:
+            center 42%;
+    }
+
+
+    #story-dialog .dialog-wrapper {
+        left: 12px;
+
+        right: 12px;
+
+        bottom: 10px;
+
+        width: auto;
+
+        transform: none;
+    }
+
+
+    #story-dialog .dialog-box {
+        border-radius: 14px;
+    }
+
+
+    #story-dialog .dialog-item {
+        padding:
+            13px
+            16px
+            6px;
+    }
+
+
+    #story-dialog .dialog-item:first-child {
+        padding-top: 17px;
+
+        padding-bottom: 12px;
+    }
+
+
+    /* Jarak dialog mobile */
+
+    #story-dialog .dialog-item + .dialog-item {
+        padding-top: 12px;
+
+        padding-bottom: 13px;
+
+        margin-top: 1px;
+    }
+
+
+    #story-dialog .dialog-character-name {
+        margin-bottom: 5px;
+
+        font-size: 17px;
+    }
+
+
+    #story-dialog .dialog-text {
+        padding-left: 10px;
+
+        font-size: 13px;
+
+        line-height: 1.5;
+    }
+
+
+    #story-dialog .dialog-footer {
+        min-height: 53px;
+
+        padding:
+            5px 9px;
+    }
+
+
+    #story-dialog .dialog-listen-button {
+        min-height: 40px;
+
+        padding:
+            0 3px;
+
+        gap: 7px;
+
+        font-size: 12px;
+    }
+
+
+    #story-dialog .listen-icon {
+        width: 36px;
+
+        height: 36px;
+
+        font-size: 15px;
+    }
+
+
+    #story-dialog .dialog-next-button {
+        min-height: 34px;
+
+        padding:
+            0 14px;
+
+        gap: 8px;
+
+        border-radius: 6px;
+
+        font-size: 7px;
+    }
+
+
+    /* =====================================================
+       SCREEN 03
+       ===================================================== */
+
+    .gameplay-transition-content {
+        padding:
+            30px 20px;
+    }
 }
 
-.challenge-phonetic {
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-style: italic;
-  color: #7a5c2e;
-  margin-bottom: 6px;
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    /* SCREEN 01 */
+
+    .story-character {
+        width: 260px;
+    }
+
+
+    .story-content {
+        padding-bottom: 270px;
+    }
+
+
+    .story-title-main {
+        font-size: 45px;
+    }
+
+
+    .story-intro {
+        font-size: 12px;
+    }
+
+
+    /* SCREEN 02 */
+
+    #story-dialog .story-background-dialog {
+        top: -8px;
+
+        left: -7%;
+
+        width: 114%;
+
+        height: calc(100% + 25px);
+
+        background-position:
+            center 43%;
+    }
+
+
+    #story-dialog .dialog-wrapper {
+        left: 9px;
+
+        right: 9px;
+
+        bottom: 8px;
+    }
+
+
+    #story-dialog .dialog-character-name {
+        font-size: 16px;
+    }
+
+
+    #story-dialog .dialog-text {
+        font-size: 12px;
+
+        line-height: 1.45;
+    }
+
+
+    #story-dialog .dialog-footer {
+        min-height: 49px;
+    }
+
+
+    #story-dialog .dialog-listen-button {
+        font-size: 11px;
+    }
+
+
+    #story-dialog .listen-icon {
+        width: 33px;
+
+        height: 33px;
+
+        font-size: 14px;
+    }
+
+
+    #story-dialog .dialog-next-button {
+        min-height: 32px;
+
+        padding:
+            0 12px;
+    }
+
+    /* =========================================================
+   FINAL FIX
+   SCREEN 02 — DIALOG PAJAJARAN
+   ========================================================= */
+
+
+/* =========================================================
+   SCREEN
+   ========================================================= */
+
+#story-dialog.story-dialog-screen {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height:
+        calc(100vh - 80px);
+
+    overflow: hidden;
+
+    background: #302216;
+
+    color: #122009;
+
 }
 
-.challenge-meaning {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-dark-moss, #2d3e2f);
+
+/* =========================================================
+   BACKGROUND
+   =========================================================
+
+   JANGAN memakai top: 45px.
+
+   Background tetap memenuhi seluruh screen,
+   tetapi posisi gambar digeser sedikit ke bawah.
+
+   Jadi:
+   - tidak ada strip kosong
+   - tidak ada warna cokelat di atas
+   - gambar tetap proporsional
+   ========================================================= */
+
+#story-dialog .story-background-dialog {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+    background-image:
+        url("../../assets/images/bg_pajajaran.png");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    /*
+       Nilai positif = gambar turun.
+    */
+
+    background-position:
+        center calc(50% + 45px);
+
 }
 
-/* Context sentence */
-.challenge-context {
-  font-family: var(--font-serif);
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--color-ink-brown, #3a2510);
-  text-align: center;
-  margin-bottom: 24px;
-  padding: 0 8px;
-  font-style: italic;
-  opacity: 0.8;
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+#story-dialog .story-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15, 12, 8, 0.02) 0%,
+            rgba(15, 12, 8, 0.04) 55%,
+            rgba(15, 12, 8, 0.16) 100%
+        );
+
 }
 
-/* Options 2×2 grid */
-.challenge-options-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-bottom: 16px;
+
+/* =========================================================
+   MATIKAN BATIK
+   ========================================================= */
+
+#story-dialog .story-batik {
+
+    display: none !important;
+
 }
 
-.challenge-option-btn {
-  background: var(--color-parchment-light, #f5f0e8);
-  border: 1.5px solid var(--color-golden-brown, #a0742a);
-  border-radius: 8px;
-  padding: 14px 16px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-ink-brown, #3a2510);
-  cursor: pointer;
-  text-align: center;
-  transition: background 0.15s, border-color 0.15s, transform 0.1s;
-  line-height: 1.35;
+
+/* =========================================================
+   MATIKAN KARAKTER
+   ========================================================= */
+
+#story-dialog .dialog-character,
+#story-dialog .dialogue-character,
+#story-dialog .dialogue-character-raden,
+#story-dialog .dialogue-character-prabu {
+
+    display: none !important;
+
 }
 
-.challenge-option-btn:hover:not(:disabled) {
-  background: #e8dfc8;
-  border-color: var(--color-dark-moss, #2d3e2f);
-  transform: translateY(-1px);
+
+/* =========================================================
+   MATIKAN HUD
+   BAB / BASA / XP
+   ========================================================= */
+
+#story-dialog .gameplay-hud-left,
+#story-dialog .gameplay-hud-right,
+#story-dialog .dialog-hud-left,
+#story-dialog .dialog-hud-right,
+#story-dialog .hud-badge,
+#story-dialog .dialogue-location {
+
+    display: none !important;
+
 }
 
-.challenge-option-btn.correct {
-  background: rgba(90, 138, 60, 0.18);
-  border-color: var(--color-apple-green, #5a8a3c);
-  color: var(--color-dark-moss, #2d3e2f);
-  font-weight: 700;
+
+/* =========================================================
+   DIALOG WRAPPER
+   ========================================================= */
+
+#story-dialog .dialog-wrapper {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 24px;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        min(
+            860px,
+            calc(100% - 220px)
+        );
+
+    z-index: 5;
+
 }
 
-.challenge-option-btn.wrong {
-  background: rgba(186, 26, 26, 0.10);
-  border-color: #ba1a1a;
-  color: #700;
+
+/* =========================================================
+   DIALOG BOX
+   ========================================================= */
+
+#story-dialog .dialog-box {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background:
+        rgba(
+            255,
+            253,
+            247,
+            0.94
+        );
+
+    box-shadow:
+        0 15px 35px
+        rgba(
+            18,
+            32,
+            9,
+            0.18
+        );
+
 }
 
-/* Feedback row */
-.challenge-feedback {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 4px;
-  padding: 10px 0;
+
+/* =========================================================
+   DIALOG ITEM
+   ========================================================= */
+
+#story-dialog .dialog-item {
+
+    padding:
+        15px
+        28px
+        5px;
+
 }
 
-.challenge-feedback[hidden] {
-  display: none;
+
+/* DIALOG PERTAMA */
+
+#story-dialog .dialog-item:first-child {
+
+    padding-top: 19px;
+
 }
 
-.challenge-feedback-text {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 700;
-  flex: 1;
+
+/* =========================================================
+   JARAK ANTAR DIALOG
+   =========================================================
+
+   INI YANG MEMPERBAIKI MASALAH
+   "BARIS TERLALU DEKAT".
+   ========================================================= */
+
+#story-dialog .dialog-item + .dialog-item {
+
+    padding-top: 18px;
+
+    padding-bottom: 10px;
+
 }
 
-.challenge-feedback-text.correct {
-  color: var(--color-dark-moss, #2d3e2f);
+
+/* =========================================================
+   NAMA PEMBICARA
+   ========================================================= */
+
+#story-dialog .dialog-character-name {
+
+    margin:
+        0 0 7px;
+
+    color:
+        #18310c;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        20px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.2;
+
 }
 
-.challenge-feedback-text.wrong {
-  color: #ba1a1a;
+
+/* =========================================================
+   TEKS
+   ========================================================= */
+
+#story-dialog .dialog-text {
+
+    margin: 0;
+
+    padding-left:
+        13px;
+
+    border-left:
+        2px solid
+        rgba(
+            183,
+            154,
+            85,
+            0.32
+        );
+
+    color:
+        #45473f;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.5;
+
 }
 
-.challenge-next-btn,
-.challenge-retry-btn {
-  white-space: nowrap;
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+#story-dialog .dialog-footer {
+
+    min-height:
+        58px;
+
+    padding:
+        6px
+        18px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    background:
+        #fff0a0;
+
+}
+
+
+/* =========================================================
+   DENGARKAN
+   ========================================================= */
+
+#story-dialog .dialog-listen-button {
+
+    min-height:
+        42px;
+
+    padding:
+        0 5px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        #3d401f;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        14px;
+
+    cursor:
+        pointer;
+
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+#story-dialog .listen-icon {
+
+    width:
+        40px;
+
+    height:
+        40px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        5px;
+
+    background:
+        #f8df55;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        17px;
+
+}
+
+
+/* =========================================================
+   LANJUT
+   ========================================================= */
+
+#story-dialog .dialog-next-button {
+
+    min-height:
+        38px;
+
+    padding:
+        0 20px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        11px;
+
+    border:
+        none;
+
+    border-radius:
+        7px;
+
+    background:
+        #193608;
+
+    color:
+        #fff;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.08em;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+
+}
+
+
+#story-dialog .dialog-next-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        #2c4a18;
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #story-dialog .story-background-dialog {
+
+        background-position:
+            center calc(50% + 30px);
+
+    }
+
+
+    #story-dialog .dialog-wrapper {
+
+        width:
+            calc(100% - 100px);
+
+        bottom:
+            20px;
+
+    }
+
+
+    #story-dialog .dialog-item {
+
+        padding:
+            14px
+            24px
+            5px;
+
+    }
+
+
+    #story-dialog .dialog-item + .dialog-item {
+
+        padding-top:
+            16px;
+
+    }
+
+
+    #story-dialog .dialog-character-name {
+
+        font-size:
+            18px;
+
+    }
+
+
+    #story-dialog .dialog-text {
+
+        font-size:
+            14px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #story-dialog.story-dialog-screen {
+
+        min-height:
+            calc(100svh - 64px);
+
+    }
+
+
+    #story-dialog .story-background-dialog {
+
+        background-size:
+            cover;
+
+        background-position:
+            center calc(50% + 20px);
+
+    }
+
+
+    #story-dialog .dialog-wrapper {
+
+        left:
+            12px;
+
+        right:
+            12px;
+
+        bottom:
+            10px;
+
+        width:
+            auto;
+
+        transform:
+            none;
+
+    }
+
+
+    #story-dialog .dialog-box {
+
+        border-radius:
+            14px;
+
+    }
+
+
+    #story-dialog .dialog-item {
+
+        padding:
+            12px
+            15px
+            3px;
+
+    }
+
+
+    #story-dialog .dialog-item:first-child {
+
+        padding-top:
+            15px;
+
+    }
+
+
+    /* JARAK DIALOG MOBILE */
+
+    #story-dialog .dialog-item + .dialog-item {
+
+        padding-top:
+            15px;
+
+        padding-bottom:
+            8px;
+
+    }
+
+
+    #story-dialog .dialog-character-name {
+
+        margin-bottom:
+            5px;
+
+        font-size:
+            17px;
+
+    }
+
+
+    #story-dialog .dialog-text {
+
+        padding-left:
+            9px;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.45;
+
+    }
+
+
+    #story-dialog .dialog-footer {
+
+        min-height:
+            52px;
+
+        padding:
+            5px
+            9px;
+
+    }
+
+
+    #story-dialog .dialog-listen-button {
+
+        min-height:
+            38px;
+
+        padding:
+            0 3px;
+
+        gap:
+            7px;
+
+        font-size:
+            12px;
+
+    }
+
+
+    #story-dialog .listen-icon {
+
+        width:
+            36px;
+
+        height:
+            36px;
+
+        font-size:
+            15px;
+
+    }
+
+
+    #story-dialog .dialog-next-button {
+
+        min-height:
+            34px;
+
+        padding:
+            0 14px;
+
+        gap:
+            8px;
+
+        border-radius:
+            6px;
+
+        font-size:
+            7px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    #story-dialog .story-background-dialog {
+
+        background-position:
+            center calc(50% + 15px);
+
+    }
+
+
+    #story-dialog .dialog-wrapper {
+
+        left:
+            9px;
+
+        right:
+            9px;
+
+        bottom:
+            8px;
+
+    }
+
+
+    #story-dialog .dialog-character-name {
+
+        font-size:
+            16px;
+
+    }
+
+
+    #story-dialog .dialog-text {
+
+        font-size:
+            12px;
+
+    }
+
+
+    #story-dialog .dialog-footer {
+
+        min-height:
+            48px;
+
+    }
+
+
+    #story-dialog .dialog-listen-button {
+
+        font-size:
+            11px;
+
+    }
+
+
+    #story-dialog .listen-icon {
+
+        width:
+            33px;
+
+        height:
+            33px;
+
+        font-size:
+            14px;
+
+    }
+
+
+    #story-dialog .dialog-next-button {
+
+        min-height:
+            32px;
+
+        padding:
+            0 12px;
+
+    }
+
+}
 }

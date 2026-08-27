@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Lelana Kamandaka — Intro 2</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+         ===================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         GLOBAL CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/variables.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/base.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components/navbar.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components/buttons.css"
+    >
+
+
+    <!-- =====================================================
+         INTRO CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../intro/intro.css"
+    >
+
+
+    <!-- =====================================================
+         STORY CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/screens/story.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         GLOBAL NAVBAR
+         ===================================================== -->
+
+    <header
+        class="site-navbar"
+        id="siteNavbar"
+    >
+
+        <div class="navbar-inner">
+
+
+            <!-- =================================================
+                 LOGO
+                 ================================================= -->
+
+            <a
+                href="../index.html"
+                class="navbar-logo"
+            >
+                LELANA KAMANDAKA
+            </a>
+
+
+            <!-- =================================================
+                 MENU UTAMA
+                 ================================================= -->
+
+            <nav
+                class="navbar-menu"
+                id="navbarMenu"
+            >
+
+                <a
+                    href="../index.html"
+                >
+                    BERANDA
+                </a>
+
+                <a
+                    href="../catatan.html"
+                >
+                    CATATAN
+                </a>
+
+                <a
+                    href="../pencapaian.html"
+                >
+                    PENCAPAIAN
+                </a>
+
+            </nav>
+
+
+            <!-- =================================================
+                 HAMBURGER
+                 ================================================= -->
+
+            <button
+                type="button"
+                class="navbar-toggle"
+                id="navbarToggle"
+                aria-label="Buka menu"
+                aria-expanded="false"
+                onclick="
+                    this.classList.toggle('active');
+                    document
+                        .getElementById('navbarExtra')
+                        .classList.toggle('open');
+
+                    this.setAttribute(
+                        'aria-expanded',
+                        this.classList.contains('active')
+                    );
+                "
+            >
+
+                <span></span>
+
+            </button>
+
+
+            <!-- =================================================
+                 MENU TAMBAHAN
+                 ================================================= -->
+
+            <div
+                class="navbar-extra"
+                id="navbarExtra"
+            >
+
+                <a
+                    href="../peta.html"
+                >
+                    PETA
+                </a>
+
+                <a
+                    href="../basa.html"
+                >
+                    BASA
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         INTRO CERITA 02
+         ===================================================== -->
+
+    <main class="intro-main">
+
+        <section
+            id="screen-story"
+            class="screen-view active"
+        >
+
+
+            <!-- =================================================
+                 PANEL TEKS
+                 ================================================= -->
+
+            <div class="story-text-panel">
+
+
+                <!-- =================================================
+                     ORNAMEN
+                     ================================================= -->
+
+                <div class="story-ornament">
+
+                    <img
+                        src="../assets/icons/leaf_01.svg"
+                        class="story-leaf-icon"
+                        alt=""
+                        aria-hidden="true"
+                    >
+
+                    <span
+                        class="story-ornament-line"
+                    ></span>
+
+                    <span
+                        class="story-ornament-dot"
+                    ></span>
+
+                    <span
+                        class="story-ornament-line"
+                    ></span>
+
+                    <img
+                        src="../assets/icons/leaf_02.svg"
+                        class="story-leaf-icon"
+                        alt=""
+                        aria-hidden="true"
+                    >
+
+                </div>
+
+
+                <!-- =================================================
+                     LABEL
+                     ================================================= -->
+
+                <span
+                    class="story-eyebrow"
+                >
+                    LELANA KAMANDAKA
+                </span>
+
+
+                <!-- =================================================
+                     JUDUL
+                     ================================================= -->
+
+                <h1
+                    class="story-title"
+                >
+                    Sebuah perjalanan
+                    <em>dimulai.</em>
+                </h1>
+
+
+                <!-- =================================================
+                     CERITA
+                     ================================================= -->
+
+                <p
+                    id="story-text-body"
+                    class="story-body-text"
+                >
+                    Di antara kehidupan istana,
+                    hiduplah Raden Kamandaka,
+                    seorang pemuda yang memilih
+                    membawa takdirnya menuju
+                    sebuah perjalanan panjang...
+                </p>
+
+
+                <!-- =================================================
+                     NOMOR HALAMAN
+                     ================================================= -->
+
+                <div
+                    class="story-page-indicator"
+                >
+
+                    <span
+                        class="story-page-number"
+                    >
+                        02
+                    </span>
+
+                    <span
+                        class="story-page-line"
+                    ></span>
+
+                    <span
+                        class="story-page-total"
+                    >
+                        04
+                    </span>
+
+                </div>
+
+
+                <!-- =================================================
+                     BUTTON
+                     ================================================= -->
+
+                <div
+                    class="story-panel-footer"
+                >
+
+                    <a
+                        href="intro3.html"
+                        class="story-lanjut-btn"
+                    >
+
+                        <span>
+                            LANJUT
+                        </span>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PANEL GAMBAR
+                 ================================================= -->
+
+            <div
+                class="story-illustration-panel"
+            >
+
+
+                <!-- =================================================
+                     GAMBAR
+                     ================================================= -->
+
+                <img
+                    id="story-illustration-img"
+                    src="../assets/images/screen 3.png"
+                    class="story-illustration-img"
+                    alt="Raden Kamandaka"
+                >
+
+
+                <!-- =================================================
+                     OVERLAY
+                     ================================================= -->
+
+                <div
+                    class="story-image-overlay"
+                    aria-hidden="true"
+                ></div>
+
+
+                <!-- =================================================
+                     LABEL GAMBAR
+                     ================================================= -->
+
+                <div
+                    class="story-image-caption"
+                >
+
+                    <span>
+                        BAB I
+                    </span>
+
+                    <strong>
+                        RADEN KAMANDAKA
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="../js/navbar.js"></script>
+
+
+</body>
+
+</html>

@@ -1,163 +1,1072 @@
-/* ==========================================
-   INTERACTIVE MAP & 10-LOCATION PIN ENGINE
-   ========================================== */
+// =========================================================
+// MAP ENGINE
+// LELANA KAMANDAKA
+// =========================================================
 
-import { LOCATIONS } from '../data/locationsData.js';
-import { state } from '../state.js';
-import { audioController } from './audioController.js';
 
-export class MapEngine {
-  constructor(mapWrapperId, previewCardId) {
-    this.mapWrapper = document.getElementById(mapWrapperId);
-    this.previewCard = document.getElementById(previewCardId);
-    this.selectedLocation = null;
+// =========================================================
+// STORAGE KEY
+// =========================================================
 
-    state.subscribe(() => {
-      this.renderPath();
-      this.renderPins();
-    });
-  }
+const MAP_PROGRESS_KEY =
+    "lelanaKamandakaProgress";
 
-  init() {
-    this.renderPath();
-    this.renderPins();
-  }
 
-  // Convert a percentage string like '18%' to a pixel number within containerSize
-  _pctToPx(pctStr, containerSize) {
-    return (parseFloat(pctStr) / 100) * containerSize;
-  }
+// =========================================================
+// DATA LOKASI
+// =========================================================
 
-  renderPath() {
-    if (!this.mapWrapper) return;
+const mapLocations = [
 
-    // Remove existing path SVG
-    const existing = this.mapWrapper.querySelector('.map-path-svg');
-    if (existing) existing.remove();
+    {
+        id: 1,
+        name: "Pajajaran",
+        gameplay: "gameplay/gameplay01/index.html"
+    },
 
-    const currentUnlocked = state.unlockedLocationIndex;
+    {
+        id: 2,
+        name: "Ki Ajar Winarong",
+        gameplay: "gameplay/gameplay02/index.html"
+    },
 
-    // No route lines when everything is locked (initial state with index 0
-    // means only Pajajaran is active — no completed segments yet to draw)
-    if (currentUnlocked < 1) return;
+    {
+        id: 3,
+        name: "Pasir Luhur",
+        gameplay: "gameplay/gameplay03/index.html"
+    },
 
-    const W = this.mapWrapper.offsetWidth  || 1440;
-    const H = this.mapWrapper.offsetHeight || 940;
+    {
+        id: 4,
+        name: "Kali Logawa",
+        gameplay: "gameplay/gameplay04/index.html"
+    },
 
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.classList.add('map-path-svg');
-    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    {
+        id: 5,
+        name: "Desa Panagih",
+        gameplay: "gameplay/gameplay05/index.html"
+    },
 
-    // Draw a white dashed segment only for each completed pair of consecutive
-    // locations (i.e. both endpoints have been reached / unlocked).
-    // The route follows the LOCATIONS array order (index 0 → 1 → 2 → … → 9).
-    for (let i = 0; i < LOCATIONS.length - 1; i++) {
-      // Only draw the segment if the *destination* pin is unlocked
-      if (LOCATIONS[i + 1].index > currentUnlocked) break;
+    {
+        id: 6,
+        name: "Goa Jatijajar",
+        gameplay: "gameplay/gameplay06/index.html"
+    },
 
-      const from = LOCATIONS[i];
-      const to   = LOCATIONS[i + 1];
+    {
+        id: 7,
+        name: "Batur Agung",
+        gameplay: "gameplay/gameplay07/index.html"
+    },
 
-      const x1 = this._pctToPx(from.coords.x, W);
-      const y1 = this._pctToPx(from.coords.y, H);
-      const x2 = this._pctToPx(to.coords.x,   W);
-      const y2 = this._pctToPx(to.coords.y,    H);
+    {
+        id: 8,
+        name: "Sawangan",
+        gameplay: "gameplay/gameplay08/index.html"
+    },
 
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', x1);
-      line.setAttribute('y1', y1);
-      line.setAttribute('x2', x2);
-      line.setAttribute('y2', y2);
-      line.classList.add('map-path-segment');
+    {
+        id: 9,
+        name: "Kali Serayu",
+        gameplay: "gameplay/gameplay09/index.html"
+    },
 
-      svg.appendChild(line);
+    {
+        id: 10,
+        name: "Desa Rosari",
+        gameplay: "gameplay/gameplay10/index.html"
     }
 
-    // Insert behind pins (prepend)
-    this.mapWrapper.prepend(svg);
-  }
+];
 
-  renderPins() {
-    if (!this.mapWrapper) return;
 
-    // Clear existing pins
-    this.mapWrapper.querySelectorAll('.map-pin-wrapper').forEach(p => p.remove());
+// =========================================================
+// ROUTE DATA
+// =========================================================
 
-    const currentUnlocked = state.unlockedLocationIndex;
+const mapRoutes = [
 
-    LOCATIONS.forEach((loc) => {
-      const isCompleted = loc.index < currentUnlocked;
-      const isActive    = loc.index === currentUnlocked;
-      const isLocked    = loc.index > currentUnlocked;
+    {
+        from: 1,
+        to: 2,
+        element: "route-1-2"
+    },
 
-      const stateClass = isCompleted ? 'completed' : isActive ? 'active' : 'locked';
+    {
+        from: 2,
+        to: 3,
+        element: "route-2-3"
+    },
 
-      const wrapper = document.createElement('div');
-      wrapper.className = `map-pin-wrapper ${stateClass}`;
-      wrapper.style.left = loc.coords.x;
-      wrapper.style.top  = loc.coords.y;
+    {
+        from: 3,
+        to: 4,
+        element: "route-3-4"
+    },
 
-      // Icon: gembok.png for locked, location.png for active/completed
-      const iconSrc = isLocked
-        ? 'assets/icons/gembok.png'
-        : 'assets/icons/location.png';
+    {
+        from: 4,
+        to: 5,
+        element: "route-4-5"
+    },
 
-      wrapper.innerHTML = `
-        <img src="${iconSrc}" class="pin-icon" alt="${loc.name}" draggable="false">
-        <span class="pin-label">${loc.name}</span>
-      `;
+    {
+        from: 5,
+        to: 6,
+        element: "route-5-6"
+    },
 
-      wrapper.addEventListener('click', () => {
-        if (audioController && typeof audioController.playSfx === 'function') {
-          audioController.playSfx('click');
-        }
-        this.selectLocation(loc, !isLocked);
-      });
+    {
+        from: 6,
+        to: 7,
+        element: "route-6-7"
+    },
 
-      this.mapWrapper.appendChild(wrapper);
-    });
-  }
+    {
+        from: 7,
+        to: 8,
+        element: "route-7-8"
+    },
 
-  selectLocation(loc, isAccessible) {
-    this.selectedLocation = loc;
+    {
+        from: 8,
+        to: 9,
+        element: "route-8-9"
+    },
 
-    // Highlight selected pin
-    this.mapWrapper.querySelectorAll('.map-pin-wrapper').forEach(p => p.classList.remove('selected'));
-    const allPins = this.mapWrapper.querySelectorAll('.map-pin-wrapper');
-    allPins.forEach(p => {
-      if (p.style.left === loc.coords.x && p.style.top === loc.coords.y) {
-        p.classList.add('selected');
-      }
-    });
-
-    if (this.previewCard) {
-      this.previewCard.classList.add('show');
-      const titleEl  = document.getElementById('preview-title');
-      const numEl    = document.getElementById('preview-number');
-      const descEl   = document.getElementById('preview-desc');
-      const actionBtn = document.getElementById('btn-start-location');
-
-      if (titleEl)  titleEl.textContent  = loc.title;
-      if (numEl)    numEl.textContent    = `LOKASI ${loc.number} / 10`;
-      if (descEl)   descEl.textContent   = loc.desc;
-
-      if (actionBtn) {
-        if (isAccessible) {
-          actionBtn.disabled   = false;
-          actionBtn.textContent = 'Mulai Petualangan →';
-          actionBtn.className  = 'btn-primary';
-          actionBtn.onclick    = () => {
-            state.activeLocationId = loc.id;
-            state.setScreen('gameplay');
-          };
-        } else {
-          actionBtn.disabled   = true;
-          actionBtn.textContent = 'Masih Terkunci';
-          actionBtn.className  = 'btn-secondary';
-          actionBtn.onclick    = null;
-        }
-      }
+    {
+        from: 9,
+        to: 10,
+        element: "route-9-10"
     }
-  }
+
+];
+
+
+// =========================================================
+// DEFAULT PROGRESS
+// =========================================================
+
+const defaultMapProgress = {
+
+    currentChapter: 1,
+
+    totalChapters: 10,
+
+    xp: 0,
+
+    basa: 0,
+
+    quizCompleted: false,
+
+    sayembaraCompleted: false,
+
+    completedChapters: [],
+
+    completedLocations: [],
+
+    unlockedLocations: [1]
+
+};
+
+
+// =========================================================
+// LOAD PROGRESS
+// =========================================================
+
+function loadMapProgress() {
+
+    let savedProgress = null;
+
+
+    // =====================================================
+    // AMBIL PROGRESS DARI SESSION STORAGE
+    //
+    // Progress hanya bertahan selama tab masih terbuka.
+    // Jika tab ditutup, sessionStorage akan hilang.
+    // =====================================================
+
+    try {
+
+        const saved =
+            sessionStorage.getItem(
+                MAP_PROGRESS_KEY
+            );
+
+
+        if (saved) {
+
+            savedProgress =
+                JSON.parse(saved);
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.warn(
+            "Progress tidak dapat dibaca dari sessionStorage.",
+            error
+        );
+
+    }
+
+
+    // =====================================================
+    // GABUNGKAN DENGAN DEFAULT
+    // =====================================================
+
+    const progress = {
+
+        ...defaultMapProgress,
+
+        ...(savedProgress || {})
+
+    };
+
+
+    // =====================================================
+    // PASTIKAN ARRAY VALID
+    // =====================================================
+
+    if (
+        !Array.isArray(
+            progress.completedChapters
+        )
+    ) {
+
+        progress.completedChapters = [];
+
+    }
+
+
+    if (
+        !Array.isArray(
+            progress.completedLocations
+        )
+    ) {
+
+        progress.completedLocations = [];
+
+    }
+
+
+    if (
+        !Array.isArray(
+            progress.unlockedLocations
+        )
+    ) {
+
+        progress.unlockedLocations = [1];
+
+    }
+
+
+    // =====================================================
+    // PAJAJARAN SELALU TERBUKA
+    // =====================================================
+
+    if (
+        !progress.unlockedLocations.includes(1)
+    ) {
+
+        progress.unlockedLocations.unshift(1);
+
+    }
+
+
+    // =====================================================
+    // SINKRONISASI COMPLETED LOCATIONS
+    //
+    // Jika ada data:
+    //
+    // completedLocations: [1]
+    //
+    // maka dianggap:
+    //
+    // completedChapters: [1]
+    // =====================================================
+
+    progress.completedLocations.forEach(
+        function(locationId) {
+
+            if (
+                locationId >= 1 &&
+                locationId <= 10 &&
+                !progress.completedChapters.includes(
+                    locationId
+                )
+            ) {
+
+                progress.completedChapters.push(
+                    locationId
+                );
+
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // BENTUK ULANG UNLOCKED LOCATIONS
+    //
+    // Jangan mempercayai unlockedLocations lama.
+    //
+    // Lokasi 01 selalu terbuka.
+    //
+    // Lokasi berikutnya hanya terbuka jika
+    // chapter sebelumnya sudah selesai.
+    // =====================================================
+
+    progress.unlockedLocations = [1];
+
+
+    progress.completedChapters.forEach(
+        function(chapter) {
+
+            const nextLocation =
+                chapter + 1;
+
+
+            if (
+                nextLocation <= 10
+            ) {
+
+                unlockLocation(
+                    progress,
+                    nextLocation
+                );
+
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // HAPUS DUPLIKAT
+    // =====================================================
+
+    progress.completedChapters =
+        [
+            ...new Set(
+                progress.completedChapters
+            )
+        ];
+
+
+    progress.completedLocations =
+        [
+            ...new Set(
+                progress.completedLocations
+            )
+        ];
+
+
+    progress.unlockedLocations =
+        [
+            ...new Set(
+                progress.unlockedLocations
+            )
+        ];
+
+
+    // =====================================================
+    // URUTKAN
+    // =====================================================
+
+    progress.completedChapters.sort(
+        function(a, b) {
+
+            return a - b;
+
+        }
+    );
+
+
+    progress.completedLocations.sort(
+        function(a, b) {
+
+            return a - b;
+
+        }
+    );
+
+
+    progress.unlockedLocations.sort(
+        function(a, b) {
+
+            return a - b;
+
+        }
+    );
+
+
+    // =====================================================
+    // SIMPAN HASIL SINKRONISASI
+    // =====================================================
+
+    saveMapProgress(
+        progress
+    );
+
+
+    return progress;
+
 }
+
+
+// =========================================================
+// UNLOCK LOCATION
+// =========================================================
+
+function unlockLocation(
+    progress,
+    locationId
+) {
+
+    if (
+        !progress.unlockedLocations.includes(
+            locationId
+        )
+    ) {
+
+        progress.unlockedLocations.push(
+            locationId
+        );
+
+    }
+
+}
+
+
+// =========================================================
+// MARK CHAPTER COMPLETED
+// =========================================================
+
+function completeChapter(
+    chapterNumber
+) {
+
+    const progress =
+        loadMapProgress();
+
+
+    // =====================================================
+    // TAMBAHKAN CHAPTER SELESAI
+    // =====================================================
+
+    if (
+        !progress.completedChapters.includes(
+            chapterNumber
+        )
+    ) {
+
+        progress.completedChapters.push(
+            chapterNumber
+        );
+
+    }
+
+
+    // =====================================================
+    // LOKASI YANG SELESAI
+    // =====================================================
+
+    if (
+        !progress.completedLocations.includes(
+            chapterNumber
+        )
+    ) {
+
+        progress.completedLocations.push(
+            chapterNumber
+        );
+
+    }
+
+
+    // =====================================================
+    // UNLOCK LOKASI BERIKUTNYA
+    // =====================================================
+
+    const nextLocation =
+        chapterNumber + 1;
+
+
+    if (
+        nextLocation <= 10
+    ) {
+
+        unlockLocation(
+            progress,
+            nextLocation
+        );
+
+    }
+
+
+    // =====================================================
+    // CURRENT CHAPTER
+    // =====================================================
+
+    if (
+        nextLocation <= 10
+    ) {
+
+        progress.currentChapter =
+            nextLocation;
+
+    }
+
+    else {
+
+        progress.currentChapter =
+            10;
+
+    }
+
+
+    // =====================================================
+    // SORT
+    // =====================================================
+
+    progress.completedChapters.sort(
+        function(a, b) {
+
+            return a - b;
+
+        }
+    );
+
+
+    progress.completedLocations.sort(
+        function(a, b) {
+
+            return a - b;
+
+        }
+    );
+
+
+    progress.unlockedLocations.sort(
+        function(a, b) {
+
+            return a - b;
+
+        }
+    );
+
+
+    // =====================================================
+    // SAVE
+    // =====================================================
+
+    saveMapProgress(
+        progress
+    );
+
+
+    // =====================================================
+    // UPDATE MAP
+    // =====================================================
+
+    updateLocations(
+        progress
+    );
+
+
+    updateRoutes(
+        progress
+    );
+
+
+    return progress;
+
+}
+
+
+// =========================================================
+// SAVE PROGRESS
+// =========================================================
+
+function saveMapProgress(
+    progress
+) {
+
+    try {
+
+        // =================================================
+        // SESSION STORAGE
+        //
+        // Berbeda dengan localStorage:
+        //
+        // - Tetap ada saat pindah halaman
+        // - Tetap ada saat refresh
+        // - Hilang ketika tab ditutup
+        // =================================================
+
+        sessionStorage.setItem(
+            MAP_PROGRESS_KEY,
+            JSON.stringify(progress)
+        );
+
+    }
+
+    catch (error) {
+
+        console.warn(
+            "Progress tidak dapat disimpan.",
+            error
+        );
+
+    }
+
+}
+
+
+// =========================================================
+// APPLY LOCATION STATE
+// =========================================================
+
+function applyLocationState(
+    progress
+) {
+
+    mapLocations.forEach(
+        function(location) {
+
+            const element =
+                document.querySelector(
+                    `.map-location[data-location="${location.id}"]`
+                );
+
+
+            if (!element) {
+
+                return;
+
+            }
+
+
+            const image =
+                element.querySelector("img");
+
+
+            if (!image) {
+
+                return;
+
+            }
+
+
+            const isUnlocked =
+                progress.unlockedLocations.includes(
+                    location.id
+                );
+
+
+            // =================================================
+            // LOKASI TERBUKA
+            // =================================================
+
+            if (isUnlocked) {
+
+                element.classList.add(
+                    "unlocked"
+                );
+
+                element.classList.remove(
+                    "locked"
+                );
+
+
+                image.src =
+                    "assets/icons/lokasi.png";
+
+
+                element.disabled =
+                    false;
+
+
+                element.setAttribute(
+                    "aria-disabled",
+                    "false"
+                );
+
+
+                element.setAttribute(
+                    "aria-label",
+                    `${location.name} — Lokasi terbuka`
+                );
+
+            }
+
+
+            // =================================================
+            // LOKASI TERKUNCI
+            // =================================================
+
+            else {
+
+                element.classList.add(
+                    "locked"
+                );
+
+                element.classList.remove(
+                    "unlocked"
+                );
+
+
+                image.src =
+                    "assets/icons/gembok.png";
+
+
+                element.disabled =
+                    true;
+
+
+                element.setAttribute(
+                    "aria-disabled",
+                    "true"
+                );
+
+
+                element.setAttribute(
+                    "aria-label",
+                    `${location.name} — Terkunci`
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+// =========================================================
+// UPDATE LOCATIONS
+// =========================================================
+
+function updateLocations(
+    progress
+) {
+
+    applyLocationState(
+        progress
+    );
+
+}
+
+
+// =========================================================
+// UPDATE ROUTES
+// =========================================================
+
+function updateRoutes(
+    progress
+) {
+
+    mapRoutes.forEach(
+        function(route) {
+
+            const element =
+                document.getElementById(
+                    route.element
+                );
+
+
+            if (!element) {
+
+                return;
+
+            }
+
+
+            const fromUnlocked =
+                progress.unlockedLocations.includes(
+                    route.from
+                );
+
+
+            const toUnlocked =
+                progress.unlockedLocations.includes(
+                    route.to
+                );
+
+
+            // =================================================
+            // JALUR AKTIF
+            //
+            // Lokasi awal DAN tujuan sudah terbuka.
+            // =================================================
+
+            if (
+                fromUnlocked &&
+                toUnlocked
+            ) {
+
+                element.classList.add(
+                    "completed"
+                );
+
+                element.classList.remove(
+                    "locked"
+                );
+
+
+                element.style.opacity =
+                    "1";
+
+            }
+
+
+            // =================================================
+            // JALUR BELUM AKTIF
+            // =================================================
+
+            else {
+
+                element.classList.remove(
+                    "completed"
+                );
+
+                element.classList.add(
+                    "locked"
+                );
+
+
+                element.style.opacity =
+                    "0.25";
+
+            }
+
+        }
+    );
+
+}
+
+
+// =========================================================
+// KLIK LOKASI
+// =========================================================
+
+function setupLocationEvents() {
+
+    document
+        .querySelectorAll(
+            ".map-location"
+        )
+        .forEach(
+            function(button) {
+
+                button.addEventListener(
+                    "click",
+                    function() {
+
+                        const locationId =
+                            Number(
+                                this.dataset.location
+                            );
+
+
+                        const location =
+                            mapLocations.find(
+                                function(item) {
+
+                                    return (
+                                        item.id ===
+                                        locationId
+                                    );
+
+                                }
+                            );
+
+
+                        if (!location) {
+
+                            return;
+
+                        }
+
+
+                        // =====================================
+                        // CEK PROGRESS TERBARU
+                        // =====================================
+
+                        const latestProgress =
+                            loadMapProgress();
+
+
+                        const isUnlocked =
+                            latestProgress
+                                .unlockedLocations
+                                .includes(
+                                    locationId
+                                );
+
+
+                        // =====================================
+                        // TERKUNCI
+                        // =====================================
+
+                        if (!isUnlocked) {
+
+                            this.classList.remove(
+                                "locked-shake"
+                            );
+
+
+                            void this.offsetWidth;
+
+
+                            this.classList.add(
+                                "locked-shake"
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        // =====================================
+                        // TERBUKA
+                        // =====================================
+
+                        window.location.href =
+                            location.gameplay;
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+// =========================================================
+// NAVBAR SCROLL
+// =========================================================
+
+function setupNavbar() {
+
+    const navbar =
+        document.getElementById(
+            "siteNavbar"
+        );
+
+
+    if (!navbar) {
+
+        return;
+
+    }
+
+
+    function handleScroll() {
+
+        if (
+            window.scrollY > 30
+        ) {
+
+            navbar.classList.add(
+                "scrolled"
+            );
+
+        }
+
+        else {
+
+            navbar.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+    }
+
+
+    handleScroll();
+
+
+    window.addEventListener(
+        "scroll",
+        handleScroll,
+        {
+            passive: true
+        }
+    );
+
+}
+
+
+// =========================================================
+// REFRESH MAP
+// =========================================================
+
+function refreshMap() {
+
+    const progress =
+        loadMapProgress();
+
+
+    updateLocations(
+        progress
+    );
+
+
+    updateRoutes(
+        progress
+    );
+
+
+    return progress;
+
+}
+
+
+// =========================================================
+// INITIALIZE MAP
+// =========================================================
+
+function initializeMap() {
+
+    const progress =
+        loadMapProgress();
+
+
+    updateLocations(
+        progress
+    );
+
+
+    updateRoutes(
+        progress
+    );
+
+
+    setupLocationEvents();
+
+}
+
+
+// =========================================================
+// INIT
+// =========================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        initializeMap();
+
+        setupNavbar();
+
+    }
+);

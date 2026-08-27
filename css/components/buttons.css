@@ -64,3 +64,8 @@
   background: var(--color-golden-brown);
   color: #ffffff;
 }
+
+.home-start-button {
+    text-decoration: none;
+    cursor: pointer;
+}

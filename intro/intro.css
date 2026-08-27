@@ -1,0 +1,622 @@
+/* =========================================================
+   LELANA KAMANDAKA
+   INTRO PAGE
+   INTRO.CSS
+   ========================================================= */
+
+
+/* =========================================================
+   INTRO MAIN
+   ========================================================= */
+
+.intro-main {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height:
+        calc(100vh - 80px);
+
+    overflow: hidden;
+
+    background:
+        #f5eddd;
+
+}
+
+
+/* =========================================================
+   MOTIF BATIK UTAMA
+   ========================================================= */
+
+/*
+   Motif:
+   ../assets/images/motif.png
+
+   Motif dibuat sebagai tekstur
+   identitas visual Lelana Kamandaka.
+*/
+
+.intro-main::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: 10;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        url("../assets/images/motif.png");
+
+    background-repeat:
+        repeat;
+
+    background-size:
+        500px auto;
+
+    background-position:
+        center center;
+
+    opacity:
+        0.055;
+
+    mix-blend-mode:
+        multiply;
+
+}
+
+
+/* =========================================================
+   MOTIF PANEL KIRI
+   ========================================================= */
+
+.story-text-panel::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: 0;
+
+    width:
+        420px;
+
+    height:
+        420px;
+
+    left:
+        -250px;
+
+    bottom:
+        -210px;
+
+    background-image:
+        url("../assets/images/motif.png");
+
+    background-repeat:
+        repeat;
+
+    background-size:
+        230px auto;
+
+    background-position:
+        center center;
+
+    opacity:
+        0.065;
+
+    mix-blend-mode:
+        multiply;
+
+    pointer-events:
+        none;
+
+    transform:
+        rotate(8deg);
+
+}
+
+
+/* =========================================================
+   MOTIF PANEL GAMBAR
+   ========================================================= */
+
+.story-illustration-panel::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: 3;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    background-image:
+        url("../assets/images/motif.png");
+
+    background-repeat:
+        repeat;
+
+    background-size:
+        390px auto;
+
+    background-position:
+        center center;
+
+    opacity:
+        0.035;
+
+    mix-blend-mode:
+        soft-light;
+
+}
+
+
+/* =========================================================
+   BACKGROUND PANEL GAMBAR
+   ========================================================= */
+
+.story-illustration-panel {
+
+    background:
+        #4a2c1d;
+
+}
+
+
+/* =========================================================
+   LAYERING
+   ========================================================= */
+
+/*
+   Motif intro berada di atas background,
+   tetapi tidak boleh menutupi isi halaman.
+*/
+
+.intro-main > * {
+
+    position:
+        relative;
+
+}
+
+
+/*
+   Story panel harus tetap berada
+   di atas motif global.
+*/
+
+#screen-story {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+}
+
+
+/*
+   Isi panel teks berada di atas
+   dekorasi motif.
+*/
+
+.story-text-panel > * {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+/*
+   Isi gambar berada di atas motif panel.
+*/
+
+.story-illustration-panel > * {
+
+    position:
+        relative;
+
+}
+
+
+/* =========================================================
+   MOTIF TIDAK MENGGANGGU GAMBAR
+   ========================================================= */
+
+.story-illustration-img {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+}
+
+
+.story-image-overlay {
+
+    position:
+        absolute;
+
+    z-index:
+        2;
+
+}
+
+
+.story-image-caption {
+
+    position:
+        absolute;
+
+    z-index:
+        4;
+
+}
+
+
+/* =========================================================
+   FRAME GAMBAR
+   ========================================================= */
+
+.story-illustration-panel::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    z-index:
+        5;
+
+    inset:
+        18px;
+
+    border:
+        1px solid
+        rgba(245, 237, 221, 0.22);
+
+    pointer-events:
+        none;
+
+}
+
+
+/* =========================================================
+   ORNAMEN TAMBAHAN PANEL KIRI
+   ========================================================= */
+
+.story-text-panel {
+
+    background:
+        #f5eddd;
+
+}
+
+
+/*
+   Garis dekoratif tipis
+   agar panel tidak terlihat terlalu kosong.
+*/
+
+.story-text-panel {
+
+    box-shadow:
+        inset -1px 0
+        rgba(184, 138, 66, 0.12);
+
+}
+
+
+/* =========================================================
+   MOTIF UNTUK DESKTOP BESAR
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+    .intro-main::before {
+
+        background-size:
+            560px auto;
+
+        opacity:
+            0.06;
+
+    }
+
+
+    .story-text-panel::before {
+
+        background-size:
+            260px auto;
+
+        opacity:
+            0.07;
+
+    }
+
+
+    .story-illustration-panel::before {
+
+        background-size:
+            430px auto;
+
+        opacity:
+            0.04;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .intro-main::before {
+
+        background-size:
+            420px auto;
+
+        opacity:
+            0.05;
+
+    }
+
+
+    .story-text-panel::before {
+
+        width:
+            350px;
+
+        height:
+            350px;
+
+        left:
+            -210px;
+
+        bottom:
+            -180px;
+
+        background-size:
+            200px auto;
+
+        opacity:
+            0.055;
+
+    }
+
+
+    .story-illustration-panel::before {
+
+        background-size:
+            330px auto;
+
+        opacity:
+            0.03;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .intro-main {
+
+        min-height:
+            calc(100svh - 70px);
+
+    }
+
+
+    /*
+       Motif global diperkecil
+       agar tidak terlalu ramai.
+    */
+
+    .intro-main::before {
+
+        background-size:
+            300px auto;
+
+        background-position:
+            center center;
+
+        opacity:
+            0.045;
+
+    }
+
+
+    /*
+       Motif panel kiri.
+    */
+
+    .story-text-panel::before {
+
+        width:
+            300px;
+
+        height:
+            300px;
+
+        left:
+            -190px;
+
+        bottom:
+            -150px;
+
+        background-size:
+            170px auto;
+
+        opacity:
+            0.05;
+
+    }
+
+
+    /*
+       Motif pada gambar.
+    */
+
+    .story-illustration-panel::before {
+
+        background-size:
+            280px auto;
+
+        opacity:
+            0.028;
+
+    }
+
+
+    /*
+       Frame gambar lebih kecil.
+    */
+
+    .story-illustration-panel::after {
+
+        inset:
+            12px;
+
+    }
+
+}
+
+
+/* =========================================================
+   HP KECIL
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .intro-main::before {
+
+        background-size:
+            250px auto;
+
+        opacity:
+            0.04;
+
+    }
+
+
+    .story-text-panel::before {
+
+        width:
+            250px;
+
+        height:
+            250px;
+
+        left:
+            -170px;
+
+        bottom:
+            -130px;
+
+        background-size:
+            150px auto;
+
+        opacity:
+            0.045;
+
+    }
+
+
+    .story-illustration-panel::before {
+
+        background-size:
+            240px auto;
+
+        opacity:
+            0.025;
+
+    }
+
+
+    .story-illustration-panel::after {
+
+        inset:
+            10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   HP SANGAT KECIL
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .intro-main::before {
+
+        background-size:
+            220px auto;
+
+        opacity:
+            0.035;
+
+    }
+
+
+    .story-text-panel::before {
+
+        width:
+            220px;
+
+        height:
+            220px;
+
+        left:
+            -150px;
+
+        bottom:
+            -115px;
+
+        background-size:
+            135px auto;
+
+        opacity:
+            0.04;
+
+    }
+
+
+    .story-illustration-panel::before {
+
+        background-size:
+            210px auto;
+
+        opacity:
+            0.02;
+
+    }
+
+}
