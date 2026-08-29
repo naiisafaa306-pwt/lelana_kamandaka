@@ -9161,4 +9161,70 @@
 
 }
 
+/* =========================================================
+   CLICK FIX — GAMEPLAY SCREEN
+   Pastikan elemen aktif berada paling atas dan bisa diklik
+   ========================================================= */
+
+.story-screen {
+    position: relative;
+    display: none;
+    width: 100%;
+    min-height: calc(100vh - 72px);
+}
+
+.story-screen.active {
+    display: block !important;
+    position: relative;
+    z-index: 10;
+}
+
+/* Semua background tidak boleh menangkap klik */
+.story-screen .story-background,
+.story-screen .story-background-dialog,
+.story-screen .story-overlay,
+.story-screen .story-batik,
+.story-screen [class*="background"] {
+    pointer-events: none !important;
+}
+
+/* Konten harus berada di atas background */
+.story-screen .story-content,
+.story-screen .dialog-wrapper,
+.story-screen .dialog-footer,
+.story-screen button,
+.story-screen a,
+.story-screen input,
+.story-screen select,
+.story-screen textarea {
+    position: relative;
+    z-index: 50;
+    pointer-events: auto !important;
+}
+
+/* Tombol opening */
+#story-opening .story-start-button {
+    position: relative;
+    z-index: 100;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* Tombol dialog */
+#story-dialog .dialog-next-button,
+#story-dialog .dialog-listen-button {
+    position: relative;
+    z-index: 100;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* Tombol screen-screen berikutnya */
+#story-pasir-story #btnStartSayembara {
+    position: relative;
+    z-index: 100;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
 }

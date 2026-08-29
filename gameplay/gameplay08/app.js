@@ -4,526 +4,581 @@
    APP.JS
    ========================================================= */
 
+(() => {
 
-/* =========================================================
-   GAME PROGRESS
-   ========================================================= */
+    "use strict";
 
-const MAP_PROGRESS_KEY =
-    "lelanaKamandakaProgress";
 
+    /* =====================================================
+       STORAGE
+       ===================================================== */
 
-const gameProgress = {
+    const MAP_PROGRESS_KEY =
+        "lelanaKamandakaProgress";
 
-    currentChapter: 8,
 
-    totalChapters: 10,
+    /* =====================================================
+       GAME PROGRESS
+       ===================================================== */
 
-    xp: 0,
+    const gameProgress = {
 
-    basa: 0,
+        currentChapter: 8,
 
-    quizCompleted: false,
+        totalChapters: 10,
 
-    sayembaraCompleted: false,
+        xp: 0,
 
-    completedChapters: [],
+        basa: 0,
 
-    completedLocations: [],
+        quizCompleted: false,
 
-    unlockedLocations: [1, 8]
+        sayembaraCompleted: false,
 
-};
+        completedChapters: [],
 
+        completedLocations: [],
 
-/* =========================================================
-   SCREEN
-   ========================================================= */
-
-const storyOpening =
-    document.getElementById(
-        "story-opening"
-    );
-
-
-const storyDialog =
-    document.getElementById(
-        "story-dialog"
-    );
-
-
-const storyGameplay =
-    document.getElementById(
-        "story-gameplay"
-    );
-
-
-const storyLearningBasa =
-    document.getElementById(
-        "story-learning-basa"
-    );
-
-
-const storyQuizBasa =
-    document.getElementById(
-        "story-quiz-basa"
-    );
-
-
-const storySayembaraStory =
-    document.getElementById(
-        "story-sayembara-story"
-    );
-
-
-const storySayembara =
-    document.getElementById(
-        "story-sayembara"
-    );
-
-
-const storyChapter08 =
-    document.getElementById(
-        "story-chapter-08"
-    );
-
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
-
-const btnBeginStory =
-    document.getElementById(
-        "btnBeginStory"
-    );
-
-
-const btnNextStory =
-    document.getElementById(
-        "btnNextStory"
-    );
-
-
-const btnListen =
-    document.getElementById(
-        "btnListen"
-    );
-
-
-const btnStartGameplay =
-    document.getElementById(
-        "btnStartGameplay"
-    );
-
-
-const btnStartQuizBasa =
-    document.getElementById(
-        "btnStartQuizBasa"
-    );
-
-
-const btnNextQuiz =
-    document.getElementById(
-        "btnNextQuiz"
-    );
-
-
-const btnStartSayembara =
-    document.getElementById(
-        "btnStartSayembara"
-    );
-
-
-const btnNextSayembara =
-    document.getElementById(
-        "btnNextSayembara"
-    );
-
-
-const btnContinueChapter =
-    document.getElementById(
-        "btnContinueChapter"
-    );
-
-
-/* =========================================================
-   HUD
-   ========================================================= */
-
-const hudChapter =
-    document.getElementById(
-        "hudChapter"
-    );
-
-
-const hudXp =
-    document.getElementById(
-        "hudXp"
-    );
-
-
-const hudBasa =
-    document.getElementById(
-        "hudBasa"
-    );
-
-
-/* =========================================================
-   SCREEN 08 ELEMENT
-   ========================================================= */
-
-const chapterCurrentNumber =
-    document.getElementById(
-        "chapterCurrentNumber"
-    );
-
-
-const chapterTotalNumber =
-    document.getElementById(
-        "chapterTotalNumber"
-    );
-
-
-const chapterXpReward =
-    document.getElementById(
-        "chapterXpReward"
-    );
-
-
-const chapterBasaReward =
-    document.getElementById(
-        "chapterBasaReward"
-    );
-
-
-/* =========================================================
-   UPDATE HUD
-   ========================================================= */
-
-function updateHUD() {
-
-    const current =
-        String(
-            gameProgress.currentChapter
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    if (hudChapter) {
-
-        hudChapter.textContent =
-            current;
-
-    }
-
-
-    if (hudXp) {
-
-        hudXp.textContent =
-            gameProgress.xp;
-
-    }
-
-
-    if (hudBasa) {
-
-        hudBasa.textContent =
-            gameProgress.basa;
-
-    }
-
-
-    if (chapterCurrentNumber) {
-
-        chapterCurrentNumber.textContent =
-            current;
-
-    }
-
-
-    if (chapterTotalNumber) {
-
-        chapterTotalNumber.textContent =
-            String(
-                gameProgress.totalChapters
-            ).padStart(
-                2,
-                "0"
-            );
-
-    }
-
-}
-
-
-/* =========================================================
-   UPDATE CHAPTER PROGRESS
-   ========================================================= */
-
-function updateChapterProgress() {
-
-    const current =
-        String(
-            gameProgress.currentChapter
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const total =
-        String(
-            gameProgress.totalChapters
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    if (hudChapter) {
-
-        hudChapter.textContent =
-            current;
-
-    }
-
-
-    if (chapterCurrentNumber) {
-
-        chapterCurrentNumber.textContent =
-            current;
-
-    }
-
-
-    if (chapterTotalNumber) {
-
-        chapterTotalNumber.textContent =
-            total;
-
-    }
-
-}
-
-
-/* =========================================================
-   SAVE PROGRESS
-   ========================================================= */
-
-function saveGameProgress() {
-
-    const savedProgress = {
-
-        currentChapter:
-            gameProgress.currentChapter,
-
-        totalChapters:
-            gameProgress.totalChapters,
-
-        xp:
-            gameProgress.xp,
-
-        basa:
-            gameProgress.basa,
-
-        quizCompleted:
-            gameProgress.quizCompleted,
-
-        sayembaraCompleted:
-            gameProgress.sayembaraCompleted,
-
-        completedChapters:
-            Array.isArray(
-                gameProgress.completedChapters
-            )
-                ? gameProgress.completedChapters
-                : [],
-
-        completedLocations:
-            Array.isArray(
-                gameProgress.completedLocations
-            )
-                ? gameProgress.completedLocations
-                : [],
-
-        unlockedLocations:
-            Array.isArray(
-                gameProgress.unlockedLocations
-            )
-                ? gameProgress.unlockedLocations
-                : [1]
+        unlockedLocations: [1]
 
     };
 
 
-    try {
+    /* =====================================================
+       SCREEN
+       ===================================================== */
 
-        sessionStorage.setItem(
-            MAP_PROGRESS_KEY,
-            JSON.stringify(
-                savedProgress
-            )
+    const storyOpening =
+        document.getElementById(
+            "story-opening"
+        );
+
+    const storyDialog =
+        document.getElementById(
+            "story-dialog"
+        );
+
+    const storyGameplay =
+        document.getElementById(
+            "story-gameplay"
+        );
+
+    const storyLearningBasa =
+        document.getElementById(
+            "story-learning-basa"
+        );
+
+    const storyQuizBasa =
+        document.getElementById(
+            "story-quiz-basa"
+        );
+
+    const storySayembaraStory =
+        document.getElementById(
+            "story-sayembara-story"
+        );
+
+    const storySayembara =
+        document.getElementById(
+            "story-sayembara"
+        );
+
+    const storyChapter08 =
+        document.getElementById(
+            "story-chapter-08"
         );
 
 
-        console.log(
-            "Progress Gameplay 08 disimpan:",
-            savedProgress
+    /* =====================================================
+       BUTTON
+       ===================================================== */
+
+    const btnBeginStory =
+        document.getElementById(
+            "btnBeginStory"
         );
+
+    const btnNextStory =
+        document.getElementById(
+            "btnNextStory"
+        );
+
+    const btnListen =
+        document.getElementById(
+            "btnListen"
+        );
+
+    const btnStartGameplay =
+        document.getElementById(
+            "btnStartGameplay"
+        );
+
+    const btnStartQuizBasa =
+        document.getElementById(
+            "btnStartQuizBasa"
+        );
+
+    const btnNextQuiz =
+        document.getElementById(
+            "btnNextQuiz"
+        );
+
+    const btnStartSayembara =
+        document.getElementById(
+            "btnStartSayembara"
+        );
+
+    const btnNextSayembara =
+        document.getElementById(
+            "btnNextSayembara"
+        );
+
+    const btnContinueChapter =
+        document.getElementById(
+            "btnContinueChapter"
+        );
+
+
+    /* =====================================================
+       HUD
+       ===================================================== */
+
+    const hudChapter =
+        document.getElementById(
+            "hudChapter"
+        );
+
+    const hudXp =
+        document.getElementById(
+            "hudXp"
+        );
+
+    const hudBasa =
+        document.getElementById(
+            "hudBasa"
+        );
+
+
+    /* =====================================================
+       CHAPTER REWARD
+       ===================================================== */
+
+    const chapterCurrentNumber =
+        document.getElementById(
+            "chapterCurrentNumber"
+        );
+
+    const chapterTotalNumber =
+        document.getElementById(
+            "chapterTotalNumber"
+        );
+
+    const chapterXpReward =
+        document.getElementById(
+            "chapterXpReward"
+        );
+
+    const chapterBasaReward =
+        document.getElementById(
+            "chapterBasaReward"
+        );
+
+
+    /* =====================================================
+       UPDATE HUD
+       ===================================================== */
+
+    function updateHUD() {
+
+        const current =
+            String(
+                gameProgress.currentChapter
+            ).padStart(2, "0");
+
+
+        const total =
+            String(
+                gameProgress.totalChapters
+            ).padStart(2, "0");
+
+
+        if (hudChapter) {
+
+            hudChapter.textContent =
+                current;
+
+        }
+
+
+        if (hudXp) {
+
+            hudXp.textContent =
+                gameProgress.xp;
+
+        }
+
+
+        if (hudBasa) {
+
+            hudBasa.textContent =
+                gameProgress.basa;
+
+        }
+
+
+        if (chapterCurrentNumber) {
+
+            chapterCurrentNumber.textContent =
+                current;
+
+        }
+
+
+        if (chapterTotalNumber) {
+
+            chapterTotalNumber.textContent =
+                total;
+
+        }
 
     }
 
-    catch (error) {
 
-        console.error(
-            "Gagal menyimpan progress:",
-            error
-        );
+    /* =====================================================
+       UPDATE CHAPTER PROGRESS
+       ===================================================== */
+
+    function updateChapterProgress() {
+
+        const current =
+            String(
+                gameProgress.currentChapter
+            ).padStart(2, "0");
+
+
+        const total =
+            String(
+                gameProgress.totalChapters
+            ).padStart(2, "0");
+
+
+        if (hudChapter) {
+
+            hudChapter.textContent =
+                current;
+
+        }
+
+
+        if (chapterCurrentNumber) {
+
+            chapterCurrentNumber.textContent =
+                current;
+
+        }
+
+
+        if (chapterTotalNumber) {
+
+            chapterTotalNumber.textContent =
+                total;
+
+        }
 
     }
 
-}
+
+    /* =====================================================
+       SAVE PROGRESS
+       ===================================================== */
+
+    function saveGameProgress() {
+
+        const savedProgress = {
+
+            currentChapter:
+                gameProgress.currentChapter,
+
+            totalChapters:
+                gameProgress.totalChapters,
+
+            xp:
+                gameProgress.xp,
+
+            basa:
+                gameProgress.basa,
+
+            quizCompleted:
+                gameProgress.quizCompleted,
+
+            sayembaraCompleted:
+                gameProgress.sayembaraCompleted,
+
+            completedChapters:
+                Array.isArray(
+                    gameProgress.completedChapters
+                )
+                    ? gameProgress.completedChapters
+                    : [],
+
+            completedLocations:
+                Array.isArray(
+                    gameProgress.completedLocations
+                )
+                    ? gameProgress.completedLocations
+                    : [],
+
+            unlockedLocations:
+                Array.isArray(
+                    gameProgress.unlockedLocations
+                )
+                    ? gameProgress.unlockedLocations
+                    : [1]
+
+        };
 
 
-/* =========================================================
-   LOAD PROGRESS
-   ========================================================= */
+        try {
 
-function loadGameProgress() {
-
-    let saved = null;
-
-
-    try {
-
-        saved =
-            sessionStorage.getItem(
-                MAP_PROGRESS_KEY
+            sessionStorage.setItem(
+                MAP_PROGRESS_KEY,
+                JSON.stringify(
+                    savedProgress
+                )
             );
 
-    }
+        }
 
-    catch (error) {
+        catch (error) {
 
-        console.warn(
-            "sessionStorage tidak dapat dibaca:",
-            error
-        );
+            console.error(
+                "Gagal menyimpan progress:",
+                error
+            );
 
-        return;
-
-    }
-
-
-    if (!saved) {
-
-        gameProgress.currentChapter =
-            8;
-
-        gameProgress.xp =
-            0;
-
-        gameProgress.basa =
-            0;
-
-        gameProgress.quizCompleted =
-            false;
-
-        gameProgress.sayembaraCompleted =
-            false;
-
-        gameProgress.completedChapters =
-            [];
-
-        gameProgress.completedLocations =
-            [];
-
-        gameProgress.unlockedLocations =
-            [1, 8];
-
-        return;
+        }
 
     }
 
 
-    try {
+    /* =====================================================
+       LOAD PROGRESS
+       ===================================================== */
 
-        const parsed =
-            JSON.parse(saved);
+    function loadGameProgress() {
+
+        let savedProgress = null;
 
 
-        if (
-            typeof parsed.xp ===
-            "number"
-        ) {
+        try {
+
+            savedProgress =
+                sessionStorage.getItem(
+                    MAP_PROGRESS_KEY
+                );
+
+        }
+
+        catch (error) {
+
+            console.warn(
+                "sessionStorage tidak dapat dibaca:",
+                error
+            );
+
+        }
+
+
+        if (!savedProgress) {
+
+            gameProgress.currentChapter =
+                8;
+
+            gameProgress.totalChapters =
+                10;
 
             gameProgress.xp =
-                parsed.xp;
-
-        }
-
-
-        if (
-            typeof parsed.basa ===
-            "number"
-        ) {
+                0;
 
             gameProgress.basa =
-                parsed.basa;
+                0;
+
+            gameProgress.quizCompleted =
+                false;
+
+            gameProgress.sayembaraCompleted =
+                false;
+
+            gameProgress.completedChapters =
+                [];
+
+            gameProgress.completedLocations =
+                [];
+
+            gameProgress.unlockedLocations =
+                [1];
+
+            return;
+
+        }
+
+
+        try {
+
+            const parsed =
+                JSON.parse(
+                    savedProgress
+                );
+
+
+            if (
+                typeof parsed.currentChapter ===
+                "number"
+            ) {
+
+                gameProgress.currentChapter =
+                    parsed.currentChapter;
+
+            }
+
+
+            if (
+                typeof parsed.totalChapters ===
+                "number"
+            ) {
+
+                gameProgress.totalChapters =
+                    parsed.totalChapters;
+
+            }
+
+
+            if (
+                typeof parsed.xp ===
+                "number"
+            ) {
+
+                gameProgress.xp =
+                    parsed.xp;
+
+            }
+
+
+            if (
+                typeof parsed.basa ===
+                "number"
+            ) {
+
+                gameProgress.basa =
+                    parsed.basa;
+
+            }
+
+
+            if (
+                typeof parsed.quizCompleted ===
+                "boolean"
+            ) {
+
+                gameProgress.quizCompleted =
+                    parsed.quizCompleted;
+
+            }
+
+
+            if (
+                typeof parsed.sayembaraCompleted ===
+                "boolean"
+            ) {
+
+                gameProgress.sayembaraCompleted =
+                    parsed.sayembaraCompleted;
+
+            }
+
+
+            if (
+                Array.isArray(
+                    parsed.completedChapters
+                )
+            ) {
+
+                gameProgress.completedChapters =
+                    parsed.completedChapters;
+
+            }
+
+
+            if (
+                Array.isArray(
+                    parsed.completedLocations
+                )
+            ) {
+
+                gameProgress.completedLocations =
+                    parsed.completedLocations;
+
+            }
+
+
+            if (
+                Array.isArray(
+                    parsed.unlockedLocations
+                )
+            ) {
+
+                gameProgress.unlockedLocations =
+                    parsed.unlockedLocations;
+
+            }
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Gagal membaca progress:",
+                error
+            );
 
         }
 
 
         if (
-            Array.isArray(
-                parsed.completedChapters
+            !Array.isArray(
+                gameProgress.completedChapters
             )
         ) {
 
             gameProgress.completedChapters =
-                parsed.completedChapters;
+                [];
 
         }
 
 
         if (
-            Array.isArray(
-                parsed.completedLocations
+            !Array.isArray(
+                gameProgress.completedLocations
             )
         ) {
 
             gameProgress.completedLocations =
-                parsed.completedLocations;
+                [];
 
         }
 
 
         if (
-            Array.isArray(
-                parsed.unlockedLocations
+            !Array.isArray(
+                gameProgress.unlockedLocations
             )
         ) {
 
             gameProgress.unlockedLocations =
-                parsed.unlockedLocations;
+                [1];
 
         }
 
-
-        /*
-         * Gameplay ini selalu Chapter 08.
-         */
-
-        gameProgress.currentChapter =
-            8;
-
-
-        /*
-         * Pastikan lokasi 01 dan 08
-         * tetap tersedia.
-         */
 
         if (
             !gameProgress.unlockedLocations.includes(
@@ -537,440 +592,369 @@ function loadGameProgress() {
 
         }
 
+    }
 
-        if (
-            !gameProgress.unlockedLocations.includes(
-                8
-            )
-        ) {
 
-            gameProgress.unlockedLocations.push(
-                8
+    /* =====================================================
+       REWARD POPUP
+       ===================================================== */
+
+    function showRewardPopup(
+        text,
+        type
+    ) {
+
+        const oldPopup =
+            document.querySelector(
+                ".gameplay-reward-popup"
             );
+
+
+        if (oldPopup) {
+
+            oldPopup.remove();
 
         }
 
-    }
 
-    catch (error) {
-
-        console.error(
-            "Gagal membaca progress:",
-            error
-        );
-
-    }
-
-}
+        const popup =
+            document.createElement(
+                "div"
+            );
 
 
-/* =========================================================
-   REWARD POPUP
-   ========================================================= */
-
-function showRewardPopup(
-    text,
-    type
-) {
-
-    const oldPopup =
-        document.querySelector(
-            ".gameplay-reward-popup"
-        );
+        popup.className =
+            "gameplay-reward-popup";
 
 
-    if (oldPopup) {
-
-        oldPopup.remove();
-
-    }
-
-
-    const popup =
-        document.createElement(
-            "div"
-        );
-
-
-    popup.className =
-        "gameplay-reward-popup";
-
-
-    popup.classList.add(
-        type
-    );
-
-
-    popup.textContent =
-        text;
-
-
-    document.body.appendChild(
-        popup
-    );
-
-
-    requestAnimationFrame(
-        function () {
+        if (type) {
 
             popup.classList.add(
-                "show"
+                type
             );
 
         }
-    );
 
 
-    setTimeout(
-        function () {
+        popup.textContent =
+            text;
 
-            popup.classList.remove(
-                "show"
-            );
 
-
-            setTimeout(
-                function () {
-
-                    if (
-                        popup.parentNode
-                    ) {
-
-                        popup.remove();
-
-                    }
-
-                },
-                300
-            );
-
-        },
-        1400
-    );
-
-}
-
-
-/* =========================================================
-   XP
-   ========================================================= */
-
-function addXP(
-    amount
-) {
-
-    if (
-        typeof amount !== "number" ||
-        amount <= 0
-    ) {
-
-        return;
-
-    }
-
-
-    gameProgress.xp +=
-        amount;
-
-
-    updateHUD();
-
-
-    showRewardPopup(
-        `+${amount} XP`,
-        "xp"
-    );
-
-}
-
-
-/* =========================================================
-   BASA
-   ========================================================= */
-
-function addBasa(
-    amount
-) {
-
-    if (
-        typeof amount !== "number" ||
-        amount <= 0
-    ) {
-
-        return;
-
-    }
-
-
-    gameProgress.basa +=
-        amount;
-
-
-    updateHUD();
-
-
-    showRewardPopup(
-        `+${amount} BASA`,
-        "basa"
-    );
-
-}
-
-
-/* =========================================================
-   SINAU BASA REWARD
-   ========================================================= */
-
-let basaLearningRewardGiven =
-    false;
-
-
-function giveBasaLearningReward() {
-
-    if (
-        basaLearningRewardGiven
-    ) {
-
-        return;
-
-    }
-
-
-    basaLearningRewardGiven =
-        true;
-
-
-    addXP(
-        5
-    );
-
-
-    addBasa(
-        1
-    );
-
-}
-
-
-/* =========================================================
-   QUIZ REWARD
-   ========================================================= */
-
-function giveQuizCorrectReward() {
-
-    addXP(
-        10
-    );
-
-
-    addBasa(
-        5
-    );
-
-}
-
-
-/* =========================================================
-   QUIZ COMPLETION REWARD
-   ========================================================= */
-
-let quizCompletionRewardGiven =
-    false;
-
-
-function giveQuizCompletionReward() {
-
-    if (
-        quizCompletionRewardGiven
-    ) {
-
-        return;
-
-    }
-
-
-    quizCompletionRewardGiven =
-        true;
-
-
-    addXP(
-        20
-    );
-
-
-    addBasa(
-        10
-    );
-
-
-    gameProgress.quizCompleted =
-        true;
-
-}
-
-
-/* =========================================================
-   SAYEMBARA REWARD
-   ========================================================= */
-
-let sayembaraRewardGiven =
-    false;
-
-
-function giveSayembaraReward() {
-
-    if (
-        sayembaraRewardGiven
-    ) {
-
-        return;
-
-    }
-
-
-    sayembaraRewardGiven =
-        true;
-
-
-    addXP(
-        25
-    );
-
-
-    addBasa(
-        5
-    );
-
-
-    gameProgress.sayembaraCompleted =
-        true;
-
-}
-
-
-/* =========================================================
-   SCREEN 08 REWARD DISPLAY
-   ========================================================= */
-
-function updateChapterRewardDisplay() {
-
-    if (chapterXpReward) {
-
-        chapterXpReward.textContent =
-            "+50 XP";
-
-    }
-
-
-    if (chapterBasaReward) {
-
-        chapterBasaReward.textContent =
-            "+10 BASA";
-
-    }
-
-}
-
-
-/* =========================================================
-   SHOW STORY SCREEN
-   ========================================================= */
-
-function showStoryScreen(
-    screen
-) {
-
-    if (!screen) {
-
-        console.error(
-            "Screen yang dituju tidak ditemukan."
+        document.body.appendChild(
+            popup
         );
 
-        return;
 
-    }
+        requestAnimationFrame(
+            () => {
 
-
-    document
-        .querySelectorAll(
-            ".story-screen"
-        )
-        .forEach(
-            function (section) {
-
-                section.classList.remove(
-                    "active"
+                popup.classList.add(
+                    "show"
                 );
 
             }
         );
 
 
-    screen.classList.add(
-        "active"
-    );
+        setTimeout(
+            () => {
+
+                popup.classList.remove(
+                    "show"
+                );
 
 
-    window.scrollTo({
-        top: 0,
-        behavior: "instant"
-    });
+                setTimeout(
+                    () => {
+
+                        if (
+                            popup.parentNode
+                        ) {
+
+                            popup.remove();
+
+                        }
+
+                    },
+                    300
+                );
+
+            },
+            1400
+        );
+
+    }
 
 
-    updateHUD();
+    /* =====================================================
+       ADD XP
+       ===================================================== */
 
-}
+    function addXP(amount) {
 
+        if (
+            typeof amount !==
+            "number" ||
+            amount <= 0
+        ) {
 
-/* =========================================================
-   SCREEN 01 → SCREEN 02
-   ========================================================= */
-
-if (btnBeginStory) {
-
-    btnBeginStory.addEventListener(
-        "click",
-        function () {
-
-            showStoryScreen(
-                storyDialog
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   SCREEN 02 → SCREEN 03
-   ========================================================= */
-
-if (btnNextStory) {
-
-    btnNextStory.addEventListener(
-        "click",
-        function () {
-
-            showStoryScreen(
-                storyGameplay
-            );
+            return;
 
         }
-    );
-
-}
 
 
-/* =========================================================
-   SCREEN 02 — DENGARKAN
-   ========================================================= */
+        gameProgress.xp +=
+            amount;
 
-if (btnListen) {
 
-    btnListen.addEventListener(
-        "click",
-        function () {
+        saveGameProgress();
+
+        updateHUD();
+
+
+        showRewardPopup(
+            `+${amount} XP`,
+            "xp"
+        );
+
+    }
+
+
+    /* =====================================================
+       ADD BASA
+       ===================================================== */
+
+    function addBasa(amount) {
+
+        if (
+            typeof amount !==
+            "number" ||
+            amount <= 0
+        ) {
+
+            return;
+
+        }
+
+
+        gameProgress.basa +=
+            amount;
+
+
+        saveGameProgress();
+
+        updateHUD();
+
+
+        showRewardPopup(
+            `+${amount} BASA`,
+            "basa"
+        );
+
+    }
+
+
+    /* =====================================================
+       SCREEN NAVIGATION
+       ===================================================== */
+
+    function showStoryScreen(
+        screen
+    ) {
+
+        if (!screen) {
+
+            console.error(
+                "Screen tidak ditemukan."
+            );
+
+            return;
+
+        }
+
+
+        document
+            .querySelectorAll(
+                ".story-screen"
+            )
+            .forEach(
+                section => {
+
+                    section.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+        screen.classList.add(
+            "active"
+        );
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+        updateHUD();
+
+    }
+
+
+    /* =====================================================
+       OPENING → DIALOG
+       ===================================================== */
+
+    if (btnBeginStory) {
+
+        btnBeginStory.addEventListener(
+            "click",
+            () => {
+
+                showStoryScreen(
+                    storyDialog
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       DIALOG → TRANSITION
+       ===================================================== */
+
+    if (btnNextStory) {
+
+        btnNextStory.addEventListener(
+            "click",
+            () => {
+
+                showStoryScreen(
+                    storyGameplay
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       AUDIO DIALOG
+       ===================================================== */
+
+    if (btnListen) {
+
+        btnListen.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    !(
+                        "speechSynthesis"
+                        in window
+                    )
+                ) {
+
+                    alert(
+                        "Fitur suara tidak tersedia di browser iki."
+                    );
+
+                    return;
+
+                }
+
+
+                const dialogs =
+                    document.querySelectorAll(
+                        "#story-dialog .dialog-text"
+                    );
+
+
+                let text = "";
+
+
+                dialogs.forEach(
+                    dialog => {
+
+                        text +=
+                            dialog
+                                .textContent
+                                .trim()
+                            + " ";
+
+                    }
+                );
+
+
+                if (!text.trim()) {
+
+                    return;
+
+                }
+
+
+                window.speechSynthesis.cancel();
+
+
+                const utterance =
+                    new SpeechSynthesisUtterance(
+                        text
+                    );
+
+
+                utterance.lang =
+                    "id-ID";
+
+                utterance.rate =
+                    0.9;
+
+                utterance.pitch =
+                    1;
+
+
+                window.speechSynthesis.speak(
+                    utterance
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       TRANSITION → LEARNING BASA
+       ===================================================== */
+
+    if (btnStartGameplay) {
+
+        btnStartGameplay.addEventListener(
+            "click",
+            () => {
+
+                showStoryScreen(
+                    storyLearningBasa
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       SUARA KOSAKATA
+       TIDAK ADA REWARD
+       ===================================================== */
+
+    window.speakBasa =
+        function (word) {
 
             if (
                 !(
@@ -980,7 +964,7 @@ if (btnListen) {
             ) {
 
                 alert(
-                    "Fitur suara tidak tersedia di browser ini."
+                    "Fitur suara tidak tersedia di browser iki."
                 );
 
                 return;
@@ -988,30 +972,7 @@ if (btnListen) {
             }
 
 
-            const dialogs =
-                document.querySelectorAll(
-                    "#story-dialog .dialog-text"
-                );
-
-
-            let text =
-                "";
-
-
-            dialogs.forEach(
-                function (dialog) {
-
-                    text +=
-                        dialog.textContent.trim()
-                        + " ";
-
-                }
-            );
-
-
-            if (
-                !text.trim()
-            ) {
+            if (!word) {
 
                 return;
 
@@ -1023,17 +984,15 @@ if (btnListen) {
 
             const utterance =
                 new SpeechSynthesisUtterance(
-                    text
+                    word
                 );
 
 
             utterance.lang =
                 "id-ID";
 
-
             utterance.rate =
-                0.9;
-
+                0.85;
 
             utterance.pitch =
                 1;
@@ -1043,674 +1002,540 @@ if (btnListen) {
                 utterance
             );
 
+        };
+
+
+    /* =====================================================
+       QUIZ DATA
+       4 SOAL
+       ===================================================== */
+
+    const quizData = [
+
+        {
+
+            question:
+                "Godaan kapisan sing muncul nalika Banyakcatra lagi tapa yaiku?",
+
+            answer:
+                "Macan",
+
+            options: [
+
+                "Ula gedhe",
+
+                "Macan",
+
+                "Kebo Kemali",
+
+                "Memedi lan balung"
+
+            ],
+
+            feedbackCorrect:
+                "Bener! Godaan kapisan sing muncul yaiku macan.",
+
+            feedbackWrong:
+                "Durung tepat. Godaan kapisan sing muncul yaiku macan."
+
+        },
+
+
+        {
+
+            question:
+                "Apa sing kedadeyan nalika ula gedhe teka nalika Banyakcatra lagi semadi?",
+
+            answer:
+                "Ula gedhe ngubengi awake",
+
+            options: [
+
+                "Ula gedhe ngubengi awake",
+
+                "Ula gedhe nggawa Banyakcatra lunga",
+
+                "Ula gedhe nyerang saka kadohan",
+
+                "Ula gedhe malih dadi manungsa"
+
+            ],
+
+            feedbackCorrect:
+                "Bener! Ula gedhe ngubengi awaké Banyakcatra.",
+
+            feedbackWrong:
+                "Durung tepat. Ula gedhe ngubengi awaké Banyakcatra."
+
+        },
+
+
+        {
+
+            question:
+                "Wujud medeni apa sing teka silih ganti nalika Banyakcatra nindakake semadi?",
+
+            answer:
+                "Memedi, balung, lan mayit",
+
+            options: [
+
+                "Manuk lan naga",
+
+                "Memedi, balung, lan mayit",
+
+                "Prajurit kerajaan",
+
+                "Raksasa penjaga alas"
+
+            ],
+
+            feedbackCorrect:
+                "Bener! Memedi, balung, lan mayit teka silih ganti.",
+
+            feedbackWrong:
+                "Durung tepat. Memedi, balung, lan mayit minangka wujud godaan."
+
+        },
+
+
+        {
+
+            question:
+                "Sapa sing dadi cobaan pungkasan lan paling nggegirisi kanggo Banyakcatra?",
+
+            answer:
+                "Kebo Kemali",
+
+            options: [
+
+                "Macan",
+
+                "Ula gedhe",
+
+                "Kebo Kemali",
+
+                "Memedi lan balung"
+
+            ],
+
+            feedbackCorrect:
+                "Bener! Kebo Kemali minangka cobaan pungkasan.",
+
+            feedbackWrong:
+                "Durung tepat. Cobaan pungkasan yaiku Kebo Kemali."
+
         }
-    );
 
-}
-
-
-/* =========================================================
-   SCREEN 03 → SCREEN 04
-   ========================================================= */
-
-if (btnStartGameplay) {
-
-    btnStartGameplay.addEventListener(
-        "click",
-        function () {
-
-            giveBasaLearningReward();
+    ];
 
 
-            showStoryScreen(
-                storyLearningBasa
-            );
+    /* =====================================================
+       QUIZ ELEMENT
+       ===================================================== */
 
-        }
-    );
-
-}
-
-
-/* =========================================================
-   TEXT TO SPEECH BASA
-   ========================================================= */
-
-function speakBasa(
-    word
-) {
-
-    if (
-        !(
-            "speechSynthesis"
-            in window
-        )
-    ) {
-
-        alert(
-            "Fitur suara tidak tersedia di browser ini."
+    const quizQuestion =
+        document.getElementById(
+            "quizQuestion"
         );
 
-        return;
+    const quizOptions =
+        document.querySelectorAll(
+            "#story-quiz-basa .quiz-option"
+        );
 
-    }
+    const quizFeedback =
+        document.getElementById(
+            "quizFeedback"
+        );
 
+    const quizQuestionNumber =
+        document.getElementById(
+            "quizQuestionNumber"
+        );
 
-    let text =
-        "";
-
-
-    switch (word) {
-
-        case "kula":
-
-            text =
-                "Kula. Artinya saya.";
-
-            break;
-
-
-        case "nyuwun pangestu":
-
-            text =
-                "Nyuwun pangestu. Artinya memohon restu.";
-
-            break;
-
-
-        case "badhe":
-
-            text =
-                "Badhé. Artinya akan atau hendak.";
-
-            break;
-
-
-        case "rama":
-
-            text =
-                "Rama. Artinya ayah.";
-
-            break;
-
-
-        default:
-
-            text =
-                word;
-
-    }
-
-
-    window.speechSynthesis.cancel();
-
-
-    const utterance =
-        new SpeechSynthesisUtterance(
-            text
+    const quizProgressFill =
+        document.getElementById(
+            "quizProgressFill"
         );
 
 
-    utterance.lang =
-        "id-ID";
+    let currentQuizIndex =
+        0;
 
 
-    utterance.rate =
-        0.85;
+    let quizScore =
+        0;
 
 
-    utterance.pitch =
-        1;
-
-
-    window.speechSynthesis.speak(
-        utterance
-    );
-
-}
-
-
-/* =========================================================
-   QUIZ DATA
-   ========================================================= */
-
-const quizData = [
-
-    {
-
-        question:
-            'Apa arti dari kata "Kula"?',
-
-        answer:
-            "Saya",
-
-        options: [
-            "Saya",
-            "Ayah",
-            "Memohon restu",
-            "Akan"
-        ],
-
-        feedbackCorrect:
-            "Benar! Kula berarti saya.",
-
-        feedbackWrong:
-            "Belum tepat. Kula berarti saya."
-
-    },
-
-
-    {
-
-        question:
-            'Apa arti dari "Nyuwun Pangestu"?',
-
-        answer:
-            "Memohon restu",
-
-        options: [
-            "Memohon restu",
-            "Saya",
-            "Ayah",
-            "Akan"
-        ],
-
-        feedbackCorrect:
-            "Benar! Nyuwun Pangestu berarti memohon restu.",
-
-        feedbackWrong:
-            "Belum tepat. Nyuwun Pangestu berarti memohon restu."
-
-    },
-
-
-    {
-
-        question:
-            'Apa arti dari kata "Badhé"?',
-
-        answer:
-            "Akan",
-
-        options: [
-            "Akan",
-            "Ayah",
-            "Saya",
-            "Memohon restu"
-        ],
-
-        feedbackCorrect:
-            "Benar! Badhé berarti akan atau hendak.",
-
-        feedbackWrong:
-            "Belum tepat. Badhé berarti akan atau hendak."
-
-    },
-
-
-    {
-
-        question:
-            'Apa arti dari kata "Rama"?',
-
-        answer:
-            "Ayah",
-
-        options: [
-            "Ayah",
-            "Saya",
-            "Akan",
-            "Memohon restu"
-        ],
-
-        feedbackCorrect:
-            "Benar! Rama merupakan sapaan untuk ayah.",
-
-        feedbackWrong:
-            "Belum tepat. Rama merupakan sapaan untuk ayah."
-
-    }
-
-];
-
-
-/* =========================================================
-   ELEMENT QUIZ
-   ========================================================= */
-
-const quizQuestion =
-    document.getElementById(
-        "quizQuestion"
-    );
-
-
-const quizOptions =
-    document.querySelectorAll(
-        "#story-quiz-basa .quiz-option"
-    );
-
-
-const quizFeedback =
-    document.getElementById(
-        "quizFeedback"
-    );
-
-
-const quizQuestionNumber =
-    document.getElementById(
-        "quizQuestionNumber"
-    );
-
-
-const quizProgressFill =
-    document.getElementById(
-        "quizProgressFill"
-    );
-
-
-/* =========================================================
-   STATE QUIZ
-   ========================================================= */
-
-let currentQuizIndex =
-    0;
-
-
-let quizScore =
-    0;
-
-
-let selectedAnswer =
-    false;
-
-
-/* =========================================================
-   SHUFFLE
-   ========================================================= */
-
-function shuffleArray(
-    array
-) {
-
-    const shuffled =
-        [...array];
-
-
-    for (
-        let i =
-            shuffled.length - 1;
-
-        i > 0;
-
-        i--
-    ) {
-
-        const j =
-            Math.floor(
-                Math.random()
-                *
-                (i + 1)
-            );
-
-
-        [
-            shuffled[i],
-            shuffled[j]
-        ] =
-        [
-            shuffled[j],
-            shuffled[i]
-        ];
-
-    }
-
-
-    return shuffled;
-
-}
-
-
-/* =========================================================
-   LOAD QUIZ QUESTION
-   ========================================================= */
-
-function loadQuizQuestion() {
-
-    if (
-        !quizQuestion ||
-        !quizOptions.length
-    ) {
-
-        return;
-
-    }
-
-
-    const currentQuestion =
-        quizData[
-            currentQuizIndex
-        ];
-
-
-    if (!currentQuestion) {
-
-        return;
-
-    }
-
-
-    selectedAnswer =
+    let quizAnswered =
         false;
 
 
-    if (quizFeedback) {
+    /* =====================================================
+       SHUFFLE
+       ===================================================== */
 
-        quizFeedback.textContent =
-            "";
+    function shuffleArray(
+        array
+    ) {
 
-
-        quizFeedback.classList.remove(
-            "correct",
-            "wrong",
-            "show"
-        );
-
-    }
+        const shuffled =
+            [...array];
 
 
-    if (btnNextQuiz) {
+        for (
+            let i =
+                shuffled.length - 1;
 
-        btnNextQuiz.disabled =
-            true;
+            i > 0;
 
-
-        btnNextQuiz.textContent =
-
-            currentQuizIndex ===
-            quizData.length - 1
-
-                ? "SELESAIKAN QUIZ →"
-
-                : "SOAL BERIKUTNYA →";
-
-    }
-
-
-    if (quizQuestionNumber) {
-
-        quizQuestionNumber.textContent =
-
-            `PERTANYAAN ${
-                String(
-                    currentQuizIndex + 1
-                ).padStart(
-                    2,
-                    "0"
-                )
-            } / ${
-                String(
-                    quizData.length
-                ).padStart(
-                    2,
-                    "0"
-                )
-            }`;
-
-    }
-
-
-    if (quizProgressFill) {
-
-        const progress =
-            (
-                (
-                    currentQuizIndex + 1
-                )
-                /
-                quizData.length
-            )
-            *
-            100;
-
-
-        quizProgressFill.style.width =
-            `${progress}%`;
-
-    }
-
-
-    quizQuestion.textContent =
-        currentQuestion.question;
-
-
-    const shuffledOptions =
-        shuffleArray(
-            currentQuestion.options
-        );
-
-
-    quizOptions.forEach(
-        function (
-            option,
-            index
+            i--
         ) {
 
-            const answer =
-                shuffledOptions[index];
-
-
-            const answerText =
-                option.querySelector(
-                    "span:last-child"
+            const j =
+                Math.floor(
+                    Math.random()
+                    * (i + 1)
                 );
 
 
-            const letter =
-                option.querySelector(
-                    ".quiz-option-letter"
-                );
+            [
+                shuffled[i],
+                shuffled[j]
+            ] = [
+                shuffled[j],
+                shuffled[i]
+            ];
+
+        }
 
 
-            option.classList.remove(
+        return shuffled;
+
+    }
+
+
+    /* =====================================================
+       LOAD QUIZ
+       ===================================================== */
+
+    function loadQuizQuestion() {
+
+        const currentQuestion =
+            quizData[
+                currentQuizIndex
+            ];
+
+
+        if (
+            !currentQuestion
+        ) {
+
+            return;
+
+        }
+
+
+        quizAnswered =
+            false;
+
+
+        if (quizFeedback) {
+
+            quizFeedback.textContent =
+                "";
+
+            quizFeedback.classList.remove(
                 "correct",
                 "wrong",
-                "selected"
+                "show"
+            );
+
+        }
+
+
+        if (btnNextQuiz) {
+
+            btnNextQuiz.disabled =
+                true;
+
+
+            btnNextQuiz.textContent =
+                currentQuizIndex ===
+                quizData.length - 1
+
+                    ? "SELESAIKAN QUIZ →"
+
+                    : "SOAL SABANJURE →";
+
+        }
+
+
+        if (quizQuestionNumber) {
+
+            quizQuestionNumber.textContent =
+                `PERTANYAAN ${
+                    String(
+                        currentQuizIndex + 1
+                    ).padStart(2, "0")
+                } / ${
+                    String(
+                        quizData.length
+                    ).padStart(2, "0")
+                }`;
+
+        }
+
+
+        if (quizProgressFill) {
+
+            const progress =
+                (
+                    (
+                        currentQuizIndex + 1
+                    )
+                    /
+                    quizData.length
+                )
+                * 100;
+
+
+            quizProgressFill.style.width =
+                `${progress}%`;
+
+        }
+
+
+        if (quizQuestion) {
+
+            quizQuestion.textContent =
+                currentQuestion.question;
+
+        }
+
+
+        const shuffledOptions =
+            shuffleArray(
+                currentQuestion.options
             );
 
 
-            option.disabled =
-                false;
-
-
-            option.dataset.answer =
-                answer;
-
-
-            if (answerText) {
-
-                answerText.textContent =
-                    answer;
-
-            }
-
-
-            if (letter) {
-
-                letter.textContent =
-                    String.fromCharCode(
-                        65 + index
-                    );
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   QUIZ PILIHAN
-   ========================================================= */
-
-quizOptions.forEach(
-    function (
-        option
-    ) {
-
-        option.addEventListener(
-            "click",
-            function () {
-
-                if (
-                    selectedAnswer
-                ) {
-
-                    return;
-
-                }
-
-
-                const currentQuestion =
-                    quizData[
-                        currentQuizIndex
-                    ];
-
-
-                if (!currentQuestion) {
-
-                    return;
-
-                }
-
+        quizOptions.forEach(
+            (
+                option,
+                index
+            ) => {
 
                 const answer =
-                    option.dataset.answer;
+                    shuffledOptions[index];
 
 
-                /* =========================================
-                   BENAR
-                   ========================================= */
-
-                if (
-                    answer ===
-                    currentQuestion.answer
-                ) {
-
-                    selectedAnswer =
-                        true;
+                option.dataset.answer =
+                    answer;
 
 
-                    quizScore++;
-
-
-                    giveQuizCorrectReward();
-
-
-                    option.classList.add(
-                        "correct"
+                const text =
+                    option.querySelector(
+                        "span:last-child"
                     );
 
 
-                    if (quizFeedback) {
-
-                        quizFeedback.textContent =
-                            currentQuestion.feedbackCorrect;
-
-
-                        quizFeedback.classList.remove(
-                            "wrong"
-                        );
-
-
-                        quizFeedback.classList.add(
-                            "correct",
-                            "show"
-                        );
-
-                    }
-
-
-                    quizOptions.forEach(
-                        function (
-                            item
-                        ) {
-
-                            item.disabled =
-                                true;
-
-                        }
+                const letter =
+                    option.querySelector(
+                        ".quiz-option-letter"
                     );
 
 
-                    if (btnNextQuiz) {
+                option.classList.remove(
+                    "correct",
+                    "wrong",
+                    "selected"
+                );
 
-                        btnNextQuiz.disabled =
-                            false;
 
-                    }
+                option.disabled =
+                    false;
+
+
+                if (text) {
+
+                    text.textContent =
+                        answer;
 
                 }
 
 
-                /* =========================================
-                   SALAH
-                   ========================================= */
+                if (letter) {
 
-                else {
+                    letter.textContent =
+                        String.fromCharCode(
+                            65 + index
+                        );
 
-                    selectedAnswer =
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       QUIZ CLICK
+       ===================================================== */
+
+    quizOptions.forEach(
+        option => {
+
+            option.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        quizAnswered
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const currentQuestion =
+                        quizData[
+                            currentQuizIndex
+                        ];
+
+
+                    if (
+                        !currentQuestion
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const answer =
+                        option.dataset.answer;
+
+
+                    quizAnswered =
                         true;
 
 
-                    option.classList.add(
-                        "wrong"
-                    );
+                    const isCorrect =
+                        answer ===
+                        currentQuestion.answer;
 
 
-                    if (quizFeedback) {
+                    /* =====================================
+                       JAWABAN BENAR
+                       +10 XP
+                       +5 BASA
+                       ===================================== */
 
-                        quizFeedback.textContent =
-                            currentQuestion.feedbackWrong;
+                    if (isCorrect) {
+
+                        quizScore++;
 
 
-                        quizFeedback.classList.remove(
+                        option.classList.add(
                             "correct"
                         );
 
 
-                        quizFeedback.classList.add(
-                            "wrong",
-                            "show"
+                        addXP(
+                            10
+                        );
+
+
+                        addBasa(
+                            5
+                        );
+
+
+                        if (quizFeedback) {
+
+                            quizFeedback.textContent =
+                                currentQuestion
+                                    .feedbackCorrect;
+
+
+                            quizFeedback.classList.remove(
+                                "wrong"
+                            );
+
+
+                            quizFeedback.classList.add(
+                                "correct",
+                                "show"
+                            );
+
+                        }
+
+                    }
+
+
+                    /* =====================================
+                       JAWABAN SALAH
+                       +0 XP
+                       +0 BASA
+                       ===================================== */
+
+                    else {
+
+                        option.classList.add(
+                            "wrong"
+                        );
+
+
+                        if (quizFeedback) {
+
+                            quizFeedback.textContent =
+                                currentQuestion
+                                    .feedbackWrong;
+
+
+                            quizFeedback.classList.remove(
+                                "correct"
+                            );
+
+
+                            quizFeedback.classList.add(
+                                "wrong",
+                                "show"
+                            );
+
+                        }
+
+
+                        quizOptions.forEach(
+                            item => {
+
+                                if (
+                                    item.dataset.answer ===
+                                    currentQuestion.answer
+                                ) {
+
+                                    item.classList.add(
+                                        "correct"
+                                    );
+
+                                }
+
+                            }
                         );
 
                     }
 
 
-                    quizOptions.forEach(
-                        function (
-                            item
-                        ) {
-
-                            if (
-                                item.dataset.answer ===
-                                currentQuestion.answer
-                            ) {
-
-                                item.classList.add(
-                                    "correct"
-                                );
-
-                            }
-
-                        }
-                    );
-
+                    /* =====================================
+                       KUNCI PILIHAN
+                       ===================================== */
 
                     quizOptions.forEach(
-                        function (
-                            item
-                        ) {
+                        item => {
 
                             item.disabled =
                                 true;
@@ -1727,291 +1552,534 @@ quizOptions.forEach(
                     }
 
                 }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       MULAI QUIZ
+       ===================================================== */
+
+    if (btnStartQuizBasa) {
+
+        btnStartQuizBasa.addEventListener(
+            "click",
+            () => {
+
+                currentQuizIndex =
+                    0;
+
+
+                quizScore =
+                    0;
+
+
+                quizAnswered =
+                    false;
+
+
+                gameProgress.quizCompleted =
+                    false;
+
+
+                showStoryScreen(
+                    storyQuizBasa
+                );
+
+
+                loadQuizQuestion();
 
             }
         );
 
     }
-);
 
 
-/* =========================================================
-   SCREEN 04 → SCREEN 05
-   ========================================================= */
+    /* =====================================================
+       NEXT QUIZ
+       ===================================================== */
 
-if (btnStartQuizBasa) {
+    if (btnNextQuiz) {
 
-    btnStartQuizBasa.addEventListener(
-        "click",
-        function () {
+        btnNextQuiz.addEventListener(
+            "click",
+            () => {
 
-            currentQuizIndex =
-                0;
+                if (
+                    !quizAnswered
+                ) {
 
+                    return;
 
-            quizScore =
-                0;
-
-
-            quizCompletionRewardGiven =
-                false;
+                }
 
 
-            showStoryScreen(
-                storyQuizBasa
-            );
+                /* =====================================
+                   MASIH ADA SOAL
+                   ===================================== */
+
+                if (
+                    currentQuizIndex <
+                    quizData.length - 1
+                ) {
+
+                    currentQuizIndex++;
 
 
-            loadQuizQuestion();
-
-        }
-    );
-
-}
+                    loadQuizQuestion();
 
 
-/* =========================================================
-   QUIZ NEXT
-   ========================================================= */
+                    return;
 
-if (btnNextQuiz) {
+                }
 
-    btnNextQuiz.addEventListener(
-        "click",
-        function () {
 
-            if (
-                selectedAnswer ===
-                "quiz-finished"
-            ) {
+                /* =====================================
+                   4 SOAL SELESAI
+                   TIDAK ADA BONUS REWARD
+                   ===================================== */
+
+                gameProgress.quizCompleted =
+                    true;
+
+
+                saveGameProgress();
+
+
+                if (quizFeedback) {
+
+                    quizFeedback.classList.remove(
+                        "wrong"
+                    );
+
+
+                    quizFeedback.classList.add(
+                        "correct",
+                        "show"
+                    );
+
+
+                    quizFeedback.innerHTML =
+                        `
+                        <strong>Quiz rampung!</strong>
+                        <br>
+                        Wangsulanmu bener
+                        <strong>
+                            ${quizScore} saka ${quizData.length}
+                        </strong>
+                        soal.
+                        <br><br>
+                        <strong>
+                            Ora ana bonus tambahan.
+                        </strong>
+                        `;
+
+                }
+
+
+                btnNextQuiz.disabled =
+                    false;
+
+
+                btnNextQuiz.textContent =
+                    "LANJUT KE CERITA →";
+
+
+                btnNextQuiz.dataset.finished =
+                    "true";
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       QUIZ FINISHED → CERITA
+       ===================================================== */
+
+    if (btnNextQuiz) {
+
+        btnNextQuiz.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    btnNextQuiz.dataset.finished !==
+                    "true"
+                ) {
+
+                    return;
+
+                }
+
+
+                delete btnNextQuiz.dataset.finished;
+
 
                 showStoryScreen(
                     storySayembaraStory
                 );
 
-
-                return;
-
             }
+        );
+
+    }
 
 
-            if (
-                !selectedAnswer
-            ) {
+    /* =====================================================
+       SAYEMBARA
+       ===================================================== */
 
-                return;
-
-            }
-
-
-            if (
-                currentQuizIndex <
-                quizData.length - 1
-            ) {
-
-                currentQuizIndex++;
-
-
-                loadQuizQuestion();
-
-
-                return;
-
-            }
-
-
-            showQuizResult();
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   HASIL QUIZ
-   ========================================================= */
-
-function showQuizResult() {
-
-    giveQuizCompletionReward();
-
-
-    if (quizFeedback) {
-
-        quizFeedback.classList.remove(
-            "wrong"
+    const sayembaraDropzone =
+        document.getElementById(
+            "sayembaraDropzone"
         );
 
 
-        quizFeedback.classList.add(
+    const sayembaraFeedback =
+        document.getElementById(
+            "sayembaraFeedback"
+        );
+
+
+    const sayembaraOptions = [
+        ...document.querySelectorAll(
+            "#story-sayembara .sayembara-option"
+        )
+    ];
+
+
+    /* =====================================================
+       SAYEMBARA DATA
+       ===================================================== */
+
+    const correctSayembara =
+        new Set([
+            "tenang",
+            "diam",
+            "takut",
+            "teguh"
+        ]);
+
+
+    const sayembaraLabels = {
+
+        tenang:
+            {
+                title:
+                    "TETEP TENANG",
+
+                icon:
+                    "✦"
+            },
+
+        diam:
+            {
+                title:
+                    "TETEP MENENG",
+
+                icon:
+                    "◎"
+            },
+
+        takut:
+            {
+                title:
+                    "NAHAN RASA WEDI",
+
+                icon:
+                    "◈"
+            },
+
+        teguh:
+            {
+                title:
+                    "TETEP TEGUH",
+
+                icon:
+                    "♧"
+            },
+
+        lari:
+            {
+                title:
+                    "MLAYU SAKA PAPAN",
+
+                icon:
+                    "◇"
+            },
+
+        lawan:
+            {
+                title:
+                    "NGELAWAN COBAAN",
+
+                icon:
+                    "◌"
+            },
+
+        takluk:
+            {
+                title:
+                    "NGLILANI RASA WEDI",
+
+                icon:
+                    "▱"
+            }
+
+    };
+
+
+    /* =====================================================
+       STATE SAYEMBARA
+       ===================================================== */
+
+    const selectedSayembara =
+        new Set();
+
+
+    let draggingSayembaraKey =
+        null;
+
+
+    let sayembaraAnswered =
+        false;
+
+
+    let sayembaraRewardGiven =
+        false;
+
+
+    /* =====================================================
+       GET OPTION
+       ===================================================== */
+
+    function getSayembaraOption(
+        key
+    ) {
+
+        return sayembaraOptions.find(
+            option =>
+                option.dataset.answer ===
+                key
+        );
+
+    }
+
+
+    /* =====================================================
+       GET SLOT
+       ===================================================== */
+
+    function getSayembaraSlots() {
+
+        if (
+            !sayembaraDropzone
+        ) {
+
+            return [];
+
+        }
+
+
+        return [
+            ...sayembaraDropzone.querySelectorAll(
+                ".sayembara-slot"
+            )
+        ];
+
+    }
+
+
+    /* =====================================================
+       BUAT 4 SLOT
+       ===================================================== */
+
+    function ensureSayembaraSlots() {
+
+        if (
+            !sayembaraDropzone
+        ) {
+
+            return;
+
+        }
+
+
+        const existingSlots =
+            getSayembaraSlots();
+
+
+        if (
+            existingSlots.length ===
+            4
+        ) {
+
+            return;
+
+        }
+
+
+        sayembaraDropzone.innerHTML =
+            "";
+
+
+        for (
+            let index = 0;
+
+            index < 4;
+
+            index++
+        ) {
+
+            const slot =
+                document.createElement(
+                    "div"
+                );
+
+
+            slot.className =
+                "sayembara-slot";
+
+
+            slot.dataset.slot =
+                String(
+                    index + 1
+                );
+
+
+            slot.innerHTML =
+                `
+                <span class="sayembara-slot-number">
+                    ${index + 1}
+                </span>
+
+                <div class="sayembara-slot-content"></div>
+                `;
+
+
+            sayembaraDropzone.appendChild(
+                slot
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       FEEDBACK SAYEMBARA
+       ===================================================== */
+
+    function showSayembaraFeedback(
+        message,
+        type
+    ) {
+
+        if (
+            !sayembaraFeedback
+        ) {
+
+            return;
+
+        }
+
+
+        sayembaraFeedback.textContent =
+            message;
+
+
+        sayembaraFeedback.classList.remove(
             "correct",
+            "wrong",
             "show"
         );
 
 
-        quizFeedback.innerHTML =
+        if (type) {
 
-            `
-            <strong>Quiz selesai!</strong>
-            <br>
-            Kamu menjawab benar
-            <strong>
-                ${quizScore} dari ${quizData.length}
-            </strong>
-            soal.
-            <br><br>
-            <strong>
-                +20 XP · +10 Basa
-            </strong>
-            `;
-
-    }
-
-
-    if (btnNextQuiz) {
-
-        btnNextQuiz.disabled =
-            false;
-
-
-        btnNextQuiz.textContent =
-            "LANJUT KE CERITA →";
-
-    }
-
-
-    selectedAnswer =
-        "quiz-finished";
-
-}
-
-
-/* =========================================================
-   SCREEN 06 → SCREEN 07
-   ========================================================= */
-
-if (btnStartSayembara) {
-
-    btnStartSayembara.addEventListener(
-        "click",
-        function () {
-
-            resetSayembara();
-
-
-            showStoryScreen(
-                storySayembara
+            sayembaraFeedback.classList.add(
+                type
             );
 
         }
-    );
-
-}
 
 
-/* =========================================================
-   SAYEMBARA ELEMENT
-   ========================================================= */
+        requestAnimationFrame(
+            () => {
 
-const sayembaraDropzone =
-    document.getElementById(
-        "sayembaraDropzone"
-    );
+                sayembaraFeedback.classList.add(
+                    "show"
+                );
 
+            }
+        );
 
-const sayembaraOptions =
-    document.querySelectorAll(
-        "#story-sayembara .sayembara-option"
-    );
+    }
 
 
-const sayembaraFeedback =
-    document.getElementById(
-        "sayembaraFeedback"
-    );
+    /* =====================================================
+       UPDATE BUTTON SAYEMBARA
+       ===================================================== */
 
+    function updateSayembaraNextButton() {
 
-/* =========================================================
-   SAYEMBARA DATA
-   ========================================================= */
-
-const correctSayembara = [
-
-    "basa",
-
-    "petunjuk",
-
-    "teliti",
-
-    "tenang"
-
-];
-
-
-const wrongSayembara = [
-
-    "tergesa",
-
-    "abaikan",
-
-    "asal"
-
-];
-
-
-let selectedSayembara =
-    [];
-
-
-/* =========================================================
-   RESET SAYEMBARA
-   ========================================================= */
-
-function resetSayembara() {
-
-    selectedSayembara =
-        [];
-
-
-    sayembaraOptions.forEach(
-        function (
-            option
+        if (
+            !btnNextSayembara
         ) {
 
-            option.classList.remove(
-                "used",
-                "correct",
-                "wrong",
-                "shake",
-                "dragging"
-            );
-
-
-            option.setAttribute(
-                "draggable",
-                "true"
-            );
+            return;
 
         }
-    );
 
 
-    if (sayembaraDropzone) {
+        const complete =
+            selectedSayembara.size ===
+            4;
 
-        sayembaraDropzone
-            .querySelectorAll(
-                ".sayembara-dropped"
-            )
-            .forEach(
-                function (
-                    item
-                ) {
 
-                    item.remove();
+        btnNextSayembara.disabled =
+            !complete;
+
+
+        btnNextSayembara.classList.toggle(
+            "ready",
+            complete
+        );
+
+    }
+
+
+    /* =====================================================
+       RESET SLOT
+       ===================================================== */
+
+    function resetSayembaraSlots() {
+
+        ensureSayembaraSlots();
+
+
+        getSayembaraSlots().forEach(
+            slot => {
+
+                const content =
+                    slot.querySelector(
+                        ".sayembara-slot-content"
+                    );
+
+
+                if (content) {
+
+                    content.innerHTML =
+                        "";
 
                 }
-            );
+
+            }
+        );
 
 
         sayembaraDropzone.classList.remove(
@@ -2023,400 +2091,78 @@ function resetSayembara() {
     }
 
 
-    if (sayembaraFeedback) {
+    /* =====================================================
+       RESET SAYEMBARA
+       ===================================================== */
 
-        sayembaraFeedback.textContent =
-            "";
+    function resetSayembara() {
 
+        selectedSayembara.clear();
 
-        sayembaraFeedback.classList.remove(
-            "correct",
-            "wrong",
-            "show"
-        );
 
-    }
+        draggingSayembaraKey =
+            null;
 
 
-    if (btnNextSayembara) {
+        sayembaraAnswered =
+            false;
 
-        btnNextSayembara.disabled =
-            true;
 
+        sayembaraRewardGiven =
+            false;
 
-        btnNextSayembara.classList.remove(
-            "ready"
-        );
 
-    }
+        ensureSayembaraSlots();
 
-}
 
-
-/* =========================================================
-   DRAG START
-   ========================================================= */
-
-sayembaraOptions.forEach(
-    function (
-        option
-    ) {
-
-        option.addEventListener(
-            "dragstart",
-            function (
-                event
-            ) {
-
-                if (
-                    option.classList.contains(
-                        "used"
-                    )
-                ) {
-
-                    event.preventDefault();
-
-                    return;
-
-                }
-
-
-                const answer =
-                    option.dataset.answer;
-
-
-                event.dataTransfer.setData(
-                    "text/plain",
-                    answer
-                );
-
-
-                event.dataTransfer.effectAllowed =
-                    "move";
-
-
-                option.classList.add(
-                    "dragging"
-                );
-
-            }
-        );
-
-
-        option.addEventListener(
-            "dragend",
-            function () {
-
-                option.classList.remove(
-                    "dragging"
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   DROPZONE
-   ========================================================= */
-
-if (sayembaraDropzone) {
-
-
-    sayembaraDropzone.addEventListener(
-        "dragover",
-        function (
-            event
-        ) {
-
-            event.preventDefault();
-
-
-            event.dataTransfer.dropEffect =
-                "move";
-
-
-            sayembaraDropzone.classList.add(
-                "drag-over"
-            );
-
-        }
-    );
-
-
-    sayembaraDropzone.addEventListener(
-        "dragleave",
-        function (
-            event
-        ) {
-
-            if (
-                event.relatedTarget &&
-                sayembaraDropzone.contains(
-                    event.relatedTarget
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            sayembaraDropzone.classList.remove(
-                "drag-over"
-            );
-
-        }
-    );
-
-
-    sayembaraDropzone.addEventListener(
-        "drop",
-        function (
-            event
-        ) {
-
-            event.preventDefault();
-
-
-            sayembaraDropzone.classList.remove(
-                "drag-over"
-            );
-
-
-            const answer =
-                event.dataTransfer.getData(
-                    "text/plain"
-                );
-
-
-            if (!answer) {
-
-                return;
-
-            }
-
-
-            if (
-                selectedSayembara.includes(
-                    answer
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            const option =
-                Array.from(
-                    sayembaraOptions
-                ).find(
-                    function (
-                        item
-                    ) {
-
-                        return (
-                            item.dataset.answer ===
-                            answer
-                        );
-
-                    }
-                );
-
-
-            if (!option) {
-
-                return;
-
-            }
-
-
-            selectedSayembara.push(
-                answer
-            );
-
-
-            option.classList.add(
-                "used"
-            );
-
-
-            option.setAttribute(
-                "draggable",
-                "false"
-            );
-
-
-            const dropped =
-                document.createElement(
-                    "div"
-                );
-
-
-            dropped.className =
-                "sayembara-dropped";
-
-
-            dropped.dataset.answer =
-                answer;
-
-
-            dropped.textContent =
-                option.innerText
-                    .replace(
-                        /\s+/g,
-                        " "
-                    )
-                    .trim();
-
-
-            sayembaraDropzone.appendChild(
-                dropped
-            );
-
-
-            sayembaraDropzone.classList.add(
-                "has-items"
-            );
-
-
-            checkSayembara();
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   CHECK SAYEMBARA
-   ========================================================= */
-
-function checkSayembara() {
-
-    if (
-        selectedSayembara.length <
-        4
-    ) {
-
-        return;
-
-    }
-
-
-    const selectedCorrect =
-        selectedSayembara.filter(
-            function (
-                answer
-            ) {
-
-                return correctSayembara.includes(
-                    answer
-                );
-
-            }
-        );
-
-
-    const selectedWrong =
-        selectedSayembara.filter(
-            function (
-                answer
-            ) {
-
-                return wrongSayembara.includes(
-                    answer
-                );
-
-            }
-        );
-
-
-    if (
-        selectedCorrect.length ===
-        4 &&
-        selectedWrong.length ===
-        0
-    ) {
-
-        if (sayembaraFeedback) {
-
-            sayembaraFeedback.textContent =
-                "Benar! Kamandaka memilih langkah yang tepat di Sawangan.";
-
-
-            sayembaraFeedback.classList.remove(
-                "wrong"
-            );
-
-
-            sayembaraFeedback.classList.add(
-                "correct",
-                "show"
-            );
-
-        }
-
-
-        if (sayembaraDropzone) {
-
-            sayembaraDropzone.classList.add(
-                "complete"
-            );
-
-        }
+        resetSayembaraSlots();
 
 
         sayembaraOptions.forEach(
-            function (
-                option
-            ) {
+            option => {
 
                 option.classList.remove(
-                    "wrong"
+                    "used",
+                    "dragging",
+                    "correct",
+                    "wrong",
+                    "shake"
                 );
 
 
-                option.classList.add(
-                    "correct"
-                );
+                option.disabled =
+                    false;
+
+
+                option.draggable =
+                    true;
+
+
+                option.dataset.selected =
+                    "false";
+
+
+                option.style.pointerEvents =
+                    "";
+
+
+                option.style.cursor =
+                    "grab";
 
             }
         );
 
 
-        if (btnNextSayembara) {
-
-            btnNextSayembara.disabled =
-                false;
-
-
-            btnNextSayembara.classList.add(
-                "ready"
-            );
-
-        }
-
-    }
-
-
-    else {
-
-        if (sayembaraFeedback) {
+        if (
+            sayembaraFeedback
+        ) {
 
             sayembaraFeedback.textContent =
-                "Belum tepat. Perhatikan kembali langkah Kamandaka sebelum melanjutkan.";
+                "";
 
 
             sayembaraFeedback.classList.remove(
-                "correct"
-            );
-
-
-            sayembaraFeedback.classList.add(
+                "correct",
                 "wrong",
                 "show"
             );
@@ -2424,72 +2170,28 @@ function checkSayembara() {
         }
 
 
-        selectedSayembara.forEach(
-            function (
-                answer
-            ) {
-
-                const option =
-                    Array.from(
-                        sayembaraOptions
-                    ).find(
-                        function (
-                            item
-                        ) {
-
-                            return (
-                                item.dataset.answer ===
-                                answer
-                            );
-
-                        }
-                    );
-
-
-                if (
-                    option &&
-                    wrongSayembara.includes(
-                        answer
-                    )
-                ) {
-
-                    option.classList.add(
-                        "wrong",
-                        "shake"
-                    );
-
-                }
-
-            }
-        );
-
-
-        setTimeout(
-            function () {
-
-                resetSayembara();
-
-            },
-            900
-        );
+        updateSayembaraNextButton();
 
     }
 
-}
+
+    /* =====================================================
+       SET LABEL SAYEMBARA
+       ===================================================== */
+
+    sayembaraOptions.forEach(
+        option => {
+
+            const key =
+                option.dataset.answer;
 
 
-/* =========================================================
-   SCREEN 07 → SCREEN 08
-   ========================================================= */
+            const data =
+                sayembaraLabels[key];
 
-if (btnNextSayembara) {
-
-    btnNextSayembara.addEventListener(
-        "click",
-        function () {
 
             if (
-                btnNextSayembara.disabled
+                !data
             ) {
 
                 return;
@@ -2497,386 +2199,984 @@ if (btnNextSayembara) {
             }
 
 
-            giveSayembaraReward();
+            option.innerHTML =
+                `
+                <span class="sayembara-icon">
+                    ${data.icon}
+                </span>
+
+                <strong>
+                    ${data.title}
+                </strong>
+                `;
+
+        }
+    );
 
 
-            updateChapterRewardDisplay();
+    /* =====================================================
+       DRAG START
+       ===================================================== */
+
+    sayembaraOptions.forEach(
+        option => {
+
+            option.addEventListener(
+                "dragstart",
+                event => {
+
+                    if (
+                        option.classList.contains(
+                            "used"
+                        )
+                    ) {
+
+                        event.preventDefault();
+
+                        return;
+
+                    }
 
 
-            showStoryScreen(
-                storyChapter08
+                    draggingSayembaraKey =
+                        option.dataset.answer;
+
+
+                    event.dataTransfer.setData(
+                        "text/plain",
+                        draggingSayembaraKey
+                    );
+
+
+                    event.dataTransfer.effectAllowed =
+                        "move";
+
+
+                    option.classList.add(
+                        "dragging"
+                    );
+
+                }
+            );
+
+
+            option.addEventListener(
+                "dragend",
+                () => {
+
+                    option.classList.remove(
+                        "dragging"
+                    );
+
+
+                    draggingSayembaraKey =
+                        null;
+
+                }
+            );
+
+
+            /* =============================================
+               KLIK JUGA BISA
+               ============================================= */
+
+            option.addEventListener(
+                "click",
+                () => {
+
+                    if (
+                        option.classList.contains(
+                            "used"
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const key =
+                        option.dataset.answer;
+
+
+                    if (
+                        correctSayembara.has(
+                            key
+                        )
+                    ) {
+
+                        addSayembaraCorrect(
+                            key,
+                            option
+                        );
+
+                    }
+
+                    else {
+
+                        showSayembaraWrong(
+                            option
+                        );
+
+                    }
+
+                }
             );
 
         }
     );
 
-}
-
-
-/* =========================================================
-   AUDIO FINAL
-   ========================================================= */
-
-const finalDialogueText =
-
-    "Sawise ngrampungake perjalanan ing Sawangan, " +
-
-    "Kamandaka siap nerusake lampah. " +
-
-    "Saben tembung lan tandha sing ditemokake " +
-
-    "dadi bagian penting saka perjalanan sabanjure.";
-
-
-/* =========================================================
-   COMPLETE GAMEPLAY 08
-   ========================================================= */
-
-function completeGameplay08() {
-
-    const progress =
-        getProgress();
-
 
     /* =====================================================
-       CHAPTER 08 SELESAI
+       DRAG OVER
        ===================================================== */
 
     if (
-        !progress.completedChapters.includes(
-            8
-        )
+        sayembaraDropzone
     ) {
 
-        progress.completedChapters.push(
-            8
+        sayembaraDropzone.addEventListener(
+            "dragover",
+            event => {
+
+                event.preventDefault();
+
+
+                event.dataTransfer.dropEffect =
+                    "move";
+
+
+                sayembaraDropzone.classList.add(
+                    "drag-over"
+                );
+
+            }
+        );
+
+
+        sayembaraDropzone.addEventListener(
+            "dragleave",
+            event => {
+
+                if (
+                    event.relatedTarget &&
+                    sayembaraDropzone.contains(
+                        event.relatedTarget
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                sayembaraDropzone.classList.remove(
+                    "drag-over"
+                );
+
+            }
+        );
+
+
+        sayembaraDropzone.addEventListener(
+            "drop",
+            event => {
+
+                event.preventDefault();
+
+
+                sayembaraDropzone.classList.remove(
+                    "drag-over"
+                );
+
+
+                const key =
+                    event.dataTransfer.getData(
+                        "text/plain"
+                    )
+                    ||
+                    draggingSayembaraKey;
+
+
+                if (
+                    !key
+                ) {
+
+                    return;
+
+                }
+
+
+                const option =
+                    getSayembaraOption(
+                        key
+                    );
+
+
+                if (
+                    !option
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    option.classList.contains(
+                        "used"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    correctSayembara.has(
+                        key
+                    )
+                ) {
+
+                    addSayembaraCorrect(
+                        key,
+                        option
+                    );
+
+                }
+
+                else {
+
+                    showSayembaraWrong(
+                        option
+                    );
+
+                }
+
+            }
         );
 
     }
 
 
     /* =====================================================
-       LOKASI 08 SELESAI
+       JAWABAN SAYEMBARA BENAR
        ===================================================== */
 
-    if (
-        !progress.completedLocations.includes(
-            8
-        )
+    function addSayembaraCorrect(
+        key,
+        option
     ) {
 
-        progress.completedLocations.push(
-            8
-        );
+        if (
+            sayembaraAnswered
+        ) {
 
-    }
-
-
-    /* =====================================================
-       BUKA LOKASI 09
-       KALI SERAYU
-       ===================================================== */
-
-    if (
-        !progress.unlockedLocations.includes(
-            9
-        )
-    ) {
-
-        progress.unlockedLocations.push(
-            9
-        );
-
-    }
-
-
-    /* =====================================================
-       CHAPTER BERIKUTNYA
-       ===================================================== */
-
-    progress.currentChapter =
-        9;
-
-
-    /* =====================================================
-       HILANGKAN DUPLIKAT
-       ===================================================== */
-
-    progress.completedChapters = [
-
-        ...new Set(
-            progress.completedChapters
-        )
-
-    ];
-
-
-    progress.completedLocations = [
-
-        ...new Set(
-            progress.completedLocations
-        )
-
-    ];
-
-
-    progress.unlockedLocations = [
-
-        ...new Set(
-            progress.unlockedLocations
-        )
-
-    ];
-
-
-    /* =====================================================
-       SORT
-       ===================================================== */
-
-    progress.completedChapters.sort(
-        (a, b) =>
-            a - b
-    );
-
-
-    progress.completedLocations.sort(
-        (a, b) =>
-            a - b
-    );
-
-
-    progress.unlockedLocations.sort(
-        (a, b) =>
-            a - b
-    );
-
-
-    /* =====================================================
-       SIMPAN
-       ===================================================== */
-
-    saveProgress(
-        progress
-    );
-
-
-    console.log(
-        "================================="
-    );
-
-
-    console.log(
-        "GAMEPLAY 08 SELESAI"
-    );
-
-
-    console.log(
-        "Sawangan selesai."
-    );
-
-
-    console.log(
-        "Kali Serayu terbuka."
-    );
-
-
-    console.log(
-        "Progress:",
-        progress
-    );
-
-
-    console.log(
-        "================================="
-    );
-
-}
-
-
-/* =========================================================
-   GET PROGRESS
-   ========================================================= */
-
-function getProgress() {
-
-    try {
-
-        const saved =
-            sessionStorage.getItem(
-                MAP_PROGRESS_KEY
-            );
-
-
-        if (!saved) {
-
-            return {
-
-                currentChapter: 8,
-
-                totalChapters: 10,
-
-                xp:
-                    gameProgress.xp,
-
-                basa:
-                    gameProgress.basa,
-
-                quizCompleted:
-                    gameProgress.quizCompleted,
-
-                sayembaraCompleted:
-                    gameProgress.sayembaraCompleted,
-
-                completedChapters:
-                    [
-                        ...gameProgress.completedChapters
-                    ],
-
-                completedLocations:
-                    [
-                        ...gameProgress.completedLocations
-                    ],
-
-                unlockedLocations:
-                    [
-                        ...gameProgress.unlockedLocations
-                    ]
-
-            };
+            return;
 
         }
 
 
-        return {
-
-            ...gameProgress,
-
-            ...JSON.parse(
-                saved
+        if (
+            selectedSayembara.has(
+                key
             )
+        ) {
 
-        };
+            return;
 
-    }
+        }
 
-    catch (error) {
 
-        console.error(
-            "Gagal mendapatkan progress:",
-            error
+        if (
+            selectedSayembara.size >=
+            4
+        ) {
+
+            return;
+
+        }
+
+
+        ensureSayembaraSlots();
+
+
+        const slots =
+            getSayembaraSlots();
+
+
+        const slotIndex =
+            selectedSayembara.size;
+
+
+        const slot =
+            slots[slotIndex];
+
+
+        if (
+            !slot
+        ) {
+
+            return;
+
+        }
+
+
+        selectedSayembara.add(
+            key
         );
 
 
-        return {
+        /* =============================================
+           MATIKAN PILIHAN ASLI
+           ============================================= */
 
-            ...gameProgress
-
-        };
-
-    }
-
-}
-
-
-/* =========================================================
-   SAVE PROGRESS OBJECT
-   ========================================================= */
-
-function saveProgress(
-    progress
-) {
-
-    try {
-
-        sessionStorage.setItem(
-            MAP_PROGRESS_KEY,
-            JSON.stringify(
-                progress
-            )
+        option.classList.remove(
+            "wrong",
+            "shake"
         );
 
 
-        gameProgress.currentChapter =
-            progress.currentChapter;
+        option.classList.add(
+            "used",
+            "correct"
+        );
 
 
-        gameProgress.xp =
-            progress.xp;
+        option.disabled =
+            true;
 
 
-        gameProgress.basa =
-            progress.basa;
+        option.draggable =
+            false;
 
 
-        gameProgress.completedChapters =
-            progress.completedChapters;
+        option.dataset.selected =
+            "true";
 
 
-        gameProgress.completedLocations =
-            progress.completedLocations;
+        option.style.pointerEvents =
+            "none";
 
 
-        gameProgress.unlockedLocations =
-            progress.unlockedLocations;
+        option.style.cursor =
+            "default";
 
+
+        /* =============================================
+           COPY KE SLOT
+           ============================================= */
+
+        const slotContent =
+            slot.querySelector(
+                ".sayembara-slot-content"
+            );
+
+
+        if (
+            slotContent
+        ) {
+
+            slotContent.innerHTML =
+                "";
+
+
+            const copy =
+                option.cloneNode(
+                    true
+                );
+
+
+            copy.classList.remove(
+                "used",
+                "dragging",
+                "wrong",
+                "shake"
+            );
+
+
+            copy.classList.add(
+                "sayembara-slot-card"
+            );
+
+
+            copy.removeAttribute(
+                "draggable"
+            );
+
+
+            copy.removeAttribute(
+                "disabled"
+            );
+
+
+            copy.style.pointerEvents =
+                "none";
+
+
+            copy.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            slotContent.appendChild(
+                copy
+            );
+
+        }
+
+
+        sayembaraDropzone.classList.add(
+            "has-items"
+        );
+
+
+        const remaining =
+            4 -
+            selectedSayembara.size;
+
+
+        if (
+            remaining > 0
+        ) {
+
+            showSayembaraFeedback(
+                `Bener! Pilih ${remaining} sikap maneh.`,
+                "correct"
+            );
+
+        }
+
+        else {
+
+            showSayembaraFeedback(
+                "Bener! Kabeh 4 sikap sing tepat wis dipilih.",
+                "correct"
+            );
+
+        }
+
+
+        updateSayembaraNextButton();
+
+    }
+
+
+    /* =====================================================
+       JAWABAN SAYEMBARA SALAH
+       ===================================================== */
+
+    function showSayembaraWrong(
+        option
+    ) {
+
+        option.classList.remove(
+            "correct"
+        );
+
+
+        option.classList.add(
+            "wrong",
+            "shake"
+        );
+
+
+        showSayembaraFeedback(
+            "Durung tepat. Pilih sikap sing nuduhake keteguhan Banyakcatra.",
+            "wrong"
+        );
+
+
+        setTimeout(
+            () => {
+
+                option.classList.remove(
+                    "wrong",
+                    "shake"
+                );
+
+            },
+            700
+        );
+
+    }
+
+
+    /* =====================================================
+       SAYEMBARA NEXT
+       ===================================================== */
+
+    if (
+        btnNextSayembara
+    ) {
+
+        btnNextSayembara.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    selectedSayembara.size !==
+                    4
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    sayembaraAnswered
+                ) {
+
+                    return;
+
+                }
+
+
+                sayembaraAnswered =
+                    true;
+
+
+                sayembaraDropzone.classList.add(
+                    "complete"
+                );
+
+
+                showSayembaraFeedback(
+                    "Bener! Kabeh papat sikap wis nuduhake keteguhan Banyakcatra.",
+                    "correct"
+                );
+
+
+                /* =====================================
+                   SAYEMBARA REWARD
+                   HANYA SEKALI
+                   +50 XP
+                   ===================================== */
+
+                if (
+                    !sayembaraRewardGiven
+                ) {
+
+                    sayembaraRewardGiven =
+                        true;
+
+
+                    addXP(
+                        50
+                    );
+
+
+                    gameProgress.sayembaraCompleted =
+                        true;
+
+
+                    saveGameProgress();
+
+                }
+
+
+                btnNextSayembara.disabled =
+                    true;
+
+
+                setTimeout(
+                    () => {
+
+                        updateChapterRewardDisplay();
+
+                        updateHUD();
+
+                        showStoryScreen(
+                            storyChapter08
+                        );
+
+                    },
+                    900
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CHAPTER REWARD DISPLAY
+       ===================================================== */
+
+    function updateChapterRewardDisplay() {
+
+        if (
+            chapterXpReward
+        ) {
+
+            chapterXpReward.textContent =
+                "+50 XP";
+
+        }
+
+
+        if (
+            chapterBasaReward
+        ) {
+
+            chapterBasaReward.textContent =
+                "PAKAIAN SAKTI";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CERITA → SAYEMBARA
+       ===================================================== */
+
+    if (
+        btnStartSayembara
+    ) {
+
+        btnStartSayembara.addEventListener(
+            "click",
+            () => {
+
+                resetSayembara();
+
+
+                showStoryScreen(
+                    storySayembara
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CHAPTER 08 → PETA
+       ===================================================== */
+
+    if (
+        btnContinueChapter
+    ) {
+
+        btnContinueChapter.addEventListener(
+            "click",
+            () => {
+
+                /* =====================================
+                   CHAPTER 08 SELESAI
+                   ===================================== */
+
+                gameProgress.currentChapter =
+                    9;
+
+
+                if (
+                    !Array.isArray(
+                        gameProgress.completedChapters
+                    )
+                ) {
+
+                    gameProgress.completedChapters =
+                        [];
+
+                }
+
+
+                if (
+                    !gameProgress.completedChapters.includes(
+                        8
+                    )
+                ) {
+
+                    gameProgress.completedChapters.push(
+                        8
+                    );
+
+                }
+
+
+                if (
+                    !Array.isArray(
+                        gameProgress.completedLocations
+                    )
+                ) {
+
+                    gameProgress.completedLocations =
+                        [];
+
+                }
+
+
+                if (
+                    !gameProgress.completedLocations.includes(
+                        8
+                    )
+                ) {
+
+                    gameProgress.completedLocations.push(
+                        8
+                    );
+
+                }
+
+
+                if (
+                    !Array.isArray(
+                        gameProgress.unlockedLocations
+                    )
+                ) {
+
+                    gameProgress.unlockedLocations =
+                        [1];
+
+                }
+
+
+                if (
+                    !gameProgress.unlockedLocations.includes(
+                        1
+                    )
+                ) {
+
+                    gameProgress.unlockedLocations.push(
+                        1
+                    );
+
+                }
+
+
+                /* =====================================
+                   BUKA LOKASI 09
+                   ===================================== */
+
+                if (
+                    !gameProgress.unlockedLocations.includes(
+                        9
+                    )
+                ) {
+
+                    gameProgress.unlockedLocations.push(
+                        9
+                    );
+
+                }
+
+
+                /* =====================================
+                   HILANGKAN DUPLIKAT
+                   ===================================== */
+
+                gameProgress.completedChapters =
+                    [
+                        ...new Set(
+                            gameProgress.completedChapters
+                        )
+                    ];
+
+
+                gameProgress.completedLocations =
+                    [
+                        ...new Set(
+                            gameProgress.completedLocations
+                        )
+                    ];
+
+
+                gameProgress.unlockedLocations =
+                    [
+                        ...new Set(
+                            gameProgress.unlockedLocations
+                        )
+                    ];
+
+
+                /* =====================================
+                   URUTKAN
+                   ===================================== */
+
+                gameProgress.completedChapters.sort(
+                    (a, b) =>
+                        a - b
+                );
+
+
+                gameProgress.completedLocations.sort(
+                    (a, b) =>
+                        a - b
+                );
+
+
+                gameProgress.unlockedLocations.sort(
+                    (a, b) =>
+                        a - b
+                );
+
+
+                saveGameProgress();
+
+
+                updateChapterProgress();
+
+                updateHUD();
+
+
+                window.location.href =
+                    "../../peta.html";
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE
+       ===================================================== */
+
+    function initializeGame() {
+
+        loadGameProgress();
+
+
+        /*
+         * Kalau Gameplay 08 dibuka langsung,
+         * pastikan tetap berada di Bab 08.
+         */
+
+        if (
+            !gameProgress.completedChapters.includes(
+                8
+            )
+            &&
+            gameProgress.currentChapter < 8
+        ) {
+
+            gameProgress.currentChapter =
+                8;
+
+        }
+
+
+        updateChapterProgress();
+
+        updateChapterRewardDisplay();
 
         updateHUD();
 
-    }
 
-    catch (error) {
+        /* =====================================
+           BUAT 4 SLOT SAYEMBARA
+           ===================================== */
 
-        console.error(
-            "Gagal menyimpan progress:",
-            error
+        ensureSayembaraSlots();
+
+
+        resetSayembara();
+
+
+        /* =====================================
+           SEMUA SCREEN NONAKTIF
+           ===================================== */
+
+        document
+            .querySelectorAll(
+                ".story-screen"
+            )
+            .forEach(
+                section => {
+
+                    section.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+        /* =====================================
+           MULAI DARI OPENING
+           ===================================== */
+
+        showStoryScreen(
+            storyOpening
+        );
+
+
+        /* =====================================
+           RESET QUIZ
+           ===================================== */
+
+        currentQuizIndex =
+            0;
+
+
+        quizScore =
+            0;
+
+
+        quizAnswered =
+            false;
+
+
+        console.log(
+            "Lelana Kamandaka — Gameplay 08 Sawangan siap."
+        );
+
+
+        console.log(
+            "Alur: Opening → Dialog → Transition → Sinau Basa → Quiz → Cerita → Sayembara → Anugerah Dewata."
+        );
+
+
+        console.log(
+            "Quiz benar: +10 XP +5 BASA."
+        );
+
+
+        console.log(
+            "Quiz salah: +0 XP +0 BASA."
+        );
+
+
+        console.log(
+            "Tidak ada bonus tambahan setelah quiz selesai."
+        );
+
+
+        console.log(
+            "Sayembara benar: +50 XP."
         );
 
     }
 
-}
+
+    /* =====================================================
+       DOM READY
+       ===================================================== */
+
+    if (
+        document.readyState ===
+        "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeGame
+        );
+
+    }
+
+    else {
+
+        initializeGame();
+
+    }
 
 
-/* =========================================================
-   SCREEN 08 → PETA
-   ========================================================= */
-
-if (btnContinueChapter) {
-
-    btnContinueChapter.addEventListener(
-        "click",
-        function () {
-
-            completeGameplay08();
-
-
-            window.location.href =
-                "../../peta.html";
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   INITIALIZE
-   ========================================================= */
-
-loadGameProgress();
-
-
-updateHUD();
-
-
-updateChapterProgress();
-
-
-updateChapterRewardDisplay();
-
-
-loadQuizQuestion();
-
-
-console.log(
-    "Lelana Kamandaka — Gameplay 08 Sawangan siap."
-);
+})();

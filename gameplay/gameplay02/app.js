@@ -1057,18 +1057,16 @@
 
     const correctSayembaraAnswers = [
         "rakyat",
-        "keraton",
-        "sayembara",
         "nama",
+        "kebesaran",
         "pasirluhur"
     ];
 
 
     const acceptedSayembaraAnswers = [
         "rakyat",
-        "keraton",
-        "sayembara",
         "nama",
+        "kebesaran",
         "pasirluhur"
     ];
 
@@ -1237,12 +1235,95 @@
         }
 
 
-        return (
-            option.dataset.answer ||
-            ""
-        )
+        /*
+         * UTAMAKAN DATA-ANSWER
+         */
+
+        const dataAnswer =
+            (
+                option.dataset.answer ||
+                ""
+            )
             .trim()
             .toLowerCase();
+
+
+        if (dataAnswer) {
+            return dataAnswer;
+        }
+
+
+        /*
+         * JIKA DATA-ANSWER TIDAK ADA,
+         * BACA TEKS TOMBOL
+         */
+
+        const text =
+            (
+                option.textContent ||
+                ""
+            )
+            .trim()
+            .toLowerCase();
+
+
+        /*
+         * LEPAS PAKAIAN KEBESARAN
+         */
+
+        if (
+            text.includes("lepas") &&
+            text.includes("pakaian") &&
+            text.includes("kebesaran")
+        ) {
+
+            return "kebesaran";
+
+        }
+
+
+        /*
+         * HIDUP SEBAGAI RAKYAT BIASA
+         */
+
+        if (
+            text.includes("hidup") &&
+            text.includes("rakyat")
+        ) {
+
+            return "rakyat";
+
+        }
+
+
+        /*
+         * GANTI NAMA RADEN KAMANDAKA
+         */
+
+        if (
+            text.includes("ganti nama") &&
+            text.includes("raden")
+        ) {
+
+            return "nama";
+
+        }
+
+
+        /*
+         * MENUJU PASIR LUHUR
+         */
+
+        if (
+            text.includes("pasir luhur")
+        ) {
+
+            return "pasirluhur";
+
+        }
+
+
+        return text;
 
     }
 
@@ -1255,10 +1336,104 @@
         answer
     ) {
 
-        return acceptedSayembaraAnswers
-            .includes(
-                answer
-            );
+        /*
+         * NORMALISASI JAWABAN
+         */
+
+        const normalizedAnswer =
+            String(
+                answer || ""
+            )
+            .trim()
+            .toLowerCase();
+
+
+        /*
+         * EMPAT JAWABAN YANG BENAR:
+         *
+         * 1. HIDUP SEBAGAI RAKYAT BIASA
+         * 2. GANTI NAMA RADEN KAMANDAKA
+         * 3. LEPAS PAKAIAN KEBESARAN
+         * 4. MENUJU PASIR LUHUR
+         */
+
+        if (
+            acceptedSayembaraAnswers.includes(
+                normalizedAnswer
+            )
+        ) {
+
+            return true;
+
+        }
+
+
+        /*
+         * TAMBAHAN PENGAMAN UNTUK
+         * LEPAS PAKAIAN KEBESARAN
+         */
+
+        if (
+            normalizedAnswer === "pakaian"
+        ) {
+
+            return true;
+
+        }
+
+
+        if (
+            normalizedAnswer === "lepas pakaian kebesaran"
+        ) {
+
+            return true;
+
+        }
+
+
+        /*
+         * TAMBAHAN PENGAMAN UNTUK
+         * GANTI NAMA RADEN KAMANDAKA
+         */
+
+        if (
+            normalizedAnswer === "ganti nama raden kamandaka"
+        ) {
+
+            return true;
+
+        }
+
+
+        /*
+         * TAMBAHAN PENGAMAN UNTUK
+         * HIDUP SEBAGAI RAKYAT BIASA
+         */
+
+        if (
+            normalizedAnswer === "hidup sebagai rakyat biasa"
+        ) {
+
+            return true;
+
+        }
+
+
+        /*
+         * TAMBAHAN PENGAMAN UNTUK
+         * MENUJU PASIR LUHUR
+         */
+
+        if (
+            normalizedAnswer === "menuju pasir luhur"
+        ) {
+
+            return true;
+
+        }
+
+
+        return false;
 
     }
 
@@ -1353,6 +1528,10 @@
 
         }
 
+
+        /*
+         * CEK JAWABAN BENAR
+         */
 
         if (
             !isCorrectSayembaraAnswer(
@@ -1460,6 +1639,10 @@
         }
 
 
+        /*
+         * TANDAI PILIHAN SUDAH DIPAKAI
+         */
+
         option.classList.add(
             "selected"
         );
@@ -1482,6 +1665,10 @@
         option.style.pointerEvents =
             "none";
 
+
+        /*
+         * FEEDBACK
+         */
 
         if (
             selectedSayembaraAnswers.length <
@@ -1701,7 +1888,12 @@
                 }
 
 
-                const option =
+                /*
+                 * CARI OPTION BERDASARKAN
+                 * DATA-ANSWER
+                 */
+
+                let option =
                     sayembaraOptions.find(
                         item =>
                             getAnswerValue(
@@ -1710,8 +1902,51 @@
                     );
 
 
+                /*
+                 * PENGAMAN:
+                 * JIKA DATA-ANSWER BERBEDA,
+                 * CARI BERDASARKAN TEKS TOMBOL
+                 */
+
                 if (!option) {
+
+                    option =
+                        sayembaraOptions.find(
+                            item => {
+
+                                const text =
+                                    (
+                                        item.textContent ||
+                                        ""
+                                    )
+                                    .trim()
+                                    .toLowerCase();
+
+
+                                return (
+                                    text.includes(
+                                        "lepas"
+                                    ) &&
+                                    text.includes(
+                                        "pakaian"
+                                    ) &&
+                                    text.includes(
+                                        "kebesaran"
+                                    ) &&
+                                    answer ===
+                                    "kebesaran"
+                                );
+
+                            }
+                        );
+
+                }
+
+
+                if (!option) {
+
                     return;
+
                 }
 
 
