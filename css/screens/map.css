@@ -1,92 +1,1119 @@
 /* =========================================================
-   MAP PAGE
+   LELANA KAMANDAKA — MAP PAGE
+   SIDEBAR + NAVBAR + PETA
    ========================================================= */
 
-.map-page {
-    position: relative;
-    width: 100%;
-    min-height: calc(100vh - 82px);
-    padding: 36px 32px 60px;
-    box-sizing: border-box;
-    background: #f5ecd8;
+
+/* =========================================================
+   ROOT FALLBACK
+   ========================================================= */
+
+:root {
+
+    --lk-green-950: #10210f;
+    --lk-green-900: #172c14;
+    --lk-green-850: #1d3518;
+    --lk-green-800: #25441c;
+    --lk-green-700: #3c6125;
+    --lk-green-600: #55782c;
+
+    --lk-gold-100: #fff4a3;
+    --lk-gold-200: #f0dd63;
+    --lk-gold-300: #d4b735;
+    --lk-gold-400: #ad8920;
+
+    --lk-cream: #f4eedb;
+    --lk-paper: #fbf7e9;
+    --lk-ink: #26331f;
+
 }
 
 
 /* =========================================================
-   HEADING
+   RESET KHUSUS HALAMAN
    ========================================================= */
 
-.map-heading {
-    width: min(900px, 100%);
-    margin: 0 auto 28px;
-    text-align: center;
+.lk-page *,
+.lk-page *::before,
+.lk-page *::after {
+    box-sizing: border-box;
 }
 
-.map-heading-small {
-    display: block;
-    margin-bottom: 8px;
 
-    color: #8a684c;
+.lk-page {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    color: var(--lk-ink);
+
+    background:
+
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(210,184,71,.13),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 5% 90%,
+            rgba(40,75,31,.08),
+            transparent 30%
+        ),
+
+        #f4eedb;
 
     font-family:
         "Hanken Grotesk",
         Arial,
         sans-serif;
-
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
 }
 
 
-.map-heading h1 {
-    margin: 0;
+.lk-page a {
+    color: inherit;
+    text-decoration: none;
+}
 
-    color: #18270e;
+
+.lk-page button {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.lk-sidebar {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 100;
+
+    width: 212px;
+
+    padding:
+        28px
+        12px
+        20px;
+
+    color: #f7f0d8;
+
+    background:
+        linear-gradient(
+            180deg,
+            #172e14 0%,
+            #10220f 100%
+        );
+
+    border-right:
+        1px solid
+        rgba(218,188,67,.20);
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+}
+
+
+/* =========================================================
+   SIDEBAR BRAND
+   ========================================================= */
+
+.lk-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        0
+        14px
+        14px
+        14px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+
+/* =========================================================
+   BRAND MARK
+   ========================================================= */
+
+.lk-brand-mark {
+
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border:
+        2px solid
+        var(--lk-gold-300);
+
+    color:
+        var(--lk-gold-200);
+
+    transform:
+        rotate(45deg);
+
+}
+
+
+.lk-brand-mark span {
+
+    display: block;
+
+    transform:
+        rotate(-45deg);
+
+    font-size: 16px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   BRAND TEXT
+   ========================================================= */
+
+.lk-brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+}
+
+
+.lk-brand-text strong {
+
+    color: #fff8df;
 
     font-family:
         "Libre Caslon Text",
         Georgia,
         serif;
 
-    font-size: clamp(32px, 4vw, 52px);
-    line-height: 1.1;
+    font-size: 16px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing:
+        .02em;
+
 }
 
 
-.map-heading p {
-    max-width: 600px;
-    margin: 12px auto 0;
+.lk-brand-text small {
 
-    color: #655747;
+    margin-top: 5px;
+
+    color:
+        rgba(250,244,222,.62);
 
     font-family:
         "Hanken Grotesk",
         Arial,
         sans-serif;
 
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing:
+        .20em;
+
 }
 
 
 /* =========================================================
-   MAP VIEWPORT
+   SIDEBAR MENU
    ========================================================= */
 
-.map-viewport {
-    width: min(1500px, 100%);
-    margin: 0 auto;
+.lk-side-menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-top: 22px;
+
+}
+
+
+/* =========================================================
+   SIDEBAR LINK
+   ========================================================= */
+
+.lk-side-link {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-height: 48px;
+
+    padding:
+        8px
+        10px;
+
+    border-radius: 12px;
+
+    color:
+        rgba(250,244,222,.76);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+
+}
+
+
+.lk-side-link:hover {
+
+    color: #fff8d4;
+
+    background:
+        rgba(255,255,255,.06);
+
+    transform:
+        translateX(3px);
+
+}
+
+
+/* =========================================================
+   SIDEBAR ACTIVE
+   ========================================================= */
+
+.lk-side-link.active {
+
+    color: #fff8d4;
+
+    background:
+        linear-gradient(
+            90deg,
+            #496b21,
+            #38551e
+        );
+
+    box-shadow:
+        inset
+        0 0 0 1px
+        rgba(235,214,89,.25);
+
+}
+
+
+.lk-side-link.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 9px;
+    bottom: 9px;
+
+    width: 3px;
+
+    border-radius:
+        0
+        5px
+        5px
+        0;
+
+    background:
+        var(--lk-gold-300);
+
+}
+
+
+/* =========================================================
+   SIDEBAR ICON BOX
+   ========================================================= */
+
+.lk-side-icon {
+
+    width: 31px;
+    height: 31px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,.08);
+
+}
+
+
+.lk-side-link.active
+.lk-side-icon {
+
+    background:
+        var(--lk-gold-300);
+
+}
+
+
+/* =========================================================
+   SIDEBAR ICON
+   ========================================================= */
+
+.lk-side-icon img {
+
+    width: 18px;
+    height: 18px;
+
+    display: block;
+
+    object-fit: contain;
+
+}
+
+
+/* =========================================================
+   SIDEBAR QUOTE
+   ========================================================= */
+
+.lk-sidebar-quote {
+
+    position: absolute;
+
+    left: 25px;
+    right: 20px;
+
+    bottom: 28px;
+
+}
+
+
+.lk-sidebar-quote::before {
+
+    content: "";
+
+    display: block;
+
+    width: 40px;
+
+    margin-bottom: 13px;
+
+    border-top:
+        1px solid
+        rgba(220,192,71,.45);
+
+}
+
+
+.lk-sidebar-quote p {
+
+    margin: 0;
+
+    color:
+        rgba(255,248,221,.78);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    font-style: italic;
+
+}
+
+
+.lk-sidebar-quote span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    color:
+        var(--lk-gold-300);
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.lk-main {
+
+    position: relative;
+
+    z-index: 1;
+
+    margin-left: 212px;
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================================================
+   TOP NAVBAR
+   ========================================================= */
+
+.lk-navbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 90;
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        0
+        30px;
+
+    color:
+        #f8f2db;
+
+    background:
+        rgba(20,42,17,.97);
+
+    border-bottom:
+        1px solid
+        rgba(213,185,61,.16);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
+
+.lk-nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    flex: 1;
+
+}
+
+
+.lk-nav-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        11px
+        15px;
+
+    border-radius: 10px;
+
+    color:
+        rgba(250,244,222,.70);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+
+}
+
+
+.lk-nav-link:hover {
+
+    color: #fff;
+
+    background:
+        rgba(255,255,255,.06);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.lk-nav-link.active {
+
+    color:
+        #fff8d4;
+
+    background:
+        #385720;
+
+}
+
+
+.lk-nav-link img {
+
+    width: 16px;
+    height: 16px;
+
+    display: block;
+
+    object-fit: contain;
+
+}
+
+
+/* =========================================================
+   PLAYER
+   ========================================================= */
+
+.lk-player {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding-left: 20px;
+
+    border-left:
+        1px solid
+        rgba(255,255,255,.10);
+
+}
+
+
+/* =========================================================
+   PLAYER AVATAR
+   ========================================================= */
+
+.lk-avatar {
+
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        var(--lk-gold-300);
+
+    border-radius: 50%;
+
+    color:
+        var(--lk-gold-200);
+
+    background:
+        rgba(255,255,255,.04);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   PLAYER INFO
+   ========================================================= */
+
+.lk-player-info {
+
+    width: 130px;
+
+    min-width: 110px;
+
+}
+
+
+.lk-player-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+}
+
+
+.lk-player-top strong {
+
+    color:
+        #fff8df;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+.lk-player-top span {
+
+    color:
+        rgba(250,244,222,.60);
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   XP BAR
+   ========================================================= */
+
+.lk-xp {
+
+    width: 100%;
+
+    height: 5px;
+
+    margin-top: 6px;
 
     overflow: hidden;
 
-    border: 1px solid rgba(87, 60, 35, 0.45);
+    border-radius: 999px;
 
-    background: #c6a66d;
+    background:
+        rgba(255,255,255,.13);
+
+}
+
+
+.lk-xp span {
+
+    display: block;
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c972e,
+            #ead354
+        );
+
+    transition:
+        width .5s ease;
+
+}
+
+
+.lk-player-info small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        rgba(250,244,222,.48);
+
+    font-size: 7px;
+
+    text-align: right;
+
+}
+
+
+/* =========================================================
+   NAV ACTIONS
+   ========================================================= */
+
+.lk-nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-left: 18px;
+
+}
+
+
+.lk-action {
+
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 9px;
+
+    color:
+        var(--lk-gold-200);
+
+    background:
+        transparent;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition:
+        background .25s ease,
+        transform .25s ease;
+
+}
+
+
+.lk-action:hover {
+
+    background:
+        rgba(255,255,255,.08);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.lk-content {
+
+    position: relative;
+
+    width:
+        min(
+            1400px,
+            calc(100% - 38px)
+        );
+
+    margin:
+        0
+        auto;
+
+    padding:
+        34px
+        0
+        55px;
+
+}
+
+
+/* =========================================================
+   MAP PAGE PATTERN
+   ========================================================= */
+
+.map-page-pattern {
+
+    position: fixed;
+
+    inset:
+        78px
+        0
+        0
+        212px;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: .04;
+
+    background-image:
+        radial-gradient(
+            circle,
+            #496b21 1px,
+            transparent 1px
+        );
+
+    background-size:
+        26px
+        26px;
+
+}
+
+
+/* =========================================================
+   MAP HEADER
+   ========================================================= */
+
+.map-header {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            900px,
+            100%
+        );
+
+    margin:
+        0
+        auto
+        28px;
+
+    text-align: center;
+
+}
+
+
+.map-eyebrow {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        #8a684c;
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing:
+        4px;
+
+    text-transform: uppercase;
+
+}
+
+
+.map-header h1 {
+
+    margin: 0;
+
+    color:
+        #18270e;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            38px,
+            4vw,
+            56px
+        );
+
+    line-height: 1.05;
+
+    letter-spacing:
+        -.025em;
+
+}
+
+
+.map-header p {
+
+    max-width: 620px;
+
+    margin:
+        13px
+        auto
+        0;
+
+    color:
+        #655747;
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   HEADER ORNAMENT
+   ========================================================= */
+
+.map-header-ornament {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    width:
+        min(
+            260px,
+            80%
+        );
+
+    margin:
+        20px
+        auto
+        0;
+
+}
+
+
+.map-header-ornament span {
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(130,102,63,.45)
+        );
+
+}
+
+
+.map-header-ornament span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(130,102,63,.45),
+            transparent
+        );
+
+}
+
+
+.map-header-ornament b {
+
+    color:
+        #9b7947;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+}
+
+
+/* =========================================================
+   MAP SECTION
+   ========================================================= */
+
+.map-section {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   MAP CARD
+   ========================================================= */
+
+.map-card {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(87,60,35,.45);
+
+    border-radius: 16px;
+
+    background:
+        #c6a66d;
 
     box-shadow:
-        0 18px 45px rgba(55, 37, 20, 0.18);
+        0
+        18px
+        45px
+        rgba(55,37,20,.18);
+
 }
 
 
@@ -95,29 +1122,30 @@
    ========================================================= */
 
 .map-canvas {
+
     position: relative;
 
     width: 100%;
 
-    /*
-        PETA.png memiliki rasio sekitar
-        1440 : 1024.
-    */
-
-    aspect-ratio: 1440 / 1024;
+    aspect-ratio:
+        1440 / 1024;
 
     overflow: hidden;
+
 }
 
 
 /* =========================================================
-   BACKGROUND PETA
+   MAP BACKGROUND
    ========================================================= */
 
 .map-background {
+
     position: absolute;
 
     inset: 0;
+
+    z-index: 1;
 
     width: 100%;
     height: 100%;
@@ -126,18 +1154,19 @@
 
     object-fit: fill;
 
-    z-index: 1;
-
     user-select: none;
+
     pointer-events: none;
+
 }
 
 
 /* =========================================================
-   ROUTE / JALUR PETA
+   ROUTE / JALUR
    ========================================================= */
 
 .map-route {
+
     position: absolute;
 
     z-index: 5;
@@ -149,185 +1178,198 @@
 
     object-fit: contain;
 
-    opacity: 0.18;
+    opacity: .18;
 
     pointer-events: none;
 
     transition:
-        opacity 0.7s ease,
-        filter 0.7s ease;
+        opacity .7s ease,
+        filter .7s ease;
+
 }
 
 
-/* =========================================================
-   JALUR SUDAH TERBUKA
-   ========================================================= */
-
 .map-route.completed {
+
     opacity: 1;
 
     filter:
         drop-shadow(
-            0 0 4px rgba(255, 255, 255, 0.35)
+            0
+            0
+            4px
+            rgba(255,255,255,.35)
         );
+
 }
 
 
-/* =========================================================
-   JALUR BELUM TERBUKA
-   ========================================================= */
-
 .map-route.locked {
-    opacity: 0.18;
+
+    opacity: .18;
+
 }
 
 
 /* =========================================================
    ROUTE 01 → 02
-   PAJAJARAN → KI AJAR WINARONG
    ========================================================= */
 
 #route-1-2 {
+
     left: 23.8%;
+
     top: 17.5%;
+
     width: 20.5%;
+
 }
 
 
 /* =========================================================
    ROUTE 02 → 03
-   KI AJAR WINARONG → PASIR LUHUR
    ========================================================= */
 
 #route-2-3 {
+
     left: 42%;
+
     top: 16%;
+
     width: 27%;
-    height: auto;
+
 }
 
 
 /* =========================================================
    ROUTE 03 → 04
-   PASIR LUHUR → KALI LOGAWA
    ========================================================= */
 
 #route-3-4 {
+
     left: 28%;
+
     top: 9%;
+
     width: 41%;
-    height: auto;
+
 }
 
 
 /* =========================================================
    ROUTE 04 → 05
-   KALI LOGAWA → DESA PANAGIH
    ========================================================= */
 
 #route-4-5 {
+
     left: 29%;
+
     top: 43%;
+
     width: 29%;
-    height: auto;
+
 }
 
 
 /* =========================================================
    ROUTE 05 → 06
-   DESA PANAGIH → GOA JATIJAJAR
    ========================================================= */
 
 #route-5-6 {
+
     left: 57%;
+
     top: 39%;
+
     width: 21%;
-    height: auto;
+
 }
 
 
 /* =========================================================
    ROUTE 06 → 07
-   GOA JATIJAJAR → BATUR AGUNG
    ========================================================= */
 
 #route-6-7 {
+
     left: 79%;
+
     top: 39%;
+
     height: 20%;
+
     width: auto;
+
 }
 
 
 /* =========================================================
    ROUTE 07 → 08
-   BATUR AGUNG → SAWANGAN
    ========================================================= */
 
 #route-7-8 {
+
     left: 48%;
+
     top: 64%;
+
     width: 35%;
-    height: auto;
+
 }
 
 
 /* =========================================================
    ROUTE 08 → 09
-   SAWANGAN → KALI SERAYU
    ========================================================= */
 
 #route-8-9 {
+
     left: 17%;
+
     top: 66%;
+
     width: 31%;
-    height: auto;
+
 }
 
 
 /* =========================================================
    ROUTE 09 → 10
-   KALI SERAYU → DESA ROSARI
    ========================================================= */
 
 #route-9-10 {
-    position: absolute;
 
     left: 17%;
+
     top: 42%;
 
     width: 48%;
-    height: auto;
 
-    z-index: 5;
-
-    opacity: 0.18;
-
-    pointer-events: none;
-
-    transition:
-        opacity 0.7s ease,
-        filter 0.7s ease;
 }
 
 
 /* =========================================================
-   LOCATION BUTTON
+   MAP LOCATION
    ========================================================= */
 
 .map-location {
+
     position: absolute;
 
     z-index: 10;
 
     width: 76px;
+
     min-height: 76px;
 
     padding: 0;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: flex-start;
 
     border: 0;
@@ -336,7 +1378,11 @@
 
     cursor: pointer;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
 
     font-family:
         "Hanken Grotesk",
@@ -344,7 +1390,8 @@
         sans-serif;
 
     transition:
-        transform 0.25s ease;
+        transform .25s ease;
+
 }
 
 
@@ -353,6 +1400,7 @@
    ========================================================= */
 
 .map-location img {
+
     display: block;
 
     width: 42px;
@@ -362,48 +1410,191 @@
 
     filter:
         drop-shadow(
-            0 3px 4px rgba(0, 0, 0, 0.35)
+            0
+            3px
+            4px
+            rgba(0,0,0,.35)
         );
 
     transition:
-        transform 0.25s ease,
-        filter 0.25s ease;
+        transform .25s ease,
+        filter .25s ease;
+
 }
 
 
 /* =========================================================
-   HOVER LOKASI TERBUKA
+   UNLOCKED LOCATION
    ========================================================= */
 
+.map-location.unlocked {
+
+    cursor: pointer;
+
+}
+
+
 .map-location.unlocked:hover {
+
     transform:
-        translate(-50%, -50%)
+        translate(
+            -50%,
+            -50%
+        )
         scale(1.1);
+
 }
 
 
 .map-location.unlocked:hover img {
+
     filter:
         drop-shadow(
-            0 5px 7px rgba(0, 0, 0, 0.35)
+            0
+            5px
+            7px
+            rgba(0,0,0,.35)
         );
+
 }
 
 
 /* =========================================================
-   LOKASI TERKUNCI
+   ACTIVE LOCATION
+   ========================================================= */
+
+.map-location.active {
+
+    cursor: pointer;
+
+}
+
+
+.map-location.active img {
+
+    animation:
+        mapPinPulse
+        2s
+        ease-in-out
+        infinite;
+
+}
+
+
+.map-location.active:hover {
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(1.1);
+
+}
+
+
+/* =========================================================
+   PIN PULSE
+   ========================================================= */
+
+@keyframes mapPinPulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        filter:
+            drop-shadow(
+                0
+                3px
+                4px
+                rgba(0,0,0,.35)
+            );
+
+    }
+
+    50% {
+
+        transform: scale(1.08);
+
+        filter:
+            drop-shadow(
+                0
+                0
+                9px
+                rgba(141,164,50,.75)
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   LOCKED LOCATION
    ========================================================= */
 
 .map-location.locked {
+
     cursor: not-allowed;
+
 }
 
 
 .map-location.locked img {
+
     width: 40px;
     height: 40px;
 
-    opacity: 0.98;
+    opacity: .98;
+
+}
+
+
+.map-location.locked:hover {
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+}
+
+
+.map-location.locked:hover img {
+
+    animation:
+        lockBounce
+        .35s
+        ease;
+
+}
+
+
+/* =========================================================
+   LOCK BOUNCE
+   ========================================================= */
+
+@keyframes lockBounce {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    35% {
+        transform: translateY(-4px);
+    }
+
+    70% {
+        transform: translateY(2px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
 }
 
 
@@ -412,206 +1603,231 @@
    ========================================================= */
 
 .location-label {
+
     display: block;
 
     margin-top: 4px;
 
-    padding: 3px 7px;
+    padding:
+        4px
+        8px;
 
     white-space: nowrap;
 
-    color: #fffdf4;
+    color:
+        #fffdf4;
 
     font-family:
-        "Libre Caslon Text",
-        Georgia,
-        serif;
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
 
-    font-size: 11px;
+    font-size: 10px;
+
     font-weight: 700;
 
     line-height: 1.1;
 
     text-shadow:
-        0 1px 3px rgba(0, 0, 0, 0.9),
-        0 2px 5px rgba(0, 0, 0, 0.7);
+        0
+        1px
+        3px
+        rgba(0,0,0,.9),
+
+        0
+        2px
+        5px
+        rgba(0,0,0,.7);
+
 }
 
 
 /* =========================================================
-   POSISI 10 LOKASI
+   LOCATION POSITIONS
    ========================================================= */
 
 
 /* 01 — Pajajaran */
 
 .location-01 {
+
     left: 24.1%;
+
     top: 27.2%;
+
 }
 
 
 /* 02 — Ki Ajar Winarong */
 
 .location-02 {
+
     left: 42.4%;
-    top: 19.0%;
+
+    top: 19%;
+
 }
 
 
 /* 03 — Pasir Luhur */
 
 .location-03 {
+
     left: 68.2%;
+
     top: 18.2%;
+
 }
 
 
 /* 04 — Kali Logawa */
 
 .location-04 {
-    left: 29.0%;
+
+    left: 29%;
+
     top: 45.7%;
+
 }
 
 
 /* 05 — Desa Panagih */
 
 .location-05 {
+
     left: 57.9%;
+
     top: 51.5%;
+
 }
 
 
 /* 06 — Goa Jatijajar */
 
 .location-06 {
+
     left: 81.4%;
+
     top: 40.4%;
+
 }
 
 
 /* 07 — Batur Agung */
 
 .location-07 {
+
     left: 85.1%;
+
     top: 66.2%;
+
 }
 
 
 /* 08 — Sawangan */
 
 .location-08 {
-    left: 48.0%;
-    top: 71.0%;
+
+    left: 48%;
+
+    top: 71%;
+
 }
 
 
 /* 09 — Kali Serayu */
 
 .location-09 {
+
     left: 17.6%;
-    top: 71.0%;
+
+    top: 71%;
+
 }
 
 
 /* 10 — Desa Rosari */
 
 .location-10 {
+
     left: 64.4%;
-    top: 85.0%;
+
+    top: 85%;
+
 }
 
 
 /* =========================================================
-   MAP INFO
+   MAP LEGEND
    ========================================================= */
 
-.map-info {
+.map-legend {
+
+    position: relative;
+
+    z-index: 2;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-    gap: 34px;
-    margin-top: 24px;
-    padding-bottom: 30px;
+
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+    margin-top: 20px;
+
+    padding:
+        0
+        0
+        10px;
+
 }
 
 
-.map-info-item {
+.map-legend-item {
+
     display: flex;
+
     align-items: center;
-    gap: 9px;
 
-    color: #6b604f;
+    gap: 8px;
 
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
+    color:
+        #6b604f;
 
-    font-size: 13px;
+    font-size: 12px;
+
     font-weight: 500;
+
 }
 
 
-/* =========================================================
-   MAP INFO ICON
-   ========================================================= */
+.map-legend-item img {
 
-.map-info-icon {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
+
+    display: block;
+
     object-fit: contain;
-    display: block;
+
 }
 
 
-/* =========================================================
-   MAP INFO LINE
-   ========================================================= */
-
-.map-info-line {
-    display: block;
+.map-legend-route {
 
     width: 28px;
+
     height: 2px;
 
-    background: rgba(255, 255, 255, 0.8);
-}
-
-
-/* =========================================================
-   INFO ICONS
-   ========================================================= */
-
-.map-info-icon {
     display: block;
 
-    width: 10px;
-    height: 10px;
+    background:
+        #8d785c;
 
-    border-radius: 50%;
-}
-
-
-.unlocked-dot {
-    background: #6e7b38;
-}
-
-
-.locked-dot {
-    background: #7d553e;
-}
-
-
-.map-info-line {
-    display: block;
-
-    width: 26px;
-    height: 2px;
-
-    background: #fff;
-
-    border: 1px solid rgba(95, 76, 53, 0.25);
 }
 
 
@@ -619,44 +1835,219 @@
    TABLET
    ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
 
-    .map-page {
+
+    /* SIDEBAR */
+
+    .lk-sidebar {
+
+        width: 190px;
+
+    }
+
+
+    .lk-main {
+
+        margin-left: 190px;
+
+    }
+
+
+    .map-page-pattern {
+
+        left: 190px;
+
+    }
+
+
+    /* NAVBAR */
+
+    .lk-navbar {
+
         padding:
-            28px 18px 45px;
+            0
+            18px;
+
     }
 
 
-    .map-heading {
-        margin-bottom: 20px;
+    .lk-nav-link {
+
+        padding:
+            10px
+            10px;
+
     }
 
 
-    .map-heading p {
-        font-size: 14px;
+    .lk-nav-link span {
+
+        font-size: 10px;
+
     }
 
 
-    .map-location {
-        width: 65px;
-        min-height: 65px;
+    .lk-player {
+
+        padding-left: 12px;
+
     }
 
 
-    .map-location img {
-        width: 34px;
-        height: 34px;
+    .lk-player-info {
+
+        width: 105px;
+
     }
 
 
-    .map-location.locked img {
-        width: 33px;
-        height: 33px;
+    /* CONTENT */
+
+    .lk-content {
+
+        width:
+            calc(100% - 28px);
+
+        padding:
+            28px
+            0
+            45px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET KECIL
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+
+    .lk-sidebar {
+
+        width: 175px;
+
     }
 
 
-    .location-label {
-        font-size: 9px;
+    .lk-main {
+
+        margin-left: 175px;
+
+    }
+
+
+    .map-page-pattern {
+
+        left: 175px;
+
+    }
+
+
+    /* BRAND */
+
+    .lk-brand {
+
+        padding-left: 8px;
+
+        padding-right: 8px;
+
+    }
+
+
+    .lk-brand-mark {
+
+        width: 36px;
+        height: 36px;
+
+    }
+
+
+    .lk-brand-text strong {
+
+        font-size: 13px;
+
+    }
+
+
+    .lk-brand-text small {
+
+        font-size: 7px;
+
+    }
+
+
+    /* SIDEBAR */
+
+    .lk-side-link {
+
+        min-height: 44px;
+
+        font-size: 11px;
+
+    }
+
+
+    .lk-side-icon {
+
+        width: 28px;
+        height: 28px;
+
+    }
+
+
+    .lk-side-icon img {
+
+        width: 16px;
+        height: 16px;
+
+    }
+
+
+    /* NAVBAR */
+
+    .lk-nav-link {
+
+        gap: 5px;
+
+        padding:
+            9px
+            7px;
+
+    }
+
+
+    .lk-nav-link img {
+
+        width: 14px;
+        height: 14px;
+
+    }
+
+
+    .lk-nav-link span {
+
+        display: none;
+
+    }
+
+
+    .lk-player-info {
+
+        width: 90px;
+
+    }
+
+
+    /* HEADER */
+
+    .map-header h1 {
+
+        font-size: 42px;
+
     }
 
 }
@@ -666,80 +2057,561 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-    .map-page {
+
+    /* =====================================================
+       SIDEBAR
+       ===================================================== */
+
+    .lk-sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        min-height: 0;
+
         padding:
-            20px 10px 35px;
+            14px
+            14px;
+
+        border-right: 0;
+
+        border-bottom:
+            1px solid
+            rgba(218,188,67,.20);
+
+        overflow: visible;
+
     }
 
 
-    .map-heading-small {
+    /* BRAND */
+
+    .lk-brand {
+
+        width: max-content;
+
+        padding:
+            0
+            5px;
+
+        border-bottom: 0;
+
+    }
+
+
+    /* SIDEBAR MENU */
+
+    .lk-side-menu {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(6, 1fr);
+
+        gap: 4px;
+
+        margin-top: 12px;
+
+    }
+
+
+    .lk-side-link {
+
+        justify-content: center;
+
+        min-height: 42px;
+
+        padding: 5px;
+
+    }
+
+
+    .lk-side-link span:last-child {
+
+        display: none;
+
+    }
+
+
+    .lk-side-icon {
+
+        width: 30px;
+        height: 30px;
+
+    }
+
+
+    /* QUOTE */
+
+    .lk-sidebar-quote {
+
+        display: none;
+
+    }
+
+
+    /* =====================================================
+       MAIN
+       ===================================================== */
+
+    .lk-main {
+
+        margin-left: 0;
+
+    }
+
+
+    .map-page-pattern {
+
+        left: 0;
+
+        top: 0;
+
+    }
+
+
+    /* =====================================================
+       NAVBAR
+       ===================================================== */
+
+    .lk-navbar {
+
+        position: sticky;
+
+        top: 0;
+
+        height: 68px;
+
+        padding:
+            0
+            12px;
+
+    }
+
+
+    .lk-nav-links {
+
+        gap: 2px;
+
+    }
+
+
+    .lk-nav-link {
+
+        padding: 8px;
+
+    }
+
+
+    .lk-nav-link img {
+
+        width: 15px;
+        height: 15px;
+
+    }
+
+
+    .lk-player {
+
+        padding-left: 8px;
+
+        gap: 7px;
+
+    }
+
+
+    .lk-avatar {
+
+        width: 34px;
+        height: 34px;
+
         font-size: 9px;
-        letter-spacing: 2px;
+
     }
 
 
-    .map-heading h1 {
-        font-size: 30px;
+    .lk-player-info {
+
+        width: 75px;
+
+        min-width: 75px;
+
     }
 
 
-    .map-heading p {
+    .lk-player-top strong {
+
+        font-size: 8px;
+
+    }
+
+
+    .lk-player-top span {
+
+        font-size: 7px;
+
+    }
+
+
+    .lk-player-info small {
+
+        font-size: 6px;
+
+    }
+
+
+    .lk-nav-actions {
+
+        margin-left: 6px;
+
+    }
+
+
+    .lk-action {
+
+        width: 31px;
+        height: 31px;
+
+        font-size: 13px;
+
+    }
+
+
+    /* =====================================================
+       CONTENT
+       ===================================================== */
+
+    .lk-content {
+
+        width:
+            calc(100% - 20px);
+
+        padding:
+            24px
+            0
+            35px;
+
+    }
+
+
+    /* =====================================================
+       MAP HEADER
+       ===================================================== */
+
+    .map-header {
+
+        margin-bottom: 20px;
+
+    }
+
+
+    .map-eyebrow {
+
+        font-size: 8px;
+
+        letter-spacing:
+            2.5px;
+
+    }
+
+
+    .map-header h1 {
+
+        font-size: 34px;
+
+    }
+
+
+    .map-header p {
+
+        margin-top: 10px;
+
         font-size: 12px;
-        line-height: 1.5;
+
+        line-height: 1.55;
+
     }
 
+
+    .map-header-ornament {
+
+        margin-top: 14px;
+
+    }
+
+
+    /* =====================================================
+       MAP
+       ===================================================== */
 
     /*
-        Peta tetap utuh.
-        Tidak dipotong.
+       PETA TIDAK DIPAKSA MENGECIL.
+
+       Supaya pin, lokasi, dan tulisan
+       tetap terbaca di HP,
+       peta menggunakan scroll horizontal.
     */
 
-    .map-viewport {
-        overflow: auto;
+    .map-section {
+
+        overflow-x: auto;
+
+        padding-bottom: 8px;
+
+        scrollbar-width: thin;
+
+    }
+
+
+    .map-card {
+
+        width: 850px;
+
+        max-width: none;
+
+        border-radius: 12px;
+
     }
 
 
     .map-canvas {
 
-        /*
-            Jangan terlalu kecil agar
-            tulisan dan icon tetap terlihat.
-        */
+        width: 850px;
 
-        min-width: 760px;
     }
 
 
-    .map-location {
-        width: 58px;
-        min-height: 58px;
-    }
+    /* =====================================================
+       LEGEND
+       ===================================================== */
 
+    .map-legend {
 
-    .map-location img {
-        width: 30px;
-        height: 30px;
-    }
-
-
-    .map-location.locked img {
-        width: 29px;
-        height: 29px;
-    }
-
-
-    .location-label {
-        font-size: 8px;
-    }
-
-
-    .map-info {
-        gap: 14px;
         justify-content: flex-start;
 
-        font-size: 10px;
+        gap: 15px;
+
+        margin-top: 14px;
+
     }
 
+
+    .map-legend-item {
+
+        font-size: 9px;
+
+    }
+
+
+    .map-legend-item img {
+
+        width: 18px;
+        height: 18px;
+
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .lk-side-menu {
+        grid-template-columns:
+            repeat(6, 1fr);
+    }
+
+    .lk-navbar {
+        height: 62px;
+    }
+
+    .lk-nav-links {
+        display: none;
+    }
+
+    .lk-player {
+        flex: 1;
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .lk-player-info {
+        width: 105px;
+        min-width: 105px;
+    }
+
+    .lk-nav-actions {
+        margin-left: auto;
+    }
+
+    .map-header h1 {
+        font-size: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   FIX LOCATION & GEMBOK
+   ========================================================= */
+
+.map-canvas {
+    position: relative;
+}
+
+.map-location {
+    position: absolute;
+    z-index: 50;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 76px;
+    min-height: 76px;
+
+    padding: 0;
+
+    border: 0;
+    outline: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transform: translate(-50%, -50%);
+}
+
+.map-location img {
+    display: block !important;
+
+    width: 42px !important;
+    height: 42px !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    object-fit: contain;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    filter:
+        drop-shadow(
+            0
+            3px
+            4px
+            rgba(0,0,0,.35)
+        );
+}
+
+.map-location.locked img {
+    width: 40px !important;
+    height: 40px !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.location-label {
+    display: block !important;
+
+    margin-top: 4px;
+
+    padding:
+        4px
+        8px;
+
+    color: #fffdf4;
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    text-shadow:
+        0
+        1px
+        3px
+        rgba(0,0,0,.9),
+
+        0
+        2px
+        5px
+        rgba(0,0,0,.7);
+}
+
+
+/* =========================================================
+   LOCATION POSITIONS
+   ========================================================= */
+
+.location-01 {
+    left: 24.1%;
+    top: 27.2%;
+}
+
+.location-02 {
+    left: 42.4%;
+    top: 19%;
+}
+
+.location-03 {
+    left: 68.2%;
+    top: 18.2%;
+}
+
+.location-04 {
+    left: 29%;
+    top: 45.7%;
+}
+
+.location-05 {
+    left: 57.9%;
+    top: 51.5%;
+}
+
+.location-06 {
+    left: 81.4%;
+    top: 40.4%;
+}
+
+.location-07 {
+    left: 85.1%;
+    top: 66.2%;
+}
+
+.location-08 {
+    left: 48%;
+    top: 71%;
+}
+
+.location-09 {
+    left: 17.6%;
+    top: 71%;
+}
+
+.location-10 {
+    left: 64.4%;
+    top: 85%;
 }
