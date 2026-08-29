@@ -1,16 +1,25 @@
 /* =========================================================
-   CATATAN — LEVEL SYSTEM
+   CATATAN — SISTEM LEVEL
+   TERHUBUNG DENGAN PROGRESS PETA
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const cards = document.querySelectorAll(".catatan-card");
+    /* =====================================================
+       ELEMENT
+       ===================================================== */
 
-    const tabs = document.querySelectorAll(".catatan-tab");
+    const cards =
+        document.querySelectorAll(".catatan-card");
 
-    const empty = document.getElementById("catatanEmpty");
+    const tabs =
+        document.querySelectorAll(".catatan-tab");
 
-    const levelText = document.getElementById("catatanLevel");
+    const empty =
+        document.getElementById("catatanEmpty");
+
+    const levelText =
+        document.getElementById("catatanLevel");
 
     const progressFill =
         document.getElementById("catatanProgressFill");
@@ -20,33 +29,210 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       LEVEL PEMAIN
+       STORAGE PETA
        ===================================================== */
 
-    /*
-       Untuk sementara Level 01.
-
-       Nanti kalau sistem peta sudah punya level,
-       angka ini bisa diambil dari localStorage.
-    */
-
-    let currentLevel =
-        parseInt(
-            localStorage.getItem("kamandakaLevel")
-        ) || 1;
-
-
-    /* Batas */
-
-    currentLevel =
-        Math.max(
-            1,
-            Math.min(currentLevel, 10)
-        );
+    const MAP_PROGRESS_KEY =
+        "lelanaKamandakaProgress";
 
 
     /* =====================================================
-       UPDATE LEVEL
+       DATA CATATAN
+       ===================================================== */
+
+    const catatanData = {
+
+        /* =================================================
+           TOKOH
+           ================================================= */
+
+        "tokoh-1": {
+            number: "01",
+            title: "Raden Kamandaka",
+            description:
+                "Pemuda dari Pajajaran yang menjadi tokoh utama dalam perjalanan Lelana Kamandaka."
+        },
+
+        "tokoh-2": {
+            number: "02",
+            title: "Ki Ajar Winarong",
+            description:
+                "Tokoh yang ditemui Kamandaka dalam perjalanan dan memberikan petunjuk penting untuk melanjutkan pengembaraan."
+        },
+
+
+        /* =================================================
+           TEMPAT
+           ================================================= */
+
+        "tempat-2": {
+            number: "03",
+            title: "Pasir Luhur",
+            description:
+                "Pasir Luhur menjadi salah satu tempat penting yang didatangi Kamandaka dalam perjalanan Lelana."
+        },
+
+        "tempat-3": {
+            number: "04",
+            title: "Kali Logawa",
+            description:
+                "Kali Logawa menjadi bagian dari perjalanan Kamandaka sebelum melanjutkan langkahnya menuju tempat berikutnya."
+        },
+
+        "tempat-4": {
+            number: "05",
+            title: "Desa Panagih",
+            description:
+                "Desa Panagih menjadi salah satu persinggahan dalam perjalanan Kamandaka."
+        },
+
+
+        /* =================================================
+           BUDAYA
+           ================================================= */
+
+        "budaya-5": {
+            number: "06",
+            title: "Budaya Banyumas",
+            description:
+                "Perjalanan Kamandaka memperkenalkan berbagai unsur budaya dan kehidupan masyarakat yang ditemuinya."
+        },
+
+        "budaya-6": {
+            number: "07",
+            title: "Jejak Budaya",
+            description:
+                "Berbagai jejak budaya menjadi bagian dari pengetahuan yang ditemukan sepanjang perjalanan."
+        },
+
+
+        /* =================================================
+           BASA
+           ================================================= */
+
+        "basa-2": {
+            number: "08",
+            title: "Basa Jawa",
+            description:
+                "Kosakata dan ungkapan Basa Jawa yang ditemukan Kamandaka selama perjalanan."
+        },
+
+        "basa-3": {
+            number: "09",
+            title: "Unggah-Ungguh Basa",
+            description:
+                "Penggunaan bahasa yang sesuai dengan situasi dan lawan bicara menjadi bagian penting dalam perjalanan."
+        },
+
+
+        /* =================================================
+           CERITA
+           ================================================= */
+
+        "cerita-1": {
+            number: "10",
+            title: "Awal Perjalanan",
+            description:
+                "Perjalanan Kamandaka dimulai dari Pajajaran ketika ia meninggalkan kehidupan lamanya untuk menjalani pengembaraan."
+        },
+
+        "cerita-2": {
+            number: "11",
+            title: "Pertemuan dengan Ki Ajar",
+            description:
+                "Pertemuan dengan Ki Ajar Winarong menjadi bagian penting dalam perjalanan Kamandaka."
+        }
+
+    };
+
+
+    /* =====================================================
+       AMBIL LEVEL DARI PETA
+       ===================================================== */
+
+    function getCurrentLevel() {
+
+        try {
+
+            const savedProgress =
+                sessionStorage.getItem(
+                    MAP_PROGRESS_KEY
+                );
+
+
+            /*
+             * Kalau belum ada progress,
+             * mulai dari Level 1.
+             */
+
+            if (!savedProgress) {
+
+                return 1;
+
+            }
+
+
+            const progress =
+                JSON.parse(savedProgress);
+
+
+            /*
+             * Peta menggunakan currentChapter
+             * sebagai posisi perjalanan.
+             */
+
+            let level =
+                parseInt(
+                    progress.currentChapter
+                );
+
+
+            if (isNaN(level)) {
+
+                level = 1;
+
+            }
+
+
+            /*
+             * Batas Level 1–10
+             */
+
+            level =
+                Math.max(
+                    1,
+                    Math.min(level, 10)
+                );
+
+
+            return level;
+
+        }
+
+        catch (error) {
+
+            console.warn(
+                "Gagal membaca progress peta:",
+                error
+            );
+
+            return 1;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       LEVEL SAAT INI
+       ===================================================== */
+
+    let currentLevel =
+        getCurrentLevel();
+
+
+    /* =====================================================
+       UPDATE INFORMASI LEVEL
        ===================================================== */
 
     function updateLevel() {
@@ -77,7 +263,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 progressText.textContent =
                     "Seluruh catatan perjalanan telah ditemukan.";
 
-            } else {
+            }
+
+            else {
 
                 const nextLevel =
                     currentLevel + 1;
@@ -88,6 +276,114 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
         }
+
+    }
+
+
+    /* =====================================================
+       MEMBUAT ISI CATATAN
+       ===================================================== */
+
+    function createCardContent(
+        card,
+        data
+    ) {
+
+        /*
+         * Kalau isi sudah dibuat,
+         * jangan dibuat lagi.
+         */
+
+        if (
+            card.querySelector(
+                ".catatan-card-content"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        /* Nomor */
+
+        const number =
+            document.createElement("div");
+
+        number.className =
+            "catatan-card-number";
+
+        number.textContent =
+            data.number;
+
+
+        /* Content */
+
+        const content =
+            document.createElement("div");
+
+        content.className =
+            "catatan-card-content";
+
+
+        /* Category */
+
+        const category =
+            document.createElement("span");
+
+        category.className =
+            "catatan-card-category";
+
+        category.textContent =
+            card.dataset.category.toUpperCase();
+
+
+        /* Title */
+
+        const title =
+            document.createElement("h3");
+
+        title.textContent =
+            data.title;
+
+
+        /* Description */
+
+        const description =
+            document.createElement("p");
+
+        description.textContent =
+            data.description;
+
+
+        /* Status */
+
+        const status =
+            document.createElement("div");
+
+        status.className =
+            "catatan-card-status";
+
+        status.textContent =
+            "TERBUKA";
+
+
+        /* Masukkan ke content */
+
+        content.appendChild(category);
+
+        content.appendChild(title);
+
+        content.appendChild(description);
+
+        content.appendChild(status);
+
+
+        /* Masukkan ke card */
+
+        card.appendChild(number);
+
+        card.appendChild(content);
 
     }
 
@@ -106,95 +402,50 @@ document.addEventListener("DOMContentLoaded", () => {
                 ) || 1;
 
 
+            const category =
+                card.dataset.category;
+
+
             /*
-             * Kalau level pemain sudah mencukupi,
-             * card dibuka.
+             * Buat ID data.
+             *
+             * Contoh:
+             *
+             * tokoh + 2
+             * menjadi:
+             * tokoh-2
              */
 
-            if (currentLevel >= requiredLevel) {
-
-                card.classList.remove("locked");
-
-
-                /*
-                 * Kalau card belum punya isi normal,
-                 * buat status sederhana.
-                 */
-
-                if (
-                    !card.querySelector(
-                        ".catatan-card-content"
-                    )
-                ) {
-
-                    const number =
-                        document.createElement("div");
-
-                    number.className =
-                        "catatan-card-number";
-
-                    number.textContent =
-                        "—";
+            const dataKey =
+                `${category}-${requiredLevel}`;
 
 
-                    const content =
-                        document.createElement("div");
-
-                    content.className =
-                        "catatan-card-content";
+            const data =
+                catatanData[dataKey];
 
 
-                    const category =
-                        document.createElement("span");
+            /* =============================================
+               LEVEL SUDAH DICAPAI
+               ============================================= */
 
-                    category.className =
-                        "catatan-card-category";
+            if (
+                currentLevel >=
+                requiredLevel
+            ) {
 
-                    category.textContent =
-                        card.dataset.category.toUpperCase();
-
-
-                    const title =
-                        document.createElement("h3");
-
-                    title.textContent =
-                        "Catatan Baru";
-
-
-                    const description =
-                        document.createElement("p");
-
-                    description.textContent =
-                        "Catatan ini telah ditemukan dalam perjalanan Lelana Kamandaka.";
-
-
-                    const status =
-                        document.createElement("div");
-
-                    status.className =
-                        "catatan-card-status";
-
-                    status.textContent =
-                        "TERBUKA";
-
-
-                    content.appendChild(category);
-                    content.appendChild(title);
-                    content.appendChild(description);
-                    content.appendChild(status);
-
-                    card.appendChild(number);
-                    card.appendChild(content);
-
-                }
+                card.classList.remove(
+                    "locked"
+                );
 
 
                 /*
-                 * Lock dihapus dari tampilan.
+                 * Hapus gembok
                  */
 
                 const lock =
-                    card.querySelector(".catatan-lock");
+                    card.querySelector(
+                        ".catatan-lock"
+                    );
 
                 if (lock) {
 
@@ -202,17 +453,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
+
+                /*
+                 * Kalau ada data catatan,
+                 * masukkan isi catatan.
+                 */
+
+                if (data) {
+
+                    createCardContent(
+                        card,
+                        data
+                    );
+
+                }
+
             }
 
 
-            /*
-             * Kalau belum mencapai level,
-             * card tetap locked.
-             */
+            /* =============================================
+               LEVEL BELUM DICAPAI
+               ============================================= */
 
             else {
 
-                card.classList.add("locked");
+                card.classList.add(
+                    "locked"
+                );
 
             }
 
@@ -247,9 +514,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 visibleCards++;
 
-            } else {
+            }
 
-                card.style.display = "none";
+            else {
+
+                card.style.display =
+                    "none";
 
             }
 
@@ -269,16 +539,21 @@ document.addEventListener("DOMContentLoaded", () => {
         tabs.forEach(tab => {
 
             const active =
-                tab.dataset.category === category;
+                tab.dataset.category ===
+                category;
+
 
             tab.classList.toggle(
                 "active",
                 active
             );
 
+
             tab.setAttribute(
                 "aria-selected",
-                active ? "true" : "false"
+                active
+                    ? "true"
+                    : "false"
             );
 
         });
@@ -287,7 +562,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       TAB EVENT
+       EVENT TAB
        ===================================================== */
 
     tabs.forEach(tab => {
@@ -307,7 +582,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       INIT
+       INITIAL
        ===================================================== */
 
     updateLevel();
@@ -315,5 +590,32 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCards();
 
     filterCards("semua");
+
+
+    /* =====================================================
+       AUTO UPDATE
+       ===================================================== */
+
+    setInterval(() => {
+
+        const newLevel =
+            getCurrentLevel();
+
+
+        if (
+            newLevel !==
+            currentLevel
+        ) {
+
+            currentLevel =
+                newLevel;
+
+            updateLevel();
+
+            updateCards();
+
+        }
+
+    }, 1000);
 
 });
