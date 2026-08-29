@@ -53,10 +53,22 @@
         href="../css/base.css"
     >
 
+
+    <!-- =========================================================
+         GLOBAL NAVBAR + SIDEBAR CSS
+
+         navbar.css berada di ROOT PROJECT.
+         ========================================================= -->
+
     <link
         rel="stylesheet"
-        href="../css/components/navbar.css"
+        href="../navbar.css"
     >
+
+
+    <!-- =========================================================
+         BUTTON CSS
+         ========================================================= -->
 
     <link
         rel="stylesheet"
@@ -66,7 +78,6 @@
 
     <!-- =========================================================
          OPENING / GLOBAL LAYOUT
-         PENTING UNTUK SIDEBAR + NAVBAR
          ========================================================= -->
 
     <link
@@ -88,6 +99,19 @@
 
 
 <body>
+
+
+    <!-- =========================================================
+         GLOBAL NAVBAR + SIDEBAR
+
+         navbar.js akan mengambil navbar.html
+         dari ROOT PROJECT.
+
+         TIDAK ADA NAVBAR MANUAL DI SINI.
+         ========================================================= -->
+
+    <div id="globalNavbar"></div>
+
 
 
     <!-- =========================================================
@@ -114,440 +138,12 @@
         </div>
 
 
-        <!-- =====================================================
-             SIDEBAR
-             ===================================================== -->
-
-        <aside class="lk-sidebar">
-
-
-            <!-- =================================================
-                 BRAND
-                 ================================================= -->
-
-            <a
-                href="../index.html"
-                class="lk-brand"
-            >
-
-                <div class="lk-brand-mark">
-
-                    <span>
-                        ✦
-                    </span>
-
-                </div>
-
-
-                <div class="lk-brand-text">
-
-                    <strong>
-                        LELANA
-                    </strong>
-
-                    <small>
-                        KAMANDAKA
-                    </small>
-
-                </div>
-
-            </a>
-
-
-            <!-- =================================================
-                 MENU SIDEBAR
-                 ================================================= -->
-
-            <nav class="lk-side-menu">
-
-
-                <!-- BERANDA -->
-
-                <a
-                    href="../index.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../assets/icons/icon_home.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Beranda
-                    </span>
-
-                </a>
-
-
-                <!-- INTRO -->
-
-                <a
-                    href="intro.html"
-                    class="lk-side-link active"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <span
-                            style="
-                                font-size: 15px;
-                                line-height: 1;
-                            "
-                        >
-                            ◆
-                        </span>
-
-                    </span>
-
-                    <span>
-                        Intro
-                    </span>
-
-                </a>
-
-
-                <!-- PETA -->
-
-                <a
-                    href="../peta.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../assets/icons/icon_peta.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Peta
-                    </span>
-
-                </a>
-
-
-                <!-- GAMEPLAY -->
-
-                <a
-                    href="../gameplay/gameplay01/index.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../assets/icons/icon_gameplay.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Gameplay
-                    </span>
-
-                </a>
-
-
-                <!-- CATATAN -->
-
-                <a
-                    href="../catatan.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../assets/icons/icon_catatan.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Catatan
-                    </span>
-
-                </a>
-
-
-                <!-- BASA -->
-
-                <a
-                    href="../basa.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../assets/icons/icon_basa.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Basa
-                    </span>
-
-                </a>
-
-
-                <!-- PENCAPAIAN -->
-
-                <a
-                    href="../pencapaian.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../assets/icons/icon_pencapaian.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Pencapaian
-                    </span>
-
-                </a>
-
-
-            </nav>
-
-
-            <!-- =================================================
-                 QUOTE SIDEBAR
-                 ================================================= -->
-
-            <div class="lk-sidebar-quote">
-
-                <p>
-                    “Saben lelampah
-                    ana piwulang,
-                    saben tembung
-                    ana jiwa.”
-                </p>
-
-                <span>
-                    ❧
-                </span>
-
-            </div>
-
-
-        </aside>
-
 
         <!-- =====================================================
              MAIN
              ===================================================== -->
 
         <div class="lk-main">
-
-
-            <!-- =================================================
-                 NAVBAR
-                 ================================================= -->
-
-            <header class="lk-navbar">
-
-
-                <!-- =================================================
-                     NAVIGATION
-                     ================================================= -->
-
-                <nav class="lk-nav-links">
-
-
-                    <!-- BERANDA -->
-
-                    <a
-                        href="../index.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../assets/icons/icon_home.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Beranda
-                        </span>
-
-                    </a>
-
-
-                    <!-- PETA -->
-
-                    <a
-                        href="../peta.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../assets/icons/icon_peta.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Peta
-                        </span>
-
-                    </a>
-
-
-                    <!-- CATATAN -->
-
-                    <a
-                        href="../catatan.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../assets/icons/icon_catatan.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Catatan
-                        </span>
-
-                    </a>
-
-
-                    <!-- BASA -->
-
-                    <a
-                        href="../basa.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../assets/icons/icon_basa.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Basa
-                        </span>
-
-                    </a>
-
-
-                    <!-- PENCAPAIAN -->
-
-                    <a
-                        href="../pencapaian.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../assets/icons/icon_pencapaian.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Pencapaian
-                        </span>
-
-                    </a>
-
-
-                </nav>
-
-
-                <!-- =================================================
-                     PLAYER
-                     ================================================= -->
-
-                <div class="lk-player">
-
-
-                    <div class="lk-avatar">
-                        LK
-                    </div>
-
-
-                    <div class="lk-player-info">
-
-
-                        <div class="lk-player-top">
-
-                            <strong id="playerLevel">
-                                Level 01
-                            </strong>
-
-                            <span id="playerXpTop">
-                                0 XP
-                            </span>
-
-                        </div>
-
-
-                        <div class="lk-xp">
-
-                            <span
-                                id="playerXpBar"
-                            ></span>
-
-                        </div>
-
-
-                        <small id="playerXpBottom">
-                            0 / 1.000 XP
-                        </small>
-
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- =================================================
-                     ACTION
-                     ================================================= -->
-
-                <div class="lk-nav-actions">
-
-
-                    <button
-                        class="lk-action"
-                        type="button"
-                        aria-label="Notifikasi"
-                    >
-                        ♧
-                    </button>
-
-
-                    <button
-                        class="lk-action"
-                        type="button"
-                        aria-label="Pengaturan"
-                    >
-                        ⚙
-                    </button>
-
-
-                </div>
-
-
-            </header>
 
 
             <!-- =================================================
@@ -615,6 +211,7 @@
                         </div>
 
 
+
                         <!-- =========================================
                              LABEL
                              ========================================= -->
@@ -624,6 +221,7 @@
                         >
                             LELANA KAMANDAKA
                         </span>
+
 
 
                         <!-- =========================================
@@ -643,6 +241,7 @@
                         </h1>
 
 
+
                         <!-- =========================================
                              CERITA
                              ========================================= -->
@@ -660,6 +259,7 @@
                             ia kenal...
 
                         </p>
+
 
 
                         <!-- =========================================
@@ -691,6 +291,7 @@
                         </div>
 
 
+
                         <!-- =========================================
                              BUTTON
                              ========================================= -->
@@ -718,6 +319,7 @@
                             </a>
 
 
+
                             <!-- LANJUT -->
 
                             <a
@@ -740,6 +342,7 @@
 
 
                     </div>
+
 
 
                     <!-- =============================================
@@ -807,11 +410,20 @@
     </div>
 
 
+
     <!-- =========================================================
-         JAVASCRIPT
+         GLOBAL NAVBAR JAVASCRIPT
+
+         intro3.html berada di folder /intro/
+         navbar.js berada di /js/
+
+         Jadi:
+         ../js/navbar.js
          ========================================================= -->
 
-    <script src="../js/navbar.js"></script>
+    <script
+        src="../js/navbar.js"
+    ></script>
 
 
 </body>

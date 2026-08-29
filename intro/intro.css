@@ -1,63 +1,51 @@
 /* =========================================================
    LELANA KAMANDAKA
+   INTRO.CSS
+   KHUSUS HALAMAN INTRO / STORY
+
+   CATATAN:
+   FILE INI TIDAK MENGATUR:
+   - Navbar global
+   - Sidebar global
+   - Player global
+   - Tombol action global
+   - Layout global
+
+   Semua komponen global mengikuti:
+   - base.css
+   - navbar.css
+   - navbar.js
+
+   File ini HANYA mengatur isi halaman INTRO.
+   ========================================================= */
+
+
+/* =========================================================
    INTRO PAGE
-   COLOR PALETTE — BERANDA MATCH
    ========================================================= */
 
-
-/* =========================================================
-   PALETTE
-   ========================================================= */
-
-:root {
-
-    --lk-green-dark: #102b14;
-    --lk-green: #18391a;
-    --lk-green-soft: #294d20;
-    --lk-green-hover: #3c641f;
-
-    --lk-cream: #f5eddd;
-    --lk-cream-light: #faf5e8;
-    --lk-cream-dark: #e8dcc5;
-
-    --lk-brown: #4a2c1d;
-    --lk-brown-soft: #694936;
-
-    --lk-gold: #c49a45;
-    --lk-gold-light: #d9b96c;
-
-    --lk-text: #493024;
-    --lk-muted: #8d7761;
-
-}
-
-
-/* =========================================================
-   MAIN
-   ========================================================= */
-
-.intro-main {
+.intro-page {
 
     position: relative;
 
     width: 100%;
 
     min-height:
-        calc(100vh - 82px);
+        calc(100vh - 78px);
 
     overflow: hidden;
 
     background:
-        var(--lk-cream);
+        #f4eedb;
 
 }
 
 
 /* =========================================================
-   GLOBAL BATIK
+   INTRO BACKGROUND
    ========================================================= */
 
-.intro-main::before {
+.intro-page::before {
 
     content: "";
 
@@ -69,23 +57,63 @@
 
     pointer-events: none;
 
-    background-image:
-        url("../assets/images/motif.png");
+    background:
 
-    background-repeat:
-        repeat;
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(
+                210,
+                184,
+                71,
+                .12
+            ),
+            transparent 28%
+        ),
 
-    background-size:
-        500px auto;
+        radial-gradient(
+            circle at 8% 85%,
+            rgba(
+                48,
+                82,
+                34,
+                .07
+            ),
+            transparent 30%
+        );
 
-    background-position:
-        center;
+}
 
-    opacity:
-        0.065;
 
-    mix-blend-mode:
-        multiply;
+/* =========================================================
+   INTRO CONTENT WRAPPER
+   ========================================================= */
+
+.intro-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            1280px,
+            calc(100% - 50px)
+        );
+
+    min-height:
+        calc(100vh - 78px);
+
+    margin:
+        0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        35px
+        0
+        45px;
 
 }
 
@@ -98,39 +126,35 @@
 
     position: relative;
 
-    z-index: 1;
+    width: 100%;
+
+    min-height:
+        calc(100vh - 150px);
 
     display: grid;
 
     grid-template-columns:
-        minmax(440px, 0.92fr)
-        minmax(520px, 1.08fr);
+        minmax(0, 1fr)
+        minmax(430px, .95fr);
 
-    width: 100%;
+    gap:
+        34px;
 
-    min-height:
-        calc(100vh - 82px);
-
-    padding:
-        28px
-        20px
-        28px
-        28px;
-
-    gap: 0;
+    align-items:
+        stretch;
 
 }
 
 
 /* =========================================================
-   LEFT PANEL
+   STORY TEXT PANEL
    ========================================================= */
 
 .story-text-panel {
 
     position: relative;
 
-    z-index: 2;
+    min-width: 0;
 
     display: flex;
 
@@ -138,324 +162,89 @@
 
     justify-content: center;
 
-    align-items: flex-start;
-
-    min-height: 100%;
-
     padding:
-        65px
-        clamp(50px, 6vw, 95px);
+        48px
+        45px;
 
     overflow: hidden;
 
-    background:
-        linear-gradient(
-            135deg,
-            #faf5e8 0%,
-            #f5eddd 55%,
-            #efe3ce 100%
-        );
-
     border:
         1px solid
-        rgba(184, 138, 66, 0.10);
-
-    box-shadow:
-        inset -1px 0
-        rgba(184, 138, 66, 0.18);
-
-}
-
-
-/* =========================================================
-   DECORATIVE GREEN ACCENT
-   ========================================================= */
-
-.story-text-panel::after {
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
-
-    width: 5px;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            to bottom,
-            var(--lk-gold),
-            var(--lk-green),
-            var(--lk-gold)
+        rgba(
+            47,
+            70,
+            31,
+            .10
         );
 
-    opacity: 0.9;
+    border-radius:
+        18px;
+
+    background:
+        rgba(
+            251,
+            247,
+            233,
+            .94
+        );
+
+    box-shadow:
+        0 14px 34px
+        rgba(
+            43,
+            32,
+            10,
+            .09
+        );
 
 }
 
 
 /* =========================================================
-   MOTIF LEFT
+   TEXT PANEL DECORATION
    ========================================================= */
 
 .story-text-panel::before {
 
-    content: "";
+    content:
+        "✦";
 
-    position: absolute;
+    position:
+        absolute;
 
-    z-index: 0;
+    right:
+        28px;
 
-    width: 460px;
+    top:
+        22px;
 
-    height: 460px;
+    color:
+        rgba(
+            181,
+            150,
+            35,
+            .13
+        );
 
-    left: -240px;
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
 
-    bottom: -220px;
+    font-size:
+        30px;
 
-    pointer-events: none;
-
-    background-image:
-        url("../assets/images/motif.png");
-
-    background-repeat:
-        repeat;
-
-    background-size:
-        235px auto;
-
-    background-position:
-        center;
-
-    opacity:
-        0.075;
-
-    mix-blend-mode:
-        multiply;
-
-    transform:
-        rotate(8deg);
+    pointer-events:
+        none;
 
 }
 
 
 /* =========================================================
-   ORNAMENT
+   STORY ORNAMENT
    ========================================================= */
 
 .story-ornament {
-
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 150px;
-
-    height: 22px;
-
-    margin-bottom: 22px;
-
-}
-
-
-.story-leaf-icon {
-
-    width: 14px;
-
-    height: 14px;
-
-    object-fit: contain;
-
-    opacity: 0.9;
-
-}
-
-
-.story-ornament-line {
-
-    width: 42px;
-
-    height: 1px;
-
-    margin:
-        0 8px;
-
-    background:
-        var(--lk-gold);
-
-    opacity: 0.75;
-
-}
-
-
-.story-ornament-dot {
-
-    width: 6px;
-
-    height: 6px;
-
-    flex-shrink: 0;
-
-    background:
-        var(--lk-gold);
-
-    transform:
-        rotate(45deg);
-
-    box-shadow:
-        0 0 0 2px
-        rgba(196, 154, 69, 0.12);
-
-}
-
-
-/* =========================================================
-   EYEBROW
-   ========================================================= */
-
-.story-eyebrow {
-
-    position: relative;
-
-    z-index: 2;
-
-    margin-bottom: 14px;
-
-    color:
-        #b48735;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size:
-        10px;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        4px;
-
-}
-
-
-/* =========================================================
-   TITLE
-   ========================================================= */
-
-.story-title {
-
-    position: relative;
-
-    z-index: 2;
-
-    max-width:
-        580px;
-
-    margin:
-        0;
-
-    color:
-        var(--lk-brown);
-
-    font-family:
-        "Libre Caslon Text",
-        Georgia,
-        serif;
-
-    font-size:
-        clamp(56px, 5.2vw, 84px);
-
-    font-weight:
-        400;
-
-    line-height:
-        0.96;
-
-    letter-spacing:
-        -3px;
-
-}
-
-
-.story-title em {
-
-    display:
-        block;
-
-    color:
-        var(--lk-gold);
-
-    font-weight:
-        400;
-
-    font-style:
-        italic;
-
-    letter-spacing:
-        -4px;
-
-}
-
-
-/* =========================================================
-   BODY
-   ========================================================= */
-
-.story-body-text {
-
-    position:
-        relative;
-
-    z-index:
-        2;
-
-    max-width:
-        480px;
-
-    margin:
-        30px 0 0;
-
-    color:
-        var(--lk-brown-soft);
-
-    font-family:
-        "Libre Caslon Text",
-        Georgia,
-        serif;
-
-    font-size:
-        clamp(17px, 1.3vw, 21px);
-
-    line-height:
-        1.75;
-
-}
-
-
-/* =========================================================
-   PAGE INDICATOR
-   ========================================================= */
-
-.story-page-indicator {
-
-    position:
-        relative;
-
-    z-index:
-        2;
 
     display:
         flex;
@@ -466,76 +255,308 @@
     gap:
         12px;
 
-    margin-top:
-        27px;
+    width:
+        min(
+            270px,
+            100%
+        );
+
+    margin-bottom:
+        28px;
 
 }
 
 
-.story-page-number {
+.story-ornament span {
+
+    flex:
+        1;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(
+                132,
+                104,
+                64,
+                .50
+            )
+        );
+
+}
+
+
+.story-ornament span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(
+                132,
+                104,
+                64,
+                .50
+            ),
+            transparent
+        );
+
+}
+
+
+.story-ornament b {
 
     color:
-        var(--lk-gold);
+        #a27d43;
+
+    font-size:
+        10px;
+
+    font-weight:
+        400;
+
+}
+
+
+/* =========================================================
+   STORY EYEBROW
+   ========================================================= */
+
+.story-eyebrow {
+
+    display:
+        block;
+
+    margin-bottom:
+        10px;
+
+    color:
+        #9b7947;
 
     font-family:
         "Hanken Grotesk",
+        Arial,
         sans-serif;
 
     font-size:
         10px;
 
     font-weight:
-        700;
+        800;
 
-}
+    line-height:
+        1.2;
 
+    letter-spacing:
+        .24em;
 
-.story-page-total {
-
-    color:
-        #9d8a72;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size:
-        10px;
-
-}
-
-
-.story-page-line {
-
-    width:
-        48px;
-
-    height:
-        1px;
-
-    background:
-        rgba(184, 138, 66, 0.4);
+    text-transform:
+        uppercase;
 
 }
 
 
 /* =========================================================
-   BUTTON
+   STORY TITLE
+   ========================================================= */
+
+.story-title {
+
+    max-width:
+        620px;
+
+    margin:
+        0;
+
+    color:
+        #172c14;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            48px,
+            5vw,
+            72px
+        );
+
+    font-weight:
+        700;
+
+    line-height:
+        .95;
+
+    letter-spacing:
+        -.045em;
+
+}
+
+
+.story-title em {
+
+    display:
+        block;
+
+    color:
+        #55752c;
+
+    font-weight:
+        400;
+
+    font-style:
+        italic;
+
+}
+
+
+/* =========================================================
+   STORY BODY
+   ========================================================= */
+
+.story-body-text {
+
+    max-width:
+        590px;
+
+    margin:
+        24px
+        0
+        0;
+
+    color:
+        #665b4c;
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    font-size:
+        13px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.75;
+
+}
+
+
+/* =========================================================
+   STORY PAGE INDICATOR
+   ========================================================= */
+
+.story-page-indicator {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-top:
+        27px;
+
+}
+
+
+.story-page-indicator span {
+
+    display:
+        block;
+
+    width:
+        28px;
+
+    height:
+        3px;
+
+    border-radius:
+        99px;
+
+    background:
+        #d8d0b8;
+
+}
+
+
+.story-page-indicator span.active {
+
+    width:
+        48px;
+
+    background:
+        #bd9d32;
+
+}
+
+
+/* =========================================================
+   STORY PANEL FOOTER
    ========================================================= */
 
 .story-panel-footer {
 
-    position:
-        relative;
+    display:
+        flex;
 
-    z-index:
-        2;
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        18px;
 
     margin-top:
-        28px;
+        35px;
 
 }
 
+
+/* =========================================================
+   STORY CHAPTER
+   ========================================================= */
+
+.story-chapter {
+
+    color:
+        #9a8d79;
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        .15em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =========================================================
+   STORY NEXT BUTTON
+   ========================================================= */
 
 .story-lanjut-btn {
 
@@ -546,87 +567,150 @@
         center;
 
     justify-content:
-        space-between;
+        center;
 
     gap:
-        25px;
+        14px;
 
     min-width:
-        150px;
+        145px;
 
     padding:
-        14px 20px;
+        11px
+        17px;
 
     border:
         1px solid
-        var(--lk-gold);
+        rgba(
+            174,
+            141,
+            33,
+            .45
+        );
+
+    border-radius:
+        0px;
 
     color:
-        #f9f2e3;
+        #30471f;
 
     background:
-        var(--lk-green);
+        #f0dc63;
 
     font-family:
         "Hanken Grotesk",
+        Arial,
         sans-serif;
 
     font-size:
-        10px;
+        9px;
 
     font-weight:
-        700;
+        800;
 
     letter-spacing:
-        2px;
+        .04em;
 
-    text-decoration:
-        none;
+    cursor:
+        pointer;
 
     box-shadow:
-        0 5px 15px
-        rgba(16, 43, 20, 0.12);
+        0 7px 16px
+        rgba(
+            62,
+            55,
+            20,
+            .10
+        );
 
     transition:
-        all 0.25s ease;
-
-}
-
-
-.story-lanjut-btn strong {
-
-    color:
-        var(--lk-gold-light);
-
-    font-size:
-        17px;
-
-    font-weight:
-        400;
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
 
 }
 
 
 .story-lanjut-btn:hover {
 
-    background:
-        var(--lk-green-soft);
-
-    border-color:
-        var(--lk-gold-light);
-
     transform:
         translateY(-2px);
 
+    background:
+        #f6e77f;
+
     box-shadow:
-        0 9px 22px
-        rgba(16, 43, 20, 0.20);
+        0 10px 21px
+        rgba(
+            62,
+            55,
+            20,
+            .15
+        );
+
+}
+
+
+.story-lanjut-btn span:last-child {
+
+    font-size:
+        16px;
+
+    line-height:
+        1;
 
 }
 
 
 /* =========================================================
-   RIGHT IMAGE
+   STORY BACK BUTTON
+   ========================================================= */
+
+.story-back-btn {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    color:
+        #6f6758;
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    transition:
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+
+.story-back-btn:hover {
+
+    color:
+        #30471f;
+
+    transform:
+        translateX(-2px);
+
+}
+
+
+/* =========================================================
+   STORY ILLUSTRATION PANEL
    ========================================================= */
 
 .story-illustration-panel {
@@ -634,23 +718,35 @@
     position:
         relative;
 
-    z-index:
-        2;
+    min-width:
+        0;
 
     min-height:
-        100%;
+        520px;
 
     overflow:
         hidden;
 
+    border-radius:
+        18px;
+
     background:
-        var(--lk-green-dark);
+        #1d3518;
+
+    box-shadow:
+        0 16px 38px
+        rgba(
+            43,
+            32,
+            10,
+            .14
+        );
 
 }
 
 
 /* =========================================================
-   IMAGE
+   STORY IMAGE
    ========================================================= */
 
 .story-illustration-img {
@@ -661,23 +757,29 @@
     inset:
         0;
 
-    z-index:
-        1;
-
     width:
         100%;
 
     height:
         100%;
 
+    max-width:
+        none;
+
     object-fit:
         cover;
 
     object-position:
-        center center;
+        center;
+
+    opacity:
+        .92;
+
+    transform:
+        scale(1.01);
 
     transition:
-        transform 0.8s ease;
+        transform 1.2s ease;
 
 }
 
@@ -686,7 +788,7 @@
 .story-illustration-img {
 
     transform:
-        scale(1.025);
+        scale(1.035);
 
 }
 
@@ -710,17 +812,28 @@
         none;
 
     background:
+
         linear-gradient(
-            90deg,
-            rgba(16, 43, 20, 0.14),
-            rgba(16, 43, 20, 0.00) 45%
+            180deg,
+            rgba(
+                15,
+                34,
+                13,
+                .08
+            ),
+            rgba(
+                15,
+                34,
+                13,
+                .20
+            )
         );
 
 }
 
 
 /* =========================================================
-   MOTIF DI GAMBAR
+   IMAGE FRAME
    ========================================================= */
 
 .story-illustration-panel::before {
@@ -732,59 +845,63 @@
         absolute;
 
     inset:
-        0;
+        15px;
 
     z-index:
         3;
 
+    border:
+        1px solid
+        rgba(
+            239,
+            215,
+            85,
+            .42
+        );
+
+    border-radius:
+        12px;
+
     pointer-events:
         none;
-
-    background-image:
-        url("../assets/images/motif.png");
-
-    background-repeat:
-        repeat;
-
-    background-size:
-        390px auto;
-
-    background-position:
-        center;
-
-    opacity:
-        0.035;
-
-    mix-blend-mode:
-        soft-light;
 
 }
 
 
 /* =========================================================
-   IMAGE FRAME
+   IMAGE CORNER ORNAMENT
    ========================================================= */
 
 .story-illustration-panel::after {
 
     content:
-        "";
+        "✦";
 
     position:
         absolute;
 
-    inset:
-        18px;
+    right:
+        28px;
+
+    top:
+        25px;
 
     z-index:
-        6;
+        4;
+
+    color:
+        rgba(
+            244,
+            223,
+            99,
+            .82
+        );
+
+    font-size:
+        17px;
 
     pointer-events:
         none;
-
-    border:
-        1px solid
-        rgba(245, 237, 221, 0.38);
 
 }
 
@@ -798,62 +915,59 @@
     position:
         absolute;
 
+    left:
+        30px;
+
     right:
-        35px;
+        30px;
 
     bottom:
-        32px;
+        27px;
 
     z-index:
-        5;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        flex-end;
-
-    gap:
-        4px;
-
-    color:
-        #fff8e9;
-
-    text-align:
-        right;
-
-    text-shadow:
-        0 2px 10px
-        rgba(0, 0, 0, 0.35);
+        4;
 
 }
 
 
-.story-image-caption span {
+.story-image-caption small {
+
+    display:
+        block;
+
+    margin-bottom:
+        7px;
+
+    color:
+        #ead55c;
 
     font-family:
         "Hanken Grotesk",
+        Arial,
         sans-serif;
 
     font-size:
-        9px;
+        8px;
 
     font-weight:
-        600;
+        800;
 
     letter-spacing:
-        3px;
+        .18em;
+
+    text-transform:
+        uppercase;
 
 }
 
 
 .story-image-caption strong {
 
+    display:
+        block;
+
     color:
-        #f3d58e;
+        #fff8df;
 
     font-family:
         "Libre Caslon Text",
@@ -861,168 +975,143 @@
         serif;
 
     font-size:
-        23px;
+        24px;
 
-    font-weight:
-        400;
+    line-height:
+        1;
 
-    letter-spacing:
+}
+
+
+/* =========================================================
+   STORY DECORATIVE LINE
+   ========================================================= */
+
+.story-decoration {
+
+    position:
+        absolute;
+
+    width:
+        75px;
+
+    height:
         1px;
 
+    background:
+        rgba(
+            216,
+            189,
+            77,
+            .55
+        );
+
+    pointer-events:
+        none;
+
+}
+
+
+.story-decoration.top {
+
+    top:
+        25px;
+
+    left:
+        30px;
+
+}
+
+
+.story-decoration.bottom {
+
+    bottom:
+        25px;
+
+    right:
+        30px;
+
 }
 
 
 /* =========================================================
-   ANIMATION
+   STORY FADE ANIMATION
    ========================================================= */
 
-.story-text-panel {
+.story-fade-in {
 
     animation:
-        introTextIn
-        0.8s
-        ease
-        both;
+        storyFadeIn
+        .7s
+        ease both;
 
 }
 
 
-.story-illustration-panel {
-
-    animation:
-        introImageIn
-        0.9s
-        ease
-        0.05s
-        both;
-
-}
-
-
-.story-ornament,
-.story-eyebrow,
-.story-title,
-.story-body-text,
-.story-page-indicator,
-.story-panel-footer {
-
-    animation:
-        introFadeUp
-        0.75s
-        ease
-        both;
-
-}
-
-
-.story-eyebrow {
-    animation-delay: 0.12s;
-}
-
-
-.story-title {
-    animation-delay: 0.2s;
-}
-
-
-.story-body-text {
-    animation-delay: 0.3s;
-}
-
-
-.story-page-indicator {
-    animation-delay: 0.4s;
-}
-
-
-.story-panel-footer {
-    animation-delay: 0.48s;
-}
-
-
-@keyframes introTextIn {
+@keyframes storyFadeIn {
 
     from {
-        opacity: 0;
-        transform: translateX(-20px);
+
+        opacity:
+            0;
+
+        transform:
+            translateY(12px);
+
     }
 
     to {
-        opacity: 1;
-        transform: translateX(0);
-    }
 
-}
+        opacity:
+            1;
 
+        transform:
+            translateY(0);
 
-@keyframes introImageIn {
-
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-}
-
-
-@keyframes introFadeUp {
-
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 
 }
 
 
 /* =========================================================
-   LAPTOP
+   STORY IMAGE ANIMATION
    ========================================================= */
 
-@media (max-width: 1200px) {
+.story-image-enter {
 
-    #screen-story {
+    animation:
+        storyImageEnter
+        .9s
+        cubic-bezier(
+            .22,
+            1,
+            .36,
+            1
+        )
+        both;
 
-        grid-template-columns:
-            minmax(390px, 0.9fr)
-            minmax(430px, 1.1fr);
+}
 
-        padding:
-            20px;
+
+@keyframes storyImageEnter {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            scale(1.05);
 
     }
 
+    to {
 
-    .story-text-panel {
+        opacity:
+            .92;
 
-        padding:
-            55px 50px;
-
-    }
-
-
-    .story-title {
-
-        font-size:
-            clamp(52px, 5.2vw, 72px);
-
-    }
-
-
-    .story-body-text {
-
-        font-size:
-            17px;
+        transform:
+            scale(1.01);
 
     }
 
@@ -1033,32 +1122,50 @@
    TABLET
    ========================================================= */
 
-@media (max-width: 950px) {
+@media (max-width: 1100px) {
+
+    .intro-content {
+
+        width:
+            calc(100% - 34px);
+
+        padding:
+            28px
+            0
+            38px;
+
+    }
+
 
     #screen-story {
 
-        display:
-            flex;
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(370px, .9fr);
 
-        flex-direction:
-            column;
-
-        min-height:
-            auto;
-
-        padding:
-            18px;
+        gap:
+            22px;
 
     }
 
 
     .story-text-panel {
 
-        min-height:
-            550px;
-
         padding:
-            65px 8vw;
+            38px
+            32px;
+
+    }
+
+
+    .story-title {
+
+        font-size:
+            clamp(
+                42px,
+                5vw,
+                62px
+            );
 
     }
 
@@ -1066,7 +1173,62 @@
     .story-illustration-panel {
 
         min-height:
-            500px;
+            480px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET KECIL
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .intro-content {
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    #screen-story {
+
+        grid-template-columns:
+            1fr;
+
+        min-height:
+            auto;
+
+    }
+
+
+    .story-text-panel {
+
+        min-height:
+            480px;
+
+    }
+
+
+    .story-illustration-panel {
+
+        min-height:
+            440px;
+
+    }
+
+
+    .story-title {
+
+        font-size:
+            clamp(
+                44px,
+                8vw,
+                62px
+            );
 
     }
 
@@ -1077,20 +1239,36 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 680px) {
 
-    .intro-main {
+    .intro-page {
 
         min-height:
-            calc(100svh - 70px);
+            calc(100vh - 68px);
+
+    }
+
+
+    .intro-content {
+
+        width:
+            calc(100% - 20px);
+
+        min-height:
+            auto;
+
+        padding:
+            14px
+            0
+            28px;
 
     }
 
 
     #screen-story {
 
-        padding:
-            10px;
+        gap:
+            14px;
 
     }
 
@@ -1098,10 +1276,14 @@
     .story-text-panel {
 
         min-height:
-            auto;
+            470px;
 
         padding:
-            48px 28px 42px;
+            31px
+            23px;
+
+        border-radius:
+            15px;
 
     }
 
@@ -1109,7 +1291,14 @@
     .story-title {
 
         font-size:
-            clamp(44px, 13vw, 62px);
+            clamp(
+                40px,
+                13vw,
+                58px
+            );
+
+        line-height:
+            .94;
 
     }
 
@@ -1117,13 +1306,54 @@
     .story-body-text {
 
         margin-top:
-            24px;
+            19px;
 
         font-size:
-            16px;
+            11px;
 
         line-height:
-            1.7;
+            1.65;
+
+    }
+
+
+    .story-ornament {
+
+        width:
+            220px;
+
+        margin-bottom:
+            21px;
+
+    }
+
+
+    .story-page-indicator {
+
+        margin-top:
+            22px;
+
+    }
+
+
+    .story-panel-footer {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        margin-top:
+            27px;
+
+    }
+
+
+    .story-lanjut-btn {
+
+        width:
+            max-content;
 
     }
 
@@ -1131,18 +1361,40 @@
     .story-illustration-panel {
 
         min-height:
-            430px;
+            360px;
+
+        border-radius:
+            15px;
+
+    }
+
+
+    .story-illustration-panel::before {
+
+        inset:
+            11px;
 
     }
 
 
     .story-image-caption {
 
+        left:
+            23px;
+
         right:
-            24px;
+            23px;
 
         bottom:
-            22px;
+            21px;
+
+    }
+
+
+    .story-image-caption strong {
+
+        font-size:
+            20px;
 
     }
 
@@ -1150,23 +1402,35 @@
 
 
 /* =========================================================
-   SMALL MOBILE
+   EXTRA SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 420px) {
 
-    #screen-story {
+    .intro-content {
 
-        padding:
-            8px;
+        width:
+            calc(100% - 14px);
 
     }
 
 
     .story-text-panel {
 
+        min-height:
+            445px;
+
         padding:
-            42px 22px 36px;
+            27px
+            19px;
+
+    }
+
+
+    .story-eyebrow {
+
+        font-size:
+            8px;
 
     }
 
@@ -1174,7 +1438,7 @@
     .story-title {
 
         font-size:
-            43px;
+            39px;
 
     }
 
@@ -1182,7 +1446,22 @@
     .story-body-text {
 
         font-size:
-            15px;
+            10px;
+
+    }
+
+
+    .story-lanjut-btn {
+
+        min-width:
+            130px;
+
+        padding:
+            10px
+            14px;
+
+        font-size:
+            8px;
 
     }
 
@@ -1190,28 +1469,34 @@
     .story-illustration-panel {
 
         min-height:
-            350px;
+            320px;
 
     }
 
 
-    .story-illustration-panel::after {
+    .story-image-caption strong {
 
-        inset:
-            10px;
-
-    }
-
-
-    .story-image-caption {
-
-        right:
-            18px;
-
-        bottom:
+        font-size:
             18px;
 
     }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.story-lanjut-btn:focus-visible,
+.story-back-btn:focus-visible {
+
+    outline:
+        2px solid
+        #b99b35;
+
+    outline-offset:
+        3px;
 
 }
 
@@ -1222,14 +1507,8 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-    .story-text-panel,
-    .story-illustration-panel,
-    .story-ornament,
-    .story-eyebrow,
-    .story-title,
-    .story-body-text,
-    .story-page-indicator,
-    .story-panel-footer {
+    .story-fade-in,
+    .story-image-enter {
 
         animation:
             none;
@@ -1241,348 +1520,17 @@
     .story-illustration-img {
 
         transform:
+            scale(1.01);
+
+    }
+
+
+    .story-lanjut-btn,
+    .story-back-btn {
+
+        transition:
             none;
 
     }
-
-    /* =========================================================
-   FINAL OVERRIDE
-   MENYESUAIKAN WARNA DENGAN BERANDA
-   ========================================================= */
-
-
-/* =========================================================
-   HILANGKAN DEKORASI ANEH DARI CSS LAIN
-   ========================================================= */
-
-/*
-   Bentuk segitiga hijau/gold yang muncul
-   di kiri atas bukan bagian dari desain Intro.
-*/
-
-.story-text-panel::after {
-
-    content: none !important;
-
-}
-
-
-/*
-   Matikan pseudo-element asing
-   jika berasal dari story.css / base.css.
-*/
-
-.story-text-panel > .story-decoration,
-.story-text-panel > .decorative-shape,
-.story-text-panel > .shape,
-.story-text-panel > .accent-shape {
-
-    display: none !important;
-
-}
-
-
-/* =========================================================
-   WARNA PANEL KIRI
-   ========================================================= */
-
-.story-text-panel {
-
-    background:
-        #f5eddd !important;
-
-    color:
-        #4a2c1d;
-
-}
-
-
-/* =========================================================
-   SEMUA TEKS INTRO
-   ========================================================= */
-
-.story-text-panel,
-.story-text-panel p,
-.story-text-panel span,
-.story-text-panel h1,
-.story-text-panel h2,
-.story-text-panel h3 {
-
-    color:
-        #4a2c1d;
-
-}
-
-
-/* =========================================================
-   EYEBROW
-   ========================================================= */
-
-.story-eyebrow {
-
-    color:
-        #b48735 !important;
-
-}
-
-
-/* =========================================================
-   JUDUL
-   ========================================================= */
-
-.story-title {
-
-    color:
-        #4a2c1d !important;
-
-}
-
-
-.story-title em {
-
-    color:
-        #c49a45 !important;
-
-}
-
-
-/* =========================================================
-   DESKRIPSI
-   ========================================================= */
-
-.story-body-text {
-
-    color:
-        #694936 !important;
-
-}
-
-
-/* =========================================================
-   NOMOR HALAMAN
-   ========================================================= */
-
-.story-page-number {
-
-    color:
-        #c49a45 !important;
-
-}
-
-
-.story-page-total {
-
-    color:
-        #9d8a72 !important;
-
-}
-
-
-.story-page-line {
-
-    background:
-        rgba(196, 154, 69, 0.45) !important;
-
-}
-
-
-/* =========================================================
-   ORNAMEN
-   ========================================================= */
-
-.story-ornament-line {
-
-    background:
-        #c49a45 !important;
-
-}
-
-
-.story-ornament-dot {
-
-    background:
-        #c49a45 !important;
-
-}
-
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
-
-.story-lanjut-btn {
-
-    background:
-        #18391a !important;
-
-    border:
-        1px solid #c49a45 !important;
-
-    color:
-        #f5eddd !important;
-
-}
-
-
-.story-lanjut-btn span {
-
-    color:
-        #f5eddd !important;
-
-}
-
-
-.story-lanjut-btn strong {
-
-    color:
-        #d9b96c !important;
-
-}
-
-
-.story-lanjut-btn:hover {
-
-    background:
-        #294d20 !important;
-
-    border-color:
-        #d9b96c !important;
-
-}
-
-
-/* =========================================================
-   MOTIF
-   ========================================================= */
-
-.story-text-panel::before {
-
-    background-image:
-        url("../assets/images/motif.png") !important;
-
-    opacity:
-        0.055 !important;
-
-}
-
-
-/* =========================================================
-   GAMBAR KANAN
-   ========================================================= */
-
-.story-illustration-panel {
-
-    background:
-        #18391a !important;
-
-}
-
-
-/* =========================================================
-   FRAME GAMBAR
-   ========================================================= */
-
-.story-illustration-panel::after {
-
-    content:
-        "" !important;
-
-    position:
-        absolute !important;
-
-    inset:
-        18px !important;
-
-    border:
-        1px solid
-        rgba(245, 237, 221, 0.35) !important;
-
-    z-index:
-        6 !important;
-
-}
-
-
-/* =========================================================
-   CAPTION GAMBAR
-   ========================================================= */
-
-.story-image-caption span {
-
-    color:
-        #f5eddd !important;
-
-}
-
-
-.story-image-caption strong {
-
-    color:
-        #d9b96c !important;
-
-}
-
-
-/* =========================================================
-   LINK / TEKS UMUM
-   ========================================================= */
-
-.story-text-panel a {
-
-    text-decoration:
-        none;
-
-}
-
-
-/* =========================================================
-   JAGA MOTIF GLOBAL
-   ========================================================= */
-
-.intro-main::before {
-
-    opacity:
-        0.055 !important;
-
-}
-
-
-/* =========================================================
-   PASTIKAN TIDAK ADA OVERLAY ANEH
-   ========================================================= */
-
-.story-text-panel {
-
-    isolation:
-        isolate;
-
-}
-
-
-.story-text-panel > * {
-
-    position:
-        relative;
-
-    z-index:
-        2;
-
-}
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 950px) {
-
-    .story-text-panel::after {
-
-        content:
-            none !important;
-
-    }
-
-}
 
 }

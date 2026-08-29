@@ -1,457 +1,696 @@
 /* =========================================================
-   CATATAN — SISTEM LEVEL
-   TERHUBUNG DENGAN PROGRESS PETA
+   LELANA KAMANDAKA
+   CATATAN.JS
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       ELEMENT
-       ===================================================== */
+/* =========================================================
+   STORAGE
+   ========================================================= */
 
-    const cards =
-        document.querySelectorAll(".catatan-card");
-
-    const tabs =
-        document.querySelectorAll(".catatan-tab");
-
-    const empty =
-        document.getElementById("catatanEmpty");
-
-    const levelText =
-        document.getElementById("catatanLevel");
-
-    const progressFill =
-        document.getElementById("catatanProgressFill");
-
-    const progressText =
-        document.getElementById("catatanProgressText");
+const MAP_PROGRESS_KEY =
+    "lelanaKamandakaProgress";
 
 
-    /* =====================================================
-       STORAGE PETA
-       ===================================================== */
+/* =========================================================
+   DEFAULT PROGRESS
+   ========================================================= */
 
-    const MAP_PROGRESS_KEY =
-        "lelanaKamandakaProgress";
+const defaultProgress = {
 
+    currentChapter: 1,
 
-    /* =====================================================
-       DATA CATATAN
-       ===================================================== */
+    totalChapters: 10,
 
-    const catatanData = {
+    xp: 0,
 
-        /* =================================================
-           TOKOH
-           ================================================= */
+    basa: 0,
 
-        "tokoh-1": {
-            number: "01",
-            title: "Raden Kamandaka",
-            description:
-                "Pemuda dari Pajajaran yang menjadi tokoh utama dalam perjalanan Lelana Kamandaka."
-        },
+    quizCompleted: false,
 
-        "tokoh-2": {
-            number: "02",
-            title: "Ki Ajar Winarong",
-            description:
-                "Tokoh yang ditemui Kamandaka dalam perjalanan dan memberikan petunjuk penting untuk melanjutkan pengembaraan."
-        },
+    sayembaraCompleted: false,
+
+    completedChapters: [],
+
+    completedLocations: [],
+
+    unlockedLocations: [1]
+
+};
 
 
-        /* =================================================
-           TEMPAT
-           ================================================= */
+/* =========================================================
+   AMBIL PROGRESS
+   ========================================================= */
 
-        "tempat-2": {
-            number: "03",
-            title: "Pasir Luhur",
-            description:
-                "Pasir Luhur menjadi salah satu tempat penting yang didatangi Kamandaka dalam perjalanan Lelana."
-        },
+function getGameProgress() {
 
-        "tempat-3": {
-            number: "04",
-            title: "Kali Logawa",
-            description:
-                "Kali Logawa menjadi bagian dari perjalanan Kamandaka sebelum melanjutkan langkahnya menuju tempat berikutnya."
-        },
-
-        "tempat-4": {
-            number: "05",
-            title: "Desa Panagih",
-            description:
-                "Desa Panagih menjadi salah satu persinggahan dalam perjalanan Kamandaka."
-        },
+    let savedProgress = null;
 
 
-        /* =================================================
-           BUDAYA
-           ================================================= */
+    try {
 
-        "budaya-5": {
-            number: "06",
-            title: "Budaya Banyumas",
-            description:
-                "Perjalanan Kamandaka memperkenalkan berbagai unsur budaya dan kehidupan masyarakat yang ditemuinya."
-        },
-
-        "budaya-6": {
-            number: "07",
-            title: "Jejak Budaya",
-            description:
-                "Berbagai jejak budaya menjadi bagian dari pengetahuan yang ditemukan sepanjang perjalanan."
-        },
+        const saved =
+            localStorage.getItem(
+                MAP_PROGRESS_KEY
+            );
 
 
-        /* =================================================
-           BASA
-           ================================================= */
+        if (saved) {
 
-        "basa-2": {
-            number: "08",
-            title: "Basa Jawa",
-            description:
-                "Kosakata dan ungkapan Basa Jawa yang ditemukan Kamandaka selama perjalanan."
-        },
+            savedProgress =
+                JSON.parse(saved);
 
-        "basa-3": {
-            number: "09",
-            title: "Unggah-Ungguh Basa",
-            description:
-                "Penggunaan bahasa yang sesuai dengan situasi dan lawan bicara menjadi bagian penting dalam perjalanan."
-        },
-
-
-        /* =================================================
-           CERITA
-           ================================================= */
-
-        "cerita-1": {
-            number: "10",
-            title: "Awal Perjalanan",
-            description:
-                "Perjalanan Kamandaka dimulai dari Pajajaran ketika ia meninggalkan kehidupan lamanya untuk menjalani pengembaraan."
-        },
-
-        "cerita-2": {
-            number: "11",
-            title: "Pertemuan dengan Ki Ajar",
-            description:
-                "Pertemuan dengan Ki Ajar Winarong menjadi bagian penting dalam perjalanan Kamandaka."
         }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Gagal membaca progress:",
+            error
+        );
+
+    }
+
+
+    const progress = {
+
+        ...defaultProgress,
+
+        ...(savedProgress || {})
 
     };
 
 
-    /* =====================================================
-       AMBIL LEVEL DARI PETA
-       ===================================================== */
+    /*
+     * Pastikan array tidak rusak.
+     */
 
-    function getCurrentLevel() {
-
-        try {
-
-            const savedProgress =
-                sessionStorage.getItem(
-                    MAP_PROGRESS_KEY
-                );
-
-
-            /*
-             * Kalau belum ada progress,
-             * mulai dari Level 1.
-             */
-
-            if (!savedProgress) {
-
-                return 1;
-
-            }
-
-
-            const progress =
-                JSON.parse(savedProgress);
-
-
-            /*
-             * Peta menggunakan currentChapter
-             * sebagai posisi perjalanan.
-             */
-
-            let level =
-                parseInt(
-                    progress.currentChapter
-                );
-
-
-            if (isNaN(level)) {
-
-                level = 1;
-
-            }
-
-
-            /*
-             * Batas Level 1–10
-             */
-
-            level =
-                Math.max(
-                    1,
-                    Math.min(level, 10)
-                );
-
-
-            return level;
-
-        }
-
-        catch (error) {
-
-            console.warn(
-                "Gagal membaca progress peta:",
-                error
-            );
-
-            return 1;
-
-        }
-
-    }
-
-
-    /* =====================================================
-       LEVEL SAAT INI
-       ===================================================== */
-
-    let currentLevel =
-        getCurrentLevel();
-
-
-    /* =====================================================
-       UPDATE INFORMASI LEVEL
-       ===================================================== */
-
-    function updateLevel() {
-
-        if (levelText) {
-
-            levelText.textContent =
-                `LEVEL ${String(currentLevel).padStart(2, "0")} / 10`;
-
-        }
-
-
-        if (progressFill) {
-
-            const percentage =
-                (currentLevel / 10) * 100;
-
-            progressFill.style.width =
-                `${percentage}%`;
-
-        }
-
-
-        if (progressText) {
-
-            if (currentLevel >= 10) {
-
-                progressText.textContent =
-                    "Seluruh catatan perjalanan telah ditemukan.";
-
-            }
-
-            else {
-
-                const nextLevel =
-                    currentLevel + 1;
-
-                progressText.textContent =
-                    `Lanjutkan perjalanan menuju Level ${String(nextLevel).padStart(2, "0")} untuk menemukan catatan baru.`;
-
-            }
-
-        }
-
-    }
-
-
-    /* =====================================================
-       MEMBUAT ISI CATATAN
-       ===================================================== */
-
-    function createCardContent(
-        card,
-        data
+    if (
+        !Array.isArray(
+            progress.unlockedLocations
+        )
     ) {
 
+        progress.unlockedLocations =
+            [1];
+
+    }
+
+
+    if (
+        !Array.isArray(
+            progress.completedLocations
+        )
+    ) {
+
+        progress.completedLocations =
+            [];
+
+    }
+
+
+    if (
+        !Array.isArray(
+            progress.completedChapters
+        )
+    ) {
+
+        progress.completedChapters =
+            [];
+
+    }
+
+
+    /*
+     * LOKASI 01 SELALU TERBUKA.
+     */
+
+    if (
+        !progress.unlockedLocations.includes(
+            1
+        )
+    ) {
+
+        progress.unlockedLocations.unshift(
+            1
+        );
+
+    }
+
+
+    return progress;
+
+}
+
+
+/* =========================================================
+   ELEMENT
+   ========================================================= */
+
+const catatanGrid =
+    document.getElementById(
+        "catatanGrid"
+    );
+
+
+const catatanEmpty =
+    document.getElementById(
+        "catatanEmpty"
+    );
+
+
+const catatanSectionTitle =
+    document.getElementById(
+        "catatanSectionTitle"
+    );
+
+
+const catatanTabs =
+    document.querySelectorAll(
+        ".catatan-tab"
+    );
+
+
+/* =========================================================
+   KATEGORI AKTIF
+   ========================================================= */
+
+let activeCategory =
+    "semua";
+
+
+/* =========================================================
+   TENTUKAN LEVEL CATATAN
+   =========================================================
+
+   Setiap kartu catatan mempunyai nomor.
+
+   Kartu 01–02:
+   Terbuka sejak lokasi 01.
+
+   Kartu 03–04:
+   Terbuka sejak lokasi 02.
+
+   Kartu 05–06:
+   Terbuka sejak lokasi 03.
+
+   Kartu 07–08:
+   Terbuka sejak lokasi 04.
+
+   Kartu 09–10:
+   Terbuka sejak lokasi 05.
+
+   Kartu 11–12:
+   Terbuka sejak lokasi 06.
+
+   Kartu 13:
+   Terbuka sejak lokasi 07.
+
+   Kartu 14:
+   Terbuka sejak lokasi 08.
+
+   Jadi semakin jauh perjalanan,
+   semakin banyak catatan yang muncul.
+   ========================================================= */
+
+function getRequiredLocation(
+    cardNumber
+) {
+
+    if (
+        cardNumber <= 2
+    ) {
+
+        return 1;
+
+    }
+
+
+    if (
+        cardNumber <= 4
+    ) {
+
+        return 2;
+
+    }
+
+
+    if (
+        cardNumber <= 6
+    ) {
+
+        return 3;
+
+    }
+
+
+    if (
+        cardNumber <= 8
+    ) {
+
+        return 4;
+
+    }
+
+
+    if (
+        cardNumber <= 10
+    ) {
+
+        return 5;
+
+    }
+
+
+    if (
+        cardNumber <= 12
+    ) {
+
+        return 6;
+
+    }
+
+
+    if (
+        cardNumber === 13
+    ) {
+
+        return 7;
+
+    }
+
+
+    return 8;
+
+}
+
+
+/* =========================================================
+   CEK CATATAN TERBUKA
+   ========================================================= */
+
+function isCatatanUnlocked(
+    cardNumber,
+    progress
+) {
+
+    const requiredLocation =
+        getRequiredLocation(
+            cardNumber
+        );
+
+
+    return progress
+        .unlockedLocations
+        .includes(
+            requiredLocation
+        );
+
+}
+
+
+/* =========================================================
+   CEK CATATAN SELESAI
+   ========================================================= */
+
+function isCatatanCompleted(
+    cardNumber,
+    progress
+) {
+
+    const requiredLocation =
+        getRequiredLocation(
+            cardNumber
+        );
+
+
+    return progress
+        .completedLocations
+        .includes(
+            requiredLocation
+        );
+
+}
+
+
+/* =========================================================
+   BUAT NOMOR KARTU
+   ========================================================= */
+
+function getCardNumber(
+    card
+) {
+
+    const numberElement =
+        card.querySelector(
+            ".catatan-card-number"
+        );
+
+
+    if (!numberElement) {
+
+        return 0;
+
+    }
+
+
+    const number =
+        parseInt(
+            numberElement.textContent.trim(),
+            10
+        );
+
+
+    return Number.isNaN(
+        number
+    )
+        ? 0
+        : number;
+
+}
+
+
+/* =========================================================
+   AMBIL NAMA CATATAN
+   ========================================================= */
+
+function getCardTitle(
+    card
+) {
+
+    const title =
+        card.querySelector(
+            "h3"
+        );
+
+
+    return title
+        ? title.textContent.trim()
+        : "Catatan";
+
+}
+
+
+/* =========================================================
+   BERSIHKAN STATUS LAMA
+   ========================================================= */
+
+function removeOldLock(
+    card
+) {
+
+    card.classList.remove(
+        "catatan-card-locked",
+        "catatan-card-unlocked",
+        "catatan-card-completed"
+    );
+
+
+    const oldLock =
+        card.querySelector(
+            ".catatan-lock-overlay"
+        );
+
+
+    if (oldLock) {
+
+        oldLock.remove();
+
+    }
+
+
+    const oldStatus =
+        card.querySelector(
+            ".catatan-card-status"
+        );
+
+
+    if (oldStatus) {
+
+        oldStatus.remove();
+
+    }
+
+}
+
+
+/* =========================================================
+   TAMBAHKAN STATUS
+   ========================================================= */
+
+function createStatus(
+    text
+) {
+
+    const status =
+        document.createElement(
+            "span"
+        );
+
+
+    status.className =
+        "catatan-card-status";
+
+
+    status.textContent =
+        text;
+
+
+    return status;
+
+}
+
+
+/* =========================================================
+   LOCK KARTU
+   ========================================================= */
+
+function lockCard(
+    card,
+    requiredLocation
+) {
+
+    removeOldLock(
+        card
+    );
+
+
+    card.classList.add(
+        "catatan-card-locked"
+    );
+
+
+    /*
+     * Simpan judul asli.
+     */
+
+    const title =
+        getCardTitle(
+            card
+        );
+
+
+    /*
+     * Sembunyikan isi asli.
+     */
+
+    const content =
+        card.querySelector(
+            ".catatan-card-content"
+        );
+
+
+    if (content) {
+
         /*
-         * Kalau isi sudah dibuat,
-         * jangan dibuat lagi.
+         * Jangan hapus HTML asli.
+         * Kita hanya membuatnya tidak terlihat
+         * melalui atribut.
          */
 
-        if (
-            card.querySelector(
-                ".catatan-card-content"
-            )
-        ) {
+        content.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    }
+
+
+    /*
+     * Overlay lock.
+     */
+
+    const overlay =
+        document.createElement(
+            "div"
+        );
+
+
+    overlay.className =
+        "catatan-lock-overlay";
 
             return;
 
-        }
+    overlay.innerHTML = `
+
+        <div class="catatan-lock-icon">
+            🔒
+        </div>
+
+        <span class="catatan-lock-label">
+            TERKUNCI
+        </span>
+
+        <strong>
+            Catatan belum ditemukan
+        </strong>
+
+        <small>
+            Selesaikan perjalanan hingga
+            lokasi ${String(
+                requiredLocation
+            ).padStart(2, "0")}
+            untuk membukanya.
+        </small>
+
+    `;
 
 
-        /* Nomor */
-
-        const number =
-            document.createElement("div");
-
-        number.className =
-            "catatan-card-number";
-
-        number.textContent =
-            data.number;
+    card.appendChild(
+        overlay
+    );
 
 
-        /* Content */
+    /*
+     * Status.
+     */
 
-        const content =
-            document.createElement("div");
-
-        content.className =
-            "catatan-card-content";
-
-
-        /* Category */
-
-        const category =
-            document.createElement("span");
-
-        category.className =
-            "catatan-card-category";
-
-        category.textContent =
-            card.dataset.category.toUpperCase();
+    card.appendChild(
+        createStatus(
+            "TERKUNCI"
+        )
+    );
 
 
-        /* Title */
+    /*
+     * Accessibility.
+     */
 
-        const title =
-            document.createElement("h3");
+    card.setAttribute(
+        "aria-label",
+        `${title} — terkunci`
+    );
 
-        title.textContent =
-            data.title;
-
-
-        /* Description */
-
-        const description =
-            document.createElement("p");
-
-        description.textContent =
-            data.description;
+}
 
 
-        /* Status */
+/* =========================================================
+   UNLOCK KARTU
+   ========================================================= */
 
-        const status =
-            document.createElement("div");
+function unlockCard(
+    card,
+    completed
+) {
 
-        status.className =
-            "catatan-card-status";
-
-        status.textContent =
-            "TERBUKA";
-
-
-        /* Masukkan ke content */
-
-        content.appendChild(category);
-
-        content.appendChild(title);
-
-        content.appendChild(description);
-
-        content.appendChild(status);
+    removeOldLock(
+        card
+    );
 
 
-        /* Masukkan ke card */
+    card.classList.add(
+        completed
+            ? "catatan-card-completed"
+            : "catatan-card-unlocked"
+    );
 
-        card.appendChild(number);
 
-        card.appendChild(content);
+    const content =
+        card.querySelector(
+            ".catatan-card-content"
+        );
+
+
+    if (content) {
+
+        content.removeAttribute(
+            "aria-hidden"
+        );
 
     }
 
 
-    /* =====================================================
-       BUKA / KUNCI CARD
-       ===================================================== */
+    /*
+     * Status.
+     */
 
-    function updateCards() {
+    card.appendChild(
 
-        cards.forEach(card => {
+        createStatus(
 
-            const requiredLevel =
-                parseInt(
-                    card.dataset.level
-                ) || 1;
+            completed
+                ? "SELESAI"
+                : "TERBUKA"
 
+        )
 
-            const category =
-                card.dataset.category;
-
-
-            /*
-             * Buat ID data.
-             *
-             * Contoh:
-             *
-             * tokoh + 2
-             * menjadi:
-             * tokoh-2
-             */
-
-            const dataKey =
-                `${category}-${requiredLevel}`;
+    );
 
 
-            const data =
-                catatanData[dataKey];
+    /*
+     * Accessibility.
+     */
+
+    card.setAttribute(
+        "aria-label",
+        completed
+            ? `${getCardTitle(card)} — selesai`
+            : `${getCardTitle(card)} — terbuka`
+    );
+
+}
 
 
-            /* =============================================
-               LEVEL SUDAH DICAPAI
-               ============================================= */
+/* =========================================================
+   UPDATE SEMUA KARTU
+   ========================================================= */
 
-            if (
-                currentLevel >=
-                requiredLevel
-            ) {
+function updateCatatanCards() {
 
-                card.classList.remove(
-                    "locked"
+    if (!catatanGrid) {
+
+        return;
+
+    }
+
+
+    const progress =
+        getGameProgress();
+
+
+    const cards =
+        catatanGrid.querySelectorAll(
+            ".catatan-card"
+        );
+
+
+    cards.forEach(
+        function (
+            card
+        ) {
+
+            const cardNumber =
+                getCardNumber(
+                    card
                 );
 
 
-                /*
-                 * Hapus gembok
-                 */
+            if (!cardNumber) {
 
-                const lock =
-                    card.querySelector(
-                        ".catatan-lock"
-                    );
-
-                if (lock) {
-
-                    lock.remove();
-
-                }
+                return;
 
 
                 /*
@@ -471,33 +710,80 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
-               LEVEL BELUM DICAPAI
-               ============================================= */
+            const unlocked =
+                isCatatanUnlocked(
+                    cardNumber,
+                    progress
+                );
 
-            else {
 
-                card.classList.add(
-                    "locked"
+            const completed =
+                isCatatanCompleted(
+                    cardNumber,
+                    progress
+                );
+
+
+            if (unlocked) {
+
+                unlockCard(
+                    card,
+                    completed
                 );
 
             }
 
-        });
+            else {
+
+                lockCard(
+                    card,
+                    getRequiredLocation(
+                        cardNumber
+                    )
+                );
+
+            }
+
+        }
+    );
+
+
+    filterCards(
+        activeCategory
+    );
+
+}
+
+
+/* =========================================================
+   FILTER
+   ========================================================= */
+
+function filterCards(
+    category
+) {
+
+    if (!catatanGrid) {
+
+        return;
 
     }
 
 
-    /* =====================================================
-       FILTER
-       ===================================================== */
-
-    function filterCards(category) {
-
-        let visibleCards = 0;
+    const cards =
+        catatanGrid.querySelectorAll(
+            ".catatan-card"
+        );
 
 
-        cards.forEach(card => {
+    let visibleCount =
+        0;
+
+
+    cards.forEach(
+        function (
+            card
+        ) {
 
             const cardCategory =
                 card.dataset.category;
@@ -505,14 +791,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const match =
                 category === "semua" ||
-                category === cardCategory;
+                cardCategory === category;
 
 
             if (match) {
 
-                card.style.display = "";
+                card.style.display =
+                    "";
 
-                visibleCards++;
+                visibleCount++;
 
             }
 
@@ -523,99 +810,247 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-        });
-
-
-        if (empty) {
-
-            empty.classList.toggle(
-                "show",
-                visibleCards === 0
-            );
-
         }
+    );
 
 
-        tabs.forEach(tab => {
+    /*
+     * Empty hanya muncul kalau
+     * kategori memang tidak punya kartu.
+     */
 
-            const active =
-                tab.dataset.category ===
-                category;
+    if (catatanEmpty) {
+
+        catatanEmpty.style.display =
+            visibleCount === 0
+                ? ""
+                : "none";
+
+    }
+
+
+    updateSectionTitle(
+        category
+    );
+
+}
+
+
+/* =========================================================
+   JUDUL SECTION
+   ========================================================= */
+
+function updateSectionTitle(
+    category
+) {
+
+    if (!catatanSectionTitle) {
+
+        return;
+
+    }
+
+
+    const titles = {
+
+        semua:
+            "Catatan yang Telah Ditemukan",
+
+        tokoh:
+            "Tokoh dalam Perjalanan",
+
+        tempat:
+            "Tempat yang Telah Ditemui",
+
+        budaya:
+            "Jejak Budaya",
+
+        basa:
+            "Kosakata Basa",
+
+        cerita:
+            "Potongan Cerita"
+
+    };
+
+
+    catatanSectionTitle.textContent =
+        titles[
+            category
+        ] ||
+        titles.semua;
+
+}
+
+
+/* =========================================================
+   TAB
+   ========================================================= */
+
+function activateTab(
+    selectedTab
+) {
+
+    catatanTabs.forEach(
+        function (
+            tab
+        ) {
+
+            const isActive =
+                tab === selectedTab;
 
 
             tab.classList.toggle(
                 "active",
-                active
+                isActive
             );
 
 
             tab.setAttribute(
                 "aria-selected",
-                active
+                isActive
                     ? "true"
                     : "false"
             );
 
-        });
+        }
+    );
 
-    }
+
+    activeCategory =
+        selectedTab.dataset.category ||
+        "semua";
 
 
-    /* =====================================================
-       EVENT TAB
-       ===================================================== */
+    filterCards(
+        activeCategory
+    );
 
-    tabs.forEach(tab => {
+}
+
+
+catatanTabs.forEach(
+    function (
+        tab
+    ) {
 
         tab.addEventListener(
             "click",
-            () => {
+            function () {
 
-                filterCards(
-                    tab.dataset.category
+                activateTab(
+                    tab
                 );
 
             }
         );
 
-    });
+    }
+);
 
 
-    /* =====================================================
-       INITIAL
-       ===================================================== */
+/* =========================================================
+   SINKRONISASI SAAT STORAGE BERUBAH
+   ========================================================= */
 
-    updateLevel();
-
-    updateCards();
-
-    filterCards("semua");
-
-
-    /* =====================================================
-       AUTO UPDATE
-       ===================================================== */
-
-    setInterval(() => {
-
-        const newLevel =
-            getCurrentLevel();
-
+window.addEventListener(
+    "storage",
+    function (
+        event
+    ) {
 
         if (
-            newLevel !==
-            currentLevel
+            event.key ===
+            MAP_PROGRESS_KEY
         ) {
 
-            currentLevel =
-                newLevel;
-
-            updateLevel();
-
-            updateCards();
+            updateCatatanCards();
 
         }
 
-    }, 1000);
+    }
+);
 
-});
+
+/* =========================================================
+   SINKRONISASI SAAT KEMBALI KE HALAMAN
+   ========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        updateCatatanCards();
+
+    }
+);
+
+
+/* =========================================================
+   INIT
+   ========================================================= */
+
+function initializeCatatan() {
+
+    updateCatatanCards();
+
+
+    /*
+     * SEMUA sebagai default.
+     */
+
+    const defaultTab =
+        document.querySelector(
+            '.catatan-tab[data-category="semua"]'
+        );
+
+
+    if (defaultTab) {
+
+        activateTab(
+            defaultTab
+        );
+
+    }
+
+
+    console.log(
+        "================================"
+    );
+
+    console.log(
+        "CATATAN LELANA KAMANDAKA"
+    );
+
+    console.log(
+        getGameProgress()
+    );
+
+    console.log(
+        "================================"
+    );
+
+}
+
+
+/* =========================================================
+   DOM READY
+   ========================================================= */
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeCatatan
+    );
+
+}
+
+else {
+
+    initializeCatatan();
+
+}

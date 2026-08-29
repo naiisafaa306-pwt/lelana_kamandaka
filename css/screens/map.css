@@ -1,895 +1,108 @@
 /* =========================================================
-   LELANA KAMANDAKA — MAP PAGE
-   SIDEBAR + NAVBAR + PETA
+   LELANA KAMANDAKA
+   MAP.CSS
+   KHUSUS HALAMAN PETA
+   =========================================================
+
+   FILE INI HANYA MENGATUR:
+   - Background halaman Peta
+   - Content Peta
+   - Header Peta
+   - Area Peta
+   - Jalur perjalanan
+   - Pin lokasi
+   - Label lokasi
+   - Legenda
+   - Responsive Peta
+
+   TIDAK MENGATUR:
+   - Navbar
+   - Sidebar
+   - Top navigation
+   - Bottom navigation
+   - Margin sidebar
+   - Posisi navbar
    ========================================================= */
 
 
 /* =========================================================
-   ROOT FALLBACK
+   PAGE BACKGROUND
    ========================================================= */
 
-:root {
-
-    --lk-green-950: #10210f;
-    --lk-green-900: #172c14;
-    --lk-green-850: #1d3518;
-    --lk-green-800: #25441c;
-    --lk-green-700: #3c6125;
-    --lk-green-600: #55782c;
-
-    --lk-gold-100: #fff4a3;
-    --lk-gold-200: #f0dd63;
-    --lk-gold-300: #d4b735;
-    --lk-gold-400: #ad8920;
-
-    --lk-cream: #f4eedb;
-    --lk-paper: #fbf7e9;
-    --lk-ink: #26331f;
-
-}
-
-
-/* =========================================================
-   RESET KHUSUS HALAMAN
-   ========================================================= */
-
-.lk-page *,
-.lk-page *::before,
-.lk-page *::after {
-    box-sizing: border-box;
-}
-
-
-.lk-page {
-
-    position: relative;
-
-    width: 100%;
-    min-height: 100vh;
-
-    overflow-x: hidden;
-
-    color: var(--lk-ink);
-
-    background:
-
-        radial-gradient(
-            circle at 85% 10%,
-            rgba(210,184,71,.13),
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 5% 90%,
-            rgba(40,75,31,.08),
-            transparent 30%
-        ),
-
-        #f4eedb;
-
-    font-family:
-        "Hanken Grotesk",
-        Arial,
-        sans-serif;
-}
-
-
-.lk-page a {
-    color: inherit;
-    text-decoration: none;
-}
-
-
-.lk-page button {
-    font-family: inherit;
-}
-
-
-/* =========================================================
-   SIDEBAR
-   ========================================================= */
-
-.lk-sidebar {
-
-    position: fixed;
-
-    left: 0;
-    top: 0;
-    bottom: 0;
-
-    z-index: 100;
-
-    width: 212px;
-
-    padding:
-        28px
-        12px
-        20px;
-
-    color: #f7f0d8;
-
-    background:
-        linear-gradient(
-            180deg,
-            #172e14 0%,
-            #10220f 100%
-        );
-
-    border-right:
-        1px solid
-        rgba(218,188,67,.20);
-
-    overflow-y: auto;
-
-    scrollbar-width: thin;
-}
-
-
-/* =========================================================
-   SIDEBAR BRAND
-   ========================================================= */
-
-.lk-brand {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding:
-        0
-        14px
-        14px
-        14px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.08);
-}
-
-
-/* =========================================================
-   BRAND MARK
-   ========================================================= */
-
-.lk-brand-mark {
-
-    width: 42px;
-    height: 42px;
-
-    display: grid;
-
-    place-items: center;
-
-    flex-shrink: 0;
-
-    border:
-        2px solid
-        var(--lk-gold-300);
-
-    color:
-        var(--lk-gold-200);
-
-    transform:
-        rotate(45deg);
-
-}
-
-
-.lk-brand-mark span {
-
-    display: block;
-
-    transform:
-        rotate(-45deg);
-
-    font-size: 16px;
-
-    line-height: 1;
-
-}
-
-
-/* =========================================================
-   BRAND TEXT
-   ========================================================= */
-
-.lk-brand-text {
-
-    display: flex;
-
-    flex-direction: column;
-
-    min-width: 0;
-
-}
-
-
-.lk-brand-text strong {
-
-    color: #fff8df;
-
-    font-family:
-        "Libre Caslon Text",
-        Georgia,
-        serif;
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    line-height: 1;
-
-    letter-spacing:
-        .02em;
-
-}
-
-
-.lk-brand-text small {
-
-    margin-top: 5px;
-
-    color:
-        rgba(250,244,222,.62);
-
-    font-family:
-        "Hanken Grotesk",
-        Arial,
-        sans-serif;
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing:
-        .20em;
-
-}
-
-
-/* =========================================================
-   SIDEBAR MENU
-   ========================================================= */
-
-.lk-side-menu {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-    margin-top: 22px;
-
-}
-
-
-/* =========================================================
-   SIDEBAR LINK
-   ========================================================= */
-
-.lk-side-link {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    min-height: 48px;
-
-    padding:
-        8px
-        10px;
-
-    border-radius: 12px;
-
-    color:
-        rgba(250,244,222,.76);
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    transition:
-        color .25s ease,
-        background .25s ease,
-        transform .25s ease;
-
-}
-
-
-.lk-side-link:hover {
-
-    color: #fff8d4;
-
-    background:
-        rgba(255,255,255,.06);
-
-    transform:
-        translateX(3px);
-
-}
-
-
-/* =========================================================
-   SIDEBAR ACTIVE
-   ========================================================= */
-
-.lk-side-link.active {
-
-    color: #fff8d4;
-
-    background:
-        linear-gradient(
-            90deg,
-            #496b21,
-            #38551e
-        );
-
-    box-shadow:
-        inset
-        0 0 0 1px
-        rgba(235,214,89,.25);
-
-}
-
-
-.lk-side-link.active::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-
-    top: 9px;
-    bottom: 9px;
-
-    width: 3px;
-
-    border-radius:
-        0
-        5px
-        5px
-        0;
-
-    background:
-        var(--lk-gold-300);
-
-}
-
-
-/* =========================================================
-   SIDEBAR ICON BOX
-   ========================================================= */
-
-.lk-side-icon {
-
-    width: 31px;
-    height: 31px;
-
-    display: grid;
-
-    place-items: center;
-
-    flex-shrink: 0;
-
-    border-radius: 8px;
-
-    background:
-        rgba(255,255,255,.08);
-
-}
-
-
-.lk-side-link.active
-.lk-side-icon {
-
-    background:
-        var(--lk-gold-300);
-
-}
-
-
-/* =========================================================
-   SIDEBAR ICON
-   ========================================================= */
-
-.lk-side-icon img {
-
-    width: 18px;
-    height: 18px;
-
-    display: block;
-
-    object-fit: contain;
-
-}
-
-
-/* =========================================================
-   SIDEBAR QUOTE
-   ========================================================= */
-
-.lk-sidebar-quote {
-
-    position: absolute;
-
-    left: 25px;
-    right: 20px;
-
-    bottom: 28px;
-
-}
-
-
-.lk-sidebar-quote::before {
-
-    content: "";
-
-    display: block;
-
-    width: 40px;
-
-    margin-bottom: 13px;
-
-    border-top:
-        1px solid
-        rgba(220,192,71,.45);
-
-}
-
-
-.lk-sidebar-quote p {
+body {
 
     margin: 0;
 
+    min-width: 320px;
+
+    background:
+        #f3edda;
+
     color:
-        rgba(255,248,221,.78);
+        #26331f;
 
     font-family:
-        "Libre Caslon Text",
-        Georgia,
-        serif;
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-    font-style: italic;
-
-}
-
-
-.lk-sidebar-quote span {
-
-    display: block;
-
-    margin-top: 12px;
-
-    color:
-        var(--lk-gold-300);
-
-    font-size: 18px;
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
 
 }
 
 
 /* =========================================================
-   MAIN
-   ========================================================= */
+   MAP CONTENT
+   =========================================================
 
-.lk-main {
+   Posisi .lk-main, sidebar,
+   dan navbar sepenuhnya diatur oleh
+   CSS GLOBAL NAVBAR.
 
-    position: relative;
-
-    z-index: 1;
-
-    margin-left: 212px;
-
-    min-height: 100vh;
-
-}
-
-
-/* =========================================================
-   TOP NAVBAR
-   ========================================================= */
-
-.lk-navbar {
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 90;
-
-    height: 78px;
-
-    display: flex;
-
-    align-items: center;
-
-    padding:
-        0
-        30px;
-
-    color:
-        #f8f2db;
-
-    background:
-        rgba(20,42,17,.97);
-
-    border-bottom:
-        1px solid
-        rgba(213,185,61,.16);
-
-    backdrop-filter:
-        blur(12px);
-
-}
-
-
-/* =========================================================
-   NAV LINKS
-   ========================================================= */
-
-.lk-nav-links {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    flex: 1;
-
-}
-
-
-.lk-nav-link {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding:
-        11px
-        15px;
-
-    border-radius: 10px;
-
-    color:
-        rgba(250,244,222,.70);
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    transition:
-        color .25s ease,
-        background .25s ease,
-        transform .25s ease;
-
-}
-
-
-.lk-nav-link:hover {
-
-    color: #fff;
-
-    background:
-        rgba(255,255,255,.06);
-
-    transform:
-        translateY(-1px);
-
-}
-
-
-.lk-nav-link.active {
-
-    color:
-        #fff8d4;
-
-    background:
-        #385720;
-
-}
-
-
-.lk-nav-link img {
-
-    width: 16px;
-    height: 16px;
-
-    display: block;
-
-    object-fit: contain;
-
-}
-
-
-/* =========================================================
-   PLAYER
-   ========================================================= */
-
-.lk-player {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    padding-left: 20px;
-
-    border-left:
-        1px solid
-        rgba(255,255,255,.10);
-
-}
-
-
-/* =========================================================
-   PLAYER AVATAR
-   ========================================================= */
-
-.lk-avatar {
-
-    width: 40px;
-    height: 40px;
-
-    display: grid;
-
-    place-items: center;
-
-    flex-shrink: 0;
-
-    border:
-        1px solid
-        var(--lk-gold-300);
-
-    border-radius: 50%;
-
-    color:
-        var(--lk-gold-200);
-
-    background:
-        rgba(255,255,255,.04);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-}
-
-
-/* =========================================================
-   PLAYER INFO
-   ========================================================= */
-
-.lk-player-info {
-
-    width: 130px;
-
-    min-width: 110px;
-
-}
-
-
-.lk-player-top {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 8px;
-
-}
-
-
-.lk-player-top strong {
-
-    color:
-        #fff8df;
-
-    font-size: 9px;
-
-    font-weight: 700;
-
-}
-
-
-.lk-player-top span {
-
-    color:
-        rgba(250,244,222,.60);
-
-    font-size: 8px;
-
-}
-
-
-/* =========================================================
-   XP BAR
-   ========================================================= */
-
-.lk-xp {
-
-    width: 100%;
-
-    height: 5px;
-
-    margin-top: 6px;
-
-    overflow: hidden;
-
-    border-radius: 999px;
-
-    background:
-        rgba(255,255,255,.13);
-
-}
-
-
-.lk-xp span {
-
-    display: block;
-
-    width: 0%;
-
-    height: 100%;
-
-    border-radius: inherit;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7c972e,
-            #ead354
-        );
-
-    transition:
-        width .5s ease;
-
-}
-
-
-.lk-player-info small {
-
-    display: block;
-
-    margin-top: 4px;
-
-    color:
-        rgba(250,244,222,.48);
-
-    font-size: 7px;
-
-    text-align: right;
-
-}
-
-
-/* =========================================================
-   NAV ACTIONS
-   ========================================================= */
-
-.lk-nav-actions {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    margin-left: 18px;
-
-}
-
-
-.lk-action {
-
-    width: 36px;
-    height: 36px;
-
-    display: grid;
-
-    place-items: center;
-
-    padding: 0;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    border-radius: 9px;
-
-    color:
-        var(--lk-gold-200);
-
-    background:
-        transparent;
-
-    cursor: pointer;
-
-    font-size: 15px;
-
-    transition:
-        background .25s ease,
-        transform .25s ease;
-
-}
-
-
-.lk-action:hover {
-
-    background:
-        rgba(255,255,255,.08);
-
-    transform:
-        translateY(-2px);
-
-}
-
-
-/* =========================================================
-   CONTENT
+   MAP.CSS TIDAK MENIMPA .lk-main.
    ========================================================= */
 
 .lk-content {
 
     position: relative;
 
+    z-index: 1;
+
     width:
         min(
-            1400px,
+            1280px,
             calc(100% - 38px)
         );
 
     margin:
-        0
-        auto;
+        0 auto;
 
     padding:
-        34px
+        26px
         0
-        55px;
+        40px;
 
 }
 
 
 /* =========================================================
-   MAP PAGE PATTERN
+   BACKGROUND PATTERN
    ========================================================= */
 
 .map-page-pattern {
 
     position: fixed;
 
-    inset:
-        78px
-        0
-        0
-        212px;
+    inset: 0;
 
     z-index: 0;
 
     pointer-events: none;
 
-    opacity: .04;
+    overflow: hidden;
+
+    opacity: .035;
 
     background-image:
+
         radial-gradient(
             circle,
             #496b21 1px,
@@ -920,40 +133,50 @@
         );
 
     margin:
-        0
-        auto
-        28px;
+        0 auto 28px;
 
     text-align: center;
 
 }
 
 
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
 .map-eyebrow {
 
     display: block;
 
-    margin-bottom: 8px;
+    margin:
+        0 0 9px;
 
     color:
         #8a684c;
 
     font-family:
-        "Hanken Grotesk",
-        Arial,
-        sans-serif;
+        "Libre Caslon Text",
+        Georgia,
+        serif;
 
-    font-size: 10px;
+    font-size:
+        17px;
 
-    font-weight: 700;
+    font-style:
+        italic;
 
-    letter-spacing:
-        4px;
+    font-weight:
+        400;
 
-    text-transform: uppercase;
+    line-height:
+        1.2;
 
 }
 
+
+/* =========================================================
+   MAP TITLE
+   ========================================================= */
 
 .map-header h1 {
 
@@ -969,39 +192,51 @@
 
     font-size:
         clamp(
-            38px,
-            4vw,
+            48px,
+            5vw,
             56px
         );
 
-    line-height: 1.05;
+    font-weight:
+        700;
+
+    line-height:
+        .95;
 
     letter-spacing:
-        -.025em;
+        -.045em;
 
 }
 
 
+/* =========================================================
+   MAP DESCRIPTION
+   ========================================================= */
+
 .map-header p {
 
-    max-width: 620px;
+    max-width:
+        620px;
 
     margin:
-        13px
-        auto
-        0;
+        16px auto 0;
 
     color:
-        #655747;
+        #777460;
 
     font-family:
         "Hanken Grotesk",
         Arial,
         sans-serif;
 
-    font-size: 14px;
+    font-size:
+        13px;
 
-    line-height: 1.7;
+    font-weight:
+        400;
+
+    line-height:
+        1.7;
 
 }
 
@@ -1012,13 +247,17 @@
 
 .map-header-ornament {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    gap: 12px;
+    gap:
+        12px;
 
     width:
         min(
@@ -1027,12 +266,14 @@
         );
 
     margin:
-        20px
-        auto
-        0;
+        20px auto 0;
 
 }
 
+
+/* =========================================================
+   ORNAMENT LINE
+   ========================================================= */
 
 .map-header-ornament span {
 
@@ -1041,10 +282,16 @@
     height: 1px;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
-            rgba(130,102,63,.45)
+            rgba(
+                130,
+                102,
+                63,
+                .45
+            )
         );
 
 }
@@ -1053,23 +300,43 @@
 .map-header-ornament span:last-child {
 
     background:
+
         linear-gradient(
             90deg,
-            rgba(130,102,63,.45),
+            rgba(
+                130,
+                102,
+                63,
+                .45
+            ),
             transparent
         );
 
 }
 
 
+/* =========================================================
+   ORNAMENT SYMBOL
+   ========================================================= */
+
 .map-header-ornament b {
 
     color:
         #9b7947;
 
-    font-size: 10px;
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
 
-    font-weight: 400;
+    font-size:
+        10px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1;
 
 }
 
@@ -1095,24 +362,40 @@
 
 .map-card {
 
+    position: relative;
+
     width: 100%;
+
+    max-width: none;
 
     overflow: hidden;
 
     border:
         1px solid
-        rgba(87,60,35,.45);
+        rgba(
+            47,
+            70,
+            31,
+            .14
+        );
 
-    border-radius: 16px;
+    border-radius:
+        17px;
 
     background:
         #c6a66d;
 
     box-shadow:
+
         0
-        18px
-        45px
-        rgba(55,37,20,.18);
+        12px
+        30px
+        rgba(
+            43,
+            32,
+            10,
+            .10
+        );
 
 }
 
@@ -1148,9 +431,12 @@
     z-index: 1;
 
     width: 100%;
+
     height: 100%;
 
     display: block;
+
+    max-width: none;
 
     object-fit: fill;
 
@@ -1162,7 +448,7 @@
 
 
 /* =========================================================
-   ROUTE / JALUR
+   ROUTE
    ========================================================= */
 
 .map-route {
@@ -1174,7 +460,10 @@
     display: block;
 
     width: auto;
+
     height: auto;
+
+    max-width: none;
 
     object-fit: contain;
 
@@ -1183,26 +472,42 @@
     pointer-events: none;
 
     transition:
+
         opacity .7s ease,
+
         filter .7s ease;
 
 }
 
+
+/* =========================================================
+   COMPLETED ROUTE
+   ========================================================= */
 
 .map-route.completed {
 
     opacity: 1;
 
     filter:
+
         drop-shadow(
             0
             0
             4px
-            rgba(255,255,255,.35)
+            rgba(
+                255,
+                255,
+                255,
+                .35
+            )
         );
 
 }
 
+
+/* =========================================================
+   LOCKED ROUTE
+   ========================================================= */
 
 .map-route.locked {
 
@@ -1356,7 +661,7 @@
 
     position: absolute;
 
-    z-index: 10;
+    z-index: 50;
 
     width: 76px;
 
@@ -1373,6 +678,8 @@
     justify-content: flex-start;
 
     border: 0;
+
+    outline: none;
 
     background: transparent;
 
@@ -1396,35 +703,52 @@
 
 
 /* =========================================================
-   LOCATION ICON
+   LOCATION IMAGE
    ========================================================= */
 
 .map-location img {
 
-    display: block;
+    display: block !important;
 
-    width: 42px;
-    height: 42px;
+    width: 42px !important;
+
+    height: 42px !important;
+
+    max-width: none !important;
+
+    max-height: none !important;
 
     object-fit: contain;
 
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
     filter:
+
         drop-shadow(
             0
             3px
             4px
-            rgba(0,0,0,.35)
+            rgba(
+                0,
+                0,
+                0,
+                .35
+            )
         );
 
     transition:
+
         transform .25s ease,
+
         filter .25s ease;
 
 }
 
 
 /* =========================================================
-   UNLOCKED LOCATION
+   UNLOCKED
    ========================================================= */
 
 .map-location.unlocked {
@@ -1449,11 +773,17 @@
 .map-location.unlocked:hover img {
 
     filter:
+
         drop-shadow(
             0
             5px
             7px
-            rgba(0,0,0,.35)
+            rgba(
+                0,
+                0,
+                0,
+                .35
+            )
         );
 
 }
@@ -1505,11 +835,17 @@
         transform: scale(1);
 
         filter:
+
             drop-shadow(
                 0
                 3px
                 4px
-                rgba(0,0,0,.35)
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .35
+                )
             );
 
     }
@@ -1519,11 +855,17 @@
         transform: scale(1.08);
 
         filter:
+
             drop-shadow(
                 0
                 0
                 9px
-                rgba(141,164,50,.75)
+                rgba(
+                    141,
+                    164,
+                    50,
+                    .75
+                )
             );
 
     }
@@ -1532,7 +874,7 @@
 
 
 /* =========================================================
-   LOCKED LOCATION
+   LOCKED
    ========================================================= */
 
 .map-location.locked {
@@ -1544,10 +886,13 @@
 
 .map-location.locked img {
 
-    width: 40px;
-    height: 40px;
+    width: 40px !important;
 
-    opacity: .98;
+    height: 40px !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
 
 }
 
@@ -1580,19 +925,31 @@
 @keyframes lockBounce {
 
     0% {
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
     35% {
-        transform: translateY(-4px);
+
+        transform:
+            translateY(-4px);
+
     }
 
     70% {
-        transform: translateY(2px);
+
+        transform:
+            translateY(2px);
+
     }
 
     100% {
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
@@ -1604,7 +961,7 @@
 
 .location-label {
 
-    display: block;
+    display: block !important;
 
     margin-top: 4px;
 
@@ -1628,16 +985,31 @@
 
     line-height: 1.1;
 
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
     text-shadow:
+
         0
         1px
         3px
-        rgba(0,0,0,.9),
+        rgba(
+            0,
+            0,
+            0,
+            .9
+        ),
 
         0
         2px
         5px
-        rgba(0,0,0,.7);
+        rgba(
+            0,
+            0,
+            0,
+            .7
+        );
 
 }
 
@@ -1647,7 +1019,7 @@
    ========================================================= */
 
 
-/* 01 — Pajajaran */
+/* 01 — PAJAJARAN */
 
 .location-01 {
 
@@ -1658,7 +1030,7 @@
 }
 
 
-/* 02 — Ki Ajar Winarong */
+/* 02 — KI AJAR WINARONG */
 
 .location-02 {
 
@@ -1669,7 +1041,7 @@
 }
 
 
-/* 03 — Pasir Luhur */
+/* 03 — PASIR LUHUR */
 
 .location-03 {
 
@@ -1680,7 +1052,7 @@
 }
 
 
-/* 04 — Kali Logawa */
+/* 04 — KALI LOGAWA */
 
 .location-04 {
 
@@ -1691,7 +1063,7 @@
 }
 
 
-/* 05 — Desa Panagih */
+/* 05 — DESA PANAGIH */
 
 .location-05 {
 
@@ -1702,7 +1074,7 @@
 }
 
 
-/* 06 — Goa Jatijajar */
+/* 06 — GOA JATIJAJAR */
 
 .location-06 {
 
@@ -1713,7 +1085,7 @@
 }
 
 
-/* 07 — Batur Agung */
+/* 07 — BATUR AGUNG */
 
 .location-07 {
 
@@ -1724,7 +1096,7 @@
 }
 
 
-/* 08 — Sawangan */
+/* 08 — SAWANGAN */
 
 .location-08 {
 
@@ -1735,7 +1107,7 @@
 }
 
 
-/* 09 — Kali Serayu */
+/* 09 — KALI SERAYU */
 
 .location-09 {
 
@@ -1746,7 +1118,7 @@
 }
 
 
-/* 10 — Desa Rosari */
+/* 10 — DESA ROSARI */
 
 .location-10 {
 
@@ -1758,7 +1130,7 @@
 
 
 /* =========================================================
-   MAP LEGEND
+   LEGEND
    ========================================================= */
 
 .map-legend {
@@ -1777,7 +1149,7 @@
 
     gap: 30px;
 
-    margin-top: 20px;
+    margin-top: 16px;
 
     padding:
         0
@@ -1786,6 +1158,10 @@
 
 }
 
+
+/* =========================================================
+   LEGEND ITEM
+   ========================================================= */
 
 .map-legend-item {
 
@@ -1796,26 +1172,42 @@
     gap: 8px;
 
     color:
-        #6b604f;
+        #777460;
 
-    font-size: 12px;
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
 
     font-weight: 500;
 
 }
 
 
+/* =========================================================
+   LEGEND IMAGE
+   ========================================================= */
+
 .map-legend-item img {
 
     width: 22px;
+
     height: 22px;
 
     display: block;
+
+    max-width: none;
 
     object-fit: contain;
 
 }
 
+
+/* =========================================================
+   LEGEND ROUTE
+   ========================================================= */
 
 .map-legend-route {
 
@@ -1835,84 +1227,28 @@
    TABLET
    ========================================================= */
 
-@media (max-width: 1100px) {
-
-
-    /* SIDEBAR */
-
-    .lk-sidebar {
-
-        width: 190px;
-
-    }
-
-
-    .lk-main {
-
-        margin-left: 190px;
-
-    }
-
-
-    .map-page-pattern {
-
-        left: 190px;
-
-    }
-
-
-    /* NAVBAR */
-
-    .lk-navbar {
-
-        padding:
-            0
-            18px;
-
-    }
-
-
-    .lk-nav-link {
-
-        padding:
-            10px
-            10px;
-
-    }
-
-
-    .lk-nav-link span {
-
-        font-size: 10px;
-
-    }
-
-
-    .lk-player {
-
-        padding-left: 12px;
-
-    }
-
-
-    .lk-player-info {
-
-        width: 105px;
-
-    }
-
-
-    /* CONTENT */
+@media (max-width: 1180px) {
 
     .lk-content {
 
         width:
             calc(100% - 28px);
 
-        padding:
-            28px
-            0
-            45px;
+    }
+
+
+    .map-header h1 {
+
+        font-size:
+            48px;
+
+    }
+
+
+    .map-header p {
+
+        font-size:
+            12px;
 
     }
 
@@ -1920,133 +1256,52 @@
 
 
 /* =========================================================
-   TABLET KECIL
+   SMALL DESKTOP / TABLET
    ========================================================= */
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
 
+    .lk-content {
 
-    .lk-sidebar {
-
-        width: 175px;
-
-    }
-
-
-    .lk-main {
-
-        margin-left: 175px;
-
-    }
-
-
-    .map-page-pattern {
-
-        left: 175px;
-
-    }
-
-
-    /* BRAND */
-
-    .lk-brand {
-
-        padding-left: 8px;
-
-        padding-right: 8px;
-
-    }
-
-
-    .lk-brand-mark {
-
-        width: 36px;
-        height: 36px;
-
-    }
-
-
-    .lk-brand-text strong {
-
-        font-size: 13px;
-
-    }
-
-
-    .lk-brand-text small {
-
-        font-size: 7px;
-
-    }
-
-
-    /* SIDEBAR */
-
-    .lk-side-link {
-
-        min-height: 44px;
-
-        font-size: 11px;
-
-    }
-
-
-    .lk-side-icon {
-
-        width: 28px;
-        height: 28px;
-
-    }
-
-
-    .lk-side-icon img {
-
-        width: 16px;
-        height: 16px;
-
-    }
-
-
-    /* NAVBAR */
-
-    .lk-nav-link {
-
-        gap: 5px;
+        width:
+            calc(100% - 28px);
 
         padding:
-            9px
-            7px;
+            20px
+            0
+            35px;
 
     }
 
 
-    .lk-nav-link img {
+    .map-header {
 
-        width: 14px;
-        height: 14px;
-
-    }
-
-
-    .lk-nav-link span {
-
-        display: none;
+        margin-bottom:
+            22px;
 
     }
 
-
-    .lk-player-info {
-
-        width: 90px;
-
-    }
-
-
-    /* HEADER */
 
     .map-header h1 {
 
-        font-size: 42px;
+        font-size:
+            42px;
+
+    }
+
+
+    .map-header p {
+
+        font-size:
+            12px;
+
+    }
+
+
+    .map-card {
+
+        border-radius:
+            15px;
 
     }
 
@@ -2057,234 +1312,17 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 680px) {
 
+    body {
 
-    /* =====================================================
-       SIDEBAR
-       ===================================================== */
+        min-width: 0;
 
-    .lk-sidebar {
-
-        position: relative;
-
-        width: 100%;
-
-        height: auto;
-
-        min-height: 0;
-
-        padding:
-            14px
-            14px;
-
-        border-right: 0;
-
-        border-bottom:
-            1px solid
-            rgba(218,188,67,.20);
-
-        overflow: visible;
+        background:
+            #f3edda;
 
     }
 
-
-    /* BRAND */
-
-    .lk-brand {
-
-        width: max-content;
-
-        padding:
-            0
-            5px;
-
-        border-bottom: 0;
-
-    }
-
-
-    /* SIDEBAR MENU */
-
-    .lk-side-menu {
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(6, 1fr);
-
-        gap: 4px;
-
-        margin-top: 12px;
-
-    }
-
-
-    .lk-side-link {
-
-        justify-content: center;
-
-        min-height: 42px;
-
-        padding: 5px;
-
-    }
-
-
-    .lk-side-link span:last-child {
-
-        display: none;
-
-    }
-
-
-    .lk-side-icon {
-
-        width: 30px;
-        height: 30px;
-
-    }
-
-
-    /* QUOTE */
-
-    .lk-sidebar-quote {
-
-        display: none;
-
-    }
-
-
-    /* =====================================================
-       MAIN
-       ===================================================== */
-
-    .lk-main {
-
-        margin-left: 0;
-
-    }
-
-
-    .map-page-pattern {
-
-        left: 0;
-
-        top: 0;
-
-    }
-
-
-    /* =====================================================
-       NAVBAR
-       ===================================================== */
-
-    .lk-navbar {
-
-        position: sticky;
-
-        top: 0;
-
-        height: 68px;
-
-        padding:
-            0
-            12px;
-
-    }
-
-
-    .lk-nav-links {
-
-        gap: 2px;
-
-    }
-
-
-    .lk-nav-link {
-
-        padding: 8px;
-
-    }
-
-
-    .lk-nav-link img {
-
-        width: 15px;
-        height: 15px;
-
-    }
-
-
-    .lk-player {
-
-        padding-left: 8px;
-
-        gap: 7px;
-
-    }
-
-
-    .lk-avatar {
-
-        width: 34px;
-        height: 34px;
-
-        font-size: 9px;
-
-    }
-
-
-    .lk-player-info {
-
-        width: 75px;
-
-        min-width: 75px;
-
-    }
-
-
-    .lk-player-top strong {
-
-        font-size: 8px;
-
-    }
-
-
-    .lk-player-top span {
-
-        font-size: 7px;
-
-    }
-
-
-    .lk-player-info small {
-
-        font-size: 6px;
-
-    }
-
-
-    .lk-nav-actions {
-
-        margin-left: 6px;
-
-    }
-
-
-    .lk-action {
-
-        width: 31px;
-        height: 31px;
-
-        font-size: 13px;
-
-    }
-
-
-    /* =====================================================
-       CONTENT
-       ===================================================== */
 
     .lk-content {
 
@@ -2292,72 +1330,91 @@
             calc(100% - 20px);
 
         padding:
-            24px
+            12px
             0
-            35px;
+            25px;
 
     }
 
 
-    /* =====================================================
-       MAP HEADER
-       ===================================================== */
+    .map-page-pattern {
+
+        top: 0;
+
+        bottom: 70px;
+
+    }
+
 
     .map-header {
 
-        margin-bottom: 20px;
+        margin-bottom:
+            20px;
 
     }
 
 
     .map-eyebrow {
 
-        font-size: 8px;
+        margin-bottom:
+            7px;
 
-        letter-spacing:
-            2.5px;
+        font-size:
+            14px;
 
     }
 
 
     .map-header h1 {
 
-        font-size: 34px;
+        font-size:
+            clamp(
+                38px,
+                11vw,
+                48px
+            );
+
+        line-height:
+            .95;
 
     }
 
 
     .map-header p {
 
-        margin-top: 10px;
+        max-width:
+            500px;
 
-        font-size: 12px;
+        margin-top:
+            10px;
 
-        line-height: 1.55;
+        font-size:
+            11px;
+
+        line-height:
+            1.6;
 
     }
 
 
     .map-header-ornament {
 
-        margin-top: 14px;
+        width:
+            220px;
+
+        margin-top:
+            14px;
 
     }
 
 
     /* =====================================================
-       MAP
+       MAP MOBILE
        ===================================================== */
 
-    /*
-       PETA TIDAK DIPAKSA MENGECIL.
-
-       Supaya pin, lokasi, dan tulisan
-       tetap terbaca di HP,
-       peta menggunakan scroll horizontal.
-    */
-
     .map-section {
+
+        width: 100%;
 
         overflow-x: auto;
 
@@ -2374,7 +1431,8 @@
 
         max-width: none;
 
-        border-radius: 12px;
+        border-radius:
+            12px;
 
     }
 
@@ -2387,31 +1445,38 @@
 
 
     /* =====================================================
-       LEGEND
+       LEGEND MOBILE
        ===================================================== */
 
     .map-legend {
 
-        justify-content: flex-start;
+        justify-content:
+            flex-start;
 
-        gap: 15px;
+        gap:
+            15px;
 
-        margin-top: 14px;
+        margin-top:
+            12px;
 
     }
 
 
     .map-legend-item {
 
-        font-size: 9px;
+        font-size:
+            8px;
 
     }
 
 
     .map-legend-item img {
 
-        width: 18px;
-        height: 18px;
+        width:
+            18px;
+
+        height:
+            18px;
 
     }
 
@@ -2424,194 +1489,219 @@
 
 @media (max-width: 420px) {
 
-    .lk-side-menu {
-        grid-template-columns:
-            repeat(6, 1fr);
+    .lk-content {
+
+        width:
+            calc(100% - 16px);
+
     }
 
-    .lk-navbar {
-        height: 62px;
-    }
-
-    .lk-nav-links {
-        display: none;
-    }
-
-    .lk-player {
-        flex: 1;
-        padding-left: 0;
-        border-left: 0;
-    }
-
-    .lk-player-info {
-        width: 105px;
-        min-width: 105px;
-    }
-
-    .lk-nav-actions {
-        margin-left: auto;
-    }
 
     .map-header h1 {
-        font-size: 30px;
+
+        font-size:
+            34px;
+
+    }
+
+
+    .map-header p {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .map-header-ornament {
+
+        width:
+            190px;
+
+    }
+
+
+    .map-card {
+
+        width:
+            850px;
+
+    }
+
+
+    .map-canvas {
+
+        width:
+            850px;
+
+    }
+
+    /* =========================================================
+   FIX GLOBAL NAVBAR
+   KHUSUS AGAR NAVBAR TETAP DI ATAS SAAT PETA DI-SCROLL
+   ========================================================= */
+
+/*
+   Navbar berasal dari:
+   /navbar.html
+
+   Navbar TIDAK dibuat ulang di sini.
+*/
+
+#globalNavbar {
+
+    position: relative;
+
+    z-index: 9000;
+
+}
+
+
+/* =========================================================
+   GLOBAL TOP NAVBAR
+   ========================================================= */
+
+#globalNavbar .lk-navbar {
+
+    position: fixed !important;
+
+    top: 0 !important;
+
+    right: 0 !important;
+
+    left: var(--lk-sidebar-width) !important;
+
+    height: var(--lk-navbar-height) !important;
+
+    z-index: 9999 !important;
+
+}
+
+
+/* =========================================================
+   GLOBAL SIDEBAR
+   ========================================================= */
+
+#globalNavbar .lk-sidebar {
+
+    position: fixed !important;
+
+    top: 0 !important;
+
+    left: 0 !important;
+
+    bottom: 0 !important;
+
+    width: var(--lk-sidebar-width) !important;
+
+    z-index: 10000 !important;
+
+}
+
+
+/* =========================================================
+   MAP MAIN HARUS BERADA DI BAWAH NAVBAR
+   ========================================================= */
+
+.lk-main {
+
+    position: relative;
+
+    z-index: 1;
+
+    margin-left: var(--lk-sidebar-width);
+
+    padding-top: var(--lk-navbar-height);
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================================================
+   JANGAN BIARKAN MAP MENUTUP NAVBAR
+   ========================================================= */
+
+.map-page-pattern {
+
+    z-index: 0 !important;
+
+}
+
+
+.map-section,
+.map-header,
+.lk-content {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #globalNavbar .lk-navbar {
+
+        left: var(--lk-sidebar-width) !important;
+
+    }
+
+
+    .lk-main {
+
+        margin-left: var(--lk-sidebar-width);
+
+        padding-top: var(--lk-navbar-height);
+
     }
 
 }
 
 
-/* =========================================================
-   FIX LOCATION & GEMBOK
-   ========================================================= */
+@media (max-width: 680px) {
 
-.map-canvas {
-    position: relative;
+    #globalNavbar .lk-navbar {
+
+        left: 0 !important;
+
+        height: var(--lk-navbar-height) !important;
+
+    }
+
+
+    .lk-main {
+
+        margin-left: 0;
+
+        padding-top: var(--lk-navbar-height);
+
+        padding-bottom: 70px;
+
+    }
+
+
+    #globalNavbar .lk-sidebar {
+
+        top: auto !important;
+
+        right: 0 !important;
+
+        bottom: 0 !important;
+
+        left: 0 !important;
+
+        width: 100% !important;
+
+        height: 68px !important;
+
+    }
+
 }
 
-.map-location {
-    position: absolute;
-    z-index: 50;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-
-    width: 76px;
-    min-height: 76px;
-
-    padding: 0;
-
-    border: 0;
-    outline: none;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    transform: translate(-50%, -50%);
-}
-
-.map-location img {
-    display: block !important;
-
-    width: 42px !important;
-    height: 42px !important;
-
-    max-width: none !important;
-    max-height: none !important;
-
-    object-fit: contain;
-
-    visibility: visible !important;
-    opacity: 1 !important;
-
-    filter:
-        drop-shadow(
-            0
-            3px
-            4px
-            rgba(0,0,0,.35)
-        );
-}
-
-.map-location.locked img {
-    width: 40px !important;
-    height: 40px !important;
-
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-.location-label {
-    display: block !important;
-
-    margin-top: 4px;
-
-    padding:
-        4px
-        8px;
-
-    color: #fffdf4;
-
-    font-family:
-        "Hanken Grotesk",
-        Arial,
-        sans-serif;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    line-height: 1.1;
-
-    white-space: nowrap;
-
-    visibility: visible !important;
-    opacity: 1 !important;
-
-    text-shadow:
-        0
-        1px
-        3px
-        rgba(0,0,0,.9),
-
-        0
-        2px
-        5px
-        rgba(0,0,0,.7);
-}
-
-
-/* =========================================================
-   LOCATION POSITIONS
-   ========================================================= */
-
-.location-01 {
-    left: 24.1%;
-    top: 27.2%;
-}
-
-.location-02 {
-    left: 42.4%;
-    top: 19%;
-}
-
-.location-03 {
-    left: 68.2%;
-    top: 18.2%;
-}
-
-.location-04 {
-    left: 29%;
-    top: 45.7%;
-}
-
-.location-05 {
-    left: 57.9%;
-    top: 51.5%;
-}
-
-.location-06 {
-    left: 81.4%;
-    top: 40.4%;
-}
-
-.location-07 {
-    left: 85.1%;
-    top: 66.2%;
-}
-
-.location-08 {
-    left: 48%;
-    top: 71%;
-}
-
-.location-09 {
-    left: 17.6%;
-    top: 71%;
-}
-
-.location-10 {
-    left: 64.4%;
-    top: 85%;
 }

@@ -2,105 +2,417 @@
    LELANA KAMANDAKA — BASE STYLES & LAYOUT
    ========================================== */
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  background-color: var(--color-bistre);
-  color: var(--color-ink-brown);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-}
 
-/* Background Leaf Particle Canvas */
-#leaf-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: var(--z-canvas);
-}
-
-#app {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Screen Transitions */
-.screen-view {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 100vh;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--transition-slow), transform var(--transition-normal);
-  transform: scale(0.99);
-  pointer-events: none;
-  z-index: var(--z-content);
-}
-
-.screen-view.active {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-  pointer-events: auto;
-  position: relative;
-}
-
-/* Typography Rules */
-h1, h2, h3, h4, .font-serif {
-  font-family: var(--font-serif);
-  font-weight: 700;
-  color: var(--color-ink-brown);
-  line-height: 1.2;
-}
-
-p, li {
-  line-height: 1.65;
-}
-
-/* Base body text: 16px minimum, sans-serif */
+html,
 body {
-  font-size: 16px;
+
+    width: 100%;
+
+    min-height: 100%;
+
+    overflow-x: hidden;
+
+    background-color:
+        var(--color-bistre);
+
+    color:
+        var(--color-ink-brown);
+
+    font-family:
+        var(--font-sans);
+
+    -webkit-font-smoothing:
+        antialiased;
+
 }
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+a:hover {
+
+    text-decoration: none;
+
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
 
 button {
-  font-family: var(--font-sans);
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
+
+    font-family:
+        var(--font-sans);
+
+    cursor: pointer;
+
+    border: none;
+
+    outline: none;
+
+    background: none;
+
 }
 
-/* Parchment Card Container */
+
+button:focus-visible,
+a:focus-visible {
+
+    outline:
+        2px solid
+        var(--color-gold-leaf);
+
+    outline-offset: 3px;
+
+}
+
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+img {
+
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   BACKGROUND LEAF PARTICLE CANVAS
+   ========================================================= */
+
+#leaf-canvas {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    pointer-events: none;
+
+    z-index:
+        var(--z-canvas);
+
+}
+
+
+/* =========================================================
+   APP
+   ========================================================= */
+
+#app {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* =========================================================
+   SCREEN TRANSITIONS
+   ========================================================= */
+
+.screen-view {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity var(--transition-slow),
+        transform var(--transition-normal);
+
+    transform:
+        scale(.99);
+
+    pointer-events: none;
+
+    z-index:
+        var(--z-content);
+
+}
+
+
+.screen-view.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        scale(1);
+
+    pointer-events: auto;
+
+    position: relative;
+
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-serif {
+
+    font-family:
+        var(--font-serif);
+
+    font-weight: 700;
+
+    color:
+        var(--color-ink-brown);
+
+    line-height: 1.2;
+
+}
+
+
+p,
+li {
+
+    line-height: 1.65;
+
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+
+    background:
+        rgba(
+            197,
+            160,
+            89,
+            .28
+        );
+
+    color:
+        var(--color-ink-brown);
+
+}
+
+
+/* =========================================================
+   PARCHMENT CARD
+   ========================================================= */
+
 .parchment-box {
-  background: var(--color-parchment-light);
-  border: var(--border-ink);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-paper);
-  padding: 24px;
-  position: relative;
+
+    position: relative;
+
+    background:
+        var(--color-parchment-light);
+
+    border:
+        var(--border-ink);
+
+    border-radius:
+        var(--radius-md);
+
+    box-shadow:
+        var(--shadow-paper);
+
+    padding: 24px;
+
 }
 
-/* Uppercase Signpost Labels */
+
+/* =========================================================
+   SIGNPOST LABEL
+   ========================================================= */
+
 .signpost-label {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-golden-brown);
+
+    font-family:
+        var(--font-sans);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing:
+        .08em;
+
+    color:
+        var(--color-golden-brown);
+
+}
+
+
+/* =========================================================
+   GENERIC PAGE WRAPPER
+   ========================================================= */
+
+.page-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================================================
+   GENERIC CONTENT WRAPPER
+   ========================================================= */
+
+.page-content {
+
+    position: relative;
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   UTILITY
+   ========================================================= */
+
+.is-hidden {
+
+    display: none !important;
+
+}
+
+
+.visually-hidden {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(
+        0,
+        0,
+        0,
+        0
+    );
+
+    white-space: nowrap;
+
+    border: 0;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE BASE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    body {
+
+        font-size: 15px;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    body {
+
+        font-size: 14px;
+
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    body {
+
+        font-size: 14px;
+
+    }
+
 }

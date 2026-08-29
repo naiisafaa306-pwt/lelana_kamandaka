@@ -30,6 +30,7 @@
     <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
+        crossorigin
     >
 
     <link
@@ -52,6 +53,8 @@
         href="css/base.css"
     >
 
+    <!-- GLOBAL NAVBAR + SIDEBAR -->
+
     <link
         rel="stylesheet"
         href="css/components/navbar.css"
@@ -72,6 +75,7 @@
         href="css/screens/map.css"
     >
 
+
 </head>
 
 
@@ -79,975 +83,490 @@
 
 
     <!-- =========================================================
-         PAGE WRAPPER
+         GLOBAL NAVBAR
+
+         SATU-SATUNYA tempat navbar global dimuat.
+
+         Jangan membuat:
+         <aside class="lk-sidebar">
+         <header class="lk-navbar">
+
+         di file ini.
          ========================================================= -->
 
-    <div class="lk-page">
+    <div id="globalNavbar"></div>
+
+
+    <!-- =========================================================
+         MAIN
+         ========================================================= -->
+
+    <div class="lk-main">
 
 
         <!-- =====================================================
-             SIDEBAR
+             CONTENT
              ===================================================== -->
 
-        <aside
-            class="lk-sidebar"
-            aria-label="Menu petualangan"
-        >
+        <main class="lk-content">
 
 
             <!-- =================================================
-                 BRAND
+                 BACKGROUND PATTERN
                  ================================================= -->
 
-            <a
-                href="index.html"
-                class="lk-brand"
-                aria-label="Lelana Kamandaka"
-            >
-
-                <div class="lk-brand-mark">
-
-                    <span>
-                        ✦
-                    </span>
-
-                </div>
-
-
-                <div class="lk-brand-text">
-
-                    <strong>
-                        LELANA
-                    </strong>
-
-                    <small>
-                        KAMANDAKA
-                    </small>
-
-                </div>
-
-            </a>
-
+            <div
+                class="map-page-pattern"
+                aria-hidden="true"
+            ></div>
 
 
             <!-- =================================================
-                 SIDEBAR MENU
+                 MAP HEADER
                  ================================================= -->
 
-            <nav class="lk-side-menu">
+            <section class="map-header">
 
 
-                <!-- BERANDA -->
-
-                <a
-                    href="index.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="assets/icons/icon_home.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Beranda
-                    </span>
-
-                </a>
-
-
-
-                <!-- PETA -->
-
-                <a
-                    href="peta.html"
-                    class="lk-side-link active"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="assets/icons/icon_peta.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Peta
-                    </span>
-
-                </a>
-
-
-
-                <!-- GAMEPLAY -->
-
-                <a
-                    href="gameplay/gameplay01/index.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="assets/icons/icon_gameplay.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Gameplay
-                    </span>
-
-                </a>
-
-
-
-                <!-- CATATAN -->
-
-                <a
-                    href="catatan.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="assets/icons/icon_catatan.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Catatan
-                    </span>
-
-                </a>
-
-
-
-                <!-- BASA -->
-
-                <a
-                    href="basa.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="assets/icons/icon_basa.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Basa
-                    </span>
-
-                </a>
-
-
-
-                <!-- PENCAPAIAN -->
-
-                <a
-                    href="pencapaian.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="assets/icons/icon_pencapaian.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Pencapaian
-                    </span>
-
-                </a>
-
-
-            </nav>
-
-
-
-            <!-- =================================================
-                 QUOTE
-                 ================================================= -->
-
-            <div class="lk-sidebar-quote">
-
-                <p>
-                    “Saben lelampah
-                    ana piwulang,
-                    saben tembung
-                    ana jiwa.”
-                </p>
-
-                <span>
-                    ❧
+                <span class="map-eyebrow">
+                    LELANA KAMANDAKA
                 </span>
 
-            </div>
+
+                <h1>
+                    Peta Perjalanan
+                </h1>
 
 
-        </aside>
+                <p>
+                    Telusuri jejak perjalanan Raden Kamandaka
+                    dari satu tempat ke tempat berikutnya.
+                </p>
 
 
+                <div class="map-header-ornament">
 
-        <!-- =====================================================
-             MAIN
-             ===================================================== -->
+                    <span></span>
 
-        <div class="lk-main">
+                    <b>
+                        ◆
+                    </b>
 
+                    <span></span>
+
+                </div>
+
+
+            </section>
 
 
             <!-- =================================================
-                 TOP NAVBAR
+                 MAP SECTION
                  ================================================= -->
 
-            <header class="lk-navbar">
+            <section class="map-section">
 
 
-                <!-- =================================================
-                     NAVIGATION
-                     ================================================= -->
-
-                <nav class="lk-nav-links">
+                <div class="map-card">
 
 
-                    <!-- BERANDA -->
-
-                    <a
-                        href="index.html"
-                        class="lk-nav-link"
+                    <div
+                        class="map-canvas"
+                        id="mapCanvas"
                     >
 
-                        <img
-                            src="assets/icons/icon_home.png"
-                            alt=""
-                        >
 
-                        <span>
-                            Beranda
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- PETA ACTIVE -->
-
-                    <a
-                        href="peta.html"
-                        class="lk-nav-link active"
-                    >
+                        <!-- =====================================
+                             PETA DASAR
+                             ===================================== -->
 
                         <img
-                            src="assets/icons/icon_peta.png"
-                            alt=""
+                            src="assets/map/peta_lelana.png"
+                            class="map-background"
+                            alt="Peta perjalanan Lelana Kamandaka"
                         >
 
-                        <span>
-                            Peta
-                        </span>
 
-                    </a>
-
-
-
-                    <!-- CATATAN -->
-
-                    <a
-                        href="catatan.html"
-                        class="lk-nav-link"
-                    >
+                        <!-- =====================================
+                             JALUR
+                             ===================================== -->
 
                         <img
-                            src="assets/icons/icon_catatan.png"
+                            src="assets/images/route-1-2.svg"
+                            class="map-route"
+                            id="route-1-2"
                             alt=""
+                            aria-hidden="true"
                         >
-
-                        <span>
-                            Catatan
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- BASA -->
-
-                    <a
-                        href="basa.html"
-                        class="lk-nav-link"
-                    >
 
                         <img
-                            src="assets/icons/icon_basa.png"
+                            src="assets/images/route-2-3.svg"
+                            class="map-route"
+                            id="route-2-3"
                             alt=""
+                            aria-hidden="true"
                         >
-
-                        <span>
-                            Basa
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- PENCAPAIAN -->
-
-                    <a
-                        href="pencapaian.html"
-                        class="lk-nav-link"
-                    >
 
                         <img
-                            src="assets/icons/icon_pencapaian.png"
+                            src="assets/images/route-3-4.svg"
+                            class="map-route"
+                            id="route-3-4"
                             alt=""
+                            aria-hidden="true"
                         >
 
-                        <span>
-                            Pencapaian
-                        </span>
+                        <img
+                            src="assets/images/route-4-5.svg"
+                            class="map-route"
+                            id="route-4-5"
+                            alt=""
+                            aria-hidden="true"
+                        >
 
-                    </a>
+                        <img
+                            src="assets/images/route-5-6.svg"
+                            class="map-route"
+                            id="route-5-6"
+                            alt=""
+                            aria-hidden="true"
+                        >
+
+                        <img
+                            src="assets/images/route-6-7.svg"
+                            class="map-route"
+                            id="route-6-7"
+                            alt=""
+                            aria-hidden="true"
+                        >
+
+                        <img
+                            src="assets/images/route-7-8.svg"
+                            class="map-route"
+                            id="route-7-8"
+                            alt=""
+                            aria-hidden="true"
+                        >
+
+                        <img
+                            src="assets/images/route-8-9.svg"
+                            class="map-route"
+                            id="route-8-9"
+                            alt=""
+                            aria-hidden="true"
+                        >
+
+                        <img
+                            src="assets/images/route-9-10.svg"
+                            class="map-route"
+                            id="route-9-10"
+                            alt=""
+                            aria-hidden="true"
+                        >
 
 
-                </nav>
+                        <!-- =====================================
+                             LOKASI 01
+                             ===================================== -->
 
+                        <a
+                            href="gameplay/gameplay01/index.html"
+                            class="map-location location-01 unlocked"
+                            data-location="1"
+                            aria-label="Pajajaran — Lokasi terbuka"
+                        >
 
+                            <img
+                                src="assets/map/location.png"
+                                alt=""
+                            >
 
-                <!-- =================================================
-                     PLAYER
-                     ================================================= -->
-
-                <div class="lk-player">
-
-
-                    <div class="lk-avatar">
-                        LK
-                    </div>
-
-
-                    <div class="lk-player-info">
-
-                        <div class="lk-player-top">
-
-                            <strong id="playerLevel">
-                                Level 01
-                            </strong>
-
-                            <span id="playerXpTop">
-                                0 XP
+                            <span class="location-label">
+                                Pajajaran
                             </span>
 
-                        </div>
+                        </a>
 
 
-                        <div class="lk-xp">
+                        <!-- =====================================
+                             LOKASI 02
+                             ===================================== -->
 
-                            <span
-                                id="playerXpBar"
-                                style="width: 0%;"
-                            ></span>
+                        <button
+                            class="map-location location-02 locked"
+                            data-location="2"
+                            type="button"
+                            aria-label="Ki Ajar Winarong — Terkunci"
+                        >
 
-                        </div>
+                            <img
+                                src="assets/map/gembok.png"
+                                alt=""
+                            >
+
+                            <span class="location-label">
+                                Ki Ajar Winarong
+                            </span>
+
+                        </button>
 
 
-                        <small id="playerXpBottom">
-                            0 / 1.000 XP
-                        </small>
+                        <!-- =====================================
+                             LOKASI 03
+                             ===================================== -->
+
+                        <button
+                            class="map-location location-03 locked"
+                            data-location="3"
+                            type="button"
+                            aria-label="Pasir Luhur — Terkunci"
+                        >
+
+                            <img
+                                src="assets/map/gembok.png"
+                                alt=""
+                            >
+
+                            <span class="location-label">
+                                Pasir Luhur
+                            </span>
+
+                        </button>
+
+
+                        <!-- =====================================
+                             LOKASI 04
+                             ===================================== -->
+
+                        <button
+                            class="map-location location-04 locked"
+                            data-location="4"
+                            type="button"
+                            aria-label="Kali Logawa — Terkunci"
+                        >
+
+                            <img
+                                src="assets/map/gembok.png"
+                                alt=""
+                            >
+
+                            <span class="location-label">
+                                Kali Logawa
+                            </span>
+
+                        </button>
+
+
+                        <!-- =====================================
+                             LOKASI 05
+                             ===================================== -->
+
+                        <button
+                            class="map-location location-05 locked"
+                            data-location="5"
+                            type="button"
+                            aria-label="Desa Panagih — Terkunci"
+                        >
+
+                            <img
+                                src="assets/map/gembok.png"
+                                alt=""
+                            >
+
+                            <span class="location-label">
+                                Desa Panagih
+                            </span>
+
+                        </button>
+
+
+                        <!-- =====================================
+                             LOKASI 06
+                             ===================================== -->
+
+                        <button
+                            class="map-location location-06 locked"
+                            data-location="6"
+                            type="button"
+                            aria-label="Goa Jatijajar — Terkunci"
+                        >
+
+                            <img
+                                src="assets/map/gembok.png"
+                                alt=""
+                            >
+
+                            <span class="location-label">
+                                Goa Jatijajar
+                            </span>
+
+                        </button>
+
+
+                        <!-- =====================================
+                             LOKASI 07
+                             ===================================== -->
+
+                        <button
+                            class="map-location location-07 locked"
+                            data-location="7"
+                            type="button"
+                            aria-label="Batur Agung — Terkunci"
+                        >
+
+                            <img
+                                src="assets/map/gembok.png"
+                                alt=""
+                            >
+
+                            <span class="location-label">
+                                Batur Agung
+                            </span>
+
+                        </button>
+
+
+                        <!-- =====================================
+                             LOKASI 08
+                             ===================================== -->
+
+                        <button
+                            class="map-location location-08 locked"
+                            data-location="8"
+                            type="button"
+                            aria-label="Sawangan — Terkunci"
+                        >
+
+                            <img
+                                src="assets/map/gembok.png"
+                                alt=""
+                            >
+
+                            <span class="location-label">
+                                Sawangan
+                            </span>
+
+                        </button>
+
+
+                        <!-- =====================================
+                             LOKASI 09
+                             ===================================== -->
+
+                        <button
+                            class="map-location location-09 locked"
+                            data-location="9"
+                            type="button"
+                            aria-label="Kali Serayu — Terkunci"
+                        >
+
+                            <img
+                                src="assets/map/gembok.png"
+                                alt=""
+                            >
+
+                            <span class="location-label">
+                                Kali Serayu
+                            </span>
+
+                        </button>
+
+
+                        <!-- =====================================
+                             LOKASI 10
+                             ===================================== -->
+
+                        <button
+                            class="map-location location-10 locked"
+                            data-location="10"
+                            type="button"
+                            aria-label="Desa Rosari — Terkunci"
+                        >
+
+                            <img
+                                src="assets/map/gembok.png"
+                                alt=""
+                            >
+
+                            <span class="location-label">
+                                Desa Rosari
+                            </span>
+
+                        </button>
+
 
                     </div>
 
-
                 </div>
 
 
-
-                <!-- =================================================
-                     NAV ACTIONS
-                     ================================================= -->
-
-                <div class="lk-nav-actions">
-
-
-                    <button
-                        class="lk-action"
-                        type="button"
-                        aria-label="Notifikasi"
-                    >
-                        ♧
-                    </button>
-
-
-                    <button
-                        class="lk-action"
-                        type="button"
-                        aria-label="Pengaturan"
-                    >
-                        ⚙
-                    </button>
-
-
-                </div>
-
-
-            </header>
-
+            </section>
 
 
             <!-- =================================================
-                 CONTENT
+                 LEGEND
                  ================================================= -->
 
-            <main class="lk-content">
+            <section class="map-legend">
 
 
-                <!-- =================================================
-                     BACKGROUND PATTERN
-                     ================================================= -->
+                <div class="map-legend-item">
 
-                <div
-                    class="map-page-pattern"
-                    aria-hidden="true"
-                ></div>
+                    <img
+                        src="assets/map/location.png"
+                        alt=""
+                    >
 
-
-
-                <!-- =================================================
-                     MAP HEADER
-                     ================================================= -->
-
-                <section class="map-header">
-
-
-                    <span class="map-eyebrow">
-                        LELANA KAMANDAKA
+                    <span>
+                        Lokasi terbuka
                     </span>
 
+                </div>
 
-                    <h1>
-                        Peta Perjalanan
-                    </h1>
 
+                <div class="map-legend-item">
 
-                    <p>
-                        Telusuri jejak perjalanan Raden Kamandaka
-                        dari satu tempat ke tempat berikutnya.
-                    </p>
+                    <img
+                        src="assets/map/gembok.png"
+                        alt=""
+                    >
 
+                    <span>
+                        Lokasi terkunci
+                    </span>
 
-                    <div class="map-header-ornament">
+                </div>
 
-                        <span></span>
 
-                        <b>
-                            ◆
-                        </b>
+                <div class="map-legend-item">
 
-                        <span></span>
+                    <span class="map-legend-route"></span>
 
-                    </div>
+                    <span>
+                        Jalur perjalanan
+                    </span>
 
+                </div>
 
-                </section>
 
+            </section>
 
 
-                <!-- =================================================
-                     MAP SECTION
-                     ================================================= -->
+        </main>
 
-                <section class="map-section">
-
-
-                    <div class="map-card">
-
-
-                        <!-- =================================================
-                             MAP CANVAS
-                             ================================================= -->
-
-                        <div
-                            class="map-canvas"
-                            id="mapCanvas"
-                        >
-
-
-                            <!-- =================================================
-                                 PETA DASAR
-                                 ================================================= -->
-
-                            <img
-                                src="assets/map/peta_lelana.png"
-                                class="map-background"
-                                alt="Peta perjalanan Lelana Kamandaka"
-                            >
-
-
-
-                            <!-- =================================================
-                                 JALUR 01 → 02
-                                 ================================================= -->
-
-                            <img
-                                src="assets/images/route-1-2.svg"
-                                class="map-route"
-                                id="route-1-2"
-                                alt=""
-                                aria-hidden="true"
-                            >
-
-
-
-                            <!-- =================================================
-                                 JALUR 02 → 03
-                                 ================================================= -->
-
-                            <img
-                                src="assets/images/route-2-3.svg"
-                                class="map-route"
-                                id="route-2-3"
-                                alt=""
-                                aria-hidden="true"
-                            >
-
-
-
-                            <!-- =================================================
-                                 JALUR 03 → 04
-                                 ================================================= -->
-
-                            <img
-                                src="assets/images/route-3-4.svg"
-                                class="map-route"
-                                id="route-3-4"
-                                alt=""
-                                aria-hidden="true"
-                            >
-
-
-
-                            <!-- =================================================
-                                 JALUR 04 → 05
-                                 ================================================= -->
-
-                            <img
-                                src="assets/images/route-4-5.svg"
-                                class="map-route"
-                                id="route-4-5"
-                                alt=""
-                                aria-hidden="true"
-                            >
-
-
-
-                            <!-- =================================================
-                                 JALUR 05 → 06
-                                 ================================================= -->
-
-                            <img
-                                src="assets/images/route-5-6.svg"
-                                class="map-route"
-                                id="route-5-6"
-                                alt=""
-                                aria-hidden="true"
-                            >
-
-
-
-                            <!-- =================================================
-                                 JALUR 06 → 07
-                                 ================================================= -->
-
-                            <img
-                                src="assets/images/route-6-7.svg"
-                                class="map-route"
-                                id="route-6-7"
-                                alt=""
-                                aria-hidden="true"
-                            >
-
-
-
-                            <!-- =================================================
-                                 JALUR 07 → 08
-                                 ================================================= -->
-
-                            <img
-                                src="assets/images/route-7-8.svg"
-                                class="map-route"
-                                id="route-7-8"
-                                alt=""
-                                aria-hidden="true"
-                            >
-
-
-
-                            <!-- =================================================
-                                 JALUR 08 → 09
-                                 ================================================= -->
-
-                            <img
-                                src="assets/images/route-8-9.svg"
-                                class="map-route"
-                                id="route-8-9"
-                                alt=""
-                                aria-hidden="true"
-                            >
-
-
-
-                            <!-- =================================================
-                                 JALUR 09 → 10
-                                 ================================================= -->
-
-                            <img
-                                src="assets/images/route-9-10.svg"
-                                class="map-route"
-                                id="route-9-10"
-                                alt=""
-                                aria-hidden="true"
-                            >
-
-
-
-                            <!-- =================================================
-                                 LOKASI 01 — PAJAJARAN
-                                 ================================================= -->
-
-                            <a
-                                href="gameplay/gameplay01/index.html"
-                                class="map-location location-01 unlocked"
-                                data-location="1"
-                                aria-label="Pajajaran — Lokasi terbuka"
-                            >
-
-                                <img
-                                    src="assets/map/location.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Pajajaran
-                                </span>
-
-                            </a>
-
-
-
-                            <!-- =================================================
-                                 LOKASI 02 — KI AJAR WINARONG
-                                 ================================================= -->
-
-                            <button
-                                class="map-location location-02 locked"
-                                data-location="2"
-                                type="button"
-                                aria-label="Ki Ajar Winarong — Terkunci"
-                            >
-
-                                <img
-                                    src="assets/map/gembok.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Ki Ajar Winarong
-                                </span>
-
-                            </button>
-
-
-
-                            <!-- =================================================
-                                 LOKASI 03 — PASIR LUHUR
-                                 ================================================= -->
-
-                            <button
-                                class="map-location location-03 locked"
-                                data-location="3"
-                                type="button"
-                                aria-label="Pasir Luhur — Terkunci"
-                            >
-
-                                <img
-                                    src="assets/map/gembok.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Pasir Luhur
-                                </span>
-
-                            </button>
-
-
-
-                            <!-- =================================================
-                                 LOKASI 04 — KALI LOGAWA
-                                 ================================================= -->
-
-                            <button
-                                class="map-location location-04 locked"
-                                data-location="4"
-                                type="button"
-                                aria-label="Kali Logawa — Terkunci"
-                            >
-
-                                <img
-                                    src="assets/map/gembok.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Kali Logawa
-                                </span>
-
-                            </button>
-
-
-
-                            <!-- =================================================
-                                 LOKASI 05 — DESA PANAGIH
-                                 ================================================= -->
-
-                            <button
-                                class="map-location location-05 locked"
-                                data-location="5"
-                                type="button"
-                                aria-label="Desa Panagih — Terkunci"
-                            >
-
-                                <img
-                                    src="assets/map/gembok.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Desa Panagih
-                                </span>
-
-                            </button>
-
-
-
-                            <!-- =================================================
-                                 LOKASI 06 — GOA JATIJAJAR
-                                 ================================================= -->
-
-                            <button
-                                class="map-location location-06 locked"
-                                data-location="6"
-                                type="button"
-                                aria-label="Goa Jatijajar — Terkunci"
-                            >
-
-                                <img
-                                    src="assets/map/gembok.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Goa Jatijajar
-                                </span>
-
-                            </button>
-
-
-
-                            <!-- =================================================
-                                 LOKASI 07 — BATUR AGUNG
-                                 ================================================= -->
-
-                            <button
-                                class="map-location location-07 locked"
-                                data-location="7"
-                                type="button"
-                                aria-label="Batur Agung — Terkunci"
-                            >
-
-                                <img
-                                    src="assets/map/gembok.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Batur Agung
-                                </span>
-
-                            </button>
-
-
-
-                            <!-- =================================================
-                                 LOKASI 08 — SAWANGAN
-                                 ================================================= -->
-
-                            <button
-                                class="map-location location-08 locked"
-                                data-location="8"
-                                type="button"
-                                aria-label="Sawangan — Terkunci"
-                            >
-
-                                <img
-                                    src="assets/map/gembok.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Sawangan
-                                </span>
-
-                            </button>
-
-
-
-                            <!-- =================================================
-                                 LOKASI 09 — KALI SERAYU
-                                 ================================================= -->
-
-                            <button
-                                class="map-location location-09 locked"
-                                data-location="9"
-                                type="button"
-                                aria-label="Kali Serayu — Terkunci"
-                            >
-
-                                <img
-                                    src="assets/map/gembok.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Kali Serayu
-                                </span>
-
-                            </button>
-
-
-
-                            <!-- =================================================
-                                 LOKASI 10 — DESA ROSARI
-                                 ================================================= -->
-
-                            <button
-                                class="map-location location-10 locked"
-                                data-location="10"
-                                type="button"
-                                aria-label="Desa Rosari — Terkunci"
-                            >
-
-                                <img
-                                    src="assets/map/gembok.png"
-                                    alt=""
-                                >
-
-                                <span class="location-label">
-                                    Desa Rosari
-                                </span>
-
-                            </button>
-
-
-                        </div>
-
-                    </div>
-
-
-                </section>
-
-
-
-                <!-- =================================================
-                     MAP LEGEND
-                     ================================================= -->
-
-                <section class="map-legend">
-
-
-                    <!-- LOKASI TERBUKA -->
-
-                    <div class="map-legend-item">
-
-                        <img
-                            src="assets/map/location.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Lokasi terbuka
-                        </span>
-
-                    </div>
-
-
-
-                    <!-- LOKASI TERKUNCI -->
-
-                    <div class="map-legend-item">
-
-                        <img
-                            src="assets/map/gembok.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Lokasi terkunci
-                        </span>
-
-                    </div>
-
-
-
-                    <!-- JALUR -->
-
-                    <div class="map-legend-item">
-
-                        <span class="map-legend-route"></span>
-
-                        <span>
-                            Jalur perjalanan
-                        </span>
-
-                    </div>
-
-
-                </section>
-
-
-            </main>
-
-
-        </div>
 
     </div>
 
 
-
     <!-- =========================================================
-         JAVASCRIPT
+         GLOBAL NAVBAR LOADER
          ========================================================= -->
 
     <script src="js/navbar.js"></script>
+
+
+    <!-- =========================================================
+         MAP ENGINE
+         ========================================================= -->
 
     <script src="js/components/mapEngine.js"></script>
 

@@ -32,13 +32,13 @@ const mapLocations = [
 
     {
         id: 3,
-        name: "Pasir Luhur",
+        name: "Kali Logawa",
         gameplay: "gameplay/gameplay03/index.html"
     },
 
     {
         id: 4,
-        name: "Kali Logawa",
+        name: "Pasir Luhur",
         gameplay: "gameplay/gameplay04/index.html"
     },
 
@@ -181,16 +181,18 @@ function loadMapProgress() {
 
 
     // =====================================================
-    // AMBIL PROGRESS DARI SESSION STORAGE
+    // AMBIL PROGRESS DARI LOCAL STORAGE
     //
-    // Progress hanya bertahan selama tab masih terbuka.
-    // Jika tab ditutup, sessionStorage akan hilang.
+    // HARUS SAMA DENGAN APP.JS
+    //
+    // Progress tetap ada walaupun browser/tab
+    // berpindah halaman atau ditutup.
     // =====================================================
 
     try {
 
         const saved =
-            sessionStorage.getItem(
+            localStorage.getItem(
                 MAP_PROGRESS_KEY
             );
 
@@ -207,7 +209,7 @@ function loadMapProgress() {
     catch (error) {
 
         console.warn(
-            "Progress tidak dapat dibaca dari sessionStorage.",
+            "Progress tidak dapat dibaca dari localStorage.",
             error
         );
 
@@ -280,11 +282,11 @@ function loadMapProgress() {
     // =====================================================
     // SINKRONISASI COMPLETED LOCATIONS
     //
-    // Jika ada data:
+    // Jika:
     //
     // completedLocations: [1]
     //
-    // maka dianggap:
+    // maka:
     //
     // completedChapters: [1]
     // =====================================================
@@ -293,11 +295,15 @@ function loadMapProgress() {
         function(locationId) {
 
             if (
+
                 locationId >= 1 &&
+
                 locationId <= 10 &&
+
                 !progress.completedChapters.includes(
                     locationId
                 )
+
             ) {
 
                 progress.completedChapters.push(
@@ -313,12 +319,10 @@ function loadMapProgress() {
     // =====================================================
     // BENTUK ULANG UNLOCKED LOCATIONS
     //
-    // Jangan mempercayai unlockedLocations lama.
-    //
     // Lokasi 01 selalu terbuka.
     //
-    // Lokasi berikutnya hanya terbuka jika
-    // chapter sebelumnya sudah selesai.
+    // Lokasi berikutnya terbuka jika chapter
+    // sebelumnya sudah selesai.
     // =====================================================
 
     progress.unlockedLocations = [1];
@@ -406,6 +410,39 @@ function loadMapProgress() {
 
 
     // =====================================================
+    // CURRENT CHAPTER
+    // =====================================================
+
+    if (
+        progress.completedChapters.length > 0
+    ) {
+
+        const highestCompleted =
+            Math.max(
+                ...progress.completedChapters
+            );
+
+
+        if (
+            highestCompleted < 10
+        ) {
+
+            progress.currentChapter =
+                highestCompleted + 1;
+
+        }
+
+        else {
+
+            progress.currentChapter =
+                10;
+
+        }
+
+    }
+
+
+    // =====================================================
     // SIMPAN HASIL SINKRONISASI
     // =====================================================
 
@@ -453,6 +490,20 @@ function completeChapter(
 
     const progress =
         loadMapProgress();
+
+
+    // =====================================================
+    // VALIDASI
+    // =====================================================
+
+    if (
+        chapterNumber < 1 ||
+        chapterNumber > 10
+    ) {
+
+        return progress;
+
+    }
 
 
     // =====================================================
@@ -599,17 +650,7 @@ function saveMapProgress(
 
     try {
 
-        // =================================================
-        // SESSION STORAGE
-        //
-        // Berbeda dengan localStorage:
-        //
-        // - Tetap ada saat pindah halaman
-        // - Tetap ada saat refresh
-        // - Hilang ketika tab ditutup
-        // =================================================
-
-        sessionStorage.setItem(
+        localStorage.setItem(
             MAP_PROGRESS_KEY,
             JSON.stringify(progress)
         );
@@ -619,7 +660,7 @@ function saveMapProgress(
     catch (error) {
 
         console.warn(
-            "Progress tidak dapat disimpan.",
+            "Progress tidak dapat disimpan ke localStorage.",
             error
         );
 
@@ -679,6 +720,7 @@ function applyLocationState(
                     "unlocked"
                 );
 
+
                 element.classList.remove(
                     "locked"
                 );
@@ -715,6 +757,7 @@ function applyLocationState(
                 element.classList.add(
                     "locked"
                 );
+
 
                 element.classList.remove(
                     "unlocked"
@@ -814,6 +857,7 @@ function updateRoutes(
                     "completed"
                 );
 
+
                 element.classList.remove(
                     "locked"
                 );
@@ -834,6 +878,7 @@ function updateRoutes(
                 element.classList.remove(
                     "completed"
                 );
+
 
                 element.classList.add(
                     "locked"
@@ -1069,4 +1114,4 @@ document.addEventListener(
         setupNavbar();
 
     }
-); 
+);

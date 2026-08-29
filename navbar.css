@@ -1,0 +1,1807 @@
+/* =========================================================
+   LELANA KAMANDAKA
+   NAVBAR + SIDEBAR
+   GLOBAL COMPONENT
+
+   FILE:
+   css/components/navbar.css
+
+   GLOBAL:
+   Navbar + Sidebar hanya berasal dari navbar.html
+   dan dikontrol oleh js/navbar.js.
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+:root {
+
+    --lk-green-dark: #10250f;
+    --lk-green: #173719;
+    --lk-green-light: #3e5d22;
+
+    --lk-gold: #d8bd4d;
+    --lk-gold-light: #f0dc72;
+
+    --lk-cream: #f6f0dc;
+    --lk-cream-soft: #ded7bd;
+
+    --lk-white-soft:
+        rgba(
+            255,
+            255,
+            255,
+            .72
+        );
+
+    --lk-border:
+        rgba(
+            218,
+            190,
+            77,
+            .18
+        );
+
+    --lk-sidebar-width: 212px;
+
+    --lk-navbar-height: 78px;
+
+}
+
+
+/* =========================================================
+   GLOBAL COMPONENT RESET
+   ========================================================= */
+
+.lk-sidebar,
+.lk-sidebar *,
+.lk-navbar,
+.lk-navbar * {
+
+    box-sizing: border-box;
+
+}
+
+
+.lk-sidebar a,
+.lk-navbar a {
+
+    text-decoration: none;
+
+}
+
+
+.lk-sidebar button,
+.lk-navbar button {
+
+    font: inherit;
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.lk-sidebar {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width:
+        var(--lk-sidebar-width);
+
+    z-index: 1000;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding:
+        27px
+        12px
+        22px;
+
+    overflow-y: auto;
+
+    color:
+        var(--lk-cream);
+
+    background:
+        rgba(
+            18,
+            39,
+            16,
+            .96
+        );
+
+    border-right:
+        1px solid
+        var(--lk-border);
+
+}
+
+
+/* =========================================================
+   SIDEBAR SCROLLBAR
+   ========================================================= */
+
+.lk-sidebar::-webkit-scrollbar {
+
+    width: 4px;
+
+}
+
+
+.lk-sidebar::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+
+}
+
+
+.lk-sidebar::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(
+            216,
+            189,
+            77,
+            .28
+        );
+
+    border-radius:
+        10px;
+
+}
+
+
+/* =========================================================
+   SIDEBAR BRAND
+   ========================================================= */
+
+.lk-sidebar-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 58px;
+
+    padding:
+        0
+        13px
+        25px;
+
+    color:
+        var(--lk-cream);
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+}
+
+
+/* =========================================================
+   BRAND MARK
+   ========================================================= */
+
+.lk-sidebar-brand-mark {
+
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    transform:
+        rotate(45deg);
+
+    border:
+        1.5px solid
+        var(--lk-gold);
+
+    color:
+        var(--lk-gold-light);
+
+}
+
+
+.lk-sidebar-brand-mark span {
+
+    display: block;
+
+    transform:
+        rotate(-45deg);
+
+    font-size: 17px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   BRAND TEXT
+   ========================================================= */
+
+.lk-sidebar-brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+.lk-sidebar-brand-text strong {
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing:
+        .02em;
+
+}
+
+
+.lk-sidebar-brand-text small {
+
+    margin-top: 6px;
+
+    color:
+        var(--lk-gold);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing:
+        .22em;
+
+}
+
+
+/* =========================================================
+   SIDEBAR MENU
+   ========================================================= */
+
+.lk-sidebar-menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-top: 23px;
+
+}
+
+
+/* =========================================================
+   SIDEBAR LINK
+   ========================================================= */
+
+.lk-sidebar-link {
+
+    position: relative;
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    min-height: 52px;
+
+    padding:
+        0
+        13px;
+
+    border-radius:
+        11px;
+
+    color:
+        rgba(
+            246,
+            240,
+            220,
+            .68
+        );
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing:
+        .01em;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+
+}
+
+
+/* =========================================================
+   SIDEBAR HOVER
+   ========================================================= */
+
+.lk-sidebar-link:hover {
+
+    color:
+        var(--lk-cream);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .055
+        );
+
+    transform:
+        translateX(2px);
+
+}
+
+
+/* =========================================================
+   SIDEBAR ACTIVE
+   ========================================================= */
+
+.lk-sidebar-link.active {
+
+    color:
+        #fff9df;
+
+    background:
+        linear-gradient(
+            90deg,
+            #466421 0%,
+            #39561d 100%
+        );
+
+    box-shadow:
+        inset
+        0 0 0 1px
+        rgba(
+            221,
+            195,
+            80,
+            .20
+        );
+
+}
+
+
+/* =========================================================
+   ACTIVE INDICATOR
+   ========================================================= */
+
+.lk-sidebar-link.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 9px;
+    bottom: 9px;
+
+    width: 3px;
+
+    border-radius:
+        0
+        5px
+        5px
+        0;
+
+    background:
+        var(--lk-gold);
+
+}
+
+
+/* =========================================================
+   SIDEBAR ICON
+   ========================================================= */
+
+.lk-sidebar-icon {
+
+    width: 31px;
+    height: 31px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .07
+        );
+
+    transition:
+        background .25s ease,
+        transform .25s ease;
+
+}
+
+
+.lk-sidebar-link.active
+.lk-sidebar-icon {
+
+    background:
+        var(--lk-gold);
+
+}
+
+
+.lk-sidebar-icon img {
+
+    width: 17px;
+    height: 17px;
+
+    display: block;
+
+    object-fit:
+        contain;
+
+}
+
+
+.lk-sidebar-link.active
+.lk-sidebar-icon img {
+
+    filter:
+        brightness(.45)
+        saturate(.7);
+
+}
+
+
+/* =========================================================
+   SIDEBAR QUOTE
+   ========================================================= */
+
+.lk-sidebar-quote {
+
+    margin-top:
+        auto !important;
+
+    padding:
+        20px
+        13px
+        5px !important;
+
+}
+
+
+.lk-sidebar-quote::before {
+
+    content: "";
+
+    display: block;
+
+    width: 38px;
+
+    margin-bottom: 13px;
+
+    border-top:
+        1px solid
+        rgba(
+            216,
+            189,
+            77,
+            .42
+        );
+
+}
+
+
+.lk-sidebar-quote p {
+
+    margin: 0 !important;
+
+    color:
+        rgba(
+            246,
+            240,
+            220,
+            .72
+        );
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 12px;
+
+    font-style: italic;
+
+    line-height: 1.55;
+
+}
+
+
+.lk-sidebar-quote span {
+
+    display: block;
+
+    margin-top: 11px;
+
+    color:
+        var(--lk-gold);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================================
+   TOP NAVBAR
+   ========================================================= */
+
+.lk-navbar {
+
+    position: fixed !important;
+
+    left:
+        var(--lk-sidebar-width) !important;
+
+    top: 0 !important;
+
+    right: 0 !important;
+
+    width:
+        auto !important;
+
+    height:
+        var(--lk-navbar-height) !important;
+
+    z-index: 1100 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    padding:
+        0
+        30px;
+
+    margin: 0 !important;
+
+    color:
+        var(--lk-cream);
+
+    background:
+        rgba(
+            18,
+            39,
+            16,
+            .96
+        );
+
+    border-bottom:
+        1px solid
+        var(--lk-border);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+}
+
+
+/* =========================================================
+   TOP NAVIGATION
+   =========================================================
+
+   WAJIB:
+   Beranda
+   Peta
+   Gameplay
+   Catatan
+   Basa
+   Pencapaian
+
+   Tidak boleh ada halaman yang menghilangkan
+   item navbar global.
+   ========================================================= */
+
+.lk-navbar .lk-nav-links {
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    justify-content: flex-start !important;
+
+    gap: 4px !important;
+
+    flex: 1 1 auto !important;
+
+    width: auto !important;
+
+    min-width: 0 !important;
+
+    height: 100% !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+}
+
+
+/* =========================================================
+   SEMUA NAV LINK GLOBAL
+   ========================================================= */
+
+.lk-navbar .lk-nav-link {
+
+    display: flex !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+    position: relative !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    flex-direction: row !important;
+
+    flex: 0 0 auto !important;
+
+    width: auto !important;
+
+    min-width: max-content !important;
+
+    max-width: none !important;
+
+    height: auto !important;
+
+    min-height: 40px !important;
+
+    margin: 0 !important;
+
+    padding:
+        0
+        14px !important;
+
+    gap: 7px !important;
+
+    border: 0;
+
+    border-radius:
+        9px;
+
+    white-space: nowrap !important;
+
+    color:
+        rgba(
+            246,
+            240,
+            220,
+            .67
+        );
+
+    background:
+        transparent;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+
+}
+
+
+/* =========================================================
+   FORCE SEMUA ITEM NAVBAR TERLIHAT
+   ========================================================= */
+
+.lk-navbar .lk-nav-link:nth-child(1),
+.lk-navbar .lk-nav-link:nth-child(2),
+.lk-navbar .lk-nav-link:nth-child(3),
+.lk-navbar .lk-nav-link:nth-child(4),
+.lk-navbar .lk-nav-link:nth-child(5),
+.lk-navbar .lk-nav-link:nth-child(6) {
+
+    display: flex !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+}
+
+
+/* =========================================================
+   NAVBAR HOVER
+   ========================================================= */
+
+.lk-navbar .lk-nav-link:hover {
+
+    color:
+        var(--lk-cream);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .055
+        );
+
+}
+
+
+/* =========================================================
+   NAVBAR ACTIVE
+   ========================================================= */
+
+.lk-navbar .lk-nav-link.active {
+
+    color:
+        #fff9df;
+
+    background:
+        #39571f;
+
+}
+
+
+/* =========================================================
+   NAVBAR ICON
+   ========================================================= */
+
+.lk-navbar .lk-nav-link img {
+
+    display: block !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+    flex-shrink: 0 !important;
+
+    width: 16px !important;
+
+    height: 16px !important;
+
+    max-width: 16px !important;
+
+    object-fit:
+        contain;
+
+}
+
+
+/* =========================================================
+   NAVBAR TEXT
+   ========================================================= */
+
+.lk-navbar .lk-nav-link span {
+
+    display: inline !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+    width: auto !important;
+
+    max-width: none !important;
+
+    white-space:
+        nowrap !important;
+
+}
+
+
+/* =========================================================
+   PLAYER
+   ========================================================= */
+
+.lk-navbar .lk-player {
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+    width: auto;
+
+    padding-left:
+        20px;
+
+    margin-left:
+        10px;
+
+    border-left:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .10
+        );
+
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
+.lk-navbar .lk-avatar {
+
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        var(--lk-gold);
+
+    border-radius:
+        50%;
+
+    color:
+        var(--lk-gold-light);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   PLAYER INFO
+   ========================================================= */
+
+.lk-navbar .lk-player-info {
+
+    width: 118px;
+
+    flex-shrink: 0;
+
+}
+
+
+.lk-navbar .lk-player-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 8px;
+
+}
+
+
+.lk-navbar .lk-player-top strong {
+
+    color:
+        var(--lk-cream);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.lk-navbar .lk-player-top span {
+
+    color:
+        var(--lk-gold-light);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   XP
+   ========================================================= */
+
+.lk-navbar .lk-xp {
+
+    width: 100%;
+
+    height: 5px;
+
+    margin-top: 6px;
+
+    overflow: hidden;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .13
+        );
+
+}
+
+
+.lk-navbar .lk-xp span {
+
+    display: block;
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius:
+        inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #718c29,
+            #ead45d
+        );
+
+    transition:
+        width .5s ease;
+
+}
+
+
+.lk-navbar .lk-player-info small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        rgba(
+            246,
+            240,
+            220,
+            .42
+        );
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 7px;
+
+    line-height: 1;
+
+    text-align:
+        right;
+
+}
+
+
+/* =========================================================
+   NAV ACTIONS
+   ========================================================= */
+
+.lk-navbar .lk-nav-actions {
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    margin-left:
+        18px;
+
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.lk-navbar .lk-action {
+
+    width: 37px;
+
+    height: 37px;
+
+    min-width: 37px;
+
+    flex-shrink: 0;
+
+    display: grid !important;
+
+    place-items: center;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
+
+    border-radius:
+        50%;
+
+    color:
+        var(--lk-gold-light);
+
+    background:
+        transparent;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+
+}
+
+
+.lk-navbar .lk-action:hover {
+
+    border-color:
+        rgba(
+            216,
+            189,
+            77,
+            .38
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .06
+        );
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =========================================================
+   MAIN OFFSET
+   ========================================================= */
+
+.lk-layout-main,
+.lk-main {
+
+    margin-left:
+        var(--lk-sidebar-width);
+
+    padding-top:
+        var(--lk-navbar-height);
+
+    min-height:
+        100vh;
+
+}
+
+
+/* =========================================================
+   PROTECT GLOBAL NAVBAR + SIDEBAR
+   ========================================================= */
+
+.lk-navbar,
+.lk-navbar *,
+.lk-sidebar,
+.lk-sidebar * {
+
+    max-width:
+        none;
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1180px) {
+
+    :root {
+
+        --lk-sidebar-width: 190px;
+
+    }
+
+
+    .lk-navbar {
+
+        padding:
+            0
+            20px;
+
+    }
+
+
+    .lk-navbar .lk-nav-link {
+
+        padding:
+            0
+            10px !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    :root {
+
+        --lk-sidebar-width: 76px;
+
+    }
+
+
+    .lk-sidebar {
+
+        padding:
+            18px
+            9px;
+
+    }
+
+
+    .lk-sidebar-brand {
+
+        justify-content:
+            center;
+
+        padding:
+            0
+            0
+            20px;
+
+    }
+
+
+    .lk-sidebar-brand-mark {
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+
+    .lk-sidebar-brand-text {
+
+        display: none;
+
+    }
+
+
+    .lk-sidebar-link {
+
+        justify-content:
+            center;
+
+        gap: 0;
+
+        padding: 0;
+
+    }
+
+
+    .lk-sidebar-link > span:last-child {
+
+        display: none;
+
+    }
+
+
+    .lk-sidebar-icon {
+
+        width: 38px;
+
+        height: 38px;
+
+    }
+
+
+    .lk-sidebar-quote {
+
+        display: none;
+
+    }
+
+
+    .lk-navbar {
+
+        padding:
+            0
+            18px;
+
+    }
+
+
+    /*
+     * Pada layar kecil teks disembunyikan,
+     * tetapi keenam ITEM tetap ada.
+     */
+
+    .lk-navbar .lk-nav-links {
+
+        gap: 2px !important;
+
+    }
+
+
+    .lk-navbar .lk-nav-link {
+
+        width: 40px !important;
+
+        min-width: 40px !important;
+
+        max-width: 40px !important;
+
+        justify-content:
+            center !important;
+
+        padding:
+            0 !important;
+
+    }
+
+
+    .lk-navbar .lk-nav-link span {
+
+        display:
+            none !important;
+
+    }
+
+
+    .lk-navbar .lk-nav-link img {
+
+        width: 17px !important;
+
+        height: 17px !important;
+
+    }
+
+
+    .lk-navbar .lk-player-info {
+
+        width: 100px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+    :root {
+
+        --lk-navbar-height: 68px;
+
+    }
+
+
+    .lk-sidebar {
+
+        position: fixed;
+
+        left: 0;
+
+        right: 0;
+
+        top: auto;
+
+        bottom: 0;
+
+        width: 100%;
+
+        height: 68px;
+
+        padding:
+            6px
+            8px;
+
+        border-right: 0;
+
+        border-top:
+            1px solid
+            var(--lk-border);
+
+        overflow: hidden;
+
+    }
+
+
+    .lk-sidebar-brand {
+
+        display: none;
+
+    }
+
+
+    .lk-sidebar-menu {
+
+        width: 100%;
+
+        height: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(6, 1fr);
+
+        gap: 3px;
+
+        align-items:
+            center;
+
+        margin: 0;
+
+    }
+
+
+    .lk-sidebar-link {
+
+        width: 100%;
+
+        height: 54px;
+
+        min-height: 54px;
+
+        margin: 0;
+
+        border-radius:
+            9px;
+
+    }
+
+
+    .lk-sidebar-icon {
+
+        width: 34px;
+
+        height: 34px;
+
+    }
+
+
+    .lk-sidebar-link.active::before {
+
+        top: auto;
+
+        left: 10px;
+
+        right: 10px;
+
+        bottom: 2px;
+
+        width: auto;
+
+        height: 3px;
+
+        border-radius:
+            5px;
+
+    }
+
+
+    .lk-main,
+    .lk-layout-main {
+
+        margin-left: 0;
+
+        padding-bottom:
+            68px;
+
+    }
+
+
+    .lk-navbar {
+
+        left: 0 !important;
+
+        width: 100% !important;
+
+        height: 68px !important;
+
+        padding:
+            0
+            10px;
+
+    }
+
+
+    .lk-navbar .lk-nav-links {
+
+        gap: 0 !important;
+
+    }
+
+
+    .lk-navbar .lk-nav-link {
+
+        width: 34px !important;
+
+        min-width: 34px !important;
+
+        max-width: 34px !important;
+
+        min-height: 36px;
+
+        padding:
+            0 !important;
+
+    }
+
+
+    .lk-navbar .lk-nav-link img {
+
+        width: 16px !important;
+
+        height: 16px !important;
+
+    }
+
+
+    .lk-navbar .lk-player {
+
+        gap: 7px;
+
+        padding-left: 8px;
+
+        margin-left: 4px;
+
+    }
+
+
+    .lk-navbar .lk-avatar {
+
+        width: 33px;
+
+        height: 33px;
+
+        font-size: 8px;
+
+    }
+
+
+    .lk-navbar .lk-player-info {
+
+        width: 70px;
+
+    }
+
+
+    .lk-navbar .lk-player-top strong {
+
+        font-size: 8px;
+
+    }
+
+
+    .lk-navbar .lk-player-top span {
+
+        font-size: 7px;
+
+    }
+
+
+    .lk-navbar .lk-player-info small {
+
+        display: none;
+
+    }
+
+
+    .lk-navbar .lk-nav-actions {
+
+        gap: 4px;
+
+        margin-left: 6px;
+
+    }
+
+
+    .lk-navbar .lk-action {
+
+        width: 31px;
+
+        height: 31px;
+
+        min-width: 31px;
+
+        font-size: 12px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .lk-navbar .lk-nav-link {
+
+        width: 30px !important;
+
+        min-width: 30px !important;
+
+        max-width: 30px !important;
+
+    }
+
+
+    .lk-navbar .lk-nav-link img {
+
+        width: 15px !important;
+
+        height: 15px !important;
+
+    }
+
+
+    .lk-navbar .lk-player-info {
+
+        display: none;
+
+    }
+
+
+    .lk-navbar .lk-player {
+
+        padding-left: 6px;
+
+    }
+
+
+    .lk-navbar .lk-avatar {
+
+        width: 32px;
+
+        height: 32px;
+
+    }
+
+
+    .lk-navbar .lk-nav-actions {
+
+        margin-left: 4px;
+
+    }
+
+
+    .lk-navbar .lk-action {
+
+        width: 29px;
+
+        height: 29px;
+
+        min-width: 29px;
+
+    }
+
+}
+
+
+/* =========================================================
+   FINAL GLOBAL QUOTE FIX
+   ========================================================= */
+
+.lk-sidebar-quote {
+
+    margin-top:
+        auto !important;
+
+    padding:
+        20px 13px 5px !important;
+
+}
+
+
+.lk-sidebar-quote::before {
+
+    content:
+        "" !important;
+
+    display:
+        block !important;
+
+    width:
+        38px !important;
+
+    margin-bottom:
+        13px !important;
+
+    border-top:
+        1px solid
+        rgba(
+            216,
+            189,
+            77,
+            .42
+        ) !important;
+
+}
+
+
+.lk-sidebar-quote p {
+
+    margin:
+        0 !important;
+
+    color:
+        rgba(
+            246,
+            240,
+            220,
+            .72
+        ) !important;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif !important;
+
+    font-size:
+        12px !important;
+
+    font-style:
+        italic !important;
+
+    line-height:
+        1.55 !important;
+
+}
+
+
+.lk-sidebar-quote span {
+
+    display:
+        block !important;
+
+    margin-top:
+        11px !important;
+
+    color:
+        var(--lk-gold) !important;
+
+    font-family:
+        Georgia,
+        serif !important;
+
+    font-size:
+        18px !important;
+
+}

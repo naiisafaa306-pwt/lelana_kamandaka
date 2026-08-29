@@ -10,12 +10,19 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Lelana Kamandaka — Pajajaran</title>
+    <meta
+        name="description"
+        content="Lelana Kamandaka — Gameplay perjalanan Kamandaka."
+    >
+
+    <title>
+        Lelana Kamandaka — Gameplay 01
+    </title>
 
 
-    <!-- ==================================================
-         GOOGLE FONT
-         ================================================== -->
+    <!-- =========================================================
+         FONT
+         ========================================================= -->
 
     <link
         rel="preconnect"
@@ -34,774 +41,661 @@
     >
 
 
-    <!-- ==================================================
-         GLOBAL CSS
-         ================================================== -->
+    <!-- =========================================================
+         CSS GAMEPLAY
+         ========================================================= -->
 
     <link
         rel="stylesheet"
-        href="../../css/variables.css"
+        href="style.css"
     >
 
-    <link
-        rel="stylesheet"
-        href="../../css/base.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../../css/components/navbar.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../../css/components/buttons.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../../css/components/dialogue.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../../css/components/card.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../../css/components/modal.css"
-    >
-
-
-    <!-- ==================================================
-         SCREEN CSS
-         ================================================== -->
-
-    <link
-        rel="stylesheet"
-        href="../../css/screens/gameplay.css"
-    >
-
-        <link rel="stylesheet" href="../../css/gameplay.css">
 </head>
 
 
 <body>
 
 
-    <!-- ==================================================
-         GLOBAL NAVBAR
-         ================================================== -->
-
-    <header
-        class="site-navbar"
-        id="siteNavbar"
-    >
-
-        <div class="navbar-inner">
-
-
-            <!-- LOGO -->
-
-            <a
-                href="../../index.html"
-                class="navbar-logo"
-            >
-                LELANA KAMANDAKA
-            </a>
-
-
-            <!-- MENU UTAMA -->
-
-            <nav
-                class="navbar-menu"
-                id="navbarMenu"
-            >
-
-                <a href="../../index.html">
-                    BERANDA
-                </a>
-
-                <a href="../../catatan.html">
-                    CATATAN
-                </a>
-
-                <a href="../../pencapaian.html">
-                    PENCAPAIAN
-                </a>
-
-            </nav>
-
-
-            <!-- HAMBURGER -->
-
-            <button
-                type="button"
-                class="navbar-toggle"
-                id="navbarToggle"
-                aria-label="Buka menu"
-                aria-expanded="false"
-            >
-
-                <span></span>
-
-            </button>
-
-
-            <!-- MENU TAMBAHAN -->
-
-            <div
-                class="navbar-extra"
-                id="navbarExtra"
-            >
-
-                <a href="../../peta.html">
-                    PETA
-                </a>
-
-                <a href="../../basa.html">
-                    BASA
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </header>
-
-
-
     <!-- =========================================================
-         MAIN GAMEPLAY 01
-         PAJAJARAN
+         PAGE
          ========================================================= -->
 
-    <main
-        class="gameplay-page"
-        id="gameplayPage"
-    >
+    <div class="gameplay-page">
 
 
         <!-- =====================================================
-             GLOBAL GAMEPLAY HUD
-             SATU HUD UNTUK SEMUA SCREEN
+             BATIK BACKGROUND
              ===================================================== -->
 
         <div
-            class="gameplay-hud"
-            id="gameplayHud"
-            aria-label="Progress permainan"
+            class="lk-batik-pattern"
+            aria-hidden="true"
         >
 
-            <!-- BAB -->
+            <img
+                src="../../assets/decorations/batik_pattern.png"
+                alt=""
+            >
 
-            <div class="gameplay-hud-bab">
-
-                <span>
-                    BAB
-                </span>
-
-                <strong id="hudChapter">
-                    01
-                </strong>
-
-                <span>
-                    / 10
-                </span>
-
-            </div>
+        </div>
 
 
-            <!-- XP & BASA -->
 
-            <div class="gameplay-hud-stats">
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+
+        <aside class="lk-sidebar">
 
 
-                <!-- XP -->
+            <!-- =================================================
+                 BRAND
+                 ================================================= -->
 
-                <div class="gameplay-stat">
+            <a
+                href="../../index.html"
+                class="lk-brand"
+            >
 
-                    <span class="gameplay-stat-icon">
+                <div class="lk-brand-mark">
+
+                    <span>
                         ✦
                     </span>
 
-                    <strong id="hudXp">
-                        0
+                </div>
+
+
+                <div class="lk-brand-text">
+
+                    <strong>
+                        LELANA
                     </strong>
 
                     <small>
-                        XP
+                        KAMANDAKA
                     </small>
 
                 </div>
+
+            </a>
+
+
+
+            <!-- =================================================
+                 MENU
+                 ================================================= -->
+
+            <nav class="lk-side-menu">
+
+
+                <!-- BERANDA -->
+
+                <a
+                    href="../../index.html"
+                    class="lk-side-link"
+                >
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../../assets/icons/icon_home.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Beranda
+                    </span>
+
+                </a>
+
+
+
+                <!-- PETA -->
+
+                <a
+                    href="../../peta.html"
+                    class="lk-side-link"
+                >
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../../assets/icons/icon_peta.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Peta
+                    </span>
+
+                </a>
+
+
+
+                <!-- GAMEPLAY -->
+
+                <a
+                    href="index.html"
+                    class="lk-side-link active"
+                >
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../../assets/icons/icon_gameplay.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Gameplay
+                    </span>
+
+                </a>
+
+
+
+                <!-- CATATAN -->
+
+                <a
+                    href="../../catatan.html"
+                    class="lk-side-link"
+                >
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../../assets/icons/icon_catatan.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Catatan
+                    </span>
+
+                </a>
+
 
 
                 <!-- BASA -->
 
-                <div class="gameplay-stat">
-
-                    <span class="gameplay-stat-icon">
-                        ◈
-                    </span>
-
-                    <strong id="hudBasa">
-                        0
-                    </strong>
-
-                    <small>
-                        BASA
-                    </small>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =====================================================
-             SCREEN 01
-             OPENING PAJAJARAN
-             ===================================================== -->
-
-        <section
-            class="story-screen active"
-            id="story-opening"
-        >
-
-            <div
-                class="story-background"
-                aria-hidden="true"
-            ></div>
-
-
-            <div
-                class="story-overlay"
-                aria-hidden="true"
-            ></div>
-
-
-            <div
-                class="story-batik"
-                aria-hidden="true"
-            ></div>
-
-
-            <div class="story-content">
-
-                <div class="story-eyebrow">
-
-                    <span
-                        class="story-eyebrow-line"
-                    ></span>
-
-                    <span>
-                        LELANA KAMANDAKA
-                    </span>
-
-                    <span
-                        class="story-eyebrow-line"
-                    ></span>
-
-                </div>
-
-
-                <h1 class="story-title">
-
-                    <span class="story-title-small">
-                        BAB I
-                    </span>
-
-                    <span class="story-title-main">
-                        Pajajaran
-                    </span>
-
-                </h1>
-
-
-                <p class="story-intro">
-                    “Di Kerajaan Pajajaran, Raden Banyakcatra telah
-                    beranjak dewasa. Sang Prabu mulai memikirkan
-                    masa depan kerajaan dan perjalanan putranya.”
-                </p>
-
-
-                <button
-                    type="button"
-                    class="story-start-button"
-                    id="btnBeginStory"
+                <a
+                    href="../../basa.html"
+                    class="lk-side-link"
                 >
 
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../../assets/icons/icon_basa.png"
+                            alt=""
+                        >
+
+                    </span>
+
                     <span>
-                        MULAI KISAH
+                        Basa
                     </span>
 
-                    <span class="story-button-arrow">
-                        →
-                    </span>
-
-                </button>
-
-            </div>
+                </a>
 
 
-            <div
-                class="story-character"
-                aria-hidden="true"
-            >
 
-                <img
-                    src="../../assets/images/characters/raden.png"
-                    alt=""
+                <!-- PENCAPAIAN -->
+
+                <a
+                    href="../../pencapaian.html"
+                    class="lk-side-link"
                 >
 
-            </div>
+                    <span class="lk-side-icon">
 
-
-            <div class="story-chapter-mark">
-
-                <span>
-                    01
-                </span>
-
-                <span
-                    class="story-chapter-line"
-                ></span>
-
-                <span>
-                    10
-                </span>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             SCREEN 02
-             DIALOG PAJAJARAN
-             ===================================================== -->
-
-        <section
-            class="story-screen story-dialog-screen"
-            id="story-dialog"
-        >
-
-            <div
-                class="story-background story-background-dialog"
-                aria-hidden="true"
-            ></div>
-
-
-            <div
-                class="story-overlay"
-                aria-hidden="true"
-            ></div>
-
-
-            <div class="dialog-wrapper">
-
-                <div class="dialog-box">
-
-
-                    <div class="dialog-item">
-
-                        <h2 class="dialog-character-name">
-                            Prabu Silihwangi
-                        </h2>
-
-                        <p class="dialog-text">
-                            “Angger Banyakcatra, apa sing dadi karepmu?”
-                        </p>
-
-                    </div>
-
-
-                    <div class="dialog-item">
-
-                        <h2 class="dialog-character-name">
-                            Banyakcatra
-                        </h2>
-
-                        <p class="dialog-text">
-                            “Nyuwun pangestu, Rama. Kula badhe nglajengaken lampah.”
-                        </p>
-
-                    </div>
-
-
-                    <div class="dialog-footer">
-
-                        <button
-                            type="button"
-                            class="dialog-listen-button"
-                            id="btnListen"
+                        <img
+                            src="../../assets/icons/icon_pencapaian.png"
+                            alt=""
                         >
 
-                            <span class="listen-icon">
-                                🔊
-                            </span>
+                    </span>
 
-                            <span>
-                                DENGARKAN
-                            </span>
+                    <span>
+                        Pencapaian
+                    </span>
 
-                        </button>
+                </a>
 
 
-                        <button
-                            type="button"
-                            class="dialog-next-button"
-                            id="btnNextStory"
-                        >
-
-                            <span>
-                                LANJUT
-                            </span>
-
-                            <span>
-                                →
-                            </span>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
+            </nav>
 
 
 
-        <!-- =====================================================
-             SCREEN 03
-             TRANSISI GAMEPLAY
-             ===================================================== -->
+            <!-- =================================================
+                 QUOTE
+                 ================================================= -->
 
-        <section
-            class="story-screen gameplay-transition-screen"
-            id="story-gameplay"
-        >
-
-            <div class="gameplay-transition-content">
-
-                <span class="gameplay-transition-label">
-                    PERJALANAN DIMULAI
-                </span>
-
-                <h2>
-                    Jejak pertama Kamandaka
-                </h2>
+            <div class="lk-sidebar-quote">
 
                 <p>
-                    Bersiaplah mengikuti perjalanan dan
-                    pelajari Basa Banyumasan sepanjang kisah.
+                    “Saben lelampah
+                    ana piwulang,
+                    saben tembung
+                    ana jiwa.”
                 </p>
 
-                <button
-                    type="button"
-                    class="story-start-button"
-                    id="btnStartGameplay"
-                >
-
-                    <span>
-                        MULAI TANTANGAN
-                    </span>
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
+                <span>
+                    ❧
+                </span>
 
             </div>
 
-        </section>
+
+        </aside>
 
 
 
         <!-- =====================================================
-             SCREEN 04
-             BELAJAR BASA
+             MAIN
              ===================================================== -->
 
-        <section
-            class="story-screen learning-basa-screen"
-            id="story-learning-basa"
-        >
-
-            <div
-                class="learning-basa-background"
-                aria-hidden="true"
-            ></div>
+        <div class="lk-main">
 
 
-            <div
-                class="learning-basa-overlay"
-                aria-hidden="true"
-            ></div>
+            <!-- =================================================
+                 NAVBAR
+                 ================================================= -->
+
+            <header class="lk-navbar">
 
 
-            <div class="learning-basa-container">
+                <!-- =================================================
+                     NAVIGATION
+                     ================================================= -->
+
+                <nav class="lk-nav-links">
 
 
-                <div class="learning-basa-header">
+                    <!-- BERANDA -->
 
-                    <span class="learning-basa-label">
-                        TANTANGAN BASA 01
-                    </span>
+                    <a
+                        href="../../index.html"
+                        class="lk-nav-link"
+                    >
 
-                    <h2>
-                        SINAU
+                        <img
+                            src="../../assets/icons/icon_home.png"
+                            alt=""
+                        >
+
                         <span>
-                            BASA
+                            Beranda
                         </span>
-                    </h2>
 
-                    <p>
-                        Perhatikan cara Banyakcatra berbicara
-                        kepada orang yang lebih tua.
-                    </p>
-
-                </div>
+                    </a>
 
 
-                <div class="learning-basa-grid">
+
+                    <!-- PETA -->
+
+                    <a
+                        href="../../peta.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../../assets/icons/icon_peta.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Peta
+                        </span>
+
+                    </a>
 
 
-                    <!-- VISUAL -->
 
-                    <div class="learning-basa-visual">
+                    <!-- CATATAN -->
 
-                        <div class="learning-basa-frame">
+                    <a
+                        href="../../catatan.html"
+                        class="lk-nav-link"
+                    >
 
-                            <div class="learning-basa-frame-label">
-                                UNGGAH-UNGGUH
-                            </div>
+                        <img
+                            src="../../assets/icons/icon_catatan.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Catatan
+                        </span>
+
+                    </a>
 
 
-                            <div class="learning-basa-character">
 
-                                <img
-                                    src="../../assets/images/characters/raden.png"
-                                    alt=""
-                                >
+                    <!-- BASA -->
 
-                            </div>
+                    <a
+                        href="../../basa.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../../assets/icons/icon_basa.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Basa
+                        </span>
+
+                    </a>
 
 
-                            <div class="learning-basa-quote">
 
-                                <span class="quote-mark">
-                                    “
-                                </span>
+                    <!-- PENCAPAIAN -->
 
-                                <p>
-                                    Kula nyuwun pangestu
-                                    badhé kesah, Rama.
-                                </p>
+                    <a
+                        href="../../pencapaian.html"
+                        class="lk-nav-link"
+                    >
 
-                            </div>
+                        <img
+                            src="../../assets/icons/icon_pencapaian.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Pencapaian
+                        </span>
+
+                    </a>
+
+
+                </nav>
+
+
+
+                <!-- =================================================
+                     PLAYER
+                     ================================================= -->
+
+                <div class="lk-player">
+
+
+                    <div class="lk-avatar">
+                        LK
+                    </div>
+
+
+                    <div class="lk-player-info">
+
+
+                        <div class="lk-player-top">
+
+                            <strong id="playerLevel">
+                                Level 01
+                            </strong>
+
+                            <span id="playerXpTop">
+                                0 XP
+                            </span>
 
                         </div>
+
+
+                        <div class="lk-xp">
+
+                            <span
+                                id="playerXpBar"
+                            ></span>
+
+                        </div>
+
+
+                        <small id="playerXpBottom">
+                            0 / 1.000 XP
+                        </small>
+
 
                     </div>
 
 
-
-                    <!-- KOSAKATA -->
-
-                    <div class="learning-basa-vocab">
+                </div>
 
 
-                        <div class="learning-vocab-intro">
+                <!-- =================================================
+                     BASA HUD
+                     ================================================= -->
 
-                            <span>
-                                KOSAKATA PENTING
-                            </span>
+                <div class="lk-basa-hud" aria-label="Perolehan Basa Jawa">
 
-                            <p>
-                                Kenali kata-kata yang digunakan
-                                Banyakcatra saat berbicara dengan
-                                orang yang lebih tua.
+                    <div class="lk-basa-icon">
+                        <img
+                            src="../../assets/icons/icon_basa.png"
+                            alt=""
+                        >
+                    </div>
+
+                    <div class="lk-basa-info">
+                        <small>BASA</small>
+                        <strong id="playerBasa">0</strong>
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ACTION
+                     ================================================= -->
+
+                <div class="lk-nav-actions">
+
+
+                    <button
+                        class="lk-action"
+                        type="button"
+                        aria-label="Notifikasi"
+                    >
+                        ♧
+                    </button>
+
+
+                    <button
+                        class="lk-action"
+                        type="button"
+                        aria-label="Pengaturan"
+                    >
+                        ⚙
+                    </button>
+
+
+                </div>
+
+
+            </header>
+
+
+
+            <!-- =================================================
+                 CONTENT
+                 ================================================= -->
+
+            <main class="lk-content gameplay-content">
+
+
+
+                <!-- =================================================
+                     GAMEPLAY HEADER
+                     TETAP
+                     ================================================= -->
+
+                <section class="gameplay-header">
+
+
+                    <!-- KEMBALI -->
+
+                    <a
+                        href="../../peta.html"
+                        class="gameplay-back"
+                    >
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Kembali
+                        </span>
+
+                    </a>
+
+
+
+                    <!-- LOCATION STATUS -->
+
+                    <div class="gameplay-location-status">
+
+
+                        <div class="gameplay-location-label">
+
+                            <small>
+                                LOKASI
+                            </small>
+
+                            <strong>
+                                PAJAJARAN
+                            </strong>
+
+                        </div>
+
+
+                        <div class="gameplay-location-divider">
+                        </div>
+
+
+                        <div class="gameplay-progress">
+
+                            <small>
+                                PERJALANAN
+                            </small>
+
+                            <strong>
+                                01 / 05
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- =================================================
+                     SCREEN 01
+                     OPENING PAJAJARAN
+                     ================================================= -->
+
+                <section
+                    id="screen01"
+                    class="game-screen screen01 active"
+                >
+
+                    <div class="gameplay-hero">
+
+
+                        <img
+                            class="gameplay-hero-bg"
+                            src="../../assets/backgrounds/gameplay01-pajajaran.png"
+                            alt="Pajajaran"
+                        >
+
+
+                        <div class="gameplay-hero-overlay">
+                        </div>
+
+
+                        <div class="gameplay-hero-content">
+
+
+                            <div class="gameplay-chapter">
+
+                                <span>
+                                    BAB I
+                                </span>
+
+                                <span>
+                                    •
+                                </span>
+
+                                <span>
+                                    PAJAJARAN
+                                </span>
+
+                            </div>
+
+
+                            <p class="gameplay-eyebrow">
+                                Awal Perjalanan
                             </p>
 
-                        </div>
+
+                            <h1>
+                                Pajajaran
+                            </h1>
 
 
-                        <!-- KULA -->
+                            <p class="gameplay-description">
 
-                        <div class="learning-vocab-card">
+                                Di tanah Pajajaran,
+                                perjalanan Kamandaka
+                                akan segera dimulai.
+                                Sebelum meninggalkan
+                                istana, ia harus
+                                mempersiapkan bekal
+                                dan memahami pesan
+                                yang ditinggalkan untuknya.
 
-                            <div class="learning-vocab-number">
-                                01
+                            </p>
+
+
+                            <div class="gameplay-objective">
+
+
+                                <small>
+                                    TUJUAN
+                                </small>
+
+
+                                <strong>
+                                    Persiapkan perjalanan Kamandaka.
+                                </strong>
+
+
                             </div>
 
-                            <div class="learning-vocab-info">
-
-                                <h3>
-                                    KULA
-                                </h3>
-
-                                <span>
-                                    SAYA
-                                </span>
-
-                                <p>
-                                    Digunakan untuk menyebut diri
-                                    sendiri saat berbicara dengan
-                                    orang yang lebih tua atau dihormati.
-                                </p>
-
-                            </div>
 
                             <button
                                 type="button"
-                                class="learning-voice-button"
-                                onclick="speakBasa('kula')"
-                                aria-label="Dengarkan Kula"
-                            >
-                                🔊
-                            </button>
-
-                        </div>
-
-
-                        <!-- NYUWUN PANGESTU -->
-
-                        <div class="learning-vocab-card">
-
-                            <div class="learning-vocab-number">
-                                02
-                            </div>
-
-                            <div class="learning-vocab-info">
-
-                                <h3>
-                                    NYUWUN PANGESTU
-                                </h3>
-
-                                <span>
-                                    MEMOHON RESTU
-                                </span>
-
-                                <p>
-                                    Digunakan saat hendak meminta
-                                    restu sebelum melakukan sesuatu
-                                    yang penting.
-                                </p>
-
-                            </div>
-
-                            <button
-                                type="button"
-                                class="learning-voice-button"
-                                onclick="speakBasa('nyuwun pangestu')"
-                                aria-label="Dengarkan Nyuwun Pangestu"
-                            >
-                                🔊
-                            </button>
-
-                        </div>
-
-
-                        <!-- BADHÉ -->
-
-                        <div class="learning-vocab-card">
-
-                            <div class="learning-vocab-number">
-                                03
-                            </div>
-
-                            <div class="learning-vocab-info">
-
-                                <h3>
-                                    BADHÉ
-                                </h3>
-
-                                <span>
-                                    AKAN / HENDAK
-                                </span>
-
-                                <p>
-                                    Digunakan untuk menyatakan
-                                    sesuatu yang akan atau hendak
-                                    dilakukan.
-                                </p>
-
-                            </div>
-
-                            <button
-                                type="button"
-                                class="learning-voice-button"
-                                onclick="speakBasa('badhe')"
-                                aria-label="Dengarkan Badhe"
-                            >
-                                🔊
-                            </button>
-
-                        </div>
-
-
-                        <!-- RAMA -->
-
-                        <div class="learning-vocab-card">
-
-                            <div class="learning-vocab-number">
-                                04
-                            </div>
-
-                            <div class="learning-vocab-info">
-
-                                <h3>
-                                    RAMA
-                                </h3>
-
-                                <span>
-                                    AYAH
-                                </span>
-
-                                <p>
-                                    Sapaan yang digunakan Banyakcatra
-                                    kepada ayahnya, Prabu Silihwangi.
-                                </p>
-
-                            </div>
-
-                            <button
-                                type="button"
-                                class="learning-voice-button"
-                                onclick="speakBasa('rama')"
-                                aria-label="Dengarkan Rama"
-                            >
-                                🔊
-                            </button>
-
-                        </div>
-
-
-                        <div class="learning-basa-footer">
-
-                            <span>
-                                Pahami kosakatanya,
-                                lalu coba gunakan.
-                            </span>
-
-                            <button
-                                type="button"
-                                class="learning-basa-next"
-                                id="btnStartQuizBasa"
+                                class="gameplay-start"
+                                id="startJourneyButton"
+                                data-next-screen="screen02"
                             >
 
                                 <span>
-                                    COBA GUNAKAN
+                                    MULAI PERJALANAN
                                 </span>
 
                                 <span>
@@ -810,927 +704,369 @@
 
                             </button>
 
+
                         </div>
 
 
                     </div>
 
-                </div>
+                </section>
 
-            </div>
 
-        </section>
 
+                <!-- =================================================
+                     SCREEN 02
+                     PERIKSA BEKAL
+                     ================================================= -->
 
-
-        <!-- =====================================================
-             SCREEN 05
-             QUIZ BASA
-             ===================================================== -->
-
-        <section
-            class="story-screen"
-            id="story-quiz-basa"
-        >
-
-            <div class="quiz-container">
-
-
-                <div class="quiz-header">
-
-                    <span class="quiz-label">
-                        TANTANGAN BASA 01
-                    </span>
-
-                    <h2>
-                        COBA
-                        <span>
-                            GUNAKAN
-                        </span>
-                    </h2>
-
-                    <p class="quiz-intro">
-                        Pilih jawaban yang paling tepat berdasarkan
-                        kosakata Basa Banyumasan yang telah kamu pelajari.
-                    </p>
-
-                </div>
-
-
-                <div class="quiz-progress">
-
-                    <span id="quizQuestionNumber">
-                        PERTANYAAN 01 / 04
-                    </span>
-
-                    <div class="quiz-progress-bar">
-
-                        <span
-                            id="quizProgressFill"
-                        ></span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="quiz-card">
-
-                    <div class="quiz-question-label">
-                        PERTANYAAN
-                    </div>
-
-
-                    <h3 id="quizQuestion">
-                        Apa arti dari kata "Kula"?
-                    </h3>
-
-
-                    <div class="quiz-options">
-
-
-                        <!-- PILIHAN A -->
-
-                        <button
-                            type="button"
-                            class="quiz-option"
-                            data-answer="Saya"
-                        >
-
-                            <span class="quiz-option-letter">
-                                A
-                            </span>
-
-                            <span>
-                                Saya
-                            </span>
-
-                        </button>
-
-
-                        <!-- PILIHAN B -->
-
-                        <button
-                            type="button"
-                            class="quiz-option"
-                            data-answer="Ayah"
-                        >
-
-                            <span class="quiz-option-letter">
-                                B
-                            </span>
-
-                            <span>
-                                Ayah
-                            </span>
-
-                        </button>
-
-
-                        <!-- PILIHAN C -->
-
-                        <button
-                            type="button"
-                            class="quiz-option"
-                            data-answer="Akan / hendak"
-                        >
-
-                            <span class="quiz-option-letter">
-                                C
-                            </span>
-
-                            <span>
-                                Akan / hendak
-                            </span>
-
-                        </button>
-
-
-                        <!-- PILIHAN D -->
-
-                        <button
-                            type="button"
-                            class="quiz-option"
-                            data-answer="Memohon restu"
-                        >
-
-                            <span class="quiz-option-letter">
-                                D
-                            </span>
-
-                            <span>
-                                Memohon restu
-                            </span>
-
-                        </button>
-
-                    </div>
-
-
-                    <div
-                        id="quizFeedback"
-                        aria-live="polite"
-                    ></div>
-
-
-                    <div class="quiz-footer">
-
-                        <span class="quiz-hint">
-                            Ingat kembali kosakata yang telah dipelajari.
-                        </span>
-
-                        <button
-                            type="button"
-                            id="btnNextQuiz"
-                            disabled
-                        >
-                            SOAL BERIKUTNYA →
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             SCREEN 06
-             STORY SAYEMBARA
-             ===================================================== -->
-
-        <section
-            class="story-screen sayembara-story-screen"
-            id="story-sayembara-story"
-        >
-
-            <div
-                class="sayembara-story-background"
-                aria-hidden="true"
-            ></div>
-
-
-            <div
-                class="sayembara-story-batik"
-                aria-hidden="true"
-            ></div>
-
-
-            <div class="sayembara-story-container">
-
-
-                <div class="sayembara-story-label">
-                    TANTANGAN CERITA 01
-                </div>
-
-
-                <h2 class="sayembara-story-title">
-
-                    Sayembara
-
-                    <span>
-                        Prabu Silihwangi
-                    </span>
-
-                </h2>
-
-
-                <div class="sayembara-story-text">
-
-                    <p>
-                        Prabu Silihwangi yang telah lanjut usia
-                        mulai memikirkan siapa yang akan
-                        menggantikannya sebagai penerus kerajaan.
-                    </p>
-
-                    <p>
-                        Untuk menentukan calon yang pantas,
-                        Sang Prabu mengadakan sebuah sayembara.
-                        Siapa pun yang ingin meminang Putri
-                        Pajajaran harus memenuhi beberapa syarat.
-                    </p>
-
-                </div>
-
-
-                <div class="sayembara-story-requirements">
-
-
-                    <!-- SYARAT 01 -->
-
-                    <div class="sayembara-requirement">
-
-                        <span class="requirement-icon">
-                            ♧
-                        </span>
-
-                        <div>
-
-                            <strong>
-                                40 Putri Kembar
-                            </strong>
-
-                            <span>
-                                Putri kembar sebagai salah satu
-                                syarat sayembara.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SYARAT 02 -->
-
-                    <div class="sayembara-requirement">
-
-                        <span class="requirement-icon">
-                            ▱
-                        </span>
-
-                        <div>
-
-                            <strong>
-                                1000 Kodi Mori
-                            </strong>
-
-                            <span>
-                                Kain mori sebagai perlengkapan
-                                yang diminta Sang Prabu.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SYARAT 03 -->
-
-                    <div class="sayembara-requirement">
-
-                        <span class="requirement-icon">
-                            ♣
-                        </span>
-
-                        <div>
-
-                            <strong>
-                                40 Kuda
-                            </strong>
-
-                            <span>
-                                Kuda yang harus disediakan
-                                sebagai bagian dari syarat.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SYARAT 04 -->
-
-                    <div class="sayembara-requirement">
-
-                        <span class="requirement-icon">
-                            ◎
-                        </span>
-
-                        <div>
-
-                            <strong>
-                                1000 Karung Beras
-                            </strong>
-
-                            <span>
-                                Persediaan beras dalam jumlah
-                                yang telah ditentukan.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-                <p class="sayembara-story-ending">
-                    Ingat baik-baik syarat yang diberikan Sang Prabu.
-                    Setelah itu, bantu Kamandaka memilih
-                    syarat yang tepat.
-                </p>
-
-
-                <button
-                    type="button"
-                    class="story-start-button"
-                    id="btnStartSayembara"
+                <section
+                    id="screen02"
+                    class="game-screen screen02"
                 >
 
-                    <span>
-                        LANJUT KE SAYEMBARA
-                    </span>
-
-                    <span class="story-button-arrow">
-                        →
-                    </span>
-
-                </button>
+                    <div class="game-screen-inner">
 
 
-            </div>
+                        <div class="game-screen-text">
 
 
-            <div class="sayembara-story-mark">
-
-                <span>
-                    06
-                </span>
-
-                <span
-                    class="sayembara-story-mark-line"
-                ></span>
-
-                <span>
-                    07
-                </span>
-
-            </div>
-
-        </section>
+                            <div class="game-screen-label">
+                                PERSIAPAN 01
+                            </div>
 
 
-
-        <!-- =====================================================
-             SCREEN 07
-             DRAG & DROP SAYEMBARA
-             ===================================================== -->
-
-        <section
-            class="story-screen sayembara-screen"
-            id="story-sayembara"
-        >
-
-            <div class="sayembara-container">
+                            <h1>
+                                Periksa Bekal
+                            </h1>
 
 
-                <!-- KIRI — INFORMASI -->
+                            <p>
+                                Sadurunge mangkat,
+                                Kamandaka kudu mriksa
+                                bekal kang wis disiapake
+                                kanggo lelampahan.
+                            </p>
 
-                <div class="sayembara-info">
+
+                            <p class="game-screen-hint">
+                                Priksa bekal nganti rampung.
+                            </p>
 
 
-                    <div class="sayembara-flower">
-                        ✿
+                        </div>
+
+
+
+                        <div class="game-screen-visual">
+
+
+                            <img
+                                src="../../assets/decorations/bekal.png"
+                                alt="Bekal perjalanan Kamandaka"
+                            >
+
+
+                        </div>
+
+
+
+                        <div class="game-screen-action">
+
+
+                            <button
+                                type="button"
+                                class="gameplay-screen-button"
+                                data-next-screen="screen03"
+                                data-action="bekal"
+                            >
+
+                                <span>
+                                    BEKAL WIS SIAP
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
                     </div>
 
-
-                    <span class="sayembara-label">
-                        TANTANGAN CERITA 01
-                    </span>
+                </section>
 
 
-                    <h2>
-                        Sayembara Prabu
-                        Silihwangi
-                    </h2>
+
+                <!-- =================================================
+                     SCREEN 03
+                     BACA SURAT
+                     ================================================= -->
+
+                <section
+                    id="screen03"
+                    class="game-screen screen03"
+                >
+
+                    <div class="game-screen-inner">
 
 
-                    <div class="sayembara-question">
+                        <div class="game-screen-text">
+
+
+                            <div class="game-screen-label">
+                                PERSIAPAN 02
+                            </div>
+
+
+                            <h1>
+                                Baca Surat
+                            </h1>
+
+
+                            <p>
+                                Ing tengah persiapan,
+                                Kamandaka nemokake
+                                sawijining surat
+                                kang ditinggalake
+                                kanggo dheweke.
+                            </p>
+
+
+                            <p class="game-screen-hint">
+                                Waca pesen kang ana ing surat.
+                            </p>
+
+
+                        </div>
+
+
+
+                        <div class="game-screen-visual">
+
+
+                            <img
+                                src="../../assets/decorations/surat.png"
+                                alt="Surat untuk Kamandaka"
+                            >
+
+
+                        </div>
+
+
+
+                        <div class="game-screen-action">
+
+
+                            <button
+                                type="button"
+                                class="gameplay-screen-button"
+                                data-next-screen="screen04"
+                                data-action="surat"
+                            >
+
+                                <span>
+                                    SURAT WIS DIBACA
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     SCREEN 04
+                     PERIKSA PETA
+                     ================================================= -->
+
+                <section
+                    id="screen04"
+                    class="game-screen screen04"
+                >
+
+                    <div class="game-screen-inner">
+
+
+                        <div class="game-screen-text">
+
+
+                            <div class="game-screen-label">
+                                PERSIAPAN 03
+                            </div>
+
+
+                            <h1>
+                                Periksa Peta
+                            </h1>
+
+
+                            <p>
+                                Sawise mriksa bekal
+                                lan maca surat,
+                                Kamandaka kudu ngerti
+                                arah lelampahan sabanjure.
+                            </p>
+
+
+                            <p class="game-screen-hint">
+                                Priksa peta perjalanan.
+                            </p>
+
+
+                        </div>
+
+
+
+                        <div class="game-screen-visual">
+
+
+                            <img
+                                src="../../assets/decorations/map.png"
+                                alt="Peta perjalanan Kamandaka"
+                            >
+
+
+                        </div>
+
+
+
+                        <div class="game-screen-action">
+
+
+                            <button
+                                type="button"
+                                class="gameplay-screen-button"
+                                data-next-screen="screen05"
+                                data-action="map"
+                            >
+
+                                <span>
+                                    PETA WIS DIPRIKSA
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =================================================
+                     SCREEN 05
+                     SELESAI
+                     ================================================= -->
+
+                <section
+                    id="screen05"
+                    class="game-screen screen05"
+                >
+
+                    <div class="game-screen-inner gameplay-finish">
+
+
+                        <div class="gameplay-finish-symbol">
+                            ✦
+                        </div>
+
+
+                        <div class="game-screen-label">
+                            PAJAJARAN SELESAI
+                        </div>
+
+
+                        <h1>
+                            Persiapan Rampung
+                        </h1>
+
 
                         <p>
-                            Apa saja syarat sayembara yang
-                            diberikan Prabu Silihwangi untuk
-                            meminang Putri Pajajaran?
+                            Bekal wis dipriksa,
+                            surat wis diwaca,
+                            lan peta wis dimangerteni.
+                            Saiki Kamandaka wis siyap
+                            nerusake lelampahan.
                         </p>
 
-                    </div>
 
+                        <div class="gameplay-reward">
 
-                    <div class="sayembara-instruction">
-
-                        <span>
-                            ⓘ
-                        </span>
-
-                        <span>
-                            Tarik
-                            <strong>
-                                4 syarat yang benar
-                            </strong>
-                            ke dalam kotak sayembara.
-                            Hati-hati, ada beberapa pilihan pengecoh.
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- KANAN — GAME -->
-
-                <div class="sayembara-game">
-
-
-                    <!-- DROPZONE -->
-
-                    <div
-                        class="sayembara-dropzone"
-                        id="sayembaraDropzone"
-                    >
-
-                        <div class="sayembara-dropzone-placeholder">
 
                             <span>
-                                LETAKKAN SYARAT
+                                REWARD
                             </span>
 
-                            <strong>
-                                SAYEMBARA
+
+                            <strong id="gameplayRewardXp">
+                                +100 XP
                             </strong>
 
-                            <small>
-                                Tarik 4 syarat yang benar ke area ini
-                            </small>
 
                         </div>
 
-                    </div>
 
-
-                    <!-- FEEDBACK -->
-
-                    <div
-                        class="sayembara-feedback"
-                        id="sayembaraFeedback"
-                        aria-live="polite"
-                    ></div>
-
-
-                    <!-- OPTIONS -->
-
-                    <div class="sayembara-options">
-
-
-                        <!-- BENAR 01 -->
-
-                        <button
-                            type="button"
-                            class="sayembara-option"
-                            draggable="true"
-                            data-answer="putri"
+                        <a
+                            href="../../peta.html"
+                            class="gameplay-finish-button"
+                            id="finishJourneyButton"
                         >
 
-                            <span class="sayembara-icon">
-                                ♧
+                            <span>
+                                LANJUT MENYANG PETA
                             </span>
 
-                            <strong>
-                                40 PUTRI
-                                <br>
-                                KEMBAR
-                            </strong>
-
-                        </button>
-
-
-                        <!-- BENAR 02 -->
-
-                        <button
-                            type="button"
-                            class="sayembara-option"
-                            draggable="true"
-                            data-answer="mori"
-                        >
-
-                            <span class="sayembara-icon">
-                                ▱
+                            <span>
+                                →
                             </span>
 
-                            <strong>
-                                1000 KODI
-                                <br>
-                                MORI
-                            </strong>
-
-                        </button>
-
-
-                        <!-- BENAR 03 -->
-
-                        <button
-                            type="button"
-                            class="sayembara-option"
-                            draggable="true"
-                            data-answer="kuda"
-                        >
-
-                            <span class="sayembara-icon">
-                                ♣
-                            </span>
-
-                            <strong>
-                                40 KUDA
-                            </strong>
-
-                        </button>
-
-
-                        <!-- BENAR 04 -->
-
-                        <button
-                            type="button"
-                            class="sayembara-option"
-                            draggable="true"
-                            data-answer="beras"
-                        >
-
-                            <span class="sayembara-icon">
-                                ◎
-                            </span>
-
-                            <strong>
-                                1000 KARUNG
-                                <br>
-                                BERAS
-                            </strong>
-
-                        </button>
-
-
-                        <!-- PENGECOH 01 -->
-
-                        <button
-                            type="button"
-                            class="sayembara-option"
-                            draggable="true"
-                            data-answer="gajah"
-                        >
-
-                            <span class="sayembara-icon">
-                                ◇
-                            </span>
-
-                            <strong>
-                                40 EKOR
-                                <br>
-                                GAJAH
-                            </strong>
-
-                        </button>
-
-
-                        <!-- PENGECOH 02 -->
-
-                        <button
-                            type="button"
-                            class="sayembara-option"
-                            draggable="true"
-                            data-answer="batik"
-                        >
-
-                            <span class="sayembara-icon">
-                                ◈
-                            </span>
-
-                            <strong>
-                                500 KAIN
-                                <br>
-                                BATIK
-                            </strong>
-
-                        </button>
-
-
-                        <!-- PENGECOH 03 -->
-
-                        <button
-                            type="button"
-                            class="sayembara-option"
-                            draggable="true"
-                            data-answer="gula"
-                        >
-
-                            <span class="sayembara-icon">
-                                ◌
-                            </span>
-
-                            <strong>
-                                200 KARUNG
-                                <br>
-                                GULA
-                            </strong>
-
-                        </button>
+                        </a>
 
 
                     </div>
 
+                </section>
 
-                    <!-- NEXT -->
 
-                    <button
-                        type="button"
-                        class="sayembara-next"
-                        id="btnNextSayembara"
-                        disabled
-                    >
 
-                        <span>
-                            LANJUT
-                        </span>
+            </main>
 
-                        <span>
-                            →
-                        </span>
 
-                    </button>
+        </div>
 
 
-                </div>
+    </div>
 
-            </div>
 
-        </section>
 
-
-
-        <!-- =====================================================
-             SCREEN 08
-             KEBERANGKATAN KAMANDAKA
-             ===================================================== -->
-
-        <section
-            class="story-screen departure-story-screen"
-            id="story-chapter-08"
-        >
-
-
-            <!-- BACKGROUND -->
-
-            <div
-                class="departure-story-background"
-                aria-hidden="true"
-            ></div>
-
-
-            <!-- OVERLAY -->
-
-            <div
-                class="departure-story-overlay"
-                aria-hidden="true"
-            ></div>
-
-
-            <!-- BATIK -->
-
-            <div
-                class="departure-story-batik"
-                aria-hidden="true"
-            ></div>
-
-
-            <!-- CONTENT -->
-
-            <div class="departure-story-container">
-
-
-                <!-- LABEL -->
-
-                <div class="departure-story-label">
-                    PERJALANAN DIMULAI
-                </div>
-
-
-                <!-- TITLE -->
-
-                <h2 class="departure-story-title">
-
-                    Keberangkatan
-
-                    <span>
-                        Kamandaka
-                    </span>
-
-                </h2>
-
-
-                <!-- STORY -->
-
-                <div class="departure-story-text">
-
-                    <p>
-                        Setelah mengetahui syarat sayembara,
-                        Banyakcatra menyadari bahwa perjalanan
-                        yang harus ditempuh tidaklah mudah.
-                    </p>
-
-                    <p>
-                        Ia kemudian meninggalkan Pajajaran
-                        untuk menjalankan perjalanan dan mencari
-                        jalan menuju takdirnya.
-                    </p>
-
-                    <p>
-                        Langkah pertama telah dimulai.
-                        Namun, perjalanan Kamandaka masih panjang.
-                    </p>
-
-                </div>
-
-
-                <!-- QUOTE -->
-
-                <div class="departure-story-quote">
-
-                    <span>
-                        “
-                    </span>
-
-                    <p>
-                        Saben lampah mesthi ana
-                        sing kudu disinaoni.
-                    </p>
-
-                </div>
-
-
-                <!-- REWARD -->
-
-                <div class="departure-story-reward">
-
-
-                    <!-- XP -->
-
-                    <div class="departure-reward-item">
-
-                        <span class="departure-reward-icon">
-                            ✦
-                        </span>
-
-                        <div>
-
-                            <small>
-                                PEROLEHAN
-                            </small>
-
-                            <strong id="chapterXpReward">
-                                +25 XP
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- BASA -->
-
-                    <div class="departure-reward-item">
-
-                        <span class="departure-reward-icon">
-                            ◈
-                        </span>
-
-                        <div>
-
-                            <small>
-                                BASA
-                            </small>
-
-                            <strong id="chapterBasaReward">
-                                +5 BASA
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- CHAPTER PROGRESS -->
-
-                <div class="departure-story-progress">
-
-                    <span>
-                        BAB
-                    </span>
-
-                    <strong id="chapterCurrentNumber">
-                        01
-                    </strong>
-
-                    <span>
-                        /
-                    </span>
-
-                    <strong id="chapterTotalNumber">
-                        10
-                    </strong>
-
-                </div>
-
-
-                <!-- BUTTON -->
-
-                <button
-                    type="button"
-                    class="story-start-button"
-                    id="btnContinueChapter"
-                >
-
-                    <span>
-                        LANJUTKAN PERJALANAN
-                    </span>
-
-                    <span class="story-button-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-            </div>
-
-
-            <!-- SCREEN MARK -->
-
-            <div class="departure-story-mark">
-
-                <span>
-                    08
-                </span>
-
-                <span
-                    class="departure-story-mark-line"
-                ></span>
-
-                <span>
-                    09
-                </span>
-
-            </div>
-
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- ==================================================
+    <!-- =========================================================
          JAVASCRIPT
-         ================================================== -->
+         ========================================================= -->
 
-    <script src="app.js"></script>
-
-    <script src="../../js/components/navbar.js"></script>
+    <script
+        src="app.js"
+        defer
+    ></script>
 
 
 </body>

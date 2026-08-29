@@ -1,0 +1,530 @@
+<!-- =========================================================
+     LELANA KAMANDAKA
+     GLOBAL NAVBAR + SIDEBAR
+
+     FILE:
+     /navbar.html
+
+     DIPANGGIL OLEH:
+     /js/navbar.js
+
+     CATATAN:
+     File ini adalah TEMPLATE GLOBAL.
+     Jangan menambahkan <script> navbar.js di sini.
+     Setiap halaman cukup memiliki:
+
+     <div id="globalNavbar"></div>
+
+     lalu memanggil:
+
+     <script src="/js/navbar.js"></script>
+     ========================================================= -->
+
+
+<!-- =========================================================
+     SIDEBAR
+     ========================================================= -->
+
+<aside class="lk-sidebar">
+
+
+    <!-- =====================================================
+         BRAND
+         ===================================================== -->
+
+    <a
+        href="/index.html"
+        class="lk-sidebar-brand"
+    >
+
+        <div class="lk-sidebar-brand-mark">
+
+            <span>✦</span>
+
+        </div>
+
+
+        <div class="lk-sidebar-brand-text">
+
+            <strong>
+                LELANA
+            </strong>
+
+            <small>
+                KAMANDAKA
+            </small>
+
+        </div>
+
+    </a>
+
+
+
+    <!-- =====================================================
+         SIDEBAR MENU
+         ===================================================== -->
+
+    <nav
+        class="lk-sidebar-menu"
+        aria-label="Navigasi utama"
+    >
+
+
+        <!-- =================================================
+             BERANDA
+             ================================================= -->
+
+        <a
+            href="/index.html"
+            class="lk-sidebar-link"
+            data-page="index"
+        >
+
+            <span class="lk-sidebar-icon">
+
+                <img
+                    src="/assets/icons/icon_home.png"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </span>
+
+            <span>
+                Beranda
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             PETA
+             ================================================= -->
+
+        <a
+            href="/peta.html"
+            class="lk-sidebar-link"
+            data-page="peta"
+        >
+
+            <span class="lk-sidebar-icon">
+
+                <img
+                    src="/assets/icons/icon_peta.png"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </span>
+
+            <span>
+                Peta
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             GAMEPLAY
+             ================================================= -->
+
+        <a
+            href="/gameplay/gameplay01/index.html"
+            class="lk-sidebar-link"
+            data-page="gameplay"
+        >
+
+            <span class="lk-sidebar-icon">
+
+                <img
+                    src="/assets/icons/icon_gameplay.png"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </span>
+
+            <span>
+                Gameplay
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             CATATAN
+             ================================================= -->
+
+        <a
+            href="/catatan.html"
+            class="lk-sidebar-link"
+            data-page="catatan"
+        >
+
+            <span class="lk-sidebar-icon">
+
+                <img
+                    src="/assets/icons/icon_catatan.png"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </span>
+
+            <span>
+                Catatan
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             BASA
+             ================================================= -->
+
+        <a
+            href="/basa.html"
+            class="lk-sidebar-link"
+            data-page="basa"
+        >
+
+            <span class="lk-sidebar-icon">
+
+                <img
+                    src="/assets/icons/icon_basa.png"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </span>
+
+            <span>
+                Basa
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             PENCAPAIAN
+             ================================================= -->
+
+        <a
+            href="/pencapaian.html"
+            class="lk-sidebar-link"
+            data-page="pencapaian"
+        >
+
+            <span class="lk-sidebar-icon">
+
+                <img
+                    src="/assets/icons/icon_pencapaian.png"
+                    alt=""
+                    aria-hidden="true"
+                >
+
+            </span>
+
+            <span>
+                Pencapaian
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         QUOTE SIDEBAR
+         ===================================================== -->
+
+    <div class="lk-sidebar-quote">
+
+        <p>
+            “Saben lelampah<br>
+            ana piwulang,<br>
+            saben tembung<br>
+            ana jiwa.”
+        </p>
+
+        <span>
+            ❧
+        </span>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =========================================================
+     TOP NAVBAR
+     ========================================================= -->
+
+<header class="lk-navbar">
+
+
+    <!-- =====================================================
+         TOP NAVIGATION
+
+         HARUS LENGKAP:
+         Beranda | Peta | Gameplay | Catatan | Basa | Pencapaian
+         ===================================================== -->
+
+    <nav
+        class="lk-nav-links"
+        aria-label="Navigasi halaman"
+    >
+
+
+        <!-- =================================================
+             BERANDA
+             ================================================= -->
+
+        <a
+            href="/index.html"
+            class="lk-nav-link"
+            data-page="index"
+        >
+
+            <img
+                src="/assets/icons/icon_home.png"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <span>
+                Beranda
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             PETA
+             ================================================= -->
+
+        <a
+            href="/peta.html"
+            class="lk-nav-link"
+            data-page="peta"
+        >
+
+            <img
+                src="/assets/icons/icon_peta.png"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <span>
+                Peta
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             GAMEPLAY
+             ================================================= -->
+
+        <a
+            href="/gameplay/gameplay01/index.html"
+            class="lk-nav-link"
+            data-page="gameplay"
+        >
+
+            <img
+                src="/assets/icons/icon_gameplay.png"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <span>
+                Gameplay
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             CATATAN
+             ================================================= -->
+
+        <a
+            href="/catatan.html"
+            class="lk-nav-link"
+            data-page="catatan"
+        >
+
+            <img
+                src="/assets/icons/icon_catatan.png"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <span>
+                Catatan
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             BASA
+             ================================================= -->
+
+        <a
+            href="/basa.html"
+            class="lk-nav-link"
+            data-page="basa"
+        >
+
+            <img
+                src="/assets/icons/icon_basa.png"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <span>
+                Basa
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             PENCAPAIAN
+             ================================================= -->
+
+        <a
+            href="/pencapaian.html"
+            class="lk-nav-link"
+            data-page="pencapaian"
+        >
+
+            <img
+                src="/assets/icons/icon_pencapaian.png"
+                alt=""
+                aria-hidden="true"
+            >
+
+            <span>
+                Pencapaian
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         PLAYER
+         ===================================================== -->
+
+    <div class="lk-player">
+
+
+        <!-- AVATAR -->
+
+        <div class="lk-avatar">
+            LK
+        </div>
+
+
+
+        <!-- PLAYER INFORMATION -->
+
+        <div class="lk-player-info">
+
+
+            <!-- LEVEL + TOTAL XP -->
+
+            <div class="lk-player-top">
+
+                <strong id="globalPlayerLevel">
+                    Level 01
+                </strong>
+
+                <span id="globalPlayerXP">
+                    0 XP
+                </span>
+
+            </div>
+
+
+
+            <!-- XP BAR -->
+
+            <div class="lk-xp">
+
+                <span
+                    id="globalPlayerXPBar"
+                ></span>
+
+            </div>
+
+
+
+            <!-- XP CURRENT -->
+
+            <small id="globalPlayerXPBottom">
+                0 / 1.000 XP
+            </small>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NAVBAR ACTIONS
+         ===================================================== -->
+
+    <div class="lk-nav-actions">
+
+
+        <!-- NOTIFICATION -->
+
+        <button
+            class="lk-action"
+            type="button"
+            aria-label="Notifikasi"
+        >
+            ♧
+        </button>
+
+
+
+        <!-- SETTINGS -->
+
+        <button
+            class="lk-action"
+            type="button"
+            aria-label="Pengaturan"
+        >
+            ⚙
+        </button>
+
+
+    </div>
+
+
+</header>
