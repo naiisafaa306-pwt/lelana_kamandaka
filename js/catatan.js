@@ -532,6 +532,7 @@ function lockCard(
     overlay.className =
         "catatan-lock-overlay";
 
+            return;
 
     overlay.innerHTML = `
 
@@ -690,6 +691,21 @@ function updateCatatanCards() {
             if (!cardNumber) {
 
                 return;
+
+
+                /*
+                 * Kalau ada data catatan,
+                 * masukkan isi catatan.
+                 */
+
+                if (data) {
+
+                    createCardContent(
+                        card,
+                        data
+                    );
+
+                }
 
             }
 
