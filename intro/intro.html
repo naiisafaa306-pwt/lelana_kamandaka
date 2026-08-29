@@ -10,17 +10,19 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="Lelana Kamandaka — Intro perjalanan Raden Kamandaka."
+    >
+
     <title>Lelana Kamandaka — Intro Cerita</title>
 
 
-    <!-- =====================================================
-         GOOGLE FONTS
-         ===================================================== -->
+    <!-- =========================================================
+         FONT
+         ========================================================= -->
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
         rel="preconnect"
@@ -34,9 +36,9 @@
     >
 
 
-    <!-- =====================================================
+    <!-- =========================================================
          GLOBAL CSS
-         ===================================================== -->
+         ========================================================= -->
 
     <link
         rel="stylesheet"
@@ -50,7 +52,7 @@
 
     <link
         rel="stylesheet"
-        href="../css/components/navbar.css"
+        href="../css/screens/opening.css"
     >
 
     <link
@@ -59,19 +61,14 @@
     >
 
 
-    <!-- =====================================================
-         INTRO CSS
-         ===================================================== -->
+    <!-- =========================================================
+         INTRO / STORY CSS
+         ========================================================= -->
 
     <link
         rel="stylesheet"
         href="../intro/intro.css"
     >
-
-
-    <!-- =====================================================
-         STORY CSS
-         ===================================================== -->
 
     <link
         rel="stylesheet"
@@ -84,332 +81,630 @@
 <body>
 
 
-    <!-- =====================================================
-         GLOBAL NAVBAR
-         ===================================================== -->
+    <!-- =========================================================
+         PAGE
+         ========================================================= -->
 
-    <header
-        class="site-navbar"
-        id="siteNavbar"
-    >
-
-        <div class="navbar-inner">
+    <div class="lk-page">
 
 
-            <!-- =================================================
-                 LOGO
-                 ================================================= -->
+        <!-- =====================================================
+             BATIK BACKGROUND
+             ===================================================== -->
+
+        <div
+            class="lk-batik-pattern"
+            aria-hidden="true"
+        >
+
+            <img
+                src="../assets/decorations/batik_pattern.png"
+                alt=""
+            >
+
+        </div>
+
+
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+
+        <aside class="lk-sidebar">
+
+
+            <!-- BRAND -->
 
             <a
                 href="../index.html"
-                class="navbar-logo"
+                class="lk-brand"
             >
-                LELANA KAMANDAKA
+
+                <div class="lk-brand-mark">
+
+                    <span>✦</span>
+
+                </div>
+
+
+                <div class="lk-brand-text">
+
+                    <strong>
+                        LELANA
+                    </strong>
+
+                    <small>
+                        KAMANDAKA
+                    </small>
+
+                </div>
+
             </a>
 
 
             <!-- =================================================
-                 MENU UTAMA
+                 MENU SIDEBAR
                  ================================================= -->
 
-            <nav
-                class="navbar-menu"
-                id="navbarMenu"
-            >
+            <nav class="lk-side-menu">
+
+
+                <!-- BERANDA -->
 
                 <a
                     href="../index.html"
-                    class="active"
+                    class="lk-side-link"
                 >
-                    BERANDA
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../assets/icons/icon_home.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Beranda
+                    </span>
+
                 </a>
+
+
+                <!-- =================================================
+                     INTRO
+                     ================================================= -->
+
+                <a
+                    href="intro.html"
+                    class="lk-side-link active"
+                >
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../assets/icons/icon_journey.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Intro
+                    </span>
+
+                </a>
+
+
+                <!-- PETA -->
+
+                <a
+                    href="../peta.html"
+                    class="lk-side-link"
+                >
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../assets/icons/icon_peta.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Peta
+                    </span>
+
+                </a>
+
+
+                <!-- GAMEPLAY -->
+
+                <a
+                    href="../gameplay/gameplay01/index.html"
+                    class="lk-side-link"
+                >
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../assets/icons/icon_gameplay.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Gameplay
+                    </span>
+
+                </a>
+
+
+                <!-- CATATAN -->
 
                 <a
                     href="../catatan.html"
+                    class="lk-side-link"
                 >
-                    CATATAN
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../assets/icons/icon_catatan.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Catatan
+                    </span>
+
                 </a>
+
+
+                <!-- BASA -->
+
+                <a
+                    href="../basa.html"
+                    class="lk-side-link"
+                >
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../assets/icons/icon_basa.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Basa
+                    </span>
+
+                </a>
+
+
+                <!-- PENCAPAIAN -->
 
                 <a
                     href="../pencapaian.html"
+                    class="lk-side-link"
                 >
-                    PENCAPAIAN
+
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../assets/icons/icon_pencapaian.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Pencapaian
+                    </span>
+
                 </a>
 
             </nav>
 
 
             <!-- =================================================
-                 HAMBURGER
+                 QUOTE SIDEBAR
                  ================================================= -->
 
-            <button
-                type="button"
-                class="navbar-toggle"
-                id="navbarToggle"
-                aria-label="Buka menu"
-                aria-expanded="false"
-                onclick="
-                    this.classList.toggle('active');
-                    document
-                        .getElementById('navbarExtra')
-                        .classList.toggle('open');
+            <div class="lk-sidebar-quote">
 
-                    this.setAttribute(
-                        'aria-expanded',
-                        this.classList.contains('active')
-                    );
-                "
-            >
+                <p>
+                    “Saben lelampah
+                    ana piwulang,
+                    saben tembung
+                    ana jiwa.”
+                </p>
 
-                <span></span>
-
-            </button>
-
-
-            <!-- =================================================
-                 MENU TAMBAHAN / DROPDOWN
-                 ================================================= -->
-
-            <div
-                class="navbar-extra"
-                id="navbarExtra"
-            >
-
-                <a
-                    href="../peta.html"
-                >
-                    PETA
-                </a>
-
-                <a
-                    href="../basa.html"
-                >
-                    BASA
-                </a>
+                <span>
+                    ❧
+                </span>
 
             </div>
 
-
-        </div>
-
-    </header>
+        </aside>
 
 
+        <!-- =====================================================
+             MAIN
+             ===================================================== -->
 
-    <!-- =====================================================
-         INTRO CERITA
-         ===================================================== -->
-
-    <main class="intro-main">
-
-        <section
-            id="screen-story"
-            class="screen-view active"
-        >
+        <div class="lk-main">
 
 
             <!-- =================================================
-                 PANEL TEKS
+                 NAVBAR
                  ================================================= -->
 
-            <div class="story-text-panel">
+            <header class="lk-navbar">
 
 
-                <!-- =================================================
-                     ORNAMEN
-                     ================================================= -->
+                <!-- NAVIGATION -->
 
-                <div class="story-ornament">
-
-                    <img
-                        src="../assets/icons/leaf_01.svg"
-                        class="story-leaf-icon"
-                        alt=""
-                        aria-hidden="true"
-                    >
-
-                    <span
-                        class="story-ornament-line"
-                    ></span>
-
-                    <span
-                        class="story-ornament-dot"
-                    ></span>
-
-                    <span
-                        class="story-ornament-line"
-                    ></span>
-
-                    <img
-                        src="../assets/icons/leaf_02.svg"
-                        class="story-leaf-icon"
-                        alt=""
-                        aria-hidden="true"
-                    >
-
-                </div>
+                <nav class="lk-nav-links">
 
 
-                <!-- =================================================
-                     LABEL
-                     ================================================= -->
-
-                <span
-                    class="story-eyebrow"
-                >
-                    LELANA KAMANDAKA
-                </span>
-
-
-                <!-- =================================================
-                     JUDUL
-                     ================================================= -->
-
-                <h1
-                    class="story-title"
-                >
-                    Jejak yang
-                    <em>bermula.</em>
-                </h1>
-
-
-                <!-- =================================================
-                     CERITA
-                     ================================================= -->
-
-                <p
-                    id="story-text-body"
-                    class="story-body-text"
-                >
-                    Di jantung Kerajaan Pajajaran
-                    yang megah, sebuah kisah
-                    kepahlawanan bermula...
-                </p>
-
-
-                <!-- =================================================
-                     NOMOR HALAMAN
-                     ================================================= -->
-
-                <div
-                    class="story-page-indicator"
-                >
-
-                    <span
-                        class="story-page-number"
-                    >
-                        01
-                    </span>
-
-                    <span
-                        class="story-page-line"
-                    ></span>
-
-                    <span
-                        class="story-page-total"
-                    >
-                        04
-                    </span>
-
-                </div>
-
-
-                <!-- =================================================
-                     BUTTON LANJUT
-                     ================================================= -->
-
-                <div
-                    class="story-panel-footer"
-                >
+                    <!-- BERANDA -->
 
                     <a
-                        href="intro2.html"
-                        class="story-lanjut-btn"
+                        href="../index.html"
+                        class="lk-nav-link"
                     >
 
-                        <span>
-                            LANJUT
-                        </span>
+                        <img
+                            src="../assets/icons/icon_home.png"
+                            alt=""
+                        >
 
-                        <strong>
-                            →
-                        </strong>
+                        <span>
+                            Beranda
+                        </span>
 
                     </a>
 
+
+                    <!-- PETA -->
+
+                    <a
+                        href="../peta.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../assets/icons/icon_peta.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Peta
+                        </span>
+
+                    </a>
+
+
+                    <!-- CATATAN -->
+
+                    <a
+                        href="../catatan.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../assets/icons/icon_catatan.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Catatan
+                        </span>
+
+                    </a>
+
+
+                    <!-- BASA -->
+
+                    <a
+                        href="../basa.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../assets/icons/icon_basa.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Basa
+                        </span>
+
+                    </a>
+
+
+                    <!-- PENCAPAIAN -->
+
+                    <a
+                        href="../pencapaian.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../assets/icons/icon_pencapaian.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Pencapaian
+                        </span>
+
+                    </a>
+
+                </nav>
+
+
+                <!-- =================================================
+                     PLAYER
+                     ================================================= -->
+
+                <div class="lk-player">
+
+
+                    <div class="lk-avatar">
+                        LK
+                    </div>
+
+
+                    <div class="lk-player-info">
+
+
+                        <div class="lk-player-top">
+
+                            <strong id="playerLevel">
+                                Level 01
+                            </strong>
+
+                            <span id="playerXpTop">
+                                0 XP
+                            </span>
+
+                        </div>
+
+
+                        <div class="lk-xp">
+
+                            <span
+                                id="playerXpBar"
+                            ></span>
+
+                        </div>
+
+
+                        <small id="playerXpBottom">
+                            0 / 1.000 XP
+                        </small>
+
+                    </div>
+
                 </div>
 
 
-            </div>
+                <!-- =================================================
+                     ACTION
+                     ================================================= -->
 
+                <div class="lk-nav-actions">
+
+                    <button
+                        class="lk-action"
+                        type="button"
+                        aria-label="Notifikasi"
+                    >
+                        ♧
+                    </button>
+
+                    <button
+                        class="lk-action"
+                        type="button"
+                        aria-label="Pengaturan"
+                    >
+                        ⚙
+                    </button>
+
+                </div>
+
+            </header>
 
 
             <!-- =================================================
-                 PANEL GAMBAR
+                 CONTENT INTRO
                  ================================================= -->
 
-            <div
-                class="story-illustration-panel"
-            >
+            <main class="lk-content intro-main">
 
 
-                <!-- =================================================
-                     GAMBAR
-                     ================================================= -->
-
-                <img
-                    id="story-illustration-img"
-                    src="../assets/images/screen 2.png"
-                    class="story-illustration-img"
-                    alt="Kerajaan Pajajaran"
+                <section
+                    id="screen-story"
+                    class="screen-view active"
                 >
 
 
-                <!-- =================================================
-                     OVERLAY GAMBAR
-                     ================================================= -->
+                    <!-- =================================================
+                         PANEL TEKS
+                         ================================================= -->
 
-                <div
-                    class="story-image-overlay"
-                    aria-hidden="true"
-                ></div>
+                    <div class="story-text-panel">
 
 
-                <!-- =================================================
-                     LABEL GAMBAR
-                     ================================================= -->
+                        <!-- ORNAMEN -->
 
-                <div
-                    class="story-image-caption"
-                >
+                        <div class="story-ornament">
 
-                    <span>
-                        BAB I
-                    </span>
+                            <img
+                                src="../assets/icons/leaf_01.svg"
+                                class="story-leaf-icon"
+                                alt=""
+                                aria-hidden="true"
+                            >
 
-                    <strong>
-                        PAJAJARAN
-                    </strong>
+                            <span
+                                class="story-ornament-line"
+                            ></span>
 
-                </div>
+                            <span
+                                class="story-ornament-dot"
+                            ></span>
+
+                            <span
+                                class="story-ornament-line"
+                            ></span>
+
+                            <img
+                                src="../assets/icons/leaf_02.svg"
+                                class="story-leaf-icon"
+                                alt=""
+                                aria-hidden="true"
+                            >
+
+                        </div>
 
 
-            </div>
+                        <!-- LABEL -->
+
+                        <span class="story-eyebrow">
+                            LELANA KAMANDAKA
+                        </span>
 
 
-        </section>
+                        <!-- JUDUL -->
 
-    </main>
+                        <h1 class="story-title">
+
+                            Jejak yang
+
+                            <em>
+                                bermula.
+                            </em>
+
+                        </h1>
 
 
+                        <!-- CERITA -->
 
-    <!-- =====================================================
-         JAVASCRIPT
-         ===================================================== -->
+                        <p
+                            id="story-text-body"
+                            class="story-body-text"
+                        >
+                            Di jantung Kerajaan Pajajaran
+                            yang megah, sebuah kisah
+                            kepahlawanan bermula...
+                        </p>
+
+
+                        <!-- NOMOR -->
+
+                        <div class="story-page-indicator">
+
+                            <span class="story-page-number">
+                                01
+                            </span>
+
+                            <span class="story-page-line">
+                            </span>
+
+                            <span class="story-page-total">
+                                04
+                            </span>
+
+                        </div>
+
+
+                        <!-- BUTTON -->
+
+                        <div class="story-panel-footer">
+
+    <a
+        href="../index.html"
+        class="story-back-btn"
+    >
+        <span>←</span>
+        <span>KEMBALI</span>
+    </a>
+
+    <a
+        href="intro2.html"
+        class="story-lanjut-btn"
+    >
+        <span>LANJUT</span>
+        <strong>→</strong>
+    </a>
+
+</div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PANEL GAMBAR
+                         ================================================= -->
+
+                    <div
+                        class="story-illustration-panel"
+                    >
+
+
+                        <img
+                            id="story-illustration-img"
+                            src="../assets/images/screen 2.png"
+                            class="story-illustration-img"
+                            alt="Kerajaan Pajajaran"
+                        >
+
+
+                        <div
+                            class="story-image-overlay"
+                            aria-hidden="true"
+                        ></div>
+
+
+                        <div
+                            class="story-image-caption"
+                        >
+
+                            <span>
+                                BAB I
+                            </span>
+
+                            <strong>
+                                PAJAJARAN
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT NAVBAR
+         ========================================================= -->
 
     <script src="../js/navbar.js"></script>
-
 
 </body>
 

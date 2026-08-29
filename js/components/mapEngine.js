@@ -685,7 +685,7 @@ function applyLocationState(
 
 
                 image.src =
-                    "assets/icons/lokasi.png";
+                    "assets/map/location.png";
 
 
                 element.disabled =
@@ -722,7 +722,7 @@ function applyLocationState(
 
 
                 image.src =
-                    "assets/icons/gembok.png";
+                    "assets/map/gembok.png";
 
 
                 element.disabled =

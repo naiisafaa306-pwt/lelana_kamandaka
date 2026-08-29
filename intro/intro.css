@@ -1,12 +1,39 @@
 /* =========================================================
    LELANA KAMANDAKA
    INTRO PAGE
-   INTRO.CSS
+   COLOR PALETTE — BERANDA MATCH
    ========================================================= */
 
 
 /* =========================================================
-   INTRO MAIN
+   PALETTE
+   ========================================================= */
+
+:root {
+
+    --lk-green-dark: #102b14;
+    --lk-green: #18391a;
+    --lk-green-soft: #294d20;
+    --lk-green-hover: #3c641f;
+
+    --lk-cream: #f5eddd;
+    --lk-cream-light: #faf5e8;
+    --lk-cream-dark: #e8dcc5;
+
+    --lk-brown: #4a2c1d;
+    --lk-brown-soft: #694936;
+
+    --lk-gold: #c49a45;
+    --lk-gold-light: #d9b96c;
+
+    --lk-text: #493024;
+    --lk-muted: #8d7761;
+
+}
+
+
+/* =========================================================
+   MAIN
    ========================================================= */
 
 .intro-main {
@@ -16,27 +43,19 @@
     width: 100%;
 
     min-height:
-        calc(100vh - 80px);
+        calc(100vh - 82px);
 
     overflow: hidden;
 
     background:
-        #f5eddd;
+        var(--lk-cream);
 
 }
 
 
 /* =========================================================
-   MOTIF BATIK UTAMA
+   GLOBAL BATIK
    ========================================================= */
-
-/*
-   Motif:
-   ../assets/images/motif.png
-
-   Motif dibuat sebagai tekstur
-   identitas visual Lelana Kamandaka.
-*/
 
 .intro-main::before {
 
@@ -44,9 +63,9 @@
 
     position: absolute;
 
-    z-index: 10;
-
     inset: 0;
+
+    z-index: 0;
 
     pointer-events: none;
 
@@ -60,10 +79,10 @@
         500px auto;
 
     background-position:
-        center center;
+        center;
 
     opacity:
-        0.055;
+        0.065;
 
     mix-blend-mode:
         multiply;
@@ -72,7 +91,115 @@
 
 
 /* =========================================================
-   MOTIF PANEL KIRI
+   STORY SCREEN
+   ========================================================= */
+
+#screen-story {
+
+    position: relative;
+
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(440px, 0.92fr)
+        minmax(520px, 1.08fr);
+
+    width: 100%;
+
+    min-height:
+        calc(100vh - 82px);
+
+    padding:
+        28px
+        20px
+        28px
+        28px;
+
+    gap: 0;
+
+}
+
+
+/* =========================================================
+   LEFT PANEL
+   ========================================================= */
+
+.story-text-panel {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    min-height: 100%;
+
+    padding:
+        65px
+        clamp(50px, 6vw, 95px);
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #faf5e8 0%,
+            #f5eddd 55%,
+            #efe3ce 100%
+        );
+
+    border:
+        1px solid
+        rgba(184, 138, 66, 0.10);
+
+    box-shadow:
+        inset -1px 0
+        rgba(184, 138, 66, 0.18);
+
+}
+
+
+/* =========================================================
+   DECORATIVE GREEN ACCENT
+   ========================================================= */
+
+.story-text-panel::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 5px;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--lk-gold),
+            var(--lk-green),
+            var(--lk-gold)
+        );
+
+    opacity: 0.9;
+
+}
+
+
+/* =========================================================
+   MOTIF LEFT
    ========================================================= */
 
 .story-text-panel::before {
@@ -83,17 +210,15 @@
 
     z-index: 0;
 
-    width:
-        420px;
+    width: 460px;
 
-    height:
-        420px;
+    height: 460px;
 
-    left:
-        -250px;
+    left: -240px;
 
-    bottom:
-        -210px;
+    bottom: -220px;
+
+    pointer-events: none;
 
     background-image:
         url("../assets/images/motif.png");
@@ -102,19 +227,16 @@
         repeat;
 
     background-size:
-        230px auto;
+        235px auto;
 
     background-position:
-        center center;
+        center;
 
     opacity:
-        0.065;
+        0.075;
 
     mix-blend-mode:
         multiply;
-
-    pointer-events:
-        none;
 
     transform:
         rotate(8deg);
@@ -123,19 +245,497 @@
 
 
 /* =========================================================
-   MOTIF PANEL GAMBAR
+   ORNAMENT
+   ========================================================= */
+
+.story-ornament {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 150px;
+
+    height: 22px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.story-leaf-icon {
+
+    width: 14px;
+
+    height: 14px;
+
+    object-fit: contain;
+
+    opacity: 0.9;
+
+}
+
+
+.story-ornament-line {
+
+    width: 42px;
+
+    height: 1px;
+
+    margin:
+        0 8px;
+
+    background:
+        var(--lk-gold);
+
+    opacity: 0.75;
+
+}
+
+
+.story-ornament-dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    flex-shrink: 0;
+
+    background:
+        var(--lk-gold);
+
+    transform:
+        rotate(45deg);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(196, 154, 69, 0.12);
+
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.story-eyebrow {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 14px;
+
+    color:
+        #b48735;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        4px;
+
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.story-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width:
+        580px;
+
+    margin:
+        0;
+
+    color:
+        var(--lk-brown);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(56px, 5.2vw, 84px);
+
+    font-weight:
+        400;
+
+    line-height:
+        0.96;
+
+    letter-spacing:
+        -3px;
+
+}
+
+
+.story-title em {
+
+    display:
+        block;
+
+    color:
+        var(--lk-gold);
+
+    font-weight:
+        400;
+
+    font-style:
+        italic;
+
+    letter-spacing:
+        -4px;
+
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.story-body-text {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        480px;
+
+    margin:
+        30px 0 0;
+
+    color:
+        var(--lk-brown-soft);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(17px, 1.3vw, 21px);
+
+    line-height:
+        1.75;
+
+}
+
+
+/* =========================================================
+   PAGE INDICATOR
+   ========================================================= */
+
+.story-page-indicator {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    margin-top:
+        27px;
+
+}
+
+
+.story-page-number {
+
+    color:
+        var(--lk-gold);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+}
+
+
+.story-page-total {
+
+    color:
+        #9d8a72;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+}
+
+
+.story-page-line {
+
+    width:
+        48px;
+
+    height:
+        1px;
+
+    background:
+        rgba(184, 138, 66, 0.4);
+
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.story-panel-footer {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin-top:
+        28px;
+
+}
+
+
+.story-lanjut-btn {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        25px;
+
+    min-width:
+        150px;
+
+    padding:
+        14px 20px;
+
+    border:
+        1px solid
+        var(--lk-gold);
+
+    color:
+        #f9f2e3;
+
+    background:
+        var(--lk-green);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        2px;
+
+    text-decoration:
+        none;
+
+    box-shadow:
+        0 5px 15px
+        rgba(16, 43, 20, 0.12);
+
+    transition:
+        all 0.25s ease;
+
+}
+
+
+.story-lanjut-btn strong {
+
+    color:
+        var(--lk-gold-light);
+
+    font-size:
+        17px;
+
+    font-weight:
+        400;
+
+}
+
+
+.story-lanjut-btn:hover {
+
+    background:
+        var(--lk-green-soft);
+
+    border-color:
+        var(--lk-gold-light);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 9px 22px
+        rgba(16, 43, 20, 0.20);
+
+}
+
+
+/* =========================================================
+   RIGHT IMAGE
+   ========================================================= */
+
+.story-illustration-panel {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    min-height:
+        100%;
+
+    overflow:
+        hidden;
+
+    background:
+        var(--lk-green-dark);
+
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.story-illustration-img {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        1;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center center;
+
+    transition:
+        transform 0.8s ease;
+
+}
+
+
+.story-illustration-panel:hover
+.story-illustration-img {
+
+    transform:
+        scale(1.025);
+
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
+
+.story-image-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        2;
+
+    pointer-events:
+        none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(16, 43, 20, 0.14),
+            rgba(16, 43, 20, 0.00) 45%
+        );
+
+}
+
+
+/* =========================================================
+   MOTIF DI GAMBAR
    ========================================================= */
 
 .story-illustration-panel::before {
 
-    content: "";
+    content:
+        "";
 
-    position: absolute;
-
-    z-index: 3;
+    position:
+        absolute;
 
     inset:
         0;
+
+    z-index:
+        3;
 
     pointer-events:
         none;
@@ -150,7 +750,7 @@
         390px auto;
 
     background-position:
-        center center;
+        center;
 
     opacity:
         0.035;
@@ -162,117 +762,7 @@
 
 
 /* =========================================================
-   BACKGROUND PANEL GAMBAR
-   ========================================================= */
-
-.story-illustration-panel {
-
-    background:
-        #4a2c1d;
-
-}
-
-
-/* =========================================================
-   LAYERING
-   ========================================================= */
-
-/*
-   Motif intro berada di atas background,
-   tetapi tidak boleh menutupi isi halaman.
-*/
-
-.intro-main > * {
-
-    position:
-        relative;
-
-}
-
-
-/*
-   Story panel harus tetap berada
-   di atas motif global.
-*/
-
-#screen-story {
-
-    position:
-        relative;
-
-    z-index:
-        1;
-
-}
-
-
-/*
-   Isi panel teks berada di atas
-   dekorasi motif.
-*/
-
-.story-text-panel > * {
-
-    position:
-        relative;
-
-    z-index:
-        2;
-
-}
-
-
-/*
-   Isi gambar berada di atas motif panel.
-*/
-
-.story-illustration-panel > * {
-
-    position:
-        relative;
-
-}
-
-
-/* =========================================================
-   MOTIF TIDAK MENGGANGGU GAMBAR
-   ========================================================= */
-
-.story-illustration-img {
-
-    position:
-        relative;
-
-    z-index:
-        1;
-
-}
-
-
-.story-image-overlay {
-
-    position:
-        absolute;
-
-    z-index:
-        2;
-
-}
-
-
-.story-image-caption {
-
-    position:
-        absolute;
-
-    z-index:
-        4;
-
-}
-
-
-/* =========================================================
-   FRAME GAMBAR
+   IMAGE FRAME
    ========================================================= */
 
 .story-illustration-panel::after {
@@ -283,83 +773,256 @@
     position:
         absolute;
 
-    z-index:
-        5;
-
     inset:
         18px;
 
-    border:
-        1px solid
-        rgba(245, 237, 221, 0.22);
+    z-index:
+        6;
 
     pointer-events:
         none;
 
-}
-
-
-/* =========================================================
-   ORNAMEN TAMBAHAN PANEL KIRI
-   ========================================================= */
-
-.story-text-panel {
-
-    background:
-        #f5eddd;
-
-}
-
-
-/*
-   Garis dekoratif tipis
-   agar panel tidak terlihat terlalu kosong.
-*/
-
-.story-text-panel {
-
-    box-shadow:
-        inset -1px 0
-        rgba(184, 138, 66, 0.12);
+    border:
+        1px solid
+        rgba(245, 237, 221, 0.38);
 
 }
 
 
 /* =========================================================
-   MOTIF UNTUK DESKTOP BESAR
+   IMAGE CAPTION
    ========================================================= */
 
-@media (min-width: 1400px) {
+.story-image-caption {
 
-    .intro-main::before {
+    position:
+        absolute;
 
-        background-size:
-            560px auto;
+    right:
+        35px;
 
-        opacity:
-            0.06;
+    bottom:
+        32px;
+
+    z-index:
+        5;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-end;
+
+    gap:
+        4px;
+
+    color:
+        #fff8e9;
+
+    text-align:
+        right;
+
+    text-shadow:
+        0 2px 10px
+        rgba(0, 0, 0, 0.35);
+
+}
+
+
+.story-image-caption span {
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        3px;
+
+}
+
+
+.story-image-caption strong {
+
+    color:
+        #f3d58e;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        23px;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        1px;
+
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+.story-text-panel {
+
+    animation:
+        introTextIn
+        0.8s
+        ease
+        both;
+
+}
+
+
+.story-illustration-panel {
+
+    animation:
+        introImageIn
+        0.9s
+        ease
+        0.05s
+        both;
+
+}
+
+
+.story-ornament,
+.story-eyebrow,
+.story-title,
+.story-body-text,
+.story-page-indicator,
+.story-panel-footer {
+
+    animation:
+        introFadeUp
+        0.75s
+        ease
+        both;
+
+}
+
+
+.story-eyebrow {
+    animation-delay: 0.12s;
+}
+
+
+.story-title {
+    animation-delay: 0.2s;
+}
+
+
+.story-body-text {
+    animation-delay: 0.3s;
+}
+
+
+.story-page-indicator {
+    animation-delay: 0.4s;
+}
+
+
+.story-panel-footer {
+    animation-delay: 0.48s;
+}
+
+
+@keyframes introTextIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+@keyframes introImageIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+@keyframes introFadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    #screen-story {
+
+        grid-template-columns:
+            minmax(390px, 0.9fr)
+            minmax(430px, 1.1fr);
+
+        padding:
+            20px;
 
     }
 
 
-    .story-text-panel::before {
+    .story-text-panel {
 
-        background-size:
-            260px auto;
-
-        opacity:
-            0.07;
+        padding:
+            55px 50px;
 
     }
 
 
-    .story-illustration-panel::before {
+    .story-title {
 
-        background-size:
-            430px auto;
+        font-size:
+            clamp(52px, 5.2vw, 72px);
 
-        opacity:
-            0.04;
+    }
+
+
+    .story-body-text {
+
+        font-size:
+            17px;
 
     }
 
@@ -370,49 +1033,40 @@
    TABLET
    ========================================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 950px) {
 
-    .intro-main::before {
+    #screen-story {
 
-        background-size:
-            420px auto;
+        display:
+            flex;
 
-        opacity:
-            0.05;
+        flex-direction:
+            column;
 
-    }
+        min-height:
+            auto;
 
-
-    .story-text-panel::before {
-
-        width:
-            350px;
-
-        height:
-            350px;
-
-        left:
-            -210px;
-
-        bottom:
-            -180px;
-
-        background-size:
-            200px auto;
-
-        opacity:
-            0.055;
+        padding:
+            18px;
 
     }
 
 
-    .story-illustration-panel::before {
+    .story-text-panel {
 
-        background-size:
-            330px auto;
+        min-height:
+            550px;
 
-        opacity:
-            0.03;
+        padding:
+            65px 8vw;
+
+    }
+
+
+    .story-illustration-panel {
+
+        min-height:
+            500px;
 
     }
 
@@ -433,75 +1087,62 @@
     }
 
 
-    /*
-       Motif global diperkecil
-       agar tidak terlalu ramai.
-    */
+    #screen-story {
 
-    .intro-main::before {
-
-        background-size:
-            300px auto;
-
-        background-position:
-            center center;
-
-        opacity:
-            0.045;
+        padding:
+            10px;
 
     }
 
 
-    /*
-       Motif panel kiri.
-    */
+    .story-text-panel {
 
-    .story-text-panel::before {
+        min-height:
+            auto;
 
-        width:
-            300px;
+        padding:
+            48px 28px 42px;
 
-        height:
-            300px;
+    }
 
-        left:
-            -190px;
+
+    .story-title {
+
+        font-size:
+            clamp(44px, 13vw, 62px);
+
+    }
+
+
+    .story-body-text {
+
+        margin-top:
+            24px;
+
+        font-size:
+            16px;
+
+        line-height:
+            1.7;
+
+    }
+
+
+    .story-illustration-panel {
+
+        min-height:
+            430px;
+
+    }
+
+
+    .story-image-caption {
+
+        right:
+            24px;
 
         bottom:
-            -150px;
-
-        background-size:
-            170px auto;
-
-        opacity:
-            0.05;
-
-    }
-
-
-    /*
-       Motif pada gambar.
-    */
-
-    .story-illustration-panel::before {
-
-        background-size:
-            280px auto;
-
-        opacity:
-            0.028;
-
-    }
-
-
-    /*
-       Frame gambar lebih kecil.
-    */
-
-    .story-illustration-panel::after {
-
-        inset:
-            12px;
+            22px;
 
     }
 
@@ -509,52 +1150,47 @@
 
 
 /* =========================================================
-   HP KECIL
+   SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 480px) {
 
-    .intro-main::before {
+    #screen-story {
 
-        background-size:
-            250px auto;
-
-        opacity:
-            0.04;
+        padding:
+            8px;
 
     }
 
 
-    .story-text-panel::before {
+    .story-text-panel {
 
-        width:
-            250px;
-
-        height:
-            250px;
-
-        left:
-            -170px;
-
-        bottom:
-            -130px;
-
-        background-size:
-            150px auto;
-
-        opacity:
-            0.045;
+        padding:
+            42px 22px 36px;
 
     }
 
 
-    .story-illustration-panel::before {
+    .story-title {
 
-        background-size:
-            240px auto;
+        font-size:
+            43px;
 
-        opacity:
-            0.025;
+    }
+
+
+    .story-body-text {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .story-illustration-panel {
+
+        min-height:
+            350px;
 
     }
 
@@ -566,57 +1202,387 @@
 
     }
 
+
+    .story-image-caption {
+
+        right:
+            18px;
+
+        bottom:
+            18px;
+
+    }
+
 }
 
 
 /* =========================================================
-   HP SANGAT KECIL
+   REDUCED MOTION
    ========================================================= */
 
-@media (max-width: 380px) {
+@media (prefers-reduced-motion: reduce) {
 
-    .intro-main::before {
+    .story-text-panel,
+    .story-illustration-panel,
+    .story-ornament,
+    .story-eyebrow,
+    .story-title,
+    .story-body-text,
+    .story-page-indicator,
+    .story-panel-footer {
 
-        background-size:
-            220px auto;
-
-        opacity:
-            0.035;
-
-    }
-
-
-    .story-text-panel::before {
-
-        width:
-            220px;
-
-        height:
-            220px;
-
-        left:
-            -150px;
-
-        bottom:
-            -115px;
-
-        background-size:
-            135px auto;
-
-        opacity:
-            0.04;
+        animation:
+            none;
 
     }
 
 
-    .story-illustration-panel::before {
+    .story-illustration-panel:hover
+    .story-illustration-img {
 
-        background-size:
-            210px auto;
-
-        opacity:
-            0.02;
+        transform:
+            none;
 
     }
+
+    /* =========================================================
+   FINAL OVERRIDE
+   MENYESUAIKAN WARNA DENGAN BERANDA
+   ========================================================= */
+
+
+/* =========================================================
+   HILANGKAN DEKORASI ANEH DARI CSS LAIN
+   ========================================================= */
+
+/*
+   Bentuk segitiga hijau/gold yang muncul
+   di kiri atas bukan bagian dari desain Intro.
+*/
+
+.story-text-panel::after {
+
+    content: none !important;
+
+}
+
+
+/*
+   Matikan pseudo-element asing
+   jika berasal dari story.css / base.css.
+*/
+
+.story-text-panel > .story-decoration,
+.story-text-panel > .decorative-shape,
+.story-text-panel > .shape,
+.story-text-panel > .accent-shape {
+
+    display: none !important;
+
+}
+
+
+/* =========================================================
+   WARNA PANEL KIRI
+   ========================================================= */
+
+.story-text-panel {
+
+    background:
+        #f5eddd !important;
+
+    color:
+        #4a2c1d;
+
+}
+
+
+/* =========================================================
+   SEMUA TEKS INTRO
+   ========================================================= */
+
+.story-text-panel,
+.story-text-panel p,
+.story-text-panel span,
+.story-text-panel h1,
+.story-text-panel h2,
+.story-text-panel h3 {
+
+    color:
+        #4a2c1d;
+
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.story-eyebrow {
+
+    color:
+        #b48735 !important;
+
+}
+
+
+/* =========================================================
+   JUDUL
+   ========================================================= */
+
+.story-title {
+
+    color:
+        #4a2c1d !important;
+
+}
+
+
+.story-title em {
+
+    color:
+        #c49a45 !important;
+
+}
+
+
+/* =========================================================
+   DESKRIPSI
+   ========================================================= */
+
+.story-body-text {
+
+    color:
+        #694936 !important;
+
+}
+
+
+/* =========================================================
+   NOMOR HALAMAN
+   ========================================================= */
+
+.story-page-number {
+
+    color:
+        #c49a45 !important;
+
+}
+
+
+.story-page-total {
+
+    color:
+        #9d8a72 !important;
+
+}
+
+
+.story-page-line {
+
+    background:
+        rgba(196, 154, 69, 0.45) !important;
+
+}
+
+
+/* =========================================================
+   ORNAMEN
+   ========================================================= */
+
+.story-ornament-line {
+
+    background:
+        #c49a45 !important;
+
+}
+
+
+.story-ornament-dot {
+
+    background:
+        #c49a45 !important;
+
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.story-lanjut-btn {
+
+    background:
+        #18391a !important;
+
+    border:
+        1px solid #c49a45 !important;
+
+    color:
+        #f5eddd !important;
+
+}
+
+
+.story-lanjut-btn span {
+
+    color:
+        #f5eddd !important;
+
+}
+
+
+.story-lanjut-btn strong {
+
+    color:
+        #d9b96c !important;
+
+}
+
+
+.story-lanjut-btn:hover {
+
+    background:
+        #294d20 !important;
+
+    border-color:
+        #d9b96c !important;
+
+}
+
+
+/* =========================================================
+   MOTIF
+   ========================================================= */
+
+.story-text-panel::before {
+
+    background-image:
+        url("../assets/images/motif.png") !important;
+
+    opacity:
+        0.055 !important;
+
+}
+
+
+/* =========================================================
+   GAMBAR KANAN
+   ========================================================= */
+
+.story-illustration-panel {
+
+    background:
+        #18391a !important;
+
+}
+
+
+/* =========================================================
+   FRAME GAMBAR
+   ========================================================= */
+
+.story-illustration-panel::after {
+
+    content:
+        "" !important;
+
+    position:
+        absolute !important;
+
+    inset:
+        18px !important;
+
+    border:
+        1px solid
+        rgba(245, 237, 221, 0.35) !important;
+
+    z-index:
+        6 !important;
+
+}
+
+
+/* =========================================================
+   CAPTION GAMBAR
+   ========================================================= */
+
+.story-image-caption span {
+
+    color:
+        #f5eddd !important;
+
+}
+
+
+.story-image-caption strong {
+
+    color:
+        #d9b96c !important;
+
+}
+
+
+/* =========================================================
+   LINK / TEKS UMUM
+   ========================================================= */
+
+.story-text-panel a {
+
+    text-decoration:
+        none;
+
+}
+
+
+/* =========================================================
+   JAGA MOTIF GLOBAL
+   ========================================================= */
+
+.intro-main::before {
+
+    opacity:
+        0.055 !important;
+
+}
+
+
+/* =========================================================
+   PASTIKAN TIDAK ADA OVERLAY ANEH
+   ========================================================= */
+
+.story-text-panel {
+
+    isolation:
+        isolate;
+
+}
+
+
+.story-text-panel > * {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .story-text-panel::after {
+
+        content:
+            none !important;
+
+    }
+
+}
 
 }

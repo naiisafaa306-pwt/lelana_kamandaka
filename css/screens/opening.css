@@ -1,84 +1,867 @@
 /* =========================================================
    LELANA KAMANDAKA
-   SCREEN 01 — BERANDA
+   OPENING / HOMEPAGE CSS
    ========================================================= */
 
-#screen-opening {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  overflow: hidden;
 
-  background: #fff9ea !important;
-  color: #122009;
+/* =========================================================
+   ROOT
+   ========================================================= */
 
-  display: block;
+:root {
+
+    --green-950: #10210f;
+    --green-900: #172c14;
+    --green-850: #1d3518;
+    --green-800: #25441c;
+    --green-700: #3c6125;
+    --green-600: #55782c;
+
+    --gold-100: #fff4a3;
+    --gold-200: #f0dd63;
+    --gold-300: #d4b735;
+    --gold-400: #ad8920;
+
+    --cream: #f5efdc;
+    --cream-2: #eee5ca;
+    --paper: #fbf7e9;
+
+    --ink: #26331f;
+    --muted: #777460;
+
+    --shadow:
+        0 12px 30px rgba(43, 32, 10, .10);
+
+    --shadow-large:
+        0 20px 45px rgba(32, 29, 12, .14);
+
 }
 
 
 /* =========================================================
-   BATIK BACKGROUND
-   assets/images/motif.png
+   RESET
    ========================================================= */
 
-.home-batik-pattern {
-  position: absolute;
-  inset: 0;
+* {
+    box-sizing: border-box;
+}
 
-  background-image: url("../../assets/images/motif.png");
-  background-repeat: repeat;
-  background-size: 420px auto;
 
-  opacity: 0.07;
+html {
+    scroll-behavior: smooth;
+}
 
-  pointer-events: none;
-  z-index: 0;
+
+body {
+    margin: 0;
+
+    min-width: 320px;
+
+    background: #f3edda;
+
+    color: var(--ink);
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+img {
+    display: block;
+
+    max-width: 100%;
 }
 
 
 /* =========================================================
-   DECORATIVE SHAPES
+   PAGE
    ========================================================= */
 
-.home-decoration {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
+.lk-page {
 
-  border: 1px solid rgba(185, 154, 85, 0.18);
-}
+    position: relative;
 
-.home-decoration-left {
-  width: 170px;
-  height: 170px;
+    min-height: 100vh;
 
-  left: -90px;
-  top: 180px;
+    overflow-x: hidden;
 
-  border-radius: 50%;
-}
+    background:
 
-.home-decoration-right {
-  width: 220px;
-  height: 220px;
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(210,184,71,.13),
+            transparent 25%
+        ),
 
-  right: -110px;
-  top: 120px;
+        radial-gradient(
+            circle at 5% 90%,
+            rgba(40,75,31,.08),
+            transparent 30%
+        ),
 
-  border-radius: 50%;
+        #f4eedb;
+
 }
 
 
 /* =========================================================
-   MAIN CONTAINER
+   BATIK
    ========================================================= */
 
-.home-container {
-  position: relative;
-  z-index: 2;
+.lk-batik-pattern {
 
-  width: min(1180px, calc(100% - 80px));
-  margin: 0 auto;
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    opacity: .075;
+
+}
+
+
+.lk-batik-pattern img {
+
+    position: absolute;
+
+    width: 680px;
+
+    max-width: none;
+
+    height: auto;
+
+    right: -190px;
+
+    bottom: -100px;
+
+    transform:
+        rotate(-8deg);
+
+    filter:
+        sepia(.25);
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.lk-sidebar {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    z-index: 100;
+
+    width: 212px;
+
+    padding:
+        28px
+        12px
+        20px;
+
+    color: #f7f0d8;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #172e14,
+            #10220f
+        );
+
+    border-right:
+        1px solid
+        rgba(218,188,67,.20);
+
+    overflow-y: auto;
+
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.lk-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        0
+        14px
+        28px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+
+}
+
+
+.lk-brand-mark {
+
+    width: 50px;
+    height: 50px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border:
+        2px solid
+        var(--gold-300);
+
+    transform:
+        rotate(45deg);
+
+    color:
+        var(--gold-200);
+
+    font-size: 17px;
+
+}
+
+
+.lk-brand-mark span {
+
+    transform:
+        rotate(-45deg);
+
+}
+
+
+.lk-brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.lk-brand-text strong {
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 19px;
+
+    line-height: 1;
+
+}
+
+
+.lk-brand-text small {
+
+    margin-top: 5px;
+
+    color:
+        var(--gold-300);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .20em;
+
+}
+
+
+/* =========================================================
+   SIDEBAR MENU
+   ========================================================= */
+
+.lk-side-menu {
+
+    margin-top: 24px;
+
+}
+
+
+.lk-side-link {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 54px;
+
+    padding:
+        0
+        15px;
+
+    margin-bottom: 5px;
+
+    border-radius: 12px;
+
+    color:
+        rgba(250,244,222,.76);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.lk-side-link:hover {
+
+    color: #fff8d4;
+
+    background:
+        rgba(255,255,255,.06);
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.lk-side-link.active {
+
+    color: #fff8d4;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #496b21,
+            #38551e
+        );
+
+    box-shadow:
+        inset
+        0 0 0 1px
+        rgba(235,214,89,.25);
+
+}
+
+
+/* =========================================================
+   SIDEBAR ACTIVE ACCENT
+   ========================================================= */
+
+.lk-side-link.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 9px;
+    bottom: 9px;
+
+    width: 3px;
+
+    border-radius: 0 5px 5px 0;
+
+    background:
+        var(--gold-300);
+
+}
+
+
+/* =========================================================
+   SIDEBAR ICON
+   ========================================================= */
+
+.lk-side-icon {
+
+    width: 31px;
+    height: 31px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,.08);
+
+}
+
+
+.lk-side-link.active
+.lk-side-icon {
+
+    background:
+        var(--gold-300);
+
+    color:
+        var(--green-900);
+
+}
+
+
+.lk-side-icon img {
+
+    width: 18px;
+    height: 18px;
+
+    object-fit: contain;
+
+}
+
+
+/* =========================================================
+   SIDEBAR QUOTE
+   ========================================================= */
+
+.lk-sidebar-quote {
+
+    position: absolute;
+
+    left: 25px;
+    right: 20px;
+
+    bottom: 28px;
+
+}
+
+
+.lk-sidebar-quote::before {
+
+    content: "";
+
+    display: block;
+
+    width: 40px;
+
+    margin-bottom: 13px;
+
+    border-top:
+        1px solid
+        rgba(220,192,71,.45);
+
+}
+
+
+.lk-sidebar-quote p {
+
+    margin: 0;
+
+    color:
+        rgba(255,248,221,.78);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    font-style: italic;
+
+}
+
+
+.lk-sidebar-quote span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    color:
+        var(--gold-300);
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.lk-main {
+
+    position: relative;
+
+    z-index: 1;
+
+    margin-left: 212px;
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.lk-navbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 90;
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        0
+        30px;
+
+    color:
+        #f8f2db;
+
+    background:
+        rgba(20,42,17,.97);
+
+    border-bottom:
+        1px solid
+        rgba(213,185,61,.16);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
+
+.lk-nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    flex: 1;
+
+}
+
+
+.lk-nav-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        11px
+        15px;
+
+    border-radius: 10px;
+
+    color:
+        rgba(250,244,222,.70);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.lk-nav-link:hover {
+
+    color: #fff;
+
+    background:
+        rgba(255,255,255,.06);
+
+}
+
+
+.lk-nav-link.active {
+
+    color:
+        #fff8d4;
+
+    background:
+        #385720;
+
+}
+
+
+.lk-nav-link img {
+
+    width: 16px;
+    height: 16px;
+
+    object-fit: contain;
+
+}
+
+
+/* =========================================================
+   PLAYER
+   ========================================================= */
+
+.lk-player {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding-left: 20px;
+
+    border-left:
+        1px solid
+        rgba(255,255,255,.10);
+
+}
+
+
+.lk-avatar {
+
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        var(--gold-300);
+
+    border-radius: 50%;
+
+    color:
+        var(--gold-200);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+}
+
+
+.lk-player-info {
+
+    min-width: 115px;
+
+}
+
+
+.lk-player-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color:
+        #f7f0d8;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.lk-xp {
+
+    height: 5px;
+
+    margin-top: 7px;
+
+    overflow: hidden;
+
+    border-radius: 99px;
+
+    background:
+        rgba(255,255,255,.14);
+
+}
+
+
+.lk-xp span {
+
+    display: block;
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #7c972e,
+            #eed85f
+        );
+
+    transition:
+        width .5s ease;
+
+}
+
+
+.lk-player-info small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size: 7px;
+
+    text-align: right;
+
+}
+
+
+/* =========================================================
+   NAV ACTION
+   ========================================================= */
+
+.lk-nav-actions {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-left: 18px;
+
+}
+
+
+.lk-action {
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 50%;
+
+    color:
+        var(--gold-200);
+
+    background:
+        transparent;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.lk-action:hover {
+
+    background:
+        rgba(255,255,255,.08);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.lk-content {
+
+    width:
+        min(
+            1280px,
+            calc(100% - 38px)
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        26px
+        0
+        40px;
+
+}
+
+
+/* =========================================================
+   TOP GRID
+   ========================================================= */
+
+.lk-top-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2.2fr)
+        minmax(310px, .95fr);
+
+    gap: 16px;
+
 }
 
 
@@ -86,492 +869,1805 @@
    HERO
    ========================================================= */
 
-.home-hero {
-  min-height: auto;
+.lk-hero {
 
-  display: grid;
-  grid-template-columns: 1fr 0.9fr;
-  align-items: center;
+    position: relative;
 
-  gap: 60px;
+    min-height: 340px;
 
-  padding: 90px 50px 60px;
+    overflow: hidden;
+
+    border-radius: 17px;
+
+    background:
+        var(--green-900);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.lk-hero-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+}
+
+
+.lk-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(15,34,13,.93) 0%,
+            rgba(18,39,16,.78) 38%,
+            rgba(20,43,17,.30) 70%,
+            rgba(20,43,17,.10) 100%
+        );
+
+}
+
+
+.lk-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 620px;
+
+    padding:
+        54px
+        38px;
+
+}
+
+
+.lk-eyebrow {
+
+    margin:
+        0
+        0
+        9px;
+
+    color:
+        var(--gold-200);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    font-style: italic;
+
+}
+
+
+.lk-hero h1 {
+
+    margin:
+        0;
+
+    color:
+        #fff8df;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(48px, 5vw, 72px);
+
+    line-height:
+        .91;
+
+    letter-spacing:
+        -.045em;
+
+}
+
+
+.lk-hero h1 em {
+
+    display: block;
+
+    color:
+        #f0dc55;
+
+    font-weight:
+        400;
+
+}
+
+
+.lk-hero-description {
+
+    max-width: 500px;
+
+    margin:
+        23px
+        0
+        25px;
+
+    color:
+        rgba(255,248,226,.78);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
 }
 
 
 /* =========================================================
-   HERO TEXT
+   PRIMARY BUTTON
    ========================================================= */
 
-.home-hero-content {
-  max-width: 560px;
+.lk-primary-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 32px;
+
+    min-width: 205px;
+
+    padding:
+        13px
+        18px;
+
+    border-radius: 999px;
+
+    color:
+        #243519;
+
+    background:
+        #f2d955;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 18px
+        rgba(0,0,0,.14);
+
+    transition:
+        .25s ease;
+
 }
 
-.home-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
 
-  margin-bottom: 22px;
+.lk-primary-button:hover {
 
-  font-family: "Hanken Grotesk", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+    transform:
+        translateY(-3px);
 
-  color: #b79a55;
+    background:
+        #f7e477;
+
+    box-shadow:
+        0 12px 24px
+        rgba(0,0,0,.18);
+
 }
 
-.home-eyebrow-line {
-  width: 28px;
-  height: 1px;
 
-  background: #b79a55;
+.lk-primary-button span:last-child {
+
+    font-size: 18px;
+
+    line-height: 1;
+
 }
 
 
 /* =========================================================
-   TITLE
+   STATUS
    ========================================================= */
 
-.home-title {
-  margin: 0 0 24px;
+.lk-status {
 
-  line-height: 0.95;
+    min-width: 0;
+
+    padding:
+        23px;
+
+    border:
+        1px solid
+        rgba(42,65,27,.10);
+
+    border-radius: 17px;
+
+    background:
+        rgba(251,247,233,.92);
+
+    box-shadow:
+        var(--shadow);
+
 }
 
-.home-title-main {
-  display: block;
 
-  font-family: "Libre Caslon Text", serif;
-  font-size: clamp(58px, 7vw, 100px);
-  font-weight: 700;
-  letter-spacing: -0.04em;
+.lk-status-head {
 
-  color: #122009;
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
 }
 
-.home-title-script {
-  display: block;
 
-  margin-top: 8px;
+.lk-status-avatar {
 
-  font-family: "Libre Caslon Text", serif;
-  font-size: clamp(48px, 6vw, 82px);
-  font-style: italic;
-  font-weight: 400;
+    width: 45px;
+    height: 45px;
 
-  color: #7d553e;
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        var(--gold-300);
+
+    border-radius: 50%;
+
+    color:
+        var(--green-800);
+
+    background:
+        #f8edb7;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+}
+
+
+.lk-status-title {
+
+    flex: 1;
+
+}
+
+
+.lk-status-title h2 {
+
+    margin: 0;
+
+    color:
+        var(--green-900);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 23px;
+
+    line-height: 1;
+
+}
+
+
+.lk-status-title h2 span {
+
+    color:
+        var(--gold-400);
+
+}
+
+
+.lk-status-title p {
+
+    margin:
+        5px
+        0
+        0;
+
+    color:
+        var(--muted);
+
+    font-size: 10px;
+
+}
+
+
+.lk-status-symbol {
+
+    color:
+        var(--gold-400);
+
+    font-size: 21px;
+
 }
 
 
 /* =========================================================
-   DESCRIPTION
+   STATUS XP
    ========================================================= */
 
-.home-description {
-  max-width: 470px;
+.lk-status-xp {
 
-  margin: 0 0 32px;
+    margin-top: 23px;
 
-  font-family: "Hanken Grotesk", sans-serif;
-  font-size: 16px;
-  line-height: 1.8;
+}
 
-  color: #444840;
+
+.lk-status-xp-bar {
+
+    height: 7px;
+
+    overflow: hidden;
+
+    border-radius: 99px;
+
+    background:
+        #ded7bd;
+
+}
+
+
+.lk-status-xp-bar span {
+
+    display: block;
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #7c972e,
+            #ead354
+        );
+
+    transition:
+        width .5s ease;
+
+}
+
+
+.lk-status-xp small {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color:
+        var(--muted);
+
+    font-size: 8px;
+
+    text-align: right;
+
 }
 
 
 /* =========================================================
-   BUTTON
+   PROGRESS TITLE
    ========================================================= */
 
-.home-actions {
-  display: flex;
-  align-items: center;
+.lk-progress-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 21px;
+
 }
 
-.home-start-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
 
-  min-height: 50px;
-  padding: 0 25px;
+.lk-progress-title b {
 
-  border: 0;
-  border-radius: 3px;
+    color:
+        var(--gold-400);
 
-  background: #122009;
-  color: #fff9ea;
+    font-size: 14px;
 
-  font-family: "Hanken Grotesk", sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
 }
 
-.home-start-button:hover {
-  transform: translateY(-3px);
 
-  background: #2a381f;
+.lk-progress-title strong {
 
-  box-shadow:
-    0 12px 25px rgba(18, 32, 9, 0.15);
-}
+    color:
+        var(--green-900);
 
-.home-button-arrow {
-  font-size: 18px;
+    font-size: 11px;
+
 }
 
 
 /* =========================================================
-   HERO VISUAL
+   LOCATION NUMBERS
    ========================================================= */
 
-.home-hero-visual {
-  position: relative;
+.lk-location-numbers {
 
-  min-height: 470px;
+    display: grid;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    grid-template-columns:
+        repeat(10, 1fr);
+
+    gap: 5px;
+
+    margin-top: 14px;
+
 }
 
 
-/* Frame belakang */
+.lk-location-number {
 
-.home-visual-frame {
-  position: absolute;
+    width: 100%;
 
-  width: 80%;
-  height: 82%;
+    aspect-ratio: 1;
 
-  border: 1px solid rgba(185, 154, 85, 0.35);
+    display: grid;
 
-  transform: rotate(3deg);
+    place-items: center;
+
+    border:
+        1px solid
+        #ddd6bd;
+
+    border-radius: 7px;
+
+    color:
+        #aaa58f;
+
+    background:
+        #f5f0df;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
 }
 
 
-/* Kotak karakter */
+.lk-location-number.active {
 
-.home-character-wrapper {
-  position: relative;
-  z-index: 2;
+    border-color:
+        var(--gold-300);
 
-  width: min(400px, 100%);
-  aspect-ratio: 4 / 5;
+    color:
+        var(--green-900);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background:
+        #f0df69;
 
-  overflow: hidden;
-
-  background: rgba(255, 249, 234, 0.5);
-
-  border: 1px solid rgba(185, 154, 85, 0.35);
-
-  box-shadow:
-    0 25px 50px rgba(74, 55, 35, 0.12);
 }
 
 
-/* Gambar */
+.lk-location-number.done {
 
-.home-character {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  display: block;
-}
+    border-color:
+        #65853a;
 
+    color:
+        #fff;
 
-/* Label */
+    background:
+        #55752c;
 
-.home-visual-label {
-  position: absolute;
-
-  right: 0;
-  bottom: 35px;
-
-  z-index: 3;
-
-  display: flex;
-  flex-direction: column;
-
-  padding: 10px 14px;
-
-  background: #fff9ea;
-
-  border-left: 2px solid #b79a55;
-
-  font-family: "Hanken Grotesk", sans-serif;
-
-  font-size: 9px;
-  letter-spacing: 0.16em;
-
-  color: #7d553e;
-}
-
-.home-visual-label strong {
-  margin-top: 3px;
-
-  font-family: "Libre Caslon Text", serif;
-  font-size: 14px;
-
-  color: #122009;
 }
 
 
 /* =========================================================
-   DIVIDER
+   ACTIVE LOCATION
    ========================================================= */
 
-.home-divider {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.lk-active-location {
 
-  padding: 20px 50px 55px;
+    position: relative;
+
+    min-height: 130px;
+
+    margin-top: 19px;
+
+    overflow: hidden;
+
+    border-radius: 13px;
+
+    background:
+        var(--green-900);
+
 }
 
-.home-divider-line {
-  flex: 1;
 
-  height: 1px;
+.lk-active-location > img {
 
-  background: rgba(185, 154, 85, 0.3);
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: .72;
+
 }
 
-.home-divider-diamond {
-  width: 10px;
-  height: 10px;
 
-  background: #b79a55;
+.lk-active-location::after {
 
-  transform: rotate(45deg);
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(13,32,12,.92),
+            rgba(17,39,15,.55)
+        );
+
+}
+
+
+.lk-active-info {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding:
+        18px;
+
+}
+
+
+.lk-active-info small {
+
+    color:
+        var(--gold-200);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .13em;
+
+}
+
+
+.lk-active-info h3 {
+
+    margin:
+        6px
+        0
+        13px;
+
+    color:
+        #fff8df;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+}
+
+
+.lk-play {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding:
+        8px
+        12px;
+
+    border:
+        1px solid
+        rgba(238,214,83,.42);
+
+    border-radius: 999px;
+
+    color:
+        #f5e576;
+
+    background:
+        rgba(0,0,0,.18);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.lk-play:hover {
+
+    background:
+        rgba(239,215,85,.13);
+
+    transform:
+        translateY(-2px);
+
 }
 
 
 /* =========================================================
-   LOCATION SECTION
+   JOURNEY
    ========================================================= */
 
-.home-locations {
-  padding: 0 50px 80px;
-}
+.lk-journey {
 
+    position: relative;
 
-/* Heading */
+    margin-top: 16px;
 
-.home-location-heading {
-  text-align: center;
+    padding:
+        25px
+        25px
+        29px;
 
-  margin-bottom: 55px;
-}
+    overflow: hidden;
 
-.home-section-label {
-  display: block;
+    border:
+        1px solid
+        rgba(47,70,31,.10);
 
-  margin-bottom: 12px;
+    border-radius: 17px;
 
-  font-family: "Hanken Grotesk", sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+    background:
+        rgba(251,247,233,.92);
 
-  color: #b79a55;
-}
+    box-shadow:
+        var(--shadow);
 
-.home-location-heading h2 {
-  margin: 0 0 12px;
-
-  font-family: "Libre Caslon Text", serif;
-  font-size: clamp(28px, 4vw, 42px);
-
-  color: #122009;
-}
-
-.home-location-heading p {
-  margin: 0;
-
-  font-family: "Hanken Grotesk", sans-serif;
-  font-size: 14px;
-
-  color: #77766d;
 }
 
 
 /* =========================================================
-   LOCATION GRID
+   JOURNEY HEADER
    ========================================================= */
 
-.home-location-grid {
-  display: grid;
+.lk-journey-header {
 
-  grid-template-columns: repeat(2, 1fr);
+    display: flex;
 
-  column-gap: 80px;
-  row-gap: 0;
+    align-items: center;
 
-  max-width: 900px;
+    justify-content: space-between;
 
-  margin: 0 auto;
+    gap: 20px;
+
 }
 
 
-/* Location item */
+.lk-journey-title {
 
-.home-location {
-  position: relative;
+    display: flex;
 
-  display: flex;
-  align-items: center;
+    align-items: center;
 
-  width: 100%;
-  min-height: 88px;
+    gap: 13px;
 
-  padding: 18px 0;
-
-  border: 0;
-  border-bottom: 1px solid rgba(185, 154, 85, 0.18);
-
-  background: transparent;
-
-  text-align: left;
-
-  cursor: pointer;
-
-  transition:
-    padding-left 0.25s ease,
-    background 0.25s ease;
-}
-
-.home-location:hover {
-  padding-left: 12px;
-}
-
-
-/* Number */
-
-.location-number {
-  flex: 0 0 45px;
-
-  font-family: "Libre Caslon Text", serif;
-  font-size: 13px;
-
-  color: #b79a55;
-}
-
-
-/* Content */
-
-.location-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  width: 100%;
-}
-
-.location-name {
-  font-family: "Libre Caslon Text", serif;
-  font-size: 18px;
-  font-weight: 700;
-
-  color: #122009;
-}
-
-.location-arrow {
-  opacity: 0;
-
-  font-size: 18px;
-
-  color: #7d553e;
-
-  transform: translateX(-8px);
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-
-.home-location:hover .location-arrow {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 
 /* =========================================================
-   FOOTER
+   JOURNEY ICON — ICON_JOURNEY.PNG
    ========================================================= */
 
-.home-footer {
-  position: relative;
-  z-index: 3;
+.lk-gem-icon {
 
-  border-top: 1px solid rgba(185, 154, 85, 0.2);
+    width: 45px;
+    height: 45px;
 
-  background: rgba(250, 242, 221, 0.95);
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    padding: 7px;
+
+    border:
+        1px solid
+        rgba(202,172,45,.65);
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #31571f,
+            #1d3c18
+        );
+
+    box-shadow:
+        0 5px 12px
+        rgba(32,50,20,.16);
+
 }
 
-.home-footer-inner {
-  width: min(1180px, calc(100% - 80px));
 
-  min-height: 90px;
+.lk-gem-icon img {
 
-  margin: 0 auto;
+    width: 31px;
+    height: 31px;
 
-  display: grid;
+    display: block;
 
-  grid-template-columns: 1fr 1.5fr 1fr;
+    object-fit: contain;
 
-  align-items: center;
+    opacity: 1;
 
-  gap: 20px;
+    filter:
+        drop-shadow(
+            0 2px 2px
+            rgba(0,0,0,.18)
+        );
+
 }
 
-.home-footer-brand {
-  font-family: "Libre Caslon Text", serif;
-  font-size: 18px;
-  font-weight: 700;
 
-  color: #122009;
+.lk-journey-title p {
+
+    margin:
+        0
+        0
+        3px;
+
+    color:
+        var(--gold-400);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
 }
 
-.home-footer-copy {
-  text-align: center;
 
-  font-family: "Hanken Grotesk", sans-serif;
-  font-size: 10px;
+.lk-journey-title h2 {
 
-  color: #77766d;
+    margin: 0;
+
+    color:
+        var(--green-900);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 25px;
+
+    line-height: 1;
+
 }
 
-.home-footer-links {
-  display: flex;
-  justify-content: flex-end;
-  gap: 16px;
+
+.lk-journey-title small {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color:
+        var(--muted);
+
+    font-size: 9px;
+
 }
 
-.home-footer-links a {
-  font-family: "Hanken Grotesk", sans-serif;
-  font-size: 10px;
 
-  color: #6b4630;
+/* =========================================================
+   MAP BUTTON
+   ========================================================= */
 
-  text-decoration: none;
+.lk-map-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        10px
+        14px;
+
+    border:
+        1px solid
+        #d6cda9;
+
+    border-radius: 999px;
+
+    color:
+        var(--green-800);
+
+    background:
+        #faf6e8;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.lk-map-button:hover {
+
+    border-color:
+        var(--gold-300);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   JOURNEY TRACK
+   ========================================================= */
+
+.lk-track {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(10, minmax(90px, 1fr));
+
+    gap: 12px;
+
+    margin-top: 33px;
+
+    padding-top: 8px;
+
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+
+}
+
+
+.lk-track-line {
+
+    position: absolute;
+
+    left: 5%;
+
+    right: 5%;
+
+    top: 30px;
+
+    height: 2px;
+
+    background:
+        #d9d2b9;
+
+}
+
+
+/* =========================================================
+   LOCATION
+   ========================================================= */
+
+.lk-location {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-width: 90px;
+
+    text-align: center;
+
+}
+
+
+.lk-node {
+
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin:
+        0 auto
+        10px;
+
+    border:
+        2px solid
+        #d4ccb0;
+
+    border-radius: 50%;
+
+    color:
+        #aaa58e;
+
+    background:
+        #f7f2e3;
+
+    font-size: 14px;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.lk-node img {
+
+    width: 23px;
+    height: 23px;
+
+    object-fit: contain;
+
+}
+
+
+.lk-location strong {
+
+    display: block;
+
+    color:
+        #aaa58e;
+
+    font-size: 7px;
+
+    letter-spacing: .12em;
+
+}
+
+
+.lk-location h3 {
+
+    margin:
+        5px
+        0
+        3px;
+
+    color:
+        #999581;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 12px;
+
+    line-height: 1.15;
+
+}
+
+
+.lk-location small {
+
+    color:
+        #aaa58e;
+
+    font-size: 7px;
+
+}
+
+
+/* =========================================================
+   ACTIVE LOCATION
+   ========================================================= */
+
+.lk-location.active .lk-node {
+
+    border-color:
+        var(--gold-300);
+
+    color:
+        var(--green-900);
+
+    background:
+        #f0dd63;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(212,183,53,.12);
+
+}
+
+
+.lk-location.active strong {
+
+    color:
+        var(--gold-400);
+
+}
+
+
+.lk-location.active h3 {
+
+    color:
+        var(--green-900);
+
+}
+
+
+.lk-location.active small {
+
+    color:
+        #66852e;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================================
+   DONE LOCATION
+   ========================================================= */
+
+.lk-location.done .lk-node {
+
+    border-color:
+        #63833b;
+
+    color:
+        #fff;
+
+    background:
+        #55752c;
+
+}
+
+
+.lk-location.done strong {
+
+    color:
+        #55752c;
+
+}
+
+
+.lk-location.done h3 {
+
+    color:
+        var(--green-800);
+
+}
+
+
+.lk-location.done small {
+
+    color:
+        #64843b;
+
+}
+
+
+/* =========================================================
+   LOWER
+   ========================================================= */
+
+.lk-lower {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr))
+        minmax(260px, 1.4fr);
+
+    gap: 16px;
+
+    margin-top: 16px;
+
+}
+
+
+/* =========================================================
+   FEATURE CARD
+   ========================================================= */
+
+.lk-feature {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 13px;
+
+    min-height: 145px;
+
+    padding:
+        19px;
+
+    border:
+        1px solid
+        rgba(47,70,31,.10);
+
+    border-radius: 15px;
+
+    background:
+        rgba(251,247,233,.92);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.lk-feature-icon {
+
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background:
+         #1d3c18
+
+}
+
+
+.lk-feature-icon.gold {
+
+    background:
+         #1d3c18
+}
+
+
+.lk-feature-icon img {
+
+    width: 23px;
+    height: 23px;
+
+    object-fit: contain;
+
+}
+
+
+.lk-feature-content {
+
+    min-width: 0;
+
+    padding-right: 20px;
+
+}
+
+
+.lk-feature-content h3 {
+
+    margin:
+        1px
+        0
+        6px;
+
+    color:
+        var(--green-900);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.1;
+
+}
+
+
+.lk-feature-content p {
+
+    margin:
+        0;
+
+    color:
+        var(--muted);
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+}
+
+
+.lk-feature-progress {
+
+    height: 5px;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border-radius: 99px;
+
+    background:
+        #524a2f;
+
+}
+
+
+.lk-feature-progress span {
+
+    display: block;
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #708c38,
+            #d7bf45
+        );
+
+    transition:
+        width .5s ease;
+
+}
+
+
+.lk-feature-content small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color:
+        #85816e;
+
+    font-size: 7px;
+
+}
+
+
+.lk-feature-arrow {
+
+    position: absolute;
+
+    right: 17px;
+    bottom: 15px;
+
+    width: 25px;
+    height: 25px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    color:
+        var(--green-800);
+
+    background:
+        #eee5c8;
+
+    font-size: 13px;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.lk-feature-arrow:hover {
+
+    color:
+        #fff;
+
+    background:
+        var(--green-700);
+
+    transform:
+        translateX(3px);
+
+}
+
+
+/* =========================================================
+   QUOTE CARD
+   ========================================================= */
+
+.lk-quote {
+
+    position: relative;
+
+    min-height: 145px;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background:
+        var(--green-900);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.lk-quote > img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: .48;
+
+}
+
+
+.lk-quote::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(15,34,13,.92),
+            rgba(15,34,13,.50)
+        );
+
+}
+
+
+.lk-quote-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    height: 100%;
+
+    min-height: 145px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding:
+        20px
+        23px;
+
+}
+
+
+.lk-quote blockquote {
+
+    margin:
+        0;
+
+    max-width: 360px;
+
+    color:
+        #fff6d9;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.35;
+
+    font-style: italic;
+
+}
+
+
+.lk-quote cite {
+
+    display: block;
+
+    margin-top: 9px;
+
+    color:
+        var(--gold-200);
+
+    font-size: 8px;
+
+    font-style: normal;
+
+    font-weight: 700;
+
+}
+
+
+.lk-quote-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: max-content;
+
+    margin-top: 14px;
+
+    padding:
+        8px
+        12px;
+
+    border:
+        1px solid
+        rgba(238,214,83,.35);
+
+    border-radius: 999px;
+
+    color:
+        #f5e576;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.lk-quote-button:hover {
+
+    background:
+        rgba(255,255,255,.07);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   ACTIVITY
+   ========================================================= */
+
+.lk-activity {
+
+    margin-top: 16px;
+
+    padding:
+        24px
+        25px
+        25px;
+
+    border:
+        1px solid
+        rgba(47,70,31,.10);
+
+    border-radius: 17px;
+
+    background:
+        rgba(251,247,233,.92);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.lk-activity-header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 17px;
+
+}
+
+
+.lk-activity-header p {
+
+    margin:
+        0
+        0
+        4px;
+
+    color:
+        var(--gold-400);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
+}
+
+
+.lk-activity-header h2 {
+
+    margin: 0;
+
+    color:
+        var(--green-900);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 24px;
+
+}
+
+
+.lk-activity-header > a {
+
+    color:
+        var(--green-700);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.lk-activity-header > a:hover {
+
+    color:
+        var(--gold-400);
+
+}
+
+
+/* =========================================================
+   ACTIVITY GRID
+   ========================================================= */
+
+.lk-activity-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 10px;
+
+}
+
+
+.lk-activity-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 70px;
+
+    padding:
+        12px;
+
+    border:
+        1px solid
+        #e4ddc6;
+
+    border-radius: 11px;
+
+    background:
+        #faf7eb;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.lk-activity-card:hover {
+
+    border-color:
+        #d5c77f;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 18px
+        rgba(45,39,17,.07);
+
+}
+
+
+.lk-activity-icon {
+
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background:
+        #1d3c18
+
+}
+
+
+.lk-activity-icon img {
+
+    width: 19px;
+    height: 19px;
+
+    object-fit: contain;
+
+}
+
+
+.lk-activity-text {
+
+    min-width: 0;
+
+}
+
+
+.lk-activity-text strong {
+
+    display: block;
+
+    overflow: hidden;
+
+    color:
+        var(--green-900);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+.lk-activity-text span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    overflow: hidden;
+
+    color:
+        var(--muted);
+
+    font-size: 7px;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   SUBTLE DECORATION
+   ========================================================= */
+
+.lk-journey::before,
+.lk-activity::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    color:
+        rgba(181,150,35,.10);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    pointer-events: none;
+
+}
+
+
+.lk-journey::before {
+
+    right: 24px;
+
+    top: 20px;
+
+    font-size: 28px;
+
 }
 
 
@@ -579,71 +2675,236 @@
    TABLET
    ========================================================= */
 
+@media (max-width: 1180px) {
+
+    .lk-sidebar {
+
+        width: 190px;
+
+    }
+
+
+    .lk-main {
+
+        margin-left: 190px;
+
+    }
+
+
+    .lk-navbar {
+
+        padding:
+            0
+            20px;
+
+    }
+
+
+    .lk-nav-link {
+
+        padding:
+            10px
+            11px;
+
+    }
+
+
+    .lk-nav-link span {
+
+        display: none;
+
+    }
+
+
+    .lk-player {
+
+        padding-left: 12px;
+
+    }
+
+
+    .lk-player-info {
+
+        min-width: 95px;
+
+    }
+
+
+    .lk-content {
+
+        width:
+            calc(100% - 28px);
+
+    }
+
+
+    .lk-top-grid {
+
+        grid-template-columns:
+            minmax(0, 1.7fr)
+            minmax(270px, 1fr);
+
+    }
+
+
+    .lk-lower {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .lk-quote {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .lk-activity-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL DESKTOP / TABLET
+   ========================================================= */
+
 @media (max-width: 900px) {
 
-  .home-container {
-    width: min(100% - 40px, 720px);
-  }
+    .lk-sidebar {
 
-  .home-hero {
-    grid-template-columns: 1fr;
+        width: 76px;
 
-    gap: 35px;
+        padding:
+            18px
+            10px;
 
-    padding: 70px 25px 40px;
+    }
 
-    text-align: center;
-  }
 
-  .home-hero-content {
-    max-width: 650px;
-    margin: 0 auto;
-  }
+    .lk-main {
 
-  .home-eyebrow {
-    justify-content: center;
-  }
+        margin-left: 76px;
 
-  .home-description {
-    margin-left: auto;
-    margin-right: auto;
-  }
+    }
 
-  .home-actions {
-    justify-content: center;
-  }
 
-  .home-hero-visual {
-    min-height: 430px;
-  }
+    .lk-brand {
 
-  .home-character-wrapper {
-    width: min(360px, 80vw);
-  }
+        justify-content: center;
 
-  .home-locations {
-    padding-left: 25px;
-    padding-right: 25px;
-  }
+        padding:
+            0
+            0
+            20px;
 
-  .home-footer-inner {
-    width: min(100% - 40px, 720px);
+    }
 
-    grid-template-columns: 1fr;
-    text-align: center;
 
-    padding: 25px 0;
-  }
+    .lk-brand-mark {
 
-  .home-footer-copy {
-    order: 2;
-  }
+        width: 43px;
+        height: 43px;
 
-  .home-footer-links {
-    order: 3;
+    }
 
-    justify-content: center;
-  }
+
+    .lk-brand-text {
+
+        display: none;
+
+    }
+
+
+    .lk-side-link {
+
+        justify-content: center;
+
+        padding: 0;
+
+    }
+
+
+    .lk-side-link span:last-child {
+
+        display: none;
+
+    }
+
+
+    .lk-side-icon {
+
+        width: 38px;
+        height: 38px;
+
+    }
+
+
+    .lk-sidebar-quote {
+
+        display: none;
+
+    }
+
+
+    .lk-nav-links {
+
+        gap: 2px;
+
+    }
+
+
+    .lk-nav-link {
+
+        padding:
+            9px;
+
+    }
+
+
+    .lk-nav-actions {
+
+        margin-left: 10px;
+
+    }
+
+
+    .lk-top-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .lk-hero {
+
+        min-height: 380px;
+
+    }
+
+
+    .lk-status {
+
+        min-height: auto;
+
+    }
+
+
+    .lk-lower {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
 
 }
 
@@ -652,312 +2913,528 @@
    MOBILE
    ========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 680px) {
 
-  #screen-opening {
-    min-height: 100svh;
-  }
+    body {
 
-  .home-batik-pattern {
-    background-size: 260px auto;
-    opacity: 0.13;
-  }
+        min-width: 0;
 
-  .home-container {
-    width: 100%;
-  }
+    }
 
-  .home-hero {
-    min-height: auto;
 
-    padding: 45px 20px 30px;
+    .lk-sidebar {
 
-    gap: 25px;
-  }
+        position: fixed;
 
-  .home-eyebrow {
-    font-size: 8px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: auto;
 
-    letter-spacing: 0.12em;
-  }
+        width: 100%;
 
-  .home-title-main {
-    font-size: clamp(45px, 14vw, 68px);
-  }
+        height: 70px;
 
-  .home-title-script {
-    font-size: clamp(40px, 12vw, 58px);
-  }
+        padding:
+            7px
+            8px;
 
-  .home-description {
-    font-size: 13px;
-    line-height: 1.65;
+        border-right: 0;
 
-    max-width: 340px;
+        border-top:
+            1px solid
+            rgba(218,188,67,.20);
 
-    margin-bottom: 25px;
-  }
+        overflow: hidden;
 
-  .home-start-button {
-    width: 100%;
-    max-width: 280px;
-  }
+    }
 
-  .home-hero-visual {
-    min-height: 330px;
-  }
 
-  .home-character-wrapper {
-    width: min(280px, 78vw);
-  }
+    .lk-brand {
 
-  .home-visual-frame {
-    width: 78%;
-    height: 78%;
-  }
+        display: none;
 
-  .home-visual-label {
-    right: 3%;
-    bottom: 15px;
-  }
+    }
 
-  .home-divider {
-    padding: 15px 20px 40px;
-  }
 
-  .home-locations {
-    padding: 0 20px 50px;
-  }
+    .lk-side-menu {
 
-  .home-location-heading {
-    margin-bottom: 30px;
-  }
+        display: grid;
 
-  .home-location-heading h2 {
-    font-size: 28px;
-  }
+        grid-template-columns:
+            repeat(6, 1fr);
 
-  .home-location-heading p {
-    font-size: 12px;
-    line-height: 1.6;
-  }
+        gap: 3px;
 
-  .home-location-grid {
-    grid-template-columns: 1fr;
+        width: 100%;
 
-    max-width: 100%;
-  }
+        margin: 0;
 
-  .home-location {
-    min-height: 70px;
-  }
+    }
 
-  .location-name {
-    font-size: 16px;
-  }
 
-  .location-number {
-    flex-basis: 40px;
-  }
+    .lk-side-link {
 
-  .location-arrow {
-    opacity: 1;
-    transform: none;
-  }
+        min-height: 55px;
 
-  .home-footer-inner {
-    width: calc(100% - 40px);
-  }
+        margin: 0;
 
-  .home-footer-brand {
-    font-size: 16px;
-  }
+        border-radius: 10px;
 
-  .home-footer-links {
-    flex-wrap: wrap;
-    gap: 10px 15px;
-  }
+    }
+
+
+    .lk-side-link.active::before {
+
+        display: none;
+
+    }
+
+
+    .lk-side-icon {
+
+        width: 34px;
+        height: 34px;
+
+    }
+
+
+    .lk-main {
+
+        margin-left: 0;
+
+        padding-bottom: 70px;
+
+    }
+
+
+    .lk-navbar {
+
+        position: sticky;
+
+        height: 64px;
+
+        padding:
+            0
+            12px;
+
+    }
+
+
+    .lk-nav-links {
+
+        display: none;
+
+    }
+
+
+    .lk-player {
+
+        flex: 1;
+
+        padding-left: 0;
+
+        border-left: 0;
+
+    }
+
+
+    .lk-avatar {
+
+        width: 36px;
+        height: 36px;
+
+    }
+
+
+    .lk-player-info {
+
+        min-width: 105px;
+
+    }
+
+
+    .lk-nav-actions {
+
+        margin-left: auto;
+
+    }
+
+
+    .lk-action {
+
+        width: 34px;
+        height: 34px;
+
+    }
+
+
+    .lk-content {
+
+        width:
+            calc(100% - 20px);
+
+        padding:
+            12px
+            0
+            25px;
+
+    }
+
+
+    .lk-hero {
+
+        min-height: 460px;
+
+        border-radius: 15px;
+
+    }
+
+
+    .lk-hero-content {
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: flex-end;
+
+        min-height: 460px;
+
+        padding:
+            30px
+            23px;
+
+    }
+
+
+    .lk-eyebrow {
+
+        font-size: 14px;
+
+    }
+
+
+    .lk-hero h1 {
+
+        font-size:
+            clamp(45px, 15vw, 65px);
+
+    }
+
+
+    .lk-hero-description {
+
+        margin-top: 19px;
+
+        font-size: 11px;
+
+        line-height: 1.6;
+
+    }
+
+
+    .lk-primary-button {
+
+        width: max-content;
+
+        max-width: 100%;
+
+        min-width: 0;
+
+    }
+
+
+    .lk-status {
+
+        padding:
+            18px;
+
+        border-radius: 15px;
+
+    }
+
+
+    .lk-location-numbers {
+
+        gap: 4px;
+
+    }
+
+
+    .lk-location-number {
+
+        font-size: 7px;
+
+    }
+
+
+    .lk-journey {
+
+        padding:
+            20px
+            17px
+            23px;
+
+    }
+
+
+    .lk-journey-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .lk-journey-title h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .lk-journey-title small {
+
+        max-width: 260px;
+
+        line-height: 1.4;
+
+    }
+
+
+    .lk-map-button {
+
+        width: max-content;
+
+    }
+
+
+    .lk-track {
+
+        grid-template-columns:
+            repeat(10, 88px);
+
+        padding-bottom: 8px;
+
+    }
+
+
+    .lk-lower {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .lk-quote {
+
+        grid-column:
+            auto;
+
+    }
+
+
+    .lk-activity {
+
+        padding:
+            20px
+            17px;
+
+    }
+
+
+    .lk-activity-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .lk-activity-header {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap: 8px;
+
+    }
+
+
+    .lk-activity-header h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .lk-batik-pattern img {
+
+        width: 500px;
+
+        right: -210px;
+
+        bottom: 30px;
+
+    }
 
 }
 
 
 /* =========================================================
-   VERY SMALL PHONE
+   EXTRA SMALL MOBILE
    ========================================================= */
 
-@media (max-width: 380px) {
+@media (max-width: 420px) {
 
-  .home-hero {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+    .lk-player-info {
 
-  .home-title-main {
-    font-size: 43px;
-  }
+        min-width: 85px;
 
-  .home-title-script {
-    font-size: 38px;
-  }
-
-  .home-hero-visual {
-    min-height: 290px;
-  }
-
-  .home-character-wrapper {
-    width: 250px;
-  }
-
-  .home-locations {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  /* =========================================================
-   HOME LOCATION STATE
-   ========================================================= */
-
-.home-location {
-    position: relative;
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   LOKASI TERBUKA
-   ========================================================= */
-
-.home-location.location-unlocked {
-    cursor: pointer;
-}
-
-
-.home-location.location-unlocked .location-arrow {
-    opacity: 1;
-}
-
-
-/* =========================================================
-   LOKASI TERKUNCI
-   ========================================================= */
-
-.home-location.location-locked {
-    cursor: not-allowed;
-    opacity: 0.48;
-}
-
-
-.home-location.location-locked .location-arrow {
-    opacity: 0.35;
-}
-
-
-/*
-   Tambahkan simbol kunci kecil
-*/
-
-.home-location.location-locked::after {
-
-    content: "🔒";
-
-    position: absolute;
-
-    right: 18px;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    font-size: 13px;
-
-    opacity: 0.7;
-
-}
-
-
-/* =========================================================
-   ANIMASI SAAT LOKASI TERKUNCI DIKLIK
-   ========================================================= */
-
-@keyframes homeLocationShake {
-
-    0% {
-        transform: translateX(0);
     }
 
-    20% {
-        transform: translateX(-5px);
+
+    .lk-player-top {
+
+        font-size: 8px;
+
     }
 
-    40% {
-        transform: translateX(5px);
+
+    .lk-player-info small {
+
+        font-size: 6px;
+
     }
 
-    60% {
-        transform: translateX(-4px);
+
+    .lk-nav-actions {
+
+        gap: 5px;
+
     }
 
-    80% {
-        transform: translateX(4px);
+
+    .lk-action {
+
+        width: 32px;
+        height: 32px;
+
+        font-size: 13px;
+
     }
 
-    100% {
-        transform: translateX(0);
+
+    .lk-hero-content {
+
+        padding:
+            25px
+            19px;
+
     }
 
-}
+
+    .lk-status {
+
+        padding:
+            15px;
+
+    }
 
 
-.home-location-shake {
+    .lk-location-numbers {
 
-    animation:
-        homeLocationShake
-        0.35s
-        ease;
+        gap: 3px;
+
+    }
+
+
+    .lk-location-number {
+
+        border-radius: 5px;
+
+    }
+
+
+    .lk-active-info {
+
+        padding:
+            16px;
+
+    }
+
+
+    .lk-journey-title {
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .lk-gem-icon {
+
+        width: 40px;
+        height: 40px;
+
+    }
 
 }
 
 
 /* =========================================================
-   HOVER LOKASI TERBUKA
+   ACCESSIBILITY
    ========================================================= */
 
-.home-location.location-unlocked:hover {
+a:focus-visible,
+button:focus-visible {
 
-    transform:
-        translateX(4px);
+    outline:
+        2px solid
+        var(--gold-300);
 
-}
-
-
-.home-location.location-unlocked:hover
-.location-arrow {
-
-    transform:
-        translateX(5px);
+    outline-offset:
+        3px;
 
 }
 
 
 /* =========================================================
-   TRANSITION
+   REDUCED MOTION
    ========================================================= */
 
-.home-location {
+@media (prefers-reduced-motion: reduce) {
 
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
+    html {
 
-}
+        scroll-behavior:
+            auto;
+
+    }
 
 
-.location-arrow {
+    *,
+    *::before,
+    *::after {
 
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
+        animation-duration:
+            .01ms !important;
 
-}
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+
+        scroll-behavior:
+            auto !important;
+
+    }
 
 }
