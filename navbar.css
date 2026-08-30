@@ -778,17 +778,14 @@
 .lk-navbar .lk-nav-link:nth-child(2),
 .lk-navbar .lk-nav-link:nth-child(3),
 .lk-navbar .lk-nav-link:nth-child(4),
-.lk-navbar .lk-nav-link:nth-child(5),
-.lk-navbar .lk-nav-link:nth-child(6) {
+.lk-navbar .lk-nav-link:nth-child(5) {
 
     display: flex !important;
 
     visibility: visible !important;
 
     opacity: 1 !important;
-
 }
-
 
 /* =========================================================
    NAVBAR HOVER

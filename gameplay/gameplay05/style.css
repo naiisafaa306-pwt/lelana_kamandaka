@@ -1,0 +1,890 @@
+/* =========================================================
+   GAMEPLAY 05 — DESA PANAGIH
+   ========================================================= */
+
+
+/* =========================================================
+   SITUATION VISUAL
+   Tidak membutuhkan asset karakter
+   ========================================================= */
+
+.gameplay05-situation {
+
+    min-height: 170px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 60, 25, .95),
+            rgba(64, 86, 38, .88)
+        );
+
+    color: #fff7d8;
+
+}
+
+
+.gameplay05-situation-icon {
+
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    font-size: 25px;
+
+}
+
+
+.gameplay05-situation span {
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+
+}
+
+
+/* =========================================================
+   CHOICE BUTTON
+   ========================================================= */
+
+.gameplay-choice-button {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        38px
+        1fr;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 18px;
+
+    margin-bottom: 10px;
+
+    text-align: left;
+
+    border:
+        1px solid
+        rgba(72, 83, 49, .14);
+
+    border-radius: 12px;
+
+    background: #fffaf0;
+
+    color: #263820;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.gameplay-choice-button:hover:not(:disabled) {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(92, 115, 53, .45);
+
+    box-shadow:
+        0
+        8px
+        20px
+        rgba(40,55,25,.08);
+
+}
+
+
+.gameplay-choice-button > span {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #edf0df;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+.gameplay-choice-button strong {
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   SELECTED
+   ========================================================= */
+
+.gameplay-choice-button.selected {
+
+    border-color:
+        #8a7a2f;
+
+    background:
+        #f8f2d8;
+
+    box-shadow:
+        0
+        0
+        0
+        2px
+        rgba(180,158,47,.12);
+
+}
+
+
+/* =========================================================
+   CORRECT
+   ========================================================= */
+
+.gameplay-choice-button.correct {
+
+    border-color:
+        #55753c;
+
+    background:
+        #edf5e4;
+
+}
+
+
+.gameplay-choice-button.correct > span {
+
+    background:
+        #55753c;
+
+    color:
+        white;
+
+}
+
+
+/* =========================================================
+   WRONG
+   ========================================================= */
+
+.gameplay-choice-button.wrong {
+
+    border-color:
+        #a85a4d;
+
+    background:
+        #fae9e5;
+
+    animation:
+        gameplay05Shake
+        .35s
+        ease;
+
+}
+
+
+.gameplay-choice-button.wrong > span {
+
+    background:
+        #a85a4d;
+
+    color:
+        white;
+
+}
+
+
+/* =========================================================
+   DISABLED
+   ========================================================= */
+
+.gameplay-choice-button:disabled {
+
+    cursor:
+        default;
+
+}
+
+
+/* =========================================================
+   SHAKE
+   ========================================================= */
+
+@keyframes gameplay05Shake {
+
+    0%,
+    100% {
+
+        transform:
+            translateX(0);
+
+    }
+
+    25% {
+
+        transform:
+            translateX(-5px);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(5px);
+
+    }
+
+    75% {
+
+        transform:
+            translateX(-3px);
+
+    }
+
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+body.lk-gameplay-modal-open {
+
+    overflow: hidden;
+
+}
+
+
+.lk-gameplay-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+}
+
+
+.lk-gameplay-modal.show {
+
+    display: block;
+
+}
+
+
+.lk-gameplay-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(14, 24, 11, .68);
+
+    backdrop-filter:
+        blur(5px);
+
+}
+
+
+.lk-gameplay-dialog {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            920px,
+            calc(100vw - 30px)
+        );
+
+    max-height:
+        calc(100vh - 30px);
+
+    overflow-y: auto;
+
+    margin:
+        15px auto;
+
+    border-radius: 20px;
+
+    background:
+        #fffaf0;
+
+    box-shadow:
+        0
+        25px
+        80px
+        rgba(0,0,0,.25);
+
+    animation:
+        gameplay05ModalIn
+        .3s
+        ease
+        both;
+
+}
+
+
+@keyframes gameplay05ModalIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   MODAL HEADER
+   ========================================================= */
+
+.lk-gameplay-dialog-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        22px
+        26px;
+
+    color:
+        #fff8dc;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1a3517,
+            #29491e
+        );
+
+}
+
+
+.lk-gameplay-dialog-header small {
+
+    color:
+        #e8d36b;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
+}
+
+
+.lk-gameplay-dialog-header h2 {
+
+    margin-top: 5px;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 25px;
+
+}
+
+
+.lk-gameplay-close {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color:
+        white;
+
+    background:
+        rgba(255,255,255,.1);
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.lk-gameplay-progress {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 8px;
+
+    padding:
+        18px 24px;
+
+    border-bottom:
+        1px solid
+        rgba(70,80,45,.1);
+
+}
+
+
+.lk-gameplay-step {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    opacity: .45;
+
+}
+
+
+.lk-gameplay-step b {
+
+    width: 28px;
+
+    height: 28px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        #e8e5d6;
+
+    font-size: 11px;
+
+}
+
+
+.lk-gameplay-step small {
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+.lk-gameplay-step.active {
+
+    opacity: 1;
+
+}
+
+
+.lk-gameplay-step.active b {
+
+    color:
+        white;
+
+    background:
+        #315522;
+
+}
+
+
+.lk-gameplay-step.completed {
+
+    opacity: 1;
+
+}
+
+
+.lk-gameplay-step.completed b {
+
+    color:
+        white;
+
+    background:
+        #8b7929;
+
+}
+
+
+/* =========================================================
+   DIALOG CONTENT
+   ========================================================= */
+
+.lk-gameplay-dialog-content {
+
+    padding:
+        25px 28px 30px;
+
+}
+
+
+.lk-gameplay-label {
+
+    color:
+        #927d27;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
+}
+
+
+.lk-gameplay-dialog-content h3 {
+
+    margin-top: 8px;
+
+    color:
+        #20351d;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            38px
+        );
+
+    line-height: 1.05;
+
+}
+
+
+.lk-gameplay-dialog-content > p {
+
+    max-width: 760px;
+
+    margin-top: 12px;
+
+    color:
+        #63563f;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   ANSWERS
+   ========================================================= */
+
+#gameplayAnswers {
+
+    margin-top: 22px;
+
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.gameplay-dialog-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+
+.lk-gameplay-secondary,
+.lk-gameplay-primary {
+
+    min-height: 48px;
+
+    padding:
+        12px 20px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+.lk-gameplay-secondary {
+
+    color:
+        #39452e;
+
+    background:
+        #ece8d8;
+
+}
+
+
+.lk-gameplay-primary {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    color:
+        #fff8dc;
+
+    background:
+        #1d3b18;
+
+}
+
+
+.lk-gameplay-primary:disabled {
+
+    opacity: .45;
+
+    cursor:
+        not-allowed;
+
+}
+
+
+.lk-gameplay-primary span:last-child {
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================================
+   FINISH
+   ========================================================= */
+
+#gameplayFinish {
+
+    min-height: 520px;
+
+    display: none;
+
+    padding:
+        70px 30px;
+
+    text-align: center;
+
+}
+
+
+#gameplayFinish.active {
+
+    animation:
+        gameplay05ModalIn
+        .45s
+        ease
+        both;
+
+}
+
+
+#gameplayFinish .gameplay-reward {
+
+    width:
+        min(
+            360px,
+            100%
+        );
+
+    margin:
+        12px auto;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    .lk-gameplay-dialog {
+
+        width:
+            calc(100vw - 18px);
+
+        max-height:
+            calc(100vh - 18px);
+
+        margin:
+            9px auto;
+
+        border-radius: 16px;
+
+    }
+
+
+    .lk-gameplay-progress {
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+        padding:
+            13px;
+
+    }
+
+
+    .lk-gameplay-step {
+
+        justify-content:
+            center;
+
+    }
+
+
+    .lk-gameplay-step small {
+
+        display:
+            none;
+
+    }
+
+
+    .lk-gameplay-dialog-content {
+
+        padding:
+            20px 17px 22px;
+
+    }
+
+
+    .gameplay-choice-button {
+
+        grid-template-columns:
+            32px
+            1fr;
+
+        padding:
+            13px;
+
+    }
+
+
+    .gameplay-choice-button > span {
+
+        width: 30px;
+
+        height: 30px;
+
+    }
+
+
+    .gameplay-choice-button strong {
+
+        font-size:
+            13px;
+
+    }
+
+}

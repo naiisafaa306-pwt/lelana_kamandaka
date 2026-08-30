@@ -2,7 +2,6 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -17,15 +16,8 @@
 
     <title>Lelana Kamandaka — Peta Perjalanan</title>
 
-
-    <!-- =========================================================
-         GOOGLE FONTS
-         ========================================================= -->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
         rel="preconnect"
@@ -38,11 +30,7 @@
         rel="stylesheet"
     >
 
-
-    <!-- =========================================================
-         GLOBAL CSS
-         ========================================================= -->
-
+    <!-- GLOBAL CSS -->
     <link
         rel="stylesheet"
         href="css/variables.css"
@@ -54,10 +42,9 @@
     >
 
     <!-- GLOBAL NAVBAR + SIDEBAR -->
-
     <link
         rel="stylesheet"
-        href="css/components/navbar.css"
+        href="navbar.css"
     >
 
     <link
@@ -65,120 +52,68 @@
         href="css/components/buttons.css"
     >
 
-
-    <!-- =========================================================
-         MAP CSS
-         ========================================================= -->
-
+    <!-- MAP CSS -->
     <link
         rel="stylesheet"
         href="css/screens/map.css"
     >
-
-
 </head>
-
 
 <body>
 
-
-    <!-- =========================================================
-         GLOBAL NAVBAR
-
-         SATU-SATUNYA tempat navbar global dimuat.
-
-         Jangan membuat:
-         <aside class="lk-sidebar">
-         <header class="lk-navbar">
-
-         di file ini.
-         ========================================================= -->
-
+    <!-- GLOBAL NAVBAR -->
     <div id="globalNavbar"></div>
 
-
-    <!-- =========================================================
-         MAIN
-         ========================================================= -->
-
+    <!-- MAIN -->
     <div class="lk-main">
-
-
-        <!-- =====================================================
-             CONTENT
-             ===================================================== -->
 
         <main class="lk-content">
 
-
-            <!-- =================================================
-                 BACKGROUND PATTERN
-                 ================================================= -->
-
+            <!-- BACKGROUND PATTERN -->
             <div
                 class="map-page-pattern"
                 aria-hidden="true"
             ></div>
 
-
-            <!-- =================================================
-                 MAP HEADER
-                 ================================================= -->
-
+            <!-- MAP HEADER -->
             <section class="map-header">
-
 
                 <span class="map-eyebrow">
                     LELANA KAMANDAKA
                 </span>
 
-
                 <h1>
                     Peta Perjalanan
                 </h1>
-
 
                 <p>
                     Telusuri jejak perjalanan Raden Kamandaka
                     dari satu tempat ke tempat berikutnya.
                 </p>
 
-
                 <div class="map-header-ornament">
-
                     <span></span>
 
-                    <b>
-                        ◆
-                    </b>
+                    <b>◆</b>
 
                     <span></span>
-
                 </div>
-
 
             </section>
 
-
-            <!-- =================================================
-                 MAP SECTION
-                 ================================================= -->
-
+            <!-- MAP SECTION -->
             <section class="map-section">
 
-
                 <div class="map-card">
-
 
                     <div
                         class="map-canvas"
                         id="mapCanvas"
                     >
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              PETA DASAR
-                             ===================================== -->
+                             ========================================= -->
 
                         <img
                             src="assets/map/peta_lelana.png"
@@ -186,10 +121,9 @@
                             alt="Peta perjalanan Lelana Kamandaka"
                         >
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              JALUR
-                             ===================================== -->
+                             ========================================= -->
 
                         <img
                             src="assets/images/route-1-2.svg"
@@ -263,16 +197,15 @@
                             aria-hidden="true"
                         >
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 01
-                             ===================================== -->
+                             ========================================= -->
 
                         <a
                             href="gameplay/gameplay01/index.html"
-                            class="map-location location-01 unlocked"
+                            class="map-location location-01"
                             data-location="1"
-                            aria-label="Pajajaran — Lokasi terbuka"
+                            aria-label="Pajajaran"
                         >
 
                             <img
@@ -286,16 +219,15 @@
 
                         </a>
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 02
-                             ===================================== -->
+                             ========================================= -->
 
-                        <button
-                            class="map-location location-02 locked"
+                        <a
+                            href="gameplay/gameplay02/index.html"
+                            class="map-location location-02"
                             data-location="2"
-                            type="button"
-                            aria-label="Ki Ajar Winarong — Terkunci"
+                            aria-label="Ki Ajar Winarong"
                         >
 
                             <img
@@ -307,18 +239,17 @@
                                 Ki Ajar Winarong
                             </span>
 
-                        </button>
+                        </a>
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 03
-                             ===================================== -->
+                             ========================================= -->
 
-                        <button
-                            class="map-location location-03 locked"
+                        <a
+                            href="gameplay/gameplay03/index.html"
+                            class="map-location location-03"
                             data-location="3"
-                            type="button"
-                            aria-label="Pasir Luhur — Terkunci"
+                            aria-label="Pasir Luhur"
                         >
 
                             <img
@@ -330,18 +261,17 @@
                                 Pasir Luhur
                             </span>
 
-                        </button>
+                        </a>
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 04
-                             ===================================== -->
+                             ========================================= -->
 
-                        <button
-                            class="map-location location-04 locked"
+                        <a
+                            href="gameplay/gameplay04/index.html"
+                            class="map-location location-04"
                             data-location="4"
-                            type="button"
-                            aria-label="Kali Logawa — Terkunci"
+                            aria-label="Kali Logawa"
                         >
 
                             <img
@@ -353,18 +283,17 @@
                                 Kali Logawa
                             </span>
 
-                        </button>
+                        </a>
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 05
-                             ===================================== -->
+                             ========================================= -->
 
-                        <button
-                            class="map-location location-05 locked"
+                        <a
+                            href="gameplay/gameplay05/index.html"
+                            class="map-location location-05"
                             data-location="5"
-                            type="button"
-                            aria-label="Desa Panagih — Terkunci"
+                            aria-label="Desa Panagih"
                         >
 
                             <img
@@ -376,18 +305,17 @@
                                 Desa Panagih
                             </span>
 
-                        </button>
+                        </a>
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 06
-                             ===================================== -->
+                             ========================================= -->
 
-                        <button
-                            class="map-location location-06 locked"
+                        <a
+                            href="gameplay/gameplay06/index.html"
+                            class="map-location location-06"
                             data-location="6"
-                            type="button"
-                            aria-label="Goa Jatijajar — Terkunci"
+                            aria-label="Goa Jatijajar"
                         >
 
                             <img
@@ -399,18 +327,17 @@
                                 Goa Jatijajar
                             </span>
 
-                        </button>
+                        </a>
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 07
-                             ===================================== -->
+                             ========================================= -->
 
-                        <button
-                            class="map-location location-07 locked"
+                        <a
+                            href="gameplay/gameplay07/index.html"
+                            class="map-location location-07"
                             data-location="7"
-                            type="button"
-                            aria-label="Batur Agung — Terkunci"
+                            aria-label="Batur Agung"
                         >
 
                             <img
@@ -422,18 +349,17 @@
                                 Batur Agung
                             </span>
 
-                        </button>
+                        </a>
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 08
-                             ===================================== -->
+                             ========================================= -->
 
-                        <button
-                            class="map-location location-08 locked"
+                        <a
+                            href="gameplay/gameplay08/index.html"
+                            class="map-location location-08"
                             data-location="8"
-                            type="button"
-                            aria-label="Sawangan — Terkunci"
+                            aria-label="Sawangan"
                         >
 
                             <img
@@ -445,18 +371,17 @@
                                 Sawangan
                             </span>
 
-                        </button>
+                        </a>
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 09
-                             ===================================== -->
+                             ========================================= -->
 
-                        <button
-                            class="map-location location-09 locked"
+                        <a
+                            href="gameplay/gameplay09/index.html"
+                            class="map-location location-09"
                             data-location="9"
-                            type="button"
-                            aria-label="Kali Serayu — Terkunci"
+                            aria-label="Kali Serayu"
                         >
 
                             <img
@@ -468,18 +393,17 @@
                                 Kali Serayu
                             </span>
 
-                        </button>
+                        </a>
 
-
-                        <!-- =====================================
+                        <!-- =========================================
                              LOKASI 10
-                             ===================================== -->
+                             ========================================= -->
 
-                        <button
-                            class="map-location location-10 locked"
+                        <a
+                            href="gameplay/gameplay10/index.html"
+                            class="map-location location-10"
                             data-location="10"
-                            type="button"
-                            aria-label="Desa Rosari — Terkunci"
+                            aria-label="Desa Rosari"
                         >
 
                             <img
@@ -491,23 +415,16 @@
                                 Desa Rosari
                             </span>
 
-                        </button>
-
+                        </a>
 
                     </div>
 
                 </div>
 
-
             </section>
 
-
-            <!-- =================================================
-                 LEGEND
-                 ================================================= -->
-
+            <!-- LEGEND -->
             <section class="map-legend">
-
 
                 <div class="map-legend-item">
 
@@ -522,7 +439,6 @@
 
                 </div>
 
-
                 <div class="map-legend-item">
 
                     <img
@@ -536,7 +452,6 @@
 
                 </div>
 
-
                 <div class="map-legend-item">
 
                     <span class="map-legend-route"></span>
@@ -547,29 +462,17 @@
 
                 </div>
 
-
             </section>
-
 
         </main>
 
-
     </div>
 
-
-    <!-- =========================================================
-         GLOBAL NAVBAR LOADER
-         ========================================================= -->
-
+    <!-- GLOBAL NAVBAR -->
     <script src="js/navbar.js"></script>
 
-
-    <!-- =========================================================
-         MAP ENGINE
-         ========================================================= -->
-
+    <!-- MAP ENGINE -->
     <script src="js/components/mapEngine.js"></script>
-
 
 </body>
 

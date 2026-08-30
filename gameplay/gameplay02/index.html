@@ -10,13 +10,16 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        Lelana Kamandaka — Ki Ajar Winarong
-    </title>
+    <meta
+        name="description"
+        content="Lelana Kamandaka — Gameplay 02: Ki Ajar Winarong."
+    >
+
+    <title>Lelana Kamandaka — Gameplay 02</title>
 
 
     <!-- =========================================================
-         FONT
+         GOOGLE FONTS
          ========================================================= -->
 
     <link
@@ -31,13 +34,38 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Libre+Caslon+Text:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet"
     >
 
 
     <!-- =========================================================
-         STYLE GAMEPLAY 02
+         GLOBAL CSS
+         ========================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../../css/variables.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../css/base.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../navbar.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../css/components/buttons.css"
+    >
+
+
+    <!-- =========================================================
+         GAMEPLAY 02 CSS
          ========================================================= -->
 
     <link
@@ -51,1117 +79,105 @@
 <body>
 
 
-<!-- =========================================================
-     BATIK BACKGROUND
-     ========================================================= -->
+    <!-- =========================================================
+         GLOBAL NAVBAR
+         ========================================================= -->
 
-<div class="lk-batik-pattern">
-
-    <img
-        src="../../assets/batik.png"
-        alt=""
-    >
-
-</div>
+    <div id="globalNavbar"></div>
 
 
+    <!-- =========================================================
+         GAMEPLAY PAGE
+         ========================================================= -->
 
-<!-- =========================================================
-     SIDEBAR
-     ========================================================= -->
-
-<aside class="lk-sidebar">
+    <div class="gameplay-page">
 
 
-    <!-- =====================================================
-         BRAND
-         ===================================================== -->
+        <!-- =====================================================
+             BATIK BACKGROUND
+             ===================================================== -->
 
-    <a
-        href="../../index.html"
-        class="lk-brand"
-    >
+        <div
+            class="lk-batik-pattern"
+            aria-hidden="true"
+        >
 
-        <div class="lk-brand-mark">
-
-            <span>
-                LK
-            </span>
+            <img
+                src="../../assets/decorations/batik_pattern.png"
+                alt=""
+            >
 
         </div>
 
 
-        <div class="lk-brand-text">
+        <!-- =====================================================
+             MAIN CONTENT
+             ===================================================== -->
 
-            <strong>
-                LELANA
-            </strong>
+        <div class="lk-main">
 
-            <small>
-                KAMANDAKA
-            </small>
+            <main class="lk-content">
 
-        </div>
 
-    </a>
+                <!-- =================================================
+                     GAMEPLAY HEADER
+                     ================================================= -->
 
-
-
-    <!-- =====================================================
-         SIDEBAR MENU
-         ===================================================== -->
-
-    <nav class="lk-side-menu">
-
-
-        <!-- BERANDA -->
-
-        <a
-            href="../../index.html"
-            class="lk-side-link"
-        >
-
-            <span class="lk-side-icon">
-
-                <img
-                    src="../../assets/icons/icon_home.png"
-                    alt="Beranda"
-                >
-
-            </span>
-
-            <span>
-                Beranda
-            </span>
-
-        </a>
-
-
-
-        <!-- PETA -->
-
-        <a
-            href="../../peta.html"
-            class="lk-side-link"
-        >
-
-            <span class="lk-side-icon">
-
-                <img
-                    src="../../assets/icons/icon_peta.png"
-                    alt="Peta"
-                >
-
-            </span>
-
-            <span>
-                Peta
-            </span>
-
-        </a>
-
-
-
-        <!-- GAMEPLAY -->
-
-        <a
-            href="#"
-            class="lk-side-link active"
-        >
-
-            <span class="lk-side-icon">
-
-                <img
-                    src="../../assets/icons/icon_gameplay.png"
-                    alt="Gameplay"
-                >
-
-            </span>
-
-            <span>
-                Gameplay
-            </span>
-
-        </a>
-
-
-
-        <!-- CATATAN -->
-
-        <a
-            href="../../catatan.html"
-            class="lk-side-link"
-        >
-
-            <span class="lk-side-icon">
-
-                <img
-                    src="../../assets/icons/icon_catatan.png"
-                    alt="Catatan"
-                >
-
-            </span>
-
-            <span>
-                Catatan
-            </span>
-
-        </a>
-
-
-
-        <!-- BASA -->
-
-        <a
-            href="../../basa.html"
-            class="lk-side-link"
-        >
-
-            <span class="lk-side-icon">
-
-                <img
-                    src="../../assets/icons/icon_basa.png"
-                    alt="Basa"
-                >
-
-            </span>
-
-            <span>
-                Basa
-            </span>
-
-        </a>
-
-
-
-        <!-- PENCAPAIAN -->
-
-        <a
-            href="../../pencapaian.html"
-            class="lk-side-link"
-        >
-
-            <span class="lk-side-icon">
-
-                <img
-                    src="../../assets/icons/icon_pencapaian.png"
-                    alt="Pencapaian"
-                >
-
-            </span>
-
-            <span>
-                Pencapaian
-            </span>
-
-        </a>
-
-
-
-    </nav>
-
-
-
-    <!-- =====================================================
-         QUOTE
-         ===================================================== -->
-
-    <div class="lk-sidebar-quote">
-
-        <p>
-            “Saben lelampah duwe piwulang.”
-        </p>
-
-        <span>
-            ❧
-        </span>
-
-    </div>
-
-
-</aside>
-
-
-
-<!-- =========================================================
-     MAIN
-     ========================================================= -->
-
-<main class="lk-main">
-
-
-    <!-- =====================================================
-         NAVBAR
-         ===================================================== -->
-
-    <header class="lk-navbar">
-
-
-        <!-- =================================================
-             NAVIGATION
-             ================================================= -->
-
-        <nav class="lk-nav-links">
-
-
-            <!-- BERANDA -->
-
-            <a
-                href="../../index.html"
-                class="lk-nav-link"
-            >
-
-                <img
-                    src="../../assets/icons/icon_home.png"
-                    alt=""
-                >
-
-                <span>
-                    Beranda
-                </span>
-
-            </a>
-
-
-
-            <!-- PETA -->
-
-            <a
-                href="../../peta.html"
-                class="lk-nav-link"
-            >
-
-                <img
-                    src="../../assets/icons/icon_peta.png"
-                    alt=""
-                >
-
-                <span>
-                    Peta
-                </span>
-
-            </a>
-
-
-
-            <!-- CATATAN -->
-
-            <a
-                href="../../catatan.html"
-                class="lk-nav-link"
-            >
-
-                <img
-                    src="../../assets/icons/icon_catatan.png"
-                    alt=""
-                >
-
-                <span>
-                    Catatan
-                </span>
-
-            </a>
-
-
-
-            <!-- BASA -->
-
-            <a
-                href="../../basa.html"
-                class="lk-nav-link"
-            >
-
-                <img
-                    src="../../assets/icons/icon_basa.png"
-                    alt=""
-                >
-
-                <span>
-                    Basa
-                </span>
-
-            </a>
-
-
-
-            <!-- PENCAPAIAN -->
-
-            <a
-                href="../../pencapaian.html"
-                class="lk-nav-link"
-            >
-
-                <img
-                    src="../../assets/icons/icon_pencapaian.png"
-                    alt=""
-                >
-
-                <span>
-                    Pencapaian
-                </span>
-
-            </a>
-
-
-        </nav>
-
-
-
-        <!-- =================================================
-             PLAYER HUD
-             ================================================= -->
-
-        <div class="lk-player">
-
-
-            <div class="lk-avatar">
-
-                LK
-
-            </div>
-
-
-            <div class="lk-player-info">
-
-
-                <div class="lk-player-top">
-
-                    <span id="playerLevel">
-                        Level 02
-                    </span>
-
-                    <span id="playerXpTop">
-                        0 XP
-                    </span>
-
-                </div>
-
-
-
-                <div class="lk-xp">
-
-                    <span
-                        id="playerXpBar"
-                        style="width:0%;"
-                    ></span>
-
-                </div>
-
-
-
-                <small id="playerXpBottom">
-                    0 / 1.000 XP
-                </small>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- =================================================
-             NAV ACTION
-             ================================================= -->
-
-        <div class="lk-nav-actions">
-
-
-            <button
-                class="lk-action"
-                type="button"
-                title="Notifikasi"
-            >
-                ♢
-            </button>
-
-
-            <button
-                class="lk-action"
-                type="button"
-                title="Pengaturan"
-            >
-                ⚙
-            </button>
-
-
-        </div>
-
-
-    </header>
-
-
-
-    <!-- =====================================================
-         CONTENT
-         ===================================================== -->
-
-    <section class="lk-content">
-
-
-
-        <!-- =================================================
-             GAMEPLAY HEADER
-             ================================================= -->
-
-        <div class="gameplay-header">
-
-
-            <a
-                href="../../peta.html"
-                class="gameplay-back"
-            >
-
-                <span>
-                    ←
-                </span>
-
-                <span>
-                    Kembali ke Peta
-                </span>
-
-            </a>
-
-
-
-            <div class="gameplay-location-status">
-
-
-                <div class="gameplay-location-label">
-
-                    <small>
-                        LOKASI 02
-                    </small>
-
-                    <strong>
-                        Ki Ajar Winarong
-                    </strong>
-
-                </div>
-
-
-
-                <div class="gameplay-location-divider"></div>
-
-
-
-                <div class="gameplay-progress">
-
-                    <small>
-                        PROGRESS
-                    </small>
-
-                    <strong id="gameplayProgressText">
-                        0 / 4
-                    </strong>
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- =================================================
-             SCREEN 01
-             OPENING
-             BACKGROUND KI AJAR WINARONG
-             ================================================= -->
-
-        <section
-            id="screen01"
-            class="game-screen active"
-        >
-
-
-            <div
-                class="game-screen-inner gameplay-screen01"
-                style="
-                    background-image:
-                        linear-gradient(
-                            90deg,
-                            rgba(248,241,223,.97) 0%,
-                            rgba(248,241,223,.90) 34%,
-                            rgba(248,241,223,.58) 58%,
-                            rgba(248,241,223,.18) 100%
-                        ),
-                        url('../../assets/backgrounds/ki_ajar_winarong.png');
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                "
-            >
-
-
-                <div class="game-screen-text">
-
-
-                    <div class="game-screen-label">
-                        PERJALANAN 02
-                    </div>
-
-
-                    <h1>
-                        Ki Ajar<br>
-                        Winarong
-                    </h1>
-
-
-                    <p>
-
-                        Setelah meninggalkan Pajajaran,
-                        perjalanan Kamandaka berlanjut menuju
-                        tempat tinggal seorang pertapa yang
-                        dikenal sebagai Ki Ajar Winarong.
-
-                        <br><br>
-
-                        Di tempat ini, Kamandaka tidak hanya
-                        mencari petunjuk perjalanan. Ia juga
-                        belajar bagaimana menggunakan bahasa
-                        dengan tepat ketika berbicara kepada
-                        orang yang lebih tua.
-
-                    </p>
-
-
-
-                    <div class="game-screen-hint">
-
-                        <strong>
-                            Petunjuk:
-                        </strong>
-
-                        Perhatikan percakapan Kamandaka
-                        dengan Ki Ajar Winarong.
-                        Kamu akan belajar cara berbicara
-                        dengan sopan dalam Basa Jawa.
-
-                    </div>
-
-
-
-                    <div class="game-screen-action">
-
-                        <button
-                            id="startJourneyButton"
-                            class="gameplay-screen-button"
-                            type="button"
-                            data-action="start"
-                        >
-
-                            <span>
-                                TEMUI KI AJAR WINARONG
-                            </span>
-
-                            <span>
-                                →
-                            </span>
-
-                        </button>
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             SCREEN 02
-             PERTEMUAN
-             ================================================= -->
-
-        <section
-            id="screen02"
-            class="game-screen"
-        >
-
-
-            <div class="game-screen-inner">
-
-
-                <div class="game-screen-text">
-
-
-                    <div class="game-screen-label">
-                        PERTEMUAN
-                    </div>
-
-
-                    <h1>
-                        Salam<br>
-                        Pertama
-                    </h1>
-
-
-                    <p>
-
-                        Ki Ajar Winarong menyambut Kamandaka
-                        di kediamannya.
-
-                        <br><br>
-
-                        Sebelum menyampaikan maksud
-                        perjalanannya, Kamandaka harus
-                        menunjukkan sikap hormat kepada
-                        orang yang lebih tua.
-
-                    </p>
-
-
-
-                    <div class="gameplay-panel">
-
-
-                        <div class="gameplay-panel-heading">
-
-                            <div>
-
-                                <small>
-                                    DIALOG
-                                </small>
-
-                                <h2>
-                                    Ki Ajar Winarong
-                                </h2>
-
-                            </div>
-
-
-                            <span>
-                                01
-                            </span>
-
-                        </div>
-
-
-
-                        <div class="gameplay-panel-body">
-
-
-                            <p>
-                                "Sapa jenengmu, Le?
-                                Saka ngendi tekamu?"
-                            </p>
-
-
-
-                            <div class="gameplay-choice">
-
-
-                                <button
-                                    type="button"
-                                    class="gameplay-choice-button"
-                                    data-action="dialog-correct"
-                                >
-
-                                    <span>
-                                        A
-                                    </span>
-
-                                    <strong>
-                                        "Asma kula Kamandaka."
-                                    </strong>
-
-                                </button>
-
-
-
-                                <button
-                                    type="button"
-                                    class="gameplay-choice-button"
-                                    data-action="dialog-wrong"
-                                >
-
-                                    <span>
-                                        B
-                                    </span>
-
-                                    <strong>
-                                        "Aku Kamandaka."
-                                    </strong>
-
-                                </button>
-
-
-                            </div>
-
-
-
-                            <p
-                                id="dialogFeedback"
-                                class="game-screen-hint"
-                                style="display:none;"
-                            ></p>
-
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="game-screen-action">
-
-                        <button
-                            id="dialogNextButton"
-                            class="gameplay-screen-button"
-                            type="button"
-                            data-action="dialog-next"
-                            disabled
-                        >
-
-                            <span>
-                                LANJUT
-                            </span>
-
-                            <span>
-                                →
-                            </span>
-
-                        </button>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="game-screen-visual">
-
-                    <img
-                        src="../../assets/characters/ki_ajar_winarong.png"
-                        alt="Ki Ajar Winarong"
-                    >
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             SCREEN 03
-             PIWULANG BASA
-             ================================================= -->
-
-        <section
-            id="screen03"
-            class="game-screen"
-        >
-
-
-            <div class="game-screen-inner">
-
-
-                <div class="game-screen-text">
-
-
-                    <div class="game-screen-label">
-                        PIWULANG BASA
-                    </div>
-
-
-                    <h1>
-                        Unggah-<br>
-                        Ungguh
-                    </h1>
-
-
-                    <p>
-
-                        Ki Ajar Winarong menjelaskan bahwa
-                        pilihan kata dapat menunjukkan rasa
-                        hormat kepada lawan bicara.
-
-                        <br><br>
-
-                        Saat berbicara kepada orang yang lebih
-                        tua atau dihormati, gunakan bentuk
-                        bahasa yang lebih sopan.
-
-                    </p>
-
-
-
-                    <div class="gameplay-panel">
-
-
-                        <div class="gameplay-panel-heading">
-
-                            <div>
-
-                                <small>
-                                    YANG DIPELAJARI
-                                </small>
-
-                                <h2>
-                                    Basa Sopan
-                                </h2>
-
-                            </div>
-
-
-                            <span>
-                                ✦
-                            </span>
-
-                        </div>
-
-
-
-                        <div class="gameplay-panel-body">
-
-
-                            <p>
-
-                                <strong>
-                                    Asma
-                                </strong>
-                                = nama
-
-                                <br>
-
-                                <strong>
-                                    Kula
-                                </strong>
-                                = saya
-
-                                <br>
-
-                                <strong>
-                                    Nyuwun pangapunten
-                                </strong>
-                                = mohon maaf
-
-                                <br>
-
-                                <strong>
-                                    Matur nuwun
-                                </strong>
-                                = terima kasih
-
-                            </p>
-
-
-
-                            <div class="game-screen-hint">
-
-                                <strong>
-                                    Ingat:
-                                </strong>
-
-                                Ketika berbicara dengan orang
-                                yang lebih tua, gunakan kata
-                                yang lebih sopan.
-
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="game-screen-action">
-
-                        <button
-                            id="materialNextButton"
-                            class="gameplay-screen-button"
-                            type="button"
-                            data-action="material-next"
-                        >
-
-                            <span>
-                                AKU SUDAH PAHAM
-                            </span>
-
-                            <span>
-                                →
-                            </span>
-
-                        </button>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="game-screen-visual">
-
-                    <img
-                        src="../../assets/characters/ki_ajar_winarong.png"
-                        alt="Ki Ajar Winarong"
-                    >
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             SCREEN 04
-             QUIZ — SOAL BARU
-             ================================================= -->
-
-        <section
-            id="screen04"
-            class="game-screen"
-        >
-
-
-            <div class="game-screen-inner">
-
-
-                <div class="game-screen-text">
-
-
-                    <div class="game-screen-label">
-                        TANTANGAN BASA
-                    </div>
-
-
-                    <h1>
-                        Uji<br>
-                        Pemahaman
-                    </h1>
-
-
-                    <p>
-
-                        Ki Ajar Winarong memberikan satu
-                        pertanyaan sebelum Kamandaka
-                        melanjutkan perjalanan.
-
-                    </p>
-
+                <header class="gameplay-header">
 
 
                     <!-- =================================================
-                         QUIZ PANEL
+                         BACK TO MAP
                          ================================================= -->
 
-                    <div class="gameplay-panel">
+                    <a
+                        href="../../peta.html"
+                        class="gameplay-back"
+                    >
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            KEMBALI KE PETA
+                        </span>
+
+                    </a>
 
 
-                        <div class="gameplay-panel-heading">
+                    <!-- =================================================
+                         LOCATION STATUS
+                         ================================================= -->
 
-                            <div>
-
-                                <small>
-                                    PERTANYAAN
-                                </small>
-
-                                <h2>
-                                    Pilih jawaban yang tepat
-                                </h2>
-
-                            </div>
+                    <div class="gameplay-location-status">
 
 
-                            <span>
-                                01
-                            </span>
+                        <div class="gameplay-location-label">
+
+                            <small>
+                                LOKASI 02
+                            </small>
+
+                            <strong>
+                                Ki Ajar Winarong
+                            </strong>
 
                         </div>
 
 
-
-                        <div class="gameplay-panel-body">
-
-
-                            <p>
-
-                                Manakah kalimat yang paling
-                                sopan ketika Kamandaka ingin
-                                bertanya kepada orang yang
-                                lebih tua?
-
-                            </p>
+                        <div class="gameplay-location-divider"></div>
 
 
+                        <div class="gameplay-progress">
 
-                            <div
-                                class="gameplay-choice"
-                                id="quizOptions"
-                            >
+                            <small>
+                                PROGRESS
+                            </small>
 
-
-                                <!-- JAWABAN BENAR -->
-
-                                <button
-                                    type="button"
-                                    class="gameplay-choice-button"
-                                    data-answer="correct"
-                                >
-
-                                    <span>
-                                        A
-                                    </span>
-
-                                    <strong>
-                                        "Nyuwun pangapunten, kula badhe nyuwun pirsa."
-                                    </strong>
-
-                                </button>
-
-
-
-                                <!-- JAWABAN SALAH -->
-
-                                <button
-                                    type="button"
-                                    class="gameplay-choice-button"
-                                    data-answer="wrong"
-                                >
-
-                                    <span>
-                                        B
-                                    </span>
-
-                                    <strong>
-                                        "Aku arep takon."
-                                    </strong>
-
-                                </button>
-
-
-                            </div>
-
-
-
-                            <p
-                                id="quizFeedback"
-                                class="game-screen-hint"
-                                style="display:none;"
-                            ></p>
-
+                            <strong id="gameplayProgressText">
+                                01 / 05
+                            </strong>
 
                         </div>
 
@@ -1169,19 +185,108 @@
                     </div>
 
 
+                </header>
 
-                    <div class="game-screen-action">
+
+
+                <!-- =================================================
+                     HERO
+                     ================================================= -->
+
+                <section
+                    class="gameplay-hero"
+                    id="gameplayHero"
+                >
+
+
+                    <!-- HERO BACKGROUND -->
+
+                    <img
+                        class="gameplay-hero-bg"
+                        src="../../assets/backgrounds/ki_ajar_winarong.png"
+                        alt="Ki Ajar Winarong"
+                    >
+
+
+                    <!-- HERO OVERLAY -->
+
+                    <div
+                        class="gameplay-hero-overlay"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <!-- HERO CONTENT -->
+
+                    <div class="gameplay-hero-content">
+
+
+                        <!-- CHAPTER -->
+
+                        <div class="gameplay-chapter">
+                            PERJALANAN 02
+                        </div>
+
+
+                        <!-- EYEBROW -->
+
+                        <div class="gameplay-eyebrow">
+                            LOKASI 02
+                        </div>
+
+
+                        <!-- TITLE -->
+
+                        <h1>
+                            Ki Ajar<br>
+                            Winarong
+                        </h1>
+
+
+                        <!-- DESCRIPTION -->
+
+                        <p class="gameplay-description">
+
+                            Setelah meninggalkan Pajajaran,
+                            perjalanan Kamandaka berlanjut menuju
+                            tempat tinggal seorang pertapa yang
+                            dikenal sebagai Ki Ajar Winarong.
+
+                            <br><br>
+
+                            Di tempat ini, Kamandaka belajar menggunakan
+                            bahasa dengan tepat ketika berbicara kepada
+                            orang yang lebih tua.
+
+                        </p>
+
+
+                        <!-- OBJECTIVE -->
+
+                        <div class="gameplay-objective">
+
+                            <strong>
+                                Tujuan
+                            </strong>
+
+                            <span>
+                                Pelajari ungkapan Bahasa Jawa yang sopan
+                                dan selesaikan 5 pertanyaan.
+                            </span>
+
+                        </div>
+
+
+                        <!-- START BUTTON -->
 
                         <button
-                            id="quizNextButton"
-                            class="gameplay-screen-button"
                             type="button"
-                            data-action="quiz-next"
-                            disabled
+                            id="startGameplay"
+                            class="gameplay-start"
                         >
 
                             <span>
-                                SELESAIKAN TANTANGAN
+                                MULAI TANTANGAN
                             </span>
 
                             <span>
@@ -1190,99 +295,208 @@
 
                         </button>
 
+
                     </div>
 
 
-                </div>
+                </section>
 
 
 
-                <div class="game-screen-visual">
+                <!-- =================================================
+                     INFORMATION GRID
+                     ================================================= -->
 
-                    <img
-                        src="../../assets/characters/ki_ajar_winarong.png"
-                        alt="Ki Ajar Winarong"
-                    >
-
-                </div>
-
-
-            </div>
+                <section
+                    class="gameplay-info-grid"
+                    aria-label="Informasi Gameplay"
+                >
 
 
-        </section>
+                    <!-- CARD 01 -->
+
+                    <article class="gameplay-card">
+
+                        <div class="gameplay-card-icon">
+                            ✦
+                        </div>
 
 
+                        <div class="gameplay-card-content">
 
-        <!-- =================================================
-             SCREEN 05
-             SELESAI
-             ================================================= -->
+                            <small>
+                                PETUNJUK
+                            </small>
 
-        <section
-            id="screen05"
-            class="game-screen"
-        >
+                            <h2>
+                                Baca dengan teliti
+                            </h2>
 
+                            <p>
+                                Baca setiap pertanyaan dengan teliti
+                                sebelum memilih jawaban.
+                            </p>
 
-            <div class="game-screen-inner gameplay-finish">
+                        </div>
 
-
-                <div class="gameplay-finish-symbol">
-                    ✦
-                </div>
-
-
-                <div class="game-screen-label">
-                    PERJALANAN SELESAI
-                </div>
-
-
-                <h1>
-                    Piwulang<br>
-                    Diperoleh
-                </h1>
-
-
-                <p>
-
-                    Kamandaka berhasil memahami cara
-                    menggunakan bahasa yang lebih sopan
-                    ketika berbicara kepada orang yang lebih
-                    tua.
-
-                    <br><br>
-
-                    Ki Ajar Winarong kemudian memberikan
-                    petunjuk untuk melanjutkan perjalanan.
-
-                </p>
+                    </article>
 
 
 
-                <div class="gameplay-reward">
+                    <!-- CARD 02 -->
 
-                    <span>
-                        PEROLEHAN
+                    <article class="gameplay-card">
+
+                        <div class="gameplay-card-icon">
+                            ✧
+                        </div>
+
+
+                        <div class="gameplay-card-content">
+
+                            <small>
+                                HADIAH
+                            </small>
+
+                            <h2>
+                                Dapatkan XP
+                            </h2>
+
+                            <p>
+                                Jawaban yang benar memberikan pengalaman
+                                dan membantu membuka perjalanan berikutnya.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                </section>
+
+
+
+                <!-- =================================================
+                     GAMEPLAY PANEL
+                     ================================================= -->
+
+                <section class="gameplay-panel">
+
+
+                    <!-- PANEL HEADING -->
+
+                    <div class="gameplay-panel-heading">
+
+                        <div>
+
+                            <small>
+                                TANTANGAN
+                            </small>
+
+                            <h2>
+                                Pertanyaan Bahasa
+                            </h2>
+
+                        </div>
+
+
+                        <span>
+                            05
+                        </span>
+
+                    </div>
+
+
+                    <!-- PANEL BODY -->
+
+                    <div class="gameplay-panel-body">
+
+                        <p>
+                            Pilih jawaban yang paling tepat untuk
+                            setiap pertanyaan.
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- =================================================
+                     FINISH SCREEN
+                     ================================================= -->
+
+                <section
+                    id="gameplayFinish"
+                    class="gameplay-finish"
+                >
+
+
+                    <!-- FINISH SYMBOL -->
+
+                    <div class="gameplay-finish-symbol">
+                        ✦
+                    </div>
+
+
+                    <!-- FINISH LABEL -->
+
+                    <span class="game-screen-label">
+                        TANTANGAN SELESAI
                     </span>
 
-                    <strong>
-                        +100 XP
-                    </strong>
 
-                    <strong>
-                        +20 BASA
-                    </strong>
+                    <!-- FINISH TITLE -->
 
-                </div>
+                    <h1>
+                        Selamat!
+                    </h1>
 
 
+                    <!-- FINISH DESCRIPTION -->
 
-                <div class="game-screen-action">
+                    <p>
+                        Kamu telah menyelesaikan tantangan
+                        di Ki Ajar Winarong.
+                    </p>
+
+
+                    <!-- XP REWARD -->
+
+                    <div class="gameplay-reward">
+
+                        <span>
+                            HADIAH
+                        </span>
+
+                        <strong>
+                            +100 XP
+                        </strong>
+
+                    </div>
+
+
+                    <!-- BASA REWARD -->
+
+                    <div class="gameplay-reward">
+
+                        <span>
+                            KOSAKATA
+                        </span>
+
+                        <strong>
+                            +20 BASA
+                        </strong>
+
+                    </div>
+
+
+                    <!-- FINISH BUTTON -->
 
                     <a
-                        id="finishJourneyButton"
                         href="../../peta.html"
+                        id="finishJourneyButton"
                         class="gameplay-finish-button"
                     >
 
@@ -1296,26 +510,287 @@
 
                     </a>
 
+
+                </section>
+
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         QUIZ MODAL
+         ========================================================= -->
+
+    <div
+        class="lk-gameplay-modal"
+        id="gameplayModal"
+        aria-hidden="true"
+    >
+
+
+        <!-- =====================================================
+             OVERLAY
+             ===================================================== -->
+
+        <div
+            class="lk-gameplay-overlay"
+            id="gameplayOverlay"
+        ></div>
+
+
+
+        <!-- =====================================================
+             DIALOG
+             ===================================================== -->
+
+        <div
+            class="lk-gameplay-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="gameplayDialogTitle"
+        >
+
+
+            <!-- =================================================
+                 HEADER
+                 ================================================= -->
+
+            <div class="lk-gameplay-dialog-header">
+
+
+                <div>
+
+                    <small>
+                        TANTANGAN 02
+                    </small>
+
+                    <h2 id="gameplayDialogTitle">
+                        Ki Ajar Winarong
+                    </h2>
+
+                </div>
+
+
+                <!-- CLOSE -->
+
+                <button
+                    type="button"
+                    class="lk-gameplay-close"
+                    id="gameplayClose"
+                    aria-label="Tutup"
+                >
+                    ×
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 QUIZ PROGRESS
+                 ================================================= -->
+
+            <div class="lk-gameplay-progress">
+
+
+                <!-- PERTANYAAN 01 -->
+
+                <div class="lk-gameplay-step active">
+
+                    <b>
+                        1
+                    </b>
+
+                    <small>
+                        Pertanyaan 01
+                    </small>
+
+                </div>
+
+
+                <!-- PERTANYAAN 02 -->
+
+                <div class="lk-gameplay-step">
+
+                    <b>
+                        2
+                    </b>
+
+                    <small>
+                        Pertanyaan 02
+                    </small>
+
+                </div>
+
+
+                <!-- PERTANYAAN 03 -->
+
+                <div class="lk-gameplay-step">
+
+                    <b>
+                        3
+                    </b>
+
+                    <small>
+                        Pertanyaan 03
+                    </small>
+
+                </div>
+
+
+                <!-- PERTANYAAN 04 -->
+
+                <div class="lk-gameplay-step">
+
+                    <b>
+                        4
+                    </b>
+
+                    <small>
+                        Pertanyaan 04
+                    </small>
+
+                </div>
+
+
+                <!-- PERTANYAAN 05 -->
+
+                <div class="lk-gameplay-step">
+
+                    <b>
+                        5
+                    </b>
+
+                    <small>
+                        Pertanyaan 05
+                    </small>
+
                 </div>
 
 
             </div>
 
 
-        </section>
+
+            <!-- =================================================
+                 QUESTION IMAGE
+                 ================================================= -->
+
+            <div class="lk-gameplay-image-wrap">
+
+                <img
+                    id="gameplayQuestionImage"
+                    class="lk-gameplay-image"
+                    src="../../assets/character/ki_ajar_winarong.png"
+                    alt="Ki Ajar Winarong"
+                >
+
+            </div>
 
 
-    </section>
 
-</main>
+            <!-- =================================================
+                 QUESTION CONTENT
+                 ================================================= -->
+
+            <div class="lk-gameplay-dialog-content">
+
+
+                <!-- LABEL -->
+
+                <span class="lk-gameplay-label">
+                    PERTANYAAN
+                </span>
+
+
+                <!-- QUESTION TITLE -->
+
+                <h3 id="gameplayQuestionTitle">
+                    Ungkapan yang paling sopan
+                </h3>
+
+
+                <!-- QUESTION TEXT -->
+
+                <p id="gameplayQuestionText">
+                    Kamandaka sedang berbicara kepada orang yang
+                    lebih tua. Ungkapan manakah yang paling tepat
+                    digunakan?
+                </p>
 
 
 
-<!-- =========================================================
-     JAVASCRIPT GAMEPLAY 02
-     ========================================================= -->
+                <!-- =================================================
+                     ANSWER CONTAINER
+                     ================================================= -->
 
-<script src="app.js"></script>
+                <div
+                    id="gameplayAnswers"
+                    class="gameplay-choice"
+                ></div>
+
+
+
+                <!-- =================================================
+                     ACTION BUTTONS
+
+                     KEMBALI = KIRI
+                     JAWAB = KANAN
+
+                     HANYA SATU #gameplaySecondary
+                     HANYA SATU #gameplayPrimary
+                     ================================================= -->
+
+                <div class="gameplay-dialog-actions">
+
+                    <!-- KEMBALI — KIRI -->
+                    <button
+                        type="button"
+                        class="lk-gameplay-secondary"
+                        id="gameplaySecondary"
+                    >
+                        ← Kembali
+                    </button>
+
+                    <!-- JAWAB — KANAN -->
+                    <button
+                        type="button"
+                        class="lk-gameplay-primary"
+                        id="gameplayPrimary"
+                    >
+                        <span>JAWAB</span>
+                        <span>→</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         GLOBAL NAVBAR JS
+         ========================================================= -->
+
+    <script src="../../js/navbar.js"></script>
+
+
+
+    <!-- =========================================================
+         GAMEPLAY 02 APP JS
+         HARUS PALING TERAKHIR
+         ========================================================= -->
+
+    <script src="app.js"></script>
 
 
 </body>

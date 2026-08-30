@@ -37,7 +37,7 @@
    - Tidak membuat section gameplay baru.
    - Menggunakan screen01-screen05 dari HTML.
    - Setiap perpindahan mengganti screen.
-   - Sidebar tetap terlihat.
+   - Sidebar/navbar tetap terlihat.
    - Gameplay fullscreen pada area utama.
    - Progress tersimpan di localStorage.
    ========================================================= */
@@ -54,23 +54,17 @@ document.addEventListener("DOMContentLoaded", () => {
        CONFIG
        ===================================================== */
 
-    const STORAGE_KEY =
-        "lelanaKamandakaProgress";
+    const STORAGE_KEY = "lelanaKamandakaProgress";
 
-    const XP_PER_LOCATION =
-        100;
+    const XP_PER_LOCATION = 100;
 
-    const MAX_XP =
-        1000;
+    const MAX_XP = 1000;
 
-    const CURRENT_LOCATION =
-        1;
+    const CURRENT_LOCATION = 1;
 
-    const NEXT_LOCATION =
-        2;
+    const NEXT_LOCATION = 2;
 
-    const ASSET_PATH =
-        "../../assets/decorations/";
+    const ASSET_PATH = "../../assets/decorations/";
 
 
     /* =====================================================
@@ -78,23 +72,29 @@ document.addEventListener("DOMContentLoaded", () => {
        ===================================================== */
 
     const screens = {
-
-        opening:
-            document.getElementById("screen01"),
-
-        bekal:
-            document.getElementById("screen02"),
-
-        surat:
-            document.getElementById("screen03"),
-
-        map:
-            document.getElementById("screen04"),
-
-        finish:
-            document.getElementById("screen05")
-
+        opening: document.getElementById("screen01"),
+        bekal: document.getElementById("screen02"),
+        surat: document.getElementById("screen03"),
+        map: document.getElementById("screen04"),
+        finish: document.getElementById("screen05")
     };
+
+
+    /* =====================================================
+       VALIDATE SCREEN
+       ===================================================== */
+
+    Object.entries(screens).forEach(([name, screen]) => {
+
+        if (!screen) {
+
+            console.warn(
+                `Screen "${name}" tidak ditemukan di HTML.`
+            );
+
+        }
+
+    });
 
 
     /* =====================================================
@@ -110,14 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             nextScreen: "screen03",
 
-            title:
-                "Periksa Bekal",
+            title: "Periksa Bekal",
 
-            label:
-                "BEKAL PERJALANAN",
+            label: "BEKAL PERJALANAN",
 
-            image:
-                `${ASSET_PATH}bekal.png`,
+            image: `${ASSET_PATH}bekal.png`,
 
             words: [
 
@@ -143,20 +140,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             ],
 
-            question:
-                "Apa tegese tembung “banyu”?",
+            question: "Apa tegese tembung “banyu”?",
 
             answers: [
-
                 "Makanan",
                 "Air",
                 "Pakaian"
-
             ],
 
-            correctAnswer:
-                "Air"
-
+            correctAnswer: "Air"
         },
 
 
@@ -167,14 +159,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             nextScreen: "screen04",
 
-            title:
-                "Baca Surat",
+            title: "Baca Surat",
 
-            label:
-                "PESEN KANGGO KAMANDAKA",
+            label: "PESEN KANGGO KAMANDAKA",
 
-            image:
-                `${ASSET_PATH}surat.png`,
+            image: `${ASSET_PATH}surat.png`,
 
             words: [
 
@@ -210,16 +199,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Apa tegese “aja kesusu”?",
 
             answers: [
-
                 "Jangan berhenti",
                 "Jangan berjalan",
                 "Jangan terburu-buru"
-
             ],
 
             correctAnswer:
                 "Jangan terburu-buru"
-
         },
 
 
@@ -230,14 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             nextScreen: "screen05",
 
-            title:
-                "Periksa Peta",
+            title: "Periksa Peta",
 
-            label:
-                "PETA LELAMPAHAN",
+            label: "PETA LELAMPAHAN",
 
-            image:
-                `${ASSET_PATH}map.png`,
+            image: `${ASSET_PATH}map.png`,
 
             words: [
 
@@ -267,16 +250,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 "“Kamandaka kudu mlaku menyang wetan.” Menyang arah ngendi?",
 
             answers: [
-
                 "Kulon",
                 "Wetan",
                 "Kidul"
-
             ],
 
             correctAnswer:
                 "Wetan"
-
         }
 
     ];
@@ -286,12 +266,11 @@ document.addEventListener("DOMContentLoaded", () => {
        STATE
        ===================================================== */
 
-    let progress =
-        loadProgress();
+    let progress = loadProgress();
 
+    let currentTask = null;
 
-    let currentTask =
-        null;
+    let currentScreen = null;
 
 
     /* =====================================================
@@ -303,9 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             const saved =
-                localStorage.getItem(
-                    STORAGE_KEY
-                );
+                localStorage.getItem(STORAGE_KEY);
 
 
             if (!saved) {
@@ -371,7 +348,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 error
             );
 
-
             return createDefaultProgress();
 
         }
@@ -415,13 +391,8 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             localStorage.setItem(
-
                 STORAGE_KEY,
-
-                JSON.stringify(
-                    progress
-                )
-
+                JSON.stringify(progress)
             );
 
         } catch (error) {
@@ -455,37 +426,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        tasks.forEach(
-            (task) => {
+        tasks.forEach((task) => {
 
-                if (
-                    typeof progress
-                        .locationTasks[
-                            CURRENT_LOCATION
-                        ][
-                            task.id
-                        ]
-                    !==
+            if (
+                typeof progress
+                    .locationTasks[
+                        CURRENT_LOCATION
+                    ][
+                        task.id
+                    ] !==
                     "boolean"
-                ) {
+            ) {
 
-                    progress
-                        .locationTasks[
-                            CURRENT_LOCATION
-                        ][
-                            task.id
-                        ] = false;
-
-                }
+                progress
+                    .locationTasks[
+                        CURRENT_LOCATION
+                    ][
+                        task.id
+                    ] = false;
 
             }
-        );
+
+        });
 
 
         if (
-            !progress.completedTasks[
-                CURRENT_LOCATION
-            ]
+            !Array.isArray(
+                progress.completedTasks[
+                    CURRENT_LOCATION
+                ]
+            )
         ) {
 
             progress.completedTasks[
@@ -505,25 +475,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        INSTALL GAMEPLAY SCREEN STYLE
+       =====================================================
+
+       CSS ini hanya mengatur SISTEM SCREEN.
+       Tampilan visual utama tetap berasal dari style.css.
        ===================================================== */
 
     function installGameplayScreenStyle() {
 
-        if (
+        const oldStyle =
             document.getElementById(
                 "lelanaGameplayScreenStyle"
-            )
-        ) {
+            );
 
-            return;
+
+        if (oldStyle) {
+
+            oldStyle.remove();
 
         }
 
 
         const style =
-            document.createElement(
-                "style"
-            );
+            document.createElement("style");
 
 
         style.id =
@@ -532,12 +506,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         style.textContent = `
 
-            /* =============================================
+            /* =================================================
                SCREEN SYSTEM
-               ============================================= */
+               ================================================= */
 
             .game-screen {
                 display: none !important;
+                width: 100%;
             }
 
 
@@ -546,9 +521,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
+            /* =================================================
                GAMEPLAY MODE
-               ============================================= */
+               ================================================= */
 
             body.is-gameplay-active {
                 overflow: hidden !important;
@@ -557,83 +532,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
             body.is-gameplay-active
             .lk-navbar {
+                visibility: visible !important;
+                pointer-events: auto !important;
+                z-index: 600 !important;
+            }
 
-                visibility: hidden !important;
 
-                pointer-events: none !important;
-
+            body.is-gameplay-active
+            .lk-main {
+                position: relative;
+                z-index: 1;
             }
 
 
             body.is-gameplay-active
             .lk-content {
-
                 position: static !important;
-
-                padding: 0 !important;
-
+                width: 100% !important;
+                max-width: none !important;
                 min-height: 100vh !important;
-
+                margin: 0 !important;
+                padding: 0 !important;
             }
 
 
-            /* =============================================
-               FULLSCREEN GAME SCREEN
-               SIDEBAR = 212PX
-               ============================================= */
+            /* =================================================
+               ACTIVE SCREEN
+               ================================================= */
 
             body.is-gameplay-active
             .game-screen.active {
-
                 position: fixed !important;
 
-                top: 0 !important;
-
+                top: 78px !important;
                 right: 0 !important;
-
                 bottom: 0 !important;
-
                 left: 212px !important;
+
+                width: auto !important;
+                height: calc(100vh - 78px) !important;
+                min-height: calc(100vh - 78px) !important;
+
+                margin: 0 !important;
+                padding: 0 !important;
+
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
 
                 z-index: 500 !important;
 
-                width: auto !important;
-
-                height: 100vh !important;
-
-                min-height: 100vh !important;
-
-                margin: 0 !important;
-
-                padding: 0 !important;
-
-                overflow: hidden !important;
-
                 background: #f8f1df;
-
             }
 
 
-            /* =============================================
+            /* =================================================
                SCREEN INNER
-               ============================================= */
+               ================================================= */
 
             body.is-gameplay-active
             .game-screen.active
             .game-screen-inner {
-
                 width: 100%;
-
-                height: 100%;
-
-                min-height: 100vh;
-
+                min-height: calc(100vh - 78px);
             }
 
 
-            /* =============================================
+            /* =================================================
                SCREEN 01
-               ============================================= */
+               ================================================= */
 
             body.is-gameplay-active
             #screen01
@@ -641,9 +607,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 width: 100% !important;
 
-                height: 100vh !important;
+                height: calc(100vh - 78px) !important;
 
-                min-height: 100vh !important;
+                min-height: calc(100vh - 78px) !important;
 
                 margin: 0 !important;
 
@@ -665,9 +631,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
+            /* =================================================
                SCREEN 02-04
-               ============================================= */
+               ================================================= */
 
             body.is-gameplay-active
             .game-screen:not(#screen01)
@@ -685,19 +651,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 gap: 40px;
 
-                padding:
-                    70px 7vw;
+                width: 100%;
+
+                min-height: calc(100vh - 78px);
+
+                padding: 60px 7vw;
 
                 overflow: hidden;
 
                 background:
-
                     radial-gradient(
                         circle at 75% 50%,
                         rgba(212,183,53,.14),
                         transparent 35%
                     ),
-
                     linear-gradient(
                         135deg,
                         #fffaf0,
@@ -707,14 +674,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
+            /* =================================================
                GAME TEXT
-               ============================================= */
+               ================================================= */
 
             body.is-gameplay-active
             .game-screen-text {
 
                 max-width: 560px;
+
+                min-width: 0;
 
             }
 
@@ -737,8 +706,7 @@ document.addEventListener("DOMContentLoaded", () => {
             body.is-gameplay-active
             .game-screen-text h1 {
 
-                margin:
-                    12px 0 18px;
+                margin: 12px 0 18px;
 
                 color: #172e14;
 
@@ -773,9 +741,22 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
-               STORY / LESSON
-               ============================================= */
+            .game-screen-hint {
+
+                margin-top: 12px;
+
+                color: #806f58 !important;
+
+                font-size: 11px !important;
+
+                line-height: 1.6 !important;
+
+            }
+
+
+            /* =================================================
+               STORY
+               ================================================= */
 
             .game-screen-story {
 
@@ -808,12 +789,24 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            .game-screen-story strong {
+
+                display: block;
+
+            }
+
+
             .game-screen-translation {
 
                 margin-top: 8px;
 
                 color:
                     #806f58 !important;
+
+                font-family:
+                    "Hanken Grotesk",
+                    Arial,
+                    sans-serif;
 
                 font-size:
                     11px !important;
@@ -824,9 +817,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
+            /* =================================================
                VOCABULARY
-               ============================================= */
+               ================================================= */
 
             .game-screen-vocabulary {
 
@@ -892,9 +885,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
+            /* =================================================
                QUIZ
-               ============================================= */
+               ================================================= */
 
             .game-screen-quiz {
 
@@ -930,6 +923,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 font-weight:
                     800;
+
+                line-height:
+                    1.5;
 
             }
 
@@ -968,7 +964,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 background:
                     #fffdf6;
 
-                cursor: pointer;
+                cursor:
+                    pointer;
 
                 font-family:
                     inherit;
@@ -978,6 +975,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 font-weight:
                     700;
+
+                line-height:
+                    1.4;
 
                 transition:
                     .2s ease;
@@ -992,6 +992,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 transform:
                     translateY(-2px);
+
+            }
+
+
+            .game-screen-answer:disabled {
+
+                cursor:
+                    default;
 
             }
 
@@ -1026,7 +1034,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             .game-screen-feedback {
 
-                display: none;
+                display:
+                    none;
 
                 margin-top: 10px;
 
@@ -1052,29 +1061,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
             .game-screen-feedback.show {
 
-                display: block;
+                display:
+                    block;
 
             }
 
 
-            /* =============================================
+            /* =================================================
                VISUAL
-               ============================================= */
+               ================================================= */
 
             body.is-gameplay-active
             .game-screen-visual {
 
-                display: flex;
+                display:
+                    flex;
 
-                align-items: center;
+                align-items:
+                    center;
 
-                justify-content: center;
+                justify-content:
+                    center;
 
-                width: 100%;
+                width:
+                    100%;
 
-                height: 100%;
+                height:
+                    100%;
 
-                min-height: 420px;
+                min-height:
+                    420px;
 
             }
 
@@ -1082,15 +1098,23 @@ document.addEventListener("DOMContentLoaded", () => {
             body.is-gameplay-active
             .game-screen-visual img {
 
-                max-width: 90%;
+                display:
+                    block;
 
-                max-height: 72vh;
+                max-width:
+                    90%;
 
-                width: auto;
+                max-height:
+                    72vh;
 
-                height: auto;
+                width:
+                    auto;
 
-                object-fit: contain;
+                height:
+                    auto;
+
+                object-fit:
+                    contain;
 
                 filter:
                     drop-shadow(
@@ -1125,37 +1149,47 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
+            /* =================================================
                ACTION
-               ============================================= */
+               ================================================= */
 
             body.is-gameplay-active
             .game-screen-action {
 
-                position: absolute;
+                position:
+                    absolute;
 
-                left: 7vw;
+                left:
+                    7vw;
 
-                bottom: 38px;
+                bottom:
+                    30px;
 
-                z-index: 5;
+                z-index:
+                    5;
 
             }
 
 
             .gameplay-screen-button {
 
-                min-width: 230px;
+                min-width:
+                    230px;
 
-                min-height: 52px;
+                min-height:
+                    52px;
 
-                display: inline-flex;
+                display:
+                    inline-flex;
 
-                align-items: center;
+                align-items:
+                    center;
 
-                justify-content: space-between;
+                justify-content:
+                    space-between;
 
-                gap: 25px;
+                gap:
+                    25px;
 
                 padding:
                     0 20px;
@@ -1164,7 +1198,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     1px solid
                     #173d19;
 
-                border-radius: 10px;
+                border-radius:
+                    10px;
 
                 color:
                     #fff8d4;
@@ -1172,7 +1207,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 background:
                     #173d19;
 
-                cursor: pointer;
+                cursor:
+                    pointer;
 
                 font-size:
                     11px;
@@ -1204,6 +1240,23 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            .gameplay-screen-button:disabled {
+
+                opacity:
+                    .65;
+
+                cursor:
+                    default;
+
+                transform:
+                    none;
+
+                box-shadow:
+                    none;
+
+            }
+
+
             .gameplay-screen-button span:last-child {
 
                 font-size:
@@ -1212,40 +1265,47 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
-               SCREEN 05
-               ============================================= */
+            /* =================================================
+               FINISH SCREEN
+               ================================================= */
 
             body.is-gameplay-active
             #screen05
             .gameplay-finish {
 
-                display: flex !important;
+                display:
+                    flex !important;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                align-items: center;
+                align-items:
+                    center;
 
-                justify-content: center;
+                justify-content:
+                    center;
 
-                text-align: center;
+                text-align:
+                    center;
 
-                width: 100%;
+                width:
+                    100%;
 
-                height: 100vh;
+                height:
+                    calc(100vh - 78px);
 
-                min-height: 100vh;
+                min-height:
+                    calc(100vh - 78px);
 
-                padding: 50px;
+                padding:
+                    50px;
 
                 background:
-
                     radial-gradient(
                         circle at center,
                         rgba(212,183,53,.20),
                         transparent 45%
                     ),
-
                     linear-gradient(
                         135deg,
                         #fffaf0,
@@ -1255,16 +1315,40 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            body.is-gameplay-active
+            #screen05
             .gameplay-finish-symbol {
 
+                width:
+                    70px;
+
+                height:
+                    70px;
+
+                display:
+                    grid;
+
+                place-items:
+                    center;
+
+                margin:
+                    0 auto 20px;
+
+                border-radius:
+                    50%;
+
+                background:
+                    #e9ce4e;
+
                 color:
-                    #d4b735;
+                    #183317;
 
                 font-size:
-                    42px;
+                    30px;
 
-                margin-bottom:
-                    15px;
+                box-shadow:
+                    0 12px 25px
+                    rgba(112,92,20,.15);
 
             }
 
@@ -1291,6 +1375,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         78px
                     );
 
+                line-height:
+                    .94;
+
             }
 
 
@@ -1313,6 +1400,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            body.is-gameplay-active
+            #screen05
             .gameplay-reward {
 
                 display:
@@ -1330,6 +1419,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            body.is-gameplay-active
+            #screen05
             .gameplay-reward span {
 
                 color:
@@ -1347,6 +1438,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            body.is-gameplay-active
+            #screen05
             .gameplay-reward strong {
 
                 margin-top:
@@ -1366,6 +1459,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            body.is-gameplay-active
+            #screen05
             .gameplay-finish-button {
 
                 min-width:
@@ -1419,6 +1514,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            body.is-gameplay-active
+            #screen05
             .gameplay-finish-button:hover {
 
                 background:
@@ -1430,9 +1527,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
+            body.is-gameplay-active
+            #screen05
+            .gameplay-finish-button span:last-child {
+
+                font-size:
+                    18px;
+
+            }
+
+
+            /* =================================================
                SCREEN TRANSITION
-               ============================================= */
+               ================================================= */
 
             .game-screen.active {
 
@@ -1449,7 +1556,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 from {
 
-                    opacity: 0;
+                    opacity:
+                        0;
 
                     transform:
                         translateY(15px);
@@ -1458,7 +1566,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 to {
 
-                    opacity: 1;
+                    opacity:
+                        1;
 
                     transform:
                         translateY(0);
@@ -1468,18 +1577,17 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /* =============================================
+            /* =================================================
                MOBILE
-               ============================================= */
+               ================================================= */
 
-            @media (
-                max-width: 800px
-            ) {
+            @media (max-width: 800px) {
 
                 body.is-gameplay-active
                 .game-screen.active {
 
-                    left: 0 !important;
+                    left:
+                        0 !important;
 
                 }
 
@@ -1491,11 +1599,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     grid-template-columns:
                         1fr;
 
+                    min-height:
+                        calc(100vh - 78px);
+
                     overflow-y:
                         auto;
 
                     padding:
-                        50px 25px 110px;
+                        40px 25px 110px;
 
                 }
 
@@ -1559,14 +1670,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
+
+                body.is-gameplay-active
+                #screen05
+                .gameplay-finish {
+
+                    min-height:
+                        calc(100vh - 78px);
+
+                    height:
+                        calc(100vh - 78px);
+
+                    padding:
+                        30px 20px;
+
+                }
+
+            }
+
+
+            /* =================================================
+               VERY SMALL MOBILE
+               ================================================= */
+
+            @media (max-width: 420px) {
+
+                .game-screen-vocabulary {
+
+                    grid-template-columns:
+                        1fr;
+
+                }
+
+
+                .game-screen-quiz {
+
+                    padding:
+                        14px;
+
+                }
+
+
+                body.is-gameplay-active
+                .game-screen-text h1 {
+
+                    font-size:
+                        42px;
+
+                }
+
+
+                body.is-gameplay-active
+                #screen05
+                .gameplay-finish h1 {
+
+                    font-size:
+                        43px;
+
+                }
+
             }
 
         `;
 
 
-        document.head.appendChild(
-            style
-        );
+        document.head.appendChild(style);
 
     }
 
@@ -1582,20 +1750,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         Object
             .values(screens)
-            .forEach(
-                (screen) => {
+            .forEach((screen) => {
 
-                    if (!screen) {
-                        return;
-                    }
-
-
-                    screen.classList.remove(
-                        "active"
-                    );
-
+                if (!screen) {
+                    return;
                 }
-            );
+
+                screen.classList.remove("active");
+
+            });
 
     }
 
@@ -1604,14 +1767,10 @@ document.addEventListener("DOMContentLoaded", () => {
        SHOW SCREEN
        ===================================================== */
 
-    function showScreen(
-        screenId
-    ) {
+    function showScreen(screenId) {
 
         const target =
-            document.getElementById(
-                screenId
-            );
+            document.getElementById(screenId);
 
 
         if (!target) {
@@ -1628,9 +1787,22 @@ document.addEventListener("DOMContentLoaded", () => {
         hideAllScreens();
 
 
-        target.classList.add(
-            "active"
-        );
+        target.classList.remove("active");
+
+
+        /*
+         * Force reflow supaya animasi screen
+         * selalu berjalan ketika pindah.
+         */
+
+        void target.offsetWidth;
+
+
+        target.classList.add("active");
+
+
+        currentScreen =
+            screenId;
 
 
         document.body.classList.add(
@@ -1638,11 +1810,10 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        window.scrollTo(
-            0,
-            0
-        );
-
+        /*
+         * Jangan scroll seluruh halaman.
+         * Yang di-scroll adalah screen aktif.
+         */
 
         target.scrollTop = 0;
 
@@ -1660,11 +1831,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         hideAllScreens();
 
-
         document.body.classList.remove(
             "is-gameplay-active"
         );
 
+        currentScreen = null;
+
+        currentTask = null;
 
         window.scrollTo(
             0,
@@ -1686,96 +1859,86 @@ document.addEventListener("DOMContentLoaded", () => {
             ] || {};
 
 
-        return tasks.findIndex(
+        return tasks.find(
             (task) =>
                 locationTasks[
                     task.id
                 ] !== true
+        ) || null;
+
+    }
+
+
+    /* =====================================================
+       START JOURNEY
+       ===================================================== */
+
+    const startButton =
+        document.getElementById(
+            "startJourneyButton"
+        );
+
+
+    if (startButton) {
+
+        startButton.addEventListener(
+            "click",
+            (event) => {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                progress.currentLocation =
+                    CURRENT_LOCATION;
+
+
+                if (
+                    !progress.locationTasks[
+                        CURRENT_LOCATION
+                    ]
+                ) {
+
+                    progress.locationTasks[
+                        CURRENT_LOCATION
+                    ] = {};
+
+                }
+
+
+                /*
+                 * Mulai dari task pertama:
+                 * BEKAL.
+                 */
+
+                currentTask =
+                    tasks[0];
+
+
+                prepareTaskScreen(
+                    currentTask
+                );
+
+
+                saveProgress();
+
+
+                showScreen(
+                    "screen02"
+                );
+
+            }
         );
 
     }
 
 
     /* =====================================================
-   START JOURNEY
-   ===================================================== */
-
-const startButton =
-    document.getElementById(
-        "startJourneyButton"
-    );
-
-
-if (startButton) {
-
-    startButton.addEventListener(
-        "click",
-        (event) => {
-
-            event.preventDefault();
-
-
-            /*
-             * Mulai dari Pajajaran.
-             */
-
-            progress.currentLocation =
-                CURRENT_LOCATION;
-
-
-            /*
-             * Pastikan state Pajajaran tersedia.
-             */
-
-            if (
-                !progress.locationTasks[
-                    CURRENT_LOCATION
-                ]
-            ) {
-
-                progress.locationTasks[
-                    CURRENT_LOCATION
-                ] = {};
-
-            }
-
-
-            /*
-             * Kalau ingin tombol
-             * MULAI PERJALANAN selalu
-             * memulai alur Pajajaran,
-             * pastikan screen pertama
-             * adalah PERIKSA BEKAL.
-             */
-
-            currentTask =
-                tasks[0];
-
-
-            prepareTaskScreen(
-                tasks[0]
-            );
-
-
-            saveProgress();
-
-
-            showScreen(
-                "screen02"
-            );
-
-        }
-    );
-
-}
-
-    /* =====================================================
        START TASK
        ===================================================== */
 
-    function startTask(
-        taskId
-    ) {
+    function startTask(taskId) {
 
         const task =
             tasks.find(
@@ -1785,7 +1948,13 @@ if (startButton) {
 
 
         if (!task) {
+
+            console.error(
+                `Task ${taskId} tidak ditemukan.`
+            );
+
             return;
+
         }
 
 
@@ -1809,9 +1978,12 @@ if (startButton) {
        PREPARE TASK SCREEN
        ===================================================== */
 
-    function prepareTaskScreen(
-        task
-    ) {
+    function prepareTaskScreen(task) {
+
+        if (!task) {
+            return;
+        }
+
 
         const screen =
             document.getElementById(
@@ -1830,9 +2002,9 @@ if (startButton) {
         }
 
 
-        /*
-         * Image
-         */
+        /* -------------------------------------------------
+           IMAGE
+           ------------------------------------------------- */
 
         const image =
             screen.querySelector(
@@ -1851,9 +2023,9 @@ if (startButton) {
         }
 
 
-        /*
-         * Label
-         */
+        /* -------------------------------------------------
+           LABEL
+           ------------------------------------------------- */
 
         const label =
             screen.querySelector(
@@ -1869,10 +2041,9 @@ if (startButton) {
         }
 
 
-        /*
-         * Title
-
-         */
+        /* -------------------------------------------------
+           TITLE
+           ------------------------------------------------- */
 
         const title =
             screen.querySelector(
@@ -1888,9 +2059,9 @@ if (startButton) {
         }
 
 
-        /*
-         * Vocabulary
-         */
+        /* -------------------------------------------------
+           VOCABULARY
+           ------------------------------------------------- */
 
         renderVocabulary(
             screen,
@@ -1898,9 +2069,9 @@ if (startButton) {
         );
 
 
-        /*
-         * Story
-         */
+        /* -------------------------------------------------
+           STORY
+           ------------------------------------------------- */
 
         renderStory(
             screen,
@@ -1908,9 +2079,9 @@ if (startButton) {
         );
 
 
-        /*
-         * Quiz
-         */
+        /* -------------------------------------------------
+           QUIZ
+           ------------------------------------------------- */
 
         renderQuiz(
             screen,
@@ -1918,9 +2089,9 @@ if (startButton) {
         );
 
 
-        /*
-         * Action button
-         */
+        /* -------------------------------------------------
+           ACTION BUTTON
+           ------------------------------------------------- */
 
         const action =
             screen.querySelector(
@@ -1966,10 +2137,7 @@ if (startButton) {
        RENDER VOCABULARY
        ===================================================== */
 
-    function renderVocabulary(
-        screen,
-        task
-    ) {
+    function renderVocabulary(screen, task) {
 
         const container =
             screen.querySelector(
@@ -1978,7 +2146,9 @@ if (startButton) {
 
 
         if (!container) {
+
             return;
+
         }
 
 
@@ -1990,11 +2160,11 @@ if (startButton) {
                         <div class="game-vocab">
 
                             <strong>
-                                ${item.word}
+                                ${escapeHTML(item.word)}
                             </strong>
 
                             <span>
-                                ${item.meaning}
+                                ${escapeHTML(item.meaning)}
                             </span>
 
                         </div>
@@ -2010,10 +2180,7 @@ if (startButton) {
        RENDER STORY
        ===================================================== */
 
-    function renderStory(
-        screen,
-        task
-    ) {
+    function renderStory(screen, task) {
 
         let story =
             screen.querySelector(
@@ -2027,6 +2194,7 @@ if (startButton) {
                 document.createElement(
                     "div"
                 );
+
 
             story.className =
                 "game-screen-story";
@@ -2049,20 +2217,21 @@ if (startButton) {
         }
 
 
-        if (
-            task.story
-        ) {
+        if (!story) {
+            return;
+        }
+
+
+        if (task.story) {
 
             story.innerHTML = `
 
                 <strong>
-                    ${task.story}
+                    ${escapeHTML(task.story)}
                 </strong>
 
-                <div
-                    class="game-screen-translation"
-                >
-                    ${task.translation}
+                <div class="game-screen-translation">
+                    ${escapeHTML(task.translation || "")}
                 </div>
 
             `;
@@ -2070,9 +2239,9 @@ if (startButton) {
             story.style.display =
                 "block";
 
-        }
+        } else {
 
-        else {
+            story.innerHTML = "";
 
             story.style.display =
                 "none";
@@ -2086,10 +2255,7 @@ if (startButton) {
        RENDER QUIZ
        ===================================================== */
 
-    function renderQuiz(
-        screen,
-        task
-    ) {
+    function renderQuiz(screen, task) {
 
         let quiz =
             screen.querySelector(
@@ -2103,6 +2269,7 @@ if (startButton) {
                 document.createElement(
                     "div"
                 );
+
 
             quiz.className =
                 "game-screen-quiz";
@@ -2120,20 +2287,35 @@ if (startButton) {
                     quiz
                 );
 
-            }
-            else {
+            } else {
 
-                const paragraph =
+                const story =
                     screen.querySelector(
-                        ".game-screen-text p"
+                        ".game-screen-story"
                     );
 
 
-                if (paragraph) {
+                if (story) {
 
-                    paragraph.after(
+                    story.after(
                         quiz
                     );
+
+                } else {
+
+                    const paragraph =
+                        screen.querySelector(
+                            ".game-screen-text p"
+                        );
+
+
+                    if (paragraph) {
+
+                        paragraph.after(
+                            quiz
+                        );
+
+                    }
 
                 }
 
@@ -2142,18 +2324,19 @@ if (startButton) {
         }
 
 
+        if (!quiz) {
+            return;
+        }
+
+
         quiz.innerHTML = `
 
-            <span
-                class="game-screen-quiz-title"
-            >
-                ${task.question}
+            <span class="game-screen-quiz-title">
+                ${escapeHTML(task.question)}
             </span>
 
 
-            <div
-                class="game-screen-answers"
-            >
+            <div class="game-screen-answers">
 
                 ${task.answers
                     .map(
@@ -2162,9 +2345,9 @@ if (startButton) {
                             <button
                                 type="button"
                                 class="game-screen-answer"
-                                data-answer="${answer}"
+                                data-answer="${escapeHTML(answer)}"
                             >
-                                ${answer}
+                                ${escapeHTML(answer)}
                             </button>
 
                         `
@@ -2176,6 +2359,7 @@ if (startButton) {
 
             <div
                 class="game-screen-feedback"
+                aria-live="polite"
             ></div>
 
         `;
@@ -2192,10 +2376,9 @@ if (startButton) {
         task
     ) {
 
-        /*
-         * Remove old listeners safely
-         * by replacing quiz buttons.
-         */
+        /* -------------------------------------------------
+           ANSWERS
+           ------------------------------------------------- */
 
         screen
             .querySelectorAll(
@@ -2221,9 +2404,9 @@ if (startButton) {
             );
 
 
-        /*
-         * Complete button.
-         */
+        /* -------------------------------------------------
+           COMPLETE BUTTON
+           ------------------------------------------------- */
 
         const completeButton =
             screen.querySelector(
@@ -2259,6 +2442,15 @@ if (startButton) {
         selectedButton
     ) {
 
+        if (
+            selectedButton.disabled
+        ) {
+
+            return;
+
+        }
+
+
         const answer =
             selectedButton.dataset.answer;
 
@@ -2275,20 +2467,24 @@ if (startButton) {
             );
 
 
-        buttons.forEach(
-            (button) => {
-
-                button.disabled =
-                    true;
-
-            }
-        );
-
+        /*
+         * Jawaban benar.
+         */
 
         if (
             answer ===
             task.correctAnswer
         ) {
+
+            buttons.forEach(
+                (button) => {
+
+                    button.disabled =
+                        true;
+
+                }
+            );
+
 
             selectedButton.classList.add(
                 "correct"
@@ -2310,7 +2506,7 @@ if (startButton) {
 
 
             /*
-             * Simpan kosakata yang dipelajari.
+             * Kosakata masuk ke progress.
              */
 
             learnWords(
@@ -2349,6 +2545,11 @@ if (startButton) {
 
         }
 
+
+        /*
+         * Jawaban salah.
+         */
+
         else {
 
             selectedButton.classList.add(
@@ -2371,21 +2572,12 @@ if (startButton) {
 
 
             /*
-             * Beri kesempatan mencoba lagi.
+             * Setelah 900ms,
+             * pilihan bisa dijawab lagi.
              */
 
             setTimeout(
                 () => {
-
-                    buttons.forEach(
-                        (button) => {
-
-                            button.disabled =
-                                false;
-
-                        }
-                    );
-
 
                     selectedButton.classList.remove(
                         "wrong"
@@ -2413,9 +2605,7 @@ if (startButton) {
        CORRECT FEEDBACK
        ===================================================== */
 
-    function getCorrectFeedback(
-        task
-    ) {
+    function getCorrectFeedback(task) {
 
         if (
             task.id ===
@@ -2465,9 +2655,7 @@ if (startButton) {
        WRONG FEEDBACK
        ===================================================== */
 
-    function getWrongFeedback(
-        task
-    ) {
+    function getWrongFeedback(task) {
 
         if (
             task.id ===
@@ -2514,9 +2702,7 @@ if (startButton) {
        LEARN WORDS
        ===================================================== */
 
-    function learnWords(
-        task
-    ) {
+    function learnWords(task) {
 
         if (
             !progress.learnedWords[
@@ -2561,11 +2747,28 @@ if (startButton) {
         .forEach(
             (button) => {
 
+                /*
+                 * Hindari tombol yang sudah
+                 * punya listener startJourney.
+                 */
+
+                if (
+                    button.id ===
+                    "startJourneyButton"
+                ) {
+
+                    return;
+
+                }
+
+
                 button.addEventListener(
                     "click",
                     (event) => {
 
                         event.preventDefault();
+
+                        event.stopPropagation();
 
 
                         const action =
@@ -2595,9 +2798,7 @@ if (startButton) {
        COMPLETE TASK
        ===================================================== */
 
-    function completeTask(
-        taskId
-    ) {
+    function completeTask(taskId) {
 
         if (
             !progress.locationTasks[
@@ -2611,10 +2812,6 @@ if (startButton) {
 
         }
 
-
-        /*
-         * Pastikan urutannya.
-         */
 
         const taskIndex =
             tasks.findIndex(
@@ -2633,9 +2830,7 @@ if (startButton) {
 
 
         /*
-         * Jangan boleh menyelesaikan
-         * task berikutnya sebelum task
-         * sebelumnya.
+         * Tidak boleh melewati task.
          */
 
         if (
@@ -2665,7 +2860,8 @@ if (startButton) {
 
 
         /*
-         * Sudah selesai?
+         * Jika sudah selesai,
+         * jangan kasih XP lagi.
          */
 
         if (
@@ -2687,7 +2883,7 @@ if (startButton) {
 
 
         /*
-         * Tandai selesai.
+         * Tandai task selesai.
          */
 
         progress
@@ -2699,14 +2895,12 @@ if (startButton) {
             true;
 
 
-        /*
-         * completedTasks.
-         */
-
         if (
-            !progress.completedTasks[
-                CURRENT_LOCATION
-            ]
+            !Array.isArray(
+                progress.completedTasks[
+                    CURRENT_LOCATION
+                ]
+            )
         ) {
 
             progress.completedTasks[
@@ -2737,7 +2931,7 @@ if (startButton) {
 
 
         /*
-         * Semua selesai?
+         * Cek apakah semua task selesai.
          */
 
         const allCompleted =
@@ -2764,7 +2958,8 @@ if (startButton) {
 
 
         /*
-         * Lanjut.
+         * Kalau belum selesai,
+         * lanjut ke task berikutnya.
          */
 
         goToNextTask(
@@ -2778,9 +2973,7 @@ if (startButton) {
        GO TO NEXT TASK
        ===================================================== */
 
-    function goToNextTask(
-        taskId
-    ) {
+    function goToNextTask(taskId) {
 
         if (
             taskId ===
@@ -2815,9 +3008,7 @@ if (startButton) {
             "map"
         ) {
 
-            showScreen(
-                "screen05"
-            );
+            finishLocation();
 
         }
 
@@ -2839,7 +3030,7 @@ if (startButton) {
 
 
         /*
-         * Hanya kasih XP sekali.
+         * XP hanya diberikan satu kali.
          */
 
         if (
@@ -2861,7 +3052,7 @@ if (startButton) {
 
 
         /*
-         * Unlock lokasi berikutnya.
+         * Buka lokasi berikutnya.
          */
 
         progress.currentLocation =
@@ -2871,10 +3062,6 @@ if (startButton) {
         saveProgress();
 
 
-        /*
-         * Update halaman.
-         */
-
         updatePlayerUI();
 
         updateLocationUI();
@@ -2883,15 +3070,19 @@ if (startButton) {
 
 
         /*
-         * Tampilkan finish.
+         * Siapkan finish screen.
+         */
+
+        updateFinishScreen();
+
+
+        /*
+         * Tampilkan screen05.
          */
 
         showScreen(
             "screen05"
         );
-
-
-        updateFinishScreen();
 
     }
 
@@ -2900,9 +3091,7 @@ if (startButton) {
        ADD XP
        ===================================================== */
 
-    function addXP(
-        amount
-    ) {
+    function addXP(amount) {
 
         progress.xp +=
             amount;
@@ -2957,6 +3146,20 @@ if (startButton) {
         }
 
 
+        const label =
+            finish.querySelector(
+                ".game-screen-label"
+            );
+
+
+        if (label) {
+
+            label.textContent =
+                "PAJAJARAN SELESAI";
+
+        }
+
+
         const title =
             finish.querySelector(
                 "h1"
@@ -2966,7 +3169,7 @@ if (startButton) {
         if (title) {
 
             title.textContent =
-                "Pajajaran Selesai";
+                "Persiapan Rampung";
 
         }
 
@@ -2980,10 +3183,11 @@ if (startButton) {
         if (paragraph) {
 
             paragraph.textContent =
-                "Persiapan Kamandaka wis rampung. " +
-                "Bekal wis dipriksa, surat wis diwaca, " +
-                "lan arah lelampahan wis dimangerteni. " +
-                "Lelampahan sabanjure wis kabukak.";
+                "Bekal wis dipriksa, " +
+                "surat wis diwaca, " +
+                "lan peta wis dimangerteni. " +
+                "Saiki Kamandaka wis siyap " +
+                "nerusake lelampahan.";
 
         }
 
@@ -3128,14 +3332,11 @@ if (startButton) {
 
         const percentage =
             Math.min(
-
                 (
                     progress.xp /
                     MAX_XP
                 ) * 100,
-
                 100
-
             );
 
 
@@ -3223,10 +3424,6 @@ if (startButton) {
         }
 
 
-        /*
-         * LOCATION NUMBER
-         */
-
         document
             .querySelectorAll(
                 ".lk-location-number"
@@ -3279,10 +3476,6 @@ if (startButton) {
                 }
             );
 
-
-        /*
-         * JOURNEY
-         */
 
         document
             .querySelectorAll(
@@ -3403,13 +3596,10 @@ if (startButton) {
         if (locationName) {
 
             locationName.textContent =
-
                 locationNames[
                     progress.currentLocation
                 ]
-
                 ||
-
                 "Pajajaran";
 
         }
@@ -3450,6 +3640,37 @@ if (startButton) {
 
 
     /* =====================================================
+       ESCAPE HTML
+       ===================================================== */
+
+    function escapeHTML(value) {
+
+        return String(value)
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+    /* =====================================================
        INITIAL UI
        ===================================================== */
 
@@ -3461,7 +3682,17 @@ if (startButton) {
 
 
     /* =====================================================
-       INITIAL SCREEN
+       INITIAL SCREEN — WAJIB SCREEN 01
+       =====================================================
+
+       Ini bagian penting.
+
+       Saat halaman Gameplay 01 dibuka,
+       jangan pernah otomatis membuka screen05
+       hanya karena localStorage pernah menyimpan
+       lokasi 1 sebagai selesai.
+
+       Gameplay 01 selalu dibuka dari screen01.
        ===================================================== */
 
     hideAllScreens();
@@ -3475,12 +3706,24 @@ if (startButton) {
             "active"
         );
 
+        currentScreen =
+            "screen01";
+
     }
 
+
+    /*
+     * Jangan aktifkan fullscreen gameplay
+     * sebelum tombol MULAI PERJALANAN ditekan.
+     */
 
     document.body.classList.remove(
         "is-gameplay-active"
     );
+
+
+    currentTask =
+        null;
 
 
     /* =====================================================
@@ -3512,9 +3755,7 @@ if (startButton) {
 
 
     window.lelanaShowScreen =
-        function (
-            screenId
-        ) {
+        function (screenId) {
 
             showScreen(
                 screenId
@@ -3557,6 +3798,11 @@ if (startButton) {
 
     console.log(
         "Peta → Arah dan instruksi"
+    );
+
+    console.log(
+        "Initial Screen:",
+        currentScreen
     );
 
     console.log(

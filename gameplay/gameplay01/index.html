@@ -42,6 +42,16 @@
 
 
     <!-- =========================================================
+         GLOBAL NAVBAR + SIDEBAR
+         ========================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../../navbar.css"
+    >
+
+
+    <!-- =========================================================
          CSS GAMEPLAY
          ========================================================= -->
 
@@ -64,7 +74,21 @@
 
 
         <!-- =====================================================
+             GLOBAL NAVBAR + SIDEBAR
+
+             navbar.html akan dimuat otomatis
+             oleh ../../js/navbar.js
+             ===================================================== -->
+
+        <div id="globalNavbar"></div>
+
+
+
+        <!-- =====================================================
              BATIK BACKGROUND
+
+             Diletakkan setelah navbar agar menjadi
+             background halaman gameplay.
              ===================================================== -->
 
         <div
@@ -82,448 +106,10 @@
 
 
         <!-- =====================================================
-             SIDEBAR
-             ===================================================== -->
-
-        <aside class="lk-sidebar">
-
-
-            <!-- =================================================
-                 BRAND
-                 ================================================= -->
-
-            <a
-                href="../../index.html"
-                class="lk-brand"
-            >
-
-                <div class="lk-brand-mark">
-
-                    <span>
-                        ✦
-                    </span>
-
-                </div>
-
-
-                <div class="lk-brand-text">
-
-                    <strong>
-                        LELANA
-                    </strong>
-
-                    <small>
-                        KAMANDAKA
-                    </small>
-
-                </div>
-
-            </a>
-
-
-
-            <!-- =================================================
-                 MENU
-                 ================================================= -->
-
-            <nav class="lk-side-menu">
-
-
-                <!-- BERANDA -->
-
-                <a
-                    href="../../index.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../../assets/icons/icon_home.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Beranda
-                    </span>
-
-                </a>
-
-
-
-                <!-- PETA -->
-
-                <a
-                    href="../../peta.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../../assets/icons/icon_peta.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Peta
-                    </span>
-
-                </a>
-
-
-
-                <!-- GAMEPLAY -->
-
-                <a
-                    href="index.html"
-                    class="lk-side-link active"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../../assets/icons/icon_gameplay.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Gameplay
-                    </span>
-
-                </a>
-
-
-
-                <!-- CATATAN -->
-
-                <a
-                    href="../../catatan.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../../assets/icons/icon_catatan.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Catatan
-                    </span>
-
-                </a>
-
-
-
-                <!-- BASA -->
-
-                <a
-                    href="../../basa.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../../assets/icons/icon_basa.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Basa
-                    </span>
-
-                </a>
-
-
-
-                <!-- PENCAPAIAN -->
-
-                <a
-                    href="../../pencapaian.html"
-                    class="lk-side-link"
-                >
-
-                    <span class="lk-side-icon">
-
-                        <img
-                            src="../../assets/icons/icon_pencapaian.png"
-                            alt=""
-                        >
-
-                    </span>
-
-                    <span>
-                        Pencapaian
-                    </span>
-
-                </a>
-
-
-            </nav>
-
-
-
-            <!-- =================================================
-                 QUOTE
-                 ================================================= -->
-
-            <div class="lk-sidebar-quote">
-
-                <p>
-                    “Saben lelampah
-                    ana piwulang,
-                    saben tembung
-                    ana jiwa.”
-                </p>
-
-                <span>
-                    ❧
-                </span>
-
-            </div>
-
-
-        </aside>
-
-
-
-        <!-- =====================================================
              MAIN
              ===================================================== -->
 
         <div class="lk-main">
-
-
-            <!-- =================================================
-                 NAVBAR
-                 ================================================= -->
-
-            <header class="lk-navbar">
-
-
-                <!-- =================================================
-                     NAVIGATION
-                     ================================================= -->
-
-                <nav class="lk-nav-links">
-
-
-                    <!-- BERANDA -->
-
-                    <a
-                        href="../../index.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../../assets/icons/icon_home.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Beranda
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- PETA -->
-
-                    <a
-                        href="../../peta.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../../assets/icons/icon_peta.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Peta
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- CATATAN -->
-
-                    <a
-                        href="../../catatan.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../../assets/icons/icon_catatan.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Catatan
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- BASA -->
-
-                    <a
-                        href="../../basa.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../../assets/icons/icon_basa.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Basa
-                        </span>
-
-                    </a>
-
-
-
-                    <!-- PENCAPAIAN -->
-
-                    <a
-                        href="../../pencapaian.html"
-                        class="lk-nav-link"
-                    >
-
-                        <img
-                            src="../../assets/icons/icon_pencapaian.png"
-                            alt=""
-                        >
-
-                        <span>
-                            Pencapaian
-                        </span>
-
-                    </a>
-
-
-                </nav>
-
-
-
-                <!-- =================================================
-                     PLAYER
-                     ================================================= -->
-
-                <div class="lk-player">
-
-
-                    <div class="lk-avatar">
-                        LK
-                    </div>
-
-
-                    <div class="lk-player-info">
-
-
-                        <div class="lk-player-top">
-
-                            <strong id="playerLevel">
-                                Level 01
-                            </strong>
-
-                            <span id="playerXpTop">
-                                0 XP
-                            </span>
-
-                        </div>
-
-
-                        <div class="lk-xp">
-
-                            <span
-                                id="playerXpBar"
-                            ></span>
-
-                        </div>
-
-
-                        <small id="playerXpBottom">
-                            0 / 1.000 XP
-                        </small>
-
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- =================================================
-                     BASA HUD
-                     ================================================= -->
-
-                <div class="lk-basa-hud" aria-label="Perolehan Basa Jawa">
-
-                    <div class="lk-basa-icon">
-                        <img
-                            src="../../assets/icons/icon_basa.png"
-                            alt=""
-                        >
-                    </div>
-
-                    <div class="lk-basa-info">
-                        <small>BASA</small>
-                        <strong id="playerBasa">0</strong>
-                    </div>
-
-                </div>
-
-
-
-                <!-- =================================================
-                     ACTION
-                     ================================================= -->
-
-                <div class="lk-nav-actions">
-
-
-                    <button
-                        class="lk-action"
-                        type="button"
-                        aria-label="Notifikasi"
-                    >
-                        ♧
-                    </button>
-
-
-                    <button
-                        class="lk-action"
-                        type="button"
-                        aria-label="Pengaturan"
-                    >
-                        ⚙
-                    </button>
-
-
-                </div>
-
-
-            </header>
-
 
 
             <!-- =================================================
@@ -536,7 +122,6 @@
 
                 <!-- =================================================
                      GAMEPLAY HEADER
-                     TETAP
                      ================================================= -->
 
                 <section class="gameplay-header">
@@ -1061,6 +646,21 @@
 
     <!-- =========================================================
          JAVASCRIPT
+         ========================================================= -->
+
+
+    <!-- =========================================================
+         GLOBAL NAVBAR JAVASCRIPT
+         ========================================================= -->
+
+    <script
+        src="../../js/navbar.js"
+        defer
+    ></script>
+
+
+    <!-- =========================================================
+         GAMEPLAY JAVASCRIPT
          ========================================================= -->
 
     <script
