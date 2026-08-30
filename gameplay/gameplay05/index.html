@@ -3,290 +3,77 @@
 
 <head>
 
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>
-    Lelana Kamandaka — Desa Panagih
-  </title>
-
-
-  <!-- =====================================================
-       FONT
-       ===================================================== -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
-    rel="stylesheet"
-  >
-
-
-  <!-- =====================================================
-       CSS GLOBAL
-       ===================================================== -->
-
-  <link
-    rel="stylesheet"
-    href="../../css/variables.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../css/base.css"
-  >
-
-
-  <!-- =====================================================
-       CSS COMPONENT
-       ===================================================== -->
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/navbar.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/buttons.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/dialogue.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/card.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/modal.css"
-  >
-
-
-  <!-- =====================================================
-       CSS SCREEN GAMEPLAY
-       ===================================================== -->
-
-  <link
-    rel="stylesheet"
-    href="../../css/screens/gameplay.css"
-  >
-
-
-  <!-- =====================================================
-       CSS GAMEPLAY
-       ===================================================== -->
-
-  <link
-    rel="stylesheet"
-    href="../../css/gameplay.css"
-  >
-
-  <style>
-
-    /* =========================================================
-       GAMEPLAY 05 — SINAU BASA
-       ========================================================= */
-
-    #story-learning-basa .learning-basa-list {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-    }
-
-
-    /* CARD */
-
-    #story-learning-basa .learning-basa-card {
-        position: relative !important;
-
-        display: grid !important;
-        grid-template-columns: 1fr 42px !important;
-
-        gap: 16px !important;
-        align-items: center !important;
-
-        padding: 17px 18px !important;
-
-        background: rgba(255, 253, 247, 0.95) !important;
-
-        border: 1px solid rgba(183, 154, 85, 0.22) !important;
-
-        box-shadow: 0 8px 20px rgba(50, 35, 15, 0.07) !important;
-
-        box-sizing: border-box !important;
-
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease !important;
-    }
-
-
-    #story-learning-basa .learning-basa-card:hover {
-        transform: translateY(-2px) !important;
-
-        box-shadow:
-            0 12px 25px rgba(50, 35, 15, 0.11) !important;
-    }
-
-
-    /* KATA */
-
-    #story-learning-basa .learning-word {
-        display: block !important;
-
-        margin: 0 0 3px !important;
-
-        font-family:
-            "Libre Caslon Text",
-            Georgia,
-            serif !important;
-
-        font-size: 19px !important;
-
-        line-height: 1.2 !important;
-
-        color: #17230e !important;
-    }
-
-
-    /* ARTI */
-
-    #story-learning-basa .learning-meaning {
-        display: block !important;
-
-        margin: 0 0 5px !important;
-
-        font-family:
-            "Hanken Grotesk",
-            sans-serif !important;
-
-        font-size: 8px !important;
-
-        font-weight: 700 !important;
-
-        letter-spacing: 0.1em !important;
-
-        color: #76503b !important;
-    }
-
-
-    /* DESKRIPSI */
-
-    #story-learning-basa .learning-basa-card p {
-        margin: 0 !important;
-
-        font-family:
-            "Hanken Grotesk",
-            sans-serif !important;
-
-        font-size: 11px !important;
-
-        line-height: 1.5 !important;
-
-        color: #66695f !important;
-    }
-
-
-    /* TOMBOL SUARA */
-
-    #story-learning-basa .learning-basa-card .learning-voice-button {
-        width: 38px !important;
-        height: 38px !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-        justify-content: center !important;
-
-        padding: 0 !important;
-
-        border:
-            1px solid
-            rgba(183, 154, 85, 0.35) !important;
-
-        border-radius: 50% !important;
-
-        background: #fff9ea !important;
-
-        cursor: pointer !important;
-
-        font-size: 15px !important;
-    }
-
-
-    #story-learning-basa .learning-basa-card .learning-voice-button:hover {
-        transform: scale(1.06) !important;
-
-        background: #f8df55 !important;
-    }
-
-
-    /* FOOTER */
-
-    #story-learning-basa .learning-basa-footer {
-        display: flex !important;
-
-        align-items: center !important;
-        justify-content: space-between !important;
-
-        gap: 20px !important;
-
-        margin-top: 8px !important;
-
-        padding-top: 18px !important;
-
-        border-top:
-            1px solid
-            rgba(118, 80, 59, 0.18) !important;
-    }
-
-
-    /* =========================================================
-       MOBILE
-       ========================================================= */
-
-    @media (max-width: 600px) {
-
-        #story-learning-basa .learning-basa-card {
-            grid-template-columns: 1fr 38px !important;
-
-            gap: 10px !important;
-
-            padding: 14px !important;
-        }
-
-        #story-learning-basa .learning-word {
-            font-size: 17px !important;
-        }
-
-        #story-learning-basa .learning-basa-card p {
-            font-size: 10px !important;
-        }
-
-        #story-learning-basa .learning-basa-card .learning-voice-button {
-            width: 36px !important;
-            height: 36px !important;
-        }
-
-    }
-
-  </style>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Lelana Kamandaka — Gameplay 05: Desa Panagih."
+    >
+
+    <title>
+        Lelana Kamandaka — Gameplay 05
+    </title>
+
+
+    <!-- =========================================================
+         GOOGLE FONTS
+         ========================================================= -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================================
+         GLOBAL CSS
+         ========================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../../css/variables.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../css/base.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../navbar.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../css/components/buttons.css"
+    >
+
+
+    <!-- =========================================================
+         GAMEPLAY 05 CSS
+         ========================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
@@ -294,1635 +81,619 @@
 <body>
 
 
-  <!-- =====================================================
-       NAVBAR
-       ===================================================== -->
+    <!-- =========================================================
+         GLOBAL NAVBAR
+         ========================================================= -->
 
-  <header
-    class="site-navbar"
-    id="siteNavbar"
-  >
+    <div id="globalNavbar"></div>
 
-    <div class="navbar-inner">
 
-      <a
-        href="../../index.html"
-        class="navbar-logo"
-      >
-        LELANA KAMANDAKA
-      </a>
+    <!-- =========================================================
+         GAMEPLAY PAGE
+         ========================================================= -->
 
+    <div class="gameplay-page">
 
-      <nav
-        class="navbar-menu"
-        id="navbarMenu"
-      >
 
-        <a href="../../index.html">
-          BERANDA
-        </a>
+        <!-- =====================================================
+             BATIK BACKGROUND
+             ===================================================== -->
 
-        <a href="../../catatan.html">
-          CATATAN
-        </a>
-
-        <a href="../../pencapaian.html">
-          PENCAPAIAN
-        </a>
-
-      </nav>
-
-
-      <button
-        type="button"
-        class="navbar-toggle"
-        id="navbarToggle"
-        aria-label="Buka menu"
-        aria-expanded="false"
-      >
-
-        <span></span>
-
-      </button>
-
-
-      <div
-        class="navbar-extra"
-        id="navbarExtra"
-      >
-
-        <a href="../../peta.html">
-          PETA
-        </a>
-
-        <a href="../../basa.html">
-          BASA
-        </a>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-  <!-- =====================================================
-       GAMEPLAY PAGE
-       ===================================================== -->
-
-  <main
-    class="gameplay-page"
-    id="gameplayPage"
-  >
-
-
-    <!-- ===================================================
-         HUD
-         =================================================== -->
-
-    <div
-      class="gameplay-hud"
-      id="gameplayHud"
-      aria-label="Progress permainan"
-    >
-
-      <div class="gameplay-hud-bab">
-
-        <span>
-          BAB
-        </span>
-
-        <strong id="hudChapter">
-          05
-        </strong>
-
-        <span>
-          / 10
-        </span>
-
-      </div>
-
-
-      <div class="gameplay-hud-stats">
-
-        <div class="gameplay-stat">
-
-          <span class="gameplay-stat-icon">
-            ✦
-          </span>
-
-          <strong id="hudXp">
-            0
-          </strong>
-
-          <small>
-            XP
-          </small>
-
-        </div>
-
-
-        <div class="gameplay-stat">
-
-          <span class="gameplay-stat-icon">
-            ◈
-          </span>
-
-          <strong id="hudBasa">
-            0
-          </strong>
-
-          <small>
-            BASA
-          </small>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- ===================================================
-         SCREEN 01 — OPENING
-         =================================================== -->
-
-    <section
-      class="story-screen active"
-      id="story-opening"
-    >
-
-      <div
-        class="story-background chapter05-bg"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="story-overlay"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="story-batik"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="story-content">
-
-        <div class="story-eyebrow">
-
-          <span class="story-eyebrow-line"></span>
-
-          <span>
-            LELANA KAMANDAKA
-          </span>
-
-          <span class="story-eyebrow-line"></span>
-
-        </div>
-
-
-        <h1 class="story-title">
-
-          <span class="story-title-small">
-            BAB V
-          </span>
-
-          <span class="story-title-main">
-            Desa Panagih
-          </span>
-
-        </h1>
-
-
-        <p class="story-intro">
-
-          “Perjalanan Kamandaka berlanjut hingga
-          tiba di Desa Panagih. Di tempat ini,
-          Kamandaka harus memperhatikan keadaan
-          di sekitarnya sebelum meneruskan
-          perjalanan menuju tempat berikutnya.”
-
-        </p>
-
-
-        <button
-          type="button"
-          class="story-start-button"
-          id="btnBeginStory"
+        <div
+            class="lk-batik-pattern"
+            aria-hidden="true"
         >
 
-          <span>
-            MULAI KISAH
-          </span>
-
-          <span class="story-button-arrow">
-            →
-          </span>
-
-        </button>
-
-      </div>
-
-
-      <div
-        class="story-character"
-        aria-hidden="true"
-      >
-
-        <img
-          src="../../assets/images/characters/raden.png"
-          alt=""
-        >
-
-      </div>
-
-
-      <div class="story-chapter-mark">
-
-        <span>
-          05
-        </span>
-
-        <span class="story-chapter-line"></span>
-
-        <span>
-          10
-        </span>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         SCREEN 02 — DIALOG
-         =================================================== -->
-
-    <section
-      class="story-screen story-dialog-screen"
-      id="story-dialog"
-    >
-
-      <div
-        class="story-background story-background-dialog chapter05-dialog-bg"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="story-overlay"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="dialog-wrapper">
-
-        <div class="dialog-box">
-
-          <div class="dialog-item">
-
-            <h2 class="dialog-character-name">
-              Narator
-            </h2>
-
-            <p class="dialog-text">
-
-              “Sawise nerusake lampah saka
-              Kali Logawa, Kamandaka tekan
-              ing Desa Panagih. Ing papan iki,
-              dheweke kudu nggatekake kahanan
-              sakupenge sadurunge nerusake
-              perjalanan.”
-
-            </p>
-
-          </div>
-
-
-          <div class="dialog-item">
-
-            <h2 class="dialog-character-name">
-              Kamandaka
-            </h2>
-
-            <p class="dialog-text">
-
-              “Perjalananku saiki wis tekan
-              Desa Panagih. Aku kudu ngati-ati
-              lan nggatekake kahanan ing
-              sakupenge supaya bisa nerusake
-              lampahku.”
-
-            </p>
-
-          </div>
-
-
-          <div class="dialog-footer">
-
-            <button
-              type="button"
-              class="dialog-listen-button"
-              id="btnListen"
+            <img
+                src="../../assets/decorations/batik_pattern.png"
+                alt=""
             >
 
-              <span class="listen-icon">
-                🔊
-              </span>
-
-              <span>
-                DENGARKAN
-              </span>
-
-            </button>
-
-
-            <button
-              type="button"
-              class="dialog-next-button"
-              id="btnNextStory"
-            >
-
-              <span>
-                LANJUT
-              </span>
-
-              <span>
-                →
-              </span>
-
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         SCREEN 03 — TRANSITION
-         =================================================== -->
-
-    <section
-      class="story-screen gameplay-transition-screen"
-      id="story-gameplay"
-    >
-
-      <div class="gameplay-transition-content">
-
-        <span class="gameplay-transition-label">
-          MEMASUKI WILAYAH BARU
-        </span>
-
-
-        <h2>
-          Mengenal Desa Panagih
-        </h2>
-
-
-        <p>
-
-          Perjalanan Kamandaka berlanjut
-          menuju Desa Panagih. Di tempat ini,
-          ia harus memperhatikan keadaan
-          di sekitarnya sebelum meneruskan
-          perjalanan menuju tempat berikutnya.
-
-        </p>
-
-
-        <button
-          type="button"
-          class="story-start-button"
-          id="btnStartGameplay"
-        >
-
-          <span>
-            MULAI TANTANGAN
-          </span>
-
-          <span>
-            →
-          </span>
-
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         SCREEN 04 — SINAU BASA
-         =================================================== -->
-
-    <section
-      class="story-screen learning-basa-screen"
-      id="story-learning-basa"
-    >
-
-      <div
-        class="learning-basa-background chapter05-learning-bg"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="learning-basa-overlay"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="learning-basa-container">
-
-        <div class="learning-basa-header">
-
-          <span class="learning-basa-label">
-            TANTANGAN BASA 05
-          </span>
-
-
-          <h2>
-            SINAU
-            <span>BASA</span>
-          </h2>
-
-
-          <p>
-
-            Pelajari kosakata yang berkaitan
-            dengan perjalanan Kamandaka
-            di Desa Panagih.
-
-          </p>
-
         </div>
 
 
-        <div class="learning-basa-grid">
+        <!-- =====================================================
+             MAIN
+             ===================================================== -->
+
+        <div class="lk-main">
+
+            <main class="lk-content">
 
 
-          <!-- VISUAL -->
+                <!-- =================================================
+                     HEADER
+                     ================================================= -->
 
-          <div class="learning-basa-visual">
-
-            <div class="learning-basa-frame">
-
-              <div class="learning-basa-frame-label">
-                DESA PANAGIH
-              </div>
+                <header class="gameplay-header">
 
 
-              <div class="learning-basa-character">
+                    <!-- BACK -->
 
-                <img
-                  src="../../assets/images/characters/raden.png"
-                  alt="Raden Kamandaka"
+                    <a
+                        href="../../peta.html"
+                        class="gameplay-back"
+                    >
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            KEMBALI KE PETA
+                        </span>
+
+                    </a>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="gameplay-location-status">
+
+                        <div class="gameplay-location-label">
+
+                            <small>
+                                LOKASI 05
+                            </small>
+
+                            <strong>
+                                Desa Panagih
+                            </strong>
+
+                        </div>
+
+
+                        <div class="gameplay-location-divider"></div>
+
+
+                        <div class="gameplay-progress">
+
+                            <small>
+                                PROGRESS
+                            </small>
+
+                            <strong id="gameplayProgressText">
+                                01 / 05
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </header>
+
+
+                <!-- =================================================
+                     HERO / SCREEN AWAL
+                     ================================================= -->
+
+                <section
+                    class="gameplay-hero"
+                    id="gameplayHero"
                 >
 
-              </div>
 
+                    <!-- BACKGROUND DESA PANAGIH -->
 
-              <div class="learning-basa-quote">
+                    <img
+                        class="gameplay-hero-bg"
+                        src="../../assets/backgrounds/desa_panagih.png"
+                        alt="Desa Panagih"
+                    >
 
-                <span class="quote-mark">
-                  “
-                </span>
 
-                <p>
+                    <!-- OVERLAY -->
 
-                  Aku kudu nggatekake
-                  kahanan ing Desa Panagih
-                  sadurunge nerusake lampah.
+                    <div
+                        class="gameplay-hero-overlay"
+                        aria-hidden="true"
+                    ></div>
 
-                </p>
 
-                <span class="quote-mark quote-close">
-                  ”
-                </span>
+                    <!-- CONTENT -->
 
-              </div>
+                    <div class="gameplay-hero-content">
 
-            </div>
 
-          </div>
+                        <div class="gameplay-chapter">
+                            PERJALANAN 05
+                        </div>
 
 
-          <!-- KOSAKATA -->
+                        <div class="gameplay-eyebrow">
+                            LOKASI 05
+                        </div>
 
-          <div class="learning-basa-vocab">
 
+                        <h1>
+                            Desa<br>
+                            Panagih
+                        </h1>
 
-            <div class="learning-vocab-intro">
 
-              <span>
-                KOSAKATA PENTING
-              </span>
+                        <p class="gameplay-description">
 
-              <p>
+                            Kamandaka tiba di Desa Panagih,
+                            tempat ia bertemu dengan berbagai
+                            masyarakat.
 
-                Kenali kata-kata yang digunakan
-                dalam perjalanan Kamandaka
-                di Desa Panagih.
+                            <br><br>
 
-              </p>
+                            Di sini, Kamandaka belajar bahwa
+                            cara berbicara harus disesuaikan
+                            dengan siapa lawan bicaranya.
 
-            </div>
+                        </p>
 
 
-            <!-- NGGATENAKE -->
+                        <div class="gameplay-objective">
 
-            <div class="learning-vocab-card">
+                            <strong>
+                                Tujuan
+                            </strong>
 
-              <div class="learning-vocab-number">
-                01
-              </div>
+                            <span>
+                                Pelajari unggah-ungguh basa dan
+                                pilih kalimat yang sesuai dengan
+                                lawan bicara.
+                            </span>
 
+                        </div>
 
-              <div class="learning-vocab-info">
 
-                <h3>
-                  NGGATENAKE
-                </h3>
+                        <button
+                            type="button"
+                            id="startGameplay"
+                            class="gameplay-start"
+                        >
 
-                <span>
-                  MEMPERHATIKAN
-                </span>
+                            <span>
+                                MULAI TANTANGAN
+                            </span>
 
-                <p>
-                  Kata yang digunakan ketika
-                  memperhatikan suatu keadaan
-                  atau lingkungan.
-                </p>
+                            <span>
+                                →
+                            </span>
 
-              </div>
+                        </button>
 
 
-              <button
-                type="button"
-                class="learning-voice-button"
-                onclick="speakBasa('nggatenake')"
-                aria-label="Dengarkan Nggatenake"
-              >
-                🔊
-              </button>
+                    </div>
 
-            </div>
+                </section>
 
 
-            <!-- KAHANAN -->
+                <!-- =================================================
+                     INFO GRID
+                     ================================================= -->
 
-            <div class="learning-vocab-card">
+                <section
+                    class="gameplay-info-grid"
+                    aria-label="Informasi Gameplay"
+                >
 
-              <div class="learning-vocab-number">
-                02
-              </div>
 
+                    <article class="gameplay-card">
 
-              <div class="learning-vocab-info">
+                        <div class="gameplay-card-icon">
+                            ✦
+                        </div>
 
-                <h3>
-                  KAHANAN
-                </h3>
+                        <div class="gameplay-card-content">
 
-                <span>
-                  KEADAAN
-                </span>
+                            <small>
+                                PETUNJUK
+                            </small>
 
-                <p>
-                  Kata untuk menggambarkan
-                  keadaan atau kondisi suatu
-                  tempat.
-                </p>
+                            <h2>
+                                Perhatikan lawan bicara
+                            </h2>
 
-              </div>
+                            <p>
+                                Pilih kalimat berdasarkan siapa
+                                yang sedang diajak berbicara.
+                            </p>
 
+                        </div>
 
-              <button
-                type="button"
-                class="learning-voice-button"
-                onclick="speakBasa('kahanan')"
-                aria-label="Dengarkan Kahanan"
-              >
-                🔊
-              </button>
+                    </article>
 
-            </div>
 
+                    <article class="gameplay-card">
 
-            <!-- LAMPAH -->
+                        <div class="gameplay-card-icon">
+                            ✧
+                        </div>
 
-            <div class="learning-vocab-card">
+                        <div class="gameplay-card-content">
 
-              <div class="learning-vocab-number">
-                03
-              </div>
+                            <small>
+                                HADIAH
+                            </small>
 
+                            <h2>
+                                Dapatkan XP & Basa
+                            </h2>
 
-              <div class="learning-vocab-info">
+                            <p>
+                                Jawaban benar memberikan XP dan
+                                menambah Basa.
+                            </p>
 
-                <h3>
-                  LAMPAH
-                </h3>
+                        </div>
 
-                <span>
-                  PERJALANAN
-                </span>
+                    </article>
 
-                <p>
-                  Kata yang digunakan untuk
-                  menyebut perjalanan atau
-                  langkah yang ditempuh.
-                </p>
+                </section>
 
-              </div>
 
+                <!-- =================================================
+                     GAMEPLAY PANEL
+                     ================================================= -->
 
-              <button
-                type="button"
-                class="learning-voice-button"
-                onclick="speakBasa('lampah')"
-                aria-label="Dengarkan Lampah"
-              >
-                🔊
-              </button>
+                <section class="gameplay-panel">
 
-            </div>
+                    <div class="gameplay-panel-heading">
 
+                        <div>
 
-            <!-- SAKUPENGE -->
+                            <small>
+                                TANTANGAN
+                            </small>
 
-            <div class="learning-vocab-card">
+                            <h2>
+                                Unggah-Ungguh Basa
+                            </h2>
 
-              <div class="learning-vocab-number">
-                04
-              </div>
+                        </div>
 
+                        <span>
+                            05
+                        </span>
 
-              <div class="learning-vocab-info">
+                    </div>
 
-                <h3>
-                  SAKUPENGE
-                </h3>
 
-                <span>
-                  DI SEKITARNYA
-                </span>
+                    <div class="gameplay-panel-body">
 
-                <p>
-                  Kata untuk menunjukkan
-                  sesuatu yang berada
-                  di sekitar suatu tempat.
-                </p>
+                        <p>
+                            Tentukan kalimat yang paling sesuai
+                            dengan situasi dan lawan bicara.
+                        </p>
 
-              </div>
+                    </div>
 
+                </section>
 
-              <button
-                type="button"
-                class="learning-voice-button"
-                onclick="speakBasa('sakupenge')"
-                aria-label="Dengarkan Sakupenge"
-              >
-                🔊
-              </button>
 
-            </div>
+                <!-- =================================================
+                     FINISH
+                     ================================================= -->
 
+                <section
+                    id="gameplayFinish"
+                    class="gameplay-finish"
+                >
 
-            <div class="learning-basa-footer">
+                    <div class="gameplay-finish-symbol">
+                        ✦
+                    </div>
 
-              <span>
-                Gunakan kosakata ini pada
-                tantangan berikutnya.
-              </span>
 
+                    <span class="game-screen-label">
+                        TANTANGAN SELESAI
+                    </span>
 
-              <button
-                type="button"
-                class="learning-basa-next"
-                id="btnStartQuizBasa"
-              >
 
-                <span>
-                  LANJUT KE KUIS
-                </span>
+                    <h1>
+                        Sugeng!
+                    </h1>
 
-                <span>
-                  →
-                </span>
 
-              </button>
+                    <p>
+                        Kamu berhasil menyelesaikan tantangan
+                        unggah-ungguh basa di Desa Panagih.
+                    </p>
 
-            </div>
 
-          </div>
+                    <div class="gameplay-reward">
+
+                        <span>
+                            HADIAH
+                        </span>
+
+                        <strong id="finalXPReward">
+                            +100 XP
+                        </strong>
+
+                    </div>
+
+
+                    <div class="gameplay-reward">
+
+                        <span>
+                            BASA
+                        </span>
+
+                        <strong id="finalBasaReward">
+                            +20 BASA
+                        </strong>
+
+                    </div>
+
+
+                    <a
+                        href="../../peta.html"
+                        id="finishJourneyButton"
+                        class="gameplay-finish-button"
+                    >
+
+                        <span>
+                            KEMBALI KE PETA
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </section>
+
+
+            </main>
 
         </div>
 
-      </div>
-
-    </section>
+    </div>
 
 
-    <!-- ===================================================
-         SCREEN 05 — QUIZ BASA
-         =================================================== -->
+    <!-- =========================================================
+         QUIZ MODAL
+         ========================================================= -->
 
-    <section
-      class="story-screen"
-      id="story-quiz-basa"
+    <div
+        class="lk-gameplay-modal"
+        id="gameplayModal"
+        aria-hidden="true"
     >
 
-      <div class="quiz-container">
 
-        <div class="quiz-header">
+        <!-- OVERLAY -->
 
-          <span class="quiz-label">
-            TANTANGAN BASA 05
-          </span>
+        <div
+            class="lk-gameplay-overlay"
+            id="gameplayOverlay"
+        ></div>
 
 
-          <h2>
-            COBA
-            <span>GUNAKAN</span>
-          </h2>
+        <!-- DIALOG -->
 
-
-          <p class="quiz-intro">
-
-            Pilih jawaban yang paling tepat
-            berdasarkan kosakata yang telah
-            kamu pelajari.
-
-          </p>
-
-        </div>
-
-
-        <div class="quiz-progress">
-
-          <span id="quizQuestionNumber">
-            PERTANYAAN 01 / 04
-          </span>
-
-
-          <div class="quiz-progress-bar">
-
-            <span id="quizProgressFill"></span>
-
-          </div>
-
-        </div>
-
-
-        <div class="quiz-card">
-
-          <div class="quiz-question-label">
-            PERTANYAAN
-          </div>
-
-
-          <h3 id="quizQuestion">
-            Apa arti kata “Nggatenake”?
-          </h3>
-
-
-          <div class="quiz-options">
-
-
-            <button
-              type="button"
-              class="quiz-option"
-            >
-
-              <span class="quiz-option-letter">
-                A
-              </span>
-
-              <span>
-                Memperhatikan
-              </span>
-
-            </button>
-
-
-            <button
-              type="button"
-              class="quiz-option"
-            >
-
-              <span class="quiz-option-letter">
-                B
-              </span>
-
-              <span>
-                Berjalan
-              </span>
-
-            </button>
-
-
-            <button
-              type="button"
-              class="quiz-option"
-            >
-
-              <span class="quiz-option-letter">
-                C
-              </span>
-
-              <span>
-                Beristirahat
-              </span>
-
-            </button>
-
-
-            <button
-              type="button"
-              class="quiz-option"
-            >
-
-              <span class="quiz-option-letter">
-                D
-              </span>
-
-              <span>
-                Menunggu
-              </span>
-
-            </button>
-
-          </div>
-
-
-          <div
-            id="quizFeedback"
-            aria-live="polite"
-          ></div>
-
-
-          <div class="quiz-footer">
-
-            <span class="quiz-hint">
-              Ingat kembali kosakata
-              tentang Desa Panagih.
-            </span>
-
-
-            <button
-              type="button"
-              id="btnNextQuiz"
-              disabled
-            >
-
-              SOAL BERIKUTNYA →
-
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         SCREEN 06 — CERITA
-         =================================================== -->
-
-    <section
-      class="story-screen sayembara-story-screen"
-      id="story-sayembara-story"
-    >
-
-      <div
-        class="sayembara-story-background chapter05-story-bg"
-        aria-hidden="true"
-      ></div>
-
-
-      <div
-        class="sayembara-story-batik"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="sayembara-story-container">
-
-        <div class="sayembara-story-label">
-          TANTANGAN CERITA 05
-        </div>
-
-
-        <h2 class="sayembara-story-title">
-
-          Jejak
-          <span>Desa Panagih</span>
-
-        </h2>
-
-
-        <div class="sayembara-story-text">
-
-          <p>
-
-            Setelah meninggalkan Kali Logawa,
-            Kamandaka melanjutkan perjalanan
-            hingga tiba di Desa Panagih.
-
-          </p>
-
-
-          <p>
-
-            Di desa tersebut Kamandaka harus
-            memperhatikan keadaan di sekitarnya.
-            Perjalanan masih panjang sehingga
-            ia perlu menentukan langkah yang
-            tepat sebelum melanjutkan perjalanan.
-
-          </p>
-
-        </div>
-
-
-        <div class="sayembara-story-requirements">
-
-
-          <!-- REQUIREMENT 01 -->
-
-          <div class="sayembara-requirement">
-
-            <span class="requirement-icon">
-              ✦
-            </span>
-
-            <div>
-
-              <strong>
-                Mengamati Keadaan
-              </strong>
-
-              <span>
-                Kamandaka memperhatikan
-                keadaan di Desa Panagih.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <!-- REQUIREMENT 02 -->
-
-          <div class="sayembara-requirement">
-
-            <span class="requirement-icon">
-              ◎
-            </span>
-
-            <div>
-
-              <strong>
-                Memperhatikan Sekitar
-              </strong>
-
-              <span>
-                Kamandaka mengamati keadaan
-                di sekitarnya sebelum bergerak.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <!-- REQUIREMENT 03 -->
-
-          <div class="sayembara-requirement">
-
-            <span class="requirement-icon">
-              ◈
-            </span>
-
-            <div>
-
-              <strong>
-                Melanjutkan Lampah
-              </strong>
-
-              <span>
-                Setelah memahami keadaan,
-                Kamandaka meneruskan perjalanan.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <!-- REQUIREMENT 04 -->
-
-          <div class="sayembara-requirement">
-
-            <span class="requirement-icon">
-              ♧
-            </span>
-
-            <div>
-
-              <strong>
-                Menuju Perjalanan Berikutnya
-              </strong>
-
-              <span>
-                Kamandaka bersiap menuju
-                tempat berikutnya.
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <p class="sayembara-story-ending">
-
-          Ingat langkah penting Kamandaka
-          selama berada di Desa Panagih.
-          Setelah itu, bantu Kamandaka
-          menentukan langkah yang tepat.
-
-        </p>
-
-
-        <button
-          type="button"
-          class="story-start-button"
-          id="btnStartSayembara"
+        <div
+            class="lk-gameplay-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="gameplayDialogTitle"
         >
 
-          <span>
-            LANJUT KE TANTANGAN
-          </span>
 
-          <span class="story-button-arrow">
-            →
-          </span>
+            <!-- =================================================
+                 HEADER
+                 ================================================= -->
 
-        </button>
+            <div class="lk-gameplay-dialog-header">
 
-      </div>
+                <div>
 
+                    <small>
+                        TANTANGAN 05
+                    </small>
 
-      <div class="sayembara-story-mark">
+                    <h2 id="gameplayDialogTitle">
+                        Desa Panagih
+                    </h2>
 
-        <span>
-          06
-        </span>
-
-        <span class="sayembara-story-mark-line"></span>
-
-        <span>
-          07
-        </span>
-
-      </div>
-
-    </section>
+                </div>
 
 
-    <!-- ===================================================
-         SCREEN 07 — SAYEMBARA
-         =================================================== -->
-
-    <section
-      class="story-screen sayembara-screen"
-      id="story-sayembara"
-    >
-
-      <div class="sayembara-container">
-
-
-        <div class="sayembara-info">
-
-          <div class="sayembara-flower">
-            ✿
-          </div>
-
-
-          <span class="sayembara-label">
-            TANTANGAN CERITA 05
-          </span>
-
-
-          <h2>
-            Jejak Desa Panagih
-          </h2>
-
-
-          <div class="sayembara-question">
-
-            <p>
-
-              Apa saja langkah yang tepat
-              dilakukan Kamandaka ketika
-              berada di Desa Panagih?
-
-            </p>
-
-          </div>
-
-
-          <div class="sayembara-instruction">
-
-            <span>
-              ⓘ
-            </span>
-
-            <span>
-
-              Tarik
-              <strong>
-                4 langkah yang benar
-              </strong>
-              ke dalam kotak perjalanan.
-              Ada beberapa pilihan pengecoh.
-
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="sayembara-game">
-
-
-          <!-- DROPZONE -->
-
-          <div
-            class="sayembara-dropzone"
-            id="sayembaraDropzone"
-          >
-
-            <div class="sayembara-dropzone-placeholder">
-
-              <span>
-                LETAKKAN LANGKAH
-              </span>
-
-              <strong>
-                PERJALANAN
-              </strong>
-
-              <small>
-                Tarik 4 langkah yang benar
-                ke area ini
-              </small>
+                <button
+                    type="button"
+                    class="lk-gameplay-close"
+                    id="gameplayClose"
+                    aria-label="Tutup"
+                >
+                    ×
+                </button>
 
             </div>
 
-          </div>
 
+            <!-- =================================================
+                 PROGRESS
+                 ================================================= -->
 
-          <!-- FEEDBACK -->
+            <div class="lk-gameplay-progress">
 
-          <div
-            class="sayembara-feedback"
-            id="sayembaraFeedback"
-            aria-live="polite"
-          ></div>
 
+                <div class="lk-gameplay-step active">
 
-          <!-- OPTIONS -->
+                    <b>1</b>
 
-          <div class="sayembara-options">
+                    <small>
+                        Pertanyaan 01
+                    </small>
 
+                </div>
 
-            <!-- BENAR 01 -->
 
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="amati"
-            >
+                <div class="lk-gameplay-step">
 
-              <span class="sayembara-icon">
-                ✦
-              </span>
+                    <b>2</b>
 
-              <strong>
-                MENGAMATI<br>
-                KEADAAN
-              </strong>
+                    <small>
+                        Pertanyaan 02
+                    </small>
 
-            </button>
+                </div>
 
 
-            <!-- BENAR 02 -->
+                <div class="lk-gameplay-step">
 
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="kahanan"
-            >
+                    <b>3</b>
 
-              <span class="sayembara-icon">
-                ◎
-              </span>
+                    <small>
+                        Pertanyaan 03
+                    </small>
 
-              <strong>
-                MEMPERHATIKAN<br>
-                KAHANAN
-              </strong>
+                </div>
 
-            </button>
 
+                <div class="lk-gameplay-step">
 
-            <!-- BENAR 03 -->
+                    <b>4</b>
 
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="lampah"
-            >
+                    <small>
+                        Pertanyaan 04
+                    </small>
 
-              <span class="sayembara-icon">
-                ◈
-              </span>
+                </div>
 
-              <strong>
-                MELANJUTKAN<br>
-                LAMPAH
-              </strong>
 
-            </button>
+                <div class="lk-gameplay-step">
 
+                    <b>5</b>
 
-            <!-- BENAR 04 -->
+                    <small>
+                        Pertanyaan 05
+                    </small>
 
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="goa"
-            >
+                </div>
 
-              <span class="sayembara-icon">
-                ♧
-              </span>
-
-              <strong>
-                MENUJU TEMPAT<br>
-                BERIKUTNYA
-              </strong>
-
-            </button>
-
-
-            <!-- SALAH 01 -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="mahkota"
-            >
-
-              <span class="sayembara-icon">
-                ◇
-              </span>
-
-              <strong>
-                MEMAKAI<br>
-                MAHKOTA RAJA
-              </strong>
-
-            </button>
-
-
-            <!-- SALAH 02 -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="pulang"
-            >
-
-              <span class="sayembara-icon">
-                ◌
-              </span>
-
-              <strong>
-                KEMBALI<br>
-                KE PAJAJARAN
-              </strong>
-
-            </button>
-
-
-            <!-- SALAH 03 -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="tidur"
-            >
-
-              <span class="sayembara-icon">
-                ▱
-              </span>
-
-              <strong>
-                TIDUR DI<br>
-                DESA PANAGIH
-              </strong>
-
-            </button>
-
-          </div>
-
-
-          <!-- NEXT -->
-
-          <button
-            type="button"
-            class="sayembara-next"
-            id="btnNextSayembara"
-            disabled
-          >
-
-            <span>
-              LANJUT
-            </span>
-
-            <span>
-              →
-            </span>
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         SCREEN 08 — SELESAI
-         =================================================== -->
-
-    <section
-      class="story-screen departure-story-screen"
-      id="story-chapter-08"
-    >
-
-      <div
-        class="departure-story-background chapter05-departure-bg"
-        aria-hidden="true"
-      ></div>
-
-
-      <div
-        class="departure-story-overlay"
-        aria-hidden="true"
-      ></div>
-
-
-      <div
-        class="departure-story-batik"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="departure-story-container">
-
-        <div class="departure-story-label">
-          BABAK BARU DIMULAI
-        </div>
-
-
-        <h2 class="departure-story-title">
-
-          Perjalanan dari
-          <span>
-            Desa Panagih
-          </span>
-
-        </h2>
-
-
-        <div class="departure-story-text">
-
-          <p>
-
-            Kamandaka telah menyelesaikan
-            perjalanan di Desa Panagih.
-            Ia telah memahami keadaan
-            di tempat tersebut dan bersiap
-            melanjutkan perjalanan.
-
-          </p>
-
-
-          <p>
-
-            Perjalanan berikutnya akan
-            membawa Kamandaka menuju
-            tempat baru yang masih menyimpan
-            bagian penting dari kisahnya.
-
-          </p>
-
-
-          <p>
-
-            Langkah Kamandaka menuju
-            tempat berikutnya pun kembali
-            dimulai.
-
-          </p>
-
-        </div>
-
-
-        <!-- QUOTE -->
-
-        <div class="departure-story-quote">
-
-          <span>
-            “
-          </span>
-
-          <p>
-
-            Saben papan sing diliwati
-            mesthi nggawa crita lan
-            pengalaman anyar.
-
-          </p>
-
-        </div>
-
-
-        <!-- REWARD -->
-
-        <div class="departure-story-reward">
-
-          <div class="departure-reward-item">
-
-            <span class="departure-reward-icon">
-              ✦
-            </span>
-
-            <div>
-
-              <small>
-                PEROLEHAN
-              </small>
-
-              <strong id="chapterXpReward">
-                +50 XP
-              </strong>
 
             </div>
 
-          </div>
 
+            <!-- =================================================
+                 VISUAL TANPA ASSET TAMBAHAN
+                 ================================================= -->
 
-          <div class="departure-reward-item">
+            <div class="lk-gameplay-image-wrap gameplay05-situation">
 
-            <span class="departure-reward-icon">
-              ◈
-            </span>
+                <div class="gameplay05-situation-icon">
+                    ✦
+                </div>
 
-            <div>
-
-              <small>
-                BASA
-              </small>
-
-              <strong id="chapterBasaReward">
-                +10 BASA
-              </strong>
+                <span id="gameplaySituationLabel">
+                    SITUASI
+                </span>
 
             </div>
 
-          </div>
+
+            <!-- =================================================
+                 QUESTION CONTENT
+                 ================================================= -->
+
+            <div class="lk-gameplay-dialog-content">
+
+
+                <span class="lk-gameplay-label">
+                    PERTANYAAN
+                </span>
+
+
+                <h3 id="gameplayQuestionTitle">
+                    Pilih ungkapan yang tepat
+                </h3>
+
+
+                <p id="gameplayQuestionText">
+                    Kamandaka sedang berbicara dengan seseorang.
+                    Kalimat manakah yang paling sesuai?
+                </p>
+
+
+                <!-- ANSWERS -->
+
+                <div
+                    id="gameplayAnswers"
+                    class="gameplay-choice"
+                ></div>
+
+
+                <!-- ACTION -->
+
+                <div class="gameplay-dialog-actions">
+
+
+                    <button
+                        type="button"
+                        class="lk-gameplay-secondary"
+                        id="gameplaySecondary"
+                    >
+                        ← Kembali
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="lk-gameplay-primary"
+                        id="gameplayPrimary"
+                        disabled
+                    >
+
+                        <span>
+                            JAWAB
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </div>
 
         </div>
 
-
-        <!-- PROGRESS -->
-
-        <div class="departure-story-progress">
-
-          <span>
-            BAB
-          </span>
-
-          <strong id="chapterCurrentNumber">
-            05
-          </strong>
-
-          <span>
-            /
-          </span>
-
-          <strong id="chapterTotalNumber">
-            10
-          </strong>
-
-        </div>
+    </div>
 
 
-        <!-- BACK TO MAP -->
+    <!-- =========================================================
+         NAVBAR JS
+         ========================================================= -->
 
-        <button
-          type="button"
-          class="story-start-button"
-          id="btnContinueChapter"
-        >
-
-          <span>
-            KEMBALI KE PETA
-          </span>
-
-          <span class="story-button-arrow">
-            →
-          </span>
-
-        </button>
-
-      </div>
+    <script src="../../js/navbar.js"></script>
 
 
-      <div class="departure-story-mark">
+    <!-- =========================================================
+         GAMEPLAY 05 JS
+         ========================================================= -->
 
-        <span>
-          08
-        </span>
-
-        <span class="departure-story-mark-line"></span>
-
-        <span>
-          09
-        </span>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =====================================================
-       JAVASCRIPT
-       ===================================================== -->
-
-  <!-- STATE -->
-
-  <script src="../../js/state.js"></script>
-
-
-  <!-- AUDIO -->
-
-  <script src="../../js/components/audioController.js"></script>
-
-
-  <!-- DIALOGUE -->
-
-  <script src="../../js/components/dialogueEngine.js"></script>
-
-
-  <!-- MAP ENGINE -->
-
-  <script src="../../js/components/mapEngine.js"></script>
-
-
-  <!-- APP GAMEPLAY 05 -->
-
-  <script src="app.js"></script>
-
-
-  <!-- NAVBAR -->
-
-  <script src="../../js/components/navbar.js"></script>
+    <script src="app.js"></script>
 
 
 </body>

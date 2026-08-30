@@ -1,0 +1,2447 @@
+/* =========================================================
+   LELANA KAMANDAKA
+   GAMEPLAY 03 — PASIR LUHUR
+
+   BASE VISUAL:
+   GAMEPLAY 02
+
+   KONSEP GAME:
+   - Mencari 5 benda tersembunyi
+   - Asset benda berasal dari assets/decorations/
+   - Tidak menggunakan emoji untuk benda
+   - Tidak menggunakan ikon bulat untuk benda
+   - Benda dibuat kecil dan menyatu dengan background
+   - Klik benda → muncul penjelasan
+   ========================================================= */
+
+
+/* =========================================================
+   PAKAI VISUAL GAMEPLAY 02
+   ========================================================= */
+
+@import url("../gameplay02/style.css");
+
+
+/* =========================================================
+   GAMEPLAY 03 — SEARCH AREA
+   ========================================================= */
+
+.gameplay03-search {
+
+    display: none;
+
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        rgba(
+            255,
+            250,
+            239,
+            .78
+        );
+
+    border:
+        1px solid
+        rgba(
+            103,
+            80,
+            39,
+            .10
+        );
+
+    box-shadow:
+        0
+        15px
+        40px
+        rgba(
+            76,
+            58,
+            31,
+            .06
+        );
+
+}
+
+
+/* =========================================================
+   SEARCH HEADER
+   ========================================================= */
+
+.gameplay03-search-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        24px
+        28px;
+
+    color:
+        #f8f2db;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1a3517,
+            #203f1b
+        );
+
+}
+
+
+.gameplay03-search-header small {
+
+    color:
+        var(--gold-200);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+
+}
+
+
+.gameplay03-search-header h2 {
+
+    margin:
+        5px
+        0
+        0;
+
+    color:
+        #fff7d8;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   COUNTER
+   ========================================================= */
+
+.gameplay03-counter {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    min-width: 100px;
+
+}
+
+
+.gameplay03-counter span {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .55
+        );
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: .12em;
+
+}
+
+
+.gameplay03-counter strong {
+
+    margin-top: 4px;
+
+    color:
+        var(--gold-200);
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   INSTRUCTION
+   ========================================================= */
+
+.gameplay03-instruction {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        15px
+        22px;
+
+    color:
+        #594a36;
+
+    background:
+        #fffaf0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            103,
+            80,
+            39,
+            .08
+        );
+
+}
+
+
+.gameplay03-instruction > span {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    flex:
+        0 0 34px;
+
+    border-radius: 10px;
+
+    color:
+        #173618;
+
+    background:
+        #f0dd63;
+
+    font-size: 16px;
+
+}
+
+
+.gameplay03-instruction p {
+
+    margin: 0;
+
+    color:
+        #594a36;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   SEARCH SCENE
+   ========================================================= */
+
+.gameplay03-scene {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 520px;
+
+    overflow: hidden;
+
+    background:
+        #203b1b;
+
+}
+
+
+/* =========================================================
+   SCENE BACKGROUND
+   ========================================================= */
+
+.gameplay03-scene-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+}
+
+
+/* =========================================================
+   SCENE OVERLAY
+   ========================================================= */
+
+.gameplay03-scene-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(
+                16,
+                33,
+                15,
+                .06
+            ) 0%,
+            rgba(
+                16,
+                33,
+                15,
+                .02
+            ) 55%,
+            rgba(
+                16,
+                33,
+                15,
+                .25
+            ) 100%
+        );
+
+}
+
+
+/* =========================================================
+   =========================================================
+   SEARCH OBJECT
+   =========================================================
+
+   PENTING:
+
+   app.js membuat:
+
+   class="search-object"
+
+   Jadi CSS WAJIB menggunakan:
+
+   .search-object
+
+   BUKAN:
+
+   .gameplay03-object
+
+   =========================================================
+   ========================================================= */
+
+
+/* =========================================================
+   OBJECT UTAMA
+   ========================================================= */
+
+.search-object {
+
+    position: absolute !important;
+
+    z-index: 5 !important;
+
+    display: block !important;
+
+    box-sizing: border-box;
+
+    width: 40px !important;
+
+    height: 40px !important;
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: none;
+
+    background:
+        transparent !important;
+
+    color: transparent;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    transition:
+        transform .25s ease,
+        filter .25s ease,
+        opacity .25s ease;
+
+}
+
+
+/* =========================================================
+   PASTIKAN BUTTON TIDAK MENGGANGGU
+   ========================================================= */
+
+.search-object::before,
+.search-object::after {
+
+    display: none !important;
+
+    content: none !important;
+
+}
+
+
+/* =========================================================
+   GAMBAR BENDA
+   ========================================================= */
+
+.search-object img {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    max-width: none !important;
+
+    max-height: none !important;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    filter:
+        drop-shadow(
+            0
+            3px
+            4px
+            rgba(
+                0,
+                0,
+                0,
+                .28
+            )
+        );
+
+}
+
+
+/* =========================================================
+   WRAPPER ICON
+   ========================================================= */
+
+.search-object-icon {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    font-size: 0;
+
+    line-height: 0;
+
+}
+
+
+.search-object-icon img {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   WRAPPER LAMA JIKA MASIH DIBUAT APP.JS
+   ========================================================= */
+
+.gameplay03-object-icon {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    font-size: 0;
+
+    line-height: 0;
+
+}
+
+
+.gameplay03-object-icon img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   HILANGKAN GLOW LAMA
+   ========================================================= */
+
+.search-object-glow {
+
+    display: none !important;
+
+}
+
+
+.gameplay03-object-glow {
+
+    display: none !important;
+
+}
+
+
+/* =========================================================
+   NAMA BENDA
+
+   Nama tidak ditampilkan.
+   Pemain mencari berdasarkan bentuk benda.
+   ========================================================= */
+
+.search-object-name {
+
+    display: none !important;
+
+}
+
+
+.gameplay03-object-name {
+
+    display: none !important;
+
+}
+
+
+/* =========================================================
+   HOVER OBJECT
+   ========================================================= */
+
+.search-object:hover {
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(1.14);
+
+    filter:
+        brightness(1.08)
+        drop-shadow(
+            0
+            0
+            8px
+            rgba(
+                240,
+                221,
+                99,
+                .32
+            )
+        );
+
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.search-object:focus-visible {
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(1.10);
+
+    outline:
+        2px solid
+        rgba(
+            240,
+            221,
+            99,
+            .90
+        );
+
+    outline-offset: 4px;
+
+}
+
+
+/* =========================================================
+   OBJECT POSITIONS
+   =========================================================
+
+   01 — Lentera
+   02 — Tongkat
+   03 — Tanda
+   04 — Pusaka
+   05 — Jejak
+
+   Semua posisi menggunakan data-object-id
+   yang dibuat oleh app.js.
+   ========================================================= */
+
+
+/* =========================================================
+   01 — LENTERA
+   ========================================================= */
+
+.search-object[data-object-id="lentera"] {
+
+    left: 17% !important;
+
+    top: 34% !important;
+
+    width: 42px !important;
+
+    height: 42px !important;
+
+}
+
+
+/* =========================================================
+   02 — TONGKAT
+   ========================================================= */
+
+.search-object[data-object-id="tongkat"] {
+
+    left: 46% !important;
+
+    top: 67% !important;
+
+    width: 44px !important;
+
+    height: 44px !important;
+
+}
+
+
+/* =========================================================
+   03 — TANDA
+   ========================================================= */
+
+.search-object[data-object-id="tanda"] {
+
+    left: 69% !important;
+
+    top: 38% !important;
+
+    width: 38px !important;
+
+    height: 38px !important;
+
+}
+
+
+/* =========================================================
+   04 — PUSAKA
+   ========================================================= */
+
+.search-object[data-object-id="pusaka"] {
+
+    left: 81% !important;
+
+    top: 62% !important;
+
+    width: 42px !important;
+
+    height: 42px !important;
+
+}
+
+
+/* =========================================================
+   05 — JEJAK
+   ========================================================= */
+
+.search-object[data-object-id="jejak"] {
+
+    left: 37% !important;
+
+    top: 78% !important;
+
+    width: 40px !important;
+
+    height: 40px !important;
+
+}
+
+
+/* =========================================================
+   OBJECT FLOAT
+   ========================================================= */
+
+.search-object:not(.found) {
+
+    animation:
+        objectHiddenFloat
+        3.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+.search-object[data-object-id="lentera"] {
+
+    animation-delay:
+        0s;
+
+}
+
+
+.search-object[data-object-id="tongkat"] {
+
+    animation-delay:
+        -.7s;
+
+}
+
+
+.search-object[data-object-id="tanda"] {
+
+    animation-delay:
+        -1.1s;
+
+}
+
+
+.search-object[data-object-id="pusaka"] {
+
+    animation-delay:
+        -1.6s;
+
+}
+
+
+.search-object[data-object-id="jejak"] {
+
+    animation-delay:
+        -2s;
+
+}
+
+
+@keyframes objectHiddenFloat {
+
+    0%,
+    100% {
+
+        margin-top: 0;
+
+    }
+
+    50% {
+
+        margin-top: -3px;
+
+    }
+
+}
+
+
+/* =========================================================
+   OBJECT DITEMUKAN
+   ========================================================= */
+
+.search-object.found {
+
+    pointer-events: none;
+
+    animation:
+        searchObjectFound
+        .55s
+        ease
+        forwards;
+
+}
+
+
+@keyframes searchObjectFound {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(1);
+
+    }
+
+    45% {
+
+        opacity: 1;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(1.18);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(.72);
+
+    }
+
+}
+
+
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
+
+.gameplay03-feedback {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 24px;
+
+    z-index: 10;
+
+    transform:
+        translate(
+            -50%,
+            15px
+        );
+
+    width:
+        min(
+            500px,
+            calc(
+                100% - 40px
+            )
+        );
+
+    padding:
+        13px
+        18px;
+
+    border:
+        1px solid
+        rgba(
+            240,
+            221,
+            99,
+            .35
+        );
+
+    border-radius: 10px;
+
+    color:
+        #fff8dc;
+
+    background:
+        rgba(
+            18,
+            43,
+            17,
+            .90
+        );
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+.gameplay03-feedback.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translate(
+            -50%,
+            0
+        );
+
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.gameplay03-progress {
+
+    height: 7px;
+
+    margin:
+        18px
+        24px
+        0;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        #e5dfcd;
+
+}
+
+
+.gameplay03-progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d4b735,
+            #f0dd63
+        );
+
+    transition:
+        width .4s ease;
+
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.gameplay03-action {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    padding:
+        18px
+        24px
+        24px;
+
+}
+
+
+.gameplay03-action
+.gameplay-screen-button {
+
+    min-width: 190px;
+
+}
+
+
+/* =========================================================
+   DISABLED FINISH BUTTON
+   ========================================================= */
+
+.gameplay03-action
+.gameplay-screen-button:disabled {
+
+    opacity: .45;
+
+    cursor: not-allowed;
+
+    transform: none !important;
+
+}
+
+
+/* =========================================================
+   READY FINISH BUTTON
+   ========================================================= */
+
+.gameplay03-action
+.gameplay-screen-button.ready {
+
+    opacity: 1;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   OBJECT DETAIL MODAL
+   ========================================================= */
+
+body.modal-open {
+
+    overflow: hidden;
+
+}
+
+
+.gameplay03-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 24px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+
+}
+
+
+.gameplay03-modal.show,
+.gameplay03-modal.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+/* =========================================================
+   MODAL BACKDROP
+   ========================================================= */
+
+.gameplay03-modal-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(
+            17,
+            27,
+            14,
+            .72
+        );
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+/* =========================================================
+   MODAL CARD
+   ========================================================= */
+
+.gameplay03-modal-card {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            620px,
+            100%
+        );
+
+    max-height:
+        min(
+            760px,
+            calc(
+                100vh - 48px
+            )
+        );
+
+    overflow-y: auto;
+
+    padding: 34px;
+
+    border:
+        1px solid
+        rgba(
+            103,
+            80,
+            39,
+            .16
+        );
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf6,
+            #f8f0df
+        );
+
+    box-shadow:
+        0
+        28px
+        80px
+        rgba(
+            0,
+            0,
+            0,
+            .28
+        );
+
+    transform:
+        translateY(18px)
+        scale(.97);
+
+    transition:
+        transform .28s ease;
+
+}
+
+
+.gameplay03-modal.show
+.gameplay03-modal-card,
+.gameplay03-modal.active
+.gameplay03-modal-card {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+/* =========================================================
+   MODAL CLOSE
+   ========================================================= */
+
+.gameplay03-modal-close {
+
+    position: absolute;
+
+    top: 14px;
+
+    right: 16px;
+
+    z-index: 5;
+
+    width: 38px;
+
+    height: 38px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    color:
+        #173618;
+
+    background:
+        #eee4cd;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+
+}
+
+
+.gameplay03-modal-close:hover {
+
+    transform:
+        rotate(8deg)
+        scale(1.06);
+
+    background:
+        #e6d7b8;
+
+}
+
+
+/* =========================================================
+   MODAL OBJECT IMAGE
+   ========================================================= */
+
+.gameplay03-modal-icon {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 110px;
+
+    height: 110px;
+
+    margin-bottom: 16px;
+
+    border-radius: 20px;
+
+    background:
+        #f5edda;
+
+    box-shadow:
+        0
+        12px
+        28px
+        rgba(
+            103,
+            80,
+            39,
+            .12
+        );
+
+}
+
+
+.info-object-image {
+
+    display: block;
+
+    width: 82px;
+
+    height: 82px;
+
+    object-fit: contain;
+
+}
+
+
+/* =========================================================
+   MODAL CATEGORY
+   ========================================================= */
+
+.gameplay03-modal-card > small {
+
+    color:
+        #8a6d22;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
+}
+
+
+/* =========================================================
+   MODAL NAME
+   ========================================================= */
+
+.gameplay03-modal-card h2 {
+
+    margin:
+        6px
+        0
+        14px;
+
+    color:
+        #173618;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 34px;
+
+    line-height: 1.05;
+
+}
+
+
+/* =========================================================
+   MODAL DESCRIPTION
+   ========================================================= */
+
+.gameplay03-modal-card > p {
+
+    margin:
+        0
+        0
+        22px;
+
+    color:
+        #594a36;
+
+    font-size: 14px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   VOCABULARY
+   ========================================================= */
+
+.gameplay03-modal-vocab {
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    background:
+        #fffaf0;
+
+    border:
+        1px solid
+        rgba(
+            103,
+            80,
+            39,
+            .10
+        );
+
+}
+
+
+.gameplay03-modal-vocab-heading {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color:
+        #8a6d22;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .14em;
+
+}
+
+
+/* =========================================================
+   VOCAB ITEM
+   ========================================================= */
+
+.gameplay03-vocab-item {
+
+    display: grid;
+
+    grid-template-columns:
+        120px
+        1fr;
+
+    gap: 12px;
+
+    padding:
+        9px
+        0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            103,
+            80,
+            39,
+            .08
+        );
+
+}
+
+
+.gameplay03-vocab-item:last-child {
+
+    border-bottom: 0;
+
+}
+
+
+.gameplay03-vocab-item strong {
+
+    color:
+        #173618;
+
+    font-size: 14px;
+
+}
+
+
+.gameplay03-vocab-item span {
+
+    color:
+        #6d5b45;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   HTML LANGSUNG DARI LANGUAGE
+   ========================================================= */
+
+.info-object-language {
+
+    color:
+        #594a36;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+.info-object-language strong {
+
+    color:
+        #173618;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   CONTOH KALIMAT
+   ========================================================= */
+
+.gameplay03-modal-example {
+
+    margin-top: 14px;
+
+    padding: 18px;
+
+    border-left:
+        3px solid
+        #d4b735;
+
+    border-radius:
+        0
+        12px
+        12px
+        0;
+
+    background:
+        #f5edda;
+
+}
+
+
+.gameplay03-modal-example > span {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color:
+        #8a6d22;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .14em;
+
+}
+
+
+.gameplay03-modal-example p {
+
+    margin: 0;
+
+    color:
+        #4f432f;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   MODAL ACTION
+   ========================================================= */
+
+.gameplay03-modal-action {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding:
+        14px
+        18px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    color:
+        #fffaf0;
+
+    background:
+        #173618;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+
+}
+
+
+.gameplay03-modal-action:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        #244b25;
+
+}
+
+
+/* =========================================================
+   FINISH
+   ========================================================= */
+
+.gameplay03-search.finished {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   FIX FINISH SCREEN GAMEPLAY 03
+   ========================================================= */
+
+#finishScreen {
+
+    position: relative !important;
+
+    width: 100% !important;
+
+    min-height: 650px;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        70px
+        50px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background:
+        transparent;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   SAAT FINISH DITAMPILKAN
+   ========================================================= */
+
+#finishScreen[style*="display: block"] {
+
+    display: flex !important;
+
+}
+
+
+/* =========================================================
+   FINISH SYMBOL
+   ========================================================= */
+
+#finishScreen .gameplay-finish-symbol {
+
+    position: static !important;
+
+    display: grid !important;
+
+    place-items: center;
+
+    width: 76px !important;
+
+    height: 76px !important;
+
+    margin:
+        0
+        auto
+        24px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    color:
+        #173618;
+
+    background:
+        #f0dd63;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    box-shadow:
+        0
+        12px
+        30px
+        rgba(
+            103,
+            80,
+            39,
+            .12
+        );
+
+}
+
+
+/* =========================================================
+   FINISH LABEL
+   ========================================================= */
+
+#finishScreen .game-screen-label {
+
+    position: static !important;
+
+    display: block !important;
+
+    width: auto !important;
+
+    margin:
+        0
+        auto
+        12px;
+
+    color:
+        #b08b20;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+
+    line-height: 1.4;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   FINISH TITLE
+   ========================================================= */
+
+#finishScreen h1 {
+
+    position: static !important;
+
+    display: block !important;
+
+    width: 100% !important;
+
+    margin:
+        0
+        auto
+        24px;
+
+    padding: 0;
+
+    color:
+        #173618;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            52px,
+            6vw,
+            82px
+        );
+
+    line-height: 1;
+
+    letter-spacing: -.04em;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   FINISH DESCRIPTION
+   ========================================================= */
+
+#finishScreen > p {
+
+    position: static !important;
+
+    width:
+        min(
+            700px,
+            100%
+        ) !important;
+
+    margin:
+        0
+        auto
+        32px;
+
+    padding: 0;
+
+    color:
+        #665b49;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   FINISH REWARD
+   ========================================================= */
+
+#finishScreen .gameplay-reward {
+
+    position: static !important;
+
+    display: flex !important;
+
+    align-items: baseline;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    width: 100% !important;
+
+    margin:
+        7px
+        auto;
+
+    padding: 0;
+
+    border: 0;
+
+    background:
+        transparent;
+
+    box-shadow: none;
+
+}
+
+
+/* =========================================================
+   REWARD LABEL
+   ========================================================= */
+
+#finishScreen .gameplay-reward span {
+
+    color:
+        #b08b20;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
+}
+
+
+/* =========================================================
+   REWARD VALUE
+   ========================================================= */
+
+#finishScreen .gameplay-reward strong {
+
+    color:
+        #173618;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   FINISH BUTTON
+   ========================================================= */
+
+#finishScreen .gameplay-finish-button {
+
+    position: static !important;
+
+    display: flex !important;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    width:
+        275px !important;
+
+    margin:
+        32px
+        auto
+        0;
+
+    padding:
+        16px
+        22px;
+
+    box-sizing: border-box;
+
+    border-radius: 12px;
+
+    color:
+        #fffaf0;
+
+    background:
+        #173618;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+    text-align: left;
+
+    box-shadow:
+        0
+        12px
+        25px
+        rgba(
+            23,
+            54,
+            24,
+            .15
+        );
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+#finishScreen .gameplay-finish-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        #244b25;
+
+    box-shadow:
+        0
+        16px
+        30px
+        rgba(
+            23,
+            54,
+            24,
+            .20
+        );
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+
+    /* -----------------------------------------------------
+       SEARCH HEADER
+       ----------------------------------------------------- */
+
+    .gameplay03-search-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding:
+            20px;
+
+    }
+
+
+    .gameplay03-counter {
+
+        width: 100%;
+
+        align-items: flex-start;
+
+    }
+
+
+    /* -----------------------------------------------------
+       SCENE
+       ----------------------------------------------------- */
+
+    .gameplay03-scene {
+
+        height: 430px;
+
+    }
+
+
+    /* -----------------------------------------------------
+       SEARCH OBJECT
+       ----------------------------------------------------- */
+
+    .search-object {
+
+        width: 34px !important;
+
+        height: 34px !important;
+
+    }
+
+
+    .search-object[data-object-id="lentera"] {
+
+        width: 38px !important;
+
+        height: 38px !important;
+
+    }
+
+
+    .search-object[data-object-id="tongkat"] {
+
+        width: 40px !important;
+
+        height: 40px !important;
+
+    }
+
+
+    .search-object[data-object-id="tanda"] {
+
+        width: 34px !important;
+
+        height: 34px !important;
+
+    }
+
+
+    .search-object[data-object-id="pusaka"] {
+
+        width: 38px !important;
+
+        height: 38px !important;
+
+    }
+
+
+    .search-object[data-object-id="jejak"] {
+
+        width: 36px !important;
+
+        height: 36px !important;
+
+    }
+
+
+    /* -----------------------------------------------------
+       ACTION
+       ----------------------------------------------------- */
+
+    .gameplay03-action {
+
+        padding:
+            16px
+            18px
+            20px;
+
+    }
+
+
+    .gameplay03-action
+    .gameplay-screen-button {
+
+        width: 100%;
+
+    }
+
+
+    /* -----------------------------------------------------
+       MODAL
+       ----------------------------------------------------- */
+
+    .gameplay03-modal {
+
+        padding: 14px;
+
+    }
+
+
+    .gameplay03-modal-card {
+
+        padding:
+            26px
+            20px
+            20px;
+
+        border-radius: 18px;
+
+    }
+
+
+    .gameplay03-modal-card h2 {
+
+        font-size: 29px;
+
+    }
+
+
+    .gameplay03-modal-card > p {
+
+        font-size: 13px;
+
+    }
+
+
+    .gameplay03-vocab-item {
+
+        grid-template-columns: 1fr;
+
+        gap: 3px;
+
+    }
+
+
+    .gameplay03-modal-icon {
+
+        width: 80px;
+
+        height: 80px;
+
+    }
+
+
+    .info-object-image {
+
+        width: 62px;
+
+        height: 62px;
+
+    }
+
+
+    /* -----------------------------------------------------
+       FINISH MOBILE
+       ----------------------------------------------------- */
+
+    #finishScreen {
+
+        min-height: 600px;
+
+        padding:
+            60px
+            22px;
+
+    }
+
+
+    #finishScreen
+    .gameplay-finish-symbol {
+
+        width: 64px !important;
+
+        height: 64px !important;
+
+        margin-bottom: 20px;
+
+        font-size: 25px;
+
+    }
+
+
+    #finishScreen h1 {
+
+        font-size: 48px;
+
+    }
+
+
+    #finishScreen > p {
+
+        font-size: 13px;
+
+        line-height: 1.7;
+
+    }
+
+
+    #finishScreen
+    .gameplay-reward strong {
+
+        font-size: 25px;
+
+    }
+
+
+    #finishScreen
+    .gameplay-finish-button {
+
+        width: 100% !important;
+
+        max-width: 280px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+
+    .gameplay03-scene {
+
+        height: 390px;
+
+    }
+
+
+    .gameplay03-instruction {
+
+        align-items: flex-start;
+
+    }
+
+
+    .gameplay03-instruction p {
+
+        font-size: 11px;
+
+    }
+
+
+    /* -----------------------------------------------------
+       SEARCH OBJECT
+       ----------------------------------------------------- */
+
+    .search-object {
+
+        width: 30px !important;
+
+        height: 30px !important;
+
+    }
+
+
+    .search-object[data-object-id="lentera"] {
+
+        left: 17% !important;
+
+        top: 34% !important;
+
+        width: 34px !important;
+
+        height: 34px !important;
+
+    }
+
+
+    .search-object[data-object-id="tongkat"] {
+
+        left: 46% !important;
+
+        top: 67% !important;
+
+        width: 36px !important;
+
+        height: 36px !important;
+
+    }
+
+
+    .search-object[data-object-id="tanda"] {
+
+        left: 69% !important;
+
+        top: 38% !important;
+
+        width: 32px !important;
+
+        height: 32px !important;
+
+    }
+
+
+    .search-object[data-object-id="pusaka"] {
+
+        left: 81% !important;
+
+        top: 62% !important;
+
+        width: 34px !important;
+
+        height: 34px !important;
+
+    }
+
+
+    .search-object[data-object-id="jejak"] {
+
+        left: 37% !important;
+
+        top: 78% !important;
+
+        width: 34px !important;
+
+        height: 34px !important;
+
+    }
+
+
+    /* -----------------------------------------------------
+       FINISH SMALL MOBILE
+       ----------------------------------------------------- */
+
+    #finishScreen {
+
+        min-height: 560px;
+
+        padding:
+            50px
+            18px;
+
+    }
+
+
+    #finishScreen h1 {
+
+        font-size: 42px;
+
+    }
+
+
+    #finishScreen > p {
+
+        font-size: 12px;
+
+    }
+
+
+    #finishScreen
+    .gameplay-reward {
+
+        gap: 8px;
+
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+
+    .search-object,
+    .gameplay03-object {
+
+        animation: none !important;
+
+        transition: none !important;
+
+    }
+
+
+    .search-object-glow,
+    .gameplay03-object-glow {
+
+        animation: none !important;
+
+    }
+
+
+    .gameplay03-modal,
+    .gameplay03-modal-card,
+    .gameplay03-feedback,
+    .gameplay03-progress-bar {
+
+        transition: none !important;
+
+    }
+
+
+    #finishScreen
+    .gameplay-finish-button {
+
+        transition: none !important;
+
+    }
+
+}

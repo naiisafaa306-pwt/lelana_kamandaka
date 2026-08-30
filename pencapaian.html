@@ -1,503 +1,128 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lelana Kamandaka - Pencapaian</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+        name="description"
+        content="Lelana Kamandaka — Pencapaian perjalanan."
+    >
+
+    <title>
+        Lelana Kamandaka — Pencapaian
+    </title>
+
+
+    <!-- =========================================================
+         FONT
+         ========================================================= -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:wght@400;700&display=swap"
         rel="stylesheet"
     >
 
-    <style>
 
-        /* =========================================================
-           DASAR
-           ========================================================= */
+    <!-- =========================================================
+         NAVBAR GLOBAL
+         ========================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="css/navbar.css"
+    >
+
+
+    <!-- =========================================================
+         STYLE PENCAPAIAN
+         ========================================================= -->
+
+    <style>
 
         * {
             box-sizing: border-box;
+
             margin: 0;
+
             padding: 0;
         }
+
 
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
             min-height: 100vh;
+
             background: #f3efdc;
+
             color: #17351b;
-            font-family: "Hanken Grotesk", sans-serif;
+
+            font-family:
+                "Hanken Grotesk",
+                sans-serif;
         }
+
 
         a {
             text-decoration: none;
+
             color: inherit;
         }
 
 
-        /* =========================================================
-           LAYOUT UTAMA
-           ========================================================= */
-
-        .page {
-            min-height: 100vh;
-            display: flex;
-        }
-
-
-        /* =========================================================
-           SIDEBAR
-           ========================================================= */
-
-        .sidebar {
-            width: 247px;
-            min-width: 247px;
-            min-height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            z-index: 50;
-
-            background: #0c2c12;
-            border-right: 1px solid rgba(214, 184, 50, 0.16);
-
-            display: flex;
-            flex-direction: column;
-
-            padding: 18px 13px 24px;
-        }
-
-
-        /* =========================================================
-           LOGO
-           ========================================================= */
-
-        .brand {
-            height: 104px;
-
-            display: flex;
-            align-items: center;
-
-            padding: 0 4px;
-
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-
-            margin-bottom: 28px;
-        }
-
-        .brand-mark {
-            width: 82px;
-            height: 82px;
-
-            border: 2px solid #d7bd37;
-
-            transform: rotate(45deg);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin-left: 9px;
-            margin-right: 19px;
-        }
-
-        .brand-mark-inner {
-            width: 100%;
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            transform: rotate(-45deg);
-
-            color: #ead43f;
-            font-size: 28px;
-        }
-
-        .brand-text {
-            display: flex;
-            flex-direction: column;
-
-            line-height: 1;
-        }
-
-        .brand-text strong {
-            color: #f3eed7;
-
-            font-family: "Libre Caslon Text", serif;
-
-            font-size: 27px;
-            font-weight: 700;
-
-            letter-spacing: -1px;
-        }
-
-        .brand-text small {
-            color: #d6ba31;
-
-            font-size: 9px;
-            font-weight: 700;
-
-            letter-spacing: 2px;
-
-            margin-top: 7px;
-        }
-
-
-        /* =========================================================
-           MENU SIDEBAR
-           ========================================================= */
-
-        .side-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .side-link {
-            height: 64px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 15px;
-
-            padding: 0 17px;
-
-            border-radius: 13px;
-
-            color: rgba(244,241,218,0.72);
-
-            font-size: 14px;
-            font-weight: 600;
-
-            position: relative;
-
-            transition: 0.2s ease;
-        }
-
-        .side-link:hover {
-            background: rgba(72,110,37,0.25);
-            color: #f4f0d8;
-        }
-
-        .side-link.active {
-            background: #355f20;
-            color: #fffce7;
-
-            border: 1px solid rgba(215,189,55,0.32);
-
-            box-shadow:
-                inset 0 0 0 1px rgba(255,255,255,0.025);
-        }
-
-        .side-link.active::before {
-            content: "";
-
-            position: absolute;
-
-            left: -1px;
-            top: 8px;
-            bottom: 8px;
-
-            width: 4px;
-
-            background: #e2c833;
-
-            border-radius: 0 4px 4px 0;
-        }
-
-
-        /* =========================================================
-           ICON SIDEBAR
-           ========================================================= */
-
-        .side-icon {
-            width: 38px;
-            height: 38px;
-
-            flex: 0 0 38px;
-
-            border-radius: 9px;
-
-            background: rgba(244,237,190,0.08);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .side-link.active .side-icon {
-            background: #e0c533;
-        }
-
-        .side-icon img {
-            width: 20px;
-            height: 20px;
-
-            object-fit: contain;
-        }
-
-
-        /* =========================================================
-           SIDEBAR BAWAH
-           ========================================================= */
-
-        .sidebar-bottom {
-            margin-top: auto;
-
-            padding: 0 15px;
-        }
-
-        .sidebar-line {
-            width: 46px;
-            height: 1px;
-
-            background: #bda72f;
-
-            margin-bottom: 17px;
-        }
-
-        .sidebar-quote {
-            color: rgba(239,235,207,0.72);
-
-            font-family: "Libre Caslon Text", serif;
-
-            font-size: 16px;
-            font-style: italic;
-
-            line-height: 1.35;
-        }
-
-        .sidebar-symbol {
-            color: #d5bd31;
-
-            margin-top: 17px;
-
-            font-size: 18px;
-        }
-
-
-        /* =========================================================
-           KONTEN KANAN
-           ========================================================= */
-
-        .main {
-            margin-left: 247px;
-
-            width: calc(100% - 247px);
-
+        /* =====================================================
+           MAIN
+           ===================================================== */
+
+        .pencapaian-page {
             min-height: 100vh;
 
             background:
                 radial-gradient(
                     circle at 70% 20%,
-                    rgba(226,205,114,0.13),
+                    rgba(226, 205, 114, 0.13),
                     transparent 30%
                 ),
                 #f3efdc;
         }
 
 
-        /* =========================================================
-           TOP NAV
-           ========================================================= */
-
-        .topbar {
-            height: 88px;
-
-            background: #0d2d13;
-
-            display: flex;
-            align-items: center;
-
-            padding: 0 24px 0 36px;
-
-            position: sticky;
-            top: 0;
-
-            z-index: 40;
-
-            border-bottom: 1px solid rgba(214,184,50,0.12);
-        }
-
-        .top-menu {
-            display: flex;
-            align-items: center;
-
-            gap: 8px;
-        }
-
-        .top-link {
-            min-width: 104px;
-            height: 44px;
-
-            padding: 0 17px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            gap: 9px;
-
-            border-radius: 12px;
-
-            color: rgba(241,239,215,0.68);
-
-            font-size: 13px;
-            font-weight: 600;
-
-            transition: 0.2s ease;
-        }
-
-        .top-link:hover {
-            background: rgba(62,103,32,0.22);
-            color: #fffde9;
-        }
-
-        .top-link.active {
-            background: #355f20;
-            color: #fffde9;
-        }
-
-        .top-link img {
-            width: 17px;
-            height: 17px;
-
-            object-fit: contain;
+        .pencapaian-content {
+            padding:
+                48px 38px 70px;
         }
 
 
-        /* =========================================================
-           TOP PROFILE
-           ========================================================= */
-
-        .top-profile {
-            margin-left: auto;
-
-            display: flex;
-            align-items: center;
-
-            gap: 15px;
-        }
-
-        .top-divider {
-            width: 1px;
-            height: 42px;
-
-            background: rgba(255,255,255,0.1);
-
-            margin-right: 5px;
-        }
-
-        .profile-circle {
-            width: 47px;
-            height: 47px;
-
-            border-radius: 50%;
-
-            border: 1px solid #d6bb2e;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            color: #e5c934;
-
-            font-weight: 700;
-            font-size: 13px;
-        }
-
-        .level-info {
-            width: 128px;
-
-            display: flex;
-            flex-direction: column;
-
-            gap: 5px;
-        }
-
-        .level-row {
-            display: flex;
-            justify-content: space-between;
-
-            color: #f0edd5;
-
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .xp-bar {
-            width: 100%;
-            height: 6px;
-
-            background: rgba(235,229,196,0.17);
-
-            border-radius: 20px;
-
-            overflow: hidden;
-        }
-
-        .xp-fill {
-            width: 10%;
-            height: 100%;
-
-            background: #d9c332;
-
-            border-radius: 20px;
-        }
-
-        .xp-text {
-            text-align: right;
-
-            color: rgba(237,233,207,0.5);
-
-            font-size: 8px;
-        }
-
-        .top-circle-button {
-            width: 43px;
-            height: 43px;
-
-            border-radius: 50%;
-
-            border: 1px solid rgba(226,207,91,0.22);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .top-circle-button img {
-            width: 17px;
-            height: 17px;
-
-            object-fit: contain;
-        }
-
-
-        /* =========================================================
-           KONTEN PENCAPAIAN
-           ========================================================= */
-
-        .content {
-            padding: 48px 38px 70px;
-        }
+        /* =====================================================
+           HEADER
+           ===================================================== */
 
         .eyebrow {
             color: #ae8e1d;
 
             font-size: 10px;
+
             font-weight: 700;
 
             letter-spacing: 4px;
@@ -505,16 +130,21 @@
             margin-bottom: 10px;
         }
 
+
         .page-title {
             color: #123719;
 
-            font-family: "Libre Caslon Text", serif;
+            font-family:
+                "Libre Caslon Text",
+                serif;
 
             font-size: 52px;
+
             line-height: 1;
 
             margin-bottom: 13px;
         }
+
 
         .page-description {
             color: #7c7c68;
@@ -525,65 +155,82 @@
         }
 
 
-        /* =========================================================
-           PROFILE CARD
-           ========================================================= */
+        /* =====================================================
+           PLAYER CARD
+           ===================================================== */
 
         .player-card {
             background: #fffdf2;
 
-            border: 1px solid #ded9c4;
+            border:
+                1px solid #ded9c4;
 
             border-radius: 20px;
 
-            padding: 27px 31px;
+            padding:
+                27px 31px;
 
             display: flex;
+
             align-items: center;
 
             gap: 24px;
 
             margin-bottom: 25px;
 
-            box-shadow: 0 5px 20px rgba(46,51,28,0.035);
+            box-shadow:
+                0 5px 20px
+                rgba(46, 51, 28, 0.035);
         }
+
 
         .player-avatar {
             width: 74px;
+
             height: 74px;
 
             border-radius: 50%;
 
             background: #f3e8a9;
 
-            border: 1px solid #d7bb2c;
+            border:
+                1px solid #d7bb2c;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             color: #1b401f;
 
             font-size: 18px;
+
             font-weight: 700;
 
             flex-shrink: 0;
         }
 
+
         .player-info {
             flex: 1;
         }
 
+
         .player-name {
             color: #15391a;
 
-            font-family: "Libre Caslon Text", serif;
+            font-family:
+                "Libre Caslon Text",
+                serif;
 
             font-size: 29px;
+
             font-weight: 700;
 
             margin-bottom: 4px;
         }
+
 
         .player-description {
             color: #777867;
@@ -591,21 +238,26 @@
             font-size: 13px;
         }
 
+
         .player-level {
             min-width: 190px;
         }
 
+
         .player-level-top {
             display: flex;
+
             justify-content: space-between;
 
             color: #1d401f;
 
             font-size: 12px;
+
             font-weight: 700;
 
             margin-bottom: 8px;
         }
+
 
         .player-xp {
             height: 7px;
@@ -617,12 +269,18 @@
             overflow: hidden;
         }
 
+
         .player-xp-fill {
             width: 10%;
+
             height: 100%;
 
             background: #d7c22f;
+
+            transition:
+                width 0.4s ease;
         }
+
 
         .player-xp-number {
             color: #8b8a75;
@@ -635,29 +293,31 @@
         }
 
 
-        /* =========================================================
-           GRID PENCAPAIAN
-           ========================================================= */
+        /* =====================================================
+           ACHIEVEMENT GRID
+           ===================================================== */
 
         .achievement-grid {
             display: grid;
 
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
 
             gap: 18px;
         }
 
 
-        /* =========================================================
-           CARD PENCAPAIAN
-           ========================================================= */
+        /* =====================================================
+           ACHIEVEMENT CARD
+           ===================================================== */
 
         .achievement-card {
             min-height: 160px;
 
             background: #fffdf3;
 
-            border: 1px solid #ded9c4;
+            border:
+                1px solid #ded9c4;
 
             border-radius: 18px;
 
@@ -673,22 +333,30 @@
 
             overflow: hidden;
 
-            transition: transform 0.2s ease,
-                        box-shadow 0.2s ease;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
+
 
         .achievement-card:hover {
-            transform: translateY(-2px);
+            transform:
+                translateY(-2px);
 
-            box-shadow: 0 8px 20px rgba(38,52,29,0.06);
+            box-shadow:
+                0 8px 20px
+                rgba(38, 52, 29, 0.06);
         }
+
 
         .achievement-card.locked {
             opacity: 0.62;
         }
 
+
         .achievement-icon {
             width: 67px;
+
             height: 67px;
 
             min-width: 67px;
@@ -697,33 +365,45 @@
 
             background: #315d21;
 
-            border: 1px solid rgba(204,180,48,0.55);
+            border:
+                1px solid
+                rgba(204, 180, 48, 0.55);
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
         }
 
+
         .achievement-icon img {
             width: 29px;
+
             height: 29px;
 
             object-fit: contain;
         }
 
-        .achievement-card.locked .achievement-icon {
+
+        .achievement-card.locked
+        .achievement-icon {
             background: #e7e1c9;
+
             border-color: #d6d0b8;
         }
+
 
         .achievement-content {
             min-width: 0;
         }
 
+
         .achievement-status {
             color: #b0911c;
 
             font-size: 9px;
+
             font-weight: 700;
 
             letter-spacing: 2px;
@@ -731,16 +411,21 @@
             margin-bottom: 6px;
         }
 
+
         .achievement-title {
             color: #193c1e;
 
-            font-family: "Libre Caslon Text", serif;
+            font-family:
+                "Libre Caslon Text",
+                serif;
 
             font-size: 22px;
+
             font-weight: 700;
 
             margin-bottom: 5px;
         }
+
 
         .achievement-description {
             color: #81816e;
@@ -750,61 +435,74 @@
             line-height: 1.5;
         }
 
+
         .achievement-number {
             position: absolute;
 
             right: 19px;
+
             top: 17px;
 
             color: #b89b26;
 
-            font-family: "Libre Caslon Text", serif;
+            font-family:
+                "Libre Caslon Text",
+                serif;
 
             font-size: 18px;
         }
 
 
-        /* =========================================================
-           PENCAPAIAN SELESAI
-           ========================================================= */
+        /* =====================================================
+           COMPLETED
+           ===================================================== */
 
         .achievement-card.completed {
-            border-left: 4px solid #d5be2e;
+            border-left:
+                4px solid #d5be2e;
         }
 
-        .achievement-card.completed .achievement-icon {
+
+        .achievement-card.completed
+        .achievement-icon {
             background: #315d21;
         }
 
 
-        /* =========================================================
-           RINGKASAN
-           ========================================================= */
+        /* =====================================================
+           SUMMARY
+           ===================================================== */
 
         .summary {
             margin-top: 25px;
 
             display: grid;
 
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns:
+                repeat(3, 1fr);
 
             gap: 16px;
         }
 
+
         .summary-card {
             background: #fffdf3;
 
-            border: 1px solid #ded9c4;
+            border:
+                1px solid #ded9c4;
 
             border-radius: 15px;
 
-            padding: 19px 22px;
+            padding:
+                19px 22px;
         }
+
 
         .summary-label {
             color: #9b8b52;
 
             font-size: 9px;
+
             font-weight: 700;
 
             letter-spacing: 2px;
@@ -812,36 +510,25 @@
             margin-bottom: 7px;
         }
 
+
         .summary-value {
             color: #183b1d;
 
-            font-family: "Libre Caslon Text", serif;
+            font-family:
+                "Libre Caslon Text",
+                serif;
 
             font-size: 28px;
+
             font-weight: 700;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            RESPONSIVE
-           ========================================================= */
+           ===================================================== */
 
         @media (max-width: 1100px) {
-
-            .sidebar {
-                width: 210px;
-                min-width: 210px;
-            }
-
-            .main {
-                margin-left: 210px;
-                width: calc(100% - 210px);
-            }
-
-            .top-link {
-                min-width: auto;
-                padding: 0 11px;
-            }
 
             .achievement-grid {
                 grid-template-columns: 1fr;
@@ -852,77 +539,26 @@
 
         @media (max-width: 800px) {
 
-            .sidebar {
-                position: relative;
-
-                width: 100%;
-                min-width: 100%;
-                min-height: auto;
-
-                padding: 10px 12px;
+            .pencapaian-content {
+                padding:
+                    30px 20px 50px;
             }
 
-            .page {
-                display: block;
-            }
-
-            .brand {
-                display: none;
-            }
-
-            .side-menu {
-                flex-direction: row;
-                overflow-x: auto;
-            }
-
-            .side-link {
-                min-width: 100px;
-                height: 52px;
-
-                justify-content: center;
-
-                padding: 0 10px;
-            }
-
-            .side-icon {
-                width: 30px;
-                height: 30px;
-                flex-basis: 30px;
-            }
-
-            .side-icon img {
-                width: 16px;
-                height: 16px;
-            }
-
-            .sidebar-bottom {
-                display: none;
-            }
-
-            .main {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            .topbar {
-                display: none;
-            }
-
-            .content {
-                padding: 30px 20px 50px;
-            }
 
             .page-title {
                 font-size: 42px;
             }
 
+
             .player-card {
                 flex-wrap: wrap;
             }
 
+
             .player-level {
                 width: 100%;
             }
+
 
             .summary {
                 grid-template-columns: 1fr;
@@ -933,25 +569,19 @@
 
         @media (max-width: 500px) {
 
-            .side-menu {
-                gap: 3px;
-            }
-
-            .side-link {
-                min-width: 84px;
-                font-size: 11px;
-                gap: 5px;
-            }
-
             .achievement-card {
                 padding: 18px;
             }
 
+
             .achievement-icon {
                 width: 54px;
+
                 min-width: 54px;
+
                 height: 54px;
             }
+
 
             .achievement-title {
                 font-size: 18px;
@@ -960,396 +590,31 @@
         }
 
     </style>
+
 </head>
 
 
 <body>
 
-<div class="page">
-
 
     <!-- =========================================================
-         SIDEBAR
+         NAVBAR GLOBAL
          ========================================================= -->
 
-    <aside class="sidebar">
-
-
-        <!-- LOGO -->
-
-        <a href="index.html" class="brand">
-
-            <div class="brand-mark">
-
-                <div class="brand-mark-inner">
-                    ✦
-                </div>
-
-            </div>
-
-            <div class="brand-text">
-
-                <strong>
-                    LELANA
-                </strong>
-
-                <small>
-                    KAMANDAKA
-                </small>
-
-            </div>
-
-        </a>
-
-
-        <!-- MENU -->
-
-        <nav class="side-menu">
-
-
-            <!-- BERANDA -->
-
-            <a
-                href="index.html"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <img
-                        src="assets/icons/icon_home.png"
-                        alt=""
-                    >
-
-                </span>
-
-                <span>
-                    Beranda
-                </span>
-
-            </a>
-
-
-            <!-- PETA -->
-
-            <a
-                href="peta.html"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <img
-                        src="assets/icons/icon_peta.png"
-                        alt=""
-                    >
-
-                </span>
-
-                <span>
-                    Peta
-                </span>
-
-            </a>
-
-
-            <!-- GAMEPLAY -->
-
-            <a
-                href="gameplay/index.html"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <img
-                        src="assets/icons/icon_gameplay.png"
-                        alt=""
-                    >
-
-                </span>
-
-                <span>
-                    Gameplay
-                </span>
-
-            </a>
-
-
-            <!-- CATATAN -->
-
-            <a
-                href="catatan.html"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <img
-                        src="assets/icons/icon_catatan.png"
-                        alt=""
-                    >
-
-                </span>
-
-                <span>
-                    Catatan
-                </span>
-
-            </a>
-
-
-            <!-- BASA -->
-
-            <a
-                href="basa.html"
-                class="side-link"
-            >
-
-                <span class="side-icon">
-
-                    <img
-                        src="assets/icons/icon_basa.png"
-                        alt=""
-                    >
-
-                </span>
-
-                <span>
-                    Basa
-                </span>
-
-            </a>
-
-
-            <!-- PENCAPAIAN -->
-
-            <a
-                href="pencapaian.html"
-                class="side-link active"
-            >
-
-                <span class="side-icon">
-
-                    <img
-                        src="assets/icons/icon_pencapaian.png"
-                        alt=""
-                    >
-
-                </span>
-
-                <span>
-                    Pencapaian
-                </span>
-
-            </a>
-
-
-        </nav>
-
-
-        <!-- BAGIAN BAWAH -->
-
-        <div class="sidebar-bottom">
-
-            <div class="sidebar-line"></div>
-
-            <div class="sidebar-quote">
-                “Saben lelampah ana
-                piwulang, saben tembung
-                ana jiwa.”
-            </div>
-
-            <div class="sidebar-symbol">
-                ✣
-            </div>
-
-        </div>
-
-
-    </aside>
-
+    <div id="globalNavbar"></div>
 
 
     <!-- =========================================================
          MAIN
          ========================================================= -->
 
-    <main class="main">
+    <main class="pencapaian-page">
 
 
-        <!-- =====================================================
-             TOPBAR
-             ===================================================== -->
+        <section class="pencapaian-content">
 
-        <header class="topbar">
 
-
-            <nav class="top-menu">
-
-
-                <a
-                    href="index.html"
-                    class="top-link"
-                >
-
-                    <img
-                        src="assets/icons/icon_home.png"
-                        alt=""
-                    >
-
-                    <span>
-                        Beranda
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="peta.html"
-                    class="top-link"
-                >
-
-                    <img
-                        src="assets/icons/icon_peta.png"
-                        alt=""
-                    >
-
-                    <span>
-                        Peta
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="catatan.html"
-                    class="top-link"
-                >
-
-                    <img
-                        src="assets/icons/icon_catatan.png"
-                        alt=""
-                    >
-
-                    <span>
-                        Catatan
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="basa.html"
-                    class="top-link"
-                >
-
-                    <img
-                        src="assets/icons/icon_basa.png"
-                        alt=""
-                    >
-
-                    <span>
-                        Basa
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="pencapaian.html"
-                    class="top-link active"
-                >
-
-                    <img
-                        src="assets/icons/icon_pencapaian.png"
-                        alt=""
-                    >
-
-                    <span>
-                        Pencapaian
-                    </span>
-
-                </a>
-
-
-            </nav>
-
-
-
-            <!-- PROFILE -->
-
-            <div class="top-profile">
-
-
-                <div class="top-divider"></div>
-
-
-                <div class="profile-circle">
-                    LK
-                </div>
-
-
-                <div class="level-info">
-
-                    <div class="level-row">
-
-                        <span>
-                            Level 01
-                        </span>
-
-                        <span>
-                            100 XP
-                        </span>
-
-                    </div>
-
-                    <div class="xp-bar">
-
-                        <div class="xp-fill"></div>
-
-                    </div>
-
-                    <div class="xp-text">
-                        100 / 1.000 XP
-                    </div>
-
-                </div>
-
-
-                <div class="top-circle-button">
-
-                    <img
-                        src="assets/icons/icon_profile.png"
-                        alt=""
-                    >
-
-                </div>
-
-
-                <div class="top-circle-button">
-
-                    <img
-                        src="assets/icons/icon_settings.png"
-                        alt=""
-                    >
-
-                </div>
-
-
-            </div>
-
-
-        </header>
-
-
-
-        <!-- =====================================================
-             CONTENT
-             ===================================================== -->
-
-        <section class="content">
-
+            <!-- HEADER -->
 
             <div class="eyebrow">
                 JEJAK PERJALANAN
@@ -1365,7 +630,6 @@
                 Lihat perjalanan, pencapaian, dan perkembanganmu
                 sebagai seorang penjelajah budaya.
             </p>
-
 
 
             <!-- =================================================
@@ -1411,12 +675,18 @@
 
                     <div class="player-xp">
 
-                        <div class="player-xp-fill"></div>
+                        <div
+                            class="player-xp-fill"
+                            id="playerXpFill"
+                        ></div>
 
                     </div>
 
 
-                    <div class="player-xp-number">
+                    <div
+                        class="player-xp-number"
+                        id="playerXpNumber"
+                    >
                         100 / 1.000 XP
                     </div>
 
@@ -1426,7 +696,6 @@
             </div>
 
 
-
             <!-- =================================================
                  ACHIEVEMENT GRID
                  ================================================= -->
@@ -1434,9 +703,11 @@
             <div class="achievement-grid">
 
 
-                <!-- PENCAPAIAN 01 -->
+                <!-- 01 -->
 
-                <article class="achievement-card completed">
+                <article
+                    class="achievement-card completed"
+                >
 
                     <div class="achievement-icon">
 
@@ -1473,10 +744,11 @@
                 </article>
 
 
+                <!-- 02 -->
 
-                <!-- PENCAPAIAN 02 -->
-
-                <article class="achievement-card completed">
+                <article
+                    class="achievement-card completed"
+                >
 
                     <div class="achievement-icon">
 
@@ -1513,8 +785,7 @@
                 </article>
 
 
-
-                <!-- PENCAPAIAN 03 -->
+                <!-- 03 -->
 
                 <article class="achievement-card">
 
@@ -1553,8 +824,7 @@
                 </article>
 
 
-
-                <!-- PENCAPAIAN 04 -->
+                <!-- 04 -->
 
                 <article class="achievement-card">
 
@@ -1593,8 +863,7 @@
                 </article>
 
 
-
-                <!-- PENCAPAIAN 05 -->
+                <!-- 05 -->
 
                 <article class="achievement-card">
 
@@ -1615,12 +884,12 @@
                         </div>
 
                         <h3 class="achievement-title">
-                            Penjelajah Peta
+                            Penjelajah Nusantara
                         </h3>
 
                         <p class="achievement-description">
-                            Buka lokasi-lokasi baru dan lanjutkan
-                            perjalanan menuju tempat berikutnya.
+                            Jelajahi lebih banyak lokasi
+                            dalam perjalanan Kamandaka.
                         </p>
 
                     </div>
@@ -1633,8 +902,7 @@
                 </article>
 
 
-
-                <!-- PENCAPAIAN 06 -->
+                <!-- 06 -->
 
                 <article class="achievement-card">
 
@@ -1673,8 +941,7 @@
                 </article>
 
 
-
-                <!-- PENCAPAIAN 07 -->
+                <!-- 07 -->
 
                 <article class="achievement-card">
 
@@ -1713,8 +980,7 @@
                 </article>
 
 
-
-                <!-- PENCAPAIAN 08 -->
+                <!-- 08 -->
 
                 <article class="achievement-card">
 
@@ -1756,7 +1022,6 @@
             </div>
 
 
-
             <!-- =================================================
                  SUMMARY
                  ================================================= -->
@@ -1783,11 +1048,14 @@
                 <div class="summary-card">
 
                     <div class="summary-label">
-                        LOKASI DITEMUKAN
+                        LEVEL SAAT INI
                     </div>
 
-                    <div class="summary-value">
-                        1 / 10
+                    <div
+                        class="summary-value"
+                        id="levelValue"
+                    >
+                        01
                     </div>
 
                 </div>
@@ -1796,11 +1064,14 @@
                 <div class="summary-card">
 
                     <div class="summary-label">
-                        TOTAL XP
+                        XP TERKUMPUL
                     </div>
 
-                    <div class="summary-value">
-                        100 XP
+                    <div
+                        class="summary-value"
+                        id="xpValue"
+                    >
+                        100
                     </div>
 
                 </div>
@@ -1811,104 +1082,163 @@
 
         </section>
 
-
     </main>
 
 
-</div>
+    <!-- =========================================================
+         NAVBAR GLOBAL JS
+         ========================================================= -->
+
+    <script src="js/navbar.js"></script>
 
 
+    <!-- =========================================================
+         PENCAPAIAN JS
+         ========================================================= -->
 
-<script>
+    <script>
 
-    /* =========================================================
-       PENCAPAIAN
-       ========================================================= */
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
-
-            const cards =
-                document.querySelectorAll(
-                    ".achievement-card"
-                );
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
 
-            const completed =
-                document.querySelectorAll(
-                    ".achievement-card.completed"
-                );
+                const cards =
+                    document.querySelectorAll(
+                        ".achievement-card"
+                    );
 
 
-            const completedCount =
-                document.getElementById(
-                    "completedCount"
-                );
+                const completed =
+                    document.querySelectorAll(
+                        ".achievement-card.completed"
+                    );
 
 
-            if (completedCount) {
-
-                completedCount.textContent =
-                    completed.length +
-                    " / " +
-                    cards.length;
-
-            }
+                const completedCount =
+                    document.getElementById(
+                        "completedCount"
+                    );
 
 
-            /* =================================================
-               UPDATE DARI LOCAL STORAGE
-               ================================================= */
+                if (completedCount) {
 
-            let currentLevel =
-                parseInt(
-                    localStorage.getItem(
-                        "kamandakaLevel"
-                    )
-                ) || 1;
+                    completedCount.textContent =
+                        completed.length +
+                        " / " +
+                        cards.length;
+
+                }
 
 
-            currentLevel =
-                Math.max(
-                    1,
-                    Math.min(
-                        currentLevel,
-                        10
-                    )
-                );
+                /* ================================================
+                   LEVEL DARI LOCAL STORAGE
+                   ================================================ */
+
+                let currentLevel =
+                    parseInt(
+                        localStorage.getItem(
+                            "kamandakaLevel"
+                        )
+                    ) || 1;
 
 
-            const xp =
-                currentLevel * 100;
-
-
-            const xpFills =
-                document.querySelectorAll(
-                    ".xp-fill, .player-xp-fill"
-                );
-
-
-            xpFills.forEach(
-                function (fill) {
-
-                    const percentage =
+                currentLevel =
+                    Math.max(
+                        1,
                         Math.min(
-                            (xp / 1000) * 100,
-                            100
-                        );
+                            currentLevel,
+                            10
+                        )
+                    );
 
-                    fill.style.width =
+
+                const xp =
+                    currentLevel * 100;
+
+
+                const percentage =
+                    Math.min(
+                        (xp / 1000) * 100,
+                        100
+                    );
+
+
+                /* ================================================
+                   XP BAR
+                   ================================================ */
+
+                const playerXpFill =
+                    document.getElementById(
+                        "playerXpFill"
+                    );
+
+
+                if (playerXpFill) {
+
+                    playerXpFill.style.width =
                         percentage + "%";
 
                 }
-            );
 
 
-        }
-    );
+                const playerXpNumber =
+                    document.getElementById(
+                        "playerXpNumber"
+                    );
 
-</script>
+
+                if (playerXpNumber) {
+
+                    playerXpNumber.textContent =
+                        xp +
+                        " / 1.000 XP";
+
+                }
+
+
+                /* ================================================
+                   SUMMARY
+                   ================================================ */
+
+                const levelValue =
+                    document.getElementById(
+                        "levelValue"
+                    );
+
+
+                const xpValue =
+                    document.getElementById(
+                        "xpValue"
+                    );
+
+
+                if (levelValue) {
+
+                    levelValue.textContent =
+                        String(
+                            currentLevel
+                        ).padStart(
+                            2,
+                            "0"
+                        );
+
+                }
+
+
+                if (xpValue) {
+
+                    xpValue.textContent =
+                        xp;
+
+                }
+
+            }
+        );
+
+    </script>
+
 
 </body>
+
 </html>

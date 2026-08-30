@@ -13,7 +13,9 @@
     <title>Lelana Kamandaka — Basa</title>
 
 
-    <!-- GOOGLE FONT -->
+    <!-- =====================================================
+         GOOGLE FONTS
+         ===================================================== -->
 
     <link
         rel="preconnect"
@@ -27,34 +29,46 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet"
     >
 
 
-    <!-- CSS GLOBAL -->
+    <!-- =====================================================
+         GLOBAL CSS
+         ===================================================== -->
 
     <link
         rel="stylesheet"
-        href="css/variables.css"
+        href="/css/variables.css"
     >
 
     <link
         rel="stylesheet"
-        href="css/base.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/components/navbar.css"
+        href="/css/base.css"
     >
 
 
-    <!-- CSS BASA -->
+    <!-- =====================================================
+         GLOBAL NAVBAR CSS
+
+         navbar.html sudah tersedia.
+         Navbar + sidebar TIDAK dibuat di halaman ini.
+         ===================================================== -->
 
     <link
         rel="stylesheet"
-        href="css/screens/basa.css"
+        href="/css/components/navbar.css"
+    >
+
+
+    <!-- =====================================================
+         BASA SCREEN CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="/css/screens/basa.css"
     >
 
 </head>
@@ -63,204 +77,64 @@
 <body>
 
 
-    <!-- ==================================================
-         NAVBAR
-         ================================================== -->
+    <!-- =====================================================
+         GLOBAL NAVBAR + SIDEBAR
 
-    <header
-        class="site-navbar"
-        id="siteNavbar"
-    >
+         navbar.js akan mengambil:
 
-        <div class="navbar-inner">
+         /navbar.html
 
+         kemudian memasukkannya ke:
 
-            <!-- LOGO -->
+         #globalNavbar
+         ===================================================== -->
 
-            <a
-                href="index.html"
-                class="navbar-logo"
-            >
-                LELANA KAMANDAKA
-            </a>
-
-
-            <!-- MENU -->
-
-            <nav
-                class="navbar-menu"
-                id="navbarMenu"
-            >
-
-                <a href="index.html">
-                    BERANDA
-                </a>
-
-                <a href="catatan.html">
-                    CATATAN
-                </a>
-
-                <a href="pencapaian.html">
-                    PENCAPAIAN
-                </a>
-
-            </nav>
-
-
-            <!-- HAMBURGER -->
-
-            <button
-                type="button"
-                class="navbar-toggle"
-                id="navbarToggle"
-                aria-label="Buka menu"
-                aria-expanded="false"
-                onclick="
-                    this.classList.toggle('active');
-                    document
-                        .getElementById('navbarExtra')
-                        .classList.toggle('open');
-
-                    this.setAttribute(
-                        'aria-expanded',
-                        this.classList.contains('active')
-                    );
-                "
-            >
-
-                <span></span>
-
-            </button>
-
-
-            <!-- MENU TAMBAHAN -->
-
-            <div
-                class="navbar-extra"
-                id="navbarExtra"
-            >
-
-                <a href="peta.html">
-                    PETA
-                </a>
-
-                <a href="basa.html">
-                    BASA
-                </a>
-
-            </div>
-
-        </div>
-
-    </header>
+    <div id="globalNavbar"></div>
 
 
 
-    <!-- ==================================================
-         MAIN
-         ================================================== -->
+    <!-- =====================================================
+         MAIN CONTENT BASA
+         ===================================================== -->
 
-    <main class="basa-page">
+    <main class="lk-main basa-page">
 
 
-        <!-- ==================================================
-             HERO BASA
-             ================================================== -->
+        <!-- =================================================
+             HERO
+             ================================================= -->
 
         <section class="basa-hero">
 
+            <div class="basa-hero-frame">
 
-            <!-- MOTIF BATIK -->
+                <div class="basa-hero-content">
 
-            <div
-                class="basa-batik basa-batik-left"
-            ></div>
-
-            <div
-                class="basa-batik basa-batik-right"
-            ></div>
+                    <span class="basa-eyebrow">
+                        LELANA KAMANDAKA
+                    </span>
 
 
-            <!-- OVERLAY -->
-
-            <div class="basa-hero-overlay"></div>
-
-
-            <!-- CONTENT -->
-
-            <div class="basa-hero-content">
+                    <h1 class="basa-hero-title">
+                        Basa
+                    </h1>
 
 
-                <span class="basa-eyebrow">
-
-                    LELANA KAMANDAKA
-
-                </span>
-
-
-                <h1>
-
-                    Sinau
-                    <em>Basa</em>
-
-                </h1>
+                    <p class="basa-hero-description">
+                        Pelajari kosakata Bahasa Jawa yang
+                        ditemukan sepanjang perjalanan
+                        Lelana Kamandaka.
+                    </p>
 
 
-                <p>
-
-                    Kenali kosakata Basa Banyumasan
-                    yang digunakan sepanjang perjalanan
-                    Kamandaka.
-
-                </p>
+                    <div class="basa-hero-line"></div>
 
 
-                <!-- FEATURE -->
-
-                <div class="basa-feature-list">
-
-
-                    <div class="basa-feature">
-
-                        <span class="basa-feature-number">
-                            01
-                        </span>
-
-                        <span>
-                            KOSAKATA
-                        </span>
-
-                    </div>
-
-
-                    <div class="basa-feature">
-
-                        <span class="basa-feature-number">
-                            02
-                        </span>
-
-                        <span>
-                            UNGGAH-UNGGUH
-                        </span>
-
-                    </div>
-
-
-                    <div class="basa-feature">
-
-                        <span class="basa-feature-number">
-                            03
-                        </span>
-
-                        <span>
-                            PELAFALAN
-                        </span>
-
-                    </div>
-
+                    <span class="basa-hero-caption">
+                        NGERTI · NGELINGI · NGGUNAKAKE
+                    </span>
 
                 </div>
-
 
             </div>
 
@@ -268,75 +142,275 @@
 
 
 
-        <!-- ==================================================
-             KOSAKATA
-             ================================================== -->
+        <!-- =================================================
+             INTRO
+             ================================================= -->
 
-        <section class="basa-vocabulary">
+        <section class="basa-intro">
+
+            <div class="basa-intro-inner">
 
 
-            <!-- DEKORASI -->
+                <div class="basa-intro-label">
 
-            <div class="basa-decoration basa-decoration-left">
+                    <span>
+                        PELAJARAN BASA
+                    </span>
 
-                <span></span>
-                <span></span>
-                <span></span>
+                </div>
+
+
+                <div class="basa-intro-content">
+
+                    <h2>
+                        Kenali kata,
+                        <em>pahami maknanya.</em>
+                    </h2>
+
+
+                    <p>
+                        Setiap perjalanan membawa kata-kata baru.
+                        Pelajari kosakata, arti, dan penggunaannya
+                        untuk mengenal budaya Banyumas dan Jawa
+                        dengan lebih dekat.
+                    </p>
+
+                </div>
 
             </div>
 
+        </section>
 
-            <div class="basa-decoration basa-decoration-right">
 
-                <span></span>
-                <span></span>
-                <span></span>
+
+        <!-- =================================================
+             PROGRESS
+             ================================================= -->
+
+        <section class="basa-progress-section">
+
+            <div class="basa-progress-inner">
+
+
+                <div class="basa-progress-heading">
+
+                    <span>
+                        KEMAJUAN BELAJAR
+                    </span>
+
+
+                    <strong id="basaLevel">
+                        LEVEL 01 / 10
+                    </strong>
+
+                </div>
+
+
+                <div class="basa-progress-track">
+
+                    <div
+                        class="basa-progress-fill"
+                        id="basaProgressFill"
+                    ></div>
+
+                </div>
+
+
+                <div class="basa-progress-bottom">
+
+                    <p id="basaProgressText">
+                        Temukan kosakata baru
+                        sepanjang perjalananmu.
+                    </p>
+
+
+                    <span id="basaWordCount">
+                        0 / 30 KATA
+                    </span>
+
+                </div>
 
             </div>
 
+        </section>
 
-            <!-- HEADER -->
+
+
+        <!-- =================================================
+             FILTER KATEGORI
+             ================================================= -->
+
+        <section class="basa-filter-section">
+
+            <div
+                class="basa-tabs"
+                role="tablist"
+                aria-label="Kategori kosakata"
+            >
+
+
+                <button
+                    type="button"
+                    class="basa-tab active"
+                    data-category="semua"
+                    role="tab"
+                    aria-selected="true"
+                >
+                    SEMUA
+                </button>
+
+
+                <button
+                    type="button"
+                    class="basa-tab"
+                    data-category="sapaan"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    SAPAAN
+                </button>
+
+
+                <button
+                    type="button"
+                    class="basa-tab"
+                    data-category="kehidupan"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    KEHIDUPAN
+                </button>
+
+
+                <button
+                    type="button"
+                    class="basa-tab"
+                    data-category="alam"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    ALAM
+                </button>
+
+
+                <button
+                    type="button"
+                    class="basa-tab"
+                    data-category="budaya"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    BUDAYA
+                </button>
+
+
+                <button
+                    type="button"
+                    class="basa-tab"
+                    data-category="perjalanan"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    PERJALANAN
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             VOCABULARY CONTENT
+             ================================================= -->
+
+        <section class="basa-content">
+
+
+            <!-- =================================================
+                 SECTION HEADING
+                 ================================================= -->
 
             <div class="basa-section-heading">
 
-
-                <span class="basa-section-label">
-
-                    KENALI BASANYA
-
+                <span class="basa-section-eyebrow">
+                    KOSAKATA PERJALANAN
                 </span>
 
 
-                <h2>
-
-                    Kata-kata dalam
-                    <em>perjalanan.</em>
-
+                <h2
+                    class="basa-section-title"
+                    id="basaSectionTitle"
+                >
+                    Kata yang Telah Dipelajari
                 </h2>
 
 
-                <p>
-
-                    Bahasa menjadi bagian dari perjalanan
-                    Kamandaka. Pelajari kata dan ungkapan
-                    yang digunakan dalam cerita.
-
-                </p>
-
+                <div class="basa-heading-line"></div>
 
             </div>
 
 
 
-            <!-- CARD GRID -->
+            <!-- =================================================
+                 SEARCH
+                 ================================================= -->
 
-            <div class="basa-card-grid">
+            <div class="basa-search-wrap">
+
+                <label
+                    for="basaSearch"
+                    class="basa-search-label"
+                >
+                    CARI KOSAKATA
+                </label>
 
 
-                <!-- CARD 01 -->
+                <div class="basa-search">
 
-                <article class="basa-card">
+                    <span
+                        class="basa-search-icon"
+                        aria-hidden="true"
+                    >
+                        ⌕
+                    </span>
 
+
+                    <input
+                        type="search"
+                        id="basaSearch"
+                        placeholder="Cari kata atau arti..."
+                        autocomplete="off"
+                        aria-label="Cari kosakata"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 VOCABULARY GRID
+                 ================================================= -->
+
+            <div
+                class="basa-grid"
+                id="basaGrid"
+            >
+
+
+                <!-- =================================================
+                     KATA 01
+                     ================================================= -->
+
+                <article
+                    class="basa-card"
+                    data-category="sapaan"
+                    data-level="1"
+                    data-word="sampurasun"
+                    data-meaning="salam"
+                >
 
                     <div class="basa-card-top">
 
@@ -344,164 +418,6 @@
                             01
                         </span>
 
-                        <span class="basa-card-category">
-                            UNGGAH-UNGGUH
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Kula
-                    </h3>
-
-
-                    <strong>
-                        Saya
-                    </strong>
-
-
-                    <p>
-
-                        Digunakan untuk menyebut diri
-                        sendiri ketika berbicara dengan
-                        orang yang lebih tua atau dihormati.
-
-                    </p>
-
-
-                    <button
-                        type="button"
-                        class="basa-sound"
-                        onclick="speakBasa('Kula')"
-                        aria-label="Dengarkan Kula"
-                    >
-
-                        🔊
-
-                    </button>
-
-
-                </article>
-
-
-
-                <!-- CARD 02 -->
-
-                <article class="basa-card">
-
-
-                    <div class="basa-card-top">
-
-                        <span class="basa-card-number">
-                            02
-                        </span>
-
-                        <span class="basa-card-category">
-                            UNGKAPAN
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Nyuwun Pangestu
-                    </h3>
-
-
-                    <strong>
-                        Memohon restu
-                    </strong>
-
-
-                    <p>
-
-                        Digunakan ketika hendak meminta
-                        restu sebelum melakukan sesuatu
-                        yang penting.
-
-                    </p>
-
-
-                    <button
-                        type="button"
-                        class="basa-sound"
-                        onclick="speakBasa('Nyuwun Pangestu')"
-                        aria-label="Dengarkan Nyuwun Pangestu"
-                    >
-
-                        🔊
-
-                    </button>
-
-
-                </article>
-
-
-
-                <!-- CARD 03 -->
-
-                <article class="basa-card">
-
-
-                    <div class="basa-card-top">
-
-                        <span class="basa-card-number">
-                            03
-                        </span>
-
-                        <span class="basa-card-category">
-                            UNGGAH-UNGGUH
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Badhé
-                    </h3>
-
-
-                    <strong>
-                        Akan / hendak
-                    </strong>
-
-
-                    <p>
-
-                        Digunakan untuk menyatakan
-                        sesuatu yang akan atau hendak
-                        dilakukan.
-
-                    </p>
-
-
-                    <button
-                        type="button"
-                        class="basa-sound"
-                        onclick="speakBasa('Badhe')"
-                        aria-label="Dengarkan Badhe"
-                    >
-
-                        🔊
-
-                    </button>
-
-
-                </article>
-
-
-
-                <!-- CARD 04 -->
-
-                <article class="basa-card">
-
-
-                    <div class="basa-card-top">
-
-                        <span class="basa-card-number">
-                            04
-                        </span>
 
                         <span class="basa-card-category">
                             SAPAAN
@@ -510,36 +426,427 @@
                     </div>
 
 
-                    <h3>
-                        Rama
-                    </h3>
+                    <div class="basa-card-main">
+
+                        <h3>
+                            Sampurasun
+                        </h3>
 
 
-                    <strong>
-                        Ayah
-                    </strong>
+                        <span class="basa-card-pronunciation">
+                            /sam·pu·ra·sun/
+                        </span>
 
 
-                    <p>
+                        <p class="basa-card-meaning">
+                            Salam atau sapaan yang digunakan
+                            sebagai ungkapan penghormatan.
+                        </p>
 
-                        Sapaan yang digunakan ketika
-                        berbicara kepada ayah atau
-                        orang yang dituakan.
-
-                    </p>
+                    </div>
 
 
-                    <button
-                        type="button"
-                        class="basa-sound"
-                        onclick="speakBasa('Rama')"
-                        aria-label="Dengarkan Rama"
-                    >
+                    <div class="basa-card-footer">
 
-                        🔊
+                        <span>
+                            ARTINYA
+                        </span>
 
-                    </button>
 
+                        <strong>
+                            Salam
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     KATA 02
+                     ================================================= -->
+
+                <article
+                    class="basa-card"
+                    data-category="sapaan"
+                    data-level="1"
+                    data-word="rampung"
+                    data-meaning="selesai"
+                >
+
+                    <div class="basa-card-top">
+
+                        <span class="basa-card-number">
+                            02
+                        </span>
+
+
+                        <span class="basa-card-category">
+                            SAPAAN
+                        </span>
+
+                    </div>
+
+
+                    <div class="basa-card-main">
+
+                        <h3>
+                            Rampung
+                        </h3>
+
+
+                        <span class="basa-card-pronunciation">
+                            /ram·pung/
+                        </span>
+
+
+                        <p class="basa-card-meaning">
+                            Menunjukkan sesuatu yang telah
+                            selesai atau telah dituntaskan.
+                        </p>
+
+                    </div>
+
+
+                    <div class="basa-card-footer">
+
+                        <span>
+                            ARTINYA
+                        </span>
+
+
+                        <strong>
+                            Selesai
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     KATA 03
+                     ================================================= -->
+
+                <article
+                    class="basa-card"
+                    data-category="kehidupan"
+                    data-level="1"
+                    data-word="piwulang"
+                    data-meaning="ajaran"
+                >
+
+                    <div class="basa-card-top">
+
+                        <span class="basa-card-number">
+                            03
+                        </span>
+
+
+                        <span class="basa-card-category">
+                            KEHIDUPAN
+                        </span>
+
+                    </div>
+
+
+                    <div class="basa-card-main">
+
+                        <h3>
+                            Piwulang
+                        </h3>
+
+
+                        <span class="basa-card-pronunciation">
+                            /pi·wu·lang/
+                        </span>
+
+
+                        <p class="basa-card-meaning">
+                            Ajaran, nasihat, atau pelajaran
+                            yang dapat menjadi tuntunan hidup.
+                        </p>
+
+                    </div>
+
+
+                    <div class="basa-card-footer">
+
+                        <span>
+                            ARTINYA
+                        </span>
+
+
+                        <strong>
+                            Ajaran
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     KATA 04
+                     ================================================= -->
+
+                <article
+                    class="basa-card"
+                    data-category="alam"
+                    data-level="1"
+                    data-word="alas"
+                    data-meaning="hutan"
+                >
+
+                    <div class="basa-card-top">
+
+                        <span class="basa-card-number">
+                            04
+                        </span>
+
+
+                        <span class="basa-card-category">
+                            ALAM
+                        </span>
+
+                    </div>
+
+
+                    <div class="basa-card-main">
+
+                        <h3>
+                            Alas
+                        </h3>
+
+
+                        <span class="basa-card-pronunciation">
+                            /a·las/
+                        </span>
+
+
+                        <p class="basa-card-meaning">
+                            Kawasan yang dipenuhi pepohonan
+                            atau hutan.
+                        </p>
+
+                    </div>
+
+
+                    <div class="basa-card-footer">
+
+                        <span>
+                            ARTINYA
+                        </span>
+
+
+                        <strong>
+                            Hutan
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     KATA 05
+                     ================================================= -->
+
+                <article
+                    class="basa-card"
+                    data-category="budaya"
+                    data-level="1"
+                    data-word="lengger"
+                    data-meaning="kesenian"
+                >
+
+                    <div class="basa-card-top">
+
+                        <span class="basa-card-number">
+                            05
+                        </span>
+
+
+                        <span class="basa-card-category">
+                            BUDAYA
+                        </span>
+
+                    </div>
+
+
+                    <div class="basa-card-main">
+
+                        <h3>
+                            Lengger
+                        </h3>
+
+
+                        <span class="basa-card-pronunciation">
+                            /leng·ger/
+                        </span>
+
+
+                        <p class="basa-card-meaning">
+                            Kesenian tradisional Banyumas yang
+                            dikenal melalui pertunjukan tari.
+                        </p>
+
+                    </div>
+
+
+                    <div class="basa-card-footer">
+
+                        <span>
+                            ARTINYA
+                        </span>
+
+
+                        <strong>
+                            Kesenian
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     KATA 06
+                     ================================================= -->
+
+                <article
+                    class="basa-card"
+                    data-category="perjalanan"
+                    data-level="1"
+                    data-word="lelana"
+                    data-meaning="perjalanan"
+                >
+
+                    <div class="basa-card-top">
+
+                        <span class="basa-card-number">
+                            06
+                        </span>
+
+
+                        <span class="basa-card-category">
+                            PERJALANAN
+                        </span>
+
+                    </div>
+
+
+                    <div class="basa-card-main">
+
+                        <h3>
+                            Lelana
+                        </h3>
+
+
+                        <span class="basa-card-pronunciation">
+                            /le·la·na/
+                        </span>
+
+
+                        <p class="basa-card-meaning">
+                            Perjalanan atau pengembaraan untuk
+                            menemukan pengalaman dan pengetahuan.
+                        </p>
+
+                    </div>
+
+
+                    <div class="basa-card-footer">
+
+                        <span>
+                            ARTINYA
+                        </span>
+
+
+                        <strong>
+                            Perjalanan
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     LOCKED 07
+                     ================================================= -->
+
+                <article
+                    class="basa-card basa-card-locked"
+                    data-category="budaya"
+                    data-level="2"
+                    aria-label="Kosakata terkunci"
+                >
+
+                    <div class="basa-lock">
+
+                        <div
+                            class="basa-lock-icon"
+                            aria-hidden="true"
+                        >
+                            🔒
+                        </div>
+
+
+                        <span>
+                            KOSAKATA TERKUNCI
+                        </span>
+
+
+                        <p>
+                            Lanjutkan perjalanan untuk
+                            menemukan kata baru.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================================
+                     LOCKED 08
+                     ================================================= -->
+
+                <article
+                    class="basa-card basa-card-locked"
+                    data-category="perjalanan"
+                    data-level="2"
+                    aria-label="Kosakata terkunci"
+                >
+
+                    <div class="basa-lock">
+
+                        <div
+                            class="basa-lock-icon"
+                            aria-hidden="true"
+                        >
+                            🔒
+                        </div>
+
+
+                        <span>
+                            KOSAKATA TERKUNCI
+                        </span>
+
+
+                        <p>
+                            Lanjutkan perjalanan untuk
+                            menemukan kata baru.
+                        </p>
+
+                    </div>
 
                 </article>
 
@@ -547,24 +854,65 @@
             </div>
 
 
+
+            <!-- =================================================
+                 EMPTY STATE
+                 ================================================= -->
+
+            <div
+                class="basa-empty"
+                id="basaEmpty"
+            >
+
+                <span>
+                    KOSAKATA
+                </span>
+
+
+                <h3>
+                    Kata belum ditemukan
+                </h3>
+
+
+                <p>
+                    Tidak ada kosakata yang sesuai
+                    dengan pencarianmu.
+                </p>
+
+            </div>
+
         </section>
 
 
 
-        <!-- ==================================================
-             PENUTUP
-             ================================================== -->
+        <!-- =================================================
+             ENDING
+             ================================================= -->
 
-        <section class="basa-closing">
+        <section class="basa-ending">
 
-            <span>
-                BASA · BUDAYA · PERJALANAN
-            </span>
+            <div class="basa-ending-inner">
 
-            <h2>
-                Belajar bahasa,
-                <em>menyusuri cerita.</em>
-            </h2>
+                <span>
+                    BASA · BUDAYA · PERJALANAN
+                </span>
+
+
+                <h2>
+                    Saben tembung
+                    <em>ana jiwa.</em>
+                </h2>
+
+
+                <p>
+                    Setiap kata menyimpan jejak budaya
+                    yang layak untuk dipelajari.
+                </p>
+
+
+                <div class="basa-ending-line"></div>
+
+            </div>
 
         </section>
 
@@ -573,142 +921,22 @@
 
 
 
-    <!-- ==================================================
-         JAVASCRIPT
-         ================================================== -->
+    <!-- =====================================================
+         GLOBAL NAVBAR JAVASCRIPT
 
-    <script>
+         SATU-SATUNYA JS UNTUK NAVBAR.
+         navbar.js akan memuat /navbar.html
+         ke #globalNavbar.
+         ===================================================== -->
 
-        function speakBasa(word) {
-
-            if (!("speechSynthesis" in window)) {
-
-                alert(
-                    "Fitur suara tidak tersedia di browser ini."
-                );
-
-                return;
-
-            }
+    <script src="/js/navbar.js"></script>
 
 
-            let text = word;
+    <!-- =====================================================
+         BASA JAVASCRIPT
+         ===================================================== -->
 
-
-            switch (word) {
-
-                case "Kula":
-
-                    text =
-                        "Kula. Artinya saya.";
-
-                    break;
-
-
-                case "Nyuwun Pangestu":
-
-                    text =
-                        "Nyuwun pangestu. Artinya memohon restu.";
-
-                    break;
-
-
-                case "Badhe":
-
-                    text =
-                        "Badhé. Artinya akan atau hendak.";
-
-                    break;
-
-
-                case "Rama":
-
-                    text =
-                        "Rama. Artinya ayah.";
-
-                    break;
-
-            }
-
-
-            window.speechSynthesis.cancel();
-
-
-            const utterance =
-                new SpeechSynthesisUtterance(
-                    text
-                );
-
-
-            utterance.lang =
-                "id-ID";
-
-
-            utterance.rate =
-                0.85;
-
-
-            utterance.pitch =
-                1;
-
-
-            window.speechSynthesis.speak(
-                utterance
-            );
-
-        }
-
-
-        /* ==================================================
-           NAVBAR SCROLL
-           ================================================== */
-
-        const navbar =
-            document.getElementById(
-                "siteNavbar"
-            );
-
-
-        function handleNavbarScroll() {
-
-            if (!navbar) {
-
-                return;
-
-            }
-
-
-            if (window.scrollY > 30) {
-
-                navbar.classList.add(
-                    "scrolled"
-                );
-
-            }
-
-            else {
-
-                navbar.classList.remove(
-                    "scrolled"
-                );
-
-            }
-
-        }
-
-
-        handleNavbarScroll();
-
-
-        window.addEventListener(
-            "scroll",
-            handleNavbarScroll,
-            {
-                passive: true
-            }
-        );
-
-    </script>
+    <script src="/js/screens/basa.js"></script>
 
 
 </body>

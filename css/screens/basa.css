@@ -1,17 +1,50 @@
 /* =========================================================
    LELANA KAMANDAKA
-   BASA PAGE
+   BASA — SCREEN
    ========================================================= */
 
 
 /* =========================================================
-   PAGE
+   ROOT
    ========================================================= */
 
 .basa-page {
 
-    background: #f3ead8;
-    color: #3f2c1d;
+    --basa-green-dark: #0e3518;
+    --basa-green: #164b22;
+    --basa-green-soft: #275b2b;
+
+    --basa-gold: #d8bd4d;
+    --basa-gold-light: #f0dc72;
+
+    --basa-cream: #f6f0dc;
+    --basa-cream-soft: #ded7bd;
+
+    --basa-brown: #4c3926;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        var(--basa-cream);
+
+    color:
+        var(--basa-brown);
+
+}
+
+
+/* =========================================================
+   GLOBAL RESET KHUSUS BASA
+   ========================================================= */
+
+.basa-page *,
+.basa-page *::before,
+.basa-page *::after {
+
+    box-sizing: border-box;
 
 }
 
@@ -24,9 +57,9 @@
 
     position: relative;
 
-    min-height: 570px;
+    width: 100%;
 
-    overflow: hidden;
+    min-height: 370px;
 
     display: flex;
 
@@ -34,15 +67,18 @@
 
     justify-content: center;
 
+    padding:
+        28px;
+
+    overflow: hidden;
+
     background:
-        #8b6847;
+        var(--basa-green-dark);
 
 }
 
 
-/* =========================================================
-   MOTIF BATIK HERO
-   ========================================================= */
+/* MOTIF */
 
 .basa-hero::before {
 
@@ -59,13 +95,10 @@
         repeat;
 
     background-size:
-        520px auto;
-
-    background-position:
-        center;
+        260px auto;
 
     opacity:
-        0.32;
+        .075;
 
     pointer-events:
         none;
@@ -73,147 +106,133 @@
 }
 
 
-/* =========================================================
-   OVERLAY HERO
-   ========================================================= */
+/* FRAME */
 
-.basa-hero-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(76, 48, 28, 0.42),
-            rgba(112, 79, 43, 0.16),
-            rgba(76, 48, 28, 0.42)
-        );
-
-    z-index: 1;
-
-}
-
-
-/* =========================================================
-   BATIK DEKORASI SAMPING
-   ========================================================= */
-
-.basa-batik {
-
-    position: absolute;
-
-    top: 0;
-
-    bottom: 0;
-
-    width: 30%;
-
-    background-image:
-        url("../../assets/images/motif.png");
-
-    background-repeat:
-        repeat;
-
-    background-size:
-        340px auto;
-
-    opacity:
-        0.24;
-
-    pointer-events:
-        none;
-
-    z-index: 2;
-
-}
-
-
-.basa-batik-left {
-
-    left: 0;
-
-    mask-image:
-        linear-gradient(
-            to right,
-            black 0%,
-            black 45%,
-            transparent 100%
-        );
-
-    -webkit-mask-image:
-        linear-gradient(
-            to right,
-            black 0%,
-            black 45%,
-            transparent 100%
-        );
-
-}
-
-
-.basa-batik-right {
-
-    right: 0;
-
-    mask-image:
-        linear-gradient(
-            to left,
-            black 0%,
-            black 45%,
-            transparent 100%
-        );
-
-    -webkit-mask-image:
-        linear-gradient(
-            to left,
-            black 0%,
-            black 45%,
-            transparent 100%
-        );
-
-}
-
-
-/* =========================================================
-   HERO CONTENT
-   ========================================================= */
-
-.basa-hero-content {
+.basa-hero-frame {
 
     position: relative;
 
-    z-index: 5;
+    width: 100%;
 
-    width:
-        min(900px, 90%);
+    min-height: 326px;
 
-    padding:
-        80px 20px 70px;
-
-    text-align:
-        center;
-
-    color:
-        #fff8eb;
-
-}
-
-
-/* =========================================================
-   EYEBROW
-   ========================================================= */
-
-.basa-eyebrow {
-
-    display: inline-flex;
+    display: flex;
 
     align-items: center;
 
     justify-content: center;
 
-    gap: 18px;
+    border:
+        1px solid
+        rgba(216, 189, 77, .36);
+
+}
+
+
+/* INNER BORDER */
+
+.basa-hero-frame::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 13px;
+
+    border:
+        1px solid
+        rgba(216, 189, 77, .12);
+
+    pointer-events:
+        none;
+
+}
+
+
+/* HERO CONTENT */
+
+.basa-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(900px, 90%);
+
+    text-align:
+        center;
+
+}
+
+
+/* EYEBROW */
+
+.basa-eyebrow {
+
+    display: block;
+
+    margin-bottom:
+        17px;
+
+    color:
+        var(--basa-gold-light);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .28em;
+
+}
+
+
+/* TITLE */
+
+.basa-hero-title {
+
+    margin:
+        0;
+
+    color:
+        var(--basa-cream);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(65px, 8vw, 100px);
+
+    font-weight:
+        400;
+
+    line-height:
+        .95;
+
+}
+
+
+/* DESCRIPTION */
+
+.basa-hero-description {
+
+    max-width:
+        650px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(246, 240, 220, .78);
 
     font-family:
         "Hanken Grotesk",
@@ -222,44 +241,145 @@
     font-size:
         12px;
 
-    font-weight:
-        700;
-
-    letter-spacing:
-        5px;
-
-    color:
-        #f5d58d;
-
-    text-shadow:
-        0 2px 5px rgba(0, 0, 0, 0.35);
+    line-height:
+        1.8;
 
 }
 
 
-.basa-eyebrow::before,
-.basa-eyebrow::after {
+/* LINE */
 
-    content: "";
+.basa-hero-line {
 
-    width: 48px;
+    width:
+        66px;
 
-    height: 1px;
+    height:
+        1px;
+
+    margin:
+        25px auto 0;
 
     background:
-        #e7c47c;
+        var(--basa-gold);
+
+}
+
+
+/* CAPTION */
+
+.basa-hero-caption {
+
+    display:
+        block;
+
+    margin-top:
+        15px;
+
+    color:
+        rgba(216, 189, 77, .80);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .27em;
 
 }
 
 
 /* =========================================================
-   HERO TITLE
+   INTRO
    ========================================================= */
 
-.basa-hero h1 {
+.basa-intro {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    background:
+        var(--basa-cream);
+
+    border-bottom:
+        1px solid
+        rgba(76, 57, 38, .13);
+
+}
+
+
+/* INTRO INNER */
+
+.basa-intro-inner {
+
+    width:
+        min(1050px, calc(100% - 80px));
 
     margin:
-        22px 0 20px;
+        0 auto;
+
+    min-height:
+        245px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        230px 1fr;
+
+    align-items:
+        center;
+
+    gap:
+        55px;
+
+}
+
+
+/* LABEL */
+
+.basa-intro-label span {
+
+    display:
+        block;
+
+    color:
+        #9b7629;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .23em;
+
+}
+
+
+/* CONTENT */
+
+.basa-intro-content h2 {
+
+    margin:
+        0;
+
+    color:
+        #154722;
 
     font-family:
         "Libre Caslon Text",
@@ -267,276 +387,438 @@
         serif;
 
     font-size:
-        clamp(72px, 9vw, 125px);
-
-    line-height:
-        0.82;
+        clamp(42px, 5vw, 62px);
 
     font-weight:
         400;
 
-    color:
-        #fffaf1;
-
-    text-shadow:
-        0 4px 10px rgba(45, 27, 14, 0.55);
+    line-height:
+        1.05;
 
 }
 
 
-.basa-hero h1 em {
+/* ITALIC */
 
-    display:
-        block;
-
-    margin-top:
-        18px;
-
-    font-size:
-        0.72em;
-
-    line-height:
-        0.9;
+.basa-intro-content h2 em {
 
     color:
-        #f0bd59;
+        #ae7923;
 
     font-style:
         italic;
 
-    text-shadow:
-        0 3px 8px rgba(48, 28, 13, 0.6);
-
 }
 
 
-/* =========================================================
-   HERO DESCRIPTION
-   ========================================================= */
+/* INTRO P */
 
-.basa-hero p {
-
-    max-width:
-        650px;
-
-    margin:
-        40px auto 35px;
-
-    font-family:
-        "Hanken Grotesk",
-        Arial,
-        sans-serif;
-
-    font-size:
-        17px;
-
-    font-weight:
-        500;
-
-    line-height:
-        1.8;
-
-    color:
-        #fff9ed;
-
-    text-shadow:
-        0 2px 6px rgba(42, 25, 13, 0.65);
-
-}
-
-
-/* =========================================================
-   FEATURE LIST
-   ========================================================= */
-
-.basa-feature-list {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    margin-top:
-        38px;
-
-}
-
-
-.basa-feature {
-
-    min-width:
-        190px;
-
-    padding:
-        8px 28px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        11px;
-
-    border-right:
-        1px solid
-        rgba(247, 215, 151, 0.7);
-
-    font-family:
-        "Hanken Grotesk",
-        Arial,
-        sans-serif;
-
-    font-size:
-        11px;
-
-    font-weight:
-        700;
-
-    letter-spacing:
-        3px;
-
-    color:
-        #f4d693;
-
-    text-shadow:
-        0 2px 5px rgba(0, 0, 0, 0.45);
-
-}
-
-
-.basa-feature:last-child {
-
-    border-right:
-        none;
-
-}
-
-
-/* =========================================================
-   FEATURE NUMBER
-   ========================================================= */
-
-.basa-feature-number {
-
-    width:
-        32px;
-
-    height:
-        32px;
-
-    flex:
-        0 0 32px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border:
-        1px solid
-        #e5c27d;
-
-    border-radius:
-        50%;
-
-    font-size:
-        9px;
-
-    letter-spacing:
-        0;
-
-    color:
-        #f7d995;
-
-}
-
-
-/* =========================================================
-   VOCABULARY SECTION
-   ========================================================= */
-
-.basa-vocabulary {
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
-    padding:
-        105px 7% 120px;
-
-    background:
-        #f3ead8;
-
-}
-
-
-/* =========================================================
-   MOTIF BATIK SECTION
-   ========================================================= */
-
-.basa-vocabulary::before {
-
-    content: "";
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    background-image:
-        url("../../assets/images/motif.png");
-
-    background-repeat:
-        repeat;
-
-    background-size:
-        520px auto;
-
-    background-position:
-        center;
-
-    opacity:
-        0.045;
-
-    pointer-events:
-        none;
-
-}
-
-
-/* =========================================================
-   SECTION HEADING
-   ========================================================= */
-
-.basa-section-heading {
-
-    position:
-        relative;
-
-    z-index:
-        2;
+.basa-intro-content p {
 
     max-width:
         760px;
 
     margin:
-        0 auto 60px;
+        20px 0 0;
+
+    color:
+        rgba(76, 57, 38, .65);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.basa-progress-section {
+
+    width:
+        100%;
+
+    background:
+        #fbf6e6;
+
+    border-bottom:
+        1px solid
+        rgba(76, 57, 38, .12);
+
+}
+
+
+.basa-progress-inner {
+
+    width:
+        min(1050px, calc(100% - 80px));
+
+    margin:
+        0 auto;
+
+    padding:
+        30px 0 32px;
+
+}
+
+
+.basa-progress-heading {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    margin-bottom:
+        13px;
+
+}
+
+
+.basa-progress-heading span {
+
+    color:
+        #8d6d2c;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .20em;
+
+}
+
+
+.basa-progress-heading strong {
+
+    color:
+        #145025;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        25px;
+
+    font-weight:
+        400;
+
+}
+
+
+.basa-progress-track {
+
+    width:
+        100%;
+
+    height:
+        5px;
+
+    overflow:
+        hidden;
+
+    background:
+        rgba(76, 57, 38, .12);
+
+}
+
+
+.basa-progress-fill {
+
+    width:
+        10%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a67d2c,
+            #d8bd4d
+        );
+
+    transition:
+        width .5s ease;
+
+}
+
+
+.basa-progress-bottom {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+}
+
+
+.basa-progress-bottom p {
+
+    margin:
+        11px 0 0;
+
+    color:
+        rgba(76, 57, 38, .55);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+}
+
+
+.basa-progress-bottom > span {
+
+    margin-top:
+        11px;
+
+    color:
+        #98762f;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .14em;
+
+}
+
+
+/* =========================================================
+   FILTER
+   ========================================================= */
+
+.basa-filter-section {
+
+    width:
+        100%;
+
+    background:
+        #f7f0db;
+
+    border-bottom:
+        1px solid
+        rgba(76, 57, 38, .14);
+
+}
+
+
+.basa-tabs {
+
+    width:
+        min(1050px, 100%);
+
+    margin:
+        0 auto;
+
+    min-height:
+        76px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    overflow-x:
+        auto;
+
+}
+
+
+.basa-tab {
+
+    position:
+        relative;
+
+    min-width:
+        135px;
+
+    height:
+        76px;
+
+    padding:
+        0 20px;
+
+    flex:
+        0 0 auto;
+
+    border:
+        0;
+
+    border-right:
+        1px solid
+        rgba(76, 57, 38, .12);
+
+    background:
+        transparent;
+
+    color:
+        rgba(76, 57, 38, .54);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .18em;
+
+    cursor:
+        pointer;
+
+    transition:
+        color .25s ease,
+        background .25s ease;
+
+}
+
+
+.basa-tab:first-child {
+
+    border-left:
+        1px solid
+        rgba(76, 57, 38, .12);
+
+}
+
+
+.basa-tab:hover {
+
+    color:
+        #154722;
+
+    background:
+        rgba(255,255,255,.25);
+
+}
+
+
+.basa-tab.active {
+
+    color:
+        #154722;
+
+    background:
+        rgba(216,189,77,.08);
+
+}
+
+
+.basa-tab::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        0;
+
+    width:
+        0;
+
+    height:
+        3px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        var(--basa-gold);
+
+    transition:
+        width .25s ease;
+
+}
+
+
+.basa-tab.active::after {
+
+    width:
+        46px;
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.basa-content {
+
+    width:
+        min(1050px, calc(100% - 80px));
+
+    margin:
+        0 auto;
+
+    padding:
+        82px 0 95px;
+
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.basa-section-heading {
+
+    margin-bottom:
+        38px;
 
     text-align:
         center;
@@ -544,35 +826,40 @@
 }
 
 
-.basa-section-label {
+.basa-section-eyebrow {
 
     display:
-        inline-block;
+        block;
+
+    margin-bottom:
+        13px;
+
+    color:
+        #a27825;
 
     font-family:
         "Hanken Grotesk",
-        Arial,
         sans-serif;
 
     font-size:
-        11px;
+        8px;
 
     font-weight:
         700;
 
     letter-spacing:
-        4px;
-
-    color:
-        #98651f;
+        .24em;
 
 }
 
 
-.basa-section-heading h2 {
+.basa-section-title {
 
     margin:
-        15px 0;
+        0;
+
+    color:
+        #154722;
 
     font-family:
         "Libre Caslon Text",
@@ -580,82 +867,181 @@
         serif;
 
     font-size:
-        clamp(36px, 4vw, 54px);
-
-    line-height:
-        1.15;
+        clamp(36px, 5vw, 56px);
 
     font-weight:
         400;
 
-    color:
-        #432c1d;
+    line-height:
+        1.08;
 
 }
 
 
-.basa-section-heading h2 em {
+.basa-heading-line {
 
-    color:
-        #a87528;
+    width:
+        48px;
 
-    font-style:
-        italic;
-
-}
-
-
-.basa-section-heading p {
-
-    max-width:
-        620px;
+    height:
+        1px;
 
     margin:
-        0 auto;
+        20px auto 0;
 
-    font-family:
-        "Hanken Grotesk",
-        Arial,
-        sans-serif;
-
-    font-size:
-        15px;
-
-    line-height:
-        1.8;
-
-    color:
-        #6f5946;
+    background:
+        rgba(76, 57, 38, .32);
 
 }
 
 
 /* =========================================================
-   CARD GRID
+   SEARCH
    ========================================================= */
 
-.basa-card-grid {
+.basa-search-wrap {
+
+    max-width:
+        620px;
+
+    margin:
+        0 auto 40px;
+
+}
+
+
+.basa-search-label {
+
+    display:
+        block;
+
+    margin-bottom:
+        9px;
+
+    color:
+        #92702a;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        7px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .18em;
+
+}
+
+
+.basa-search {
 
     position:
         relative;
 
-    z-index:
-        2;
+    width:
+        100%;
 
-    max-width:
-        1250px;
+}
 
-    margin:
-        0 auto;
+
+.basa-search-icon {
+
+    position:
+        absolute;
+
+    left:
+        15px;
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    color:
+        #a47b28;
+
+    font-size:
+        19px;
+
+}
+
+
+.basa-search input {
+
+    width:
+        100%;
+
+    height:
+        48px;
+
+    padding:
+        0 18px 0 45px;
+
+    border:
+        1px solid
+        rgba(76,57,38,.18);
+
+    outline:
+        none;
+
+    background:
+        rgba(255,255,255,.35);
+
+    color:
+        #493725;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        11px;
+
+    transition:
+        border-color .25s ease,
+        background .25s ease;
+
+}
+
+
+.basa-search input:focus {
+
+    border-color:
+        rgba(164,123,40,.60);
+
+    background:
+        rgba(255,255,255,.60);
+
+}
+
+
+.basa-search input::placeholder {
+
+    color:
+        rgba(76,57,38,.38);
+
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.basa-grid {
 
     display:
         grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(2, minmax(0, 1fr));
 
     gap:
-        22px;
+        20px;
 
 }
 
@@ -670,37 +1056,72 @@
         relative;
 
     min-height:
-        300px;
+        280px;
 
     padding:
-        27px 26px 30px;
+        27px 29px;
+
+    overflow:
+        hidden;
 
     background:
-        #eadcc1;
+        rgba(255, 250, 236, .72);
 
     border:
         1px solid
-        #d4bd91;
+        rgba(76,57,38,.16);
 
     box-shadow:
-        0 10px 28px
-        rgba(74, 47, 26, 0.08);
+        0 8px 25px
+        rgba(58,42,25,.035);
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
 
 }
 
 
-.basa-card:hover {
+.basa-card:not(.basa-card-locked):hover {
 
     transform:
-        translateY(-6px);
+        translateY(-4px);
+
+    border-color:
+        rgba(164,123,40,.32);
 
     box-shadow:
-        0 18px 35px
-        rgba(74, 47, 26, 0.15);
+        0 15px 35px
+        rgba(58,42,25,.075);
+
+}
+
+
+/* LEFT LINE */
+
+.basa-card:not(.basa-card-locked)::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        4px;
+
+    background:
+        #45682a;
 
 }
 
@@ -717,16 +1138,19 @@
     align-items:
         center;
 
-    gap:
-        12px;
+    justify-content:
+        space-between;
 
-    margin-bottom:
+    gap:
         20px;
 
 }
 
 
 .basa-card-number {
+
+    color:
+        #b58b36;
 
     font-family:
         "Libre Caslon Text",
@@ -736,45 +1160,52 @@
     font-size:
         25px;
 
-    color:
-        #a56f1f;
+    line-height:
+        1;
 
 }
 
 
 .basa-card-category {
 
+    color:
+        #8d6c2c;
+
     font-family:
         "Hanken Grotesk",
-        Arial,
         sans-serif;
 
     font-size:
-        9px;
+        7px;
 
     font-weight:
         700;
 
     letter-spacing:
-        2px;
-
-    color:
-        #98651f;
+        .20em;
 
 }
 
 
 /* =========================================================
-   CARD TITLE
+   CARD MAIN
    ========================================================= */
 
-.basa-card h3 {
+.basa-card-main {
+
+    padding-top:
+        34px;
+
+}
+
+
+.basa-card-main h3 {
 
     margin:
-        0 0 8px;
+        0;
 
-    padding-right:
-        45px;
+    color:
+        #194c25;
 
     font-family:
         "Libre Caslon Text",
@@ -782,276 +1213,167 @@
         serif;
 
     font-size:
-        28px;
-
-    line-height:
-        1.15;
+        clamp(30px, 3vw, 40px);
 
     font-weight:
-        700;
+        400;
 
-    color:
-        #402a1b;
+    line-height:
+        1.05;
 
 }
 
 
-.basa-card strong {
+.basa-card-pronunciation {
 
     display:
         block;
 
-    margin-bottom:
-        15px;
+    margin-top:
+        8px;
+
+    color:
+        rgba(76,57,38,.40);
 
     font-family:
         "Hanken Grotesk",
-        Arial,
         sans-serif;
 
     font-size:
-        14px;
+        9px;
 
-    font-weight:
-        700;
-
-    color:
-        #a56f1f;
+    font-style:
+        italic;
 
 }
 
 
-.basa-card p {
+.basa-card-meaning {
+
+    max-width:
+        480px;
 
     margin:
-        0;
+        18px 0 0;
+
+    color:
+        rgba(76,57,38,.62);
 
     font-family:
         "Hanken Grotesk",
-        Arial,
         sans-serif;
 
     font-size:
-        13px;
+        11px;
 
     line-height:
         1.75;
 
-    color:
-        #6c5642;
-
 }
 
 
 /* =========================================================
-   SOUND BUTTON
+   CARD FOOTER
    ========================================================= */
 
-.basa-sound {
+.basa-card-footer {
 
     position:
         absolute;
-
-    top:
-        23px;
-
-    right:
-        21px;
-
-    width:
-        39px;
-
-    height:
-        39px;
-
-    border:
-        1px solid
-        #c4a66f;
-
-    border-radius:
-        50%;
-
-    background:
-        #f3e6ce;
-
-    color:
-        #8c5e1c;
-
-    cursor:
-        pointer;
-
-    font-size:
-        14px;
-
-    transition:
-        all 0.25s ease;
-
-}
-
-
-.basa-sound:hover {
-
-    background:
-        #a87528;
-
-    border-color:
-        #a87528;
-
-    color:
-        #fff;
-
-    transform:
-        scale(1.05);
-
-}
-
-
-/* =========================================================
-   DECORATION
-   ========================================================= */
-
-.basa-decoration {
-
-    position:
-        absolute;
-
-    top:
-        46%;
-
-    width:
-        170px;
-
-    height:
-        170px;
-
-    opacity:
-        0.14;
-
-    pointer-events:
-        none;
-
-}
-
-
-.basa-decoration-left {
 
     left:
-        -50px;
-
-}
-
-
-.basa-decoration-right {
+        29px;
 
     right:
-        -50px;
+        29px;
 
-}
+    bottom:
+        22px;
 
-
-.basa-decoration span {
-
-    position:
-        absolute;
+    padding-top:
+        12px;
 
     display:
-        block;
+        flex;
 
-    border:
-        2px solid
-        #9b6c25;
-
-}
-
-
-.basa-decoration span:nth-child(1) {
-
-    width:
-        110px;
-
-    height:
-        110px;
-
-    transform:
-        rotate(45deg);
-
-}
-
-
-.basa-decoration span:nth-child(2) {
-
-    width:
-        80px;
-
-    height:
-        80px;
-
-    top:
-        15px;
-
-    left:
-        15px;
-
-    transform:
-        rotate(45deg);
-
-}
-
-
-.basa-decoration span:nth-child(3) {
-
-    width:
-        50px;
-
-    height:
-        50px;
-
-    top:
-        30px;
-
-    left:
-        30px;
-
-    transform:
-        rotate(45deg);
-
-}
-
-
-/* =========================================================
-   CLOSING
-   ========================================================= */
-
-.basa-closing {
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
-    padding:
-        90px 20px;
-
-    text-align:
+    align-items:
         center;
 
-    background:
-        #eadcc1;
+    justify-content:
+        space-between;
 
     border-top:
         1px solid
-        #d0b789;
-
-    color:
-        #432c1d;
+        rgba(76,57,38,.12);
 
 }
 
 
-.basa-closing::before {
+.basa-card-footer span {
 
-    content: "";
+    color:
+        #9b762d;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        7px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .17em;
+
+}
+
+
+.basa-card-footer strong {
+
+    color:
+        #315f2d;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        13px;
+
+    font-weight:
+        400;
+
+}
+
+
+/* =========================================================
+   LOCKED CARD
+   ========================================================= */
+
+.basa-card-locked {
+
+    padding:
+        0;
+
+    min-height:
+        280px;
+
+    background:
+        #d9cdb0;
+
+    border-color:
+        rgba(76,57,38,.20);
+
+}
+
+
+.basa-card-locked::before {
+
+    content:
+        "";
 
     position:
         absolute;
@@ -1066,18 +1388,135 @@
         repeat;
 
     background-size:
-        430px auto;
+        180px auto;
 
     opacity:
-        0.10;
+        .11;
 
-    pointer-events:
-        none;
+    mix-blend-mode:
+        multiply;
 
 }
 
 
-.basa-closing span {
+.basa-lock {
+
+    position:
+        absolute;
+
+    inset:
+        13px;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        25px;
+
+    text-align:
+        center;
+
+    background:
+        rgba(247,239,218,.94);
+
+    border:
+        1px solid
+        rgba(76,57,38,.18);
+
+}
+
+
+.basa-lock::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        8px;
+
+    border:
+        1px solid
+        rgba(164,123,40,.13);
+
+}
+
+
+.basa-lock-icon {
+
+    position:
+        relative;
+
+    width:
+        52px;
+
+    height:
+        52px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-bottom:
+        15px;
+
+    border:
+        1px solid
+        rgba(126,82,35,.35);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,249,234,.65);
+
+    font-size:
+        18px;
+
+}
+
+
+.basa-lock-icon::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        -5px;
+
+    border:
+        1px solid
+        rgba(126,82,35,.13);
+
+    border-radius:
+        50%;
+
+}
+
+
+.basa-lock > span {
 
     position:
         relative;
@@ -1085,27 +1524,26 @@
     z-index:
         2;
 
+    color:
+        #684932;
+
     font-family:
         "Hanken Grotesk",
-        Arial,
         sans-serif;
 
     font-size:
-        10px;
+        8px;
 
     font-weight:
         700;
 
     letter-spacing:
-        4px;
-
-    color:
-        #98651f;
+        .20em;
 
 }
 
 
-.basa-closing h2 {
+.basa-lock p {
 
     position:
         relative;
@@ -1113,8 +1551,14 @@
     z-index:
         2;
 
+    max-width:
+        220px;
+
     margin:
-        18px 0 0;
+        12px 0 0;
+
+    color:
+        rgba(76,57,38,.48);
 
     font-family:
         "Libre Caslon Text",
@@ -1122,123 +1566,320 @@
         serif;
 
     font-size:
-        clamp(32px, 4vw, 50px);
-
-    font-weight:
-        400;
-
-    color:
-        #432c1d;
-
-}
-
-
-.basa-closing h2 em {
-
-    color:
-        #a87528;
+        11px;
 
     font-style:
         italic;
 
-}
-
-
-/* =========================================================
-   RESPONSIVE TABLET
-   ========================================================= */
-
-@media (max-width: 1000px) {
-
-    .basa-card-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-    }
+    line-height:
+        1.55;
 
 }
 
 
 /* =========================================================
-   RESPONSIVE MOBILE
+   HIDDEN CARD
    ========================================================= */
 
-@media (max-width: 700px) {
+.basa-card.is-hidden {
 
-    .basa-hero {
+    display:
+        none;
 
-        min-height:
-            620px;
-
-    }
+}
 
 
-    .basa-hero-content {
+/* =========================================================
+   EMPTY
+   ========================================================= */
 
-        padding:
-            70px 20px;
+.basa-empty {
 
-    }
+    display:
+        none;
 
+    padding:
+        70px 20px;
 
-    .basa-hero h1 {
+    text-align:
+        center;
 
-        font-size:
-            75px;
-
-    }
-
-
-    .basa-hero p {
-
-        font-size:
-            15px;
-
-    }
+}
 
 
-    .basa-feature-list {
+.basa-empty.show {
 
-        flex-direction:
-            column;
+    display:
+        block;
 
-        gap:
-            10px;
-
-    }
+}
 
 
-    .basa-feature {
+.basa-empty > span {
+
+    color:
+        #a27825;
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .20em;
+
+}
+
+
+.basa-empty h3 {
+
+    margin:
+        12px 0 7px;
+
+    color:
+        #194c25;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        30px;
+
+    font-weight:
+        400;
+
+}
+
+
+.basa-empty p {
+
+    margin:
+        0;
+
+    color:
+        rgba(76,57,38,.50);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+}
+
+
+/* =========================================================
+   ENDING
+   ========================================================= */
+
+.basa-ending {
+
+    position:
+        relative;
+
+    min-height:
+        310px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        65px 25px;
+
+    overflow:
+        hidden;
+
+    text-align:
+        center;
+
+    background:
+        #103818;
+
+}
+
+
+.basa-ending::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background-image:
+        url("../../assets/images/motif.png");
+
+    background-repeat:
+        repeat;
+
+    background-size:
+        280px auto;
+
+    opacity:
+        .075;
+
+}
+
+
+.basa-ending-inner {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        700px;
+
+}
+
+
+.basa-ending span {
+
+    display:
+        block;
+
+    margin-bottom:
+        17px;
+
+    color:
+        var(--basa-gold);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .27em;
+
+}
+
+
+.basa-ending h2 {
+
+    margin:
+        0;
+
+    color:
+        var(--basa-cream);
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(38px, 5vw, 58px);
+
+    font-weight:
+        400;
+
+    font-style:
+        italic;
+
+    line-height:
+        1.15;
+
+}
+
+
+.basa-ending h2 em {
+
+    color:
+        var(--basa-gold-light);
+
+}
+
+
+.basa-ending p {
+
+    max-width:
+        500px;
+
+    margin:
+        18px auto 0;
+
+    color:
+        rgba(246,240,220,.60);
+
+    font-family:
+        "Hanken Grotesk",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.7;
+
+}
+
+
+.basa-ending-line {
+
+    width:
+        52px;
+
+    height:
+        1px;
+
+    margin:
+        24px auto 0;
+
+    background:
+        rgba(216,189,77,.65);
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .basa-intro-inner {
 
         width:
-            100%;
+            calc(100% - 50px);
 
-        min-width:
-            auto;
+        grid-template-columns:
+            1fr;
+
+        gap:
+            15px;
 
         padding:
-            9px;
-
-        border-right:
-            none;
-
-        border-bottom:
-            1px solid
-            rgba(232, 196, 123, 0.45);
+            50px 0;
 
     }
 
 
-    .basa-feature:last-child {
-
-        border-bottom:
-            none;
-
-    }
-
-
-    .basa-card-grid {
+    .basa-grid {
 
         grid-template-columns:
             1fr;
@@ -1246,18 +1887,18 @@
     }
 
 
-    .basa-vocabulary {
+    .basa-content {
 
-        padding:
-            75px 20px 90px;
+        width:
+            calc(100% - 50px);
 
     }
 
 
-    .basa-section-heading {
+    .basa-progress-inner {
 
-        margin-bottom:
-            40px;
+        width:
+            calc(100% - 50px);
 
     }
 
@@ -1265,34 +1906,190 @@
 
 
 /* =========================================================
-   RESPONSIVE SMALL MOBILE
+   MOBILE
    ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 680px) {
 
-    .basa-hero h1 {
+    .basa-hero {
 
-        font-size:
-            62px;
+        min-height:
+            310px;
 
-    }
-
-
-    .basa-hero p {
-
-        font-size:
-            14px;
+        padding:
+            15px;
 
     }
 
 
-    .basa-eyebrow {
+    .basa-hero-frame {
+
+        min-height:
+            280px;
+
+    }
+
+
+    .basa-hero-frame::before {
+
+        inset:
+            9px;
+
+    }
+
+
+    .basa-hero-description {
+
+        max-width:
+            90%;
 
         font-size:
             10px;
 
+    }
+
+
+    .basa-hero-caption {
+
+        font-size:
+            6.5px;
+
         letter-spacing:
-            3px;
+            .19em;
+
+    }
+
+
+    .basa-intro-inner {
+
+        width:
+            calc(100% - 30px);
+
+        min-height:
+            auto;
+
+        padding:
+            45px 0;
+
+    }
+
+
+    .basa-intro-content h2 {
+
+        font-size:
+            38px;
+
+    }
+
+
+    .basa-intro-content p {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .basa-progress-inner {
+
+        width:
+            calc(100% - 30px);
+
+        padding:
+            24px 0 27px;
+
+    }
+
+
+    .basa-progress-heading strong {
+
+        font-size:
+            19px;
+
+    }
+
+
+    .basa-progress-heading span {
+
+        font-size:
+            7px;
+
+        letter-spacing:
+            .12em;
+
+    }
+
+
+    .basa-progress-bottom {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            0;
+
+    }
+
+
+    .basa-tabs {
+
+        justify-content:
+            flex-start;
+
+    }
+
+
+    .basa-tab {
+
+        min-width:
+            110px;
+
+        height:
+            66px;
+
+        padding:
+            0 13px;
+
+        font-size:
+            7px;
+
+    }
+
+
+    .basa-content {
+
+        width:
+            calc(100% - 30px);
+
+        padding:
+            55px 0 70px;
+
+    }
+
+
+    .basa-section-heading {
+
+        margin-bottom:
+            30px;
+
+    }
+
+
+    .basa-section-title {
+
+        font-size:
+            33px;
+
+    }
+
+
+    .basa-search-wrap {
+
+        margin-bottom:
+            30px;
 
     }
 
@@ -1300,7 +2097,97 @@
     .basa-card {
 
         min-height:
-            auto;
+            255px;
+
+        padding:
+            23px 22px;
+
+    }
+
+
+    .basa-card-main {
+
+        padding-top:
+            28px;
+
+    }
+
+
+    .basa-card-main h3 {
+
+        font-size:
+            31px;
+
+    }
+
+
+    .basa-card-footer {
+
+        left:
+            22px;
+
+        right:
+            22px;
+
+        bottom:
+            18px;
+
+    }
+
+
+    .basa-card-locked {
+
+        min-height:
+            255px;
+
+    }
+
+
+    .basa-lock {
+
+        inset:
+            10px;
+
+        padding:
+            20px;
+
+    }
+
+
+    .basa-lock-icon {
+
+        width:
+            46px;
+
+        height:
+            46px;
+
+        font-size:
+            16px;
+
+    }
+
+
+    .basa-lock > span {
+
+        font-size:
+            7px;
+
+    }
+
+
+    .basa-lock p {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .basa-ending {
+
+        min-height:
+            270px;
 
     }
 

@@ -1,14 +1,61 @@
 /* =========================================================
-   CATATAN
+   LELANA KAMANDAKA
+   CATATAN PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #f3eedc;
+    color: #17351b;
+    font-family: "Hanken Grotesk", sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    border: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   PAGE
    ========================================================= */
 
 .catatan-page {
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
-
-    background: #fff9ea;
-    color: #3f2a1d;
+    overflow-x: hidden;
+    background: #f3eedc;
 }
 
 
@@ -16,366 +63,31 @@
    BATIK BACKGROUND
    ========================================================= */
 
-.catatan-page::before {
-    content: "";
-
-    position: absolute;
+.lk-batik-pattern {
+    position: fixed;
     inset: 0;
-
     z-index: 0;
-
-    background-image:
-        url("../../assets/images/motif.png");
-
-    background-repeat: repeat;
-    background-size: 360px auto;
-
-    opacity: 0.055;
-
     pointer-events: none;
+    overflow: hidden;
+    opacity: 0.12;
 }
 
-.catatan-page > * {
+.lk-batik-pattern img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.catatan-main {
     position: relative;
     z-index: 1;
-}
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.catatan-hero {
-    position: relative;
-
-    min-height: 330px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 80px 25px 55px;
-
-    overflow: hidden;
-
-    background: #492c1e;
-}
-
-.catatan-hero::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        url("../../assets/images/motif.png");
-
-    background-repeat: repeat;
-    background-size: 300px auto;
-
-    opacity: 0.10;
-
-    pointer-events: none;
-}
-
-.catatan-hero::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 24px;
-
-    border:
-        1px solid
-        rgba(216, 182, 109, 0.30);
-}
-
-.catatan-hero-inner {
-    position: relative;
-    z-index: 2;
-
-    width: min(700px, 100%);
-
-    text-align: center;
-}
-
-.catatan-eyebrow {
-    display: block;
-
-    margin-bottom: 14px;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: 0.27em;
-
-    color: #d8b66d;
-}
-
-.catatan-hero-title {
-    margin: 0;
-
-    font-family:
-        "Libre Caslon Text",
-        serif;
-
-    font-size:
-        clamp(50px, 7vw, 76px);
-
-    font-weight: 400;
-
-    line-height: 1;
-
-    color: #fff9ea;
-}
-
-.catatan-hero-description {
-    max-width: 600px;
-
-    margin: 21px auto 0;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 12px;
-
-    line-height: 1.8;
-
-    color:
-        rgba(255, 249, 234, 0.74);
-}
-
-.catatan-hero-line {
-    width: 60px;
-    height: 1px;
-
-    margin: 25px auto 0;
-
-    background: #d8b66d;
-}
-
-.catatan-hero-caption {
-    display: block;
-
-    margin-top: 14px;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 8px;
-    font-weight: 700;
-
-    letter-spacing: 0.27em;
-
-    color:
-        rgba(216, 182, 109, 0.75);
-}
-
-
-/* =========================================================
-   PROGRESS
-   ========================================================= */
-
-.catatan-progress-section {
-    width: 100%;
-
-    background: #fff9ea;
-
-    border-bottom:
-        1px solid
-        rgba(125, 85, 62, 0.14);
-}
-
-.catatan-progress-inner {
-    width:
-        min(1050px, calc(100% - 60px));
-
-    margin: 0 auto;
-
-    padding:
-        28px 0 30px;
-}
-
-.catatan-progress-heading {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    margin-bottom: 12px;
-}
-
-.catatan-progress-heading span {
-    display: block;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 8px;
-    font-weight: 700;
-
-    letter-spacing: 0.18em;
-
-    color: #72503b;
-}
-
-.catatan-progress-heading strong {
-    flex-shrink: 0;
-
-    font-family:
-        "Libre Caslon Text",
-        serif;
-
-    font-size: 21px;
-    font-weight: 400;
-
-    line-height: 1;
-
-    color: #a87525;
-}
-
-.catatan-progress-track {
-    width: 100%;
-    height: 5px;
-
-    overflow: hidden;
-
-    background:
-        rgba(125, 85, 62, 0.13);
-}
-
-.catatan-progress-fill {
-    width: 10%;
-    height: 100%;
-
-    background: #a87525;
-
-    transition:
-        width 0.4s ease;
-}
-
-.catatan-progress-inner p {
-    margin:
-        11px 0 0;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 10px;
-
-    line-height: 1.5;
-
-    color:
-        rgba(63, 42, 29, 0.55);
-}
-
-
-/* =========================================================
-   FILTER
-   ========================================================= */
-
-.catatan-filter-section {
-    width: 100%;
-
-    background: #fff9ea;
-
-    border-bottom:
-        1px solid
-        rgba(125, 85, 62, 0.16);
-}
-
-.catatan-tabs {
-    min-height: 76px;
-
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-
-    overflow-x: auto;
-}
-
-.catatan-tab {
-    position: relative;
-
-    height: 76px;
-
-    min-width: 100px;
-
-    padding:
-        0 22px;
-
-    flex: 0 0 auto;
-
-    border: 0;
-
-    border-right:
-        1px solid
-        rgba(125, 85, 62, 0.16);
-
-    background: transparent;
-
-    cursor: pointer;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.16em;
-
-    color:
-        rgba(63, 42, 29, 0.52);
-}
-
-.catatan-tab:first-child {
-    border-left:
-        1px solid
-        rgba(125, 85, 62, 0.16);
-}
-
-.catatan-tab:hover {
-    color: #3f2a1d;
-}
-
-.catatan-tab.active {
-    color: #8a5f2d;
-}
-
-.catatan-tab::after {
-    content: "";
-
-    position: absolute;
-
-    bottom: 0;
-    left: 50%;
-
-    width: 0;
-    height: 2px;
-
-    transform:
-        translateX(-50%);
-
-    background: #a87525;
-
-    transition:
-        width 0.25s ease;
-}
-
-.catatan-tab.active::after {
-    width: 40px;
+    min-height: 100vh;
 }
 
 
@@ -384,70 +96,142 @@
    ========================================================= */
 
 .catatan-content {
-    width:
-        min(1050px, calc(100% - 60px));
-
+    width: min(1050px, calc(100% - 70px));
     margin: 0 auto;
-
-    padding:
-        80px 0 95px;
+    padding: 55px 0 80px;
 }
 
 
 /* =========================================================
-   HEADING
+   HEADER
    ========================================================= */
 
-.catatan-section-heading {
-    margin-bottom: 48px;
-
-    text-align: center;
+.catatan-header {
+    margin-bottom: 34px;
 }
 
-.catatan-section-eyebrow {
-    display: block;
-
-    margin-bottom: 13px;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.25em;
-
+.catatan-eyebrow {
+    margin-bottom: 10px;
     color: #a87525;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
-.catatan-section-title {
-    margin: 0;
-
-    font-family:
-        "Libre Caslon Text",
-        serif;
-
-    font-size:
-        clamp(38px, 5vw, 56px);
-
-    font-weight: 400;
-
-    line-height: 1.08;
-
-    color: #3f2a1d;
+.catatan-header h1 {
+    color: #153719;
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-size: clamp(45px, 6vw, 68px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1.5px;
 }
 
-.catatan-heading-line {
-    width: 48px;
-    height: 1px;
+.catatan-header p {
+    max-width: 700px;
+    margin-top: 15px;
+    color: #70766b;
+    font-size: 14px;
+    line-height: 1.75;
+}
 
-    margin:
-        21px auto 0;
 
-    background:
-        rgba(125, 85, 62, 0.32);
+/* =========================================================
+   PROGRESS PANEL
+   ========================================================= */
+
+.catatan-progress-panel {
+    margin-bottom: 25px;
+    padding: 24px 28px;
+    border: 1px solid #ddd5bd;
+    border-radius: 18px;
+    background: rgba(255, 252, 240, 0.9);
+    box-shadow: 0 8px 25px rgba(46, 52, 28, 0.04);
+}
+
+.catatan-progress-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 11px;
+}
+
+.catatan-progress-top strong {
+    color: #17351b;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.catatan-progress-top span {
+    color: #a87525;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.catatan-progress-track {
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: #ded8c4;
+}
+
+.catatan-progress-fill {
+    width: 10%;
+    height: 100%;
+    border-radius: inherit;
+    background: #a87525;
+    transition: width 0.4s ease;
+}
+
+.catatan-progress-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: #8a8879;
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+.catatan-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 27px;
+}
+
+.catatan-tab {
+    min-height: 38px;
+    padding: 0 18px;
+    border: 1px solid #d7ceb6;
+    border-radius: 99px;
+    background: rgba(255, 252, 240, 0.6);
+    color: #53604e;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.catatan-tab:hover {
+    border-color: #9c9a69;
+    transform: translateY(-1px);
+}
+
+.catatan-tab.active {
+    border-color: #355f1d;
+    background: #355f1d;
+    color: #fff;
 }
 
 
@@ -457,285 +241,275 @@
 
 .catatan-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
 }
 
 
 /* =========================================================
-   CARD TERBUKA
+   CARD
    ========================================================= */
 
 .catatan-card {
     position: relative;
-
-    min-height: 250px;
-
+    min-height: 275px;
     overflow: hidden;
 
-    padding:
-        27px 29px;
+    border: 1px solid #ddd5bd;
+    border-radius: 5px;
 
-    background:
-        rgba(255, 249, 234, 0.94);
-
-    border:
-        1px solid
-        rgba(125, 85, 62, 0.18);
+    background: rgba(255, 252, 240, 0.95);
 
     box-shadow:
-        0 6px 20px
-        rgba(63, 42, 29, 0.04);
+        0 7px 24px rgba(53, 54, 30, 0.04);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 
-/* garis kiri HANYA OPEN */
+/* garis kiri */
 
-.catatan-card:not(.locked)::before {
+.catatan-card::before {
     content: "";
 
     position: absolute;
 
-    left: 0;
     top: 0;
+    left: 0;
     bottom: 0;
 
-    width: 4px;
+    width: 5px;
 
-    background: #8a6249;
-
-    opacity: 0.75;
+    background: #b79b68;
 }
 
 
-/* hover HANYA OPEN */
+/* kartu terbuka */
 
-.catatan-card:not(.locked):hover {
-    transform:
-        translateY(-3px);
+.catatan-card.open::before {
+    background: #d7bd31;
+}
+
+.catatan-card.open:hover {
+    transform: translateY(-3px);
 
     box-shadow:
-        0 12px 28px
-        rgba(63, 42, 29, 0.075);
-
-    transition:
-        0.25s ease;
+        0 13px 30px rgba(53, 54, 30, 0.08);
 }
 
 
 /* =========================================================
-   CARD NUMBER
+   CARD INNER
+   ========================================================= */
+
+.catatan-card-inner {
+    min-height: 275px;
+
+    padding:
+        27px 30px 25px 34px;
+}
+
+
+/* =========================================================
+   NUMBER
    ========================================================= */
 
 .catatan-card-number {
+    margin-bottom: 23px;
+
+    color: #ae8a3d;
+
     font-family:
         "Libre Caslon Text",
+        Georgia,
         serif;
 
     font-size: 25px;
 
     line-height: 1;
-
-    color: #b58b4e;
 }
 
 
 /* =========================================================
-   CARD CONTENT
+   CATEGORY
    ========================================================= */
-
-.catatan-card-content {
-    padding-top: 25px;
-}
 
 .catatan-card-category {
     display: block;
 
-    margin-bottom: 11px;
+    margin-bottom: 10px;
 
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
+    color: #846743;
 
-    font-size: 8px;
+    font-size: 9px;
 
     font-weight: 700;
 
-    letter-spacing: 0.20em;
+    letter-spacing: 2.2px;
 
-    color: #8a6249;
+    text-transform: uppercase;
 }
 
-.catatan-card-content h3 {
-    margin:
-        0 0 9px;
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.catatan-card h2 {
+    margin: 0;
+
+    color: #3a271b;
 
     font-family:
         "Libre Caslon Text",
+        Georgia,
         serif;
 
-    font-size:
-        clamp(27px, 3vw, 34px);
-
-    font-weight: 400;
+    font-size: 30px;
 
     line-height: 1.1;
-
-    color: #3f2a1d;
-}
-
-.catatan-card-content p {
-    max-width: 480px;
-
-    margin: 0;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 11px;
-
-    line-height: 1.75;
-
-    color:
-        rgba(63, 42, 29, 0.60);
 }
 
 
 /* =========================================================
-   STATUS OPEN
+   DESCRIPTION
+   ========================================================= */
+
+.catatan-card-description {
+    margin-top: 13px;
+
+    color: #817b6d;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.catatan-card-divider {
+    height: 1px;
+
+    margin:
+        21px 0 12px;
+
+    background: #e5dfcf;
+}
+
+
+/* =========================================================
+   STATUS
    ========================================================= */
 
 .catatan-card-status {
-    margin-top: 21px;
+    color: #8a6749;
 
-    padding-top: 13px;
-
-    border-top:
-        1px solid
-        rgba(125, 85, 62, 0.13);
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 7px;
+    font-size: 9px;
 
     font-weight: 700;
 
-    letter-spacing: 0.20em;
-
-    color: #8a6249;
+    letter-spacing: 1.8px;
 }
 
 
 /* =========================================================
-   =========================================================
-   LOCKED CARD
-   =========================================================
+   OPEN BUTTON
    ========================================================= */
 
+.catatan-open-button {
+    display: inline-flex;
 
-/* PENTING:
-   LOCK SELALU HIDDEN SECARA DEFAULT
-*/
+    align-items: center;
+    justify-content: center;
 
-.catatan-lock {
-    display: none;
+    min-height: 36px;
+
+    margin-top: 17px;
+
+    padding: 0 17px;
+
+    border:
+        1px solid #9e8c55;
+
+    border-radius: 99px;
+
+    background: transparent;
+
+    color: #35511f;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.catatan-open-button:hover {
+    background: #355f1d;
+    color: #fff;
+    transform: translateY(-1px);
 }
 
 
-/* locked card */
+/* =========================================================
+   LOCKED CARD
+   ========================================================= */
 
 .catatan-card.locked {
-    position: relative;
+    min-height: 275px;
 
-    min-height: 250px;
+    border-color: #d6ccb3;
 
-    padding: 0;
+    background:
+        linear-gradient(
+            rgba(230, 221, 199, 0.94),
+            rgba(230, 221, 199, 0.94)
+        ),
+        url("../../assets/images/motif.png");
 
-    background: #dfcfb2;
+    background-size:
+        auto,
+        220px auto;
 
-    border:
-        1px solid
-        rgba(91, 61, 42, 0.24);
-
-    box-shadow:
-        0 6px 20px
-        rgba(63, 42, 29, 0.05);
+    opacity: 0.82;
 
     cursor: default;
 }
 
 
-/* jangan pakai garis kiri open */
-
-.catatan-card.locked::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-image:
-        url("../../assets/images/motif.png");
-
-    background-repeat: repeat;
-
-    background-size: 180px auto;
-
-    background-position: center;
-
-    opacity: 0.12;
-
-    mix-blend-mode: multiply;
-
-    pointer-events: none;
-}
-
-
-/* jangan bergerak */
+/* hilangkan hover */
 
 .catatan-card.locked:hover {
     transform: none;
 
     box-shadow:
-        0 6px 20px
-        rgba(63, 42, 29, 0.05);
+        0 7px 24px rgba(53, 54, 30, 0.04);
 }
 
 
-/* sembunyikan seluruh isi normal */
+/* garis locked */
 
-.catatan-card.locked
-.catatan-card-number,
-
-.catatan-card.locked
-.catatan-card-content,
-
-.catatan-card.locked
-.catatan-card-status {
-    display: none;
+.catatan-card.locked::before {
+    background: #c8bda1;
 }
 
 
 /* =========================================================
-   LOCK PANEL
+   LOCKED CONTENT
    ========================================================= */
 
-.catatan-card.locked .catatan-lock {
-    position: absolute;
-
-    inset: 13px;
-
-    z-index: 5;
-
+.catatan-card.locked
+.catatan-card-inner {
     display: flex;
 
     flex-direction: column;
@@ -744,35 +518,38 @@
 
     justify-content: center;
 
-    padding: 25px;
+    min-height: 275px;
 
-    box-sizing: border-box;
+    padding: 30px;
 
     text-align: center;
-
-    background:
-        rgba(247, 237, 215, 0.94);
-
-    border:
-        1px solid
-        rgba(96, 67, 48, 0.20);
 }
 
 
-/* garis dalam */
+/* =========================================================
+   LOCK CIRCLE
+   ========================================================= */
 
-.catatan-card.locked .catatan-lock::before {
-    content: "";
+.catatan-lock-circle {
+    position: relative;
 
-    position: absolute;
+    width: 62px;
+    height: 62px;
 
-    inset: 8px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
 
     border:
-        1px solid
-        rgba(145, 99, 42, 0.12);
+        1px solid #c5b99d;
 
-    pointer-events: none;
+    border-radius: 50%;
+
+    background:
+        rgba(255, 252, 240, 0.65);
 }
 
 
@@ -783,116 +560,287 @@
 .catatan-lock-icon {
     position: relative;
 
-    width: 52px;
-    height: 52px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 16px;
+    width: 19px;
+    height: 17px;
 
     border:
-        1px solid
-        rgba(126, 82, 35, 0.38);
+        2px solid #9d9178;
 
-    border-radius: 50%;
-
-    background:
-        rgba(255, 249, 234, 0.75);
-
-    font-size: 18px;
+    border-radius: 3px;
 }
 
+
+/* gantungan gembok */
 
 .catatan-lock-icon::before {
     content: "";
 
     position: absolute;
 
-    inset: -5px;
+    left: 3px;
+    top: -11px;
+
+    width: 9px;
+    height: 11px;
 
     border:
-        1px solid
-        rgba(126, 82, 35, 0.15);
+        2px solid #9d9178;
 
-    border-radius: 50%;
+    border-bottom: 0;
+
+    border-radius:
+        8px 8px 0 0;
 }
 
 
 /* =========================================================
-   LOCK TEXT
+   LOCKED TEXT
    ========================================================= */
 
-.catatan-card.locked .catatan-lock span {
-    position: relative;
+.catatan-locked-label {
+    margin-bottom: 8px;
 
-    z-index: 2;
+    color: #75664f;
 
-    display: block;
+    font-size: 9px;
 
-    margin: 0;
+    font-weight: 700;
 
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
+    letter-spacing: 2px;
+}
+
+.catatan-locked-subtitle {
+    margin-bottom: 7px;
+
+    color: #a1947a;
 
     font-size: 8px;
 
     font-weight: 700;
 
-    letter-spacing: 0.23em;
-
-    color: #684932;
+    letter-spacing: 1.7px;
 }
 
+.catatan-locked-text {
+    max-width: 290px;
 
-.catatan-card.locked .catatan-lock span::after {
-    content:
-        "JEJAK YANG BELUM DITEMUKAN";
+    margin: 0;
 
-    display: block;
-
-    margin-top: 8px;
-
-    font-size: 5px;
-
-    font-weight: 500;
-
-    letter-spacing: 0.18em;
-
-    color:
-        rgba(104, 73, 50, 0.43);
-}
-
-
-/* =========================================================
-   LOCK DESCRIPTION
-   ========================================================= */
-
-.catatan-card.locked .catatan-lock p {
-    position: relative;
-
-    z-index: 2;
-
-    max-width: 220px;
-
-    margin:
-        13px 0 0;
+    color: #978d79;
 
     font-family:
         "Libre Caslon Text",
+        Georgia,
         serif;
 
-    font-size: 11px;
+    font-size: 14px;
 
     font-style: italic;
 
     line-height: 1.5;
+}
 
-    color:
-        rgba(63, 42, 29, 0.48);
+.catatan-required-level {
+    margin-top: 14px;
+
+    color: #8e784e;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DETAIL OVERLAY
+   ========================================================= */
+
+.catatan-detail {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(8, 28, 12, 0.72);
+
+    backdrop-filter: blur(5px);
+}
+
+.catatan-detail.show {
+    display: flex;
+}
+
+
+/* =========================================================
+   DETAIL BOX
+   ========================================================= */
+
+.catatan-detail-box {
+    position: relative;
+
+    width:
+        min(720px, 100%);
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    padding: 42px;
+
+    border:
+        1px solid #d6c9a9;
+
+    background: #fffaf0;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.28);
+
+    animation:
+        detailIn 0.25s ease;
+}
+
+
+/* =========================================================
+   DETAIL ANIMATION
+   ========================================================= */
+
+@keyframes detailIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   CLOSE
+   ========================================================= */
+
+.catatan-detail-close {
+    position: absolute;
+
+    top: 17px;
+    right: 17px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid #d5ccb7;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #6e604b;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    line-height: 1;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.catatan-detail-close:hover {
+    background: #355f1d;
+    color: #fff;
+}
+
+
+/* =========================================================
+   DETAIL CATEGORY
+   ========================================================= */
+
+.catatan-detail-category {
+    color: #846743;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 2.4px;
+}
+
+
+/* =========================================================
+   DETAIL TITLE
+   ========================================================= */
+
+.catatan-detail-title {
+    margin:
+        9px 0 18px;
+
+    color: #38261a;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 40px;
+
+    line-height: 1.1;
+}
+
+
+/* =========================================================
+   DETAIL TEXT
+   ========================================================= */
+
+.catatan-detail-text {
+    color: #625d50;
+
+    font-size: 14px;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   DETAIL LOCATION
+   ========================================================= */
+
+.catatan-detail-location {
+    margin-top: 24px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid #e4ddcc;
+
+    color: #8c6c32;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
 }
 
 
@@ -903,164 +851,35 @@
 .catatan-empty {
     display: none;
 
-    padding:
-        70px 20px;
+    margin-top: 25px;
+
+    padding: 45px 25px;
+
+    border:
+        1px dashed #d4ccb8;
 
     text-align: center;
+
+    color: #898473;
+
+    font-size: 12px;
 }
 
 .catatan-empty.show {
     display: block;
 }
 
-.catatan-empty span {
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.20em;
-
-    color: #a87525;
-}
-
-.catatan-empty h3 {
-    margin:
-        12px 0 7px;
-
-    font-family:
-        "Libre Caslon Text",
-        serif;
-
-    font-size: 30px;
-
-    font-weight: 400;
-}
-
-.catatan-empty p {
-    margin: 0;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 10px;
-
-    color:
-        rgba(63, 42, 29, 0.50);
-}
-
 
 /* =========================================================
-   ENDING
+   RESPONSIVE
    ========================================================= */
 
-.catatan-ending {
-    position: relative;
+@media (max-width: 1000px) {
 
-    min-height: 300px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    padding:
-        65px 25px;
-
-    overflow: hidden;
-
-    text-align: center;
-
-    background: #40291d;
-}
-
-.catatan-ending::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background-image:
-        url("../../assets/images/motif.png");
-
-    background-repeat: repeat;
-
-    background-size: 310px auto;
-
-    opacity: 0.08;
-
-    pointer-events: none;
-}
-
-.catatan-ending-inner {
-    position: relative;
-
-    z-index: 2;
-}
-
-.catatan-ending span {
-    display: block;
-
-    margin-bottom: 17px;
-
-    font-family:
-        "Hanken Grotesk",
-        sans-serif;
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing: 0.27em;
-
-    color: #d8b66d;
-}
-
-.catatan-ending h2 {
-    margin: 0;
-
-    font-family:
-        "Libre Caslon Text",
-        serif;
-
-    font-size:
-        clamp(35px, 5vw, 56px);
-
-    font-weight: 400;
-
-    font-style: italic;
-
-    line-height: 1.15;
-
-    color: #f0d18a;
-}
-
-.catatan-ending h2 em {
-    color: #d8b66d;
-}
-
-.catatan-ending-line {
-    width: 52px;
-    height: 1px;
-
-    margin:
-        24px auto 0;
-
-    background:
-        rgba(216, 182, 109, 0.60);
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 850px) {
+    .catatan-content {
+        width:
+            min(900px, calc(100% - 50px));
+    }
 
     .catatan-grid {
         grid-template-columns: 1fr;
@@ -1070,136 +889,194 @@
 
 
 /* =========================================================
-   MOBILE
+   TABLET
    ========================================================= */
 
-@media (max-width: 600px) {
-
-    .catatan-hero {
-        min-height: 290px;
-
-        padding:
-            75px 20px 45px;
-    }
-
-    .catatan-hero::after {
-        inset: 15px;
-    }
-
-    .catatan-hero-title {
-        font-size: 47px;
-    }
-
-    .catatan-hero-description {
-        font-size: 10.5px;
-    }
-
-
-    /* progress */
-
-    .catatan-progress-inner {
-        width:
-            calc(100% - 30px);
-
-        padding:
-            23px 0 25px;
-    }
-
-    .catatan-progress-heading span {
-        font-size: 7px;
-
-        letter-spacing: 0.10em;
-    }
-
-    .catatan-progress-heading strong {
-        font-size: 18px;
-    }
-
-    .catatan-progress-inner p {
-        font-size: 9.5px;
-    }
-
-
-    /* filter */
-
-    .catatan-tabs {
-        justify-content: flex-start;
-    }
-
-    .catatan-tab {
-        height: 68px;
-
-        min-width: auto;
-
-        padding:
-            0 14px;
-
-        font-size: 7px;
-    }
-
-
-    /* content */
+@media (max-width: 700px) {
 
     .catatan-content {
         width:
-            calc(100% - 30px);
+            calc(100% - 36px);
 
         padding:
-            55px 0 70px;
-    }
-
-    .catatan-section-heading {
-        margin-bottom: 35px;
-    }
-
-    .catatan-section-title {
-        font-size: 34px;
+            38px 0 60px;
     }
 
 
-    /* cards */
+    .catatan-header {
+        margin-bottom: 28px;
+    }
+
+
+    .catatan-header h1 {
+        font-size: 48px;
+    }
+
+
+    .catatan-progress-panel {
+        padding:
+            20px;
+    }
+
+
+    .catatan-tabs {
+        gap: 7px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+
+        padding-bottom: 4px;
+    }
+
+
+    .catatan-tab {
+        flex:
+            0 0 auto;
+    }
+
 
     .catatan-card {
-        min-height: 220px;
+        min-height: 250px;
+    }
+
+
+    .catatan-card-inner {
+        min-height: 250px;
+    }
+
+
+    .catatan-card.locked,
+    .catatan-card.locked
+    .catatan-card-inner {
+        min-height: 250px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+    .catatan-content {
+        width:
+            calc(100% - 28px);
 
         padding:
-            23px 22px;
+            30px 0 50px;
     }
 
-    .catatan-card.locked {
-        min-height: 220px;
 
-        padding: 0;
+    .catatan-eyebrow {
+        font-size: 8px;
+        letter-spacing: 2.2px;
     }
 
-    .catatan-card.locked .catatan-lock {
-        inset: 10px;
 
-        padding: 20px;
+    .catatan-header h1 {
+        font-size: 42px;
     }
 
-    .catatan-lock-icon {
-        width: 46px;
-        height: 46px;
 
-        margin-bottom: 14px;
-
-        font-size: 16px;
+    .catatan-header p {
+        font-size: 12px;
+        line-height: 1.7;
     }
 
-    .catatan-card.locked .catatan-lock span {
-        font-size: 7px;
+
+    .catatan-progress-top strong {
+        font-size: 11px;
     }
 
-    .catatan-card.locked .catatan-lock p {
+
+    .catatan-progress-top span {
         font-size: 10px;
     }
 
 
-    /* ending */
+    .catatan-progress-bottom {
+        font-size: 8px;
+    }
 
-    .catatan-ending {
-        min-height: 270px;
+
+    .catatan-tab {
+        min-height: 35px;
+        padding:
+            0 14px;
+
+        font-size: 9px;
+    }
+
+
+    .catatan-card {
+        min-height: 235px;
+    }
+
+
+    .catatan-card-inner {
+        min-height: 235px;
+
+        padding:
+            23px 20px 22px 27px;
+    }
+
+
+    .catatan-card-number {
+        margin-bottom: 19px;
+        font-size: 22px;
+    }
+
+
+    .catatan-card h2 {
+        font-size: 25px;
+    }
+
+
+    .catatan-card-description {
+        font-size: 11px;
+    }
+
+
+    .catatan-card.locked,
+    .catatan-card.locked
+    .catatan-card-inner {
+        min-height: 235px;
+    }
+
+
+    .catatan-lock-circle {
+        width: 55px;
+        height: 55px;
+    }
+
+
+    .catatan-locked-text {
+        font-size: 12px;
+    }
+
+
+    .catatan-detail {
+        padding: 14px;
+    }
+
+
+    .catatan-detail-box {
+        max-height: 90vh;
+
+        padding:
+            32px 21px 25px;
+    }
+
+
+    .catatan-detail-title {
+        font-size: 31px;
+    }
+
+
+    .catatan-detail-text {
+        font-size: 12px;
+        line-height: 1.75;
     }
 
 }
