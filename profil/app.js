@@ -1,103 +1,203 @@
-/* ============================================================= */
-/* LELANA KAMANDAKA */
-/* PROFIL / PENGATURAN */
-/* JAVASCRIPT */
-/* ============================================================= */
+/* =========================================================
+   LELANA KAMANDAKA
+   PROFIL PEMBUAT
+   APP.JS
+   ========================================================= */
 
 
-/* ============================================================= */
-/* DOM READY */
-/* ============================================================= */
+/* =========================================================
+   DOM READY
+   ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-
-        /* ===================================================== */
-        /* AMBIL TOMBOL TUTUP */
-        /* ===================================================== */
-
-        const closeButton =
-            document.getElementById(
-                "closeButton"
-            );
-
-
-        /* ===================================================== */
-        /* CEK TOMBOL */
-        /* ===================================================== */
-
-        if (
-            closeButton
-        ) {
-
-            closeButton.addEventListener(
-                "click",
-                function () {
-
-                    closeProfilePage();
-
-                }
-            );
-
-        }
-
-
-        /* ===================================================== */
-        /* ESCAPE KEY */
-        /* ===================================================== */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeProfilePage();
-
-                }
-
-            }
-        );
-
-
-        /* ===================================================== */
-        /* TAMBAHKAN STATUS SIAP */
-        /* ===================================================== */
-
-        document.body.classList.add(
-            "profile-loaded"
-        );
-
-
-        /* ===================================================== */
-        /* INIT INTERACTION */
-        /* ===================================================== */
-
-        initializeProfileInteractions();
-
+        initializePage();
 
     }
 );
 
 
-/* ============================================================= */
-/* CLOSE PROFILE PAGE */
-/* ============================================================= */
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
 
-function closeProfilePage() {
+function initializePage() {
 
-    /*
-     * Kalau halaman profil dibuka dari Beranda,
-     * history.back() akan membawa pengguna kembali
-     * ke halaman sebelumnya.
-     */
+    initializeLoader();
+
+    initializeHeader();
+
+    initializeHomeButton();
+
+    initializeSettings();
+
+    initializeScrollTop();
+
+    initializeRevealAnimation();
+
+    initializeTeamCards();
+
+    initializeKeyboard();
+
+}
+
+
+/* =========================================================
+   LOADER
+   ========================================================= */
+
+function initializeLoader() {
+
+    const loader =
+        document.getElementById(
+            "pageLoader"
+        );
+
+    if (!loader) {
+
+        return;
+
+    }
+
+
+    window.addEventListener(
+        "load",
+        function () {
+
+            setTimeout(
+                function () {
+
+                    loader.classList.add(
+                        "hidden"
+                    );
+
+                },
+                500
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+function initializeHeader() {
+
+    const header =
+        document.getElementById(
+            "siteHeader"
+        );
+
+    if (!header) {
+
+        return;
+
+    }
+
+
+    let lastScroll =
+        window.scrollY;
+
+
+    window.addEventListener(
+        "scroll",
+        function () {
+
+            const currentScroll =
+                window.scrollY;
+
+
+            if (
+                currentScroll >
+                40
+            ) {
+
+                header.classList.add(
+                    "header-scrolled"
+                );
+
+            } else {
+
+                header.classList.remove(
+                    "header-scrolled"
+                );
+
+            }
+
+
+            lastScroll =
+                currentScroll;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+}
+
+
+/* =========================================================
+   HOME BUTTON
+   ========================================================= */
+
+function initializeHomeButton() {
+
+    const homeButton =
+        document.getElementById(
+            "homeButton"
+        );
+
+    if (!homeButton) {
+
+        return;
+
+    }
+
+
+    homeButton.addEventListener(
+        "click",
+        function () {
+
+            goBackHome();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   GO BACK HOME
+   ========================================================= */
+
+function goBackHome() {
+
+    const hasHistory =
+        window.history.length > 1;
+
+
+    const currentPath =
+        window.location.pathname;
+
+
+    const isIndexPage =
+        currentPath.endsWith(
+            "index.html"
+        ) ||
+        currentPath === "/" ||
+        currentPath === "";
+
 
     if (
-        window.history.length > 1
+        hasHistory &&
+        !isIndexPage
     ) {
 
         window.history.back();
@@ -107,35 +207,460 @@ function closeProfilePage() {
     }
 
 
-    /*
-     * Jika tidak ada history,
-     * kembali ke index.html di folder utama.
-     */
+    const homeUrl =
+        "beranda.html";
 
-    window.location.href =
-        "../index.html";
+
+    try {
+
+        window.location.href =
+            homeUrl;
+
+    } catch (error) {
+
+        window.location.href =
+            "index.html";
+
+    }
 
 }
 
 
-/* ============================================================= */
-/* INITIALIZE PROFILE INTERACTIONS */
-/* ============================================================= */
+/* =========================================================
+   SETTINGS
+   ========================================================= */
 
-function initializeProfileInteractions() {
+function initializeSettings() {
+
+    const settingsButton =
+        document.getElementById(
+            "settingsButton"
+        );
+
+    const settingsPanel =
+        document.getElementById(
+            "settingsPanel"
+        );
+
+    const settingsOverlay =
+        document.getElementById(
+            "settingsOverlay"
+        );
+
+    const settingsClose =
+        document.getElementById(
+            "settingsClose"
+        );
 
 
-    /* ========================================================= */
-    /* MEMBER CARDS */
-    /* ========================================================= */
+    if (
+        !settingsButton ||
+        !settingsPanel ||
+        !settingsOverlay
+    ) {
 
-    const memberCards =
+        return;
+
+    }
+
+
+    function openSettings() {
+
+        settingsPanel.classList.add(
+            "open"
+        );
+
+        settingsOverlay.classList.add(
+            "open"
+        );
+
+        settingsPanel.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.classList.add(
+            "settings-open"
+        );
+
+    }
+
+
+    function closeSettings() {
+
+        settingsPanel.classList.remove(
+            "open"
+        );
+
+        settingsOverlay.classList.remove(
+            "open"
+        );
+
+        settingsPanel.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.classList.remove(
+            "settings-open"
+        );
+
+    }
+
+
+    settingsButton.addEventListener(
+        "click",
+        function () {
+
+            openSettings();
+
+        }
+    );
+
+
+    if (settingsClose) {
+
+        settingsClose.addEventListener(
+            "click",
+            function () {
+
+                closeSettings();
+
+            }
+        );
+
+    }
+
+
+    settingsOverlay.addEventListener(
+        "click",
+        function () {
+
+            closeSettings();
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key ===
+                "Escape"
+            ) {
+
+                closeSettings();
+
+            }
+
+        }
+    );
+
+
+    initializeOrnamentToggle();
+
+    initializeAnimationToggle();
+
+}
+
+
+/* =========================================================
+   ORNAMENT TOGGLE
+   ========================================================= */
+
+function initializeOrnamentToggle() {
+
+    const toggle =
+        document.getElementById(
+            "ornamentToggle"
+        );
+
+
+    if (!toggle) {
+
+        return;
+
+    }
+
+
+    let enabled =
+        true;
+
+
+    toggle.addEventListener(
+        "click",
+        function () {
+
+            enabled =
+                !enabled;
+
+
+            toggle.classList.toggle(
+                "active",
+                enabled
+            );
+
+
+            const decorations =
+                document.querySelectorAll(
+                    ".background-decoration, .background-flower, .hero-pattern, .about-geometric-pattern, .about-floral, .about-bottom-pattern, .member-pattern, .member-decoration, .member-dots, .member-circle-pattern, .member-wayang-pattern, .member-wave-pattern, .purpose-pattern, .footer-decoration"
+                );
+
+
+            decorations.forEach(
+                function (element) {
+
+                    if (enabled) {
+
+                        element.style.opacity =
+                            "";
+
+                    } else {
+
+                        element.style.opacity =
+                            "0";
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ANIMATION TOGGLE
+   ========================================================= */
+
+function initializeAnimationToggle() {
+
+    const toggle =
+        document.getElementById(
+            "animationToggle"
+        );
+
+
+    if (!toggle) {
+
+        return;
+
+    }
+
+
+    let enabled =
+        true;
+
+
+    toggle.addEventListener(
+        "click",
+        function () {
+
+            enabled =
+                !enabled;
+
+
+            toggle.classList.toggle(
+                "active",
+                enabled
+            );
+
+
+            document.body.classList.toggle(
+                "no-animation",
+                !enabled
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SCROLL TOP
+   ========================================================= */
+
+function initializeScrollTop() {
+
+    const scrollButton =
+        document.getElementById(
+            "scrollTop"
+        );
+
+
+    if (!scrollButton) {
+
+        return;
+
+    }
+
+
+    function updateScrollButton() {
+
+        if (
+            window.scrollY >
+            500
+        ) {
+
+            scrollButton.classList.add(
+                "show"
+            );
+
+        } else {
+
+            scrollButton.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateScrollButton,
+        {
+            passive: true
+        }
+    );
+
+
+    scrollButton.addEventListener(
+        "click",
+        function () {
+
+            window.scrollTo(
+                {
+                    top: 0,
+                    behavior: "smooth"
+                }
+            );
+
+        }
+    );
+
+
+    updateScrollButton();
+
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+
+function initializeRevealAnimation() {
+
+    const elements =
+        document.querySelectorAll(
+            ".section-reveal"
+        );
+
+
+    if (
+        !elements.length
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+
+        elements.forEach(
+            function (element) {
+
+                element.classList.add(
+                    "visible"
+                );
+
+            }
+        );
+
+        return;
+
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+            function (
+                entries,
+                observerInstance
+            ) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+
+                            observerInstance.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12,
+                rootMargin:
+                    "0px 0px -50px 0px"
+            }
+        );
+
+
+    elements.forEach(
+        function (element) {
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   TEAM CARDS
+   ========================================================= */
+
+function initializeTeamCards() {
+
+    const cards =
         document.querySelectorAll(
             ".member-card"
         );
 
 
-    memberCards.forEach(
+    if (!cards.length) {
+
+        return;
+
+    }
+
+
+    cards.forEach(
         function (card) {
 
             card.addEventListener(
@@ -143,7 +668,7 @@ function initializeProfileInteractions() {
                 function () {
 
                     card.classList.add(
-                        "member-active"
+                        "member-hover"
                     );
 
                 }
@@ -155,143 +680,241 @@ function initializeProfileInteractions() {
                 function () {
 
                     card.classList.remove(
-                        "member-active"
+                        "member-hover"
                     );
 
                 }
+            );
+
+
+            card.addEventListener(
+                "focus",
+                function () {
+
+                    card.classList.add(
+                        "member-hover"
+                    );
+
+                },
+                true
+            );
+
+
+            card.addEventListener(
+                "blur",
+                function () {
+
+                    card.classList.remove(
+                        "member-hover"
+                    );
+
+                },
+                true
             );
 
         }
     );
-
-
-    /* ========================================================= */
-    /* MISSION ITEMS */
-    /* ========================================================= */
-
-    const missionItems =
-        document.querySelectorAll(
-            ".mission-item"
-        );
-
-
-    missionItems.forEach(
-        function (item) {
-
-            item.addEventListener(
-                "mouseenter",
-                function () {
-
-                    item.classList.add(
-                        "mission-active"
-                    );
-
-                }
-            );
-
-
-            item.addEventListener(
-                "mouseleave",
-                function () {
-
-                    item.classList.remove(
-                        "mission-active"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    /* ========================================================= */
-    /* CLOSE BUTTON HOVER STATE */
-    /* ========================================================= */
-
-    const button =
-        document.getElementById(
-            "closeButton"
-        );
-
-
-    if (
-        button
-    ) {
-
-        button.addEventListener(
-            "mouseenter",
-            function () {
-
-                button.classList.add(
-                    "close-active"
-                );
-
-            }
-        );
-
-
-        button.addEventListener(
-            "mouseleave",
-            function () {
-
-                button.classList.remove(
-                    "close-active"
-                );
-
-            }
-        );
-
-    }
 
 }
 
 
-/* ============================================================= */
-/* PREVENT INVALID EMPTY LINKS */
-/* ============================================================= */
+/* =========================================================
+   KEYBOARD
+   ========================================================= */
 
-document.addEventListener(
-    "click",
-    function (event) {
+function initializeKeyboard() {
 
-        const target =
-            event.target.closest(
-                "a"
-            );
+    document.addEventListener(
+        "keydown",
+        function (event) {
 
+            if (
+                event.key ===
+                "Home" &&
+                event.ctrlKey
+            ) {
 
-        if (
-            !target
-        ) {
-
-            return;
-
-        }
+                event.preventDefault();
 
 
-        const href =
-            target.getAttribute(
-                "href"
-            );
+                window.scrollTo(
+                    {
+                        top: 0,
+                        behavior: "smooth"
+                    }
+                );
 
-
-        if (
-            href === "#"
-        ) {
-
-            event.preventDefault();
+            }
 
         }
+    );
+
+}
+
+
+/* =========================================================
+   ACTIVE SECTION
+   ========================================================= */
+
+function initializeActiveSection() {
+
+    const sections =
+        document.querySelectorAll(
+            "section[id]"
+        );
+
+
+    if (!sections.length) {
+
+        return;
+
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "active-section"
+                            );
+
+                        } else {
+
+                            entry.target.classList.remove(
+                                "active-section"
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.35
+            }
+        );
+
+
+    sections.forEach(
+        function (section) {
+
+            observer.observe(
+                section
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SMOOTH INTERNAL LINKS
+   ========================================================= */
+
+function initializeSmoothLinks() {
+
+    const links =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
+
+
+    links.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    const targetId =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (!target) {
+
+                        return;
+
+                    }
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView(
+                        {
+                            behavior: "smooth",
+                            block: "start"
+                        }
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   WINDOW LOAD
+   ========================================================= */
+
+window.addEventListener(
+    "load",
+    function () {
+
+        initializeActiveSection();
+
+        initializeSmoothLinks();
 
     }
 );
 
 
-/* ============================================================= */
-/* LOG PAGE READY */
-/* ============================================================= */
+/* =========================================================
+   CONSOLE INFORMATION
+   ========================================================= */
 
 console.log(
-    "Lelana Kamandaka - halaman profil siap digunakan."
+    "%cLELANA KAMANDAKA",
+    "color:#c99b32;font-size:20px;font-weight:bold;"
 );
+
+console.log(
+    "%cProfil Pembuat berhasil dimuat.",
+    "color:#005344;font-size:13px;"
+);
+
+
+/* =========================================================
+   END OF APP.JS
+   ========================================================= */

@@ -3,102 +3,52 @@
 
 <head>
 
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <title>
-    Lelana Kamandaka — Sawangan
-  </title>
+    <meta
+        name="description"
+        content="Lelana Kamandaka — Gameplay 08 Sawangan."
+    >
 
-
-  <!-- =====================================================
-       FONT
-       ===================================================== -->
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
-    rel="stylesheet"
-  >
+    <title>
+        Lelana Kamandaka — Gameplay 08
+    </title>
 
 
-  <!-- =====================================================
-       CSS GLOBAL
-       ===================================================== -->
+    <!-- =========================================================
+         FONT
+         ========================================================= -->
 
-  <link
-    rel="stylesheet"
-    href="../../css/variables.css"
-  >
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-  <link
-    rel="stylesheet"
-    href="../../css/base.css"
-  >
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-
-  <!-- =====================================================
-       CSS COMPONENT
-       ===================================================== -->
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/navbar.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/buttons.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/dialogue.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/card.css"
-  >
-
-  <link
-    rel="stylesheet"
-    href="../../css/components/modal.css"
-  >
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet"
+    >
 
 
-  <!-- =====================================================
-       CSS SCREEN GAMEPLAY
-       ===================================================== -->
+    <!-- =========================================================
+         CSS
+         ========================================================= -->
 
-  <link
-    rel="stylesheet"
-    href="../../css/screens/gameplay.css"
-  >
-
-
-  <!-- =====================================================
-       CSS GAMEPLAY
-       ===================================================== -->
-
-  <link
-    rel="stylesheet"
-    href="../../css/gameplay.css"
-  >
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
 </head>
 
@@ -106,1628 +56,1359 @@
 <body>
 
 
-  <!-- =====================================================
-       NAVBAR
-       ===================================================== -->
+    <!-- =========================================================
+         PAGE
+         ========================================================= -->
 
-  <header
-    class="site-navbar"
-    id="siteNavbar"
-  >
+    <div class="gameplay-page">
 
-    <div class="navbar-inner">
 
+        <!-- =====================================================
+             BATIK BACKGROUND
+             ===================================================== -->
 
-      <a
-        href="../../index.html"
-        class="navbar-logo"
-      >
-        LELANA KAMANDAKA
-      </a>
-
-
-      <nav
-        class="navbar-menu"
-        id="navbarMenu"
-      >
-
-        <a href="../../index.html">
-          BERANDA
-        </a>
-
-        <a href="../../catatan.html">
-          CATATAN
-        </a>
-
-        <a href="../../pencapaian.html">
-          PENCAPAIAN
-        </a>
-
-      </nav>
-
-
-      <button
-        type="button"
-        class="navbar-toggle"
-        id="navbarToggle"
-        aria-label="Buka menu"
-        aria-expanded="false"
-      >
-
-        <span></span>
-
-      </button>
-
-
-      <div
-        class="navbar-extra"
-        id="navbarExtra"
-      >
-
-        <a href="../../peta.html">
-          PETA
-        </a>
-
-        <a href="../../basa.html">
-          BASA
-        </a>
-
-      </div>
-
-    </div>
-
-  </header>
-
-
-
-  <!-- =====================================================
-       GAMEPLAY PAGE
-       ===================================================== -->
-
-  <main
-    class="gameplay-page"
-    id="gameplayPage"
-  >
-
-
-    <!-- ===================================================
-         HUD
-         =================================================== -->
-
-    <div
-      class="gameplay-hud"
-      id="gameplayHud"
-      aria-label="Progress permainan"
-    >
-
-      <div class="gameplay-hud-bab">
-
-        <span>
-          BAB
-        </span>
-
-        <strong id="hudChapter">
-          08
-        </strong>
-
-        <span>
-          / 10
-        </span>
-
-      </div>
-
-
-      <div class="gameplay-hud-stats">
-
-        <div class="gameplay-stat">
-
-          <span class="gameplay-stat-icon">
-            ✦
-          </span>
-
-          <strong id="hudXp">
-            0
-          </strong>
-
-          <small>
-            XP
-          </small>
-
-        </div>
-
-
-        <div class="gameplay-stat">
-
-          <span class="gameplay-stat-icon">
-            ◈
-          </span>
-
-          <strong id="hudBasa">
-            0
-          </strong>
-
-          <small>
-            BASA
-          </small>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- ===================================================
-         SCREEN 01 — OPENING
-         =================================================== -->
-
-    <section
-      class="story-screen active"
-      id="story-opening"
-    >
-
-      <div
-        class="story-background"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="story-overlay"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="story-batik"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="story-content">
-
-        <div class="story-eyebrow">
-
-          <span class="story-eyebrow-line"></span>
-
-          <span>
-            LELANA KAMANDAKA
-          </span>
-
-          <span class="story-eyebrow-line"></span>
-
-        </div>
-
-
-        <h1 class="story-title">
-
-          <span class="story-title-small">
-            BAB VIII
-          </span>
-
-          <span class="story-title-main">
-            Sawangan
-          </span>
-
-        </h1>
-
-
-        <p class="story-intro">
-          “Sawise lelampahan telung dina,
-          Raden Banyakcatra tekan ing Sawangan,
-          yaiku papan patemon Kali Logawa lan Kali Mangaji.
-          Miturut pituduh Dewata, dheweke wiwit tapa.
-          Nanging lelampahan durung rampung. Kanggo oleh
-          rahmat sing wis dijanjekake, Banyakcatra kudu
-          ngadhepi macem-macem cobaan.”
-        </p>
-
-
-        <button
-          type="button"
-          class="story-start-button"
-          id="btnBeginStory"
+        <div
+            class="lk-batik-pattern"
+            aria-hidden="true"
         >
 
-          <span>
-            MULAI KISAH
-          </span>
-
-          <span class="story-button-arrow">
-            →
-          </span>
-
-        </button>
-
-      </div>
-
-
-      <div
-        class="story-character"
-        aria-hidden="true"
-      >
-
-        <img
-          src="../../assets/images/characters/raden.png"
-          alt=""
-        >
-
-      </div>
-
-
-      <div class="story-chapter-mark">
-
-        <span>
-          07
-        </span>
-
-        <span class="story-chapter-line"></span>
-
-        <span>
-          08
-        </span>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 02 — DIALOG
-         =================================================== -->
-
-    <section
-      class="story-screen story-dialog-screen"
-      id="story-dialog"
-    >
-
-      <div
-        class="story-background story-background-dialog"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="story-overlay"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="dialog-wrapper">
-
-        <div class="dialog-box">
-
-
-          <div class="dialog-item">
-
-            <h2 class="dialog-character-name">
-              Narator
-            </h2>
-
-            <p class="dialog-text">
-              “Sawise lelampahan telung dina,
-              Raden Banyakcatra tekan ing Sawangan,
-              yaiku papan patemon Kali Logawa
-              lan Kali Mangaji.”
-            </p>
-
-          </div>
-
-
-          <div class="dialog-item">
-
-            <h2 class="dialog-character-name">
-              Narator
-            </h2>
-
-            <p class="dialog-text">
-              “Miturut pituduh Dewata, Banyakcatra
-              banjur wiwit tapa. Nanging lelampahan
-              durung rampung. Kanggo oleh rahmat
-              sing wis dijanjekake, dheweke kudu
-              ngadhepi macem-macem cobaan.”
-            </p>
-
-          </div>
-
-
-          <div class="dialog-item">
-
-            <h2 class="dialog-character-name">
-              Banyakcatra
-            </h2>
-
-            <p class="dialog-text">
-              “Aku kudu tetep teguh. Aku ora kena
-              nglilani rasa wedi nguwasani pikiranku.”
-            </p>
-
-          </div>
-
-
-          <div class="dialog-footer">
-
-            <button
-              type="button"
-              class="dialog-listen-button"
-              id="btnListen"
+            <img
+                src="../../assets/decorations/batik_pattern.png"
+                alt=""
             >
 
-              <span class="listen-icon">
-                🔊
-              </span>
-
-              <span>
-                DENGARKAN
-              </span>
-
-            </button>
+        </div>
 
 
-            <button
-              type="button"
-              class="dialog-next-button"
-              id="btnNextStory"
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+
+        <aside class="lk-sidebar">
+
+
+            <!-- =================================================
+                 BRAND
+                 ================================================= -->
+
+            <a
+                href="../../index.html"
+                class="lk-brand"
             >
 
-              <span>
-                LANJUT
-              </span>
+                <div class="lk-brand-mark">
+                    <span>✦</span>
+                </div>
 
-              <span>
-                →
-              </span>
+                <div class="lk-brand-text">
 
-            </button>
+                    <strong>
+                        LELANA
+                    </strong>
 
-          </div>
+                    <small>
+                        KAMANDAKA
+                    </small>
 
-        </div>
+                </div>
 
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 03 — TRANSITION
-         =================================================== -->
-
-    <section
-      class="story-screen gameplay-transition-screen"
-      id="story-gameplay"
-    >
-
-      <div class="gameplay-transition-content">
-
-        <span class="gameplay-transition-label">
-          MEMASUKI TANTANGAN
-        </span>
+            </a>
 
 
-        <h2>
-          Nanggulangi Godaan
-        </h2>
+            <!-- =================================================
+                 MENU
+                 ================================================= -->
+
+            <nav class="lk-side-menu">
 
 
-        <p>
-          Wengi demi wengi, macem-macem cobaan teka
-          kanggo nggoyahaké semadi Banyakcatra.
-          Dheweke kudu bisa nahan rasa wedi lan tetep
-          teguh ngadhepi saben gangguan.
-        </p>
-
-
-        <button
-          type="button"
-          class="story-start-button"
-          id="btnStartGameplay"
-        >
-
-          <span>
-            MULAI TANTANGAN
-          </span>
-
-          <span>
-            →
-          </span>
-
-        </button>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 04 — TANTANGAN MENAHAN GODAAN
-         =================================================== -->
-
-    <section
-      class="story-screen learning-basa-screen"
-      id="story-learning-basa"
-    >
-
-      <div
-        class="learning-basa-background"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="learning-basa-overlay"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="learning-basa-container">
-
-
-        <div class="learning-basa-header">
-
-          <span class="learning-basa-label">
-            TANTANGAN SAWANGAN 08
-          </span>
-
-
-          <h2>
-            NANGGULANGI
-            <span>GODAAN</span>
-          </h2>
-
-
-          <p>
-            Banyakcatra lagi tapa ing Sawangan.
-            Macem-macem cobaan teka silih berganti
-            kanggo nggoyahaké semadine. Dheweke kudu
-            milih sikap sing trep supaya tetep teguh.
-          </p>
-
-        </div>
-
-
-
-        <div class="learning-basa-grid">
-
-
-          <!-- VISUAL -->
-
-          <div class="learning-basa-visual">
-
-            <div class="learning-basa-frame">
-
-              <div class="learning-basa-frame-label">
-                SAWANGAN
-              </div>
-
-
-              <div class="learning-basa-character">
-
-                <img
-                  src="../../assets/images/characters/raden.png"
-                  alt=""
+                <a
+                    href="../../index.html"
+                    class="lk-side-link"
                 >
 
-              </div>
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../../assets/icons/icon_home.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Beranda
+                    </span>
+
+                </a>
 
 
-              <div class="learning-basa-quote">
+                <a
+                    href="../../peta.html"
+                    class="lk-side-link"
+                >
 
-                <span class="quote-mark">
-                  “
-                </span>
+                    <span class="lk-side-icon">
 
-                <p>
-                  Aku kudu tetep tenang lan teguh
-                  ngadhepi saben cobaan.
-                </p>
+                        <img
+                            src="../../assets/icons/icon_peta.png"
+                            alt=""
+                        >
 
-              </div>
+                    </span>
 
-            </div>
+                    <span>
+                        Peta
+                    </span>
 
-          </div>
-
-
-
-          <!-- TANTANGAN -->
-
-          <div class="learning-basa-vocab">
+                </a>
 
 
-            <div class="learning-vocab-intro">
+                <a
+                    href="index.html"
+                    class="lk-side-link active"
+                >
 
-              <span>
-                COBAAN SING DIHADAPI
-              </span>
+                    <span class="lk-side-icon">
 
-              <p>
-                Sajrone tapa, Banyakcatra ngadhepi
-                macem-macem gangguan. Dheweke ora kena
-                nglilani rasa wedi nguwasani awake.
-              </p>
+                        <img
+                            src="../../assets/icons/icon_gameplay.png"
+                            alt=""
+                        >
 
-            </div>
+                    </span>
 
+                    <span>
+                        Gameplay
+                    </span>
 
-
-            <!-- COBAAN 01 -->
-
-            <div class="learning-vocab-card">
-
-              <div class="learning-vocab-number">
-                01
-              </div>
-
-              <div class="learning-vocab-info">
-
-                <h3>
-                  MACAN
-                </h3>
-
-                <span>
-                  WENGI KAPISAN
-                </span>
-
-                <p>
-                  Macan gedhe teka lan nggero pas ing
-                  ngarepe Banyakcatra. Dheweke kudu tetep
-                  tenang lan nerusake semadine.
-                </p>
-
-              </div>
+                </a>
 
 
-              <button
-                type="button"
-                class="learning-voice-button"
-                onclick="speakBasa('macan')"
-                aria-label="Rungokake swara macan"
-              >
-                🔊
-              </button>
+                <a
+                    href="../../catatan.html"
+                    class="lk-side-link"
+                >
 
-            </div>
+                    <span class="lk-side-icon">
 
+                        <img
+                            src="../../assets/icons/icon_catatan.png"
+                            alt=""
+                        >
 
+                    </span>
 
-            <!-- COBAAN 02 -->
+                    <span>
+                        Catatan
+                    </span>
 
-            <div class="learning-vocab-card">
-
-              <div class="learning-vocab-number">
-                02
-              </div>
-
-              <div class="learning-vocab-info">
-
-                <h3>
-                  ULA GEDHE
-                </h3>
-
-                <span>
-                  WENGI SABANJURE
-                </span>
-
-                <p>
-                  Ula gedhe ngubengi awaké Banyakcatra.
-                  Dheweke kudu nahan rasa wedi lan tetep
-                  teguh nalika semadi.
-                </p>
-
-              </div>
+                </a>
 
 
-              <button
-                type="button"
-                class="learning-voice-button"
-                onclick="speakBasa('ula gedhe')"
-                aria-label="Rungokake swara ula gedhe"
-              >
-                🔊
-              </button>
+                <a
+                    href="../../basa.html"
+                    class="lk-side-link"
+                >
 
-            </div>
+                    <span class="lk-side-icon">
+
+                        <img
+                            src="../../assets/icons/icon_basa.png"
+                            alt=""
+                        >
+
+                    </span>
+
+                    <span>
+                        Basa
+                    </span>
+
+                </a>
 
 
+                <a
+                    href="../../pencapaian.html"
+                    class="lk-side-link"
+                >
 
-            <!-- COBAAN 03 -->
+                    <span class="lk-side-icon">
 
-            <div class="learning-vocab-card">
+                        <img
+                            src="../../assets/icons/icon_pencapaian.png"
+                            alt=""
+                        >
 
-              <div class="learning-vocab-number">
-                03
-              </div>
+                    </span>
 
-              <div class="learning-vocab-info">
+                    <span>
+                        Pencapaian
+                    </span>
 
-                <h3>
-                  MEMEDI LAN BALUNG
-                </h3>
+                </a>
 
-                <span>
-                  GANGGUAN SEMADI
-                </span>
+            </nav>
+
+
+            <!-- =================================================
+                 QUOTE
+                 ================================================= -->
+
+            <div class="lk-sidebar-quote">
 
                 <p>
-                  Memedi lan balung teka silih ganti
-                  kanggo nggoyahaké semadi Banyakcatra.
-                  Dheweke tetep meneng lan ora nglilani
-                  rasa wedi nguwasani awake.
+                    “Saben lelampah
+                    ana piwulang,
+                    saben tembung
+                    ana jiwa.”
                 </p>
 
-              </div>
-
-
-              <button
-                type="button"
-                class="learning-voice-button"
-                onclick="speakBasa('memedi lan balung')"
-                aria-label="Rungokake swara memedi lan balung"
-              >
-                🔊
-              </button>
-
-            </div>
-
-
-
-            <!-- COBAAN 04 -->
-
-            <div class="learning-vocab-card">
-
-              <div class="learning-vocab-number">
-                04
-              </div>
-
-              <div class="learning-vocab-info">
-
-                <h3>
-                  KEBO KEMALI
-                </h3>
-
                 <span>
-                  COBAAN PUNGKASAN
+                    ❧
                 </span>
 
-                <p>
-                  Sosok sing paling nggegirisi muncul
-                  minangka cobaan pungkasan. Banyakcatra
-                  kudu tetep teguh lan ora nglilani
-                  gangguan kasebut ngendhegaké semadine.
-                </p>
-
-              </div>
-
-
-              <button
-                type="button"
-                class="learning-voice-button"
-                onclick="speakBasa('Kebo Kemali')"
-                aria-label="Rungokake swara Kebo Kemali"
-              >
-                🔊
-              </button>
-
             </div>
 
 
-
-            <div class="learning-basa-footer">
-
-              <span>
-                Adhepi saben cobaan kanthi tenang.
-                Aja nganti rasa wedi nguwasani awak.
-              </span>
+        </aside>
 
 
-              <button
-                type="button"
-                class="learning-basa-next"
-                id="btnStartQuizBasa"
-              >
+        <!-- =====================================================
+             MAIN
+             ===================================================== -->
 
-                <span>
-                  LANJUT KE TANTANGAN
-                </span>
+        <div class="lk-main">
 
-                <span>
-                  →
-                </span>
 
-              </button>
+            <!-- =================================================
+                 NAVBAR
+                 ================================================= -->
 
-            </div>
+            <header class="lk-navbar">
 
-          </div>
+
+                <nav class="lk-nav-links">
+
+
+                    <a
+                        href="../../index.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../../assets/icons/icon_home.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Beranda
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="../../peta.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../../assets/icons/icon_peta.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Peta
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="../../catatan.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../../assets/icons/icon_catatan.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Catatan
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="../../basa.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../../assets/icons/icon_basa.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Basa
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="../../pencapaian.html"
+                        class="lk-nav-link"
+                    >
+
+                        <img
+                            src="../../assets/icons/icon_pencapaian.png"
+                            alt=""
+                        >
+
+                        <span>
+                            Pencapaian
+                        </span>
+
+                    </a>
+
+
+                </nav>
+
+
+                <!-- =================================================
+                     PLAYER HUD
+                     ================================================= -->
+
+                <div class="lk-player">
+
+                    <div class="lk-avatar">
+                        LK
+                    </div>
+
+                    <div class="lk-player-info">
+
+                        <div class="lk-player-top">
+
+                            <strong id="playerLevel">
+                                Level 08
+                            </strong>
+
+                            <span id="playerXpTop">
+                                0 XP
+                            </span>
+
+                        </div>
+
+                        <div class="lk-xp">
+
+                            <span id="playerXpBar"></span>
+
+                        </div>
+
+                        <small id="playerXpBottom">
+                            0 / 1.000 XP
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     BASA HUD
+                     ================================================= -->
+
+                <div
+                    class="lk-basa-hud"
+                    aria-label="Perolehan Basa Jawa"
+                >
+
+                    <div class="lk-basa-icon">
+
+                        <img
+                            src="../../assets/icons/icon_basa.png"
+                            alt=""
+                        >
+
+                    </div>
+
+                    <div class="lk-basa-info">
+
+                        <small>
+                            BASA
+                        </small>
+
+                        <strong id="playerBasa">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ACTION
+                     ================================================= -->
+
+                <div class="lk-nav-actions">
+
+                    <button
+                        class="lk-action"
+                        type="button"
+                        aria-label="Notifikasi"
+                    >
+                        ♧
+                    </button>
+
+                    <button
+                        class="lk-action"
+                        type="button"
+                        aria-label="Pengaturan"
+                    >
+                        ⚙
+                    </button>
+
+                </div>
+
+
+            </header>
+
+
+            <!-- =================================================
+                 CONTENT
+                 ================================================= -->
+
+            <main class="lk-content gameplay-content">
+
+
+                <!-- =================================================
+                     GAMEPLAY HEADER
+                     ================================================= -->
+
+                <section class="gameplay-header">
+
+
+                    <a
+                        href="../../peta.html"
+                        class="gameplay-back"
+                    >
+
+                        <span>
+                            ←
+                        </span>
+
+                        <span>
+                            Kembali
+                        </span>
+
+                    </a>
+
+
+                    <div class="gameplay-location-status">
+
+
+                        <div class="gameplay-location-label">
+
+                            <small>
+                                LOKASI
+                            </small>
+
+                            <strong>
+                                SAWANGAN
+                            </strong>
+
+                        </div>
+
+
+                        <div class="gameplay-location-divider">
+                        </div>
+
+
+                        <div class="gameplay-progress">
+
+                            <small>
+                                PERJALANAN
+                            </small>
+
+                            <strong>
+                                08 / 08
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- =================================================
+                     SCREEN 01
+                     OPENING SAWANGAN
+                     ================================================= -->
+
+                <section
+                    id="screen01"
+                    class="game-screen screen01 active"
+                >
+
+                    <div class="gameplay-hero">
+
+
+                        <img
+                            class="gameplay-hero-bg"
+                            src="../../assets/backgrounds/sawangan.png"
+                            alt="Sawangan"
+                        >
+
+
+                        <div class="gameplay-hero-overlay">
+                        </div>
+
+
+                        <div class="gameplay-hero-content">
+
+
+                            <div class="gameplay-chapter">
+
+                                <span>
+                                    BAB VIII
+                                </span>
+
+                                <span>
+                                    •
+                                </span>
+
+                                <span>
+                                    SAWANGAN
+                                </span>
+
+                            </div>
+
+
+                            <p class="gameplay-eyebrow">
+                                Mendeskripsikan Lingkungan
+                            </p>
+
+
+                            <h1>
+                                Sawangan
+                            </h1>
+
+
+                            <p class="gameplay-description">
+
+                                Kamandaka wis tekan
+                                Sawangan. Ing papan iki,
+                                dheweke kudu ngati-ati
+                                ndeleng lingkungan
+                                ing sakupenge lan
+                                ngenali apa wae sing
+                                katon ing gambar.
+
+                            </p>
+
+
+                            <div class="gameplay-objective">
+
+                                <small>
+                                    TUJUAN
+                                </small>
+
+                                <strong>
+                                    Kenali lingkungan lan gawe ukara nganggo basa Jawa.
+                                </strong>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="gameplay-start"
+                                id="startJourneyButton"
+                                data-next-screen="screen02"
+                            >
+
+                                <span>
+                                    DELENG SAWANGAN
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SCREEN 02
+                     OBSERVASI
+                     ================================================= -->
+
+                <section
+                    id="screen02"
+                    class="game-screen screen02"
+                >
+
+                    <div class="observation-layout">
+
+
+                        <div class="observation-image-card">
+
+
+                            <div class="observation-label">
+                                AMATI GAMBAR
+                            </div>
+
+
+                            <div class="observation-image">
+
+                                <img
+                                    src="../../assets/backgrounds/sawangan.png"
+                                    alt="Ilustrasi lingkungan Sawangan"
+                                >
+
+                            </div>
+
+
+                            <div class="observation-caption">
+
+                                <span>
+                                    SAWANGAN
+                                </span>
+
+                                <small>
+                                    Delengen kanthi tliti.
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="observation-text">
+
+
+                            <div class="game-screen-label">
+                                LANGKAH 01
+                            </div>
+
+
+                            <h1>
+                                Apa sing katon ing gambar?
+                            </h1>
+
+
+                            <p>
+
+                                Delengen gambar Sawangan
+                                kanthi tliti. Kenali
+                                barang utawa unsur
+                                lingkungan sing katon
+                                ing gambar.
+
+                            </p>
+
+
+                            <div class="observation-tip">
+
+                                <span>
+                                    ✦
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Petunjuk
+                                    </strong>
+
+                                    <small>
+                                        Pilih kosakata sing cocog
+                                        karo lingkungan.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="gameplay-screen-button"
+                                data-next-screen="screen03"
+                                id="observationReadyButton"
+                            >
+
+                                <span>
+                                    AKU SIAP MILIH
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SCREEN 03
+                     VOCABULARY
+                     ================================================= -->
+
+                <section
+                    id="screen03"
+                    class="game-screen screen03"
+                >
+
+                    <div class="vocabulary-layout">
+
+
+                        <div class="vocabulary-heading">
+
+                            <div class="game-screen-label">
+                                LANGKAH 02
+                            </div>
+
+                            <h1>
+                                Apa sing katon ing gambar?
+                            </h1>
+
+                            <p>
+                                Pilih kosakata sing cocog
+                                karo gambar Sawangan.
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="vocabulary-feedback"
+                            id="vocabularyFeedback"
+                            aria-live="polite"
+                        >
+                            Pilih kabeh tembung sing cocog.
+                        </div>
+
+
+                        <div class="vocabulary-grid">
+
+
+                            <button
+                                type="button"
+                                class="vocabulary-card"
+                                data-word="wit"
+                                data-correct="true"
+                            >
+
+                                <span class="vocabulary-icon">
+                                    🌳
+                                </span>
+
+                                <span class="vocabulary-word">
+                                    Wit
+                                </span>
+
+                                <small>
+                                    Pohon
+                                </small>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="vocabulary-card"
+                                data-word="gunung"
+                                data-correct="true"
+                            >
+
+                                <span class="vocabulary-icon">
+                                    ⛰️
+                                </span>
+
+                                <span class="vocabulary-word">
+                                    Gunung
+                                </span>
+
+                                <small>
+                                    Gunung
+                                </small>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="vocabulary-card"
+                                data-word="kali"
+                                data-correct="true"
+                            >
+
+                                <span class="vocabulary-icon">
+                                    🌊
+                                </span>
+
+                                <span class="vocabulary-word">
+                                    Kali
+                                </span>
+
+                                <small>
+                                    Sungai
+                                </small>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="vocabulary-card"
+                                data-word="omah"
+                                data-correct="true"
+                            >
+
+                                <span class="vocabulary-icon">
+                                    🏠
+                                </span>
+
+                                <span class="vocabulary-word">
+                                    Omah
+                                </span>
+
+                                <small>
+                                    Rumah
+                                </small>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="vocabulary-card"
+                                data-word="segara"
+                                data-correct="false"
+                            >
+
+                                <span class="vocabulary-icon">
+                                    🌊
+                                </span>
+
+                                <span class="vocabulary-word">
+                                    Segara
+                                </span>
+
+                                <small>
+                                    Laut
+                                </small>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="vocabulary-card"
+                                data-word="pasar"
+                                data-correct="false"
+                            >
+
+                                <span class="vocabulary-icon">
+                                    🏪
+                                </span>
+
+                                <span class="vocabulary-word">
+                                    Pasar
+                                </span>
+
+                                <small>
+                                    Pasar
+                                </small>
+
+                            </button>
+
+
+                        </div>
+
+
+                        <div class="vocabulary-selected-panel">
+
+
+                            <div>
+
+                                <small>
+                                    TEMBUNG DIPILIH
+                                </small>
+
+                                <strong id="selectedWordCount">
+                                    0 / 4
+                                </strong>
+
+                            </div>
+
+
+                            <div
+                                class="selected-word-list"
+                                id="selectedWordList"
+                            >
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="gameplay-screen-button"
+                                id="confirmVocabularyButton"
+                            >
+
+                                <span>
+                                    LANJUT MENYUSUN
+                                </span>
+
+                                <span>
+                                    →
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SCREEN 04
+                     SENTENCE BUILDER
+                     ================================================= -->
+
+                <section
+                    id="screen04"
+                    class="game-screen screen04"
+                >
+
+                    <div class="sentence-builder">
+
+
+                        <div class="sentence-heading">
+
+                            <div class="game-screen-label">
+                                LANGKAH 03
+                            </div>
+
+                            <h1>
+                                Gawe Ukara
+                            </h1>
+
+                            <p>
+                                Susun tembung-tembung iki
+                                dadi ukara sing bener.
+                            </p>
+
+                        </div>
+
+
+                        <div class="sentence-target">
+
+
+                            <div class="sentence-target-label">
+                                UKARA KOWE
+                            </div>
+
+
+                            <div
+                                class="sentence-slots"
+                                id="sentenceSlots"
+                            >
+
+                                <div class="sentence-placeholder">
+                                    Klik tembung ing ngisor kanggo nyusun ukara.
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="sentence-clear"
+                                id="clearSentenceButton"
+                            >
+                                Reset ukara
+                            </button>
+
+
+                        </div>
+
+
+                        <div class="sentence-word-bank">
+
+
+                            <div class="word-bank-heading">
+
+                                <span>
+                                    PILIH TEMBUNG
+                                </span>
+
+                                <small>
+                                    Klik sesuai urutan.
+                                </small>
+
+                            </div>
+
+
+                            <div
+                                class="word-bank"
+                                id="wordBank"
+                            >
+
+                                <button
+                                    type="button"
+                                    class="sentence-word"
+                                    data-word="Ana"
+                                    data-order="1"
+                                >
+                                    Ana
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="sentence-word"
+                                    data-word="wit"
+                                    data-order="2"
+                                >
+                                    wit
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="sentence-word"
+                                    data-word="ing"
+                                    data-order="3"
+                                >
+                                    ing
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="sentence-word"
+                                    data-word="pinggir"
+                                    data-order="4"
+                                >
+                                    pinggir
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="sentence-word"
+                                    data-word="kali."
+                                    data-order="5"
+                                >
+                                    kali.
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="sentence-word"
+                                    data-word="omah"
+                                    data-order="wrong"
+                                >
+                                    omah
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="sentence-word"
+                                    data-word="gunung"
+                                    data-order="wrong"
+                                >
+                                    gunung
+                                </button>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div
+                            class="sentence-feedback"
+                            id="sentenceFeedback"
+                            aria-live="polite"
+                        >
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="gameplay-screen-button sentence-check-button"
+                            id="checkSentenceButton"
+                        >
+
+                            <span>
+                                PERIKSA UKARA
+                            </span>
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SCREEN 05
+                     TRANSLATION
+                     ================================================= -->
+
+                <section
+                    id="screen05"
+                    class="game-screen screen05"
+                >
+
+                    <div class="translation-layout">
+
+
+                        <div class="translation-header">
+
+                            <div class="game-screen-label">
+                                LANGKAH 04
+                            </div>
+
+                            <h1>
+                                Ukara Sampun Bener
+                            </h1>
+
+                            <p>
+                                Saiki delengen teges
+                                ukara sing wis kokgawe.
+                            </p>
+
+                        </div>
+
+
+                        <div class="translation-card">
+
+
+                            <div class="translation-decor">
+                                ✦
+                            </div>
+
+
+                            <small>
+                                BASA JAWA
+                            </small>
+
+
+                            <h2>
+                                Ana wit ing pinggir kali.
+                            </h2>
+
+
+                            <div class="translation-line">
+                            </div>
+
+
+                            <small>
+                                TERJEMAHAN
+                            </small>
+
+
+                            <p>
+                                Ada pohon di pinggir sungai.
+                            </p>
+
+
+                        </div>
+
+
+                        <div class="learning-note">
+
+                            <span>
+                                ✦
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Piwulang
+                                </strong>
+
+                                <p>
+                                    Kanthi ngenali kosakata,
+                                    kowe bisa miwiti nggawe
+                                    ukara kanggo nggambarake
+                                    lingkungan ing sakupenge.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="gameplay-screen-button"
+                            id="finishLearningButton"
+                            data-next-screen="screen06"
+                        >
+
+                            <span>
+                                SELESAIKAN PERJALANAN
+                            </span>
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SCREEN 06
+                     FINISH
+                     ================================================= -->
+
+                <section
+                    id="screen06"
+                    class="game-screen screen06"
+                >
+
+                    <div class="game-screen-inner gameplay-finish">
+
+
+                        <div class="gameplay-finish-symbol">
+                            ✦
+                        </div>
+
+
+                        <div class="game-screen-label">
+                            SAWANGAN SELESAI
+                        </div>
+
+
+                        <h1>
+                            Lingkungan Wis Dipahami
+                        </h1>
+
+
+                        <p>
+                            Kowe wis bisa ngenali
+                            kosakata ing gambar lan
+                            nyusun ukara sederhana
+                            kanggo nggambarake
+                            lingkungan Sawangan.
+                        </p>
+
+
+                        <div class="gameplay-reward">
+
+
+                            <div class="reward-item">
+
+                                <span>
+                                    REWARD
+                                </span>
+
+                                <strong id="gameplayRewardXp">
+                                    +100 XP
+                                </strong>
+
+                            </div>
+
+
+                            <div class="reward-item">
+
+                                <span>
+                                    BASA
+                                </span>
+
+                                <strong id="gameplayRewardBasa">
+                                    +25
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <a
+                            href="../../peta.html"
+                            class="gameplay-finish-button"
+                            id="finishJourneyButton"
+                        >
+
+                            <span>
+                                LANJUT MENYANG PETA
+                            </span>
+
+                            <span>
+                                →
+                            </span>
+
+                        </a>
+
+
+                    </div>
+
+                </section>
+
+
+            </main>
+
 
         </div>
 
-      </div>
 
-    </section>
+    </div>
 
 
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
 
-    <!-- ===================================================
-         SCREEN 05 — QUIZ BASA
-         =================================================== -->
-
-    <section
-      class="story-screen quiz-screen"
-      id="story-quiz-basa"
-    >
-
-      <div class="quiz-container">
-
-
-        <div class="quiz-header">
-
-          <span class="quiz-label">
-            QUIZ SAWANGAN 08
-          </span>
-
-          <h2>
-            UJIAN
-            <span>BASA</span>
-          </h2>
-
-          <p>
-            Wangsulana pitakon ing ngisor iki
-            kanthi bener. Saben jawaban sing bener
-            bakal menehi XP lan Basa.
-          </p>
-
-        </div>
-
-
-        <div class="quiz-card">
-
-
-          <div class="quiz-question-header">
-
-            <span id="quizQuestionNumber">
-              PERTANYAAN 01 / 04
-            </span>
-
-            <div class="quiz-progress">
-
-              <div
-                class="quiz-progress-fill"
-                id="quizProgressFill"
-              ></div>
-
-            </div>
-
-          </div>
-
-
-          <div class="quiz-question">
-
-            <h3 id="quizQuestion">
-              Godaan kapisan sing muncul nalika
-              Banyakcatra lagi tapa yaiku?
-            </h3>
-
-          </div>
-
-
-          <div class="quiz-options">
-
-            <button
-              type="button"
-              class="quiz-option"
-              data-answer="melarikan diri"
-            >
-
-              <span class="quiz-option-letter">
-                A
-              </span>
-
-              <span>
-                Mlayu saka papan tapa
-              </span>
-
-            </button>
-
-
-            <button
-              type="button"
-              class="quiz-option"
-              data-answer="macan"
-            >
-
-              <span class="quiz-option-letter">
-                B
-              </span>
-
-              <span>
-                Macan
-              </span>
-
-            </button>
-
-
-            <button
-              type="button"
-              class="quiz-option"
-              data-answer="kebo kemali"
-            >
-
-              <span class="quiz-option-letter">
-                C
-              </span>
-
-              <span>
-                Kebo Kemali
-              </span>
-
-            </button>
-
-
-            <button
-              type="button"
-              class="quiz-option"
-              data-answer="memedi lan balung"
-            >
-
-              <span class="quiz-option-letter">
-                D
-              </span>
-
-              <span>
-                Memedi lan balung
-              </span>
-
-            </button>
-
-          </div>
-
-
-          <div
-            id="quizFeedback"
-            aria-live="polite"
-          ></div>
-
-
-          <div class="quiz-footer">
-
-            <span class="quiz-hint">
-              Elinga marang cobaan sing diadhepi
-              Banyakcatra nalika semadi.
-            </span>
-
-
-            <button
-              type="button"
-              id="btnNextQuiz"
-              disabled
-            >
-              COBAAN SABANJURE →
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 06 — CERITA
-         =================================================== -->
-
-    <section
-      class="story-screen sayembara-story-screen"
-      id="story-sayembara-story"
-    >
-
-      <div
-        class="sayembara-story-background"
-        aria-hidden="true"
-      ></div>
-
-      <div
-        class="sayembara-story-batik"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="sayembara-story-container">
-
-        <div class="sayembara-story-label">
-          CERITA SAWANGAN 08
-        </div>
-
-
-        <h2 class="sayembara-story-title">
-          Nanggulangi
-          <span>Godaan</span>
-        </h2>
-
-
-        <div class="sayembara-story-text">
-
-          <p>
-            Wengi kapisan, muncul sawijining macan gedhe
-            sing nggero pas ing ngarepe Banyakcatra.
-            Nanging Banyakcatra tetep meneng lan ora
-            nglilani rasa wedi nguwasani awake.
-          </p>
-
-
-          <p>
-            Wengi sabanjure, sawijining ula gedhe
-            ngubengi awake. Cobaan demi cobaan
-            terus teka. Memedi, balung, nganti
-            sosok sing nggegirisi padha nyoba
-            nggoyahaké semadine.
-          </p>
-
-
-          <p>
-            Nanging Banyakcatra tetep teguh.
-            Dheweke ora obah lan terus musatake
-            pikirane marang semadi.
-          </p>
-
-        </div>
-
-
-        <div class="sayembara-story-requirements">
-
-          <div class="sayembara-requirement">
-
-            <span class="requirement-icon">
-              ✦
-            </span>
-
-            <div>
-
-              <strong>
-                Tetep Tenang
-              </strong>
-
-              <span>
-                Aja nganti rasa wedi nguwasani
-                pikiran nalika cobaan teka.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="sayembara-requirement">
-
-            <span class="requirement-icon">
-              ◎
-            </span>
-
-            <div>
-
-              <strong>
-                Tetep Meneng
-              </strong>
-
-              <span>
-                Banyakcatra tetep meneng sanajan
-                macem-macem gangguan teka nyedhaki.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="sayembara-requirement">
-
-            <span class="requirement-icon">
-              ◈
-            </span>
-
-            <div>
-
-              <strong>
-                Nahan Rasa Wedi
-              </strong>
-
-              <span>
-                Rasa wedi ora kena nggoyahaké
-                semadi Banyakcatra.
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="sayembara-requirement">
-
-            <span class="requirement-icon">
-              ♧
-            </span>
-
-            <div>
-
-              <strong>
-                Tetep Teguh
-              </strong>
-
-              <span>
-                Banyakcatra kudu njaga keteguhan
-                atine nganti cobaan rampung.
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <p class="sayembara-story-ending">
-          Cobaan pungkasan saya nggegirisi.
-          Sosok Kebo Kemali muncul ngubengi papan
-          pertapaan. Iki minangka ujian pungkasan
-          kanggo keteguhan Banyakcatra.
-        </p>
-
-
-        <button
-          type="button"
-          class="story-start-button"
-          id="btnStartSayembara"
-        >
-
-          <span>
-            LANJUT KE TANTANGAN
-          </span>
-
-          <span class="story-button-arrow">
-            →
-          </span>
-
-        </button>
-
-      </div>
-
-
-      <div class="sayembara-story-mark">
-
-        <span>
-          08
-        </span>
-
-        <span class="sayembara-story-mark-line"></span>
-
-        <span>
-          09
-        </span>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 07 — SAYEMBARA / URUTAN COBAAN
-         =================================================== -->
-
-    <section
-      class="story-screen sayembara-screen"
-      id="story-sayembara"
-    >
-
-      <div class="sayembara-container">
-
-
-        <div class="sayembara-info">
-
-          <div class="sayembara-flower">
-            ✿
-          </div>
-
-
-          <span class="sayembara-label">
-            TANTANGAN CERITA 08
-          </span>
-
-
-          <h2>
-            Nanggulangi Godaan
-          </h2>
-
-
-          <div class="sayembara-question">
-
-            <p>
-              Sikap apa sing kudu dipertahankan
-              Banyakcatra nalika ngadhepi cobaan
-              sajrone tapa ing Sawangan?
-            </p>
-
-          </div>
-
-
-          <div class="sayembara-instruction">
-
-            <span>
-              ⓘ
-            </span>
-
-            <span>
-              Tarik
-              <strong>
-                4 sikap sing bener
-              </strong>
-              menyang kothak keteguhan.
-              Ana sawetara pilihan pengecoh.
-            </span>
-
-          </div>
-
-        </div>
-
-
-
-        <div class="sayembara-game">
-
-
-          <!-- =================================================
-               DROPZONE
-               SLOT AKAN DIATUR OLEH JAVASCRIPT
-               ================================================= -->
-
-          <div
-            class="sayembara-dropzone"
-            id="sayembaraDropzone"
-          >
-
-            <div class="sayembara-dropzone-placeholder">
-
-              <span>
-                LETAKKE SIKAP
-              </span>
-
-              <strong>
-                KETEGUHAN
-              </strong>
-
-              <small>
-                Tarik 4 sikap sing bener
-                menyang area iki
-              </small>
-
-            </div>
-
-          </div>
-
-
-          <!-- =================================================
-               FEEDBACK
-               ================================================= -->
-
-          <div
-            class="sayembara-feedback"
-            id="sayembaraFeedback"
-            aria-live="polite"
-          ></div>
-
-
-          <!-- =================================================
-               OPTIONS
-               ================================================= -->
-
-          <div class="sayembara-options">
-
-
-            <!-- 01 -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="tenang"
-            >
-
-              <span class="sayembara-icon">
-                ✦
-              </span>
-
-              <strong>
-                TETEP<br>
-                TENANG
-              </strong>
-
-            </button>
-
-
-            <!-- 02 -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="diam"
-            >
-
-              <span class="sayembara-icon">
-                ◎
-              </span>
-
-              <strong>
-                TETEP<br>
-                MENENG
-              </strong>
-
-            </button>
-
-
-            <!-- 03 -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="takut"
-            >
-
-              <span class="sayembara-icon">
-                ◈
-              </span>
-
-              <strong>
-                NAHAN<br>
-                RASA WEDI
-              </strong>
-
-            </button>
-
-
-            <!-- 04 -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="teguh"
-            >
-
-              <span class="sayembara-icon">
-                ♧
-              </span>
-
-              <strong>
-                TETEP<br>
-                TEGUH
-              </strong>
-
-            </button>
-
-
-            <!-- 05 — PENGECOH -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="lari"
-            >
-
-              <span class="sayembara-icon">
-                ◇
-              </span>
-
-              <strong>
-                MLAYU<br>
-                SAKA PAPAN
-              </strong>
-
-            </button>
-
-
-            <!-- 06 — PENGECOH -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="lawan"
-            >
-
-              <span class="sayembara-icon">
-                ◌
-              </span>
-
-              <strong>
-                NGELAWAN<br>
-                COBAAN
-              </strong>
-
-            </button>
-
-
-            <!-- 07 — PENGECOH -->
-
-            <button
-              type="button"
-              class="sayembara-option"
-              draggable="true"
-              data-answer="takluk"
-            >
-
-              <span class="sayembara-icon">
-                ▱
-              </span>
-
-              <strong>
-                NGLILANI<br>
-                RASA WEDI
-              </strong>
-
-            </button>
-
-          </div>
-
-
-          <!-- =================================================
-               NEXT
-               ================================================= -->
-
-          <button
-            type="button"
-            class="sayembara-next"
-            id="btnNextSayembara"
-            disabled
-          >
-
-            <span>
-              LANJUT
-            </span>
-
-            <span>
-              →
-            </span>
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SCREEN 08 — ANUGERAH DEWATA
-         =================================================== -->
-
-    <section
-      class="story-screen departure-story-screen"
-      id="story-chapter-08"
-    >
-
-      <div
-        class="departure-story-background"
-        aria-hidden="true"
-      ></div>
-
-
-      <div
-        class="departure-story-overlay"
-        aria-hidden="true"
-      ></div>
-
-
-      <div
-        class="departure-story-batik"
-        aria-hidden="true"
-      ></div>
-
-
-      <div class="departure-story-container">
-
-        <div class="departure-story-label">
-          ANUGERAH DEWATA
-        </div>
-
-
-        <h2 class="departure-story-title">
-
-          Sawangan
-
-          <span>
-            Selesai
-          </span>
-
-        </h2>
-
-
-        <div class="departure-story-text">
-
-          <p>
-            Sawise kabeh cobaan rampung, ana wong tuwa
-            dumadakan ngadeg ing ngarepe Banyakcatra.
-          </p>
-
-
-          <p>
-            “Angger cucuku, wis cukup tapamu.
-            Apa sejatine sing kok karepake
-            saka tapamu sajrone iki?”
-          </p>
-
-
-          <p>
-            Banyakcatra ngerti yen sosok kasebut
-            yaiku Dewata. Dheweke banjur nyritakake
-            tujuwane lan nyuwun supaya cita-citane
-            bisa kasembadan.
-          </p>
-
-
-          <p>
-            Dewata banjur menehi anugerah marang
-            Banyakcatra, yaiku sawijining sandhangan
-            sakti. Nalika dienggo, sandhangan kasebut
-            ngganti wujude dadi kaya kethek putih.
-            Nanging nalika dicopot, dheweke bakal
-            bali dadi Banyakcatra.
-          </p>
-
-        </div>
-
-
-        <!-- =================================================
-             QUOTE
-             ================================================= -->
-
-        <div class="departure-story-quote">
-
-          <span>
-            “
-          </span>
-
-          <p>
-            Keteguhan ati wis ngalahake rasa wedi.
-          </p>
-
-        </div>
-
-
-        <!-- =================================================
-             REWARD
-             ================================================= -->
-
-        <div class="departure-story-reward">
-
-
-          <div class="departure-reward-item">
-
-            <span class="departure-reward-icon">
-              ✦
-            </span>
-
-            <div>
-
-              <small>
-                PEROLEHAN
-              </small>
-
-              <strong id="chapterXpReward">
-                +50 XP
-              </strong>
-
-            </div>
-
-          </div>
-
-
-          <div class="departure-reward-item">
-
-            <span class="departure-reward-icon">
-              ◈
-            </span>
-
-            <div>
-
-              <small>
-                ANUGERAH
-              </small>
-
-              <strong id="chapterBasaReward">
-                PAKAIAN SAKTI
-              </strong>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <!-- =================================================
-             PROGRESS
-             ================================================= -->
-
-        <div class="departure-story-progress">
-
-          <span>
-            BAB
-          </span>
-
-          <strong id="chapterCurrentNumber">
-            08
-          </strong>
-
-          <span>
-            /
-          </span>
-
-          <strong id="chapterTotalNumber">
-            10
-          </strong>
-
-        </div>
-
-
-        <!-- =================================================
-             CONTINUE
-             ================================================= -->
-
-        <button
-          type="button"
-          class="story-start-button"
-          id="btnContinueChapter"
-        >
-
-          <span>
-            PERJALANAN BERLANJUT
-          </span>
-
-          <span class="story-button-arrow">
-            →
-          </span>
-
-        </button>
-
-      </div>
-
-
-      <div class="departure-story-mark">
-
-        <span>
-          08
-        </span>
-
-        <span class="departure-story-mark-line"></span>
-
-        <span>
-          09
-        </span>
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-
-
-  <!-- =====================================================
-       JAVASCRIPT
-       ===================================================== -->
-
-  <script src="app.js"></script>
-
-  <script src="../../js/components/navbar.js"></script>
+    <script
+        src="app.js"
+        defer
+    ></script>
 
 
 </body>
