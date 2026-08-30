@@ -1,0 +1,5441 @@
+/* ============================================================
+   LELANA KAMANDAKA
+   GAMEPLAY 06 — GOA JATIJAJAR
+   MEMORY KOSAKATA
+   STYLE.CSS
+   ============================================================ */
+
+
+/* ============================================================
+   ROOT
+   ============================================================ */
+
+:root {
+
+    --green-950: #10210f;
+
+    --green-900: #172e14;
+
+    --green-850: #1d3518;
+
+    --green-800: #25441c;
+
+    --green-700: #38551e;
+
+    --green-600: #496b21;
+
+
+    --gold-100: #fff8d4;
+
+    --gold-200: #f0dd63;
+
+    --gold-300: #d4b735;
+
+    --gold-400: #ad8920;
+
+
+    --cream-50: #fffaf0;
+
+    --cream-100: #f8f1df;
+
+    --cream-200: #eee4cd;
+
+
+    --brown-700: #59452f;
+
+    --brown-800: #453522;
+
+
+    --text-dark: #20331f;
+
+
+    --memory-dark: #1c2f17;
+
+    --memory-card: #28461f;
+
+    --memory-card-light: #fffaf0;
+
+    --memory-success: #557334;
+
+    --memory-error: #8a4e3d;
+
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    color: var(--text-dark);
+
+    background: var(--cream-100);
+
+    font-family:
+        "Hanken Grotesk",
+        Arial,
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+
+}
+
+
+button,
+input,
+textarea,
+select {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    border: 0;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+
+/* ============================================================
+   PAGE
+   ============================================================ */
+
+.gameplay-page {
+
+    position: relative;
+
+    z-index: 0;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background: var(--cream-100);
+
+}
+
+
+/* ============================================================
+   BATIK
+   ============================================================ */
+
+.lk-batik-pattern {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    opacity: .08;
+
+    filter:
+        saturate(.7)
+        contrast(.9);
+
+}
+
+
+.lk-batik-pattern img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transform: scale(1.08);
+
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.lk-sidebar {
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    bottom: 0;
+
+    z-index: 1000;
+
+    width: 212px;
+
+    padding:
+        28px
+        12px
+        20px;
+
+    color: #f7f0d8;
+
+    background:
+        linear-gradient(
+            180deg,
+            #172e14,
+            #10220f
+        );
+
+    border-right:
+        1px solid
+        rgba(
+            218,
+            188,
+            67,
+            .20
+        );
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(
+            212,
+            183,
+            53,
+            .30
+        )
+        transparent;
+
+}
+
+
+.lk-sidebar::-webkit-scrollbar {
+
+    width: 4px;
+
+}
+
+
+.lk-sidebar::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+
+.lk-sidebar::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(
+            212,
+            183,
+            53,
+            .30
+        );
+
+    border-radius: 20px;
+
+}
+
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.lk-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding:
+        0
+        14px
+        28px;
+
+    color: #f7f0d8;
+
+    text-decoration: none;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+}
+
+
+.lk-brand-mark {
+
+    width: 50px;
+
+    height: 50px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border:
+        2px solid
+        var(--gold-300);
+
+    transform: rotate(45deg);
+
+    color: var(--gold-200);
+
+    font-size: 17px;
+
+}
+
+
+.lk-brand-mark span {
+
+    display: block;
+
+    transform: rotate(-45deg);
+
+}
+
+
+.lk-brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.lk-brand-text strong {
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 19px;
+
+    line-height: 1;
+
+    letter-spacing: -.02em;
+
+}
+
+
+.lk-brand-text small {
+
+    margin-top: 5px;
+
+    color: var(--gold-300);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .20em;
+
+}
+
+
+/* ============================================================
+   SIDEBAR MENU
+   ============================================================ */
+
+.lk-side-menu {
+
+    margin-top: 24px;
+
+}
+
+
+.lk-side-link {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 54px;
+
+    padding:
+        0
+        15px;
+
+    margin-bottom: 5px;
+
+    border-radius: 12px;
+
+    color:
+        rgba(
+            250,
+            244,
+            222,
+            .76
+        );
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+
+}
+
+
+.lk-side-link:hover {
+
+    color: #fff8d4;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .06
+        );
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.lk-side-link.active {
+
+    color: #fff8d4;
+
+    background:
+        linear-gradient(
+            90deg,
+            #496b21,
+            #38551e
+        );
+
+    box-shadow:
+        inset
+        0
+        0
+        0
+        1px
+        rgba(
+            235,
+            214,
+            89,
+            .25
+        );
+
+}
+
+
+.lk-side-link.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 9px;
+
+    bottom: 9px;
+
+    width: 3px;
+
+    border-radius:
+        0
+        5px
+        5px
+        0;
+
+    background:
+        var(--gold-300);
+
+}
+
+
+/* ============================================================
+   SIDEBAR ICON
+   ============================================================ */
+
+.lk-side-icon {
+
+    width: 31px;
+
+    height: 31px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+}
+
+
+.lk-side-link.active
+.lk-side-icon {
+
+    background:
+        var(--gold-300);
+
+}
+
+
+.lk-side-icon img {
+
+    width: 18px;
+
+    height: 18px;
+
+    object-fit: contain;
+
+}
+
+
+/* ============================================================
+   SIDEBAR QUOTE
+   ============================================================ */
+
+.lk-sidebar-quote {
+
+    position: absolute;
+
+    left: 25px;
+
+    right: 20px;
+
+    bottom: 28px;
+
+}
+
+
+.lk-sidebar-quote::before {
+
+    content: "";
+
+    display: block;
+
+    width: 40px;
+
+    margin-bottom: 13px;
+
+    border-top:
+        1px solid
+        rgba(
+            220,
+            192,
+            71,
+            .45
+        );
+
+}
+
+
+.lk-sidebar-quote p {
+
+    color:
+        rgba(
+            255,
+            248,
+            221,
+            .78
+        );
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    font-style: italic;
+
+}
+
+
+.lk-sidebar-quote span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    color:
+        var(--gold-300);
+
+    font-size: 18px;
+
+}
+
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+
+.lk-main {
+
+    position: relative;
+
+    z-index: 1;
+
+    min-height: 100vh;
+
+    margin-left: 212px;
+
+}
+
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+.lk-navbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 900;
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        0
+        30px;
+
+    color: #f8f2db;
+
+    background:
+        rgba(
+            20,
+            42,
+            17,
+            .97
+        );
+
+    border-bottom:
+        1px solid
+        rgba(
+            213,
+            185,
+            61,
+            .16
+        );
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+
+/* ============================================================
+   NAV LINKS
+   ============================================================ */
+
+.lk-nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    flex: 1;
+
+    gap: 6px;
+
+    min-width: 0;
+
+}
+
+
+.lk-nav-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        11px
+        15px;
+
+    border-radius: 10px;
+
+    color:
+        rgba(
+            250,
+            244,
+            222,
+            .70
+        );
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+}
+
+
+.lk-nav-link:hover {
+
+    color: #fff;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .06
+        );
+
+}
+
+
+.lk-nav-link img {
+
+    width: 16px;
+
+    height: 16px;
+
+    object-fit: contain;
+
+}
+
+
+/* ============================================================
+   PLAYER
+   ============================================================ */
+
+.lk-player {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding-left: 20px;
+
+    border-left:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .10
+        );
+
+    flex-shrink: 0;
+
+}
+
+
+.lk-avatar {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        var(--gold-300);
+
+    border-radius: 50%;
+
+    color:
+        var(--gold-200);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+}
+
+
+.lk-player-info {
+
+    min-width: 115px;
+
+    max-width: 140px;
+
+    flex-shrink: 0;
+
+}
+
+
+.lk-player-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #f7f0d8;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.lk-xp {
+
+    height: 5px;
+
+    margin-top: 7px;
+
+    overflow: hidden;
+
+    border-radius: 99px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .14
+        );
+
+}
+
+
+.lk-xp span {
+
+    display: block;
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c972e,
+            #eed85f
+        );
+
+    transition:
+        width .5s ease;
+
+}
+
+
+.lk-player-info small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .48
+        );
+
+    font-size: 7px;
+
+    text-align: right;
+
+}
+
+
+/* ============================================================
+   BASA
+   ============================================================ */
+
+.lk-basa-hud {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 92px;
+
+    padding-left: 18px;
+
+    margin-left: 10px;
+
+    border-left:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .10
+        );
+
+    color: #f8f2db;
+
+    flex-shrink: 0;
+
+}
+
+
+.lk-basa-icon {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .08
+        );
+
+}
+
+
+.lk-basa-icon img {
+
+    width: 17px;
+
+    height: 17px;
+
+}
+
+
+.lk-basa-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.lk-basa-info small {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .58
+        );
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: .18em;
+
+}
+
+
+.lk-basa-info strong {
+
+    color: #fff8d4;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+}
+
+
+/* ============================================================
+   ACTION
+   ============================================================ */
+
+.lk-nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-left: 18px;
+
+    flex-shrink: 0;
+
+}
+
+
+.lk-action {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            .12
+        );
+
+    border-radius: 50%;
+
+    color:
+        var(--gold-200);
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.lk-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    min-height:
+        calc(
+            100vh - 78px
+        );
+
+    padding:
+        28px
+        32px
+        70px;
+
+}
+
+
+/* ============================================================
+   GAMEPLAY HEADER
+   ============================================================ */
+
+.gameplay-header {
+
+    position: relative;
+
+    z-index: 5;
+
+    min-height: 88px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        0
+        20px;
+
+    margin-bottom: 28px;
+
+    border-radius: 16px;
+
+    color: #f8f2db;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1a3517,
+            #203f1b
+        );
+
+    box-shadow:
+        0
+        15px
+        35px
+        rgba(
+            30,
+            48,
+            19,
+            .12
+        );
+
+}
+
+
+/* ============================================================
+   BACK
+   ============================================================ */
+
+.gameplay-back {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        12px
+        17px;
+
+    border-radius: 12px;
+
+    color: #243521;
+
+    background: #f8f5e9;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+}
+
+
+.gameplay-back:hover {
+
+    background: #fff;
+
+    transform:
+        translateX(-3px);
+
+}
+
+
+/* ============================================================
+   LOCATION
+   ============================================================ */
+
+.gameplay-location-status {
+
+    display: flex;
+
+    align-items: center;
+
+    min-height: 62px;
+
+    padding:
+        0
+        17px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(
+            8,
+            28,
+            8,
+            .45
+        );
+
+}
+
+
+.gameplay-location-label {
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding-right: 20px;
+
+}
+
+
+.gameplay-location-label small {
+
+    color:
+        var(--gold-200);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .16em;
+
+}
+
+
+.gameplay-location-label strong {
+
+    margin-top: 3px;
+
+    color: #fff6d9;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 20px;
+
+    line-height: 1;
+
+}
+
+
+.gameplay-location-divider {
+
+    width: 1px;
+
+    height: 35px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .18
+        );
+
+}
+
+
+.gameplay-progress {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    min-width: 72px;
+
+    padding-left: 17px;
+
+}
+
+
+.gameplay-progress small {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            .55
+        );
+
+    font-size: 7px;
+
+}
+
+
+.gameplay-progress strong {
+
+    margin-top: 4px;
+
+    color: #fff7d8;
+
+    font-size: 12px;
+
+}
+
+
+/* ============================================================
+   SCREEN SYSTEM
+   ============================================================ */
+
+.game-screen {
+
+    display: none;
+
+}
+
+
+.game-screen.active {
+
+    display: block;
+
+    animation:
+        screenIn
+        .38s
+        ease
+        both;
+
+}
+
+
+@keyframes screenIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(14px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ============================================================
+   GAMEPLAY MODE
+   ============================================================ */
+
+body.is-gameplay-active {
+
+    overflow: hidden;
+
+}
+
+
+body.is-gameplay-active
+.lk-navbar {
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+body.is-gameplay-active
+.lk-content {
+
+    position: static;
+
+    padding: 0;
+
+    min-height: 100vh;
+
+}
+
+
+/* ============================================================
+   FULLSCREEN SCREEN
+   ============================================================ */
+
+body.is-gameplay-active
+.game-screen.active {
+
+    position: fixed;
+
+    left: 212px;
+
+    top: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    z-index: 500;
+
+    width: auto;
+
+    height: 100vh;
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    background:
+        var(--cream-100);
+
+}
+
+
+/* ============================================================
+   SCREEN INNER
+   ============================================================ */
+
+body.is-gameplay-active
+.game-screen-inner {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 100vh;
+
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.gameplay-hero {
+
+    position: relative;
+
+    min-height: 560px;
+
+    overflow: hidden;
+
+    background:
+        var(--cream-100);
+
+}
+
+
+body.is-gameplay-active
+#screen01
+.gameplay-hero {
+
+    width: 100%;
+
+    height: 100vh;
+
+    min-height: 100vh;
+
+    border-radius: 0;
+
+}
+
+
+.gameplay-hero-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+}
+
+
+.gameplay-hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(
+                248,
+                241,
+                223,
+                .96
+            )
+            0%,
+            rgba(
+                248,
+                241,
+                223,
+                .91
+            )
+            34%,
+            rgba(
+                248,
+                241,
+                223,
+                .54
+            )
+            55%,
+            rgba(
+                248,
+                241,
+                223,
+                .08
+            )
+            100%
+        );
+
+}
+
+
+.gameplay-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            620px,
+            58%
+        );
+
+    padding:
+        28px
+        0
+        55px
+        36px;
+
+}
+
+
+body.is-gameplay-active
+.gameplay-hero-content {
+
+    padding-top: 10vh;
+
+}
+
+
+.gameplay-chapter {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 24px;
+
+    color:
+        var(--gold-400);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: .18em;
+
+}
+
+
+.gameplay-chapter::before {
+
+    content: "";
+
+    width: 34px;
+
+    height: 1px;
+
+    background:
+        var(--gold-300);
+
+}
+
+
+.gameplay-eyebrow {
+
+    margin-bottom: 4px;
+
+    color:
+        var(--brown-700);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: .18em;
+
+}
+
+
+.gameplay-hero-content h1 {
+
+    margin:
+        0
+        0
+        18px;
+
+    color:
+        #173119;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            64px,
+            7vw,
+            105px
+        );
+
+    font-weight: 700;
+
+    line-height: .9;
+
+    letter-spacing: -.055em;
+
+}
+
+
+.gameplay-description {
+
+    max-width: 540px;
+
+    color:
+        #594a36;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+
+}
+
+
+/* ============================================================
+   OBJECTIVE
+   ============================================================ */
+
+.gameplay-objective {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    max-width: 550px;
+
+    margin-top: 25px;
+
+    padding:
+        15px
+        20px;
+
+    border-left:
+        3px solid
+        var(--gold-300);
+
+    background:
+        rgba(
+            255,
+            252,
+            241,
+            .88
+        );
+
+}
+
+
+.gameplay-objective small {
+
+    color:
+        var(--gold-400);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .17em;
+
+}
+
+
+.gameplay-objective strong {
+
+    color:
+        #183219;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.3;
+
+}
+
+
+/* ============================================================
+   START BUTTON
+   ============================================================ */
+
+.gameplay-start {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 35px;
+
+    min-width: 250px;
+
+    margin-top: 20px;
+
+    padding:
+        17px
+        23px;
+
+    border-radius: 10px;
+
+    color:
+        #fff8dc;
+
+    background:
+        #173618;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: .10em;
+
+    box-shadow:
+        0
+        10px
+        24px
+        rgba(
+            25,
+            52,
+            20,
+            .18
+        );
+
+}
+
+
+.gameplay-start:hover {
+
+    background:
+        #284b1d;
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+/* ============================================================
+   GENERAL GAME SCREEN
+   ============================================================ */
+
+body.is-gameplay-active
+.game-screen:not(#screen01)
+.game-screen-inner {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(
+            280px,
+            .8fr
+        )
+        minmax(
+            420px,
+            1.2fr
+        );
+
+    align-items: center;
+
+    gap: 50px;
+
+    padding:
+        65px
+        7vw;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(
+                212,
+                183,
+                53,
+                .14
+            ),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #eee4cd
+        );
+
+}
+
+
+/* ============================================================
+   SCREEN TEXT
+   ============================================================ */
+
+.game-screen-text {
+
+    max-width: 560px;
+
+}
+
+
+.game-screen-label {
+
+    color:
+        #ad8920;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+
+}
+
+
+.game-screen-text h1 {
+
+    margin:
+        12px
+        0
+        18px;
+
+    color:
+        #172e14;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            44px,
+            5vw,
+            76px
+        );
+
+    line-height: .98;
+
+}
+
+
+.game-screen-text p {
+
+    max-width: 560px;
+
+    color:
+        #59452f;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+}
+
+
+.game-screen-hint {
+
+    margin-top: 14px;
+
+    color:
+        #806f58 !important;
+
+    font-size:
+        12px !important;
+
+}
+
+
+/* ============================================================
+   MEMORY LEARNING
+   ============================================================ */
+
+.memory-learning-screen {
+
+    grid-template-columns:
+        minmax(
+            280px,
+            .65fr
+        )
+        minmax(
+            500px,
+            1.35fr
+        ) !important;
+
+}
+
+
+.vocabulary-preview {
+
+    width:
+        min(
+            680px,
+            100%
+        );
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 12px;
+
+}
+
+
+.vocabulary-item {
+
+    position: relative;
+
+    min-height: 105px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 15px;
+
+    border:
+        1px solid
+        rgba(
+            53,
+            77,
+            35,
+            .16
+        );
+
+    border-radius: 15px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .70
+        );
+
+    box-shadow:
+        0
+        10px
+        28px
+        rgba(
+            64,
+            54,
+            34,
+            .06
+        );
+
+}
+
+
+.vocabulary-item > span {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 12px;
+
+    color:
+        #b09236;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+}
+
+
+.vocabulary-item strong {
+
+    color:
+        #183719;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 21px;
+
+    letter-spacing: .08em;
+
+}
+
+
+.vocabulary-item small {
+
+    color:
+        #74634b;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+
+.memory-learning-note {
+
+    grid-column: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: -25px;
+
+    padding:
+        12px
+        17px;
+
+    border-left:
+        3px solid
+        var(--gold-300);
+
+    border-radius:
+        0
+        10px
+        10px
+        0;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .60
+        );
+
+}
+
+
+.memory-learning-note > span {
+
+    font-size: 22px;
+
+}
+
+
+.memory-learning-note p {
+
+    color:
+        #59452f;
+
+    font-size: 12px;
+
+}
+
+
+.memory-learning-note strong {
+
+    color:
+        #173d19;
+
+}
+
+
+/* ============================================================
+   ACTION
+   ============================================================ */
+
+body.is-gameplay-active
+.game-screen-action {
+
+    position: absolute;
+
+    left: 7vw;
+
+    bottom: 38px;
+
+    z-index: 5;
+
+}
+
+
+.gameplay-screen-button {
+
+    min-width: 230px;
+
+    min-height: 52px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding:
+        0
+        20px;
+
+    border:
+        1px solid
+        #173d19;
+
+    border-radius: 10px;
+
+    color:
+        #fff8d4;
+
+    background:
+        #173d19;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+}
+
+
+.gameplay-screen-button:hover {
+
+    background:
+        #38551e;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.gameplay-screen-button:disabled {
+
+    opacity: .55;
+
+    cursor: not-allowed;
+
+}
+
+
+/* ============================================================
+   MEMORY GAME SHELL
+   ============================================================ */
+
+.memory-game-shell {
+
+    width:
+        min(
+            1120px,
+            100%
+        );
+
+    margin:
+        0
+        auto;
+
+    padding:
+        40px
+        48px
+        55px;
+
+}
+
+
+.memory-game-heading {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 28px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.memory-game-heading h1 {
+
+    margin:
+        6px
+        0
+        8px;
+
+    color:
+        #172e14;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            38px,
+            4vw,
+            58px
+        );
+
+}
+
+
+.memory-game-heading p {
+
+    color:
+        #59452f;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+/* ============================================================
+   MEMORY STATS
+   ============================================================ */
+
+.memory-stats {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+
+}
+
+
+.memory-stat {
+
+    min-width: 100px;
+
+    padding:
+        11px
+        14px;
+
+    border:
+        1px solid
+        rgba(
+            42,
+            64,
+            29,
+            .14
+        );
+
+    border-radius: 13px;
+
+    text-align: center;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .52
+        );
+
+}
+
+
+.memory-stat small {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        #806f58;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .13em;
+
+}
+
+
+.memory-stat strong {
+
+    color:
+        #193718;
+
+    font-size: 19px;
+
+}
+
+
+/* ============================================================
+   INSTRUCTION
+   ============================================================ */
+
+.memory-instruction {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width:
+        min(
+            900px,
+            100%
+        );
+
+    margin:
+        0
+        auto
+        17px;
+
+    padding:
+        10px
+        15px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(
+            23,
+            61,
+            25,
+            .06
+        );
+
+}
+
+
+.memory-instruction span {
+
+    font-size: 17px;
+
+}
+
+
+.memory-instruction p {
+
+    color:
+        #685842;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+/* ============================================================
+   MEMORY BOARD
+   ============================================================ */
+
+.memory-board {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(
+                125px,
+                1fr
+            )
+        );
+
+    gap: 15px;
+
+    width:
+        min(
+            900px,
+            100%
+        );
+
+    margin:
+        0
+        auto;
+
+    perspective: 1000px;
+
+}
+
+
+/* ============================================================
+   MEMORY CARD
+   ============================================================ */
+
+.memory-card {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1.35;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    perspective: 900px;
+
+}
+
+
+.memory-card-inner {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: block;
+
+    transition:
+        transform
+        .45s
+        cubic-bezier(
+            .2,
+            .8,
+            .2,
+            1
+        );
+
+    transform-style:
+        preserve-3d;
+
+}
+
+
+.memory-card.is-flipped
+.memory-card-inner,
+.memory-card.is-matched
+.memory-card-inner {
+
+    transform:
+        rotateY(
+            180deg
+        );
+
+}
+
+
+.memory-card-front,
+.memory-card-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 17px;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+}
+
+
+.memory-card-front {
+
+    color:
+        var(--gold-200);
+
+    border:
+        1px solid
+        rgba(
+            212,
+            183,
+            53,
+            .38
+        );
+
+    background:
+        linear-gradient(
+            145deg,
+            #284a20,
+            #193819
+        );
+
+    box-shadow:
+        0
+        12px
+        25px
+        rgba(
+            25,
+            48,
+            20,
+            .18
+        );
+
+    font-size: 31px;
+
+}
+
+
+.memory-card-front::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 9px;
+
+    border:
+        1px solid
+        rgba(
+            240,
+            221,
+            99,
+            .16
+        );
+
+    border-radius: 12px;
+
+}
+
+
+.memory-card-back {
+
+    transform:
+        rotateY(
+            180deg
+        );
+
+    padding: 10px;
+
+    border:
+        1px solid
+        rgba(
+            79,
+            96,
+            59,
+            .20
+        );
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf6,
+            #f0e8d3
+        );
+
+    color:
+        #193618;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            17px,
+            2vw,
+            25px
+        );
+
+    font-weight: 700;
+
+    letter-spacing: .05em;
+
+    box-shadow:
+        0
+        12px
+        25px
+        rgba(
+            63,
+            55,
+            35,
+            .10
+        );
+
+}
+
+
+.memory-card[data-type="indonesia"]
+.memory-card-back {
+
+    color:
+        #745a2c;
+
+}
+
+
+.memory-card.is-matched {
+
+    cursor: default;
+
+}
+
+
+.memory-card.is-matched
+.memory-card-back {
+
+    border:
+        2px solid
+        rgba(
+            212,
+            183,
+            53,
+            .70
+        );
+
+    box-shadow:
+        0
+        0
+        0
+        3px
+        rgba(
+            212,
+            183,
+            53,
+            .12
+        ),
+        0
+        14px
+        32px
+        rgba(
+            46,
+            58,
+            31,
+            .13
+        );
+
+}
+
+
+.memory-card.is-wrong
+.memory-card-back {
+
+    border:
+        2px solid
+        rgba(
+            138,
+            78,
+            61,
+            .65
+        );
+
+    animation:
+        cardShake
+        .35s
+        ease;
+
+}
+
+
+@keyframes cardShake {
+
+    0%,
+    100% {
+
+        transform:
+            rotateY(
+                180deg
+            )
+            translateX(0);
+
+    }
+
+    25% {
+
+        transform:
+            rotateY(
+                180deg
+            )
+            translateX(-5px);
+
+    }
+
+    75% {
+
+        transform:
+            rotateY(
+                180deg
+            )
+            translateX(5px);
+
+    }
+
+}
+
+
+.memory-card:focus-visible {
+
+    outline:
+        3px solid
+        rgba(
+            212,
+            183,
+            53,
+            .75
+        );
+
+    outline-offset: 4px;
+
+}
+
+
+/* ============================================================
+   FEEDBACK
+   ============================================================ */
+
+.memory-feedback {
+
+    min-height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width:
+        min(
+            900px,
+            100%
+        );
+
+    margin:
+        16px
+        auto
+        0;
+
+    padding:
+        9px
+        15px;
+
+    border-radius: 11px;
+
+    color:
+        #59452f;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .58
+        );
+
+    font-size: 11px;
+
+    text-align: center;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+
+}
+
+
+.memory-feedback.success {
+
+    color:
+        #23451d;
+
+    background:
+        rgba(
+            86,
+            125,
+            53,
+            .15
+        );
+
+}
+
+
+.memory-feedback.error {
+
+    color:
+        #753f30;
+
+    background:
+        rgba(
+            138,
+            78,
+            61,
+            .13
+        );
+
+}
+
+
+/* ============================================================
+   MEMORY ACTION
+   ============================================================ */
+
+.memory-actions {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 13px;
+
+}
+
+
+.memory-reset-button {
+
+    padding:
+        9px
+        17px;
+
+    border:
+        1px solid
+        rgba(
+            67,
+            83,
+            48,
+            .20
+        );
+
+    border-radius: 999px;
+
+    color:
+        #4f6043;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .50
+        );
+
+    cursor: pointer;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .10em;
+
+}
+
+
+.memory-reset-button:hover {
+
+    color:
+        #fff;
+
+    background:
+        #38551e;
+
+}
+
+
+/* ============================================================
+   FINISH
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.gameplay-finish {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    height: 100vh;
+
+    min-height: 100vh;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(
+                212,
+                183,
+                53,
+                .18
+            ),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #eee4cd
+        );
+
+}
+
+
+.gameplay-finish-symbol {
+
+    color:
+        var(--gold-300);
+
+    font-size: 42px;
+
+    margin-bottom: 13px;
+
+}
+
+
+.gameplay-finish h1 {
+
+    margin:
+        10px
+        0
+        15px;
+
+    color:
+        #172e14;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            45px,
+            6vw,
+            78px
+        );
+
+    line-height: .95;
+
+}
+
+
+.gameplay-finish > p {
+
+    max-width: 530px;
+
+    color:
+        #59452f;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+}
+
+
+/* ============================================================
+   FINAL SUMMARY
+   ============================================================ */
+
+.memory-final-summary {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin:
+        18px
+        0
+        10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.memory-final-summary > div {
+
+    min-width: 105px;
+
+    padding:
+        11px
+        16px;
+
+    border:
+        1px solid
+        rgba(
+            75,
+            87,
+            52,
+            .15
+        );
+
+    border-radius: 12px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .55
+        );
+
+    text-align: center;
+
+}
+
+
+.memory-final-summary small {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        #806f58;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .12em;
+
+}
+
+
+.memory-final-summary strong {
+
+    color:
+        #173d19;
+
+    font-size: 22px;
+
+}
+
+
+/* ============================================================
+   REWARD
+   ============================================================ */
+
+.gameplay-reward {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    margin:
+        10px
+        0
+        15px;
+
+}
+
+
+.gameplay-reward span {
+
+    color:
+        #ad8920;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+
+}
+
+
+.gameplay-reward strong {
+
+    margin-top: 3px;
+
+    color:
+        #173d19;
+
+    font-family:
+        "Libre Caslon Text",
+        Georgia,
+        serif;
+
+    font-size: 27px;
+
+}
+
+
+/* ============================================================
+   LEARNED WORDS
+   ============================================================ */
+
+.finish-learned-words {
+
+    width:
+        min(
+            680px,
+            100%
+        );
+
+    margin-bottom: 18px;
+
+}
+
+
+.finish-learned-words > small {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color:
+        #8c7029;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .16em;
+
+}
+
+
+.finish-word-list {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+}
+
+
+.finish-word-list span {
+
+    padding:
+        7px
+        10px;
+
+    border-radius: 999px;
+
+    color:
+        #36502f;
+
+    background:
+        rgba(
+            223,
+            232,
+            201,
+            .75
+        );
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+/* ============================================================
+   FINISH BUTTON
+   ============================================================ */
+
+.gameplay-finish-button {
+
+    min-width: 240px;
+
+    min-height: 52px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding:
+        0
+        22px;
+
+    border-radius: 10px;
+
+    color:
+        #fff8d4;
+
+    background:
+        #173d19;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+}
+
+
+.gameplay-finish-button:hover {
+
+    background:
+        #38551e;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ============================================================
+   LARGE TABLET
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+    .lk-navbar {
+
+        padding:
+            0
+            20px;
+
+    }
+
+
+    .lk-nav-link {
+
+        padding:
+            10px;
+
+    }
+
+
+    .lk-nav-link span {
+
+        display: none;
+
+    }
+
+
+    .lk-player {
+
+        padding-left: 12px;
+
+    }
+
+
+    .lk-content {
+
+        padding:
+            24px
+            24px
+            60px;
+
+    }
+
+
+    .gameplay-hero-content {
+
+        width: 60%;
+
+    }
+
+
+    .memory-board {
+
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(
+                    105px,
+                    1fr
+                )
+            );
+
+    }
+
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+    .lk-sidebar {
+
+        width: 82px;
+
+        padding:
+            22px
+            10px
+            20px;
+
+    }
+
+
+    .lk-main {
+
+        margin-left: 82px;
+
+    }
+
+
+    .lk-brand {
+
+        justify-content: center;
+
+        padding:
+            0
+            0
+            22px;
+
+    }
+
+
+    .lk-brand-mark {
+
+        width: 45px;
+
+        height: 45px;
+
+    }
+
+
+    .lk-brand-text {
+
+        display: none;
+
+    }
+
+
+    .lk-side-menu {
+
+        margin-top: 20px;
+
+    }
+
+
+    .lk-side-link {
+
+        justify-content: center;
+
+        gap: 0;
+
+        padding: 0;
+
+    }
+
+
+    .lk-side-link > span:last-child {
+
+        display: none;
+
+    }
+
+
+    .lk-side-icon {
+
+        width: 38px;
+
+        height: 38px;
+
+    }
+
+
+    .lk-sidebar-quote {
+
+        display: none;
+
+    }
+
+
+    .lk-navbar {
+
+        padding:
+            0
+            18px;
+
+    }
+
+
+    .lk-player-info {
+
+        min-width: 95px;
+
+    }
+
+
+    body.is-gameplay-active
+    .game-screen.active {
+
+        left: 82px;
+
+    }
+
+
+    body.is-gameplay-active
+    .game-screen:not(#screen01)
+    .game-screen-inner {
+
+        grid-template-columns: 1fr;
+
+        overflow-y: auto;
+
+        padding:
+            45px
+            25px
+            105px;
+
+    }
+
+
+    .memory-learning-screen {
+
+        grid-template-columns:
+            1fr !important;
+
+    }
+
+
+    .memory-learning-note {
+
+        grid-column: auto;
+
+        margin-top: 0;
+
+    }
+
+
+    .vocabulary-preview {
+
+        width: 100%;
+
+    }
+
+
+    .memory-game-shell {
+
+        padding:
+            30px
+            24px
+            45px;
+
+    }
+
+
+    .memory-game-heading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .memory-stats {
+
+        justify-content: flex-start;
+
+    }
+
+
+    .memory-board {
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    100px,
+                    1fr
+                )
+            );
+
+    }
+
+
+    body.is-gameplay-active
+    .game-screen-action {
+
+        left: 25px;
+
+        right: 25px;
+
+        bottom: 20px;
+
+    }
+
+
+    .gameplay-screen-button {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 620px) {
+
+    .lk-sidebar {
+
+        position: fixed;
+
+        width: 100%;
+
+        height: 64px;
+
+        top: auto;
+
+        bottom: 0;
+
+        padding:
+            6px
+            8px;
+
+        border-right: 0;
+
+        border-top:
+            1px solid
+            rgba(
+                218,
+                188,
+                67,
+                .20
+            );
+
+        overflow: hidden;
+
+    }
+
+
+    .lk-brand {
+
+        display: none;
+
+    }
+
+
+    .lk-side-menu {
+
+        width: 100%;
+
+        height: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                6,
+                1fr
+            );
+
+        align-items: center;
+
+        gap: 3px;
+
+        margin: 0;
+
+    }
+
+
+    .lk-side-link {
+
+        min-height: 48px;
+
+        margin: 0;
+
+        border-radius: 9px;
+
+    }
+
+
+    .lk-side-link.active::before {
+
+        left: 10px;
+
+        right: 10px;
+
+        top: auto;
+
+        bottom: 2px;
+
+        width: auto;
+
+        height: 3px;
+
+    }
+
+
+    .lk-side-icon {
+
+        width: 34px;
+
+        height: 34px;
+
+    }
+
+
+    .lk-main {
+
+        margin-left: 0;
+
+        padding-bottom: 64px;
+
+    }
+
+
+    .lk-navbar {
+
+        height: 70px;
+
+        padding:
+            0
+            12px;
+
+    }
+
+
+    .lk-nav-link {
+
+        padding:
+            9px;
+
+    }
+
+
+    .lk-player {
+
+        gap: 7px;
+
+        padding-left: 8px;
+
+    }
+
+
+    .lk-avatar {
+
+        width: 34px;
+
+        height: 34px;
+
+    }
+
+
+    .lk-player-info {
+
+        min-width: 72px;
+
+    }
+
+
+    .lk-player-top {
+
+        font-size: 8px;
+
+    }
+
+
+    .lk-player-info small {
+
+        display: none;
+
+    }
+
+
+    .lk-basa-hud {
+
+        display: none;
+
+    }
+
+
+    .lk-nav-actions {
+
+        gap: 3px;
+
+        margin-left: 7px;
+
+    }
+
+
+    .lk-action {
+
+        width: 32px;
+
+        height: 32px;
+
+        font-size: 13px;
+
+    }
+
+
+    .lk-content {
+
+        padding:
+            15px
+            14px
+            30px;
+
+    }
+
+
+    .gameplay-header {
+
+        min-height: auto;
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        padding: 14px;
+
+        margin-bottom: 16px;
+
+    }
+
+
+    .gameplay-location-status {
+
+        justify-content: space-between;
+
+    }
+
+
+    .gameplay-hero {
+
+        min-height: 620px;
+
+        border-radius: 12px;
+
+    }
+
+
+    .gameplay-hero-overlay {
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(
+                    248,
+                    241,
+                    223,
+                    .94
+                )
+                0%,
+                rgba(
+                    248,
+                    241,
+                    223,
+                    .90
+                )
+                55%,
+                rgba(
+                    248,
+                    241,
+                    223,
+                    .25
+                )
+                100%
+            );
+
+    }
+
+
+    .gameplay-hero-content {
+
+        width: 100%;
+
+        padding:
+            28px
+            22px
+            30px;
+
+    }
+
+
+    body.is-gameplay-active
+    .gameplay-hero-content {
+
+        padding-top: 9vh;
+
+    }
+
+
+    .gameplay-hero-content h1 {
+
+        font-size:
+            clamp(
+                52px,
+                15vw,
+                75px
+            );
+
+    }
+
+
+    .gameplay-description {
+
+        font-size: 13px;
+
+    }
+
+
+    body.is-gameplay-active
+    .game-screen.active {
+
+        left: 0;
+
+        bottom: 64px;
+
+        height:
+            calc(
+                100vh - 64px
+            );
+
+        min-height:
+            calc(
+                100vh - 64px
+            );
+
+    }
+
+
+    body.is-gameplay-active
+    .game-screen:not(#screen01)
+    .game-screen-inner {
+
+        min-height:
+            calc(
+                100vh - 64px
+            );
+
+        padding:
+            35px
+            18px
+            100px;
+
+    }
+
+
+    .game-screen-text h1 {
+
+        font-size: 43px;
+
+    }
+
+
+    .vocabulary-preview {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+        gap: 9px;
+
+    }
+
+
+    .vocabulary-item {
+
+        min-height: 90px;
+
+    }
+
+
+    .vocabulary-item strong {
+
+        font-size: 17px;
+
+    }
+
+
+    .memory-learning-note {
+
+        margin-top: 4px;
+
+    }
+
+
+    .memory-game-shell {
+
+        padding:
+            22px
+            14px
+            35px;
+
+    }
+
+
+    .memory-game-heading h1 {
+
+        font-size: 39px;
+
+    }
+
+
+    .memory-stats {
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                3,
+                1fr
+            );
+
+    }
+
+
+    .memory-stat {
+
+        min-width: 0;
+
+        padding:
+            9px
+            6px;
+
+    }
+
+
+    .memory-stat strong {
+
+        font-size: 16px;
+
+    }
+
+
+    .memory-board {
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    70px,
+                    1fr
+                )
+            );
+
+        gap: 8px;
+
+    }
+
+
+    .memory-card-front {
+
+        font-size: 24px;
+
+    }
+
+
+    .memory-card-back {
+
+        font-size: 14px;
+
+        letter-spacing: .02em;
+
+    }
+
+
+    .memory-instruction p {
+
+        font-size: 10px;
+
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish {
+
+        padding:
+            25px
+            18px;
+
+    }
+
+
+    .gameplay-finish h1 {
+
+        font-size: 47px;
+
+    }
+
+
+    .gameplay-finish > p {
+
+        font-size: 12px;
+
+    }
+
+
+    .memory-final-summary {
+
+        gap: 6px;
+
+    }
+
+
+    .memory-final-summary > div {
+
+        min-width: 88px;
+
+        padding:
+            9px
+            10px;
+
+    }
+
+
+    .memory-final-summary strong {
+
+        font-size: 18px;
+
+    }
+
+
+    .finish-word-list {
+
+        gap: 5px;
+
+    }
+
+
+    .finish-word-list span {
+
+        font-size: 8px;
+
+        padding:
+            6px
+            8px;
+
+    }
+
+
+    .gameplay-finish-button {
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+}
+
+
+/* ============================================================
+   VERY SMALL
+   ============================================================ */
+
+@media (max-width: 420px) {
+
+    .lk-nav-link {
+
+        padding:
+            8px
+            6px;
+
+    }
+
+
+    .lk-player-info {
+
+        min-width: 62px;
+
+    }
+
+
+    .lk-player-top span {
+
+        display: none;
+
+    }
+
+
+    .lk-nav-actions {
+
+        display: none;
+
+    }
+
+
+    .gameplay-location-label strong {
+
+        font-size: 17px;
+
+    }
+
+
+    .memory-board {
+
+        gap: 6px;
+
+    }
+
+
+    .memory-card-front {
+
+        font-size: 21px;
+
+    }
+
+
+    .memory-card-back {
+
+        font-size: 12px;
+
+    }
+
+
+    .vocabulary-item {
+
+        min-height: 82px;
+
+    }
+
+
+    .vocabulary-item strong {
+
+        font-size: 15px;
+
+    }
+
+
+    .vocabulary-item small {
+
+        font-size: 9px;
+
+    }
+
+}
+
+/* ============================================================
+   FIX NAVBAR GAMEPLAY — LEVEL 06
+   Navbar tetap tampil pada:
+   01 — Opening
+   02 — Hafalkan Kosakata
+   03 — Memory Kosakata
+   04 — Memory Rampung
+   ============================================================ */
+
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+body.is-gameplay-active .lk-navbar {
+
+    visibility: visible !important;
+
+    display: flex !important;
+
+    pointer-events: auto !important;
+
+    position: fixed !important;
+
+    top: 0 !important;
+
+    left: 212px !important;
+
+    right: 0 !important;
+
+    width: auto !important;
+
+    height: 78px !important;
+
+    min-height: 78px !important;
+
+    margin: 0 !important;
+
+    padding: 0 30px !important;
+
+    z-index: 9999 !important;
+
+    opacity: 1 !important;
+
+}
+
+
+/* ============================================================
+   SEMUA GAME SCREEN
+   TURUNKAN KE BAWAH NAVBAR
+   ============================================================ */
+
+body.is-gameplay-active .game-screen.active {
+
+    position: fixed !important;
+
+    top: 78px !important;
+
+    right: 0 !important;
+
+    bottom: 0 !important;
+
+    left: 212px !important;
+
+    width: auto !important;
+
+    height: calc(100vh - 78px) !important;
+
+    min-height: calc(100vh - 78px) !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    z-index: 500 !important;
+
+}
+
+
+/* ============================================================
+   SCREEN 01
+   ============================================================ */
+
+body.is-gameplay-active #screen01 {
+
+    top: 78px !important;
+
+    left: 212px !important;
+
+    right: 0 !important;
+
+    bottom: 0 !important;
+
+    height: calc(100vh - 78px) !important;
+
+    min-height: calc(100vh - 78px) !important;
+
+}
+
+
+/* ============================================================
+   SCREEN 02 — HAFALKAN KOSAKATA
+   ============================================================ */
+
+body.is-gameplay-active #screen02 {
+
+    top: 78px !important;
+
+    left: 212px !important;
+
+    right: 0 !important;
+
+    bottom: 0 !important;
+
+    height: calc(100vh - 78px) !important;
+
+    min-height: calc(100vh - 78px) !important;
+
+}
+
+
+/* ============================================================
+   SCREEN 03 — MEMORY KOSAKATA
+   ============================================================ */
+
+body.is-gameplay-active #screen03 {
+
+    top: 78px !important;
+
+    left: 212px !important;
+
+    right: 0 !important;
+
+    bottom: 0 !important;
+
+    height: calc(100vh - 78px) !important;
+
+    min-height: calc(100vh - 78px) !important;
+
+}
+
+
+/* ============================================================
+   SCREEN 04 — MEMORY RAMPUNG
+   ============================================================ */
+
+body.is-gameplay-active #screen04 {
+
+    top: 78px !important;
+
+    left: 212px !important;
+
+    right: 0 !important;
+
+    bottom: 0 !important;
+
+    height: calc(100vh - 78px) !important;
+
+    min-height: calc(100vh - 78px) !important;
+
+}
+
+
+/* ============================================================
+   INNER SCREEN
+   ============================================================ */
+
+body.is-gameplay-active
+.game-screen.active
+.game-screen-inner {
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+}
+
+
+/* ============================================================
+   MEMORY GAME SHELL
+   ============================================================ */
+
+body.is-gameplay-active
+#screen03
+.memory-game-shell {
+
+    max-height: calc(100vh - 78px) !important;
+
+    overflow-y: auto !important;
+
+}
+
+
+/* ============================================================
+   NAVBAR LINKS
+   ============================================================ */
+
+body.is-gameplay-active .lk-nav-links {
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+}
+
+
+/* ============================================================
+   PLAYER HUD
+   ============================================================ */
+
+body.is-gameplay-active .lk-player {
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+}
+
+
+/* ============================================================
+   BASA HUD
+   ============================================================ */
+
+body.is-gameplay-active .lk-basa-hud {
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+}
+
+
+/* ============================================================
+   NAVBAR ACTION
+   ============================================================ */
+
+body.is-gameplay-active .lk-nav-actions {
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+}
+
+
+/* ============================================================
+   NAVBAR TIDAK BOLEH DITUTUP ELEMEN GAMEPLAY
+   ============================================================ */
+
+body.is-gameplay-active .lk-navbar * {
+
+    pointer-events: auto;
+
+}
+
+
+/* ============================================================
+   SIDEBAR TETAP DI DEPAN
+   ============================================================ */
+
+body.is-gameplay-active .lk-sidebar {
+
+    position: fixed !important;
+
+    top: 0 !important;
+
+    left: 0 !important;
+
+    bottom: 0 !important;
+
+    width: 212px !important;
+
+    height: 100vh !important;
+
+    z-index: 10000 !important;
+
+}
+
+
+/* ============================================================
+   BATIK TIDAK MENUTUP NAVBAR
+   ============================================================ */
+
+body.is-gameplay-active .lk-batik-pattern {
+
+    z-index: 1 !important;
+
+}
+
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+
+body.is-gameplay-active .lk-main {
+
+    margin-left: 212px !important;
+
+    min-height: 100vh !important;
+
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+body.is-gameplay-active .lk-content {
+
+    padding-top: 78px !important;
+
+}
+
+
+/* ============================================================
+   FINAL SAFETY
+   ============================================================ */
+
+body.is-gameplay-active .lk-navbar {
+
+    transform: none !important;
+
+    clip-path: none !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+}
+
+/* ============================================================
+   FIX GAMEPLAY 06
+   SCREEN 02 TIDAK MEMOTONG TOMBOL
+   ============================================================ */
+
+body.is-gameplay-active .game-screen.active {
+    top: 78px !important;
+    left: 255px !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    width: auto !important;
+    height: calc(100vh - 78px) !important;
+    min-height: 0 !important;
+
+    overflow: hidden !important;
+}
+
+
+/* ============================================================
+   SCREEN 02 — HAFALKAN KOSAKATA
+   ============================================================ */
+
+body.is-gameplay-active #screen02 {
+    overflow: hidden !important;
+}
+
+
+/* ============================================================
+   INNER SCREEN
+   JANGAN LEBIH TINGGI DARI AREA YANG TERSEDIA
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .game-screen-inner {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+
+    box-sizing: border-box !important;
+
+    padding: 45px 6vw 30px !important;
+
+    overflow: hidden !important;
+}
+
+
+/* ============================================================
+   POSISI ISI SCREEN 02
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .game-screen-inner {
+    align-items: center !important;
+}
+
+
+/* ============================================================
+   TOMBOL AKU WIS SIAP
+   JANGAN TERLALU BAWAH
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .game-screen-action {
+    position: absolute !important;
+
+    left: 6vw !important;
+    bottom: 28px !important;
+
+    width: auto !important;
+
+    margin: 0 !important;
+
+    z-index: 20 !important;
+}
+
+
+/* ============================================================
+   TOMBOL
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .gameplay-screen-button {
+    min-width: 230px !important;
+    min-height: 52px !important;
+
+    padding: 0 20px !important;
+
+    margin: 0 !important;
+}
+
+
+/* ============================================================
+   MEMORY LEARNING NOTE
+   SUPAYA TIDAK MENABRAK TOMBOL
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .memory-learning-note {
+    margin-top: -10px !important;
+}
+
+
+/* ============================================================
+   CARD KOSAKATA
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .vocabulary-preview {
+    max-width: 680px !important;
+}
+
+
+/* ============================================================
+   DESKTOP LEBAR
+   ============================================================ */
+
+@media (min-width: 1200px) {
+
+    body.is-gameplay-active #screen02 .game-screen-inner {
+        padding-top: 38px !important;
+        padding-bottom: 25px !important;
+    }
+
+    body.is-gameplay-active #screen02 .game-screen-action {
+        left: 6vw !important;
+        bottom: 24px !important;
+    }
+
+}
+
+
+/* ============================================================
+   LAYAR PENDEK
+   SUPAYA TOMBOL TIDAK KELUAR LAYAR
+   ============================================================ */
+
+@media (max-height: 800px) {
+
+    body.is-gameplay-active #screen02 .game-screen-inner {
+        padding-top: 25px !important;
+        padding-bottom: 20px !important;
+    }
+
+    body.is-gameplay-active #screen02 .game-screen-action {
+        bottom: 18px !important;
+    }
+
+    body.is-gameplay-active #screen02 .vocabulary-item {
+        min-height: 90px !important;
+    }
+
+    body.is-gameplay-active #screen02 .memory-learning-note {
+        padding-top: 9px !important;
+        padding-bottom: 9px !important;
+    }
+
+}
+
+/* ============================================================
+   LELANA KAMANDAKA
+   GAMEPLAY 06
+   FINAL SCREEN / BUTTON POSITION FIX
+   ============================================================ */
+
+
+/* ============================================================
+   1. GAMEPLAY ACTIVE
+   ============================================================ */
+
+body.is-gameplay-active {
+    overflow: hidden !important;
+}
+
+
+/* ============================================================
+   2. SEMUA GAME SCREEN
+   ============================================================ */
+
+body.is-gameplay-active .game-screen.active {
+    position: fixed !important;
+
+    top: 70px !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 255px !important;
+
+    width: auto !important;
+    height: calc(100vh - 70px) !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* ============================================================
+   3. SCREEN INNER
+   ============================================================ */
+
+body.is-gameplay-active
+.game-screen.active
+.game-screen-inner {
+    position: relative !important;
+
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+
+    box-sizing: border-box !important;
+
+    overflow: hidden !important;
+}
+
+
+/* ============================================================
+   4. SCREEN 02
+   HAFALKAN KOSAKATA
+   ============================================================ */
+
+body.is-gameplay-active #screen02 {
+    overflow: hidden !important;
+}
+
+
+body.is-gameplay-active #screen02 .game-screen-inner {
+    display: grid !important;
+
+    grid-template-columns:
+        minmax(280px, 0.8fr)
+        minmax(420px, 1.2fr) !important;
+
+    grid-template-rows:
+        auto
+        auto
+        1fr
+        auto !important;
+
+    align-items: center !important;
+
+    column-gap: 50px !important;
+    row-gap: 20px !important;
+
+    padding:
+        42px
+        6vw
+        28px !important;
+
+    overflow: hidden !important;
+}
+
+
+/* ============================================================
+   5. SCREEN 02 — TEXT
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .game-screen-text {
+    grid-column: 1 !important;
+    grid-row: 1 / span 2 !important;
+
+    align-self: center !important;
+
+    max-width: 520px !important;
+}
+
+
+body.is-gameplay-active #screen02 .game-screen-text h1 {
+    margin:
+        10px 0
+        18px !important;
+}
+
+
+/* ============================================================
+   6. VOCABULARY
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .vocabulary-preview {
+    grid-column: 2 !important;
+    grid-row: 1 / span 2 !important;
+
+    width: 100% !important;
+    max-width: 700px !important;
+
+    align-self: center !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* ============================================================
+   7. MEMORY NOTE
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .memory-learning-note {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+
+    width: 100% !important;
+
+    margin:
+        0
+        0
+        5px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* ============================================================
+   8. SCREEN 02 BUTTON
+   TIDAK BOLEH TURUN KELUAR LAYAR
+   ============================================================ */
+
+body.is-gameplay-active #screen02 .game-screen-action {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+
+    align-self: end !important;
+    justify-self: start !important;
+
+    width: auto !important;
+
+    margin:
+        0
+        0
+        5px !important;
+
+    padding: 0 !important;
+
+    position: static !important;
+}
+
+
+/* ============================================================
+   9. SCREEN BUTTON
+   ============================================================ */
+
+body.is-gameplay-active
+#screen02
+.gameplay-screen-button {
+    min-width: 230px !important;
+
+    min-height: 52px !important;
+
+    margin: 0 !important;
+
+    padding:
+        0
+        22px !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* ============================================================
+   10. SCREEN 04 / FINISH
+   ============================================================ */
+
+body.is-gameplay-active #screen04 {
+    overflow: hidden !important;
+}
+
+
+body.is-gameplay-active #screen04 .game-screen-inner {
+    width: 100% !important;
+    height: 100% !important;
+
+    min-height: 0 !important;
+
+    box-sizing: border-box !important;
+
+    overflow: hidden !important;
+}
+
+
+/* ============================================================
+   11. FINISH CONTENT
+   ============================================================ */
+
+body.is-gameplay-active #screen04 .gameplay-finish {
+    display: grid !important;
+
+    grid-template-columns:
+        minmax(300px, 1fr)
+        minmax(300px, 1fr) !important;
+
+    grid-template-rows:
+        auto
+        auto
+        auto
+        auto
+        auto
+        1fr
+        auto !important;
+
+    align-items: center !important;
+    justify-items: center !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-height: 0 !important;
+
+    box-sizing: border-box !important;
+
+    padding:
+        38px
+        7vw
+        26px !important;
+
+    overflow: hidden !important;
+
+    text-align: center !important;
+}
+
+
+/* ============================================================
+   12. FINISH SYMBOL
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.gameplay-finish-symbol {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+
+    margin:
+        0
+        0
+        4px !important;
+
+    font-size: 34px !important;
+}
+
+
+/* ============================================================
+   13. FINISH LABEL
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.game-screen-label {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+
+    margin: 0 !important;
+}
+
+
+/* ============================================================
+   14. FINISH TITLE
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.gameplay-finish h1 {
+    grid-column: 1 !important;
+    grid-row: 3 / span 2 !important;
+
+    align-self: center !important;
+
+    margin:
+        0 !important;
+
+    font-size:
+        clamp(
+            58px,
+            6vw,
+            92px
+        ) !important;
+
+    line-height: .9 !important;
+}
+
+
+/* ============================================================
+   15. FINISH DESCRIPTION
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.gameplay-finish > p {
+    grid-column: 2 !important;
+    grid-row: 3 / span 2 !important;
+
+    align-self: center !important;
+
+    max-width: 500px !important;
+
+    margin: 0 !important;
+
+    line-height: 1.8 !important;
+}
+
+
+/* ============================================================
+   16. FINAL SUMMARY
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.memory-final-summary {
+    grid-column: 1 / -1 !important;
+    grid-row: 5 !important;
+
+    display: flex !important;
+
+    justify-content: center !important;
+    align-items: center !important;
+
+    gap: 14px !important;
+
+    margin:
+        8px
+        0 !important;
+}
+
+
+/* ============================================================
+   17. REWARD
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.gameplay-reward {
+    grid-column: 2 !important;
+    grid-row: 5 !important;
+
+    margin:
+        8px
+        0 !important;
+}
+
+
+/* ============================================================
+   18. LEARNED WORDS
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.finish-learned-words {
+    grid-column: 1 / -1 !important;
+    grid-row: 6 !important;
+
+    align-self: center !important;
+
+    width: 100% !important;
+
+    margin:
+        5px
+        0 !important;
+}
+
+
+/* ============================================================
+   19. WORD LIST
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.finish-word-list {
+    display: flex !important;
+
+    justify-content: center !important;
+    align-items: center !important;
+
+    flex-wrap: wrap !important;
+
+    gap: 8px !important;
+
+    margin-top: 8px !important;
+}
+
+
+/* ============================================================
+   20. FINISH BUTTON
+   TETAP DI DALAM VIEWPORT
+   ============================================================ */
+
+body.is-gameplay-active
+#screen04
+.gameplay-finish-button {
+    grid-column: 1 / -1 !important;
+    grid-row: 7 !important;
+
+    justify-self: stretch !important;
+
+    width: min(
+        100%,
+        760px
+    ) !important;
+
+    min-width: 0 !important;
+
+    min-height: 52px !important;
+
+    margin:
+        8px
+        auto
+        0 !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* ============================================================
+   21. JANGAN BUAT BUTTON ABSOLUTE
+   ============================================================ */
+
+body.is-gameplay-active
+.gameplay-finish-button {
+    position: static !important;
+}
+
+
+/* ============================================================
+   22. DESKTOP LEBAR
+   ============================================================ */
+
+@media (min-width: 1400px) {
+
+    body.is-gameplay-active
+    #screen02
+    .game-screen-inner {
+
+        padding:
+            48px
+            7vw
+            28px !important;
+
+        column-gap:
+            60px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish {
+
+        padding:
+            35px
+            8vw
+            25px !important;
+    }
+
+}
+
+
+/* ============================================================
+   23. LAPTOP / LAYAR PENDEK
+   ============================================================ */
+
+@media (max-height: 850px) {
+
+    body.is-gameplay-active
+    .game-screen.active {
+
+        top: 70px !important;
+
+        height:
+            calc(100vh - 70px) !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen02
+    .game-screen-inner {
+
+        padding:
+            25px
+            5vw
+            18px !important;
+
+        row-gap:
+            10px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen02
+    .game-screen-text h1 {
+
+        font-size:
+            clamp(
+                48px,
+                5vw,
+                68px
+            ) !important;
+
+        margin:
+            6px
+            0
+            12px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen02
+    .vocabulary-item {
+
+        min-height:
+            90px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish {
+
+        padding:
+            20px
+            6vw
+            16px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish h1 {
+
+        font-size:
+            clamp(
+                48px,
+                5vw,
+                70px
+            ) !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish-symbol {
+
+        font-size:
+            28px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-reward {
+
+        margin:
+            3px
+            0 !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .finish-learned-words {
+
+        margin:
+            2px
+            0 !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish-button {
+
+        min-height:
+            48px !important;
+
+        margin-top:
+            3px !important;
+    }
+
+}
+
+
+/* ============================================================
+   24. LAYAR SANGAT PENDEK
+   ============================================================ */
+
+@media (max-height: 720px) {
+
+    body.is-gameplay-active
+    #screen02
+    .game-screen-inner {
+
+        padding:
+            18px
+            4vw
+            12px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen02
+    .game-screen-text h1 {
+
+        font-size:
+            46px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen02
+    .game-screen-text p {
+
+        font-size:
+            13px !important;
+
+        line-height:
+            1.5 !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen02
+    .vocabulary-item {
+
+        min-height:
+            76px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish {
+
+        padding:
+            12px
+            4vw
+            10px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish h1 {
+
+        font-size:
+            46px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish > p {
+
+        font-size:
+            12px !important;
+
+        line-height:
+            1.5 !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .memory-final-summary {
+
+        gap:
+            7px !important;
+    }
+
+
+    body.is-gameplay-active
+    #screen04
+    .gameplay-finish-button {
+
+        min-height:
+            44px !important;
+    }
+
+}
